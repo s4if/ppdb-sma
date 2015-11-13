@@ -16,7 +16,7 @@ class Pendaftar extends MY_Controller {
         $builder->setDistortion(false);
         $builder->build();
         $this->session->set_userdata('captcha', $builder->getPhrase());
-        $this->load->view('login', ['builder' => $builder]);
+        $this->load->view('login/index', ['builder' => $builder]);
     }
     
     public function detail(){
