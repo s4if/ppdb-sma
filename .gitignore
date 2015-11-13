@@ -9,3 +9,5 @@
 /.settings
 /.buildpath
 /.project
+/application/models/Proxies
+
