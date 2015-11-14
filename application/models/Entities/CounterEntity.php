@@ -65,7 +65,7 @@ class CounterEntity {
 
     //NOTE: setiap ada pendaftar ditambah 1!
     public function addCount() {
-        if(is_null($this->getRegistrantCount()) || $this->registrantCount < 1){
+        if(is_null($this->getRegistrantCount())){
             $this->registrantCount = 1;
         } else {
             $this->registrantCount = $this->registrantCount+1;
@@ -74,7 +74,7 @@ class CounterEntity {
     }
     
     public function removeCount() {
-        if(is_null($this->getRegistrantCount()) || $this->registrantCount < 0){
+        if(is_null($this->getRegistrantCount())){
             $this->registrantCount = 0;
         } else {
             $this->registrantCount = $this->registrantCount-1;

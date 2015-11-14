@@ -64,7 +64,7 @@ class AchievementEntity {
         return $this;
     }
 
-    public function setRegistrant(RegistrantDataEntityEntity $registrant) {
+    public function setRegistrant(RegistrantDataEntity $registrant) {
         $this->registrant = $registrant;
         return $this;
     }
@@ -73,6 +73,5 @@ class AchievementEntity {
         $this->achievement = $achievement;
         return $this;
     }
-
-
+    
 }

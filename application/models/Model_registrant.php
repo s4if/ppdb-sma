@@ -50,7 +50,7 @@ class Model_registrant extends CI_Model {
     }
     
     public function insertData($data){
-        try {
+//        try {
             $this->registrant = new RegistrantEntity();
             $data['reg_time'] = new DateTime('now');
             $data['id'] = $this->genId($data['reg_time']);
@@ -58,9 +58,9 @@ class Model_registrant extends CI_Model {
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
-        } catch (Exception $ex){
-            return false;
-        }
+//        } catch (Exception $ex){
+//            return false;
+//        }
     }
     
     // Xperimental
@@ -137,13 +137,13 @@ class Model_registrant extends CI_Model {
                 return false;
             } else {
                 if(is_null($this->registrant->getRegistrantData())){
-                    $this->registrantData = new RegistrantDataEntity(); 
+                    $this->registrantData = new RegistrantDataEntity();
                 } else {
                     $this->registrantData = $this->registrant->getRegistrantData();
                 }
                 $this->setRegistrantDetail($data);
+                $this->registrantData->setRegistrant($this->registrant);
                 $this->doctrine->em->persist($this->registrantData);
-                $this->doctrine->em->flush();
                 $this->registrant->setRegistrantData($this->registrantData);
                 $this->doctrine->em->persist($this->registrant);
                 $this->doctrine->em->flush();
@@ -198,7 +198,6 @@ class Model_registrant extends CI_Model {
                 $obj->setAchievement($achievement);
                 $obj->setRegistrant($this->registrantData);
                 $this->doctrine->em->persist($obj);
-                $this->doctrine->em->flush();
                 $this->registrantData->addAchievement($obj);
             }
         }
@@ -211,7 +210,6 @@ class Model_registrant extends CI_Model {
                 $obj->setHobby($hobby);
                 $obj->setRegistrant($this->registrantData);
                 $this->doctrine->em->persist($obj);
-                $this->doctrine->em->flush();
                 $this->registrantData->addHobby($obj);
             }
         }
@@ -224,7 +222,6 @@ class Model_registrant extends CI_Model {
                 $obj->setHospitalSheet($hospitalSheet);
                 $obj->setRegistrant($this->registrantData);
                 $this->doctrine->em->persist($obj);
-                $this->doctrine->em->flush();
                 $this->registrantData->addHospitalSheet($obj);
             }
         }
@@ -237,7 +234,6 @@ class Model_registrant extends CI_Model {
                 $obj->setPhysicalAbnormality($physicalAbnormality);
                 $obj->setRegistrant($this->registrantData);
                 $this->doctrine->em->persist($obj);
-                $this->doctrine->em->flush();
                 $this->registrantData->addPhysicalAbnormality($obj);
             }
         }

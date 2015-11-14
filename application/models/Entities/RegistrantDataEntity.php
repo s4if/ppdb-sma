@@ -83,6 +83,7 @@ class RegistrantDataEntity {
     //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
      * @OneToMany(targetEntity="HospitalSheetEntity", mappedBy="registrant", orphanRemoval=true)
+     * @JoinColumn(onDelete="CASCADE")
      **/
     protected $hospitalSheets;
     
@@ -90,6 +91,7 @@ class RegistrantDataEntity {
     //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
      * @OneToMany(targetEntity="PhysicalAbnormalityEntity", mappedBy="registrant", orphanRemoval=true)
+     * @JoinColumn(onDelete="CASCADE")
      **/
     protected $physicalAbnormalities;
     
@@ -115,6 +117,7 @@ class RegistrantDataEntity {
     //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
      * @OneToMany(targetEntity="HobbyEntity", mappedBy="registrant", orphanRemoval=true)
+     * @JoinColumn(onDelete="CASCADE")
      **/
     protected $hobbies;
     
@@ -122,6 +125,7 @@ class RegistrantDataEntity {
     //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
      * @OneToMany(targetEntity="AchievementEntity", mappedBy="registrant", orphanRemoval=true)
+     * @JoinColumn(onDelete="CASCADE")
      **/
     protected $achievements;
     

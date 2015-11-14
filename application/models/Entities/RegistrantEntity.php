@@ -54,21 +54,21 @@ class RegistrantEntity
     
     /**
      * @OneToOne(targetEntity="ParentEntity")
-     * @JoinColumn(name="father_id", referencedColumnName="id", nullable=TRUE)
+     * @JoinColumn(name="father_id", referencedColumnName="id", nullable=TRUE, onDelete="CASCADE")
      * @var ParentEntity
      **/
     protected $father;
     
     /**
      * @OneToOne(targetEntity="ParentEntity")
-     * @JoinColumn(name="mother_id", referencedColumnName="id", nullable=TRUE)
+     * @JoinColumn(name="mother_id", referencedColumnName="id", nullable=TRUE, onDelete="CASCADE")
      * @var ParentEntity
      **/
     protected $mother;
     
     /**
      * @OneToOne(targetEntity="ParentEntity")
-     * @JoinColumn(name="guardian_id", referencedColumnName="id", nullable=TRUE)
+     * @JoinColumn(name="guardian_id", referencedColumnName="id", nullable=TRUE, onDelete="CASCADE")
      * @var ParentEntity
      **/
     protected $guardian;

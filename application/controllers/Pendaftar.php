@@ -102,4 +102,8 @@ class Pendaftar extends MY_Controller {
         $this->session->sess_destroy();
         redirect('pendaftar/login');
     }
+    
+    // TODO: Edit Detail, Ortu, Wali
+    
+    // =========================================================
 }

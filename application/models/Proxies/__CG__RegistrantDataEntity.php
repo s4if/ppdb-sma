@@ -64,10 +64,10 @@ class RegistrantDataEntity extends \RegistrantDataEntity implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'registrant', 'birthPlace', 'birthDate', 'address', 'registrantCondition', 'nationality', 'religion', 'hospitalSheet', 'physicalAbnormalities', 'height', 'weight', 'stayWith', 'hobbies', 'achievements');
+            return array('__isInitialized__', 'id', 'registrant', 'birthPlace', 'birthDate', 'address', 'familyCondition', 'nationality', 'religion', 'hospitalSheets', 'physicalAbnormalities', 'height', 'weight', 'stayWith', 'hobbies', 'achievements');
         }
 
-        return array('__isInitialized__', 'id', 'registrant', 'birthPlace', 'birthDate', 'address', 'registrantCondition', 'nationality', 'religion', 'hospitalSheet', 'physicalAbnormalities', 'height', 'weight', 'stayWith', 'hobbies', 'achievements');
+        return array('__isInitialized__', 'id', 'registrant', 'birthPlace', 'birthDate', 'address', 'familyCondition', 'nationality', 'religion', 'hospitalSheets', 'physicalAbnormalities', 'height', 'weight', 'stayWith', 'hobbies', 'achievements');
     }
 
     /**
@@ -173,4 +173,394 @@ class RegistrantDataEntity extends \RegistrantDataEntity implements \Doctrine\OR
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRegistrant()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegistrant', array());
+
+        return parent::getRegistrant();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBirthPlace()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthPlace', array());
+
+        return parent::getBirthPlace();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBirthDate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthDate', array());
+
+        return parent::getBirthDate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAddress()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress', array());
+
+        return parent::getAddress();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFamilyCondition()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFamilyCondition', array());
+
+        return parent::getFamilyCondition();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNationality()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNationality', array());
+
+        return parent::getNationality();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getReligion()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReligion', array());
+
+        return parent::getReligion();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getHeight()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', array());
+
+        return parent::getHeight();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getWeight()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWeight', array());
+
+        return parent::getWeight();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStayWith()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStayWith', array());
+
+        return parent::getStayWith();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function exist($varName, $varVal = array (
+))
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'exist', array($varName, $varVal));
+
+        return parent::exist($varName, $varVal);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getHospitalSheets($hs = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHospitalSheets', array($hs));
+
+        return parent::getHospitalSheets($hs);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPhysicalAbnormalities($pa = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhysicalAbnormalities', array($pa));
+
+        return parent::getPhysicalAbnormalities($pa);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getHobbies($hobby = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHobbies', array($hobby));
+
+        return parent::getHobbies($hobby);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAchievements($achievement = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAchievements', array($achievement));
+
+        return parent::getAchievements($achievement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+
+        return parent::setId($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBirthPlace($birthPlace)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthPlace', array($birthPlace));
+
+        return parent::setBirthPlace($birthPlace);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBirthDate(\DateTime $birthDate)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthDate', array($birthDate));
+
+        return parent::setBirthDate($birthDate);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAddress($address)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress', array($address));
+
+        return parent::setAddress($address);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFamilyCondition($familyCondition)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFamilyCondition', array($familyCondition));
+
+        return parent::setFamilyCondition($familyCondition);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNationality($nationality)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNationality', array($nationality));
+
+        return parent::setNationality($nationality);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setReligion($religion)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReligion', array($religion));
+
+        return parent::setReligion($religion);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setHeight($height)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', array($height));
+
+        return parent::setHeight($height);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setWeight($weight)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWeight', array($weight));
+
+        return parent::setWeight($weight);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRegistrant(\RegistrantEntity $registrant)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegistrant', array($registrant));
+
+        return parent::setRegistrant($registrant);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStayWith($stayWith)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStayWith', array($stayWith));
+
+        return parent::setStayWith($stayWith);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addHobby(\HobbyEntity $hobby)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addHobby', array($hobby));
+
+        return parent::addHobby($hobby);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addAchievement(\AchievementEntity $achievement)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAchievement', array($achievement));
+
+        return parent::addAchievement($achievement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addHospitalSheet(\HospitalSheetEntity $hospitalSheet)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addHospitalSheet', array($hospitalSheet));
+
+        return parent::addHospitalSheet($hospitalSheet);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addPhysicalAbnormality(\PhysicalAbnormalityEntity $physicalAbnormalities)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPhysicalAbnormality', array($physicalAbnormalities));
+
+        return parent::addPhysicalAbnormality($physicalAbnormalities);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeHobby(\HobbyEntity $hobby)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeHobby', array($hobby));
+
+        return parent::removeHobby($hobby);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeAchievement(\AchievementEntity $achievement)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAchievement', array($achievement));
+
+        return parent::removeAchievement($achievement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeHospitalSheet(\HospitalSheetEntity $hospitalSheet)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeHospitalSheet', array($hospitalSheet));
+
+        return parent::removeHospitalSheet($hospitalSheet);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removePhysicalAbnormality(\PhysicalAbnormalityEntity $physicalAbnormalities)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePhysicalAbnormality', array($physicalAbnormalities));
+
+        return parent::removePhysicalAbnormality($physicalAbnormalities);
+    }
+
 }
