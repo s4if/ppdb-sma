@@ -25,6 +25,7 @@
  */
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * @Entity @Table(name="registrant_data")
@@ -83,7 +84,7 @@ class RegistrantDataEntity {
     /**
      * @OneToMany(targetEntity="HospitalSheetEntity", mappedBy="registrant", orphanRemoval=true)
      **/
-    protected $hospitalSheet;
+    protected $hospitalSheets;
     
     //TODO: Kelainan Jasmani Here
     //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
@@ -125,7 +126,7 @@ class RegistrantDataEntity {
     protected $achievements;
     
     public function __construct() {
-        $this->hospitalSheet = new ArrayCollection();
+        $this->hospitalSheets = new ArrayCollection();
         $this->physicalAbnormalities = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
         $this->achievements = new ArrayCollection();
@@ -162,15 +163,7 @@ class RegistrantDataEntity {
     public function getReligion() {
         return $this->religion;
     }
-
-    public function getHospitalSheet() {
-        return $this->hospitalSheet;
-    }
-
-    public function getPhysicalAbnormalities() {
-        return $this->physicalAbnormalities;
-    }
-
+    
     public function getHeight() {
         return $this->height;
     }
@@ -182,13 +175,61 @@ class RegistrantDataEntity {
     public function getStayWith() {
         return $this->stayWith;
     }
-
-    public function getHobbies() {
-        return $this->hobbies;
+    
+    // Experimental
+    // aturan $varVal = ['attr' => 'attributeName', 'val' => 'expectedValue' ]
+    public function exist($varName, $varVal = []){
+        try{
+            if($varVal == []){
+                return !$this->$varName->isEmpty();
+            } else {
+                $criteria = Criteria::create()
+                    ->where(Criteria::expr()->eq( $varVal['attr'], $varVal['val']));
+                return !$this->$varName->matching($criteria)->isEmpty();
+            }
+        } catch (Exception $ex) {
+            return false;
+        }
     }
 
-    public function getAchievements() {
-        return $this->achievements;
+    public function getHospitalSheets($hs = null) {
+        if(is_null($hs)){
+            return $this->hospitalSheets;
+        } else {
+            $criteria = Criteria::create()
+                    ->where(Criteria::expr()->eq('hospitalSheet', $hs));
+            return $this->hospitalSheets->matching($criteria);
+        }
+    }
+
+    public function getPhysicalAbnormalities($pa = null) {
+        if(is_null($pa)){
+            return $this->physicalAbnormalities;
+        } else {
+            $criteria = Criteria::create()
+                    ->where(Criteria::expr()->eq('physicalAbnormalities', $pa));
+            return $this->physicalAbnormalities->matching($criteria);
+        }
+    }
+    
+    public function getHobbies($hobby = null) {
+        if($hobby == null){
+            return $this->hobbies;
+        } else {
+            $criteria = Criteria::create()
+                    ->where(Criteria::expr()->eq('hobby', $hobby));
+            return $this->hobbies->matching($criteria);
+        }
+    }
+
+    public function getAchievements($achievement = null) {
+        if(is_null($achievement)){
+            return $this->achievements;
+        } else {
+            $criteria = Criteria::create()
+                    ->where(Criteria::expr()->eq('achievement', $achievement));
+            return $this->achievements->matching($criteria);
+        }
     }
     
     public function setId($id) {
@@ -258,7 +299,7 @@ class RegistrantDataEntity {
     
     public function addHospitalSheet(HospitalSheetEntity $hospitalSheet){
         $hospitalSheet->setRegistrant($this);
-        $this->hospitalSheet[] = $hospitalSheet;
+        $this->hospitalSheets[] = $hospitalSheet;
     }
     
     public function addPhysicalAbnormality(PhysicalAbnormalityEntity $physicalAbnormalities){
@@ -268,19 +309,27 @@ class RegistrantDataEntity {
     
     // TODO: Cari Cara untuk Remove
     public function removeHobby(HobbyEntity $hobby){
-        
+        $this->hobbies->removeElement($hobby);
+        $hobby->setRegistrant(null);
+        return $this;
     }
     
     public function removeAchievement(AchievementEntity $achievement){
-        
+        $this->achievements->removeElement($achievement);
+        $achievement->setRegistrant(null);
+        return $this;
     }
     
     public function removeHospitalSheet(HospitalSheetEntity $hospitalSheet){
-        
+        $this->hospitalSheet->removeElement($hospitalSheet);
+        $hospitalSheet->setRegistrant(null);
+        return $this;
     }
     
     public function removePhysicalAbnormality(PhysicalAbnormalityEntity $physicalAbnormalities){
-        
+        $this->physicalAbnormalities->removeElement($physicalAbnormalities);
+        $physicalAbnormalities->setRegistrant(null);
+        return $this;
     }
-
+    
 }

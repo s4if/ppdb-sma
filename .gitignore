@@ -10,4 +10,4 @@
 /.buildpath
 /.project
 /application/models/Proxies
-
+/application/tests/build

@@ -64,7 +64,7 @@ class PhysicalAbnormalityEntity {
         return $this;
     }
 
-    public function setRegistrant(RegistrantEntity $registrant) {
+    public function setRegistrant(RegistrantDataEntity $registrant) {
         $this->registrant = $registrant;
         return $this;
     }

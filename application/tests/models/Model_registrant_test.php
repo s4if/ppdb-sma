@@ -116,8 +116,11 @@ class Model_registrant_test extends TestCase {
             'religion' => 'Islam', 
             'height' => 176, 
             'weight' => 57, 
-            'stay_with' => 'Ortu'
-            // TODO: Object Hobby dll
+            'stay_with' => 'Ortu',
+            'hobbies' => ['makan', 'tidur', 'baca komik'],
+            'achievements' => ['Juara 1 OSN Fisika SMP'],
+            'physical_abnormalities' => ['Jentik kaki kiri diamputasi'],
+            'hospital_sheets' => ['Pernah kecelakaan']
         ];
         $this->assertTrue($this->obj->updateDetail('20141201001',$data));
         $this->assertFalse($this->obj->updateDetail('00000000000',$data));

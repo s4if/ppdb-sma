@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Sistem Informasi Program Tahsin Tahfidz</a>
+        <a class="navbar-brand" href="#">PPDB SMAIT Ihsanul Fikri Mungkid</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -59,7 +59,17 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li id="dashboard">
-                <a href="#"><span class="glyphicon glyphicon-dashboard"></span> &nbsp; Dashboard</a>
+                <?php 
+                    //Diberi Ikon OK kalo sudah dilaksanakan
+                    //Dan Diberi Ikon Aktif!!
+                ?>
+                <a href="#">Beranda</a>
+                <a href="#">Profil Dasar</a>
+                <a href="#">Data Diri</a>
+                <a href="#">Data Ayah</a>
+                <a href="#">Data Ibu</a>
+                <a href="#">Data Wali</a>
+                <a href="#">Rekap</a>
             </li>
         </ul>
     </div>
