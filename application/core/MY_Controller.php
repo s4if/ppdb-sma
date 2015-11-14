@@ -45,7 +45,7 @@ class MY_Controller extends CI_Controller {
         $data['cdn'] = self::CDN;
         
         $fragment['header'] = $this->load->view("core/header", $data, TRUE);
-        $fragment['navbar'] = '';//$this->load->view("core/navbar", $data, true);
+        $fragment['navbar'] = $this->load->view("core/navbar", $data, true);
         $fragment['alert'] = $this->load->view("core/alert",'',true);
         $fragment['content'] = $this->load->view($view_name, $data, true);
         $fragment['footer'] = $this->load->view("core/footer", $data, true);
@@ -54,33 +54,22 @@ class MY_Controller extends CI_Controller {
     
     //nilai true jika hanya bisa diakses setelah login
     protected function blockLoggedOne(){
-        if($this->session->has_userdata('login_data')){
+        if($this->session->has_userdata('registrant')){
             $this->session->set_flashdata("errors",[0 => "Akses dihentikan, <br \>"
                 . "Tidak boleh mengakses halaman login jika sesi belum berakhir"]);
             redirect('admin/home', 'refresh');
         }
     }
     
-    protected function blockUnloggedOne($user = FALSE, $accessibleForAll = false){
-        if(!$this->session->has_userdata('login_data')){
+    protected function blockUnloggedOne($id){
+        if(!$this->session->has_userdata('registrant')){
             $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Harap login Dulu!"]);
             redirect('login', 'refresh');
-        }  elseif(!$accessibleForAll) {
-            $this->blockAdmin($user);
-        }
-    }
-    
-    protected function blockAdmin($user){
-        if($user && $this->session->position == 'user'){
-            //do nothing
-        } elseif ($user && !($this->session->position == 'user')) {
-            $this->session->set_flashdata("errors",[0 => "Maaf, anda tidak berhak melihat halaman personal Siswa!"]);
-            redirect('admin/home', 'refresh');
-        } elseif (!$user && $this->session->position == 'user') {
-            $this->session->set_flashdata("errors",[0 => "Maaf, anda tidak berhak melihat halaman Admin!"]);
-            redirect('user/home', 'refresh');
-        } elseif (!$user && !($this->session->position == 'user')) {
-            //do nothing
+        }  elseif(!($this->session->registrant->getId() == $id)) {
+            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Orang Lain!"]);
+            redirect($this->session->registrant->getId().'/beranda', 'refresh');
+        } else {
+            // Do Nothing
         }
     }
 }

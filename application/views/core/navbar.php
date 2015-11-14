@@ -49,7 +49,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="<?=base_url()?>logout"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out</a>
+                    <a href="<?=base_url()?>pendaftar/do_logout"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Log Out</a>
                 </li>
             </ul>
         </li>

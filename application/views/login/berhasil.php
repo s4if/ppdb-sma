@@ -143,7 +143,7 @@ body {
     border-color: transparent;
 }
 
-#navbar ul li:hover {
+#navbar ul li:hover {       
     background:transparent;
     background-image: none;
     border-color: transparent;
@@ -213,110 +213,45 @@ body {
         </div>
     	<div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-login">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="#" class="active" id="login-form-link">Masuk</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Daftar</a>
-                            </div>
-                        </div>
-                        <hr>
+                <div class="panel panel-success">
+                    <div class="panel-heading ">
+                        <h1 style="text-align: center;">Registrasi Berhasil</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form" action="<?php echo base_url().'pendaftar/do_login/'?>" method="post" role="form" style="display: block;">
-                                    <div class="form-group">
-                                        <input type="text" name="id_pendaftaran" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Nomor Pendaftaran" value="" required="true">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="true">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="text-center">
-                                                    <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <form id="register-form" action="<?php echo base_url().'pendaftar/do_register/';?>" method="post" role="form" style="display: none;">
-                                <div class="form-group">
-                                    <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="">
+                                <p style="text-align: center;">
+                                    Registrasi tahap pertama PPDB SMAIT Ihsanul Fikri Mungkid telah berhasil. 
+                                    Data yang ter-input adalah sebagai berikut :
+                                </p>
+                                <table class="table table-responsive table-condensed table-borderless">
+                                    <tr>
+                                        <td>Nama </td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td><?php echo ucwords($registrant->getName());?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ID </td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td><?php echo $registrant->getId();?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asal Sekolah </td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td><?php echo $registrant->getPreviousSchool();?></td>
+                                    </tr>
+                                </table>
+                                <p style="text-align: center;">
+                                    Silahkan digunakan untuk Login ke sistem PPDB dan melengkapi data-data lain yang diperlukan.
+                                </p>
+                                <div class="row">
+                                    <a class="btn btn-primary col-sm-4 col-sm-offset-4" href="<?php echo base_url().'pendaftar/login/'?>">OK</a>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Jenis Kelamin :</label>
-                                    <div class="">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" checked="true" name="sex" value="L">
-                                                Laki - Laki
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="sex" value="P">
-                                                Perempuan
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label">Program :</label>
-                                    <div class="">
-                                        <select class="form-control" name="program">
-                                            <option value="reguler" selected="true">
-                                                Reguler
-                                            </option>
-                                            <option value="tahfidz" >
-                                                Tahfidz
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" required="true" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" required="true" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                </div>
-                                <!-- TODO: Chaptca (Pake gregwar yang di download-an)-->
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <label class=" control-label">Captcha :</label>
-                                        <img src="<?php echo $builder->inline(); ?>" class="img-responsive" alt="captcha" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required="true" name="captcha" id="captcha" tabindex="1" class="form-control" placeholder="Masukkan Teks Dari Gambar Diatas" value="">
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
+                    </div>
+                    <div class="panel-footer">
+                        &nbsp;
                     </div>
                 </div>
             </div>
