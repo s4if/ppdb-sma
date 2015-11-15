@@ -173,4 +173,74 @@ class HospitalSheetEntity extends \HospitalSheetEntity implements \Doctrine\ORM\
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRegistrant()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegistrant', array());
+
+        return parent::getRegistrant();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getHospitalSheet()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHospitalSheet', array());
+
+        return parent::getHospitalSheet();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setId($id)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+
+        return parent::setId($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRegistrant(\RegistrantDataEntity $registrant)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegistrant', array($registrant));
+
+        return parent::setRegistrant($registrant);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setHospitalSheet($hospitalSheet)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHospitalSheet', array($hospitalSheet));
+
+        return parent::setHospitalSheet($hospitalSheet);
+    }
+
 }

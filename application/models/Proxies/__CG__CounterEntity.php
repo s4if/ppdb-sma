@@ -179,7 +179,7 @@ class CounterEntity extends \CounterEntity implements \Doctrine\ORM\Proxy\Proxy
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
+            return  parent::getId();
         }
 
 
@@ -213,17 +213,6 @@ class CounterEntity extends \CounterEntity implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setId($id)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
-
-        return parent::setId($id);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setDate(\DateTime $date)
     {
 
@@ -241,6 +230,17 @@ class CounterEntity extends \CounterEntity implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCount', array());
 
         return parent::addCount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeCount()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCount', array());
+
+        return parent::removeCount();
     }
 
 }

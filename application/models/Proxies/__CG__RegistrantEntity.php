@@ -179,7 +179,7 @@ class RegistrantEntity extends \RegistrantEntity implements \Doctrine\ORM\Proxy\
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
+            return  parent::getId();
         }
 
 
