@@ -64,10 +64,10 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contactAddress', 'relation', 'nationality', 'religion', 'educationLevel', 'spciality', 'job', 'position', 'company', 'companyAddress', 'income', 'burdenCount');
+            return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company', 'companyAddress', 'income', 'burdenCount');
         }
 
-        return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contactAddress', 'relation', 'nationality', 'religion', 'educationLevel', 'spciality', 'job', 'position', 'company', 'companyAddress', 'income', 'burdenCount');
+        return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company', 'companyAddress', 'income', 'burdenCount');
     }
 
     /**
@@ -173,4 +173,415 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getId();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getType()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getType', array());
+
+        return parent::getType();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+
+        return parent::getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatus()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+
+        return parent::getStatus();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBirthPlace()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthPlace', array());
+
+        return parent::getBirthPlace();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBirthDate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthDate', array());
+
+        return parent::getBirthDate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAddress()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress', array());
+
+        return parent::getAddress();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getContact()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContact', array());
+
+        return parent::getContact();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRelation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelation', array());
+
+        return parent::getRelation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNationality()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNationality', array());
+
+        return parent::getNationality();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getReligion()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReligion', array());
+
+        return parent::getReligion();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEducationLevel()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEducationLevel', array());
+
+        return parent::getEducationLevel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSpeciality()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpeciality', array());
+
+        return parent::getSpeciality();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getJob()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJob', array());
+
+        return parent::getJob();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPosition()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', array());
+
+        return parent::getPosition();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCompany()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompany', array());
+
+        return parent::getCompany();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCompanyAddress()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyAddress', array());
+
+        return parent::getCompanyAddress();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIncome()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIncome', array());
+
+        return parent::getIncome();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBurdenCount()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBurdenCount', array());
+
+        return parent::getBurdenCount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setType($type)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setType', array($type));
+
+        return parent::setType($type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatus($status)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+
+        return parent::setStatus($status);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBirthPlace($birthPlace)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthPlace', array($birthPlace));
+
+        return parent::setBirthPlace($birthPlace);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBirthDate(\DateTime $birthDate)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthDate', array($birthDate));
+
+        return parent::setBirthDate($birthDate);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAddress($address)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress', array($address));
+
+        return parent::setAddress($address);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setContact($contact)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContact', array($contact));
+
+        return parent::setContact($contact);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRelation($relation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelation', array($relation));
+
+        return parent::setRelation($relation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNationality($nationality)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNationality', array($nationality));
+
+        return parent::setNationality($nationality);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setReligion($religion)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReligion', array($religion));
+
+        return parent::setReligion($religion);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEducationLevel($educationLevel)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEducationLevel', array($educationLevel));
+
+        return parent::setEducationLevel($educationLevel);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSpeciality($speciality)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpeciality', array($speciality));
+
+        return parent::setSpeciality($speciality);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setJob($job)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJob', array($job));
+
+        return parent::setJob($job);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPosition($position)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', array($position));
+
+        return parent::setPosition($position);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCompany($company)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompany', array($company));
+
+        return parent::setCompany($company);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCompanyAddress($companyAddress)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyAddress', array($companyAddress));
+
+        return parent::setCompanyAddress($companyAddress);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIncome($income)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIncome', array($income));
+
+        return parent::setIncome($income);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBurdenCount($burdenCount)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBurdenCount', array($burdenCount));
+
+        return parent::setBurdenCount($burdenCount);
+    }
+
 }

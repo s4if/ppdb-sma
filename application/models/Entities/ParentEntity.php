@@ -51,7 +51,7 @@ class ParentEntity {
      * @Column(type="string", nullable=FALSE)
      * @var string
      */
-    protected $status; //hidup, cerai, almarhum
+    protected $status; //Hidup, Cerai, Almarhum
     
     /**
      * @Column(type="string", nullable=FALSE)
@@ -61,27 +61,27 @@ class ParentEntity {
     
     /**
      * @Column(type="date", nullable=FALSE)
-     * @var Date
+     * @var DateTime
      */
     protected $birthDate;
     
     /**
-     * @Column(type="string", nullable=FALSE)
+     * @Column(type="string", nullable=TRUE)
      * @var string
      */
     protected $address;
     
     /**
-     * @Column(type="string", nullable=FALSE)
+     * @Column(type="string", nullable=TRUE)
      * @var string
      */
-    protected $contactAddress;
+    protected $contact; // Nomor Telepon
     
     /**
      * @Column(type="string", nullable=FALSE)
      * @var string
      */
-    protected $relation; // hubungan dengan pendaftar (kandung, angkat, tiri)
+    protected $relation; // //Kandung, Tiri, Angkat (ayah & ibu pake radio, tapi wali pake input teks)
     
     /**
      * @Column(type="string", length=4, nullable=FALSE)
@@ -93,7 +93,7 @@ class ParentEntity {
      * @Column(type="string", length=10, nullable=FALSE)
      * @var string
      */
-    protected $religion;
+    protected $religion; // pake radio
     
     /**
      * @Column(type="string", length=10, nullable=FALSE)
@@ -105,10 +105,10 @@ class ParentEntity {
      * @Column(type="string", nullable=TRUE)
      * @var string
      */
-    protected $spciality; // jurusan kuliah/sma
+    protected $speciality; // jurusan kuliah/sma
     
     /**
-     * @Column(type="string", nullable=FALSE)
+     * @Column(type="string", nullable=TRUE)
      * @var string
      */
     protected $job;
@@ -132,7 +132,7 @@ class ParentEntity {
     protected $companyAddress;
     
     /**
-     * @Column(type="integer", nullable=FALSE)
+     * @Column(type="bigint", nullable=TRUE)
      * @var string
      */
     protected $income;
@@ -143,4 +143,174 @@ class ParentEntity {
      */
     protected $burdenCount;
     
+    public function __construct() {
+        // Do something here
+    }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getType() {
+        return $this->type;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function getBirthPlace() {
+        return $this->birthPlace;
+    }
+
+    public function getBirthDate() {
+        return $this->birthDate;
+    }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function getContact() {
+        return $this->contact;
+    }
+
+    public function getRelation() {
+        return $this->relation;
+    }
+
+    public function getNationality() {
+        return $this->nationality;
+    }
+
+    public function getReligion() {
+        return $this->religion;
+    }
+
+    public function getEducationLevel() {
+        return $this->educationLevel;
+    }
+
+    public function getSpeciality() {
+        return $this->speciality;
+    }
+
+    public function getJob() {
+        return $this->job;
+    }
+
+    public function getPosition() {
+        return $this->position;
+    }
+
+    public function getCompany() {
+        return $this->company;
+    }
+
+    public function getCompanyAddress() {
+        return $this->companyAddress;
+    }
+
+    public function getIncome() {
+        return $this->income;
+    }
+
+    public function getBurdenCount() {
+        return $this->burdenCount;
+    }
+    
+    public function setType($type) {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function setBirthPlace($birthPlace) {
+        $this->birthPlace = $birthPlace;
+        return $this;
+    }
+
+    public function setBirthDate(DateTime $birthDate) {
+        $this->birthDate = $birthDate;
+        return $this;
+    }
+
+    public function setAddress($address) {
+        $this->address = $address;
+        return $this;
+    }
+
+    public function setContact($contact) {
+        $this->contact = $contact;
+        return $this;
+    }
+
+    public function setRelation($relation) {
+        $this->relation = $relation;
+        return $this;
+    }
+
+    public function setNationality($nationality) {
+        $this->nationality = $nationality;
+        return $this;
+    }
+
+    public function setReligion($religion) {
+        $this->religion = $religion;
+        return $this;
+    }
+
+    public function setEducationLevel($educationLevel) {
+        $this->educationLevel = $educationLevel;
+        return $this;
+    }
+
+    public function setSpeciality($speciality) {
+        $this->speciality = $speciality;
+        return $this;
+    }
+
+    public function setJob($job) {
+        $this->job = $job;
+        return $this;
+    }
+
+    public function setPosition($position) {
+        $this->position = $position;
+        return $this;
+    }
+
+    public function setCompany($company) {
+        $this->company = $company;
+        return $this;
+    }
+
+    public function setCompanyAddress($companyAddress) {
+        $this->companyAddress = $companyAddress;
+        return $this;
+    }
+
+    public function setIncome($income) {
+        $this->income = $income;
+        return $this;
+    }
+
+    public function setBurdenCount($burdenCount) {
+        $this->burdenCount = $burdenCount;
+        return $this;
+    }
+
 }

@@ -29,7 +29,7 @@
  *
  * @author s4if
  */
-class Model_registrant_test extends TestCase {
+class Model_1_registrant_test extends TestCase {
     public function setUp()
     {
         $this->resetInstance();
@@ -40,7 +40,7 @@ class Model_registrant_test extends TestCase {
     public function test_crud_data_registrant(){
         $this->setUp();
         $data = [
-            'password' => 'imahTassuh',
+            'password' => 'qwerty',
             'name' => 'Fatimah',
             'sex' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',

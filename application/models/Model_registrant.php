@@ -49,6 +49,7 @@ class Model_registrant extends CI_Model {
         }
     }
     
+    // TODO: In Production always enable try and catch
     public function insertData($data){
 //        try {
             $this->registrant = new RegistrantEntity();

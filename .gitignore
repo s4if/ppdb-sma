@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 */config/development
 */logs/log-*.php
 */logs/!index.html
@@ -10,7 +9,7 @@
 /.settings
 /.buildpath
 /.project
-/application/models/Proxies/*.*
+/application/models/Proxies/*.php
 /nbproject/
 /application/tests/build/
 /application/tests/_ci_phpunit_test/tmp/
