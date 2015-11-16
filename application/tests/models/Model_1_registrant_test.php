@@ -44,7 +44,7 @@ class Model_1_registrant_test extends TestCase {
             'name' => 'Fatimah',
             'sex' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
-            'nisn' => 09082083013,
+            'nisn' => '09082083013',
             'program' => 'Reguler',
         ];
         // test insert registrant
