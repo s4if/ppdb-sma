@@ -15,4 +15,4 @@ before_script:
   - cd application/tests/
   
 script:
-  - phpunit #default test command
+  - ../../vendor/phpunit/phpunit/phpunit
