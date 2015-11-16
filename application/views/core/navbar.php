@@ -39,7 +39,7 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; Dummy <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; <?=$username;?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href=""><span class="glyphicon glyphicon-user"></span> &nbsp; Profil</a>
@@ -58,18 +58,26 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li id="dashboard">
-                <?php 
-                    //Diberi Ikon OK kalo sudah dilaksanakan
-                    //Dan Diberi Ikon Aktif!!
-                ?>
-                <a href="#">Beranda</a>
-                <a href="#">Profil Dasar</a>
-                <a href="#">Data Diri</a>
-                <a href="#">Data Ayah</a>
-                <a href="#">Data Ibu</a>
-                <a href="#">Data Wali</a>
-                <a href="#">Rekap</a>
+            <li id="navHome">
+                <a href="<?=  base_url().$id.'/beranda/'?>">Beranda</a>
+            </li>
+            <li id="navProfile">
+                <a href="<?=  base_url().$id.'/profil/'?>">Profil</a>
+            </li>
+            <li id="navIdentity">
+                <a href="<?=  base_url().$id.'/detail/'?>">Data Diri</a>
+            </li>
+            <li id="navFather">
+                <a href="<?=  base_url().$id.'/data/father/'?>">Data Ayah</a>
+            </li>
+            <li id="navMother">
+                <a href="<?=  base_url().$id.'/data/mother/'?>">Data Ibu</a>
+            </li>
+            <li id="navGuardian">
+                <a href="<?=  base_url().$id.'/data/guardian/'?>">Data Wali</a>
+            </li>
+            <li id="navRecap">
+                <a href="<?=  base_url().$id.'/recap'?>">Rekap</a>
             </li>
         </ul>
     </div>
@@ -77,5 +85,5 @@
 </nav>
 
 <script type="text/javascript">
-   //$("#nav<? =  ucfirst($nav_pos);?>").attr('class','active');
+    $("#nav<?=  ucfirst($nav_pos);?>").attr('class','active');
 </script>

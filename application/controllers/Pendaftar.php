@@ -95,7 +95,13 @@ class Pendaftar extends MY_Controller {
     // ================= AFTER LOGIN ===========================
     public function beranda($id){
         $this->blockUnloggedOne($id);
-        $this->CustomView('registrant/index', ['title' => 'Home']);
+        $data = [
+            'title' => 'Beranda',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'nav_pos' => 'home'
+        ];
+        $this->CustomView('registrant/index', $data);
     }
     
     public function do_logout(){
@@ -104,6 +110,43 @@ class Pendaftar extends MY_Controller {
     }
     
     // TODO: Edit Detail, Ortu, Wali
+    // Profil -> konfirmasi + upload foto
+    // Data Diri, Data Orang Tua, DataWali -> hanya tambah data
+    // Rekap : rekapan data hasil 
+    public function profil($id){
+        $this->blockUnloggedOne($id);
+        $data = [
+            'title' => 'Edit Profil',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
+            'nav_pos' => 'profile'
+        ];
+        $this->CustomView('registrant/profile', $data);
+    }
+    
+    public function do_edit_profil($id){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $data['id'] = $id;
+        $res = $this->reg->updateData($data);
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/detail');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($id.'/profil');
+        }
+    }
+    
+    public function detail($id){
+        echo 'halaman detail';
+    }
+    
+    public function data($id, $type){
+        
+    }
     
     // =========================================================
 }
