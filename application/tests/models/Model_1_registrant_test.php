@@ -100,7 +100,7 @@ class Model_1_registrant_test extends TestCase {
         $this->setUp();
         $data = [
             'birth_place' => 'Semarang', 
-            'birth_date' => new DateTime('19-2-2000'), 
+            'birth_date' => '19-2-2000', 
             'address' => 'Magelang City', 
             'family_condition' => 'Yatim', 
             'nationality' => 'WNI', 
