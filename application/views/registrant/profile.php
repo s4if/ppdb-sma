@@ -38,29 +38,100 @@
         Profil
     </li>
 </ol>
+<style>
+    .foto-profil {
+        resize: both;
+        height: 100%;
+        width: 100%;
+    }
+</style>
 <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-2">
+        <img class="foto-profil img-rounded" src="<?=$img_link;?>" alt="foto-profil">
+    </div>
+    <div class="col-md-8">
+        <table>
+        <tr>
+            <td> Nomor Pendaftaran </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant->getId();?> </td>
+        </tr>
+        <tr>
+            <td> Nama </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant->getName();?> </td>
+        </tr>
+        <tr>
+            <td> Sekolah Asal </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant->getPreviousSchool()?> </td>
+        </tr>
+        <tr>
+            <td> Jenis Kelamin </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+        </tr>
+        <tr>
+            <td> NISN </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant->getNisn()?> </td>
+        </tr>
+        <tr>
+            <td> Program </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant->getProgram()?> </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editProfil" >
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edit Profil
+                </a>
+                <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#ModalImport">
+                    <span class="glyphicon glyphicon-upload"></span>
+                    Upload Foto
+                </a>
+                <a class="btn btn-sm btn-success" href="<?php echo base_url().$registrant->getId().'/detail/'?>">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    Lanjut
+                </a>
+            </td>
+        </tr>
+    </table>
+    </div>
+    &nbsp;
+</div>
+    <div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editProfil" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center" id="tambahModal">Edit Siswa</h4>
+            </div>
+            <div class="modal-body">
     <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_profil/<?=$id?>">
         <div class="form-group">
             <label class="col-sm-2 control-label">Nama :</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant->getName();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Sekolah Asal :</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant->getPreviousSchool();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">NISN :</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant->getNisn();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Jenis Kelamin :</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <div class="radio">
                     <label>
                         <input type="radio" checked="true" name="sex" value="L" 
@@ -87,7 +158,7 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label ">Program :</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <select class="form-control" name="program" >
                     <option value="reguler"  
                         <?php if(!empty($registrant->getProgram())):?>
@@ -109,10 +180,34 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-2 col-sm-8">
                 <button type="submit" class="btn btn-sm btn-primary">OK</button>
                 <a class="btn btn-sm btn-warning" href="<?=base_url();?>home/">Cancel</a>
             </div>
         </div>
     </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalImport" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="ModalImportLabel>">Pilih File</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Masukkan Input</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

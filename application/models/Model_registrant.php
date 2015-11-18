@@ -132,6 +132,14 @@ class Model_registrant extends CI_Model {
     
     //==========================================================================
     
+    public function getRegistrantData(RegistrantEntity $reg){
+        $data = $reg->getRegistrantData();
+        if(is_null($data)){
+            $data = new RegistrantDataEntity();
+        }
+        return $data;
+    }
+    
     public function updateDetail($id, $data){
         $this->registrant = $this->doctrine->em->find('registrantEntity', $id);
         if(is_null($this->registrant)){
@@ -177,7 +185,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['id'])) : $this->registrantData->setId($data['id']); endif;
         if (!empty($data['registrant'])) : $this->registrantData->setRegistrant($data['registrant']); endif; //bentuk objek jadi
         if (!empty($data['birth_place'])) : $this->registrantData->setBirthPlace($data['birth_place']); endif;
-        if (!empty($data['birth_date'])) : $this->registrantData->setBirthDate($data['birth_date']); endif;
+        if (!empty($data['birth_date'])) : $this->registrantData->setBirthDate(new DateTime($data['birth_date'])); endif;
         if (!empty($data['address'])) : $this->registrantData->setAddress($data['address']); endif;
         if (!empty($data['family_condition'])) : $this->registrantData->setFamilyCondition($data['family_condition']); endif;
         if (!empty($data['nationality'])) : $this->registrantData->setNationality($data['nationality']); endif;
@@ -238,5 +246,14 @@ class Model_registrant extends CI_Model {
                 $this->registrantData->addPhysicalAbnormality($obj);
             }
         }
+    }
+    
+    public function uploadFoto($file_url, $file_type, $id){
+        $imagine = new Imagine\Gd\Imagine();
+        $image = $imagine->open($file_url);
+        $box = new Imagine\Image\Box(300, 400);
+        $image->resize($box);
+        $image->save(FCPATH.'data/foto/'.$id.'.png');
+        return true;
     }
 }

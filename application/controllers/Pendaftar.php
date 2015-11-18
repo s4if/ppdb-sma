@@ -120,9 +120,30 @@ class Pendaftar extends MY_Controller {
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
+            'img_link' => $this->getImgLink($id),
             'nav_pos' => 'profile'
         ];
         $this->CustomView('registrant/profile', $data);
+    }
+    
+    private function getImgLink($id){
+        $this->load->helper('file');
+        $img_link = '';
+        $file = read_file('./data/foto/'.$id.'.png');
+        $datetime = new DateTime('now');
+        if($file == false){
+            $img_link = base_url().'assets/images/default.png';
+        }  else {
+            $img_link = base_url().'pendaftar/getFoto/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
+        }
+        return $img_link;
+    }
+    
+    public function getFoto($id, $hash){
+        $this->blockUnloggedOne($id);
+        $imagine = new Imagine\Gd\Imagine();
+        $image = $imagine->open('./data/foto/'.$id.'.png');
+        $image->show('png');
     }
     
     public function do_edit_profil($id){
@@ -141,11 +162,56 @@ class Pendaftar extends MY_Controller {
     }
     
     public function detail($id){
-        echo 'halaman detail';
+        $this->blockUnloggedOne($id);
+        $reg_data = $this->reg->getRegistrantData($this->session->registrant);
+        $achievements = $reg_data->getAchievements();
+        $hobbies = $reg_data->getHobbies();
+        $p_a = $reg_data->getPhysicalAbnormalities();
+        $h_s = $reg_data->getHospitalSheets();
+        $data = [
+            'title' => 'Edit Profil',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'reg_data' => $reg_data,
+            'achievements' => $achievements,
+            'hobbies' => $hobbies,
+            'p_a' => $p_a,
+            'h_s' => $h_s,
+            'nav_pos' => 'detail'
+        ];
+        $this->CustomView('registrant/detail', $data);
+    }
+    
+    public function do_edit_detail($id){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $res = $this->reg->updateDetail($id, $data);
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/data/father');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($id.'/profil');
+        }
     }
     
     public function data($id, $type){
-        
+        echo 'halaman data '.$type.' dari user '.$id;
+    }
+    
+    public function upload_foto($id) {
+        $this->blockUnloggedOne($id);
+        $fileUrl = $_FILES['file']["tmp_name"];
+        $fileType = explode('/', $_FILES['file']['type'])[1];
+        $res = $this->reg->uploadFoto($fileUrl, $fileType, $id);
+        if ($res) {
+            $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
+            redirect($id.'/profil');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
+            redirect($id.'/profil');
+        }
     }
     
     // =========================================================

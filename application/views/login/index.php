@@ -157,25 +157,25 @@ body {
 
 <body>
     <div class="navbar navbar-fixed-top navbar-transparent" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand brand-shifted" href="http://ppdb.smait-ihsanulfikri.sch.id">PPDB SMAIT Ihsanul Fikri</a>
-                </div>
-                <!-- Navbar collapse -->
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right shifted">
-                        <li class="active"><a href="#">Pendaftar</a></li>
-                        <li class=""><a href="#">Admin</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand brand-shifted" href="http://ppdb.smait-ihsanulfikri.sch.id">PPDB SMAIT Ihsanul Fikri</a>
             </div>
-        </div><!-- /.Fixed navbar -->
+            <!-- Navbar collapse -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right shifted">
+                    <li class="active"><a href="#">Pendaftar</a></li>
+                    <li class=""><a href="#">Admin</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div><!-- /.Fixed navbar -->
     <div class="container">
         <div class="row">
         <div class="col-md-6 col-md-offset-3">
