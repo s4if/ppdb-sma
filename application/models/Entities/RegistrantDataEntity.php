@@ -314,25 +314,25 @@ class RegistrantDataEntity {
     // TODO: Cari Cara untuk Remove
     public function removeHobby(HobbyEntity $hobby){
         $this->hobbies->removeElement($hobby);
-        $hobby->setRegistrant(null);
+        $hobby->removeRegistrant();
         return $this;
     }
     
     public function removeAchievement(AchievementEntity $achievement){
         $this->achievements->removeElement($achievement);
-        $achievement->setRegistrant(null);
+        $achievement->removeRegistrant();
         return $this;
     }
     
     public function removeHospitalSheet(HospitalSheetEntity $hospitalSheet){
-        $this->hospitalSheet->removeElement($hospitalSheet);
-        $hospitalSheet->setRegistrant(null);
+        $this->hospitalSheets->removeElement($hospitalSheet);
+        $hospitalSheet->removeRegistrant();
         return $this;
     }
     
     public function removePhysicalAbnormality(PhysicalAbnormalityEntity $physicalAbnormalities){
         $this->physicalAbnormalities->removeElement($physicalAbnormalities);
-        $physicalAbnormalities->setRegistrant(null);
+        $physicalAbnormalities->removeRegistrant();
         return $this;
     }
     

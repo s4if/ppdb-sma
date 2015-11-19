@@ -74,5 +74,7 @@ class HobbyEntity {
         return $this;
     }
     
-    
+    public function removeRegistrant(){
+        $this->registrant = null;
+    }
 }

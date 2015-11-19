@@ -73,6 +73,9 @@ class PhysicalAbnormalityEntity {
         $this->physicalAbnormality = $physicalAbnormality;
         return $this;
     }
-
-
+    
+    public function removeRegistrant(){
+        $this->registrant = null;
+    }
+    
 }

@@ -73,6 +73,9 @@ class HospitalSheetEntity {
         $this->hospitalSheet = $hospitalSheet;
         return $this;
     }
-
+    
+    public function removeRegistrant(){
+        $this->registrant = null;
+    }
 
 }

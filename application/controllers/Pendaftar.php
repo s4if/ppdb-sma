@@ -154,7 +154,7 @@ class Pendaftar extends MY_Controller {
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/detail');
+            redirect($id.'/profil');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
             redirect($id.'/profil');
@@ -164,19 +164,11 @@ class Pendaftar extends MY_Controller {
     public function detail($id){
         $this->blockUnloggedOne($id);
         $reg_data = $this->reg->getRegistrantData($this->session->registrant);
-        $achievements = $reg_data->getAchievements();
-        $hobbies = $reg_data->getHobbies();
-        $p_a = $reg_data->getPhysicalAbnormalities();
-        $h_s = $reg_data->getHospitalSheets();
         $data = [
             'title' => 'Edit Profil',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'reg_data' => $reg_data,
-            'achievements' => $achievements,
-            'hobbies' => $hobbies,
-            'p_a' => $p_a,
-            'h_s' => $h_s,
             'nav_pos' => 'detail'
         ];
         $this->CustomView('registrant/detail', $data);
@@ -189,10 +181,10 @@ class Pendaftar extends MY_Controller {
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/data/father');
+            redirect($id.'/detail');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect($id.'/profil');
+            redirect($id.'/detail');
         }
     }
     
