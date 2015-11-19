@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/s4if/ppdb-sma/badge.svg?branch=master&service=github)](https://coveralls.io/github/s4if/ppdb-sma?branch=master)
 
-sitahta
+PPDB SMA
 =======
 
 Repository PPDB SMAIT Ihsanul FIkri Mungkid
