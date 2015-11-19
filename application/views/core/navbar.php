@@ -64,7 +64,7 @@
             <li id="navProfile">
                 <a href="<?=  base_url().$id.'/profil/'?>">Profil</a>
             </li>
-            <li id="navIdentity">
+            <li id="navDetail">
                 <a href="<?=  base_url().$id.'/detail/'?>">Data Diri</a>
             </li>
             <li id="navFather">

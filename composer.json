@@ -4,12 +4,15 @@
     "type": "application",
     "require": {
         "phpoffice/phpexcel": "1.8.*",
-	"dompdf/dompdf": "0.7.x@beta",
 	"imagine/imagine": "0.6.*",
         "kenjis/ci-phpunit-test": "^0.8.2",
 	"phpunit/phpunit": "4.8.*",
         "kenjis/codeigniter-doctrine": "1.0.x@dev",
-	"gregwar/captcha": "1.*"
+	"gregwar/captcha": "1.*",
+        "mikehaertl/phpwkhtmltopdf": "^2.1"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
             "psr-0": {"": "application/models/Entities"}

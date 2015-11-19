@@ -31,7 +31,7 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="<?=base_url();?>home">Beranda</a>
+        <a href="<?=base_url().'/'.$id;?>/beranda/">Beranda</a>
     </li>
     <li class="active">
         Data Diri
@@ -39,11 +39,11 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-    <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_detail/<?=$id?>">
+    <form class="form-horizontal wrapper" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_detail/<?=$id?>">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-primary">OK</button>
-                <a class="btn btn-warning" href="<?=base_url();?>home/">Cancel</a>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save">&nbsp;Simpan</button>
+                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Selanjutnya</a>
             </div>
         </div>
         <div class="form-group">
@@ -162,7 +162,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Riwayat Penyakit :</label>
             <div class="col-sm-4">
-                <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="">
+                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="">
             </div>
             <div class="col-sm-2">
                 <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
@@ -176,23 +176,28 @@
             <?php if($count == 0): $count++;?>
             <label class="col-sm-2 control-label">Riwayat Penyakit :</label>
             <div class="col-sm-4">
+                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s->getHospitalSheet();?>">
+            </div>
+            <div class="col-sm-2">
+                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
             <?php else : ?>
             <div class="col-sm-offset-2 col-sm-4">
-            <?php endif; ?>
                 <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s->getHospitalSheet();?>">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
+            <?php endif; ?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Kelainan Jasmani -->
         <?php if($reg_data->getPhysicalAbnormalities()->isEmpty()):?>
-        <div class="form-group">
+        <div class="form-group insert_hs">
             <label class="col-sm-2 control-label">Kelainan Jasmani :</label>
             <div class="col-sm-4">
-                <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">
+                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">
             </div>
             <div class="col-sm-2">
                 <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
@@ -202,22 +207,27 @@
             $count = 0;
             foreach ($reg_data->getPhysicalAbnormalities() as $p_a):
                 ?>
-        <div class="form-group">
+        <div class="form-group insert_hs">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-2 control-label">Kelainan Jasmani :</label>
             <div class="col-sm-4">
+                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a->getPhysicalAbnormality();?>">
+            </div>
+            <div class="col-sm-2">
+                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
             <?php else : ?>
             <div class="col-sm-offset-2 col-sm-4">
-            <?php endif; ?>
                 <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a->getPhysicalAbnormality();?>">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
+            <?php endif; ?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
-        <div class="form-group">
+        <div class="form-group insert_pa">
             <label class="col-sm-2 control-label">Tinggal Bersama :</label>
             <div class="col-sm-6">
                 <div class="radio">
@@ -271,10 +281,10 @@
         <div class="form-group">
             <label class="col-sm-2 control-label"> Prestasi yang Diraih :</label>
             <div class="col-sm-4">
-                <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="">
+                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
         <?php else :
@@ -285,53 +295,181 @@
             <?php if($count == 0): $count++;?>
             <label class="col-sm-2 control-label">Prestasi yang Diraih :</label>
             <div class="col-sm-4">
+                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv->getAchievement();?>">
+            </div>
+            <div class="col-sm-2">
+                <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
             <?php else : ?>
             <div class="col-sm-offset-2 col-sm-4">
-            <?php endif; ?>
                 <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv->getAchievement();?>">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
             </div>
+            <?php endif; ?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Hobi -->
-        <?php if($reg_data->getHobbies()->isEmpty()):?>
-        <div class="form-group">
+        <?php if($reg_data->getHobbies()->isEmpty()): //Keep If & Else div sinkron!!!?>
+        <div class="form-group insert_acv">
             <label class="col-sm-2 control-label">Hobi :</label>
             <div class="col-sm-4">
-                <input type="text" required="true" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">
             </div>
             <div class="col-sm-2">
                 <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
-        <?php else :
+        <?php else : // ini else-nya 
             $count = 0;
             foreach ($reg_data->getHobbies() as $hobby):
                 ?>
-        <div class="form-group">
+        <div class="form-group insert_acv">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-2 control-label">Hobi :</label>
             <div class="col-sm-4">
-            <?php else : ?>
-            <div class="col-sm-offset-2 col-sm-4">
-            <?php endif; ?>
-                <input type="text" required="true" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
+            <?php else : ?>
+            <div class="col-sm-offset-2 col-sm-4">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
+            </div>
+            <div class="col-sm-2">
+                <a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <?php endif; ?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
-        <div class="form-group">
+        <div class="form-group insert_hby">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-primary">OK</button>
-                <a class="btn btn-warning" href="<?=base_url();?>home/">Cancel</a>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save">&nbsp;Simpan</button>
+                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Selanjutnya</a>
             </div>
         </div>
     </form>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".wrapper"); //Fields wrapper
+        var point_acv       = $(".insert_acv"); //Fields wrapper
+        var add_btn_acv  = $(".add_btn_acv"); //Add button ID
+
+        var id_acv = 1;
+        var x_acv = 1; //initlal text box count
+        $(add_btn_acv).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_acv < max_fields){ //max input box allowed
+                x_acv++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-2 col-sm-4">'+
+                    '<input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_acv).before(inpt);
+                id_acv++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_acv", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_acv--;
+        });
+        
+        //Hobby
+        var point_hby       = $(".insert_hby"); //Fields wrapper
+        var add_btn_hby  = $(".add_btn_hby"); //Add button ID
+
+        var id_hby = 1;
+        var x_hby = 1; //initlal text box count
+        $(add_btn_hby).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_hby < max_fields){ //max input box allowed
+                x_hby++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-2 col-sm-4">'+
+                    '<input type="text" required="true" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_hby).before(inpt);
+                id_hby++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_hby", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_hby--;
+        });
+        
+        //Hospital Sheets
+        var point_hs       = $(".insert_hs"); //Fields wrapper
+        var add_btn_hs  = $(".add_btn_hs"); //Add button ID
+
+        var id_hs = 1;
+        var x_hs = 1; //initlal text box count
+        $(add_btn_hs).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_hs < max_fields){ //max input box allowed
+                x_hs++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-2 col-sm-4">'+
+                    '<input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Masukkan Riwayat Penyakit" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_hs).before(inpt);
+                id_hs++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_hs", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_hs--;
+        });
+        
+        //Physical Abnormalities
+        var point_pa       = $(".insert_pa"); //Fields wrapper
+        var add_btn_pa  = $(".add_btn_pa"); //Add button ID
+
+        var id_pa = 1;
+        var x_pa = 1; //initlal text box count
+        $(add_btn_pa).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_pa < max_fields){ //max input box allowed
+                x_pa++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-2 col-sm-4">'+
+                    '<input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_pa).before(inpt);
+                id_pa++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_pa", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_pa--;
+        });
+        
+    });
+</script>
