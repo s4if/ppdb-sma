@@ -42,8 +42,8 @@
     <form class="form-horizontal wrapper" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_detail/<?=$id?>">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save">&nbsp;Simpan</button>
-                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Selanjutnya</a>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
+                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
         <div class="form-group">
@@ -348,8 +348,8 @@
         <?php endif;?>
         <div class="form-group insert_hby">
             <div class="col-sm-offset-2 col-sm-6">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save">&nbsp;Simpan</button>
-                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Selanjutnya</a>
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
+                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
     </form>

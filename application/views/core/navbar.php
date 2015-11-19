@@ -42,10 +42,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; <?=$username;?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href=""><span class="glyphicon glyphicon-user"></span> &nbsp; Profil</a>
-                </li>
-                <li>
-                    <a href=""><span class="glyphicon glyphicon-edit"></span> &nbsp; Kata Sandi</a>
+                    <a href="<?=  base_url().$id.'/password/'?>"><span class="glyphicon glyphicon-edit"></span> &nbsp; Kata Sandi</a>
                 </li>
                 <li class="divider"></li>
                 <li>

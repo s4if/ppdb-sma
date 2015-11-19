@@ -51,6 +51,11 @@ class Model_parent extends CI_Model{
         return $arr_return;
     }
     
+    // Buat Data Jika Tidak ada
+    public function create(){
+        return new ParentEntity();
+    }
+    
     // TODO: In Production always enable try and catch
     public function updateData($id, $data, $position){
 //        try{
@@ -137,7 +142,7 @@ class Model_parent extends CI_Model{
         if (!empty($data['company'])) : $this->$var->setCompany($data['company']); endif;
         if (!empty($data['company_address'])) : $this->$var->setCompanyAddress($data['company_address']); endif;
         if (!empty($data['income'])) : $this->$var->setIncome($data['income']); endif;
-        if (!empty($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
+        if (!is_null($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
         
     }
 }

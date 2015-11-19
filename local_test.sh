@@ -11,3 +11,7 @@ cd application/tests/
 
 # Call PHPUNIT
 ../../vendor/phpunit/phpunit/phpunit
+
+# Call Coverall
+cd ../..
+php vendor/bin/coveralls -v

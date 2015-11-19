@@ -6,6 +6,7 @@ class Pendaftar extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Model_registrant','reg');
+        $this->load->model('Model_parent','parent');
     }
     
     public function index(){
@@ -90,6 +91,48 @@ class Pendaftar extends MY_Controller {
         return ['registrant' => $registrant, 'status' => $res];
     }
     
+    public function password($id){
+        $this->blockUnloggedOne($id);
+        $data = [
+            'title' => 'Beranda',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'nav_pos' => 'home'
+        ];
+        $this->CustomView('registrant/password', $data);
+    }
+    
+    public function change_password($id){
+        $this->blockUnloggedOne($id);
+        $registrant = $this->reg->getData(null, $id);
+        $data = $this->input->post(null, true);
+        if($data['new_password'] == $data['confirm_password']){
+            if(password_verify($data['stored_password'], $registrant->getPassword())){
+                $this->do_change_password(['password' => $data['new_password'], 'id' => $id]);
+            } else {
+                $this->session->set_flashdata("errors", [0 => "Maaf, Password lama anda salah <br />"
+                    . "Silahkan di periksa kembali."]);
+                redirect($id.'/password');
+            }
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Password baru dan konfirmasi password tidak sama, <br />"
+                . "Silahkan di periksa kembali."]);
+            redirect($data['id'].'/password');
+        }        
+    }
+    
+    private function do_change_password($data){
+        $res = $this->reg->updateData($data);
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            $this->session->set_flashdata("notices", [0 => "Passsword sudah berhasil diubah."]);
+            redirect($data['id'].'/password');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($data['id'].'/password');
+        }
+    }
+
     // ================= END ===========================
     
     // ================= AFTER LOGIN ===========================
@@ -189,7 +232,51 @@ class Pendaftar extends MY_Controller {
     }
     
     public function data($id, $type){
-        echo 'halaman data '.$type.' dari user '.$id;
+        $this->blockUnloggedOne($id);
+        $parent_data = (empty($this->parent->getData($id, [$type])[$type]))? $parent_data = $this->parent->create(): $this->parent->getData($id, [$type])[$type];
+        $trans = '';
+        $next = '';
+        switch ($type){
+        case 'father' :
+            $trans = 'Ayah';
+            $next = 'data/mother';
+            break;
+        case 'mother' :
+            $trans = 'Ibu';
+            $next = 'data/guardian';
+            break;
+        case 'guardian' :
+            $trans = 'Wali';
+            $next = 'recap';
+            break;
+        default :
+            $trans = 'ayah';
+            $next = 'data/mother';
+            break;
+        }
+        $data = [
+            'title' => 'Edit '.$trans,
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'trans' => $trans,
+            'parent_data' => $parent_data,
+            'nav_pos' => $type, 
+            'next' => $next
+        ];
+        $this->CustomView('registrant/parent', $data);
+    }
+    
+    public function do_edit_parent($id, $type){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $res = $this->parent->updateData($id, $data, $type);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/data/'.$type);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($id.'/data/'.$type);
+        }
     }
     
     public function upload_foto($id) {

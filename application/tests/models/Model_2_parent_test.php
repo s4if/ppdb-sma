@@ -115,27 +115,17 @@ class Model_2_parent_test extends TestCase{
     
     public function test_get_data_parent()
     {
-//        $this->setUp();
-//        $this->CI->load->model('model_registrant', 'reg');
-//        $registrant = $this->CI->reg->getData('P')[0];
-//        $registrantData = $registrant->getRegistrantData();
-//        // TODO: Hobby, achievement, HospitalSheet, PhysicalAbnormality
-//        $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'address', 'familyCondition', 'nationality', 'religion', 'height', 'weight', 'stayWith'];
-//        foreach ($attributes as $attributeName){
-//            $this->assertObjectHasAttribute($attributeName, $registrantData);
-//        }
-//        
-//        // Test Semua Array Collection di Data... 
-//        $this->setUp();
-//        $rData = $registrant->getRegistrantData();
-//        $achievement = $rData->getAchievements()[0];
-//        $this->assertObjectHasAttribute('achievement', $achievement);
-//        $hobby = $rData->getHobbies()[0];
-//        $this->assertObjectHasAttribute('hobby', $hobby);
-//        $hs = $rData->getHospitalSheets()[0];
-//        $this->assertObjectHasAttribute('hospitalSheet', $hs);
-//        $pa = $rData->getPhysicalAbnormalities()[0];
-//        $this->assertObjectHasAttribute('physicalAbnormality', $pa);
+        $this->setUp();
+        $id = $this->CI->reg->getData('P')[0]->getId();
+        $parentData = $this->obj->getData($id, ['father', 'mother', 'guardian']);
+        $attributes = ['id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 
+            'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company',
+            'companyAddress', 'income', 'burdenCount'];
+        foreach ($parentData as $parent) {
+            foreach ($attributes as $attributeName){
+                $this->assertObjectHasAttribute($attributeName, $parent);
+            }
+        }
     }
     
     public function test_delete_custom_data(){
