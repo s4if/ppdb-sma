@@ -19,4 +19,4 @@ script:
   
 after_script:
   - cd ../..
-  - pphp vendor/bin/coveralls -v
+  - php vendor/bin/coveralls -v
