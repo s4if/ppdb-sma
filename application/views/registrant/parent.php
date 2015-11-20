@@ -119,6 +119,7 @@
         <!-- Hubungan Darah -->
         <div class="form-group">
             <label class="col-sm-2 control-label">Hubungan :</label>
+            <?php if($nav_pos == 'father' || $nav_pos == 'mother') :?>
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
@@ -154,6 +155,11 @@
                     </label>
                 </div>
             </div>
+            <?php else :?>
+            <div class="col-sm-6">
+                <input type="text" name="relation" class="form-control" placeholder="Masukkan Hubungan dengan pendaftar" value="<?=$parent_data->getRelation();?>">
+            </div>
+            <?php endif;?>
         </div>
         <!-- TODO: Nationality pake radio -->
         <div class="form-group">

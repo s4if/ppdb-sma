@@ -274,4 +274,39 @@ class Model_registrant extends CI_Model {
         $image->save(FCPATH.'data/foto/'.$id.'.png');
         return true;
     }
+    
+    // belum di-test
+    // 0 -> Belum 1-> Sudah 2->Finalisasi
+    public function cek_status($id){
+        $registrant = $this->getData(NULL, $id);
+        $arr_result = [];
+        if(is_null($registrant->getRegistrantData())){
+            $arr_result ['data'] = 0;
+        } else {
+            $arr_result ['data'] = 1;
+        }
+        if(is_null($registrant->getFather())){
+            $arr_result ['father'] = 0;
+        } else {
+            $arr_result ['father'] = 1;
+        }
+        if(is_null($registrant->getMother())){
+            $arr_result ['mother'] = 0;
+        } else {
+            $arr_result ['mother'] = 1;
+        }
+        if(is_null($registrant->getGuardian())){
+            $arr_result ['guardian'] = 0;
+        } else {
+            $arr_result ['guardian'] = 1;
+        }
+        $this->load->helper('file');
+        $file = read_file('./data/foto/'.$id.'.png');
+        if(!$file){
+            $arr_result ['foto'] = 0;
+        } else {
+            $arr_result ['foto'] = 1;
+        }
+        return $arr_result;
+    }
 }

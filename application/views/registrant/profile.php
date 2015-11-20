@@ -190,6 +190,101 @@
         </div>
     </div>
     </div>
+    <div class="row">
+        <h3 class="col-md-12">Status</h3>
+        <div class="col-md-12">
+            <table class="table table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <td>
+                            No.
+                        </td>
+                        <td>
+                            Data
+                        </td>
+                        <td>
+                            Status
+                        </td>
+                        <td>
+                            Aksi
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            Data Pendaftar
+                        </td>
+                        <td>
+                            <?php echo ($status ['data'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            Foto Pendaftaran
+                        </td>
+                        <td>
+                            <?php echo ($status ['foto'] > 0)?'Sudah Diunggah':'Belum Diunggah';?>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            Data Ayah
+                        </td>
+                        <td>
+                            <?php echo ($status ['father'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            4
+                        </td>
+                        <td>
+                            Data Ibu
+                        </td>
+                        <td>
+                            <?php echo ($status ['mother'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            5
+                        </td>
+                        <td>
+                            Data Wali
+                        </td>
+                        <td>
+                            <?php echo ($status ['guardian'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="ModalImport" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">

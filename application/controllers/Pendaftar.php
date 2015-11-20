@@ -144,6 +144,7 @@ class Pendaftar extends MY_Controller {
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
             'img_link' => $this->getImgLink($id),
+            'status' => $this->reg->cek_status($id),
             'nav_pos' => 'beranda'
         ];
         $this->CustomView('registrant/profile', $data);
@@ -249,7 +250,7 @@ class Pendaftar extends MY_Controller {
             break;
         case 'guardian' :
             $trans = 'Wali';
-            $next = 'recap';
+            $next = 'rekap';
             break;
         default :
             $trans = 'ayah';
@@ -297,6 +298,11 @@ class Pendaftar extends MY_Controller {
     
     public function rekap($id){
         $this->blockUnloggedOne($id);
+        $this->session->registrant->getRegistrantData();
+        $this->session->registrant->getFather();
+        $this->session->registrant->getMother();
+        $this->session->registrant->getGuardian();
+        $this->session->set_userdata('registrant', $this->session->registrant);
         $data = [
             'title' => 'Rekap Data',
             'username' => $this->session->registrant->getName(),
@@ -306,5 +312,6 @@ class Pendaftar extends MY_Controller {
         ];
         $this->CustomView('registrant/recap', $data);
     }
+    
     // =========================================================
 }

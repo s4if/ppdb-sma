@@ -74,7 +74,7 @@
                 <a href="<?=  base_url().$id.'/data/guardian/'?>">Data Wali</a>
             </li>
             <li id="navRecap">
-                <a href="<?=  base_url().$id.'/recap'?>">Rekap</a>
+                <a href="<?=  base_url().$id.'/rekap'?>">Rekap</a>
             </li>
         </ul>
     </div>
