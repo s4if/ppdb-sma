@@ -67,3 +67,65 @@ $rData->setWeight(66);
 $em->persist($rData);
 $em->flush();
 // =======================================
+// Registrant Father Seeder
+$pData = new ParentEntity();
+$pData->setName("Sukirjo");
+$pData->setStatus('masih hidup');
+$pData->setRelation('kandung');
+$pData->setReligion('Islam');
+$pData->setType('father');
+$pData->setBirthDate(new DateTime('19-2-1983'));
+$pData->setBirthPlace('Magelang');
+$pData->setAddress('Mertoyudan, Magelang');
+$pData->setEducationLevel('SMP');
+$pData->setContact('+628572737172717');
+$pData->setNationality('WNI');
+$pData->setJob('Tukang Kayu');
+$pData->setIncome('900000');
+$pData->setBurdenCount('3');
+$em->persist($pData);
+$reg->setFather($pData);
+$em->persist($reg);
+$em->flush();
+// =======================================
+// Registrant Mother Seeder
+$pData = new ParentEntity();
+$pData->setName("Suharsimi");
+$pData->setStatus('almarhum');
+$pData->setRelation('kandung');
+$pData->setReligion('Islam');
+$pData->setType('mother');
+$pData->setNationality('WNI');
+$pData->setBirthDate(new DateTime('17-3-1985'));
+$pData->setBirthPlace('Magelang');
+$pData->setAddress('Mertoyudan, Magelang');
+$pData->setEducationLevel('S1');
+$pData->setBurdenCount('3');
+$em->persist($pData);
+$reg->setMother($pData);
+$em->persist($reg);
+$em->flush();
+// =======================================
+// Registrant GUardian Seeder
+$pData = new ParentEntity();
+$pData->setName("Rizki Djamaludin");
+$pData->setStatus('masih hidup');
+$pData->setRelation('sepupu');
+$pData->setReligion('Islam');
+$pData->setType('guardian');
+$pData->setNationality('WNI');
+$pData->setBirthDate(new DateTime('19-2-1993'));
+$pData->setBirthPlace('Magelang');
+$pData->setAddress('Mertoyudan, Magelang');
+$pData->setEducationLevel('S1');
+$pData->setContact('+628572737172231');
+$pData->setJob('Desainer Grafis');
+$pData->setCompany('Freelancer Alliance');
+$pData->setPosition('Head Designer');
+$pData->setCompanyAddress('Jakarta');
+$pData->setIncome('9000000');
+$pData->setBurdenCount('1');
+$em->persist($pData);
+$reg->setGuardian($pData);
+$em->persist($reg);
+$em->flush();

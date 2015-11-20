@@ -56,9 +56,10 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Custom Route
 // Contoh : $route['nilai/(:any)/(:num)'] = 'admin/nilai/lihat/$1/$2';
+$route['login'] = 'pendaftar/login';
 $route['(:num)/beranda'] = 'pendaftar/beranda/$1';
 $route['(:num)/profil'] = 'pendaftar/profil/$1';
 $route['(:num)/detail'] = 'pendaftar/detail/$1';
 $route['(:num)/password'] = 'pendaftar/password/$1';
 $route['(:num)/data/(:any)'] = 'pendaftar/data/$1/$2';
-$route['(:num)/rekap'] = 'pendaftar/rekap/$1';
+$route['(:num)/recap'] = 'pendaftar/recap/$1';

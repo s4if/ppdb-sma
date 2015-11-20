@@ -94,7 +94,7 @@ class Pendaftar extends MY_Controller {
     public function password($id){
         $this->blockUnloggedOne($id);
         $data = [
-            'title' => 'Beranda',
+            'title' => 'Password',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'nav_pos' => 'home'
@@ -142,9 +142,11 @@ class Pendaftar extends MY_Controller {
             'title' => 'Beranda',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
-            'nav_pos' => 'home'
+            'registrant' => $this->session->registrant,
+            'img_link' => $this->getImgLink($id),
+            'nav_pos' => 'beranda'
         ];
-        $this->CustomView('registrant/index', $data);
+        $this->CustomView('registrant/profile', $data);
     }
     
     public function do_logout(){
@@ -293,5 +295,16 @@ class Pendaftar extends MY_Controller {
         }
     }
     
+    public function recap($id){
+        $this->blockUnloggedOne($id);
+        $data = [
+            'title' => 'Rekap Data',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'nav_pos' => 'recap',
+            'data_registrant' => $this->session->registrant
+        ];
+        $this->CustomView('registrant/recap', $data);
+    }
     // =========================================================
 }

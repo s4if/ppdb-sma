@@ -32,7 +32,7 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="<?=base_url();?>home">Beranda</a>
+        <a href="<?=base_url().$id.'/home';?>">Beranda</a>
     </li>
     <li class="active">
         Ganti Password

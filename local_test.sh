@@ -15,3 +15,6 @@ cd application/tests/
 # Call Coverall
 cd ../..
 php vendor/bin/coveralls -v
+
+# Seeding data
+php seeder.php
