@@ -67,7 +67,7 @@ class MY_Controller extends CI_Controller {
             redirect('login', 'refresh');
         }  elseif(!($this->session->registrant->getId() == $id)) {
             $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Orang Lain!"]);
-            redirect($this->session->registrant->getId().'/home', 'refresh');
+            redirect($this->session->registrant->getId().'/beranda', 'refresh');
         } else {
             // Do Nothing
         }

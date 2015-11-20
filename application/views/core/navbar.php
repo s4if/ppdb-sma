@@ -58,9 +58,9 @@
             <li id="navHome">
                 <a href="<?=  base_url().$id.'/beranda/'?>">Beranda</a>
             </li>
-            <li id="navProfile">
-                <a href="<?=  base_url().$id.'/profil/'?>">Profil</a>
-            </li>
+<!--            <li id="navProfile">
+                <a href="<? =  base_url().$id.'/profil/'?>">Profil</a>
+            </li>-->
             <li id="navDetail">
                 <a href="<?=  base_url().$id.'/detail/'?>">Data Diri</a>
             </li>

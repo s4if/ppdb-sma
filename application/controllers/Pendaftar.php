@@ -154,22 +154,22 @@ class Pendaftar extends MY_Controller {
         redirect('pendaftar/login');
     }
     
-    // TODO: Edit Detail, Ortu, Wali
-    // Profil -> konfirmasi + upload foto
-    // Data Diri, Data Orang Tua, DataWali -> hanya tambah data
-    // Rekap : rekapan data hasil 
-    public function profil($id){
-        $this->blockUnloggedOne($id);
-        $data = [
-            'title' => 'Edit Profil',
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'registrant' => $this->session->registrant,
-            'img_link' => $this->getImgLink($id),
-            'nav_pos' => 'profile'
-        ];
-        $this->CustomView('registrant/profile', $data);
-    }
+//    // TODO: Edit Detail, Ortu, Wali
+//    // Profil -> konfirmasi + upload foto
+//    // Data Diri, Data Orang Tua, DataWali -> hanya tambah data
+//    // Rekap : rekapan data hasil 
+//    public function profil($id){
+//        $this->blockUnloggedOne($id);
+//        $data = [
+//            'title' => 'Edit Profil',
+//            'username' => $this->session->registrant->getName(),
+//            'id' => $this->session->registrant->getId(),
+//            'registrant' => $this->session->registrant,
+//            'img_link' => $this->getImgLink($id),
+//            'nav_pos' => 'profile'
+//        ];
+//        $this->CustomView('registrant/profile', $data);
+//    }
     
     private function getImgLink($id){
         $this->load->helper('file');
@@ -199,10 +199,10 @@ class Pendaftar extends MY_Controller {
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/profil');
+            redirect($id.'/home');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect($id.'/profil');
+            redirect($id.'/home');
         }
     }
     
@@ -295,7 +295,7 @@ class Pendaftar extends MY_Controller {
         }
     }
     
-    public function recap($id){
+    public function rekap($id){
         $this->blockUnloggedOne($id);
         $data = [
             'title' => 'Rekap Data',
