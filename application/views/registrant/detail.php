@@ -67,7 +67,7 @@
         </div>
         <!-- TODO: Family Condition pake radio -->
         <div class="form-group">
-            <label class="col-sm-2 control-label">Keadaan Pendaftar :</label>
+            <label class="col-sm-2 control-label">Keluarga Pendaftar :</label>
             <div class="col-sm-6">
                 <div class="radio">
                     <label>

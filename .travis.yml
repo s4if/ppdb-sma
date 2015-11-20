@@ -18,7 +18,7 @@ before_script:
 
 script:
   - cd application/tests/
-  - ../../vendor/phpunit/phpunit/phpunit
+  - ../../vendor/phpunit/phpunit/phpunit --coverage-text
   
 after_script:
   - cd ../..

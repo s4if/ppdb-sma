@@ -139,7 +139,7 @@ class Model_parent extends CI_Model{
         if (!empty($data['job'])) : $this->$var->setJob($data['job']); endif;
         if (!empty($data['position'])) : $this->$var->setPosition($data['position']); endif;
         if (!empty($data['company'])) : $this->$var->setCompany($data['company']); endif;
-        if (!empty($data['income'])) : $this->$var->setIncome($data['income']); endif;
+        if (!is_null($data['income'])) : $this->$var->setIncome($data['income']); endif;
         if (!is_null($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
         
     }

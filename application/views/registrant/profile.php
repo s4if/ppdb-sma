@@ -107,7 +107,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title text-center" id="tambahModal">Edit Siswa</h4>
+                <h4 class="modal-title text-center" id="tambahModal">Edit Pendaftar</h4>
             </div>
             <div class="modal-body">
     <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_profil/<?=$id?>">
@@ -182,7 +182,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
                 <button type="submit" class="btn btn-sm btn-primary">OK</button>
-                <a class="btn btn-sm btn-warning" href="<?=base_url();?>home/">Cancel</a>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </form>
@@ -219,10 +219,12 @@
                             Data Pendaftar
                         </td>
                         <td>
-                            <?php echo ($status ['data'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                            <?php echo ($status ['data'] > 0)?
+                            'Sudah Lengkap <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            
+                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/detail/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -233,10 +235,15 @@
                             Foto Pendaftaran
                         </td>
                         <td>
-                            <?php echo ($status ['foto'] > 0)?'Sudah Diunggah':'Belum Diunggah';?>
+                            <?php echo ($status ['foto'] > 0)?
+                            'Sudah Diunggah <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Diunggah <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            
+                            <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#ModalImport">
+                                <span class="glyphicon glyphicon-upload"></span>
+                                Upload Foto
+                            </a>
                         </td>
                     </tr>
                     <tr>
@@ -247,10 +254,12 @@
                             Data Ayah
                         </td>
                         <td>
-                            <?php echo ($status ['father'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                            <?php echo ($status ['father'] > 0)?
+                            'Sudah Lengkap <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            
+                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -261,10 +270,12 @@
                             Data Ibu
                         </td>
                         <td>
-                            <?php echo ($status ['mother'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                            <?php echo ($status ['mother'] > 0)?
+                            'Sudah Lengkap <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            
+                           <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -272,13 +283,15 @@
                             5
                         </td>
                         <td>
-                            Data Wali
+                            Data Wali (Hanya yang bersama Wali)
                         </td>
                         <td>
-                            <?php echo ($status ['guardian'] > 0)?'Sudah Lengkap':'Belum Dilengkapi';?>
+                            <?php echo ($status ['guardian'] > 0)?
+                            'Sudah Lengkap <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            
+                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
                         </td>
                     </tr>
                 </tbody>
@@ -297,7 +310,7 @@
             <div class="modal-body">
                 <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>Masukkan Input</label>
+                        <label>File berupa Foto Berwarna degan proporsi 4x3</label>
                         <input type="file" id="file" name="file">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>

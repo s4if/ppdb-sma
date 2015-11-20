@@ -200,10 +200,10 @@ class Pendaftar extends MY_Controller {
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/home');
+            redirect($id.'/beranda');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect($id.'/home');
+            redirect($id.'/beranda');
         }
     }
     
