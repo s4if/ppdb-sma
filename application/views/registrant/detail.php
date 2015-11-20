@@ -165,7 +165,7 @@
                 <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
         <?php else :
@@ -200,7 +200,7 @@
                 <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
         <?php else :
@@ -319,7 +319,7 @@
                 <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">
             </div>
             <div class="col-sm-2">
-                <a class="add_field_button btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
         <?php else : // ini else-nya 

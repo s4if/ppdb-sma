@@ -313,12 +313,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Jurusan :</label>
-            <div class="col-sm-6">
-                <input type="text" name="speciality" class="form-control" placeholder="Masukkan Jurusan" value="<?=$parent_data->getSpeciality();?>">
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-2 control-label">Pekerjaan :</label>
             <div class="col-sm-6">
                 <input type="text" name="job" class="form-control" placeholder="Masukkan Pekerjaan" value="<?=$parent_data->getJob();?>">
@@ -337,12 +331,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Alamat Kantor :</label>
-            <div class="col-sm-6">
-                <textarea class="form-control col-sm-10" rows="3" name="company_address"><?=$parent_data->getCompanyAddress();?></textarea>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="col-sm-2 control-label">Penghasilan (Rp.) :</label>
             <div class="col-sm-6">
                 <input type="number" name="income" required="true" class="form-control" placeholder="Masukkan Penghasilan" value="<?=$parent_data->getIncome();?>">
@@ -351,7 +339,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Jumlah Tanggungan :</label>
             <div class="col-sm-6">
-                <input type="text" name="burden_count" class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
+                <input type="text" name="burden_count" <?php echo ($nav_pos == 'father')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
         <div class="form-group">

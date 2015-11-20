@@ -64,10 +64,10 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company', 'companyAddress', 'income', 'burdenCount');
+            return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 'nationality', 'religion', 'educationLevel', 'job', 'position', 'company', 'income', 'burdenCount');
         }
 
-        return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company', 'companyAddress', 'income', 'burdenCount');
+        return array('__isInitialized__', 'id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 'nationality', 'religion', 'educationLevel', 'job', 'position', 'company', 'income', 'burdenCount');
     }
 
     /**
@@ -312,17 +312,6 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getSpeciality()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpeciality', array());
-
-        return parent::getSpeciality();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getJob()
     {
 
@@ -351,17 +340,6 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompany', array());
 
         return parent::getCompany();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getCompanyAddress()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyAddress', array());
-
-        return parent::getCompanyAddress();
     }
 
     /**
@@ -510,17 +488,6 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setSpeciality($speciality)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpeciality', array($speciality));
-
-        return parent::setSpeciality($speciality);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setJob($job)
     {
 
@@ -549,17 +516,6 @@ class ParentEntity extends \ParentEntity implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompany', array($company));
 
         return parent::setCompany($company);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setCompanyAddress($companyAddress)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyAddress', array($companyAddress));
-
-        return parent::setCompanyAddress($companyAddress);
     }
 
     /**

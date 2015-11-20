@@ -105,12 +105,6 @@ class ParentEntity {
      * @Column(type="string", nullable=TRUE)
      * @var string
      */
-    protected $speciality; // jurusan kuliah/sma
-    
-    /**
-     * @Column(type="string", nullable=TRUE)
-     * @var string
-     */
     protected $job;
     
     /**
@@ -124,12 +118,6 @@ class ParentEntity {
      * @var string
      */
     protected $company;
-    
-    /**
-     * @Column(type="string", nullable=TRUE)
-     * @var string
-     */
-    protected $companyAddress;
     
     /**
      * @Column(type="bigint", nullable=TRUE)
@@ -195,10 +183,6 @@ class ParentEntity {
         return $this->educationLevel;
     }
 
-    public function getSpeciality() {
-        return $this->speciality;
-    }
-
     public function getJob() {
         return $this->job;
     }
@@ -210,11 +194,7 @@ class ParentEntity {
     public function getCompany() {
         return $this->company;
     }
-
-    public function getCompanyAddress() {
-        return $this->companyAddress;
-    }
-
+    
     public function getIncome() {
         return $this->income;
     }
@@ -278,11 +258,6 @@ class ParentEntity {
         return $this;
     }
 
-    public function setSpeciality($speciality) {
-        $this->speciality = $speciality;
-        return $this;
-    }
-
     public function setJob($job) {
         $this->job = $job;
         return $this;
@@ -295,11 +270,6 @@ class ParentEntity {
 
     public function setCompany($company) {
         $this->company = $company;
-        return $this;
-    }
-
-    public function setCompanyAddress($companyAddress) {
-        $this->companyAddress = $companyAddress;
         return $this;
     }
 

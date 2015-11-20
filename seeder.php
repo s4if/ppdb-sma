@@ -122,7 +122,6 @@ $pData->setContact('+628572737172231');
 $pData->setJob('Desainer Grafis');
 $pData->setCompany('Freelancer Alliance');
 $pData->setPosition('Head Designer');
-$pData->setCompanyAddress('Jakarta');
 $pData->setIncome('9000000');
 $pData->setBurdenCount('1');
 $em->persist($pData);

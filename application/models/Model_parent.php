@@ -136,11 +136,9 @@ class Model_parent extends CI_Model{
         if (!empty($data['nationality'])) : $this->$var->setNationality($data['nationality']); endif;
         if (!empty($data['religion'])) : $this->$var->setReligion($data['religion']); endif;
         if (!empty($data['education_level'])) : $this->$var->setEducationLevel($data['education_level']); endif;
-        if (!empty($data['speciality'])) : $this->$var->setSpeciality($data['speciality']); endif;
         if (!empty($data['job'])) : $this->$var->setJob($data['job']); endif;
         if (!empty($data['position'])) : $this->$var->setPosition($data['position']); endif;
         if (!empty($data['company'])) : $this->$var->setCompany($data['company']); endif;
-        if (!empty($data['company_address'])) : $this->$var->setCompanyAddress($data['company_address']); endif;
         if (!empty($data['income'])) : $this->$var->setIncome($data['income']); endif;
         if (!is_null($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
         

@@ -71,11 +71,9 @@ class Model_2_parent_test extends TestCase{
             'nationality' => 'WNI', 
             'religion' => 'ISLAM', 
             'education_level' => 'SMA', 
-            'speciality' => 'IPA', 
             'job' => 'Kuli Bangunan', 
             'position' => null, 
             'company' => null,
-            'company_address' => null, 
             'income' => '300000', 
             'burden_count' => 4
             ];
@@ -98,7 +96,6 @@ class Model_2_parent_test extends TestCase{
         $data['job'] = 'Linux Kernel Developer';
         $data['position'] = 'Kernel Driver Developer';
         $data['company'] = 'Alvanz Drone Instrument ltd.';
-        $data['company_address'] = 'Silicon Valley USA';
         $data['income'] = '30000000';
         $data['burden_count'] = 1;
         $data['education_level'] = 'S1';
@@ -119,8 +116,7 @@ class Model_2_parent_test extends TestCase{
         $id = $this->CI->reg->getData('P')[0]->getId();
         $parentData = $this->obj->getData($id, ['father', 'mother', 'guardian']);
         $attributes = ['id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 
-            'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company',
-            'companyAddress', 'income', 'burdenCount'];
+            'nationality', 'religion', 'educationLevel', 'job', 'position', 'company', 'income', 'burdenCount'];
         foreach ($parentData as $parent) {
             foreach ($attributes as $attributeName){
                 $this->assertObjectHasAttribute($attributeName, $parent);

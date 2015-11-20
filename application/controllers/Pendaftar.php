@@ -145,7 +145,7 @@ class Pendaftar extends MY_Controller {
             'registrant' => $this->session->registrant,
             'img_link' => $this->getImgLink($id),
             'status' => $this->reg->cek_status($id),
-            'nav_pos' => 'beranda'
+            'nav_pos' => 'home'
         ];
         $this->CustomView('registrant/profile', $data);
     }
