@@ -91,6 +91,29 @@ class Pendaftar extends MY_Controller {
         return ['registrant' => $registrant, 'status' => $res];
     }
     
+    // ================= END ===========================
+    
+    // ================= AFTER LOGIN ===========================
+    
+    public function beranda($id){
+        $this->blockUnloggedOne($id);
+        $data = [
+            'title' => 'Beranda',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
+            'img_link' => $this->getImgLink($id),
+            'status' => $this->reg->cek_status($id),
+            'nav_pos' => 'home'
+        ];
+        $this->CustomView('registrant/profile', $data);
+    }
+    
+    public function do_logout(){
+        $this->session->sess_destroy();
+        redirect('pendaftar/login');
+    }
+    
     public function password($id){
         $this->blockUnloggedOne($id);
         $data = [
@@ -132,45 +155,6 @@ class Pendaftar extends MY_Controller {
             redirect($data['id'].'/password');
         }
     }
-
-    // ================= END ===========================
-    
-    // ================= AFTER LOGIN ===========================
-    public function beranda($id){
-        $this->blockUnloggedOne($id);
-        $data = [
-            'title' => 'Beranda',
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'registrant' => $this->session->registrant,
-            'img_link' => $this->getImgLink($id),
-            'status' => $this->reg->cek_status($id),
-            'nav_pos' => 'home'
-        ];
-        $this->CustomView('registrant/profile', $data);
-    }
-    
-    public function do_logout(){
-        $this->session->sess_destroy();
-        redirect('pendaftar/login');
-    }
-    
-//    // TODO: Edit Detail, Ortu, Wali
-//    // Profil -> konfirmasi + upload foto
-//    // Data Diri, Data Orang Tua, DataWali -> hanya tambah data
-//    // Rekap : rekapan data hasil 
-//    public function profil($id){
-//        $this->blockUnloggedOne($id);
-//        $data = [
-//            'title' => 'Edit Profil',
-//            'username' => $this->session->registrant->getName(),
-//            'id' => $this->session->registrant->getId(),
-//            'registrant' => $this->session->registrant,
-//            'img_link' => $this->getImgLink($id),
-//            'nav_pos' => 'profile'
-//        ];
-//        $this->CustomView('registrant/profile', $data);
-//    }
     
     private function getImgLink($id){
         $this->load->helper('file');
@@ -189,6 +173,7 @@ class Pendaftar extends MY_Controller {
         $this->blockUnloggedOne($id);
         $imagine = new Imagine\Gd\Imagine();
         $image = $imagine->open('./data/foto/'.$id.'.png');
+        $this->session->set_userdata('random_hash', $hash);
         $image->show('png');
     }
     
@@ -237,8 +222,21 @@ class Pendaftar extends MY_Controller {
     public function data($id, $type){
         $this->blockUnloggedOne($id);
         $parent_data = (empty($this->parent->getData($id, [$type])[$type]))? $parent_data = $this->parent->create(): $this->parent->getData($id, [$type])[$type];
-        $trans = '';
-        $next = '';
+        $tn = $this->typeTrans($type);
+        $data = [
+            'title' => 'Edit '.$tn['trans'],
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'trans' => $tn['trans'],
+            'parent_data' => $parent_data,
+            'nav_pos' => $type, 
+            'next' => $tn['next']
+        ];
+        $this->CustomView('registrant/parent', $data);
+    }
+    
+    private  function typeTrans($type){
+        $trans = $next = '';
         switch ($type){
         case 'father' :
             $trans = 'Ayah';
@@ -257,18 +255,9 @@ class Pendaftar extends MY_Controller {
             $next = 'data/mother';
             break;
         }
-        $data = [
-            'title' => 'Edit '.$trans,
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'trans' => $trans,
-            'parent_data' => $parent_data,
-            'nav_pos' => $type, 
-            'next' => $next
-        ];
-        $this->CustomView('registrant/parent', $data);
+        return ['trans' => $trans, 'next' => $next];
     }
-    
+
     public function do_edit_parent($id, $type){
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
@@ -289,26 +278,24 @@ class Pendaftar extends MY_Controller {
         $res = $this->reg->uploadFoto($fileUrl, $fileType, $id);
         if ($res) {
             $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
-            redirect($id.'/profil');
+            redirect($id.'/beranda');
         } else {
             $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
-            redirect($id.'/profil');
+            redirect($id.'/beranda');
         }
     }
     
     public function rekap($id){
         $this->blockUnloggedOne($id);
-        $this->session->registrant->getRegistrantData();
-        $this->session->registrant->getFather();
-        $this->session->registrant->getMother();
-        $this->session->registrant->getGuardian();
-        $this->session->set_userdata('registrant', $this->session->registrant);
+        $registrant = $this->reg->getData(null, $id);
+        $this->session->set_userdata('registrant', $registrant);
         $data = [
             'title' => 'Rekap Data',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'nav_pos' => 'recap',
-            'data_registrant' => $this->session->registrant
+            'img_link' => $this->getImgLink($id),
+            'registrant' => $this->session->registrant,
         ];
         $this->CustomView('registrant/recap', $data);
     }

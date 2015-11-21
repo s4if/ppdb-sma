@@ -92,10 +92,6 @@
                     <span class="glyphicon glyphicon-upload"></span>
                     Upload Foto
                 </a>
-                <a class="btn btn-sm btn-success" href="<?php echo base_url().$registrant->getId().'/detail/'?>">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    Lanjut
-                </a>
             </td>
         </tr>
     </table>
@@ -224,7 +220,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/detail/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
+                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/detail/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -259,7 +255,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
+                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -275,7 +271,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                           <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
+                           <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -291,7 +287,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">&nbsp;Edit</a>
+                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                 </tbody>

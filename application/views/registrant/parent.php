@@ -74,7 +74,7 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="relation" value="ceraj" 
+                        <input type="radio" name="status" value="cerai" 
                             <?php if(!empty($parent_data->getStatus())):?>
                                 <?php if($parent_data->getStatus() ==='cerai'):?>
                                 checked="true"
