@@ -49,14 +49,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'pendaftar';
+$route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
 // Custom Route
 // Contoh : $route['nilai/(:any)/(:num)'] = 'admin/nilai/lihat/$1/$2';
-$route['login'] = 'pendaftar/login';
+$route['login'] = 'login/index';
+$route['lihat'] = 'pendaftar/lihat';
+$route['lihat/(:any)'] = 'pendaftar/lihat/$1';
 $route['(:num)/beranda'] = 'pendaftar/beranda/$1';
 $route['(:num)/profil'] = 'pendaftar/profil/$1';
 $route['(:num)/detail'] = 'pendaftar/detail/$1';

@@ -16,12 +16,10 @@
 <link href="<?=  base_url() ?>assets/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<link href="<?=  base_url() ?>assets/css/bootstrap-datepicker.min.css"
-	rel="stylesheet">
-
-<link href="<?=  base_url() ?>assets/css/bootstrap-datepicker3.min.css"
-	rel="stylesheet">
-
+<!-- Bootstrap DataTables CSS -->
+<link href="<?=  base_url() ?>assets/css/datatables.min.css" 
+      rel="stylesheet">
+    
 <!-- Custom CSS -->
 <style>
 body {
@@ -212,41 +210,46 @@ body {
 </div>
         </div>
     	<div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-success">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-login">
                     <div class="panel-heading ">
-                        <h1 style="text-align: center;">Registrasi Berhasil</h1>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="<?php echo base_url().'lihat/L';?>" <?=($sex == 'L')?'class="active"':''?> >Data Pendaftar Ikhwan</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="<?php echo base_url().'lihat/P';?>" <?=($sex == 'P')?'class="active"':''?> >Data Pendaftar Akhwat</a>
+                            </div>
+                        </div>
+                        <hr>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <p style="text-align: center;">
-                                    Registrasi tahap pertama PPDB SMAIT Ihsanul Fikri Mungkid telah berhasil. 
-                                    Data yang ter-input adalah sebagai berikut :
-                                </p>
-                                <table class="table table-responsive table-condensed table-borderless">
-                                    <tr>
-                                        <td>Nama </td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td><?php echo ucwords($registrant->getName());?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>ID </td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td><?php echo $registrant->getId();?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Asal Sekolah </td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td><?php echo $registrant->getPreviousSchool();?></td>
-                                    </tr>
+                                <table class="table table-striped table-bordered table-condensed" id="tabel_utama">
+                                    <thead>
+                                        <tr>
+                                            <td>No. Pendaftaran</td>
+                                            <td>Nama</td>
+                                            <td>I/A</td>
+                                            <td>Sekolah Asal</td>
+                                            <td>NISN</td>
+                                            <td>Program</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($data_registrant as $registrant) : ?>
+                                        <tr>
+                                            <td><?= $registrant->getId();?></td>
+                                            <td> <?=$registrant->getName();?> </td>
+                                            <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
+                                            <td> <?=$registrant->getPreviousSchool();?> </td>
+                                            <td> <?=$registrant->getNisn();?> </td>
+                                            <td> <?=  ucfirst($registrant->getProgram());?> </td>
+                                        </tr>
+                                        <?php endforeach;?>
+                                    </tbody>
                                 </table>
-                                <p style="text-align: center;">
-                                    Silahkan digunakan untuk Login ke sistem PPDB dan melengkapi data-data lain yang diperlukan.
-                                </p>
-                                <div class="row">
-                                    <a class="btn btn-primary col-sm-4 col-sm-offset-4" href="<?php echo base_url().'login/'?>">OK</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -260,24 +263,15 @@ body {
 </div>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap DataTables JS -->
+<script src="<?=  base_url() ?>assets/js/datatables.min.js"></script>
+
 <script type="text/javascript">
 $(function() {
-
-    $('#login-form-link').click(function(e) {
-        $("#login-form").delay(100).fadeIn(100);
-        $("#register-form").fadeOut(100);
-        $('#register-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
+    $('#tabel_utama').DataTable({
+        "order": [[ 0, "desc" ]]
     });
-    $('#register-form-link').click(function(e) {
-        $("#register-form").delay(100).fadeIn(100);
-        $("#login-form").fadeOut(100);
-        $('#login-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-
 });
 
 </script>

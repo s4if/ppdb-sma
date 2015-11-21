@@ -156,7 +156,7 @@
         $sfunct = 'get'.ucfirst($str_parent[0]);
         if (!is_null($registrant->$sfunct())) : ?>
     <div class="row">
-        <h3>Detail <?=ucfirst($str_parent[1])?></h3>
+        <h3>Data <?=ucfirst($str_parent[1])?></h3>
     </div>
     <div class="row">
         <?php 

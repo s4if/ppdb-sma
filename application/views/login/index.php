@@ -170,8 +170,8 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class="active"><a href="#">Pendaftar</a></li>
-                    <li class=""><a href="#">Admin</a></li>
+                    <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
+                    <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -228,7 +228,7 @@ body {
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form" action="<?php echo base_url().'pendaftar/do_login/'?>" method="post" role="form" style="display: block;">
+                                <form id="login-form" action="<?php echo base_url().'login/do_login/'?>" method="post" role="form" style="display: block;">
                                     <div class="form-group">
                                         <input type="text" name="id_pendaftaran" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Nomor Pendaftaran" value="" required="true">
                                     </div>
@@ -238,11 +238,11 @@ body {
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Masuk">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="text-center">
@@ -250,9 +250,9 @@ body {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </form>
-                                <form id="register-form" action="<?php echo base_url().'pendaftar/do_register/';?>" method="post" role="form" style="display: none;">
+                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="">
                                 </div>
@@ -311,7 +311,7 @@ body {
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Daftar Sekarang">
                                         </div>
                                     </div>
                                 </div>
