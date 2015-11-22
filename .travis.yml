@@ -15,6 +15,7 @@ before_script:
   - echo "GRANT ALL ON ppdb.* TO 'ppdb'@'localhost';" | mysql -u root
   - vendor/bin/doctrine orm:schema-tool:drop --force
   - vendor/bin/doctrine orm:schema-tool:create
+  - php5 seeder.php
 
 script:
   - cd application/tests/
