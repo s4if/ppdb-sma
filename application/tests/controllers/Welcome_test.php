@@ -67,6 +67,30 @@ class Welcome_test extends TestCase
             $this->assertContains('<title>Rekap Data</title>', $output6);
             
         }
+        
+        public function test_register_gagal()
+        {
+            $this->request('GET', ['Login', 'index']);
+            $param = [
+                'password' => 'qwerty',
+                'confirm-password' => 'salah',
+                'name' => 'Andalus Setyorini',
+                'sex' => 'P',
+                'prev_school' => 'SMPN 1 Mungkid',
+                'program' => 'Reguler',
+                'captcha' => 'SALAH'
+            ];
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/index');
+            $param['confirm-password'] = 'qwerty';
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/index');
+        }
+        
+        public function test_register_berhasil()
+        {
+            // TODO : Try to get session active?
+        }
 
 	public function test_method_404()
 	{
