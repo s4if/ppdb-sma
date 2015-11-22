@@ -9,7 +9,8 @@
 	"phpunit/phpunit": "4.8.*",
         "kenjis/codeigniter-doctrine": "1.0.x@dev",
 	"gregwar/captcha": "1.*",
-        "mikehaertl/phpwkhtmltopdf": "^2.1"
+        "mikehaertl/phpwkhtmltopdf": "^2.1",
+	"ircmaxell/password-compat": "1.0.*"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"
