@@ -135,14 +135,6 @@ class ParentEntity {
         // Do something here
     }
     
-    public function getId() {
-        return $this->id;
-    }
-
-    public function getType() {
-        return $this->type;
-    }
-
     public function getName() {
         return $this->name;
     }

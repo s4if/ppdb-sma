@@ -136,14 +136,6 @@ class RegistrantDataEntity {
         $this->achievements = new ArrayCollection();
     }
     
-    public function getId() {
-        return $this->id;
-    }
-
-    public function getRegistrant() {
-        return $this->registrant;
-    }
-
     public function getBirthPlace() {
         return $this->birthPlace;
     }
@@ -179,66 +171,21 @@ class RegistrantDataEntity {
     public function getStayWith() {
         return $this->stayWith;
     }
-    
-    // Experimental
-    // aturan $varVal = ['attr' => 'attributeName', 'val' => 'expectedValue' ]
-    public function exist($varName, $varVal = []){
-        try{
-            if($varVal == []){
-                return !$this->$varName->isEmpty();
-            } else {
-                $criteria = Criteria::create()
-                    ->where(Criteria::expr()->eq( $varVal['attr'], $varVal['val']));
-                return !$this->$varName->matching($criteria)->isEmpty();
-            }
-        } catch (Exception $ex) {
-            return false;
-        }
+
+    public function getHospitalSheets() {
+        return $this->hospitalSheets;
     }
 
-    public function getHospitalSheets($hs = null) {
-        if(is_null($hs)){
-            return $this->hospitalSheets;
-        } else {
-            $criteria = Criteria::create()
-                    ->where(Criteria::expr()->eq('hospitalSheet', $hs));
-            return $this->hospitalSheets->matching($criteria);
-        }
-    }
-
-    public function getPhysicalAbnormalities($pa = null) {
-        if(is_null($pa)){
-            return $this->physicalAbnormalities;
-        } else {
-            $criteria = Criteria::create()
-                    ->where(Criteria::expr()->eq('physicalAbnormalities', $pa));
-            return $this->physicalAbnormalities->matching($criteria);
-        }
+    public function getPhysicalAbnormalities() {
+        return $this->physicalAbnormalities;
     }
     
-    public function getHobbies($hobby = null) {
-        if($hobby == null){
-            return $this->hobbies;
-        } else {
-            $criteria = Criteria::create()
-                    ->where(Criteria::expr()->eq('hobby', $hobby));
-            return $this->hobbies->matching($criteria);
-        }
+    public function getHobbies() {
+        return $this->hobbies;
     }
 
-    public function getAchievements($achievement = null) {
-        if(is_null($achievement)){
-            return $this->achievements;
-        } else {
-            $criteria = Criteria::create()
-                    ->where(Criteria::expr()->eq('achievement', $achievement));
-            return $this->achievements->matching($criteria);
-        }
-    }
-    
-    public function setId($id) {
-        $this->id = $id;
-        return $this;
+    public function getAchievements() {
+        return $this->achievements;
     }
 
     public function setBirthPlace($birthPlace) {

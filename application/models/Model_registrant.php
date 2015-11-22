@@ -181,11 +181,9 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    //TODO: Buat hobby, achievement dll...
     //jika ada error yang berkaitan dengan set data, lihat urutan pemberian data pada fungsi
     //id, registrant, birthplace, birthdate, address, familyCondition, nationality, religion, height, weight, stayWith
     protected function setRegistrantDetail($data){
-        if (!empty($data['id'])) : $this->registrantData->setId($data['id']); endif;
         if (!empty($data['registrant'])) : $this->registrantData->setRegistrant($data['registrant']); endif; //bentuk objek jadi
         if (!empty($data['birth_place'])) : $this->registrantData->setBirthPlace($data['birth_place']); endif;
         if (!empty($data['birth_date'])) : $this->registrantData->setBirthDate(new DateTime($data['birth_date'])); endif;
