@@ -226,30 +226,32 @@ body {
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <table class="table table-striped table-bordered table-condensed" id="tabel_utama">
-                                    <thead>
-                                        <tr>
-                                            <td>No. Pendaftaran</td>
-                                            <td>Nama</td>
-                                            <td>I/A</td>
-                                            <td>Sekolah Asal</td>
-                                            <td>NISN</td>
-                                            <td>Program</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($data_registrant as $registrant) : ?>
-                                        <tr>
-                                            <td><?= $registrant->getId();?></td>
-                                            <td> <?=$registrant->getName();?> </td>
-                                            <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
-                                            <td> <?=$registrant->getPreviousSchool();?> </td>
-                                            <td> <?=$registrant->getNisn();?> </td>
-                                            <td> <?=  ucfirst($registrant->getProgram());?> </td>
-                                        </tr>
-                                        <?php endforeach;?>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
+                                        <thead>
+                                            <tr>
+                                                <td>No. Pendaftaran</td>
+                                                <td>Nama</td>
+                                                <td>I/A</td>
+                                                <td>Sekolah Asal</td>
+                                                <td>NISN</td>
+                                                <td>Program</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($data_registrant as $registrant) : ?>
+                                            <tr>
+                                                <td><?= $registrant->getId();?></td>
+                                                <td> <?=$registrant->getName();?> </td>
+                                                <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
+                                                <td> <?=$registrant->getPreviousSchool();?> </td>
+                                                <td> <?=$registrant->getNisn();?> </td>
+                                                <td> <?=  ucfirst($registrant->getProgram());?> </td>
+                                            </tr>
+                                            <?php endforeach;?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

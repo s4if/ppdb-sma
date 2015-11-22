@@ -12,9 +12,41 @@ class Welcome_test extends TestCase
 {
 	public function test_index()
 	{
-		//$output = $this->request('GET', ['Welcome', 'index']);
-		//$this->assertContains('<title>Welcome to CodeIgniter</title>', $output);
+		$output = $this->request('GET', ['Login', 'index']);
+		$this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
 	}
+        
+        public function test_lihat()
+	{
+		$output = $this->request('GET', ['Pendaftar', 'lihat']);
+		$this->assertContains('Data Pendaftar Ikhwan', $output);
+                $output2 = $this->request('GET', 'lihat/P');
+		$this->assertContains('Data Pendaftar Akhwat', $output2);
+	}
+        
+        public function test_beranda_blocked()
+        {
+            $this->request('GET', '201511210001/beranda');
+            $this->assertRedirect('login');
+        }
+        
+        public function test_login_fail()
+        {
+            $this->request('POST', ['Login', 'do_login'],[
+                'id_pendaftaran' => '00000000000',
+                'password' => 'qwerty'
+            ]);
+            $this->assertRedirect('login/index');
+        }
+        
+        public function test_login_ok()
+        {
+            $this->request('POST', ['Login', 'do_login'],[
+                'id_pendaftaran' => '20141201001',
+                'password' => 'qwerty'
+            ]);
+            $this->assertRedirect('20141201001/beranda');
+        }
 
 	public function test_method_404()
 	{

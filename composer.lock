@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b42a75029631e4238df4eae9c5bbb969",
-    "content-hash": "85e82ec850ee7a8b7a78456573c2e3f4",
+    "hash": "2cb096dd2747946835cc7e102938696e",
+    "content-hash": "6a7dc09a9896f0eb1e25942dc3b2d604",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -714,16 +714,16 @@
         },
         {
             "name": "kenjis/ci-phpunit-test",
-            "version": "v0.8.2",
+            "version": "v0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kenjis/ci-phpunit-test.git",
-                "reference": "e1a73e006cf1216be04b41850136d0fc93a0cf36"
+                "reference": "d94bda460cb33472c345c378ad35a384ef8c2e96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/e1a73e006cf1216be04b41850136d0fc93a0cf36",
-                "reference": "e1a73e006cf1216be04b41850136d0fc93a0cf36",
+                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/d94bda460cb33472c345c378ad35a384ef8c2e96",
+                "reference": "d94bda460cb33472c345c378ad35a384ef8c2e96",
                 "shasum": ""
             },
             "require": {
@@ -756,7 +756,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-10-09 00:29:40"
+            "time": "2015-11-21 23:20:48"
         },
         {
             "name": "kenjis/codeigniter-doctrine",

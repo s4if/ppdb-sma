@@ -11,16 +11,24 @@
 class CIPHPUnitTest
 {
 	private static $loader_class = 'CI_Loader';
+	private static $autoload_dirs;
 
-	public static function init()
+	/**
+	 * Initialize CIPHPUnitTest
+	 * 
+	 * @param array $autoload_dirs directories to search class file for autoloader
+	 */
+	public static function init(array $autoload_dirs = null)
 	{
 		// Fix CLI args
 		$_server_backup = $_SERVER;
 		$_SERVER['argv'] = [
 			'index.php',
-			'_dummy/_dummy'	// Force 404 route
+			'welcome'	// Dummy
 		];
 		$_SERVER['argc'] = 2;
+
+		self::$autoload_dirs = $autoload_dirs;
 
 		// Load autoloader for ci-phpunit-test
 		require __DIR__ . '/autoloader.php';
@@ -42,8 +50,9 @@ class CIPHPUnitTest
 
 		// Load new functions of CIPHPUnitTest
 		require __DIR__ . '/functions.php';
+		// Load ci-phpunit-test CI_Loader
+		require __DIR__ . '/replacing/core/Loader.php';
 
-		self::replaceLoader();
 		self::replaceHelpers();
 
 		// Change current directroy
@@ -59,18 +68,30 @@ class CIPHPUnitTest
 		require __DIR__ . '/replacing/core/CodeIgniter.php';
 		new CI_Controller();
 
-		// Restore $_SERVER
+		// This code is here, not to cause errors with HMVC
+		self::replaceLoader();
+
+		// Restore $_SERVER. We need this for NetBeans
 		$_SERVER = $_server_backup;
+	}
+
+	public static function getAutoloadDirs()
+	{
+		return self::$autoload_dirs;
 	}
 
 	protected static function replaceLoader()
 	{
-		require __DIR__ . '/replacing/core/Loader.php';
-		$my_loader_file = APPPATH . 'core/' . config_item('subclass_prefix') . 'Loader.php';
+		$my_loader_file = 
+			APPPATH . 'core/' . config_item('subclass_prefix') . 'Loader.php';
+
 		if (file_exists($my_loader_file))
 		{
 			self::$loader_class = config_item('subclass_prefix') . 'Loader';
-			require $my_loader_file;
+			if ( ! class_exists(self::$loader_class))
+			{
+				require $my_loader_file;
+			}
 		}
 		self::loadLoader();
 	}

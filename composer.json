@@ -5,7 +5,7 @@
     "require": {
         "phpoffice/phpexcel": "1.8.*",
 	"imagine/imagine": "0.6.*",
-        "kenjis/ci-phpunit-test": "^0.8.2",
+        "kenjis/ci-phpunit-test": "0.9.*",
 	"phpunit/phpunit": "4.8.*",
         "kenjis/codeigniter-doctrine": "1.0.x@dev",
 	"gregwar/captcha": "1.*",

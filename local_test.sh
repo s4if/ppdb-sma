@@ -6,6 +6,12 @@ vendor/doctrine/orm/bin/doctrine orm:schema-tool:drop --force
 # Create
 vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
 
+# Hapus Foto Upload-an
+rm -rv data/foto/*
+
+# Seeding data
+php seeder.php
+
 # Pindah Ke Direktori Test
 cd application/tests/
 
@@ -15,6 +21,3 @@ cd application/tests/
 # Call Coverall
 cd ../..
 php vendor/bin/coveralls -v
-
-# Seeding data
-php seeder.php
