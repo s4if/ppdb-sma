@@ -30,6 +30,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @author s4if
  */
-class Admin {
-    //put your code here
+class Admin extends MY_Controller {
+    
+    public function __construct() {
+        parent::__construct();
+    }
+    
 }

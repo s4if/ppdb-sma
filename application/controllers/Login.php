@@ -36,6 +36,7 @@ class Login extends MY_Controller {
         parent::__construct();
         $this->load->model('Model_registrant','reg');
         $this->load->model('Model_parent','parent');
+        $this->load->model('Model_admin','admin');
     }
     
     // ================= LOGIN & REGISTER ===========================
@@ -119,4 +120,34 @@ class Login extends MY_Controller {
     
     // ================= END ===========================
     
+    // ================= Admin Login ===========================
+    
+    public function admin(){
+        $this->load->view('login/admin');
+    }
+
+    public function do_login_admin(){
+        $data = $this->input->post(null, true);
+        $admin = $this->admin->getData($$data['username']);
+        $res = 0;
+        if(!is_null($admin)){
+            if(password_verify($data['password'], $admin->getPassword())){
+                $this->session->set_userdata('admin', $admin);
+                $res = 1;
+                redirect($data['username'].'/beranda');
+            } else {
+                $res = -2;
+                $this->session->set_flashdata("errors", [0 => "Maaf, Password yang anda masukkan salah, <br />"
+                    . "Silahkan anda cek kembali"]);
+                redirect('login/index');
+            }
+        } else {
+            $res = -1;
+            $this->session->set_flashdata("errors", [0 => "Maaf, Admin dengan Username :".$data['username']." tidak ditemukan, <br />"
+                . "Silahkan anda cek kembali"]);
+            redirect('login/index');
+        }
+    }
+    
+    // ================= END ===========================
 }

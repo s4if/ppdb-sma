@@ -47,6 +47,26 @@ class Welcome_test extends TestCase
             ]);
             $this->assertRedirect('20141201001/beranda');
         }
+        public function test_beranda()
+        {
+            $this->request('POST', ['Login', 'do_login'],[
+                'id_pendaftaran' => '20141201001',
+                'password' => 'qwerty'
+            ]);
+            $output = $this->request('GET','20141201001/beranda');
+            $this->assertContains('<title>Beranda</title>', $output);
+            $output2 = $this->request('GET','20141201001/detail');
+            $this->assertContains('<title>Edit Data Diri</title>', $output2);
+            $output3 = $this->request('GET','20141201001/data/father');
+            $this->assertContains('<title>Edit Data Ayah</title>', $output3);
+            $output4 = $this->request('GET','20141201001/data/mother');
+            $this->assertContains('<title>Edit Data Ibu</title>', $output4);
+            $output5 = $this->request('GET','20141201001/data/guardian');
+            $this->assertContains('<title>Edit Data Wali</title>', $output5);
+            $output6 = $this->request('GET','20141201001/rekap');
+            $this->assertContains('<title>Rekap Data</title>', $output6);
+            
+        }
 
 	public function test_method_404()
 	{

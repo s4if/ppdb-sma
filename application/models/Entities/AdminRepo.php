@@ -10,4 +10,12 @@
  */
 class AdminRepo extends Doctrine\ORM\EntityRepository
 {
+    public function getData(){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->addSelect('a')->from('AdminEntity', 'a');
+        $qb->orderBy('a.username', 'ASC');
+        $query = $qb->getQuery();
+        $result =  $query->getResult();
+        return $result;
+    }
 }

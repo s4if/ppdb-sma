@@ -111,7 +111,7 @@ class Pendaftar extends MY_Controller {
         $this->blockUnloggedOne($id);
         $reg_data = $this->reg->getRegistrantData($this->session->registrant);
         $data = [
-            'title' => 'Edit Profil',
+            'title' => 'Edit Data Diri',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'reg_data' => $reg_data,
@@ -139,7 +139,7 @@ class Pendaftar extends MY_Controller {
         $parent_data = (empty($this->parent->getData($id, [$type])[$type]))? $parent_data = $this->parent->create(): $this->parent->getData($id, [$type])[$type];
         $tn = $this->typeTrans($type);
         $data = [
-            'title' => 'Edit '.$tn['trans'],
+            'title' => 'Edit Data '.$tn['trans'],
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'trans' => $tn['trans'],

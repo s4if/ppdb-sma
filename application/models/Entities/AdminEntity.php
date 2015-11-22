@@ -41,4 +41,37 @@ class AdminEntity {
      */
     protected $password;
     
+    /**
+     * @Column(type="boolean", nullable=FALSE)
+     * @var boolean
+     */
+    protected $root; // nilainya true atau false
+    
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+    
+    public function getRoot() {
+        return $this->root;
+    }
+
+    public function setRoot($root) {
+        $this->root = $root;
+        return $this;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+        return $this;
+    }
+    
 }

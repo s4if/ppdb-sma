@@ -72,4 +72,16 @@ class MY_Controller extends CI_Controller {
             // Do Nothing
         }
     }
+    
+    protected function blockNonAdmin($root = false){
+        if(!$this->session->has_userdata('admin')){
+            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Harap login Dulu!"]);
+            redirect('login/admin', 'refresh');
+        }  elseif(($this->session->admin->getRoot() == $root || $root)) {
+            // Do Nothing
+        } else {
+            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Ini!"]);
+            redirect('admin', 'refresh');
+        }
+    }
 }

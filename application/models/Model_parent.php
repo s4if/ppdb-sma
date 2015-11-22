@@ -125,20 +125,20 @@ class Model_parent extends CI_Model{
     // 'nationality', 'religion', 'educationLevel', 'speciality', 'job', 'position', 'company',
     // 'companyAddress', 'income', 'burdenCount']
     protected function setData($data, $var){
-        if (!empty($var)) : $this->$var->setType($var); endif;
-        if (!empty($data['name'])) : $this->$var->setName($data['name']); endif;
-        if (!empty($data['status'])) : $this->$var->setStatus($data['status']); endif;
-        if (!empty($data['birth_place'])) : $this->$var->setBirthPlace($data['birth_place']); endif;
-        if (!empty($data['birth_date'])) : $this->$var->setBirthDate(new DateTime($data['birth_date'])); endif;
-        if (!empty($data['address'])) : $this->$var->setAddress($data['address']); endif;
-        if (!empty($data['contact'])) : $this->$var->setContact($data['contact']); endif;
-        if (!empty($data['relation'])) : $this->$var->setRelation($data['relation']); endif;
-        if (!empty($data['nationality'])) : $this->$var->setNationality($data['nationality']); endif;
-        if (!empty($data['religion'])) : $this->$var->setReligion($data['religion']); endif;
-        if (!empty($data['education_level'])) : $this->$var->setEducationLevel($data['education_level']); endif;
-        if (!empty($data['job'])) : $this->$var->setJob($data['job']); endif;
-        if (!empty($data['position'])) : $this->$var->setPosition($data['position']); endif;
-        if (!empty($data['company'])) : $this->$var->setCompany($data['company']); endif;
+        if (!is_null($var)) : $this->$var->setType($var); endif;
+        if (!is_null($data['name'])) : $this->$var->setName($data['name']); endif;
+        if (!is_null($data['status'])) : $this->$var->setStatus($data['status']); endif;
+        if (!is_null($data['birth_place'])) : $this->$var->setBirthPlace($data['birth_place']); endif;
+        if (!is_null($data['birth_date'])) : $this->$var->setBirthDate(new DateTime($data['birth_date'])); endif;
+        if (!is_null($data['address'])) : $this->$var->setAddress($data['address']); endif;
+        if (!is_null($data['contact'])) : $this->$var->setContact($data['contact']); endif;
+        if (!is_null($data['relation'])) : $this->$var->setRelation($data['relation']); endif;
+        if (!is_null($data['nationality'])) : $this->$var->setNationality($data['nationality']); endif;
+        if (!is_null($data['religion'])) : $this->$var->setReligion($data['religion']); endif;
+        if (!is_null($data['education_level'])) : $this->$var->setEducationLevel($data['education_level']); endif;
+        if (!is_null($data['job'])) : $this->$var->setJob($data['job']); endif;
+        if (!is_null($data['position'])) : $this->$var->setPosition($data['position']); endif;
+        if (!is_null($data['company'])) : $this->$var->setCompany($data['company']); endif;
         if (!is_null($data['income'])) : $this->$var->setIncome($data['income']); endif;
         if (!is_null($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
         
