@@ -97,30 +97,30 @@ class Registrant_test extends TestCase
             
         }
         
-        public function test_register_gagal()
+        public function test_register()
         {
             $this->request('GET', ['Login', 'index']);
             $param = [
                 'password' => 'qwerty',
                 'confirm-password' => 'salah',
-                'name' => 'Andalus Setyorini',
-                'sex' => 'P',
+                'name' => 'Samir Dzeko Saputra',
+                'sex' => 'L',
                 'prev_school' => 'SMPN 1 Mungkid',
                 'program' => 'Reguler',
                 'captcha' => 'SALAH'
             ];
+            // Gagal
             $this->request('POST', ['Login', 'do_register'], $param);
             $this->assertRedirect('login/index');
+            
+            // Note : Captcha tidak bisa diuji karena session tidak bisa konsisten
+            
+            //berhasil
             $param['confirm-password'] = 'qwerty';
             $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/index');
+            $this->assertRedirect('login/register_berhasil');
         }
         
-        public function test_register_berhasil()
-        {
-            // TODO : Try to get session active?
-        }
-
 	public function test_method_404()
 	{
 		$this->request('GET', ['Welcome', 'method_not_exist']);

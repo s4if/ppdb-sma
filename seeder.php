@@ -48,7 +48,7 @@ $reg->setNisn(2010249129310);
 $reg->setPassword(password_hash('qwerty', PASSWORD_BCRYPT));
 $reg->setPreviousSchool('SMP IT Ihsanul FIkri Mungkid');
 $reg->setProgram('Reguler');
-$reg->setRegistrationTime(new DateTime('now'));
+$reg->setRegistrationTime(new DateTime('1-12-2014'));
 $em->persist($reg);
 $em->flush();
 // =======================================

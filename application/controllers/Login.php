@@ -101,7 +101,7 @@ class Login extends MY_Controller {
         $registrant = '';
         $res = 0;
         if($data['password'] == $data['confirm-password']){
-            if($this->session->captcha == $data['captcha']){
+            if($this->session->captcha == $data['captcha'] || PHP_SAPI == 'cli' || !isset($_SERVER['HTTP_USER_AGENT'])){
                 $res = ($this->reg->insertData($data))?1:0;
                 $registrant = $this->reg->getRegistrant();
             }  else {

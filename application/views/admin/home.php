@@ -24,4 +24,17 @@
  * THE SOFTWARE.
  */
 
-echo 'all stats Here';
+?>
+
+<h1 class="page-header">
+    Beranda
+    <small>Admin</small>
+</h1>
+<ol class="breadcrumb">
+    <li class="active">
+        Beranda
+    </li>
+</ol>
+<div class="container-fluid">
+TODO: all stats Here;
+</div>

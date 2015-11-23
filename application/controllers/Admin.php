@@ -96,4 +96,20 @@ class Admin extends MY_Controller {
             redirect('admin/password');
         }
     }
+    
+    public function lihat($sex = null){
+        $registrant_data = (is_null($sex))?$this->reg->getData():$this->reg->getData($sex);
+        $this->CustomView('admin/data_registrant', [
+            'title' => 'Beranda',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'nav_pos' => 'registrantAdmin',
+            'sex' => $sex,
+            'data_registrant' => $registrant_data
+        ]);
+    }
+    
+    public function profil_registrant($id){
+        
+    }
 }
