@@ -91,7 +91,7 @@ class Model_registrant extends CI_Model {
     }
     
     public function updateData($data){
-        $this->registrant = $this->doctrine->em->find('registrantEntity', $data['id']);
+        $this->registrant = $this->doctrine->em->find('RegistrantEntity', $data['id']);
         if(is_null($this->registrant)){
             return false;
         } else {
@@ -103,7 +103,7 @@ class Model_registrant extends CI_Model {
     }
     
     public function deleteData($data){
-        $this->registrant = $this->doctrine->em->find('registrantEntity', $data['id']);
+        $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $data['id']);
         if(is_null($this->registrant)){
             return false;
         } else {
@@ -141,7 +141,7 @@ class Model_registrant extends CI_Model {
     }
     
     public function updateDetail($id, $data){
-        $this->registrant = $this->doctrine->em->find('registrantEntity', $id);
+        $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $id);
         if(is_null($this->registrant)){
                 return false;
             } else {
@@ -150,21 +150,21 @@ class Model_registrant extends CI_Model {
                 } else {
                     $this->registrantData = $this->registrant->getRegistrantData();
                 }
-                $this->setRegistrantDetail($data);
-                $this->registrantData->setRegistrant($this->registrant);
-                $this->doctrine->em->persist($this->registrantData);
-                $this->registrant->setRegistrantData($this->registrantData);
-                $this->doctrine->em->persist($this->registrant);
-                $this->doctrine->em->flush();
-                $this->setRegistrantExtraData($data);
-                $this->doctrine->em->persist($this->registrantData);
-                $this->doctrine->em->flush();
-                return true;
+            $this->setRegistrantDetail($data);
+            $this->registrantData->setRegistrant($this->registrant);
+            $this->doctrine->em->persist($this->registrantData);
+            $this->registrant->setRegistrantData($this->registrantData);
+            $this->doctrine->em->persist($this->registrant);
+            $this->doctrine->em->flush();
+            $this->setRegistrantExtraData($data);
+            $this->doctrine->em->persist($this->registrantData);
+            $this->doctrine->em->flush();
+            return true;
         }
     }
     
     public function deleteDetail($id){
-        $this->registrant = $this->doctrine->em->find('registrantEntity', $id);
+        $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $id);
         if(is_null($this->registrant)){
             return false;
         } else {

@@ -59,7 +59,7 @@ class Model_parent extends CI_Model{
     // TODO: In Production always enable try and catch
     public function updateData($id, $data, $position){
 //        try{
-            $this->registrant = $this->doctrine->em->find('registrantEntity', $id);
+            $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
             if(is_null($this->registrant)){
                 return false;
             } else {
@@ -89,7 +89,7 @@ class Model_parent extends CI_Model{
     }
     
     public function deleteData($id, $pos){
-        $this->registrant = $this->doctrine->em->find('registrantEntity', $id);
+        $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
         if(is_null($this->registrant)){
             return false;
         } else {

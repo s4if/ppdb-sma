@@ -86,6 +86,7 @@ class Admin extends MY_Controller {
     }
     
     private function do_change_password($data){
+        $this->blockNonAdmin();
         $res = $this->admin->updateData($data);
         if($res){
             $this->session->set_userdata('admin', $this->admin->getData($this->session->admin->getUsername()));
@@ -98,9 +99,14 @@ class Admin extends MY_Controller {
     }
     
     public function lihat($sex = null){
+        $this->blockNonAdmin();
         $registrant_data = (is_null($sex))?$this->reg->getData():$this->reg->getData($sex);
+        $jk = '';
+        if(!is_null($sex)){
+            $jk = ($sex == 'L')?'Ikhwan':'Akhwat';
+        }
         $this->CustomView('admin/data_registrant', [
-            'title' => 'Beranda',
+            'title' => 'Lihat Pendaftar '.$jk,
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
             'nav_pos' => 'registrantAdmin',
@@ -109,7 +115,117 @@ class Admin extends MY_Controller {
         ]);
     }
     
-    public function profil_registrant($id){
-        
+    public function registrant($id){
+        $this->blockNonAdmin();
+        $reg_data = $this->reg->getData(null, $id);
+        $data = [
+            'title' => 'Beranda',
+            'username' => $this->session->admin->getUsername(),
+            'id' => $id,
+            'admin' => $this->session->admin,
+            'registrant_data' => $reg_data,
+            'registrant_edit' => $this->load->view('admin/edit_detail_registrant',[
+                'id' => $id,
+                'registrant_detail' => $this->reg->getRegistrantData($reg_data),
+                'arr_parent' => $this->parent->getData($id, ['father', 'mother', 'guardian']),
+                'parents' => ['father', 'mother', 'guardian']
+            ]),
+            'img_link' => $this->getImgLink($id),
+            'status' => $this->reg->cek_status($id),
+            'nav_pos' => 'registrantAdmin'
+        ];
+        $this->CustomView('admin/profile_registrant', $data);
+    }
+    
+    private function getImgLink($id){
+        $this->load->helper('file');
+        $img_link = '';
+        $file = read_file('./data/foto/'.$id.'.png');
+        $datetime = new DateTime('now');
+        if($file == false){
+            $img_link = base_url().'assets/images/default.png';
+        }  else {
+            $img_link = base_url().'admin/getFoto/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
+        }
+        return $img_link;
+    }
+    
+    public function getFoto($id, $hash){
+        $this->blockNonAdmin();
+        $imagine = new Imagine\Gd\Imagine();
+        $image = $imagine->open('./data/foto/'.$id.'.png');
+        $this->session->set_userdata('random_hash', $hash);
+        $image->show('png');
+    }
+    
+    public function do_password_registrant($id){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $data['id'] = $id;
+        $res = $this->reg->updateData($data);
+        if($res){
+             
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/registrant/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/registrant/'.$id);
+        }
+    }
+    
+    public function do_edit_profil($id){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $data['id'] = $id;
+        $res = $this->reg->updateData($data);
+        if($res){
+             
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/registrant/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/registrant/'.$id);
+        }
+    }
+    
+    public function do_edit_detail($id){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $res = $this->reg->updateDetail($id, $data);
+        if($res){
+             
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/registrant/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/registrant/'.$id);
+        }
+    }
+    
+    public function do_edit_parent($id, $type){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $res = $this->parent->updateData($id, $data, $type);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/registrant/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/registrant/'.$id);
+        }
+    }
+    
+    public function upload_foto($id) {
+        $this->blockNonAdmin();
+        $fileUrl = $_FILES['file']["tmp_name"];
+        $fileType = explode('/', $_FILES['file']['type'])[1];
+        $res = $this->reg->uploadFoto($fileUrl, $fileType, $id);
+        if ($res) {
+            $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
+            redirect('admin/registrant/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
+            redirect('admin/registrant/'.$id);
+        }
     }
 }

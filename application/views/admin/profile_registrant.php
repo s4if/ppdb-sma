@@ -32,7 +32,7 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="<?=base_url().'/'.$id;?>/beranda/">Beranda</a>
+        <a href="<?=base_url();?>admin/beranda/">Beranda</a>
     </li>
     <li class="active">
         Profil
@@ -41,6 +41,8 @@
 <style>
     .foto-profil {
         resize: both;
+        max-height: 200px;
+        max-width: 150px;
         height: 100%;
         width: 100%;
     }
@@ -55,32 +57,32 @@
         <tr>
             <td> Nomor Pendaftaran </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getId();?> </td>
+            <td> <?=$registrant_data->getId();?> </td>
         </tr>
         <tr>
             <td> Nama </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getName();?> </td>
+            <td> <?=$registrant_data->getName();?> </td>
         </tr>
         <tr>
             <td> Sekolah Asal </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getPreviousSchool()?> </td>
+            <td> <?=$registrant_data->getPreviousSchool()?> </td>
         </tr>
         <tr>
             <td> Jenis Kelamin </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+            <td> <?=($registrant_data->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
         </tr>
         <tr>
             <td> NISN </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getNisn()?> </td>
+            <td> <?=$registrant_data->getNisn()?> </td>
         </tr>
         <tr>
             <td> Program </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getProgram()?> </td>
+            <td> <?=$registrant_data->getProgram()?> </td>
         </tr>
         <tr>
             <td colspan="3">
@@ -91,6 +93,10 @@
                 <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#ModalImport">
                     <span class="glyphicon glyphicon-upload"></span>
                     Upload Foto
+                </a>
+                <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editPassword">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    Ganti Password
                 </a>
             </td>
         </tr>
@@ -106,23 +112,23 @@
                 <h4 class="modal-title text-center" id="tambahModal">Edit Pendaftar</h4>
             </div>
             <div class="modal-body">
-    <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_profil/<?=$id?>">
+    <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/admin/do_edit_profil/<?=$id?>">
         <div class="form-group">
             <label class="col-sm-2 control-label">Nama :</label>
             <div class="col-sm-8">
-                <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant->getName();?>">
+                <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant_data->getName();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Sekolah Asal :</label>
             <div class="col-sm-8">
-                <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant->getPreviousSchool();?>">
+                <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant_data->getPreviousSchool();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">NISN :</label>
             <div class="col-sm-8">
-                <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant->getNisn();?>">
+                <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getNisn();?>">
             </div>
         </div>
         <div class="form-group">
@@ -131,8 +137,8 @@
                 <div class="radio">
                     <label>
                         <input type="radio" checked="true" name="sex" value="L" 
-                            <?php if(!empty($registrant->getSex())):?>
-                                <?php if($registrant->getSex() ==='L'):?>
+                            <?php if(!empty($registrant_data->getSex())):?>
+                                <?php if($registrant_data->getSex() ==='L'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
@@ -142,8 +148,8 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="sex" value="P"
-                            <?php if(!empty($registrant->getSex())):?>
-                                <?php if($registrant->getSex() ==='P'):?>
+                            <?php if(!empty($registrant_data->getSex())):?>
+                                <?php if($registrant_data->getSex() ==='P'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
@@ -157,16 +163,16 @@
             <div class="col-sm-8">
                 <select class="form-control" name="program" >
                     <option value="reguler"  
-                        <?php if(!empty($registrant->getProgram())):?>
-                            <?php if($registrant->getProgram()=='reguler'): ?>
+                        <?php if(!empty($registrant_data->getProgram())):?>
+                            <?php if($registrant_data->getProgram()=='reguler'): ?>
                                     selected="true"
                             <?php endif;?>
                         <?php endif;?>>
                         Reguler
                     </option>
                     <option value="tahfidz"  
-                        <?php if(!empty($registrant->getProgram())):?>
-                            <?php if($registrant->getProgram()=='tahfidz'): ?>
+                        <?php if(!empty($registrant_data->getProgram())):?>
+                            <?php if($registrant_data->getProgram()=='tahfidz'): ?>
                                     selected="true"
                             <?php endif;?>
                         <?php endif;?>>
@@ -176,7 +182,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-8">
+            <div class="col-sm-offset-4 col-sm-8">
                 <button type="submit" class="btn btn-sm btn-primary">OK</button>
                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
             </div>
@@ -220,7 +226,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/detail/"><span class="glyphicon glyphicon-edit">Edit</a>
+                            <a class="btn btn-xs btn-primary"  data-toggle="modal" data-target="#editDetail"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -255,7 +261,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
+                            <a class="btn btn-xs btn-primary" data-toggle="modal" data-target="#editFather"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -271,7 +277,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                           <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
+                           <a class="btn btn-xs btn-primary" data-toggle="modal" data-target="#editMother"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -287,7 +293,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
+                          <a class="btn btn-xs btn-primary"  data-toggle="modal" data-target="#editGuardian"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                 </tbody>
@@ -304,7 +310,7 @@
                 <h4 class="modal-title" id="ModalImportLabel>">Pilih File</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
+                <form role="form" method="post" action="<?=base_url();?>admin/upload_foto/<?=$registrant_data->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>File berupa Foto Berwarna degan proporsi 4x3</label>
                         <input type="file" id="file" name="file">
@@ -315,3 +321,121 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".wrapper"); //Fields wrapper
+        var point_acv       = $(".insert_acv"); //Fields wrapper
+        var add_btn_acv  = $(".add_btn_acv"); //Add button ID
+
+        var id_acv = 1;
+        var x_acv = 1; //initlal text box count
+        $(add_btn_acv).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_acv < max_fields){ //max input box allowed
+                x_acv++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-4 col-sm-4">'+
+                    '<input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_acv).before(inpt);
+                id_acv++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_acv", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_acv--;
+        });
+        
+        //Hobby
+        var point_hby       = $(".insert_hby"); //Fields wrapper
+        var add_btn_hby  = $(".add_btn_hby"); //Add button ID
+
+        var id_hby = 1;
+        var x_hby = 1; //initlal text box count
+        $(add_btn_hby).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_hby < max_fields){ //max input box allowed
+                x_hby++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-4 col-sm-4">'+
+                    '<input type="text" required="true" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_hby).before(inpt);
+                id_hby++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_hby", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_hby--;
+        });
+        
+        //Hospital Sheets
+        var point_hs       = $(".insert_hs"); //Fields wrapper
+        var add_btn_hs  = $(".add_btn_hs"); //Add button ID
+
+        var id_hs = 1;
+        var x_hs = 1; //initlal text box count
+        $(add_btn_hs).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_hs < max_fields){ //max input box allowed
+                x_hs++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-4 col-sm-4">'+
+                    '<input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Masukkan Riwayat Penyakit" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_hs).before(inpt);
+                id_hs++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_hs", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_hs--;
+        });
+        
+        //Physical Abnormalities
+        var point_pa       = $(".insert_pa"); //Fields wrapper
+        var add_btn_pa  = $(".add_btn_pa"); //Add button ID
+
+        var id_pa = 1;
+        var x_pa = 1; //initlal text box count
+        $(add_btn_pa).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x_pa < max_fields){ //max input box allowed
+                x_pa++; //text box increment
+                var inpt = '<div class="form-group">'+
+                    '<div class="col-sm-offset-4 col-sm-4">'+
+                    '<input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">'+
+                    '</div>'+
+                    '<div class="col-sm-2">'+
+                    '<a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
+                    '</div>'+
+                    '</div>';
+                $(point_pa).before(inpt);
+                id_pa++;
+            }
+        });
+
+        $(wrapper).on("click",".remove_btn_pa", function(e){ //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').parent('div').remove(); x_pa--;
+        });
+        
+    });
+</script>
