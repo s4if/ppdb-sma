@@ -128,3 +128,12 @@ $em->persist($pData);
 $reg->setGuardian($pData);
 $em->persist($reg);
 $em->flush();
+// =======================================
+// Admin Seeder
+$admin = new AdminEntity();
+$admin->setUsername('admin');
+$admin->setPassword(password_hash('qwerty', PASSWORD_BCRYPT));
+$admin->setRoot(TRUE);
+$em->persist($admin);
+$em->flush();
+// =======================================

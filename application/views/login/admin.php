@@ -170,9 +170,9 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
+                    <li class=" active"><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                     <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
-                    <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
+                    <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -217,11 +217,8 @@ body {
                 <div class="panel panel-login">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-6 col-xs-offset-3">
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Daftar</a>
                             </div>
                         </div>
                         <hr>
@@ -229,85 +226,22 @@ body {
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form" action="<?php echo base_url().'login/do_login/'?>" method="post" role="form" style="display: block;">
+                                <form id="login-form" action="<?php echo base_url().'login/do_login_admin/'?>" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="id_pendaftaran" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Nomor Pendaftaran" value="" required="true">
+                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="" required="true">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="true">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="true">
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Masuk">
+                                                <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-login" value="Masuk">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
-                                <div class="form-group">
-                                    <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Jenis Kelamin :</label>
-                                    <div class="">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" checked="true" name="sex" value="L">
-                                                Laki - Laki
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="sex" value="P">
-                                                Perempuan
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label">Program :</label>
-                                    <div class="">
-                                        <select class="form-control" name="program">
-                                            <option value="reguler" selected="true">
-                                                Reguler
-                                            </option>
-                                            <option value="tahfidz" >
-                                                Tahfidz
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" required="true" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" required="true" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                </div>
-                                <!-- TODO: Chaptca (Pake gregwar yang di download-an)-->
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <label class=" control-label">Captcha :</label>
-                                        <img src="<?php echo $builder->inline(); ?>" class="img-responsive" alt="captcha" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required="true" name="captcha" id="captcha" tabindex="1" class="form-control" placeholder="Masukkan Teks Dari Gambar Diatas" value="">
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Daftar Sekarang">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -317,27 +251,6 @@ body {
 </div>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(function() {
-
-    $('#login-form-link').click(function(e) {
-        $("#login-form").delay(100).fadeIn(100);
-        $("#register-form").fadeOut(100);
-        $('#register-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-    $('#register-form-link').click(function(e) {
-        $("#register-form").delay(100).fadeIn(100);
-        $("#login-form").fadeOut(100);
-        $('#login-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-
-});
-
-</script>
-    
+   
 </body>
 </html>

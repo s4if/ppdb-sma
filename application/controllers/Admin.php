@@ -34,6 +34,66 @@ class Admin extends MY_Controller {
     
     public function __construct() {
         parent::__construct();
+        $this->load->model('Model_registrant','reg');
+        $this->load->model('Model_parent','parent');
+        $this->load->model('Model_admin','admin');
     }
     
+    public function index(){
+        $this->beranda();
+    }
+    
+    public function beranda(){
+        $this->blockNonAdmin();
+        $data = [
+            'title' => 'Beranda',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'nav_pos' => 'homeAdmin'
+        ];
+        $this->CustomView('admin/home', $data);
+    }
+    
+    public function password(){
+        $this->blockNonAdmin();
+        $data = [
+            'title' => 'Password',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'registrant' => $this->session->registrant,
+            'nav_pos' => 'homeAdmin'
+        ];
+        $this->CustomView('admin/password', $data);
+    }
+    
+    public function change_password($username){
+        $this->blockNonAdmin();
+        $admin = $this->admin->getData($username);
+        $data = $this->input->post(null, true);
+        if($data['new_password'] == $data['confirm_password']){
+            if(password_verify($data['stored_password'], $admin->getPassword())){
+                $this->do_change_password(['password' => $data['new_password'], 'username' => $username]);
+            } else {
+                $this->session->set_flashdata("errors", [0 => "Maaf, Password lama anda salah <br />"
+                    . "Silahkan di periksa kembali."]);
+                redirect('admin/password');
+            }
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Password baru dan konfirmasi password tidak sama, <br />"
+                . "Silahkan di periksa kembali."]);
+            redirect('admin/password');
+        }        
+    }
+    
+    private function do_change_password($data){
+        $res = $this->admin->updateData($data);
+        if($res){
+            $this->session->set_userdata('admin', $this->admin->getData($this->session->admin->getUsername()));
+            $this->session->set_flashdata("notices", [0 => "Passsword sudah berhasil diubah."]);
+            redirect('admin/password');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/password');
+        }
+    }
 }

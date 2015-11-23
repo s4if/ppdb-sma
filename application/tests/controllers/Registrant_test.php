@@ -8,7 +8,7 @@
  * @link       https://github.com/kenjis/ci-phpunit-test
  */
 
-class Welcome_test extends TestCase
+class Registrant_test extends TestCase
 {
 	public function test_index()
 	{
@@ -47,11 +47,40 @@ class Welcome_test extends TestCase
             ]);
             $this->assertRedirect('20141201001/beranda');
         }
-        public function test_beranda()
-        {
+        
+        public function test_logout(){
+            $this->request('GET', 'login/do_logout');
+            $this->assertRedirect('login/index');
+        }
+        
+        public function test_ganti_password(){
             $this->request('POST', ['Login', 'do_login'],[
                 'id_pendaftaran' => '20141201001',
                 'password' => 'qwerty'
+            ]);
+            $output = $this->request('GET', '20141201001/password');
+            $this->assertContains('<title>Password</title>', $output);
+            $param = [
+                'stored_password' => 'qwertyu',
+                'new_password' => 'zaraki',
+                'confirm_password' => 'qwerty'
+            ];
+            $this->request('POST', 'pendaftar/change_password/20141201001', $param);
+            $this->assertRedirect('20141201001/password');
+            $param['confirm_password'] = 'zaraki';
+            $this->request('POST', 'pendaftar/change_password/20141201001', $param);
+            $this->assertRedirect('20141201001/password');
+            $param['stored_password'] = 'qwerty';
+            $this->request('POST', 'pendaftar/change_password/20141201001', $param);
+            $this->assertRedirect('20141201001/password');
+        }
+        
+        public function test_beranda()
+        {
+            // Passwordnya sudah berubah
+            $this->request('POST', ['Login', 'do_login'],[
+                'id_pendaftaran' => '20141201001',
+                'password' => 'zaraki'
             ]);
             $output = $this->request('GET','20141201001/beranda');
             $this->assertContains('<title>Beranda</title>', $output);

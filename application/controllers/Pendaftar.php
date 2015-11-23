@@ -35,6 +35,7 @@ class Pendaftar extends MY_Controller {
             'title' => 'Password',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
             'nav_pos' => 'home'
         ];
         $this->CustomView('registrant/password', $data);
@@ -55,7 +56,7 @@ class Pendaftar extends MY_Controller {
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Password baru dan konfirmasi password tidak sama, <br />"
                 . "Silahkan di periksa kembali."]);
-            redirect($data['id'].'/password');
+            redirect($id.'/password');
         }        
     }
     
@@ -114,6 +115,7 @@ class Pendaftar extends MY_Controller {
             'title' => 'Edit Data Diri',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
             'reg_data' => $reg_data,
             'nav_pos' => 'detail'
         ];
@@ -142,6 +144,7 @@ class Pendaftar extends MY_Controller {
             'title' => 'Edit Data '.$tn['trans'],
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
             'trans' => $tn['trans'],
             'parent_data' => $parent_data,
             'nav_pos' => $type, 

@@ -42,7 +42,12 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; <?=$username;?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
+                    <?php if(!empty($registrant)) :?>
                     <a href="<?=  base_url().$id.'/password/'?>"><span class="glyphicon glyphicon-edit"></span> &nbsp; Kata Sandi</a>
+                    <?php endif;?>
+                    <?php if(!empty($admin)) :?>
+                    <a href="<?=  base_url().'admin/password/'?>"><span class="glyphicon glyphicon-edit"></span> &nbsp; Kata Sandi</a>
+                    <?php endif;?>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -55,12 +60,10 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
+            <?php if(!empty($registrant)) :?>
             <li id="navHome">
                 <a href="<?=  base_url().$id.'/beranda/'?>">Beranda</a>
             </li>
-<!--            <li id="navProfile">
-                <a href="<? =  base_url().$id.'/profil/'?>">Profil</a>
-            </li>-->
             <li id="navDetail">
                 <a href="<?=  base_url().$id.'/detail/'?>">Data Diri</a>
             </li>
@@ -76,6 +79,12 @@
             <li id="navRecap">
                 <a href="<?=  base_url().$id.'/rekap'?>">Rekap</a>
             </li>
+            <?php endif;?>
+            <?php if(!empty($admin)) :?>
+            <li id="navHomeAdmin">
+                <a href="<?=  base_url().'admin/beranda/'?>">Beranda</a>
+            </li>
+            <?php endif;?>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

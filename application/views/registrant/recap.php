@@ -27,15 +27,15 @@
 ?>
 
 <h1 class="page-header">
-    Profil
-    <small>Ganti Password</small>
+    Rekap
+    <small>Data</small>
 </h1>
 <ol class="breadcrumb">
     <li>
         <a href="<?=base_url().$id.'/home';?>">Beranda</a>
     </li>
     <li class="active">
-        Ganti Password
+        Rekap Data
     </li>
 </ol>
 <div class="container-fluid">

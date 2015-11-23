@@ -170,6 +170,7 @@ body {
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right shifted">
+                        <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                         <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                         <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
                     </ul>
@@ -260,27 +261,5 @@ body {
 </div>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(function() {
-
-    $('#login-form-link').click(function(e) {
-        $("#login-form").delay(100).fadeIn(100);
-        $("#register-form").fadeOut(100);
-        $('#register-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-    $('#register-form-link').click(function(e) {
-        $("#register-form").delay(100).fadeIn(100);
-        $("#login-form").fadeOut(100);
-        $('#login-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-
-});
-
-</script>
-    
 </body>
 </html>
