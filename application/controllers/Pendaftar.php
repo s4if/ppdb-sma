@@ -203,6 +203,20 @@ class Pendaftar extends MY_Controller {
         }
     }
     
+    public function upload_receipt($id) {
+        $this->blockUnloggedOne($id);
+        $fileUrl = $_FILES['file']["tmp_name"];
+        $fileType = explode('/', $_FILES['file']['type'])[1];
+        $res = $this->reg->uploadReceipt($fileUrl, $fileType, $id);
+        if ($res) {
+            $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
+            redirect($id.'/beranda');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
+            redirect($id.'/beranda');
+        }
+    }
+    
     public function rekap($id){
         $this->blockUnloggedOne($id);
         $registrant = $this->reg->getData(null, $id);

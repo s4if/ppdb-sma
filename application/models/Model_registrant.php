@@ -34,6 +34,7 @@ class Model_registrant extends CI_Model {
     protected $registrant;
     protected $registrantData;
     protected $counter;
+    protected $paymentData;
     
     public function __construct() {
         parent::__construct();
@@ -273,6 +274,32 @@ class Model_registrant extends CI_Model {
         return true;
     }
     
+    public function uploadReceipt($file_url, $file_type, $id){
+        $imagine = new Imagine\Gd\Imagine();
+        $image = $imagine->open($file_url);
+        $box = new Imagine\Image\Box(600, 800);
+        $image->resize($box);
+        $image->save(FCPATH.'data/receipt/'.$id.'.png');
+        $this->receipt_data($id);
+        return true;
+    }
+    
+    protected function receipt_data($id){
+        $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
+        if(empty($this->registrant->getPaymentData())){
+            $this->paymentData = new PaymentEntity();
+        } else {
+            $this->paymentData = $this->registrant->getPaymentData();
+        }
+        $this->paymentData = new PaymentEntity();
+        $this->paymentData->setPaymentDate(new DateTime('now'));
+        $this->paymentData->setRegistrant($this->registrant);
+        $this->doctrine->em->persist($this->paymentData);
+        $this->registrant->setPaymentData($this->paymentData);
+        $this->doctrine->em->persist($this->registrant);
+        $this->doctrine->em->flush();
+    }
+    
     // belum di-test
     // 0 -> Belum 1-> Sudah 2->Finalisasi
     public function cek_status($id){
@@ -305,6 +332,26 @@ class Model_registrant extends CI_Model {
         } else {
             $arr_result ['foto'] = 1;
         }
+        $file = read_file('./data/receipt/'.$id.'.png');
+        if($file){
+            $arr_result ['payment'] = $this->cek_receipt($registrant);
+        } else {
+            $arr_result ['payment'] = 0;
+        }
         return $arr_result;
+    }
+    
+    protected function cek_receipt($registrant){
+        if(!empty($registrant->getPaymentData())){
+            $payment = $registrant->getPaymentData();
+//            $payment = new PaymentEntity();
+            if($payment->getVerified() == null){
+                return 1;
+            } elseif ($payment->getVerified() == 'ok') {
+                return 2;
+            } else {
+                return -1;
+            }
+        }
     }
 }

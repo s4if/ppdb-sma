@@ -75,9 +75,15 @@ class RegistrantEntity
     
     /**
      * @OneToOne(targetEntity="PaymentEntity", mappedBy="registrant", orphanRemoval=true, cascade={"persist"})
-     * @var RegistrantDataEntity
+     * @var PaymentEntity
      **/
     protected $paymentData;
+    
+    /**
+     * @Column(type="boolean", length=8, nullable=TRUE)
+     * @var bool
+     */
+    protected $finalized;
 
     public function getId() {
         return $this->id;
@@ -127,6 +133,14 @@ class RegistrantEntity
         return $this->guardian;
     }
     
+    public function getPaymentData() {
+        return $this->paymentData;
+    }
+
+    public function getFinalized() {
+        return $this->finalized;
+    }
+
     public function setId($id) {
         $this->id = $id;
         return $this;
@@ -187,4 +201,14 @@ class RegistrantEntity
         return $this;
     }
     
+    public function setPaymentData(PaymentEntity $paymentData) {
+        $this->paymentData = $paymentData;
+        return $this;
+    }
+    
+    public function setFinalized($finalized) {
+        $this->finalized = $finalized;
+        return $this;
+    }
+
 }

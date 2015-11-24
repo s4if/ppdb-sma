@@ -7,7 +7,8 @@ vendor/doctrine/orm/bin/doctrine orm:schema-tool:drop --force
 vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
 
 # Hapus Foto Upload-an
-rm -rv data/foto/*
+rm -Rv data/foto/*
+rm -Rv data/receipt/*
 
 # Seeding data
 php seeder.php

@@ -290,6 +290,30 @@
                           <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            6
+                        </td>
+                        <td>
+                            Kuitansi Pembayaran
+                        </td>
+                        <td>
+                            <?php 
+                            switch ($status ['payment']) :
+                            case -1: echo 'File yang diupload salah <span class="glyphicon glyphicon-remove-sign"></span>'; break;
+                            case 0: echo 'Belum Diupload <span class="glyphicon glyphicon-remove-sign"></span>'; break;
+                            case 1: echo 'Menunggu Verifikasi <span class="glyphicon glyphicon-refresh"></span>'; break;
+                            case 2: echo 'Sudah Diverifikasi <span class="glyphicon glyphicon-ok-sign"></span>'; break;
+                            endswitch;
+                            ?>
+                        </td>
+                        <td>
+                            <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#uploadKwitansi">
+                                <span class="glyphicon glyphicon-upload"></span>
+                                Upload Kwitansi
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -307,6 +331,26 @@
                 <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>File berupa Foto Berwarna degan proporsi 4x3</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadKwitansi" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="ModalImportLabel>">Pilih File</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_receipt/<?=$registrant->getId()?>" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>File berupa Hasil Scan atau Foto dari Kwitansi Pembayaran</label>
                         <input type="file" id="file" name="file">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>

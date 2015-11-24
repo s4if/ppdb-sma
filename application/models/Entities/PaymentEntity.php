@@ -47,15 +47,15 @@ class PaymentEntity {
     protected $paymentDate;
     
     /**
-     * @Column(type="string", nullable=true)
-     * @var string
+     * @Column(type="date", nullable=TRUE)
+     * @var DateTime
      */
-    protected $imgLink;
+    protected $verificationDate;
     
     /**
-     * @Column(type="boolean", nullable=true)
+     * @Column(type="string", nullable=true)
      */
-    protected $verified;
+    protected $verified;// null = belum, ok = ok, salah = salah
     
     /**
      * @Column(type="string", nullable=true)
@@ -75,8 +75,8 @@ class PaymentEntity {
         return $this->paymentDate;
     }
 
-    public function getImgLink() {
-        return $this->imgLink;
+    public function getVerificationDate() {
+        return $this->verificationDate;
     }
 
     public function getVerified() {
@@ -102,8 +102,8 @@ class PaymentEntity {
         return $this;
     }
 
-    public function setImgLink($imgLink) {
-        $this->imgLink = $imgLink;
+    public function setVerificationDate(DateTime $verificationDate) {
+        $this->verificationDate = $verificationDate;
         return $this;
     }
 
