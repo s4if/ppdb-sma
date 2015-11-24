@@ -265,34 +265,44 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    public function uploadFoto($file_url, $file_type, $id){
-        $imagine = new Imagine\Gd\Imagine();
-        $image = $imagine->open($file_url);
-        $box = new Imagine\Image\Box(300, 400);
-        $image->resize($box);
-        $image->save(FCPATH.'data/foto/'.$id.'.png');
-        return true;
+    public function uploadFoto($file_url, $id){
+        try {
+            $imagine = new Imagine\Gd\Imagine();
+            $image = $imagine->open($file_url);
+            $box = new Imagine\Image\Box(300, 400);
+            $image->resize($box);
+            $image->save(FCPATH.'data/foto/'.$id.'.png');
+            return true;
+        } catch (Imagine\Exception\RuntimeException $e){
+            return false;
+        }
     }
     
-    public function uploadReceipt($file_url, $file_type, $id){
-        $imagine = new Imagine\Gd\Imagine();
-        $image = $imagine->open($file_url);
-        $box = new Imagine\Image\Box(600, 800);
-        $image->resize($box);
-        $image->save(FCPATH.'data/receipt/'.$id.'.png');
-        $this->receipt_data($id);
-        return true;
+    public function uploadReceipt($file_url, $id, $data){
+        try {
+            $imagine = new Imagine\Gd\Imagine();
+            $image = $imagine->open($file_url);
+            $box = new Imagine\Image\Box(600, 800);
+            $image->resize($box);
+            $image->save(FCPATH.'data/receipt/'.$id.'.png');
+            $this->receipt_data($id, $data);
+            return true;
+        } catch (Imagine\Exception\RuntimeException $e){
+            return false;
+        }
     }
     
-    protected function receipt_data($id){
+    protected function receipt_data($id, $data){
         $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
-        if(empty($this->registrant->getPaymentData())){
+        if(is_null($this->registrant->getPaymentData())){
             $this->paymentData = new PaymentEntity();
         } else {
             $this->paymentData = $this->registrant->getPaymentData();
         }
-        $this->paymentData = new PaymentEntity();
-        $this->paymentData->setPaymentDate(new DateTime('now'));
+        //$this->paymentData = new PaymentEntity();
+        $this->paymentData->setTransferDestination($data['transfer_destination']);
+        $this->paymentData->setAmount($data['amount']);
+        $this->paymentData->setPaymentDate(new DateTime($data['payment_date']));
         $this->paymentData->setRegistrant($this->registrant);
         $this->doctrine->em->persist($this->paymentData);
         $this->registrant->setPaymentData($this->paymentData);
@@ -332,8 +342,8 @@ class Model_registrant extends CI_Model {
         } else {
             $arr_result ['foto'] = 1;
         }
-        $file = read_file('./data/receipt/'.$id.'.png');
-        if($file){
+        $file2 = read_file('./data/receipt/'.$id.'.png');
+        if($file2){
             $arr_result ['payment'] = $this->cek_receipt($registrant);
         } else {
             $arr_result ['payment'] = 0;
@@ -347,7 +357,7 @@ class Model_registrant extends CI_Model {
 //            $payment = new PaymentEntity();
             if($payment->getVerified() == null){
                 return 1;
-            } elseif ($payment->getVerified() == 'ok') {
+            } elseif ($payment->getVerified() == 'valid') {
                 return 2;
             } else {
                 return -1;

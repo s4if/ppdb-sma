@@ -23,6 +23,7 @@ class Pendaftar extends MY_Controller {
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
             'img_link' => $this->getImgLink($id),
+            'img_receipt' => $this->getImgReceipt($id),
             'status' => $this->reg->cek_status($id),
             'nav_pos' => 'home'
         ];
@@ -86,7 +87,7 @@ class Pendaftar extends MY_Controller {
     }
     
     public function getFoto($id, $hash){
-        $this->blockUnloggedOne($id);
+        $this->blockUnloggedOne($id, true);
         $imagine = new Imagine\Gd\Imagine();
         $image = $imagine->open('./data/foto/'.$id.'.png');
         $this->session->set_userdata('random_hash', $hash);
@@ -192,8 +193,7 @@ class Pendaftar extends MY_Controller {
     public function upload_foto($id) {
         $this->blockUnloggedOne($id);
         $fileUrl = $_FILES['file']["tmp_name"];
-        $fileType = explode('/', $_FILES['file']['type'])[1];
-        $res = $this->reg->uploadFoto($fileUrl, $fileType, $id);
+        $res = $this->reg->uploadFoto($fileUrl, $id);
         if ($res) {
             $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
             redirect($id.'/beranda');
@@ -205,9 +205,9 @@ class Pendaftar extends MY_Controller {
     
     public function upload_receipt($id) {
         $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
         $fileUrl = $_FILES['file']["tmp_name"];
-        $fileType = explode('/', $_FILES['file']['type'])[1];
-        $res = $this->reg->uploadReceipt($fileUrl, $fileType, $id);
+        $res = $this->reg->uploadReceipt($fileUrl, $id, $data);
         if ($res) {
             $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
             redirect($id.'/beranda');
@@ -215,6 +215,27 @@ class Pendaftar extends MY_Controller {
             $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
             redirect($id.'/beranda');
         }
+    }
+    
+    private function getImgReceipt($id){
+        $this->load->helper('file');
+        $img_link = '';
+        $file = read_file('./data/receipt/'.$id.'.png');
+        $datetime = new DateTime('now');
+        if($file == false){
+            $img_link = null;
+        }  else {
+            $img_link = base_url().'pendaftar/getReceipt/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
+        }
+        return $img_link;
+    }
+    
+    public function getReceipt($id, $hash){
+        $this->blockUnloggedOne($id, true);
+        $imagine = new Imagine\Gd\Imagine();
+        $image = $imagine->open('./data/receipt/'.$id.'.png');
+        $this->session->set_userdata('random_hash_2', $hash);
+        $image->show('png');
     }
     
     public function rekap($id){

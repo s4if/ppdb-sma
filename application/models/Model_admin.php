@@ -32,6 +32,7 @@
 class Model_admin extends CI_Model {
     
     protected $admin;
+    protected $payment;
     
     public function __construct() {
         parent::__construct();
@@ -89,4 +90,49 @@ class Model_admin extends CI_Model {
         if (!is_null($data['password'])) : $this->admin->setPassword(password_hash($data['password'], PASSWORD_BCRYPT)); endif;
         if (!is_null($data['root'])) : $this->admin->setRoot($data['root']); endif;
     }
+    
+    public function getReceipt($id = -999){
+        if($id == -999){
+            $regRepo = $this->doctrine->em->getRepository('PaymentEntity');
+            return $regRepo->getData();
+        } else {
+            $payment = $this->doctrine->em->find('PaymentEntity', $id);
+            return $payment;
+        }
+    }
+    
+    public function updatePayment($data){
+        $this->admin = $this->doctrine->em->find('PaymentEntity', $data['id']);
+        if(is_null($this->admin)){
+            return false;
+        } else {
+            $this->setPaymentData($data);
+            $this->doctrine->em->persist($this->admin);
+            $this->doctrine->em->flush();
+            return true;
+        }
+    }
+    
+    public function deletePayment($data){
+        $this->admin = $this->doctrine->em->find('PaymentEntity', $data['id']);
+        if(is_null($this->admin)){
+            return false;
+        } else {
+            $this->doctrine->em->remove($this->admin);
+            $this->doctrine->em->flush();
+            return true;
+        }
+    }
+    
+    //jika ada error yang berkaitan dengan set data, lihat urutan pemberian data pada fungsi
+    //['id', 'registrant', 'paymentDate', 'verificationDate', 'verified', 'message']
+    protected function setPaymentData($data){
+        if (!empty($data['id'])) : $this->admin->setId($data['id']); endif;
+        if (!empty($data['registrant'])) : $this->admin->setRegistrant($data['registrant']); endif;
+        if (!empty($data['payment_date'])) : $this->admin->setPaymentDate(new DateTime($data['payment_date'])); endif;
+        if (!empty($data['verification_date'])) : $this->admin->setVerificationDate(new DateTime($data['verification_date'])); endif;
+        if (!empty($data['verified'])) : $this->admin->setVerified($data['verified']); endif;
+        if (!empty($data['message'])) : $this->admin->setMessage($data['message']); endif;
+    }
+    
 }

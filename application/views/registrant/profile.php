@@ -44,6 +44,13 @@
         height: 100%;
         width: 100%;
     }
+    .foto-kwitansi {
+        resize: both;
+        height: 100%;
+        width: 100%;
+        max-height: 800px;
+        max-width: 600px;
+    }
 </style>
 <div class="container-fluid">
     <div class="row">
@@ -300,7 +307,7 @@
                         <td>
                             <?php 
                             switch ($status ['payment']) :
-                            case -1: echo 'File yang diupload salah <span class="glyphicon glyphicon-remove-sign"></span>'; break;
+                            case -1: echo 'File yang diupload salah <span class="glyphicon glyphicon-alert"></span>'; break;
                             case 0: echo 'Belum Diupload <span class="glyphicon glyphicon-remove-sign"></span>'; break;
                             case 1: echo 'Menunggu Verifikasi <span class="glyphicon glyphicon-refresh"></span>'; break;
                             case 2: echo 'Sudah Diverifikasi <span class="glyphicon glyphicon-ok-sign"></span>'; break;
@@ -318,6 +325,14 @@
             </table>
         </div>
     </div>
+    <?php if(!empty($img_receipt)):?>
+    <div class="row">
+        <h3>Kwitansi Pembayaran</h3>
+    </div>
+    <div class="row">
+        <img class="foto-kwitansi img-rounded" src="<?=$img_receipt;?>" alt="foto-profil">
+    </div>
+    <?php endif;?>
 </div>
 
 <div class="modal fade" id="ModalImport" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
@@ -331,7 +346,7 @@
                 <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>File berupa Foto Berwarna degan proporsi 4x3</label>
-                        <input type="file" id="file" name="file">
+                        <input type="file" id="file" name="file" required="true">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
@@ -348,12 +363,41 @@
                 <h4 class="modal-title" id="ModalImportLabel>">Pilih File</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_receipt/<?=$registrant->getId()?>" enctype="multipart/form-data">
+                <form role="form" method="post" class="form-horizontal wrapper" action="<?=base_url();?>pendaftar/upload_receipt/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>File berupa Hasil Scan atau Foto dari Kwitansi Pembayaran</label>
-                        <input type="file" id="file" name="file">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <label>File berupa Hasil Scan atau Foto dari Kwitansi Pembayaran</label>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-4">
+                            <input type="file" id="file" name="file" required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Jumlah :</label>
+                        <div class="col-sm-6">
+                            <input type="text" required="true" name="amount" class="form-control" placeholder="Jumlah" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Rekening Tujuan :</label>
+                        <div class="col-sm-6">
+                            <input type="text" required="true" name="transfer_destination" class="form-control" placeholder="Rekening Tujuan" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Tanggal Pembayaran :</label>
+                        <div class="col-sm-6">
+                            <input class="form-control datepicker" type="text" required="true" 
+                                   data-date-format="dd-mm-yyyy" name="payment_date" value="">
+                        </div>
+                    </div>
+                    <div class="form-group insert_hby">
+                        <div class="col-sm-offset-4 col-sm-6">
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload">&nbsp;Upload</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

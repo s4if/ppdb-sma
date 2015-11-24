@@ -35,6 +35,7 @@ class Model_3_admin_test extends TestCase{
     {
         $this->resetInstance();
         $this->CI->load->model('model_admin', 'admin');
+        $this->CI->load->model('model_registrant', 'reg');
         $this->obj = $this->CI->admin;
     }
     
@@ -93,6 +94,12 @@ class Model_3_admin_test extends TestCase{
         ];
         $this->setUp();
         $this->assertTrue($this->obj->deleteData($data));
+    }
+    
+    public function test_delete_custom_registrant_data(){
+        $this->setUp();
+        $id = $this->CI->reg->getData('P')[0]->getId();
+        $this->assertTrue($this->CI->reg->deleteData(['id' => $id]));
     }
     
 }

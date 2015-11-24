@@ -87,6 +87,9 @@
             <li id="navRegistrantAdmin">
                 <a href="<?=  base_url().'admin/lihat/'?>">Lihat Pendaftar</a>
             </li>
+            <li id="navPaymentAdmin">
+                <a href="<?=  base_url().'admin/pembayaran/'?>">Lihat Pembayaran</a>
+            </li>
             <?php endif;?>
         </ul>
     </div>

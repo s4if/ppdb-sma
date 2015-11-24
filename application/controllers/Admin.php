@@ -145,17 +145,9 @@ class Admin extends MY_Controller {
         if($file == false){
             $img_link = base_url().'assets/images/default.png';
         }  else {
-            $img_link = base_url().'admin/getFoto/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
+            $img_link = base_url().'pendaftar/getFoto/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
         }
         return $img_link;
-    }
-    
-    public function getFoto($id, $hash){
-        $this->blockNonAdmin();
-        $imagine = new Imagine\Gd\Imagine();
-        $image = $imagine->open('./data/foto/'.$id.'.png');
-        $this->session->set_userdata('random_hash', $hash);
-        $image->show('png');
     }
     
     public function do_password_registrant($id){
@@ -238,6 +230,68 @@ class Admin extends MY_Controller {
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
             redirect('admin/lihat');
+        }
+    }
+    
+    public function pembayaran($id  = null){
+        if(is_null($id)){
+            $this->lihat_pembayaran();
+        } else {
+            $this->lihat_kwitansi($id);
+        }
+    }
+    
+    private function lihat_pembayaran (){
+        $this->blockNonAdmin();
+        $data = $this->admin->getReceipt();
+        $this->CustomView('admin/data_pembayaran', [
+            'title' => 'Lihat Resi Pembayaran',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'nav_pos' => 'paymentAdmin',
+            'data_pembayaran' => $data
+        ]);
+    }
+    
+    private function lihat_kwitansi($id){
+        $this->blockNonAdmin();
+        $resi = $this->admin->getReceipt($id);
+        $id_registrant = $resi->getRegistrant()->getId();
+        $data = [
+            'title' => 'Konfirmasi Pembayaran',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'resi' => $resi,
+            'img_receipt' => $this->getImgReceipt($id_registrant),
+            'nav_pos' => 'paymentAdmin'
+        ];
+        $this->CustomView('admin/verifikasi_pembayaran', $data);
+    }
+    
+    private function getImgReceipt($id){
+        $this->load->helper('file');
+        $img_link = '';
+        $file = read_file('./data/receipt/'.$id.'.png');
+        $datetime = new DateTime('now');
+        if($file == false){
+            $img_link = null;
+        }  else {
+            $img_link = base_url().'pendaftar/getReceipt/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
+        }
+        return $img_link;
+    }
+    
+    public function verifikasi($id, $isValid){
+        $this->blockNonAdmin();
+        $verified = ($isValid == 'valid')?'valid':'tidak valid';
+        $verification_date = new DateTime('now');
+        $res = $this->admin->updatePayment(['id' => $id, 'verified' => $verified, 'verification_date' => $verification_date->format('d-m-Y') ]);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/pembayaran/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/pembayaran/'.$id);
         }
     }
 }

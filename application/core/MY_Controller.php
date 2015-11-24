@@ -61,15 +61,19 @@ class MY_Controller extends CI_Controller {
         }
     }
     
-    protected function blockUnloggedOne($id){
-        if(!$this->session->has_userdata('registrant')){
-            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Harap login Dulu!"]);
-            redirect('login', 'refresh');
-        }  elseif(!($this->session->registrant->getId() == $id)) {
-            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Orang Lain!"]);
-            redirect($this->session->registrant->getId().'/beranda', 'refresh');
+    protected function blockUnloggedOne($id, $adminBypass = false){
+        if($this->session->has_userdata('admin') && $adminBypass){
+           // Do Nothing 
         } else {
-            // Do Nothing
+            if(!$this->session->has_userdata('registrant')){
+                $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Harap login Dulu!"]);
+                redirect('login', 'refresh');
+            }  elseif(!($this->session->registrant->getId() == $id)) {
+                $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Orang Lain!"]);
+                redirect($this->session->registrant->getId().'/beranda', 'refresh');
+            } else {
+                // Do Nothing
+            }
         }
     }
     

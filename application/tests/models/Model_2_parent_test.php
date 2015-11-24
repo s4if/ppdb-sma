@@ -39,19 +39,6 @@ class Model_2_parent_test extends TestCase{
         $this->obj = $this->CI->parent;
     }
     
-    public function test_parent_setup(){
-        $data = [
-            'password' => 'qwerty',
-            'name' => 'Fatimah',
-            'sex' => 'P',
-            'prev_school' => 'SMPIT Ihsanul Fikri Kota Magelang',
-            'nisn' => '09082083013',
-            'program' => 'Reguler',
-        ];
-        $this->CI->load->model('model_registrant', 'reg');
-        $this->CI->reg->insertData($data);
-    }
-    
     public function test_crud_data_parent(){
         $this->setUp();
         $this->CI->load->model('model_registrant', 'reg');
@@ -124,10 +111,10 @@ class Model_2_parent_test extends TestCase{
         }
     }
     
-    public function test_delete_custom_data(){
-        $this->setUp();
-        $id = $this->CI->reg->getData('P')[0]->getId();
-        $this->assertTrue($this->CI->reg->deleteData(['id' => $id]));
-    }
+//    public function test_delete_custom_data(){
+//        $this->setUp();
+//        $id = $this->CI->reg->getData('P')[0]->getId();
+//        $this->assertTrue($this->CI->reg->deleteData(['id' => $id]));
+//    }
     
 }

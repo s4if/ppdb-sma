@@ -25,7 +25,7 @@
  */
 
 /**
- * @Entity @Table(name="payment_data")
+ * @Entity(repositoryClass="PaymentRepo") @Table(name="payment_data")
 */
 class PaymentEntity {
     
@@ -47,6 +47,18 @@ class PaymentEntity {
     protected $paymentDate;
     
     /**
+     * @Column(type="string", nullable=FALSE)
+     * @var string
+     */
+    protected $transferDestination;
+    
+    /**
+     * @Column(type="bigint", nullable=FALSE)
+     * @var string
+     */
+    protected $amount;
+    
+    /**
      * @Column(type="date", nullable=TRUE)
      * @var DateTime
      */
@@ -55,7 +67,7 @@ class PaymentEntity {
     /**
      * @Column(type="string", nullable=true)
      */
-    protected $verified;// null = belum, ok = ok, salah = salah
+    protected $verified;// null = belum, valid = ok, tidak valid = salah
     
     /**
      * @Column(type="string", nullable=true)
@@ -73,6 +85,14 @@ class PaymentEntity {
 
     public function getPaymentDate() {
         return $this->paymentDate;
+    }
+
+    public function getTransferDestination() {
+        return $this->transferDestination;
+    }
+
+    public function getAmount() {
+        return $this->amount;
     }
 
     public function getVerificationDate() {
@@ -102,6 +122,16 @@ class PaymentEntity {
         return $this;
     }
 
+    public function setTransferDestination($transferDestination) {
+        $this->transferDestination = $transferDestination;
+        return $this;
+    }
+
+    public function setAmount($amount) {
+        $this->amount = $amount;
+        return $this;
+    }
+
     public function setVerificationDate(DateTime $verificationDate) {
         $this->verificationDate = $verificationDate;
         return $this;
@@ -116,5 +146,6 @@ class PaymentEntity {
         $this->message = $message;
         return $this;
     }
+
 
 }

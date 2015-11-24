@@ -313,7 +313,7 @@
                 <form role="form" method="post" action="<?=base_url();?>admin/upload_foto/<?=$registrant_data->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>File berupa Foto Berwarna degan proporsi 4x3</label>
-                        <input type="file" id="file" name="file">
+                        <input type="file" id="file" name="file" required="true">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>

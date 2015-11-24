@@ -147,9 +147,20 @@ class Model_1_registrant_test extends TestCase {
         $this->assertObjectHasAttribute('physicalAbnormality', $pa);
     }
     
-    public function test_delete_custom_data(){
-        $this->setUp();
+    public function test_upload()
+    {
         $id = $this->obj->getData('P')[0]->getId();
-        $this->assertTrue($this->obj->deleteData(['id' => $id]));
+        $data = [
+            'payment_date' => '11-12-2015',
+            'transfer_destination' => 'SMAIT Ihsanul Fikri BNI Syariah',
+            'amount' => 200000
+        ];
+        // Setup
+        $this->setUp();
+        $this->assertFalse($this->obj->uploadFoto(APPPATH.'tests/assets/failed.txt', $id));
+        $this->assertTrue($this->obj->uploadFoto(APPPATH.'tests/assets/foto.png', $id));
+        $this->assertFalse($this->obj->uploadReceipt(APPPATH.'tests/assets/failed.txt', $id, $data));
+        $this->assertTrue($this->obj->uploadReceipt(APPPATH.'tests/assets/receipt.jpg', $id, $data));
     }
+    
 }
