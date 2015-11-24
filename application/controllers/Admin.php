@@ -228,4 +228,16 @@ class Admin extends MY_Controller {
             redirect('admin/registrant/'.$id);
         }
     }
+    
+    public function hapus_registrant($id){
+        $this->blockNonAdmin();
+        $res = $this->reg->deleteData(['id' => $id]);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil dihapus"]);
+            redirect('admin/lihat');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/lihat');
+        }
+    }
 }

@@ -113,7 +113,7 @@
                             </a>
                             <script type="text/javascript">
                                 $("#btnDelRegistrant<?=$registrant->getId();?>").click(function (){
-                                    $("#btnDelOk").attr("href", "<?=base_url().'admin/hapus_pendaftar/'.$registrant->getId();?>");
+                                    $("#btnDelOk").attr("href", "<?=base_url().'admin/hapus_registrant/'.$registrant->getId();?>");
                                     $("#deleteRegistrant").modal("toggle");
                                 });
                             </script>

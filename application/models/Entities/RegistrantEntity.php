@@ -72,6 +72,12 @@ class RegistrantEntity
      * @var ParentEntity
      **/
     protected $guardian;
+    
+    /**
+     * @OneToOne(targetEntity="PaymentEntity", mappedBy="registrant", orphanRemoval=true, cascade={"persist"})
+     * @var RegistrantDataEntity
+     **/
+    protected $paymentData;
 
     public function getId() {
         return $this->id;
