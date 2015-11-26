@@ -69,7 +69,49 @@ class ParentEntity {
      * @Column(type="string", nullable=TRUE)
      * @var string
      */
-    protected $address;
+    protected $street; // Dusun
+    
+    /**
+     * @Column(type="integer", nullable=TRUE)
+     * @var integer
+     */
+    protected $RT; // RT
+    
+    /**
+     * @Column(type="integer", nullable=TRUE)
+     * @var integer
+     */
+    protected $RW; // RW
+    
+    /**
+     * @Column(type="string", nullable=FALSE)
+     * @var string
+     */
+    protected $village; // Desa
+    
+    /**
+     * @Column(type="string", nullable=FALSE)
+     * @var string
+     */
+    protected $district; // Kecamatan
+    
+    /**
+     * @Column(type="string", nullable=FALSE)
+     * @var string
+     */
+    protected $city; // Kota
+    
+    /**
+     * @Column(type="string", nullable=FALSE)
+     * @var string
+     */
+    protected $province;
+    
+    /**
+     * @Column(type="string", nullable=FALSE)
+     * @var string
+     */
+    protected $postalCode;
     
     /**
      * @Column(type="string", nullable=TRUE)
@@ -152,7 +194,45 @@ class ParentEntity {
     }
 
     public function getAddress() {
-        return $this->address;
+        $str_address = $this->street." RT ".$this->RT." RW ".$this->RW." "
+                .$this->village.", ".$this->district." ".$this->city." ".$this->province;
+        return $str_address;
+    }
+    
+    public function getType() {
+        return $this->type;
+    }
+
+    public function getStreet() {
+        return $this->street;
+    }
+
+    public function getRT() {
+        return $this->RT;
+    }
+
+    public function getRW() {
+        return $this->RW;
+    }
+
+    public function getVillage() {
+        return $this->village;
+    }
+
+    public function getDistrict() {
+        return $this->district;
+    }
+
+    public function getCity() {
+        return $this->city;
+    }
+
+    public function getProvince() {
+        return $this->province;
+    }
+
+    public function getPostalCode() {
+        return $this->postalCode;
     }
 
     public function getContact() {
@@ -220,8 +300,43 @@ class ParentEntity {
         return $this;
     }
 
-    public function setAddress($address) {
-        $this->address = $address;
+    public function setStreet($street) {
+        $this->street = $street;
+        return $this;
+    }
+
+    public function setRT($RT) {
+        $this->RT = $RT;
+        return $this;
+    }
+
+    public function setRW($RW) {
+        $this->RW = $RW;
+        return $this;
+    }
+
+    public function setVillage($village) {
+        $this->village = $village;
+        return $this;
+    }
+
+    public function setDistrict($district) {
+        $this->district = $district;
+        return $this;
+    }
+
+    public function setCity($city) {
+        $this->city = $city;
+        return $this;
+    }
+
+    public function setProvince($province) {
+        $this->province = $province;
+        return $this;
+    }
+
+    public function setPostalCode($postalCode) {
+        $this->postalCode = $postalCode;
         return $this;
     }
 

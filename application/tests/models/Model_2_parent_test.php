@@ -52,7 +52,15 @@ class Model_2_parent_test extends TestCase{
             'status' => 'Hidup',  //Cerai, Hidup, Almarhum
             'birth_place' => 'Blora', 
             'birth_date' => '12-12-1981', 
-            'address' => 'Dsn Karang Wuri, Semar Kab. Semarang', 
+            //'address' => 'Dsn Karang Wuri, Semar Kab. Semarang', 
+            'street' => 'Rambeanak II', 
+            'RT' => 1,
+            'RW' => 3, 
+            'village' => 'Rambeanak', 
+            'district' => 'Mungkid', 
+            'city' => 'Kab. Magelang', 
+            'province' => 'Jawa Tengah', 
+            'postal_code' => 56551,
             'contact' => '08965478865', 
             'relation' => 'Kandung', //Kandung, Tiri, Angkat (ayah & ibu pake radio, tapi wali pake input teks)
             'nationality' => 'WNI', 
@@ -102,7 +110,8 @@ class Model_2_parent_test extends TestCase{
         $this->setUp();
         $id = $this->CI->reg->getData('P')[0]->getId();
         $parentData = $this->obj->getData($id, ['father', 'mother', 'guardian']);
-        $attributes = ['id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation', 
+        $attributes = ['id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'street', 'RT', 'RW', 'village', 
+            'district', 'city', 'province', 'postalCode',  'contact', 'relation', 
             'nationality', 'religion', 'educationLevel', 'job', 'position', 'company', 'income', 'burdenCount'];
         foreach ($parentData as $parent) {
             foreach ($attributes as $attributeName){
@@ -110,11 +119,5 @@ class Model_2_parent_test extends TestCase{
             }
         }
     }
-    
-//    public function test_delete_custom_data(){
-//        $this->setUp();
-//        $id = $this->CI->reg->getData('P')[0]->getId();
-//        $this->assertTrue($this->CI->reg->deleteData(['id' => $id]));
-//    }
     
 }

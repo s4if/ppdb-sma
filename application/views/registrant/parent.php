@@ -105,9 +105,51 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Alamat :</label>
-            <div class="col-sm-6">
-                <textarea class="form-control col-sm-10" required="true" rows="3" name="address"><?=$parent_data->getAddress();?></textarea>
+            <label class="col-sm-2 control-label">Dusun / Jalan :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$parent_data->getStreet();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">RT - RW :</label>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$parent_data->getRT();?>">
+            </div>
+            <div class="col-sm-1 text-center">
+                -
+            </div>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$parent_data->getRW();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Desa / Kelurahan :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="village" class="form-control" placeholder="Masukkan Desa/Kelurahan" value="<?=$parent_data->getVillage();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kecamatan :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="district" class="form-control" placeholder="Masukkan Kecamatan" value="<?=$parent_data->getDistrict();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kota / Kabupaten :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="city" class="form-control" placeholder="Masukkan kota/kabupaten" value="<?=$parent_data->getCity();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Provinsi :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="province" class="form-control" placeholder="Masukkan Provinsi" value="<?=$parent_data->getProvince();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kode Pos :</label>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$parent_data->getPostalCode();?>">
             </div>
         </div>
         <div class="form-group">

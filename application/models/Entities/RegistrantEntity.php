@@ -8,26 +8,31 @@ class RegistrantEntity
      * @Id @GeneratedValue(strategy="NONE") @Column(type="bigint")
      */
     protected $id; //TODO : Make ID Custom like 121220151 [tgl+pendaftar ke berapa]
+    
     /**
      * @Column(type="string", nullable=FALSE)
      * @var string
      */
     protected $password;
+    
     /**
      * @Column(type="string", nullable=FALSE)
      * @var string
      */
     protected $name;
+    
     /**
      * @Column(type="string", length=10, nullable=FALSE)
      * @var string
      */
     protected $sex;
+    
     /**
      * @Column(type="string", nullable=FALSE)
      * @var string
      */
     protected $previousSchool;
+    
     /**
      * @Column(type="string", nullable=TRUE)
      * @var string
@@ -84,6 +89,25 @@ class RegistrantEntity
      * @var bool
      */
     protected $finalized;
+    
+    // Pembayaran (Beneran ini mau dijadiin satu disini?)
+    /**
+     * @Column(type="bigint", nullable=TRUE)
+     * @var string
+     */
+    protected $initialCost; // Uang Pangkal
+    
+    /**
+     * @Column(type="bigint", nullable=TRUE)
+     * @var string
+     */
+    protected $subscriptionCost; // Uang Bulanan
+    
+    /**
+     * @Column(type="bigint", nullable=TRUE)
+     * @var string
+     */
+    protected $monthlyCharity; // Infaq Bulanan
 
     public function getId() {
         return $this->id;
@@ -139,6 +163,18 @@ class RegistrantEntity
 
     public function getFinalized() {
         return $this->finalized;
+    }
+
+    public function getInitialCost() {
+        return $this->initialCost;
+    }
+
+    public function getSubscriptionCost() {
+        return $this->subscriptionCost;
+    }
+
+    public function getMonthlyCharity() {
+        return $this->monthlyCharity;
     }
 
     public function setId($id) {
@@ -210,5 +246,21 @@ class RegistrantEntity
         $this->finalized = $finalized;
         return $this;
     }
+
+    public function setInitialCost($initialCost) {
+        $this->initialCost = $initialCost;
+        return $this;
+    }
+
+    public function setSubscriptionCost($subscriptionCost) {
+        $this->subscriptionCost = $subscriptionCost;
+        return $this;
+    }
+
+    public function setMonthlyCharity($monthlyCharity) {
+        $this->monthlyCharity = $monthlyCharity;
+        return $this;
+    }
+
 
 }

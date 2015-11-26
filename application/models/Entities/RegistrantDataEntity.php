@@ -186,8 +186,6 @@ class RegistrantDataEntity {
     }
 
     public function getAddress() {
-        // TODO : Gabungkan jalan, desa/lurah, distrik, kota/kec, provinsi
-        //return $this->address;
         $str_address = $this->street." RT ".$this->RT." RW ".$this->RW." "
                 .$this->village.", ".$this->district." ".$this->city." ".$this->province;
         return $str_address;

@@ -130,7 +130,14 @@ class Model_parent extends CI_Model{
         if (!is_null($data['status'])) : $this->$var->setStatus($data['status']); endif;
         if (!is_null($data['birth_place'])) : $this->$var->setBirthPlace($data['birth_place']); endif;
         if (!is_null($data['birth_date'])) : $this->$var->setBirthDate(new DateTime($data['birth_date'])); endif;
-        if (!is_null($data['address'])) : $this->$var->setAddress($data['address']); endif;
+        if (!empty($data['street'])) : $this->$var->setStreet($data['street']); endif;
+        if (!empty($data['RT'])) : $this->$var->setRT($data['RT']); endif;
+        if (!empty($data['RW'])) : $this->$var->setRW($data['RW']); endif;
+        if (!empty($data['village'])) : $this->$var->setVillage($data['village']); endif;
+        if (!empty($data['district'])) : $this->$var->setDistrict($data['district']); endif;
+        if (!empty($data['city'])) : $this->$var->setCity($data['city']); endif;
+        if (!empty($data['province'])) : $this->$var->setProvince($data['province']); endif;        
+        if (!empty($data['postal_code'])) : $this->$var->setPostalCode($data['postal_code']); endif;
         if (!is_null($data['contact'])) : $this->$var->setContact($data['contact']); endif;
         if (!is_null($data['relation'])) : $this->$var->setRelation($data['relation']); endif;
         if (!is_null($data['nationality'])) : $this->$var->setNationality($data['nationality']); endif;
