@@ -54,7 +54,15 @@ $em->flush();
 // =======================================
 // Registrant Data Seeder
 $rData = new RegistrantDataEntity();
-$rData->setAddress('Magelang');
+//$rData->setAddress('Magelang');
+$rData->setStreet('Jalan Pemuda Barat No. 3');
+$rData->setRT(1);
+$rData->setRW(3);
+$rData->setVillage('Ponggol');
+$rData->setDistrict('Muntilan');
+$rData->setCity('Kab. Magelang');
+$rData->setProvince('Jawa Tengah');
+$rData->setPostalCode(56551);
 $rData->setBirthDate(new Datetime('12-3-1999'));
 $rData->setBirthPlace('Jombang');
 $rData->setFamilyCondition('Lengkap');

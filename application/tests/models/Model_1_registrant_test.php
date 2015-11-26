@@ -101,7 +101,15 @@ class Model_1_registrant_test extends TestCase {
         $data = [
             'birth_place' => 'Semarang', 
             'birth_date' => '19-2-2000', 
-            'address' => 'Magelang City', 
+            //'address' => 'Magelang City', 
+            'street' => 'Rambeanak II', 
+            'RT' => 1,
+            'RW' => 3, 
+            'village' => 'Rambeanak', 
+            'district' => 'Mungkid', 
+            'city' => 'Kab. Magelang', 
+            'province' => 'Jawa Tengah', 
+            'postal_code' => 56551,
             'family_condition' => 'Yatim', 
             'nationality' => 'WNI', 
             'religion' => 'Islam', 
@@ -129,7 +137,7 @@ class Model_1_registrant_test extends TestCase {
         $registrant = $this->obj->getData('P')[0];
         $registrantData = $registrant->getRegistrantData();
         // TODO: Hobby, achievement, HospitalSheet, PhysicalAbnormality
-        $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'address', 'familyCondition', 'nationality', 'religion', 'height', 'weight', 'stayWith'];
+        $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 'familyCondition', 'nationality', 'religion', 'height', 'weight', 'stayWith'];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrantData);
         }

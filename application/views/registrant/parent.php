@@ -333,7 +333,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Penghasilan (Rp.) :</label>
             <div class="col-sm-6">
-                <input type="number" name="income" required="true" class="form-control" placeholder="Masukkan Penghasilan" value="<?=$parent_data->getIncome();?>">
+                <input type="number" name="income" required="true" class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
             </div>
         </div>
         <div class="form-group">

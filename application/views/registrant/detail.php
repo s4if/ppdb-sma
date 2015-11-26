@@ -47,6 +47,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-2 control-label">Tempat Lahir :</label>
+            <div class="col-sm-6">
+                <input type="text" required="true" name="birth_place" class="form-control" placeholder="Tempat Lahir" value="<?=$reg_data->getBirthPlace();?>">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label">Tanggal Lahir :</label>
             <div class="col-sm-6">
                 <input class="form-control datepicker" type="text" required="true"
@@ -54,15 +60,51 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Tempat Lahir :</label>
-            <div class="col-sm-6">
-                <input type="text" required="true" name="birth_place" class="form-control" placeholder="Tempat Lahir" value="<?=$reg_data->getBirthPlace();?>">
+            <label class="col-sm-2 control-label">Dusun / Jalan :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$reg_data->getStreet();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Alamat :</label>
-            <div class="col-sm-6">
-                <textarea class="form-control col-sm-10" required="true" rows="3" name="address"><?=$reg_data->getAddress();?></textarea>
+            <label class="col-sm-2 control-label">RT - RW :</label>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$reg_data->getRT();?>">
+            </div>
+            <div class="col-sm-1 text-center">
+                -
+            </div>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$reg_data->getRW();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Desa / Kelurahan :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="village" class="form-control" placeholder="Masukkan Desa/Kelurahan" value="<?=$reg_data->getVillage();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kecamatan :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="district" class="form-control" placeholder="Masukkan Kecamatan" value="<?=$reg_data->getDistrict();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kota / Kabupaten :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="city" class="form-control" placeholder="Masukkan kota/kabupaten" value="<?=$reg_data->getCity();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Provinsi :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="province" class="form-control" placeholder="Masukkan Provinsi" value="<?=$reg_data->getProvince();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Kode Pos :</label>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$reg_data->getPostalCode();?>">
             </div>
         </div>
         <!-- TODO: Family Condition pake radio -->

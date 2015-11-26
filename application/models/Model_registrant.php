@@ -183,12 +183,19 @@ class Model_registrant extends CI_Model {
     }
     
     //jika ada error yang berkaitan dengan set data, lihat urutan pemberian data pada fungsi
-    //id, registrant, birthplace, birthdate, address, familyCondition, nationality, religion, height, weight, stayWith
+    //id, registrant, birthplace, birthdate, street, RT, RW, village, district, city, province, postalCode, familyCondition, nationality, religion, height, weight, stayWith
     protected function setRegistrantDetail($data){
         if (!empty($data['registrant'])) : $this->registrantData->setRegistrant($data['registrant']); endif; //bentuk objek jadi
         if (!empty($data['birth_place'])) : $this->registrantData->setBirthPlace($data['birth_place']); endif;
         if (!empty($data['birth_date'])) : $this->registrantData->setBirthDate(new DateTime($data['birth_date'])); endif;
-        if (!empty($data['address'])) : $this->registrantData->setAddress($data['address']); endif;
+        if (!empty($data['street'])) : $this->registrantData->setStreet($data['street']); endif;
+        if (!empty($data['RT'])) : $this->registrantData->setRT($data['RT']); endif;
+        if (!empty($data['RW'])) : $this->registrantData->setRW($data['RW']); endif;
+        if (!empty($data['village'])) : $this->registrantData->setVillage($data['village']); endif;
+        if (!empty($data['district'])) : $this->registrantData->setDistrict($data['district']); endif;
+        if (!empty($data['city'])) : $this->registrantData->setCity($data['city']); endif;
+        if (!empty($data['province'])) : $this->registrantData->setProvince($data['province']); endif;        
+        if (!empty($data['postal_code'])) : $this->registrantData->setPostalCode($data['postal_code']); endif;
         if (!empty($data['family_condition'])) : $this->registrantData->setFamilyCondition($data['family_condition']); endif;
         if (!empty($data['nationality'])) : $this->registrantData->setNationality($data['nationality']); endif;
         if (!empty($data['religion'])) : $this->registrantData->setReligion($data['religion']); endif;
