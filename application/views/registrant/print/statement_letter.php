@@ -29,7 +29,7 @@
 <html>
     
 <head>
-    <title>Laporan Hasil Belajar Kelas <?=$id_kelas?></title>
+    <title>Lembar Pernyataan Siswa</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -102,9 +102,20 @@
         li.pernyataan {
             text-align: justify;
         }
+        img.foto-header {
+            resize: both;
+            height: 100px;
+            width: 500px;
+        }
+        div.logo {
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: fit-content;
+        }
     </style>
 </head>
 <body>
+    <img class="foto-header" src="<?=  FCPATH.'assets/images/header.png';?>" alt="foto-header">
     <div class="page-content">
         <h1 class="header-print">SURAT PERNYATAAN</h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
@@ -139,7 +150,7 @@
             </tr>
             <tr>
                 <td style="width: 8%; text-align: left">&nbsp;</td>
-                <td style="width: 15%; text-align: left">No. Pendaftaran</td>
+                <td style="width: 15%; text-align: left">No. Daftar</td>
                 <td style="width: 2%; text-align: left">:</td>
                 <td style="width: 75%; text-align: left"><?=$registrant->getId();?></td>
             </tr>

@@ -283,6 +283,51 @@ class Pendaftar extends MY_Controller {
         $this->load->view('registrant/print/registrant_data', $data);
     }
     
+    public function print_data_pendaftaran($id, $action = 'download'){
+        $this->blockUnloggedOne($id);
+        $registrant = $this->reg->getData(null, $id);
+        $this->session->set_userdata('registrant', $registrant);
+        $data = [
+            'title' => 'Print Surat Pernyataan',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'nav_pos' => 'recap',
+            'img_link' => $this->getImgLink($id),
+            'registrant' => $this->session->registrant,
+        ];
+        $pdf = new mikehaertl\wkhtmlto\Pdf();
+        $pdf->setOptions($this->pdfOption());
+        $reg_data = $this->load->view('registrant/print/registrant_data', $data, TRUE);
+        $pdf->addPage($reg_data);
+        if(($registrant->getCompleted())){
+            $reg_letter = $this->load->view('registrant/print/statement_letter', $data, TRUE);
+            $pdf->addPage($reg_letter);
+        }
+        if ($action == 'download'){
+            $res = $pdf->send('Data Pendaftaran '.$id.' .pdf');
+        } else {
+            $res = $pdf->send();
+        }
+        if (!$res) { echo $pdf->getError(); }
+    }
+    
+    private  function pdfOption(){
+        $options = [
+            'page-size' => 'A4',
+            'dpi' => 96,
+            'image-quality' => 100,
+            'margin-top' => '10mm',
+            'margin-right' => '20mm',
+            'margin-bottom' => '10mm',
+            'margin-left' => '20mm',
+            'header-spacing' => 15,
+            'footer-spacing' => 5,
+            'disable-smart-shrinking',
+            'no-outline'
+        ];
+        return $options;
+    }
+    
     public function surat($id){
         $this->blockUnloggedOne($id);
         $data = [

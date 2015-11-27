@@ -304,6 +304,22 @@
                             6
                         </td>
                         <td>
+                            Mengisi Surat Pernyataan
+                        </td>
+                        <td>
+                            <?php echo ($registrant->getCompleted())?
+                            'Sudah Diisi <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Diisi <span class="glyphicon glyphicon-remove-sign"></span>';?>
+                        </td>
+                        <td>
+                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/surat/"><span class="glyphicon glyphicon-edit">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            7
+                        </td>
+                        <td>
                             Kuitansi Pembayaran
                         </td>
                         <td>

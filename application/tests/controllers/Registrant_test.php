@@ -26,7 +26,7 @@ class Registrant_test extends TestCase
         
         public function test_beranda_blocked()
         {
-            $this->request('GET', '201511210001/beranda');
+            $this->request('GET', 'I1511001/beranda');
             $this->assertRedirect('login');
         }
         
@@ -42,10 +42,10 @@ class Registrant_test extends TestCase
         public function test_login_ok()
         {
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => '20141201001',
+                'id_pendaftaran' => 'I1511001',
                 'password' => 'qwerty'
             ]);
-            $this->assertRedirect('20141201001/beranda');
+            $this->assertRedirect('I1511001/beranda');
         }
         
         public function test_logout(){
@@ -55,44 +55,44 @@ class Registrant_test extends TestCase
         
         public function test_ganti_password(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => '20141201001',
+                'id_pendaftaran' => 'I1511001',
                 'password' => 'qwerty'
             ]);
-            $output = $this->request('GET', '20141201001/password');
+            $output = $this->request('GET', 'I1511001/password');
             $this->assertContains('<title>Password</title>', $output);
             $param = [
                 'stored_password' => 'qwertyu',
                 'new_password' => 'zaraki',
                 'confirm_password' => 'qwerty'
             ];
-            $this->request('POST', 'pendaftar/change_password/20141201001', $param);
-            $this->assertRedirect('20141201001/password');
+            $this->request('POST', 'pendaftar/change_password/I1511001', $param);
+            $this->assertRedirect('I1511001/password');
             $param['confirm_password'] = 'zaraki';
-            $this->request('POST', 'pendaftar/change_password/20141201001', $param);
-            $this->assertRedirect('20141201001/password');
+            $this->request('POST', 'pendaftar/change_password/I1511001', $param);
+            $this->assertRedirect('I1511001/password');
             $param['stored_password'] = 'qwerty';
-            $this->request('POST', 'pendaftar/change_password/20141201001', $param);
-            $this->assertRedirect('20141201001/password');
+            $this->request('POST', 'pendaftar/change_password/I1511001', $param);
+            $this->assertRedirect('I1511001/password');
         }
         
         public function test_beranda()
         {
             // Passwordnya sudah berubah
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => '20141201001',
+                'id_pendaftaran' => 'I1511001',
                 'password' => 'zaraki'
             ]);
-            $output = $this->request('GET','20141201001/beranda');
+            $output = $this->request('GET','I1511001/beranda');
             $this->assertContains('<title>Beranda</title>', $output);
-            $output2 = $this->request('GET','20141201001/detail');
+            $output2 = $this->request('GET','I1511001/detail');
             $this->assertContains('<title>Edit Data Diri</title>', $output2);
-            $output3 = $this->request('GET','20141201001/data/father');
+            $output3 = $this->request('GET','I1511001/data/father');
             $this->assertContains('<title>Edit Data Ayah</title>', $output3);
-            $output4 = $this->request('GET','20141201001/data/mother');
+            $output4 = $this->request('GET','I1511001/data/mother');
             $this->assertContains('<title>Edit Data Ibu</title>', $output4);
-            $output5 = $this->request('GET','20141201001/data/guardian');
+            $output5 = $this->request('GET','I1511001/data/guardian');
             $this->assertContains('<title>Edit Data Wali</title>', $output5);
-            $output6 = $this->request('GET','20141201001/rekap');
+            $output6 = $this->request('GET','I1511001/rekap');
             $this->assertContains('<title>Rekap Data</title>', $output6);
             
         }

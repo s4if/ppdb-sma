@@ -29,9 +29,9 @@
 <html>
     
 <head>
-    <title>Laporan Hasil Belajar Kelas <?=$id_kelas?></title>
+    <title>Data Peserta</title>
     <style>
-        body {
+       body {
             font-family: "Times New Roman", Times, serif;
             font-size: 0.8em;
             font-size-adjust: 0.5;
@@ -110,8 +110,8 @@
         }
         img.foto-profil {
             resize: both;
-            height: 100%;
-            width: 100%;
+            height: 200px;
+            width: 150px;
             max-height: 200px;
             max-width: 150px;
         }
@@ -122,181 +122,185 @@
             font-size-adjust: 0.5;
             vertical-align: text-top;
         }
+        img.foto-header {
+            resize: both;
+            height: 100px;
+            width: 500px;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <h1 class="header-print">Data Pendaftar</h1>
-        <div class="page-content">
-            <h2 class="header-section">Foto Pendaftar</h2>
-            <img class="foto-profil img-rounded" src="<?=$img_link;?>" alt="foto-profil">
-            <hr />
-        </div>
-        <div class="page-content">
-            <h2 class="header-section">Data Pendaftaran</h2>
-            <table class="data">
-                <tr>
-                    <td> Nomor Pendaftaran </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$registrant->getId();?> </td>
-                </tr>
-                <tr>
-                    <td> Nama </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$registrant->getName();?> </td>
-                </tr>
-                <tr>
-                    <td> Sekolah Asal </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$registrant->getPreviousSchool()?> </td>
-                </tr>
-                <tr>
-                    <td> Jenis Kelamin </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
-                </tr>
-                <tr>
-                    <td> NISN </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$registrant->getNisn()?> </td>
-                </tr>
-                <tr>
-                    <td> Program </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$registrant->getProgram()?> </td>
-                </tr>
-            </table>
-            <hr />
-        </div>
-        <?php if (!is_null($registrant->getRegistrantData())) :
-            $data = $registrant->getRegistrantData();?>
-        <div class="page-content">
-            <h2 class="header-section">Detail Pendaftar</h2>
-            <table class="data">
-                <tr>
-                    <td> TTL </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucfirst($data->getBirthPlace()).', '.$data->getBirthDate()->format('d F Y');?> </td>
-                </tr>
-                <tr>
-                    <td> Alamat </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $data->getAddress();?> </td>
-                </tr>
-                <tr>
-                    <td> Keadaan Keluarga Pendaftar </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucwords($data->getFamilyCondition());?> </td>
-                </tr>
-                <tr>
-                    <td> Kewarganegaraan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo strtoupper($data->getNationality());?> </td>
-                </tr>
-                <tr>
-                    <td> Agama </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucfirst($data->getReligion());?> </td>
-                </tr>
-                <tr>
-                    <td> Tinggi / Berat </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $data->getHeight().'/'.$data->getWeight();?> </td>
-                </tr>
-                <tr>
-                    <td> Tinggal Bersama </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucwords($data->getStayWith());?> </td>
-                </tr>
-            </table>
-            <hr />
-        </div>
-        <?php endif;?>
-        <?php 
-        $arr_parent = [['father', 'ayah'],['mother', 'ibu'],['guardian', 'wali']];
-        foreach ($arr_parent as $str_parent) :
-        $sfunct = 'get'.ucfirst($str_parent[0]);
-        if (!is_null($registrant->$sfunct())) : 
-            $parent = $registrant->$sfunct();?>
-        <div class="page-content">
-            <h2 class="header-section">Data <?=ucfirst($str_parent[1])?></h2>
-            <table class="data">
-                <tr>
-                    <td> Nama </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getName();?> </td>
-                </tr>
-                <tr>
-                    <td> Status </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucwords($parent->getStatus());?> </td>
-                </tr>
-                <tr>
-                    <td> TTL </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucfirst($parent->getBirthPlace()).', '.$parent->getBirthDate()->format('d F Y');?> </td>
-                </tr>
-                <tr>
-                    <td> Alamat </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getAddress();?> </td>
-                </tr>
-                <tr>
-                    <td> No. Telp </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getContact();?> </td>
-                </tr>
-                <tr>
-                    <td> Hubungan dengan Pendaftar </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucwords($parent->getRelation());?> </td>
-                </tr>
-                <tr>
-                    <td> Kewarganegaraan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo strtoupper($parent->getNationality());?> </td>
-                </tr>
-                <tr>
-                    <td> Agama </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo ucwords($parent->getReligion());?> </td>
-                </tr>
-                <tr>
-                    <td> Tingkat Pendidikan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getEducationLevel();?> </td>
-                </tr>
-                <tr>
-                    <td> Pekerjaan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getJob();?> </td>
-                </tr>
-                <tr>
-                    <td> Jabatan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getPosition();?> </td>
-                </tr>
-                <tr>
-                    <td> Instansi </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getCompany();?> </td>
-                </tr>
-                <tr>
-                    <td> Penghasilan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> Rp. <?php echo $parent->getIncome();?>,- </td>
-                </tr>
-                <tr>
-                    <td> Jumlah Tanggunan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?php echo $parent->getBurdenCount();?> </td>
-                </tr>
-            </table>
-            <hr />
-        </div>
-        <?php endif; ?>
-        <?php endforeach; ?>
+    <img class="foto-header" src="<?=  FCPATH.'assets/images/header.png';?>" alt="foto-header">
+    <h1 class="header-print">Data Pendaftar</h1>
+    <div class="page-content">
+        <h2 class="header-section">Foto Pendaftar</h2>
+        <img class="foto-profil img-rounded" src="<?=FCPATH.'data/foto/'.$id.'.png';?>" alt="foto-profil">
+        <hr />
     </div>
+    <div class="page-content">
+        <h2 class="header-section">Data Pendaftaran</h2>
+        <table class="data">
+            <tr>
+                <td> Nomor Pendaftaran </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$registrant->getId();?> </td>
+            </tr>
+            <tr>
+                <td> Nama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$registrant->getName();?> </td>
+            </tr>
+            <tr>
+                <td> Sekolah Asal </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$registrant->getPreviousSchool()?> </td>
+            </tr>
+            <tr>
+                <td> Jenis Kelamin </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+            </tr>
+            <tr>
+                <td> NISN </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$registrant->getNisn()?> </td>
+            </tr>
+            <tr>
+                <td> Program </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$registrant->getProgram()?> </td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+    <?php if (!is_null($registrant->getRegistrantData())) :
+        $data = $registrant->getRegistrantData();?>
+    <div class="page-content">
+        <h2 class="header-section">Detail Pendaftar</h2>
+        <table class="data">
+            <tr>
+                <td> TTL </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucfirst($data->getBirthPlace()).', '.$data->getBirthDate()->format('d F Y');?> </td>
+            </tr>
+            <tr>
+                <td> Alamat </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getAddress();?> </td>
+            </tr>
+            <tr>
+                <td> Keadaan Keluarga Pendaftar </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($data->getFamilyCondition());?> </td>
+            </tr>
+            <tr>
+                <td> Kewarganegaraan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo strtoupper($data->getNationality());?> </td>
+            </tr>
+            <tr>
+                <td> Agama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucfirst($data->getReligion());?> </td>
+            </tr>
+            <tr>
+                <td> Tinggi / Berat </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getHeight().'/'.$data->getWeight();?> </td>
+            </tr>
+            <tr>
+                <td> Tinggal Bersama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($data->getStayWith());?> </td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+    <?php endif;?>
+    <?php 
+    $arr_parent = [['father', 'ayah'],['mother', 'ibu'],['guardian', 'wali']];
+    foreach ($arr_parent as $str_parent) :
+    $sfunct = 'get'.ucfirst($str_parent[0]);
+    if (!is_null($registrant->$sfunct())) : 
+        $parent = $registrant->$sfunct();?>
+    <div class="page-content">
+        <h2 class="header-section">Data <?=ucfirst($str_parent[1])?></h2>
+        <table class="data">
+            <tr>
+                <td> Nama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getName();?> </td>
+            </tr>
+            <tr>
+                <td> Status </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($parent->getStatus());?> </td>
+            </tr>
+            <tr>
+                <td> TTL </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucfirst($parent->getBirthPlace()).', '.$parent->getBirthDate()->format('d F Y');?> </td>
+            </tr>
+            <tr>
+                <td> Alamat </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getAddress();?> </td>
+            </tr>
+            <tr>
+                <td> No. Telp </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getContact();?> </td>
+            </tr>
+            <tr>
+                <td> Hubungan dengan Pendaftar </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($parent->getRelation());?> </td>
+            </tr>
+            <tr>
+                <td> Kewarganegaraan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo strtoupper($parent->getNationality());?> </td>
+            </tr>
+            <tr>
+                <td> Agama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($parent->getReligion());?> </td>
+            </tr>
+            <tr>
+                <td> Tingkat Pendidikan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getEducationLevel();?> </td>
+            </tr>
+            <tr>
+                <td> Pekerjaan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getJob();?> </td>
+            </tr>
+            <tr>
+                <td> Jabatan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getPosition();?> </td>
+            </tr>
+            <tr>
+                <td> Instansi </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getCompany();?> </td>
+            </tr>
+            <tr>
+                <td> Penghasilan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. <?php echo $parent->getIncome();?>,- </td>
+            </tr>
+            <tr>
+                <td> Jumlah Tanggunan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $parent->getBurdenCount();?> </td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+    <?php endif; ?>
+    <?php endforeach; ?>
 </body>
 
 </html>

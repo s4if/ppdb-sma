@@ -24,4 +24,10 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         $result =  $query->getResult();
         return $result;
     }
+    
+    public function getCount(){
+        $query = $this->getEntityManager()->createQuery('SELECT COUNT(r.id) FROM RegistrantEntity r');
+        $count = $query->getSingleScalarResult();   
+        return $count;
+    }
 }

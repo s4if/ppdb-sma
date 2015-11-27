@@ -5,7 +5,7 @@
 class RegistrantEntity
 {
     /**
-     * @Id @GeneratedValue(strategy="NONE") @Column(type="bigint")
+     * @Id @GeneratedValue(strategy="NONE") @Column(type="string")
      */
     protected $id; //TODO : Make ID Custom like 121220151 [tgl+pendaftar ke berapa]
     
@@ -84,12 +84,6 @@ class RegistrantEntity
      **/
     protected $paymentData;
     
-    /**
-     * @Column(type="boolean", length=8, nullable=TRUE)
-     * @var bool
-     */
-    protected $finalized;
-    
     // Pembayaran (Beneran ini mau dijadiin satu disini?)
     /**
      * @Column(type="bigint", nullable=TRUE)
@@ -162,13 +156,9 @@ class RegistrantEntity
     public function getGuardian() {
         return $this->guardian;
     }
-    
+
     public function getPaymentData() {
         return $this->paymentData;
-    }
-
-    public function getFinalized() {
-        return $this->finalized;
     }
 
     public function getInitialCost() {
@@ -182,14 +172,17 @@ class RegistrantEntity
     public function getMonthlyCharity() {
         return $this->monthlyCharity;
     }
-    
+
     public function getMainParent() {
         return $this->mainParent;
     }
-    
-    public function getMainParentObj() {
-        $var = strtolower($this->mainParent);
-        return $this->$var;
+
+        
+    public function getCompleted(){
+        $res = (!(empty($this->getFather())||empty($this->getMother())||empty($this->getMonthlyCharity())||
+                empty($this->getMonthlyCharity())||empty($this->getInitialCost())||empty($this->getMainParent())));
+        return $res;
+        
     }
     
     public function setId($id) {
@@ -231,7 +224,7 @@ class RegistrantEntity
         $this->registrationTime = $registrationTime;
         return $this;
     }
-    
+
     public function setRegistrantData(RegistrantDataEntity $registrantData) {
         $this->registrantData = $registrantData;
         return $this;
@@ -251,14 +244,9 @@ class RegistrantEntity
         $this->guardian = $guardian;
         return $this;
     }
-    
+
     public function setPaymentData(PaymentEntity $paymentData) {
         $this->paymentData = $paymentData;
-        return $this;
-    }
-    
-    public function setFinalized($finalized) {
-        $this->finalized = $finalized;
         return $this;
     }
 
@@ -276,7 +264,7 @@ class RegistrantEntity
         $this->monthlyCharity = $monthlyCharity;
         return $this;
     }
-    
+
     public function setMainParent($mainParent) {
         $this->mainParent = $mainParent;
         return $this;

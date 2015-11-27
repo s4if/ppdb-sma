@@ -55,7 +55,7 @@ class Model_registrant extends CI_Model {
         try {
             $this->registrant = new RegistrantEntity();
             $data['reg_time'] = new DateTime('now');
-            $data['id'] = $this->genId($data['reg_time']);
+            $data['id'] = $this->genId($data['reg_time'], $data['sex']);
             $this->setRegistrantData($data);
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
@@ -72,22 +72,21 @@ class Model_registrant extends CI_Model {
     // ===========
     
     // generate Id berdasarkan counter
-    protected function genId(DateTime $date){
+    protected function genId(DateTime $date, $sex){
         $this->counter = $this->doctrine->em->find('CounterEntity', (int) $date->format('Ymd'));
+        $regCount = $this->doctrine->em->getRepository('RegistrantEntity')->getCount();
+        $strCount = (string)str_pad(($regCount+1), 3, '0', STR_PAD_LEFT);
+        $strSex = ($sex == 'L')?'I':'A';
+        $strDate = (string)$date->format('ym');
         if (is_null($this->counter)){
             $this->counter = new CounterEntity();
             $this->counter->setDate($date);
             $this->counter->addCount();
             $this->doctrine->em->persist($this->counter);
-            //$this->doctrine->em->flush();
-            $strDate = (string)$this->counter->getDate()->format('Ymd');
-            $regCount = (string)str_pad($this->counter->getRegistrantCount(), 3, '0', STR_PAD_LEFT);
-            return $strDate.$regCount;
+            return $strSex.$strDate.$strCount;
         } else {
-            $strDate = (string)$this->counter->getDate()->format('Ymd');
             $this->counter->addCount();
-            $regCount = (string)str_pad($this->counter->getRegistrantCount(), 3, '0', STR_PAD_LEFT);
-            return $strDate.$regCount;
+            return $strSex.$strDate.$strCount;
         }
     }
     
