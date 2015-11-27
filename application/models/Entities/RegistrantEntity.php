@@ -108,6 +108,12 @@ class RegistrantEntity
      * @var string
      */
     protected $monthlyCharity; // Infaq Bulanan
+    
+    /**
+     * @Column(type="string", nullable=TRUE)
+     * @var string
+     */
+    protected $mainParent;
 
     public function getId() {
         return $this->id;
@@ -176,7 +182,16 @@ class RegistrantEntity
     public function getMonthlyCharity() {
         return $this->monthlyCharity;
     }
-
+    
+    public function getMainParent() {
+        return $this->mainParent;
+    }
+    
+    public function getMainParentObj() {
+        $var = strtolower($this->mainParent);
+        return $this->$var;
+    }
+    
     public function setId($id) {
         $this->id = $id;
         return $this;
@@ -261,6 +276,10 @@ class RegistrantEntity
         $this->monthlyCharity = $monthlyCharity;
         return $this;
     }
-
+    
+    public function setMainParent($mainParent) {
+        $this->mainParent = $mainParent;
+        return $this;
+    }
 
 }

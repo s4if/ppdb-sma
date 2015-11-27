@@ -58,16 +58,16 @@ class Model_parent extends CI_Model{
     
     // TODO: In Production always enable try and catch
     public function updateData($id, $data, $position){
-//        try{
+        try{
             $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
             if(is_null($this->registrant)){
                 return false;
             } else {
                 return $this->doUpdateData($data, $position);
             }
-//        } catch (Exception $e){
-//            return false;
-//        }
+        } catch (Doctrine\DBAL\Exception\ConstraintViolationException $e){
+            return false;
+        }
     }
     
     
@@ -93,12 +93,12 @@ class Model_parent extends CI_Model{
         if(is_null($this->registrant)){
             return false;
         } else {
-            // try kalau di production harus diaktifkan
-//            try{
+//             try kalau di production harus diaktifkan
+            try{
                 return $this->doDelete($pos);
-//            } catch (Exception $ex) {
-//                return false;
-//            }
+            } catch (Doctrine\DBAL\Exception\DriverException $ex) {
+                return false;
+            }
         }
     }
     

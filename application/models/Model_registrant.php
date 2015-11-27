@@ -52,7 +52,7 @@ class Model_registrant extends CI_Model {
     
     // TODO: In Production always enable try and catch
     public function insertData($data){
-//        try {
+        try {
             $this->registrant = new RegistrantEntity();
             $data['reg_time'] = new DateTime('now');
             $data['id'] = $this->genId($data['reg_time']);
@@ -60,9 +60,9 @@ class Model_registrant extends CI_Model {
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
-//        } catch (Exception $ex){
-//            return false;
-//        }
+        } catch (Doctrine\DBAL\Exception\ConstraintViolationException $ex){
+            return false;
+        }
     }
     
     // Xperimental
@@ -128,6 +128,10 @@ class Model_registrant extends CI_Model {
         if (!empty($data['nisn'])) : $this->registrant->setNisn($data['nisn']); endif;
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
+        if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
+        if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
+        if (!empty($data['monthly_charity'])) : $this->registrant->setMonthlyCharity($data['monthly_charity']); endif;
+        if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
     }
     
     
@@ -306,8 +310,6 @@ class Model_registrant extends CI_Model {
         } else {
             $this->paymentData = $this->registrant->getPaymentData();
         }
-        //$this->paymentData = new PaymentEntity();
-        $this->paymentData->setTransferDestination($data['transfer_destination']);
         $this->paymentData->setAmount($data['amount']);
         $this->paymentData->setPaymentDate(new DateTime($data['payment_date']));
         $this->paymentData->setRegistrant($this->registrant);
@@ -322,20 +324,24 @@ class Model_registrant extends CI_Model {
     public function cek_status($id){
         $registrant = $this->getData(NULL, $id);
         $arr_result = [];
+        $all_stats = 0;
         if(is_null($registrant->getRegistrantData())){
             $arr_result ['data'] = 0;
         } else {
             $arr_result ['data'] = 1;
+            $all_stats++;
         }
         if(is_null($registrant->getFather())){
             $arr_result ['father'] = 0;
         } else {
             $arr_result ['father'] = 1;
+            $all_stats++;
         }
         if(is_null($registrant->getMother())){
             $arr_result ['mother'] = 0;
         } else {
             $arr_result ['mother'] = 1;
+            $all_stats++;
         }
         if(is_null($registrant->getGuardian())){
             $arr_result ['guardian'] = 0;
@@ -348,20 +354,24 @@ class Model_registrant extends CI_Model {
             $arr_result ['foto'] = 0;
         } else {
             $arr_result ['foto'] = 1;
+            $all_stats++;
         }
         $file2 = read_file('./data/receipt/'.$id.'.png');
         if($file2){
             $arr_result ['payment'] = $this->cek_receipt($registrant);
+            if($arr_result['payment'] == 2){
+                $all_stats++;
+            }
         } else {
             $arr_result ['payment'] = 0;
         }
+        $arr_result['completed'] = ($all_stats >=5)?true:false;
         return $arr_result;
     }
     
     protected function cek_receipt($registrant){
         if(!empty($registrant->getPaymentData())){
             $payment = $registrant->getPaymentData();
-//            $payment = new PaymentEntity();
             if($payment->getVerified() == null){
                 return 1;
             } elseif ($payment->getVerified() == 'valid') {

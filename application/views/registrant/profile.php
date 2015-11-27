@@ -43,6 +43,8 @@
         resize: both;
         height: 100%;
         width: 100%;
+        max-height: 200px;
+        max-width: 150px;
     }
     .foto-kwitansi {
         resize: both;
@@ -363,7 +365,7 @@
                 <h4 class="modal-title" id="ModalImportLabel>">Pilih File</h4>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" class="form-horizontal wrapper" action="<?=base_url();?>pendaftar/upload_receipt/<?=$registrant->getId()?>" enctype="multipart/form-data">
+                <form role="form" method="post" class="form-horizontal" action="<?=base_url();?>pendaftar/upload_receipt/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <label>File berupa Hasil Scan atau Foto dari Kwitansi Pembayaran</label>
@@ -381,19 +383,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Rekening Tujuan :</label>
-                        <div class="col-sm-6">
-                            <input type="text" required="true" name="transfer_destination" class="form-control" placeholder="Rekening Tujuan" value="">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="col-sm-4 control-label">Tanggal Pembayaran :</label>
                         <div class="col-sm-6">
                             <input class="form-control datepicker" type="text" required="true" 
                                    data-date-format="dd-mm-yyyy" name="payment_date" value="">
                         </div>
                     </div>
-                    <div class="form-group insert_hby">
+                    <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-6">
                             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload">&nbsp;Upload</button>
                         </div>

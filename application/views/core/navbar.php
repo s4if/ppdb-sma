@@ -76,6 +76,9 @@
             <li id="navGuardian">
                 <a href="<?=  base_url().$id.'/data/guardian/'?>">Data Wali</a>
             </li>
+            <li id="navLetter">
+                <a href="<?=  base_url().$id.'/surat'?>">Surat Pernyataan</a>
+            </li>
             <li id="navRecap">
                 <a href="<?=  base_url().$id.'/rekap'?>">Rekap</a>
             </li>

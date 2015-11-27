@@ -47,12 +47,6 @@ class PaymentEntity {
     protected $paymentDate;
     
     /**
-     * @Column(type="string", nullable=FALSE)
-     * @var string
-     */
-    protected $transferDestination;
-    
-    /**
      * @Column(type="bigint", nullable=FALSE)
      * @var string
      */
@@ -87,10 +81,6 @@ class PaymentEntity {
         return $this->paymentDate;
     }
 
-    public function getTransferDestination() {
-        return $this->transferDestination;
-    }
-
     public function getAmount() {
         return $this->amount;
     }
@@ -119,11 +109,6 @@ class PaymentEntity {
 
     public function setPaymentDate(DateTime $paymentDate) {
         $this->paymentDate = $paymentDate;
-        return $this;
-    }
-
-    public function setTransferDestination($transferDestination) {
-        $this->transferDestination = $transferDestination;
         return $this;
     }
 

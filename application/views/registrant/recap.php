@@ -32,19 +32,20 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="<?=base_url().$id.'/home';?>">Beranda</a>
+        <a href="<?=base_url().'/'.$id;?>/beranda/">Beranda</a>
     </li>
     <li class="active">
         Rekap Data
     </li>
 </ol>
 <div class="container-fluid">
-    <?php //var_dump($registrant);?>
     <style>
         img.foto-profil {
             resize: both;
             height: 100%;
             width: 100%;
+            max-height: 200px;
+            max-width: 150px;
         }
         table.data{
             border-collapse: collapse;

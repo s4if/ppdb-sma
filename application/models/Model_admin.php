@@ -56,7 +56,7 @@ class Model_admin extends CI_Model {
             $this->doctrine->em->persist($this->admin);
             $this->doctrine->em->flush();
             return true;
-        } catch (Exception $ex){
+        } catch (Doctrine\DBAL\Exception\ConstraintViolationException $ex){
             return false;
         }
     }

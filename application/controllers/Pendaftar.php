@@ -253,6 +253,67 @@ class Pendaftar extends MY_Controller {
         $this->CustomView('registrant/recap', $data);
     }
     
+    public function print_letter($id){
+        $this->blockUnloggedOne($id);
+        $registrant = $this->reg->getData(null, $id);
+        $this->session->set_userdata('registrant', $registrant);
+        $data = [
+            'title' => 'Print Surat Pernyataan',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'nav_pos' => 'recap',
+            'img_link' => $this->getImgLink($id),
+            'registrant' => $this->session->registrant,
+        ];
+        $this->load->view('registrant/print/statement_letter', $data);
+    }
+    
+    public function print_data($id){
+        $this->blockUnloggedOne($id);
+        $registrant = $this->reg->getData(null, $id);
+        $this->session->set_userdata('registrant', $registrant);
+        $data = [
+            'title' => 'Print Surat Pernyataan',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'nav_pos' => 'recap',
+            'img_link' => $this->getImgLink($id),
+            'registrant' => $this->session->registrant,
+        ];
+        $this->load->view('registrant/print/registrant_data', $data);
+    }
+    
+    public function surat($id){
+        $this->blockUnloggedOne($id);
+        $data = [
+            'title' => 'Surat Pernyataan',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
+            'nav_pos' => 'home'
+        ];
+        $this->CustomView('registrant/letter', $data);
+    }
+    
+    public function isi_pernyataan($id){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $data['initial_cost'] = ($data['raw_icost'] == '-999')?$data['other_icost']:$data['raw_icost'];
+        $data['subscription_cost'] = ($data['raw_scost'] == '-999')?$data['other_scost']:$data['raw_scost'];
+        $data['monthly_charity'] = ($data['raw_mcost'] == '-999')?$data['other_mcost']:$data['raw_mcost'];
+//        var_dump($data);
+        $data['id'] = $id;
+        $res = $this->reg->updateData($data);
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/surat');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($id.'/surat');
+        }
+    }
+    
     // =========================================================
     
     // ================= Lihat Pendaftar ===========================
