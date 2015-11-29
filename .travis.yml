@@ -14,6 +14,8 @@ before_script:
   - vendor/bin/doctrine orm:schema-tool:drop --force
   - vendor/bin/doctrine orm:schema-tool:create
   - php seeder.php
+  - mkdir -p data/foto/
+  - mkdir -p data/receipt/
 
 script:
   - cd application/tests/
