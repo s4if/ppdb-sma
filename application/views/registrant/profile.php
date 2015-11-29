@@ -93,11 +93,11 @@
         </tr>
         <tr>
             <td colspan="3">
-                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editProfil" >
+                <a class="btn btn-primary btn-sm <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#editProfil" >
                     <span class="glyphicon glyphicon-edit"></span>
                     Edit Profil
                 </a>
-                <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#ModalImport">
+                <a class="btn btn-sm btn-info <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#ModalImport">
                     <span class="glyphicon glyphicon-upload"></span>
                     Upload Foto
                 </a>
@@ -235,7 +235,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/detail/"><span class="glyphicon glyphicon-edit">Edit</a>
+                            <a class="btn btn-xs btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" href="<?=base_url().$id;?>/detail/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -251,7 +251,7 @@
                             :'Belum Diunggah <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#ModalImport">
+                            <a class="btn btn-xs btn-info <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#ModalImport">
                                 <span class="glyphicon glyphicon-upload"></span>
                                 Upload Foto
                             </a>
@@ -270,7 +270,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
+                            <a class="btn btn-xs btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -286,7 +286,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                           <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
+                           <a class="btn btn-xs btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -302,7 +302,7 @@
                             :'Belum Dilengkapi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
+                          <a class="btn btn-xs btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -318,7 +318,7 @@
                             :'Belum Diisi <span class="glyphicon glyphicon-remove-sign"></span>';?>
                         </td>
                         <td>
-                          <a class="btn btn-xs btn-primary" href="<?=base_url().$id;?>/surat/"><span class="glyphicon glyphicon-edit">Edit</a>
+                          <a class="btn btn-xs btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" href="<?=base_url().$id;?>/surat/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
                     <tr>
@@ -339,12 +339,39 @@
                             ?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#uploadKwitansi">
+                            <a class="btn btn-xs btn-info <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#uploadKwitansi">
                                 <span class="glyphicon glyphicon-upload"></span>
                                 Upload Kwitansi
                             </a>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            8
+                        </td>
+                        <td>
+                            Finalisasi Data
+                        </td>
+                        <td>
+                            <?php echo ($registrant->getFinalized())?
+                            'Sudah Finalisasi Data <span class="glyphicon glyphicon-ok-sign"></span>'
+                            :'Belum Finalisasi Data <span class="glyphicon glyphicon-remove-sign"></span>';?>
+                        </td>
+                        
+                        <td>
+                            <a class="btn btn-xs btn-warning <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
+                                <span class="glyphicon glyphicon-registration-mark"></span>
+                                Finalisasi
+                            </a>
+                        </td>
+                    </tr>
+                    <?php if ($registrant->getFinalized()) :?>
+                    <tr>
+                        <td colspan="4">
+                            <a class="btn btn-lg btn-success" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>" download="Berkas Pendaftaran <?php $id?>.pdf">Download Berkas Pendaftaran</a>
+                        </td>
+                    </tr>
+                    <?php endif;?>
                 </tbody>
             </table>
         </div>
@@ -374,6 +401,26 @@
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalFinalized" tabindex="-1" role="dialog" aria-labelledby="ModalFinalized" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="ModalFinalizedLabel>">Finalisasi Data</h4>
+            </div>
+            <div class="modal-body">
+                <h3 style="align-content: center"><span class=" glyphicon glyphicon-warning-sign"></span></h3>
+                <p>
+                    Finalisasi data akan menyebabkan Anda tidak bisa lagi <strong>mengubah</strong> data yang anda masukkan! <br/>
+                    Apakah anda yakin Untuk melakukan Finalisasi data?
+                </p>
+                <a href="<?=  base_url().'pendaftar/finalisasi/'.$id.'/true'?>" class="btn btn-primary">OK</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </div>

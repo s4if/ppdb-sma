@@ -129,6 +129,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
+        if (!is_null($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
     }

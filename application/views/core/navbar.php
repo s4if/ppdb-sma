@@ -64,6 +64,7 @@
             <li id="navHome">
                 <a href="<?=  base_url().$id.'/beranda/'?>">Beranda</a>
             </li>
+            <?php if((!$registrant->getFinalized())):?>
             <li id="navDetail">
                 <a href="<?=  base_url().$id.'/detail/'?>">Data Diri</a>
             </li>
@@ -79,6 +80,7 @@
             <li id="navLetter">
                 <a href="<?=  base_url().$id.'/surat'?>">Surat Pernyataan</a>
             </li>
+            <?php endif;?>
             <li id="navRecap">
                 <a href="<?=  base_url().$id.'/rekap'?>">Rekap</a>
             </li>

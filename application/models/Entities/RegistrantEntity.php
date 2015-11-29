@@ -108,6 +108,12 @@ class RegistrantEntity
      * @var string
      */
     protected $mainParent;
+    
+    /**
+     * @Column(type="boolean", nullable=TRUE)
+     * @var boolean
+     */
+    protected $finalized;
 
     public function getId() {
         return $this->id;
@@ -187,6 +193,24 @@ class RegistrantEntity
                 empty($this->getInitialCost())||empty($this->getMainParent())));
         return $res;
         
+    }
+    
+    public function getFinalized() {
+        return is_null($this->finalized)?false:$this->finalized;
+    }
+
+    public function setFinalized($finalized){
+        if($finalized){
+            if($this->getCompleted()){
+                $this->finalized = $finalized;
+                return 1;
+            } else {
+                return -1;
+            }
+        } else {
+            $this->finalized = false;
+            return 0;
+        }
     }
     
     public function setId($id) {

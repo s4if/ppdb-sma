@@ -176,6 +176,21 @@ class Pendaftar extends MY_Controller {
         }
         return ['trans' => $trans, 'next' => $next];
     }
+    
+    public function finalisasi($id, $finalized){
+        $this->blockUnloggedOne($id);
+        $data['id'] = $id;
+        $data['finalized'] = ($finalized == 'true');
+        $res = $this->reg->updateData($data);
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/beranda');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($id.'/beranda');
+        }
+    }
 
     public function do_edit_parent($id, $type){
         $this->blockUnloggedOne($id);
