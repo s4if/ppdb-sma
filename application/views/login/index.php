@@ -255,6 +255,9 @@ body {
                                     <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="">
                                 </div>
                                 <div class="form-group">
+                                    <input type="email" name="nisn" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>
                                     <div class="">
                                         <div class="radio">

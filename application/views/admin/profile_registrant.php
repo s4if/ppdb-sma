@@ -132,6 +132,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-2 control-label">Email :</label>
+            <div class="col-sm-8">
+                <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getEmail();?>">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-2 control-label">Jenis Kelamin :</label>
             <div class="col-sm-8">
                 <div class="radio">

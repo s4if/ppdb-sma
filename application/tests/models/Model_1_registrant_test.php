@@ -45,6 +45,7 @@ class Model_1_registrant_test extends TestCase {
             'sex' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'nisn' => '09082083013',
+            'email' => 'ftmh@gmail.com',
             'program' => 'Reguler',
         ];
         // test insert registrant
@@ -74,7 +75,7 @@ class Model_1_registrant_test extends TestCase {
         $registrants = $this->obj->getData();
         $registrants_2 = $this->obj->getData('P');
         $attributes = ['id','password','name','sex','previousSchool','nisn','program',
-            'registrationTime','registrantData', 'father', 'mother', 'guardian', 'paymentData'];
+            'registrationTime','registrantData', 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost'];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);
         }
@@ -172,4 +173,5 @@ class Model_1_registrant_test extends TestCase {
         $this->assertTrue($this->obj->uploadReceipt(APPPATH.'tests/assets/receipt.jpg', $id, $data));
     }
     
+    // TODO : Test Subscription Cost!!
 }

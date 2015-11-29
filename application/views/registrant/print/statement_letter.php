@@ -176,8 +176,8 @@
                 Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>RP. <?=$registrant->getSubscriptionCost()?>,-</strong>.
             </li>
             <li class="pernyataan">
-                Saya sanggup untuk memenuhi Infaq bulanan kepada pihak sekolah sebesar 
-                <strong>Rp. <?=$registrant->getMonthlyCharity();?>,-</strong>.
+                Saya sanggup untuk memenuhi Iuran seragam dan Uang kesiswaan kepada pihak sekolah sebesar 
+                <strong>Rp. 2.200.000,-</strong>.
             </li>
             <li class="pernyataan">
                 Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 

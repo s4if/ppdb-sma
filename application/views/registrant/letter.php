@@ -67,8 +67,8 @@
                         Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>(Jumlah Uang SPP)</strong>.
                     </li>
                     <li class="pernyataan">
-                        Saya sanggup untuk memenuhi Infaq bulanan kepada pihak sekolah sebesar 
-                        <strong>(Jumlah Uang Infaq Bulanan)</strong>.
+                        Saya sanggup untuk memenuhi Iuran seragam dan Uang kesiswaan kepada pihak sekolah sebesar 
+                        <strong>Rp. 2.200.000,-</strong>.
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -93,17 +93,6 @@
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_icost" value="7500000" 
-                                <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if($registrant->getInitialCost() == '7500000'):?>
-                                    checked="true"
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 7.500.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
                             <input type="radio" name="raw_icost" value="8500000" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
                                     <?php if($registrant->getInitialCost() == '8500000'):?>
@@ -126,15 +115,26 @@
                     </div>
                     <div class="radio">
                         <label>
+                            <input type="radio" name="raw_icost" value="11000000" 
+                                <?php if(!empty($registrant->getInitialCost())):?>
+                                    <?php if($registrant->getInitialCost() == '11000000'):?>
+                                    checked="true"
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 11.000.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
                             <input type="radio" name="raw_icost" value="-999" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if(!($registrant->getInitialCost() == '7500000'||
+                                    <?php if(!($registrant->getInitialCost() == '11000000'||
                                             $registrant->getInitialCost() == '8500000'||
                                             $registrant->getInitialCost() == '10000000')):?>
                                     checked="true"
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 10 Juta Rupiah
+                            Lebih dari 11 Juta Rupiah
                         </label>
                     </div>
                 </div>
@@ -149,13 +149,13 @@
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="850000" 
+                            <input type="radio" name="raw_scost" value="900000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '850000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '900000'):?>
                                     checked="true"
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 850.000,-
+                            Rp. 900.000,-
                         </label>
                     </div>
                     <div class="radio">
@@ -173,7 +173,7 @@
                         <label>
                             <input type="radio" name="raw_scost" value="-999" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if(!($registrant->getSubscriptionCost() == '850000'||
+                                    <?php if(!($registrant->getSubscriptionCost() == '900000'||
                                             $registrant->getSubscriptionCost() == '1000000')):?>
                                     checked="true"
                                     <?php endif;?>
@@ -186,57 +186,6 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" name="other_scost" class="form-control" placeholder="Masukkan Jumlah Melebih 1Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Infaq Bulanan :</label>
-                <div class="col-sm-4">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_mcost" value="20000" 
-                                <?php if(!empty($registrant->getMonthlyCharity())):?>
-                                    <?php if($registrant->getMonthlyCharity() == '20000'):?>
-                                    checked="true"
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 20.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_mcost" value="30000" 
-                                <?php if(!empty($registrant->getMonthlyCharity())):?>
-                                    <?php if($registrant->getMonthlyCharity() == '30000'):?>
-                                    checked="true"
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 30.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_mcost" value="50000" 
-                                <?php if(!empty($registrant->getMonthlyCharity())):?>
-                                    <?php if($registrant->getMonthlyCharity() == '50000'):?>
-                                    checked="true"
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 50.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_mcost" value="-999" 
-                                <?php if(!empty($registrant->getMonthlyCharity())):?>
-                                    <?php if(!($registrant->getMonthlyCharity() == '20000'||
-                                            $registrant->getMonthlyCharity() == '30000'||
-                                            $registrant->getMonthlyCharity() == '50000')):?>
-                                    checked="true"
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Lebih dari 50.000 Rupiah
-                        </label>
-                    </div>
                 </div>
             </div>
             <div class="form-group">

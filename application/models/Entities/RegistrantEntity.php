@@ -40,6 +40,12 @@ class RegistrantEntity
     protected $nisn;
     
     /**
+     * @Column(type="string", nullable=TRUE)
+     * @var string
+     */
+    protected $email;
+    
+    /**
      * @Column(type="string", length=8, nullable=FALSE)
      * @var string
      */
@@ -98,12 +104,6 @@ class RegistrantEntity
     protected $subscriptionCost; // Uang Bulanan
     
     /**
-     * @Column(type="bigint", nullable=TRUE)
-     * @var string
-     */
-    protected $monthlyCharity; // Infaq Bulanan
-    
-    /**
      * @Column(type="string", nullable=TRUE)
      * @var string
      */
@@ -131,6 +131,10 @@ class RegistrantEntity
 
     public function getNisn() {
         return $this->nisn;
+    }
+    
+    public function getEmail() {
+        return $this->email;
     }
 
     public function getProgram() {
@@ -169,18 +173,14 @@ class RegistrantEntity
         return $this->subscriptionCost;
     }
 
-    public function getMonthlyCharity() {
-        return $this->monthlyCharity;
-    }
-
     public function getMainParent() {
         return $this->mainParent;
     }
 
         
     public function getCompleted(){
-        $res = (!(empty($this->getFather())||empty($this->getMother())||empty($this->getMonthlyCharity())||
-                empty($this->getMonthlyCharity())||empty($this->getInitialCost())||empty($this->getMainParent())));
+        $res = (!(empty($this->getFather())||empty($this->getMother())||empty($this->getSubscriptionCost())||
+                empty($this->getInitialCost())||empty($this->getMainParent())));
         return $res;
         
     }
@@ -212,6 +212,11 @@ class RegistrantEntity
 
     public function setNisn($nisn) {
         $this->nisn = $nisn;
+        return $this;
+    }
+    
+    public function setEmail($email) {
+        $this->email = $email;
         return $this;
     }
 
@@ -257,11 +262,6 @@ class RegistrantEntity
 
     public function setSubscriptionCost($subscriptionCost) {
         $this->subscriptionCost = $subscriptionCost;
-        return $this;
-    }
-
-    public function setMonthlyCharity($monthlyCharity) {
-        $this->monthlyCharity = $monthlyCharity;
         return $this;
     }
 

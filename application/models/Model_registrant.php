@@ -125,11 +125,11 @@ class Model_registrant extends CI_Model {
         if (!empty($data['sex'])) : $this->registrant->setSex($data['sex']); endif;
         if (!empty($data['prev_school'])) : $this->registrant->setPreviousSchool($data['prev_school']); endif;
         if (!empty($data['nisn'])) : $this->registrant->setNisn($data['nisn']); endif;
+        if (!empty($data['email'])) : $this->registrant->setNisn($data['email']); endif;
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
-        if (!empty($data['monthly_charity'])) : $this->registrant->setMonthlyCharity($data['monthly_charity']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
     }
     
