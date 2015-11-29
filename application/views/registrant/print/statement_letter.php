@@ -33,23 +33,23 @@
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-size-adjust: 0.5;
         }
         h1.header-print {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 1em;
+            font-size: 0.95em;
             font-size-adjust: 0.5;
             text-align: center;
         }
         p.xprint{
-            font-size: 0.7em;
+            font-size: 0.65em;
             font-weight: bold;
         }
         td.catatan {
             font-family: inherit;
             font-style: italic;
-            font-size: 0.8em;
+            font-size: 0.8m;
             font-size-adjust: 0.5;
         }
         table {
@@ -57,7 +57,7 @@
         }
         table.utama {
             font-family: inherit;
-            font-size: 0.75em;
+            font-size: 0.7em;
             color:#333333;
             border-width: 1px;
             border-color: #000000;
@@ -181,11 +181,11 @@
             </li>
             <li class="pernyataan">
                 Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
-                tidak akan menuntu segala yang telah saya bayarkan sebelumnya.
+                tidak akan menuntut segala yang telah saya bayarkan sebelumnya.
             </li>
         </ol>
         <p>
-            Demikian surat pernyataan ini saya buat denan sebenar-benarnya.
+            Demikian surat pernyataan ini saya buat dengan sebenar-benarnya.
         </p>
         </table>
         <table style="width: 100%; border-style: none">

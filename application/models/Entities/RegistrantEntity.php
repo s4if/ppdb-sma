@@ -176,8 +176,12 @@ class RegistrantEntity
     public function getMainParent() {
         return $this->mainParent;
     }
-
-        
+    
+    public function getMainParentObj() {
+        $var = strtolower($this->mainParent);
+        return $this->$var;
+    }
+    
     public function getCompleted(){
         $res = (!(empty($this->getFather())||empty($this->getMother())||empty($this->getSubscriptionCost())||
                 empty($this->getInitialCost())||empty($this->getMainParent())));

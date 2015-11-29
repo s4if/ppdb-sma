@@ -105,11 +105,6 @@
                     <td> <?=$resi->getPaymentDate()->format('d F Y')?> </td>
                 </tr>
                 <tr>
-                    <td> Rekening Tujuan </td>
-                    <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$resi->getTransferDestination()?> </td>
-                </tr>
-                <tr>
                     <td> Status Verifikasi </td>
                     <td> &nbsp;:&nbsp; </td>
                     <td> <?php

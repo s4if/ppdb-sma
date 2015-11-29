@@ -235,8 +235,8 @@ body {
                                                 <td>Nama</td>
                                                 <td>I/A</td>
                                                 <td>Sekolah Asal</td>
-                                                <td>NISN</td>
                                                 <td>Program</td>
+                                                <td>Status Data</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -246,8 +246,8 @@ body {
                                                 <td> <?=$registrant->getName();?> </td>
                                                 <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
                                                 <td> <?=$registrant->getPreviousSchool();?> </td>
-                                                <td> <?=$registrant->getNisn();?> </td>
                                                 <td> <?=  ucfirst($registrant->getProgram());?> </td>
+                                                <td> <?php echo ($registrant->getCompleted())?'Sudah Lengkap':'Belum Lengkap';?> </td>
                                             </tr>
                                             <?php endforeach;?>
                                         </tbody>
