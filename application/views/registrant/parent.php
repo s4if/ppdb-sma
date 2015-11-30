@@ -25,10 +25,15 @@
  */
 
 ?>
-
+<style>
+    strong.red {
+        color: red;
+        font-weight: bolder;
+    }
+</style>
 <h1 class="page-header">
     Pendaftar
-    <small>Data Orang Tua/Wali</small>
+    <small>Data <?=$trans;?></small>
 </h1>
 <ol class="breadcrumb">
     <li>
@@ -42,13 +47,19 @@
     <div class="row">
     <form class="form-horizontal wrapper" role="form" method="post" action="<?=base_url();?>pendaftar/do_edit_parent/<?=$id?>/<?=$nav_pos?>">
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
                 <a class="btn btn-success" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Status :</label>
+            <label class="col-sm-4 control-label">Nama<strong class="red">*</strong> :</label>
+            <div class="col-sm-6">
+                <input type="text" required="true" name="name" class="form-control" placeholder="Masukkan Nama" value="<?=$parent_data->getName();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Status<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
@@ -86,81 +97,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Nama :</label>
-            <div class="col-sm-6">
-                <input type="text" required="true" name="name" class="form-control" placeholder="Masukkan Nama" value="<?=$parent_data->getName();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Tanggal Lahir :</label>
-            <div class="col-sm-6">
-                <input class="form-control datepicker" type="text" required="true"
-                       data-date-format="dd-mm-yyyy" name="birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate()->format('d-m-Y');?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Tempat Lahir :</label>
+            <label class="col-sm-4 control-label">Tempat Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <input type="text" required="true" name="birth_place" class="form-control" placeholder="Tempat Lahir" value="<?=$parent_data->getBirthPlace();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Dusun / Jalan :</label>
-            <div class="col-sm-5">
-                <input type="text" required="true" name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$parent_data->getStreet();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">RT - RW :</label>
-            <div class="col-sm-2">
-                <input type="text" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$parent_data->getRT();?>">
-            </div>
-            <div class="col-sm-1 text-center">
-                -
-            </div>
-            <div class="col-sm-2">
-                <input type="text" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$parent_data->getRW();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Desa / Kelurahan :</label>
-            <div class="col-sm-5">
-                <input type="text" required="true" name="village" class="form-control" placeholder="Masukkan Desa/Kelurahan" value="<?=$parent_data->getVillage();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Kecamatan :</label>
-            <div class="col-sm-5">
-                <input type="text" required="true" name="district" class="form-control" placeholder="Masukkan Kecamatan" value="<?=$parent_data->getDistrict();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Kota / Kabupaten :</label>
-            <div class="col-sm-5">
-                <input type="text" required="true" name="city" class="form-control" placeholder="Masukkan kota/kabupaten" value="<?=$parent_data->getCity();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Provinsi :</label>
-            <div class="col-sm-5">
-                <input type="text" required="true" name="province" class="form-control" placeholder="Masukkan Provinsi" value="<?=$parent_data->getProvince();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Kode Pos :</label>
-            <div class="col-sm-2">
-                <input type="text" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$parent_data->getPostalCode();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">No. Telp :</label>
+            <label class="col-sm-4 control-label">Tanggal Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input type="text" required="true" name="contact" class="form-control" placeholder="Masukkan Nomor Telepon" value="<?=$parent_data->getContact();?>">
+                <input class="form-control datepicker" type="text" required="true"
+                       data-date-format="dd-mm-yyyy" name="birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate()->format('d-m-Y');?>">
             </div>
         </div>
         <!-- Hubungan Darah -->
         <div class="form-group">
-            <label class="col-sm-2 control-label">Hubungan :</label>
+            <label class="col-sm-4 control-label">Hubungan<strong class="red">*</strong> :</label>
             <?php if($nav_pos == 'father' || $nav_pos == 'mother') :?>
             <div class="col-sm-6">
                 <div class="radio">
@@ -205,7 +156,7 @@
         </div>
         <!-- TODO: Nationality pake radio -->
         <div class="form-group">
-            <label class="col-sm-2 control-label ">Kewarganegaraan :</label>
+            <label class="col-sm-4 control-label ">Kewarganegaraan<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <select class="form-control" name="nationality">
                     <option value="WNI"  
@@ -228,14 +179,74 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Agama :</label>
+            <label class="col-sm-4 control-label">Agama<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <input type="text" required="true" name="religion" id="religion" tabindex="1" class="form-control" placeholder="Agama" value="<?=$parent_data->getReligion();?>">
             </div>
         </div>
+        <div class="form-group">
+            <hr/>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Dusun / Jalan<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$parent_data->getStreet();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">RT - RW<strong class="red">*</strong> :</label>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$parent_data->getRT();?>">
+            </div>
+            <div class="col-sm-1 text-center">
+                -
+            </div>
+            <div class="col-sm-2">
+                <input type="text" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$parent_data->getRW();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Desa / Kelurahan<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="village" class="form-control" placeholder="Masukkan Desa/Kelurahan" value="<?=$parent_data->getVillage();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Kecamatan<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="district" class="form-control" placeholder="Masukkan Kecamatan" value="<?=$parent_data->getDistrict();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Kota / Kabupaten<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="city" class="form-control" placeholder="Masukkan kota/kabupaten" value="<?=$parent_data->getCity();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Provinsi<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required="true" name="province" class="form-control" placeholder="Masukkan Provinsi" value="<?=$parent_data->getProvince();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Kode Pos<strong class="red">*</strong> :</label>
+            <div class="col-sm-4">
+                <input type="text" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$parent_data->getPostalCode();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">No. Telp<strong class="red">*</strong> :</label>
+            <div class="col-sm-6">
+                <input type="text" required="true" name="contact" class="form-control" placeholder="Masukkan Nomor Telepon" value="<?=$parent_data->getContact();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <hr/>
+        </div>
         <!-- Tingkat Pendidikan -->
         <div class="form-group">
-            <label class="col-sm-2 control-label">Pendidikan Terakhir :</label>
+            <label class="col-sm-4 control-label">Pendidikan Terakhir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
@@ -249,7 +260,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="SD" 
@@ -262,7 +273,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="SMP" 
@@ -275,7 +286,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="SMA" 
@@ -288,7 +299,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="Diploma" 
@@ -301,7 +312,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="S1" 
@@ -314,7 +325,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="S2" 
@@ -327,7 +338,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="S3" 
@@ -340,7 +351,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <div class="radio">
                     <label>
                         <input type="radio" name="education_level" value="Lainnya" 
@@ -355,37 +366,37 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Pekerjaan :</label>
+            <label class="col-sm-4 control-label">Pekerjaan<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <input type="text" name="job" class="form-control" placeholder="Masukkan Pekerjaan" value="<?=$parent_data->getJob();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Jabatan :</label>
+            <label class="col-sm-4 control-label">Jabatan :</label>
             <div class="col-sm-6">
                 <input type="text" name="position" class="form-control" placeholder="Masukkan Jabatan" value="<?=$parent_data->getPosition();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Nama Instansi :</label>
+            <label class="col-sm-4 control-label">Nama Instansi :</label>
             <div class="col-sm-6">
                 <input type="text" name="company" class="form-control" placeholder="Masukkan Tempat Kerja" value="<?=$parent_data->getCompany();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Penghasilan (Rp.) :</label>
+            <label class="col-sm-4 control-label">Penghasilan (Rp.)<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <input type="number" name="income" required="true" class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Jumlah Tanggungan :</label>
+            <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($nav_pos == 'father')?'<strong class="red">*</strong>':'';?> :</label>
             <div class="col-sm-6">
                 <input type="text" name="burden_count" <?php echo ($nav_pos == 'father')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-4 col-sm-6">
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
                 <a class="btn btn-success" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>

@@ -252,10 +252,10 @@ body {
                                     <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="">
+                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="nisn" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
+                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>

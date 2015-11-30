@@ -168,8 +168,8 @@ class ParentEntity {
     protected $income;
     
     /**
-     * @Column(type="integer", nullable=FALSE)
-     * @var string
+     * @Column(type="integer", nullable=TRUE)
+     * @var integer
      */
     protected $burdenCount;
     

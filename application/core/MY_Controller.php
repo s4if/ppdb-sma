@@ -38,6 +38,7 @@ class MY_Controller extends CI_Controller {
 
     function __construct(){
         parent::__construct();
+        setlocale(LC_ALL, 'id_ID');
     }
     
     protected function CustomView($view_name, $data = []){

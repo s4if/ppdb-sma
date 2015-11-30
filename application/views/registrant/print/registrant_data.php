@@ -294,7 +294,7 @@
             <tr>
                 <td> Penghasilan </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. <?php echo $parent->getIncome();?>,- </td>
+                <td> Rp. <?php echo number_format($parent->getIncome(), 0, ',', '.');?>,- </td>
             </tr>
             <tr>
                 <td> Jumlah Tanggunan </td>

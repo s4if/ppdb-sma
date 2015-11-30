@@ -170,13 +170,13 @@
             </li>
             <li class="pernyataan">
                 Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
-                sesuai dengan kesanggupan saya sebesar <strong>Rp. <?=$registrant->getInitialCost();?>,-</strong>.
+                sesuai dengan kesanggupan saya sebesar <strong>Rp. <?=  number_format($registrant->getInitialCost(), 0, ',', '.');?>,-</strong>.
             </li>
             <li class="pernyataan">
-                Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>RP. <?=$registrant->getSubscriptionCost()?>,-</strong>.
+                Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>RP. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</strong>.
             </li>
             <li class="pernyataan">
-                Saya sanggup untuk memenuhi Iuran seragam dan Uang kesiswaan kepada pihak sekolah sebesar 
+                Saya sanggup untuk memenuhi Iuran Seragam dan Iuran Kesiswaan kepada pihak sekolah dengan total sebesar 
                 <strong>Rp. 2.200.000,-</strong>.
             </li>
             <li class="pernyataan">

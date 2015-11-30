@@ -129,7 +129,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
-        if (!is_null($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
+        if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
     }
@@ -305,11 +305,7 @@ class Model_registrant extends CI_Model {
     
     protected function receipt_data($id, $data){
         $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
-        if(is_null($this->registrant->getPaymentData())){
-            $this->paymentData = new PaymentEntity();
-        } else {
-            $this->paymentData = $this->registrant->getPaymentData();
-        }
+        $this->paymentData = new PaymentEntity();
         $this->paymentData->setAmount($data['amount']);
         $this->paymentData->setPaymentDate(new DateTime($data['payment_date']));
         $this->paymentData->setRegistrant($this->registrant);

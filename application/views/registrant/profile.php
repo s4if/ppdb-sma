@@ -339,7 +339,7 @@
                             ?>
                         </td>
                         <td>
-                            <a class="btn btn-xs btn-info <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#uploadKwitansi">
+                            <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#uploadKwitansi">
                                 <span class="glyphicon glyphicon-upload"></span>
                                 Upload Kwitansi
                             </a>

@@ -350,7 +350,7 @@ class Pendaftar extends MY_Controller {
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
-            'nav_pos' => 'home'
+            'nav_pos' => 'letter'
         ];
         $this->CustomView('registrant/letter', $data);
     }

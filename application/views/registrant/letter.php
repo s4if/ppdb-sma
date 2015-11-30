@@ -189,11 +189,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-4 col-sm-offset-3">
-                    <input type="number" name="other_mcost" class="form-control" placeholder="Masukkan Jumlah Melebih 50.000 Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="col-sm-3 control-label">Nama Yang Dicantumkan :</label>
                 <div class="col-sm-4">
                     <select class="form-control" name="main_parent">
