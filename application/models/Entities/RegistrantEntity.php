@@ -114,6 +114,12 @@ class RegistrantEntity
      * @var boolean
      */
     protected $finalized;
+    
+    /**
+     * @Column(type="boolean", nullable=TRUE)
+     * @var boolean
+     */
+    protected $deleted;
 
     public function getId() {
         return $this->id;
@@ -195,6 +201,10 @@ class RegistrantEntity
         
     }
     
+    public function getDeleted() {
+        return $this->deleted;
+    }
+
     public function getFinalized() {
         return is_null($this->finalized)?false:$this->finalized;
     }
@@ -295,6 +305,11 @@ class RegistrantEntity
 
     public function setMainParent($mainParent) {
         $this->mainParent = $mainParent;
+        return $this;
+    }
+    
+    public function setDeleted($deleted) {
+        $this->deleted = $deleted;
         return $this;
     }
 

@@ -57,6 +57,7 @@ class Model_registrant extends CI_Model {
             $data['reg_time'] = new DateTime('now');
             $data['id'] = $this->genId($data['reg_time'], $data['sex']);
             $this->setRegistrantData($data);
+            $this->registrant->setDeleted(false);
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
@@ -96,13 +97,14 @@ class Model_registrant extends CI_Model {
             return false;
         } else {
             $this->setRegistrantData($data);
+            $this->registrant->setDeleted(false);
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
         }
     }
     
-    public function deleteData($data){
+    public function purgeData($data){
         $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $data['id']);
         if(is_null($this->registrant)){
             return false;
@@ -112,6 +114,20 @@ class Model_registrant extends CI_Model {
             $this->counter->removeCount();
             $this->doctrine->em->persist($this->counter);
             $this->doctrine->em->remove($this->registrant);
+            $this->doctrine->em->flush();
+            return true;
+        }
+    }
+    
+    public function deleteData($data){
+        $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $data['id']);
+        if(is_null($this->registrant)){
+            return false;
+        } elseif ($this->registrant->getDeleted()) {
+            return false;
+        } else {
+            $this->registrant->setDeleted(true);
+            $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
         }
@@ -132,6 +148,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
+        if (!empty($data['deleted'])) : $this->registrant->setDeleted($data['deleted']); endif;
     }
     
     

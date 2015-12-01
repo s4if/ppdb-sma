@@ -10,7 +10,7 @@
  */
 class RegistrantRepo extends Doctrine\ORM\EntityRepository
 {
-    public function getData($sex = null, $completed = false){
+    public function getData($sex = null, $completed = false, $showDeleted = false){
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->addSelect('r')->from('RegistrantEntity', 'r');
         if(!is_null($sex)){
@@ -22,9 +22,15 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
                     $qb->expr()->isNotNull('r.mother')
                     ));
         }
+        if(!$showDeleted){
+            $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
+        }
         $qb->orderBy('r.id', 'ASC');
         if(!is_null($sex)){
             $qb->setParameter('sex', $sex);
+        }
+        if(!$showDeleted){
+            $qb->setParameter('deleted', true);
         }
         $query = $qb->getQuery();
         $result =  $query->getResult();

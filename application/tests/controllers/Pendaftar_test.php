@@ -8,7 +8,7 @@
  * @link       https://github.com/kenjis/ci-phpunit-test
  */
 
-class ARegistrant_test extends TestCase
+class Pendaftar_test extends TestCase
 {
 	public function test_index()
 	{
