@@ -46,7 +46,7 @@ class Model_1_registrant_test extends TestCase {
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'nisn' => '09082083013',
             'email' => 'ftmh@gmail.com',
-            'program' => 'Reguler',
+            'program' => 'reguler'
         ];
         // test insert registrant
         $this->assertTrue($this->obj->insertData($data));
@@ -57,16 +57,21 @@ class Model_1_registrant_test extends TestCase {
         $this->assertFalse($this->obj->updateData($data));
         $data['id'] = $this->obj->getData('P')[0]->getId();
         $data['prev_school'] = 'SMPIT Ihsanul Fikri Kota Magelang';
+        $data['initial_cost'] = '8500000';
+        $data['subscription_cost'] = '900000';
+        $data['main_parent'] = 'father';
+        $data['finalized'] = 'true';
         $this->assertTrue($this->obj->updateData($data));
         
         // test delete registrant
         $this->setUp();
-        $this->assertTrue($this->obj->deleteData($data));
-        $this->assertFalse($this->obj->deleteData($data));
+//        $this->assertTrue($this->obj->deleteData($data));
+//        $this->assertFalse($this->obj->deleteData($data));
         
         // Use Data
         unset($data['id']);
-        $this->obj->insertData($data);
+        $this->setUp();
+        $this->assertTrue($this->obj->insertData($data));
     }
     
     public function test_get_data_registrant()
@@ -163,7 +168,7 @@ class Model_1_registrant_test extends TestCase {
         $data = [
             'payment_date' => '11-12-2015',
             'transfer_destination' => 'SMAIT Ihsanul Fikri BNI Syariah',
-            'amount' => 200000
+            'amount' => 200003
         ];
         // Setup
         $this->setUp();

@@ -86,20 +86,20 @@
                             <td>Nama</td>
                             <td>I/A</td>
                             <td>Sekolah Asal</td>
-                            <td>NISN</td>
                             <td>Program</td>
+                            <td>Status Data</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($data_registrant as $registrant) : ?>
                         <tr>
-                            <td> <?=$registrant->getId();?></td>
+                            <td><?= $registrant->getId();?></td>
                             <td> <?=$registrant->getName();?> </td>
                             <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
                             <td> <?=$registrant->getPreviousSchool();?> </td>
-                            <td> <?=$registrant->getNisn();?> </td>
                             <td> <?=  ucfirst($registrant->getProgram());?> </td>
+                            <td> <?php echo ($registrant->getCompleted())?'Sudah Lengkap':'Belum Lengkap';?> </td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/registrant/<?=$registrant->getId();?>">
                                 <span class="glyphicon glyphicon-chevron-right"></span>

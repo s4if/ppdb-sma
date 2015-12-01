@@ -177,7 +177,7 @@ body {
         </div><!-- /.Fixed navbar -->
     <div class="container">
         <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-10 col-md-offset-1">
 <?php if(empty($this->session->flashdata('notices')) === false): ?>
 <div class="alert alert-success alert-dismissible">
 <?php
@@ -208,6 +208,13 @@ body {
     ?>
 </div>
 <?php endif; ?>
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class=" text-center"><strong>Pengumuman:</strong> Mulai 2 Desember 2015, data yang ditampilkan disini adalah pendaftar yang minimal telah melengkapi data
+                pribadi dan data orang tua. <br/>
+                Segera lengkapi data pendaftaran anda untuk bisa bergabung dengan keluarga besar SMAIT Ihsanul Fikri Mungkid.<br/>
+                <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
+            </div>
 </div>
         </div>
     	<div class="row">

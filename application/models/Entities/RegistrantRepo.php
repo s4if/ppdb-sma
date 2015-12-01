@@ -10,11 +10,17 @@
  */
 class RegistrantRepo extends Doctrine\ORM\EntityRepository
 {
-    public function getData($sex = null){
+    public function getData($sex = null, $completed = false){
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->addSelect('r')->from('RegistrantEntity', 'r');
         if(!is_null($sex)){
-            $qb->where('r.sex = :sex');
+            $qb->andwhere('r.sex = :sex');
+        }
+        if($completed){
+            $qb->andWhere($qb->expr()->andX(
+                    $qb->expr()->isNotNull('r.father'),
+                    $qb->expr()->isNotNull('r.mother')
+                    ));
         }
         $qb->orderBy('r.id', 'ASC');
         if(!is_null($sex)){

@@ -87,6 +87,11 @@
             <td> <?=$registrant->getNisn()?> </td>
         </tr>
         <tr>
+            <td> Email </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant->getEmail()?> </td>
+        </tr>
+        <tr>
             <td> Program </td>
             <td> &nbsp;:&nbsp; </td>
             <td> <?=$registrant->getProgram()?> </td>
@@ -138,33 +143,6 @@
             <label class="col-sm-2 control-label">Email :</label>
             <div class="col-sm-8">
                 <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="<?=$registrant->getEmail();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Jenis Kelamin :</label>
-            <div class="col-sm-8">
-                <div class="radio">
-                    <label>
-                        <input type="radio" checked="true" name="sex" value="L" 
-                            <?php if(!empty($registrant->getSex())):?>
-                                <?php if($registrant->getSex() ==='L'):?>
-                                checked="true"
-                                <?php endif;?>
-                            <?php endif;?>>
-                        Laki - Laki
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="sex" value="P"
-                            <?php if(!empty($registrant->getSex())):?>
-                                <?php if($registrant->getSex() ==='P'):?>
-                                checked="true"
-                                <?php endif;?>
-                            <?php endif;?>>
-                        Perempuan
-                    </label>
-                </div>
             </div>
         </div>
         <div class="form-group">
@@ -321,7 +299,7 @@
                           <a class="btn btn-xs btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" href="<?=base_url().$id;?>/surat/"><span class="glyphicon glyphicon-edit">Edit</a>
                         </td>
                     </tr>
-                    <tr>
+<!--                    <tr> Dibatalkan karena skemanya berbeda
                         <td>
                             7
                         </td>
@@ -329,7 +307,7 @@
                             Kuitansi Pembayaran
                         </td>
                         <td>
-                            <?php 
+                            <? php 
                             switch ($status ['payment']) :
                             case -1: echo 'File yang diupload salah <span class="glyphicon glyphicon-alert"></span>'; break;
                             case 0: echo 'Belum Diupload <span class="glyphicon glyphicon-remove-sign"></span>'; break;
@@ -344,10 +322,10 @@
                                 Upload Kwitansi
                             </a>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td>
-                            8
+                            7
                         </td>
                         <td>
                             Finalisasi Data
@@ -359,7 +337,7 @@
                         </td>
                         
                         <td>
-                            <a class="btn btn-xs btn-warning <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
+                            <a class="btn btn-xs btn-warning <?php echo ($registrant->getCompleted() && $foto_uploaded)?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
                                 <span class="glyphicon glyphicon-registration-mark"></span>
                                 Finalisasi
                             </a>

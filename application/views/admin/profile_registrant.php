@@ -80,6 +80,11 @@
             <td> <?=$registrant_data->getNisn()?> </td>
         </tr>
         <tr>
+            <td> Email </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant_data->getEmail()?> </td>
+        </tr>
+        <tr>
             <td> Program </td>
             <td> &nbsp;:&nbsp; </td>
             <td> <?=$registrant_data->getProgram()?> </td>
@@ -104,100 +109,6 @@
     </div>
     &nbsp;
 </div>
-    <div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editProfil" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title text-center" id="tambahModal">Edit Pendaftar</h4>
-            </div>
-            <div class="modal-body">
-    <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/admin/do_edit_profil/<?=$id?>">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Nama :</label>
-            <div class="col-sm-8">
-                <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant_data->getName();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Sekolah Asal :</label>
-            <div class="col-sm-8">
-                <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant_data->getPreviousSchool();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">NISN :</label>
-            <div class="col-sm-8">
-                <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getNisn();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Email :</label>
-            <div class="col-sm-8">
-                <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getEmail();?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Jenis Kelamin :</label>
-            <div class="col-sm-8">
-                <div class="radio">
-                    <label>
-                        <input type="radio" checked="true" name="sex" value="L" 
-                            <?php if(!empty($registrant_data->getSex())):?>
-                                <?php if($registrant_data->getSex() ==='L'):?>
-                                checked="true"
-                                <?php endif;?>
-                            <?php endif;?>>
-                        Laki - Laki
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="sex" value="P"
-                            <?php if(!empty($registrant_data->getSex())):?>
-                                <?php if($registrant_data->getSex() ==='P'):?>
-                                checked="true"
-                                <?php endif;?>
-                            <?php endif;?>>
-                        Perempuan
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label ">Program :</label>
-            <div class="col-sm-8">
-                <select class="form-control" name="program" >
-                    <option value="reguler"  
-                        <?php if(!empty($registrant_data->getProgram())):?>
-                            <?php if($registrant_data->getProgram()=='reguler'): ?>
-                                    selected="true"
-                            <?php endif;?>
-                        <?php endif;?>>
-                        Reguler
-                    </option>
-                    <option value="tahfidz"  
-                        <?php if(!empty($registrant_data->getProgram())):?>
-                            <?php if($registrant_data->getProgram()=='tahfidz'): ?>
-                                    selected="true"
-                            <?php endif;?>
-                        <?php endif;?>>
-                        Tahfidz
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-8">
-                <button type="submit" class="btn btn-sm btn-primary">OK</button>
-                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
-            </div>
-        </div>
-    </form>
-            </div>
-        </div>
-    </div>
-    </div>
     <div class="row">
         <h3 class="col-md-12">Status</h3>
         <div class="col-md-12">
@@ -304,6 +215,100 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editProfil" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center" id="tambahModal">Edit Pendaftar</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/admin/do_edit_profil/<?=$id?>">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Nama :</label>
+                        <div class="col-sm-8">
+                            <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant_data->getName();?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Sekolah Asal :</label>
+                        <div class="col-sm-8">
+                            <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant_data->getPreviousSchool();?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">NISN :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getNisn();?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getEmail();?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Jenis Kelamin :</label>
+                        <div class="col-sm-8">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" checked="true" name="sex" value="L" 
+                                        <?php if(!empty($registrant_data->getSex())):?>
+                                            <?php if($registrant_data->getSex() ==='L'):?>
+                                            checked="true"
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    Laki - Laki
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="sex" value="P"
+                                        <?php if(!empty($registrant_data->getSex())):?>
+                                            <?php if($registrant_data->getSex() ==='P'):?>
+                                            checked="true"
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    Perempuan
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label ">Program :</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="program" >
+                                <option value="reguler"  
+                                    <?php if(!empty($registrant_data->getProgram())):?>
+                                        <?php if($registrant_data->getProgram()=='reguler'): ?>
+                                                selected="true"
+                                        <?php endif;?>
+                                    <?php endif;?>>
+                                    Reguler
+                                </option>
+                                <option value="tahfidz"  
+                                    <?php if(!empty($registrant_data->getProgram())):?>
+                                        <?php if($registrant_data->getProgram()=='tahfidz'): ?>
+                                                selected="true"
+                                        <?php endif;?>
+                                    <?php endif;?>>
+                                    Tahfidz
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="submit" class="btn btn-sm btn-primary">OK</button>
+                            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

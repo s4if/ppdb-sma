@@ -40,10 +40,10 @@ class Model_registrant extends CI_Model {
         parent::__construct();
     }
     
-    public function getData($sex = NULL, $id = -999){
-        if($id == -999){
+    public function getData($sex = NULL, $id = null, $completed = false){
+        if(is_null($id)){
             $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
-            return $regRepo->getData($sex);
+            return $regRepo->getData($sex, $completed);
         } else {
             $registrant = $this->doctrine->em->find('RegistrantEntity', $id);
             return $registrant;
@@ -60,7 +60,7 @@ class Model_registrant extends CI_Model {
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
-        } catch (Doctrine\DBAL\Exception\ConstraintViolationException $ex){
+        } catch (Doctrine\DBAL\Exception\NotNullConstraintViolationException $ex){
             return false;
         }
     }

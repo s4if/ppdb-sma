@@ -22,7 +22,8 @@ class Pendaftar extends MY_Controller {
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
-            'img_link' => $this->getImgLink($id),
+            'img_link' => $this->getImgLink($id)[0],
+            'foto_uploaded' => $this->getImgLink($id)[1],
             'img_receipt' => $this->getImgReceipt($id),
             'status' => $this->reg->cek_status($id),
             'nav_pos' => 'home'
@@ -75,14 +76,15 @@ class Pendaftar extends MY_Controller {
     
     private function getImgLink($id){
         $this->load->helper('file');
-        $img_link = '';
+        $img_link = [];
         $file = read_file('./data/foto/'.$id.'.png');
         $datetime = new DateTime('now');
         if($file == false){
-            $img_link = base_url().'assets/images/default.png';
+            $img_link[0] = base_url().'assets/images/default.png';
         }  else {
-            $img_link = base_url().'pendaftar/getFoto/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
+            $img_link[0] = base_url().'pendaftar/getFoto/'.$id.'/'.hash('md2', $datetime->format('Y-m-d H:i:s'));
         }
+        $img_link[1] = $file;
         return $img_link;
     }
     
@@ -262,7 +264,7 @@ class Pendaftar extends MY_Controller {
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'nav_pos' => 'recap',
-            'img_link' => $this->getImgLink($id),
+            'img_link' => $this->getImgLink($id)[0],
             'registrant' => $this->session->registrant,
         ];
         $this->CustomView('registrant/recap', $data);
@@ -277,7 +279,7 @@ class Pendaftar extends MY_Controller {
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'nav_pos' => 'recap',
-            'img_link' => $this->getImgLink($id),
+            'img_link' => $this->getImgLink($id)[0],
             'registrant' => $this->session->registrant,
         ];
         $this->load->view('registrant/print/statement_letter', $data);
@@ -307,7 +309,7 @@ class Pendaftar extends MY_Controller {
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'nav_pos' => 'recap',
-            'img_link' => $this->getImgLink($id),
+            'img_link' => $this->getImgLink($id)[0],
             'registrant' => $this->session->registrant,
         ];
         $pdf = new mikehaertl\wkhtmlto\Pdf();
@@ -378,7 +380,7 @@ class Pendaftar extends MY_Controller {
     // ================= Lihat Pendaftar ===========================
     
     public function lihat($sex = 'L'){
-        $registrant_data = $this->reg->getData($sex);
+        $registrant_data = $this->reg->getData($sex, null, true);
         $this->load->view('registrant/list', ['sex' => $sex, 'data_registrant' => $registrant_data]);
     }
 }

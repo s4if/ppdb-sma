@@ -17,7 +17,7 @@ php seeder.php
 cd application/tests/
 
 # Call PHPUNIT
-../../vendor/phpunit/phpunit/phpunit --coverage-text
+../../vendor/phpunit/phpunit/phpunit --coverage-text --verbose
 
 # Back to ppdb
 cd ../..
