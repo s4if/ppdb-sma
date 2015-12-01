@@ -380,7 +380,7 @@ class Pendaftar extends MY_Controller {
     // ================= Lihat Pendaftar ===========================
     
     public function lihat($sex = 'L'){
-        $registrant_data = $this->reg->getData($sex, null, true);
+        $registrant_data = $this->reg->getData($sex, null);
         $this->load->view('registrant/list', ['sex' => $sex, 'data_registrant' => $registrant_data]);
     }
 }
