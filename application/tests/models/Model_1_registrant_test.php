@@ -65,8 +65,8 @@ class Model_1_registrant_test extends TestCase {
         
         // test delete registrant
         $this->setUp();
-//        $this->assertTrue($this->obj->deleteData($data));
-//        $this->assertFalse($this->obj->deleteData($data));
+        $this->assertTrue($this->obj->deleteData($data));
+        $this->assertFalse($this->obj->deleteData($data));
         
         // Use Data
         unset($data['id']);
@@ -108,7 +108,6 @@ class Model_1_registrant_test extends TestCase {
         $data = [
             'birth_place' => 'Semarang', 
             'birth_date' => '19-2-2000', 
-            //'address' => 'Magelang City', 
             'street' => 'Rambeanak II', 
             'RT' => 1,
             'RW' => 3, 
