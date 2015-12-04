@@ -328,23 +328,6 @@ class Pendaftar extends MY_Controller {
         if (!$res) { echo $pdf->getError(); }
     }
     
-    private  function pdfOption(){
-        $options = [
-            'page-size' => 'A4',
-            'dpi' => 96,
-            'image-quality' => 100,
-            'margin-top' => '10mm',
-            'margin-right' => '20mm',
-            'margin-bottom' => '10mm',
-            'margin-left' => '20mm',
-            'header-spacing' => 15,
-            'footer-spacing' => 5,
-            'disable-smart-shrinking',
-            'no-outline'
-        ];
-        return $options;
-    }
-    
     public function surat($id){
         $this->blockUnloggedOne($id);
         $data = [

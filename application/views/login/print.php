@@ -244,23 +244,12 @@ body {
                                     <tr>
                                         <td>Password </td>
                                         <td>&nbsp;:&nbsp;</td>
-                                        <td><a class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modalPassword">
-                                                <span class="glyphicon glyphicon-warning-sign"></span>
-                                                Lihat Password
-                                            </a>
-                                        </td>
+                                        <td><?=$password?></td>
                                     </tr>
                                 </table>
                                 <p style="text-align: center;">
                                     Silahkan digunakan untuk Login ke sistem PPDB dan melengkapi data-data lain yang diperlukan.
                                 </p>
-                                <div class="row">
-                                    <a class="btn btn-primary col-sm-offset-3 col-sm-3" href="<?php echo base_url().'login/'?>">Masuk</a>
-                                    <a class="btn btn-info col-sm-3" href="<?=  base_url().'login/print_registrasi/'?>">
-                                        <span class="glyphicon glyphicon-upload"></span>
-                                        Simpan Data
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -276,22 +265,3 @@ body {
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<div class="modal fade" id="modalPassword" tabindex="-1" role="dialog" aria-labelledby="modalPassword" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="ModalFinalizedLabel>">Password</h4>
-            </div>
-            <div class="modal-body">
-                <h3 style="align-content: center"><span class=" glyphicon glyphicon-warning-sign"></span></h3>
-                <p>
-                    Password akun anda : <strong><?=$password?></strong> <br />
-                    Silahkan dicatat dan disimpan baik-baik!
-                </p>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
