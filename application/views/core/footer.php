@@ -27,9 +27,6 @@
 
 <?php if($cdn):?>
 
-<!-- Bootstrap Core JS -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
 <!-- Bootstrap DataTables JS -->
 <script type="text/javascript" src="https://cdn.datatables.net/r/bs/jszip-2.5.0,dt-1.10.9,b-1.0.3,b-colvis-1.0.3,b-print-1.0.3,cr-1.2.0,fc-3.1.0,fh-3.0.0,kt-2.0.0,r-1.0.7,rr-1.0.0,sc-1.3.0,se-1.0.1/datatables.min.js"></script>
 
@@ -37,9 +34,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
 
 <?php else :?>
-
-<!-- Bootstrap Core JS -->
-<script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap DataTables JS -->
 <script src="<?=  base_url() ?>assets/js/datatables.min.js"></script>

@@ -49,6 +49,12 @@
     <!-- Datepicker3 CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
     
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
     <!-- Custom CSS -->
     <link href="<?=  base_url() ?>assets/css/sb-admin.min.css" rel="stylesheet">
     
@@ -57,6 +63,11 @@
     
     <!-- JQuery JS -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+    <!-- TODO : Morris Js dan CSS dicari CDN-nya -->
     
     <?php else :?>
     <!-- Bootstrap Core CSS -->
@@ -71,6 +82,12 @@
     <!-- Datepicker3 CSS -->
     <link href="<?=  base_url() ?>assets/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     
+    <!-- Morris Charts CSS -->
+    <link href="<?=  base_url() ?>assets/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="<?=  base_url() ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
     <!-- Custom CSS -->
     <link href="<?=  base_url() ?>assets/css/sb-admin.min.css" rel="stylesheet">
     
@@ -79,6 +96,10 @@
     
     <!-- JQuery JS -->
     <script src="<?=  base_url() ?>assets/js/jquery-2.1.4.min.js"></script>
+    
+    <!-- Bootstrap Core JS -->
+    <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
+
     
     <?php endif;?>
     

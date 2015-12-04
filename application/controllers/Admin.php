@@ -49,7 +49,9 @@ class Admin extends MY_Controller {
             'title' => 'Beranda',
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
-            'nav_pos' => 'homeAdmin'
+            'nav_pos' => 'homeAdmin',
+            'female_count' => $this->reg->getCount(['sex' => 'P']),
+            'male_count' => $this->reg->getCount(['sex' => 'L'])
         ];
         $this->CustomView('admin/home', $data);
     }

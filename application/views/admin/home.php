@@ -36,5 +36,38 @@
     </li>
 </ol>
 <div class="container-fluid">
-TODO: all stats Here;
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pie-chart"></i> Pendaftar Ikhwan / Akhwat</h3>
+            </div>
+            <div class="panel-body">
+                <div id="chart-jml-pendaftar"></div>
+                <div class="text-left">
+                    <strong>Total Pendaftar : <?=($male_count+$female_count)?></strong>
+                </div>
+                <div class="text-right">
+                    <a href="<?=  base_url().'admin/lihat/'?>">Lihat Detail <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+
+<!-- JS -->
+<script src="<?=  base_url() ?>assets/js/plugins/morris/raphael.min.js"></script>
+<script src="<?=  base_url() ?>assets/js/plugins/morris/morris.js"></script>
+<script>
+    // Donut Chart
+    jQuery.ready(
+    Morris.Donut({
+        element: 'chart-jml-pendaftar',
+        data: [
+            {label: "Ikhwan", value: <?php echo $male_count;?>},
+            {label: "Akhwat", value: <?php echo $female_count;?>}
+        ]
+    })
+    );
+</script>

@@ -10,13 +10,13 @@
  */
 class RegistrantRepo extends Doctrine\ORM\EntityRepository
 {
-    public function getData($sex = null, $completed = false, $showDeleted = false){
+    public function getData($sex = null, $onlyShowCompleted = false, $showDeleted = false){
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->addSelect('r')->from('RegistrantEntity', 'r');
         if(!is_null($sex)){
             $qb->andwhere('r.sex = :sex');
         }
-        if($completed){
+        if($onlyShowCompleted){
             $qb->andWhere($qb->expr()->andX(
                     $qb->expr()->isNotNull('r.father'),
                     $qb->expr()->isNotNull('r.mother')
@@ -41,5 +41,25 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()->createQuery('SELECT COUNT(r.id) FROM RegistrantEntity r');
         $count = $query->getSingleScalarResult();   
         return $count;
+    }
+    
+    public function getCountByFilter($filter){
+//        try {
+            $qb = $this->getEntityManager()->createQueryBuilder();
+            $qb->select('COUNT(r.id)')
+                    ->from('RegistrantEntity', 'r');
+            foreach ($filter as $key => $value){
+                $qb->andWhere('r.'.$key .' = :set'.$key);
+            }
+            $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
+            foreach ($filter as $key => $value){
+                $qb->setParameter('set'.$key, $value);
+            }
+            $qb->setParameter('deleted', true);
+            $count = $qb->getQuery()->getSingleScalarResult();
+            return $count;
+//        } catch (Doctrine\ORM\Query\QueryException $e) {
+//            return false;
+//        }
     }
 }

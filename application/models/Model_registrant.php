@@ -40,13 +40,22 @@ class Model_registrant extends CI_Model {
         parent::__construct();
     }
     
-    public function getData($sex = NULL, $id = null, $completed = false){
+    public function getData($sex = NULL, $id = null, $onlyShowCompleted = false){
         if(is_null($id)){
             $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
-            return $regRepo->getData($sex, $completed);
+            return $regRepo->getData($sex, $onlyShowCompleted);
         } else {
             $registrant = $this->doctrine->em->find('RegistrantEntity', $id);
             return $registrant;
+        }
+    }
+    
+     public function getCount($filter = []){
+        $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
+        if (empty($filter)){
+            return $regRepo->getCount();
+        } else {
+            return $regRepo->getCountByFilter($filter);
         }
     }
     
