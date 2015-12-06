@@ -246,29 +246,39 @@ body {
                                 </form>
                                 <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
-                                    <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="">
+                                    <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="">
+                                    <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" value="">
+                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
+                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="<?=(array_key_exists('email', $registrant))?$registrant['email']:'';?>">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>
                                     <div class="">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" checked="true" name="sex" value="L">
+                                                <input type="radio" checked="true" name="sex" value="L"
+                                                       <?php if(array_key_exists('sex', $registrant)):?>
+                                                            <?php if($registrant['sex'] ==='L'):?>
+                                                            checked="true"
+                                                            <?php endif;?>
+                                                        <?php endif;?>>
                                                 Laki - Laki
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sex" value="P">
+                                                <input type="radio" name="sex" value="P"
+                                                       <?php if(array_key_exists('sex', $registrant)):?>
+                                                            <?php if($registrant['sex'] ==='P'):?>
+                                                            checked="true"
+                                                            <?php endif;?>
+                                                        <?php endif;?>>
                                                 Perempuan
                                             </label>
                                         </div>
@@ -278,10 +288,20 @@ body {
                                     <label class=" control-label">Program :</label>
                                     <div class="">
                                         <select class="form-control" name="program">
-                                            <option value="reguler" selected="true">
+                                            <option value="reguler"
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='reguler'): ?>
+                                                                selected="true"
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
                                                 Reguler
                                             </option>
-                                            <option value="tahfidz" >
+                                            <option value="tahfidz" 
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='tahfidz'): ?>
+                                                                selected="true"
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
                                                 Tahfidz
                                             </option>
                                         </select>

@@ -45,9 +45,14 @@ class Login extends MY_Controller {
         $builder->setDistortion(false);
         $builder->build();
         $this->session->set_userdata('captcha', $builder->getPhrase());
-        $this->load->view('login/index', ['builder' => $builder]);
+        $registrant = [];
+        if(empty($this->session->flashdata('data')) === false){
+            $registrant = $this->session->flashdata('data');
+        }
+        $this->load->view('login/index', ['builder' => $builder, 'registrant' => $registrant]);
     }
-    
+
+
     public function do_login(){
         $data = $this->input->post(null, true);
         $registrant = $this->reg->getData(null, $data['id_pendaftaran']);
@@ -108,14 +113,17 @@ class Login extends MY_Controller {
             $this->session->set_flashdata('password', $data['password']);
             redirect('login/register_berhasil');
         } elseif($res['status'] == -1) {
+            $this->session->set_flashdata('data', $data);
             $this->session->set_flashdata("errors", [0 => "Maaf, Password dan konfirmasi password yang anda masukkan tidak sama<br />"
                 . "Silahkan anda cek kembali"]);
             redirect('login/index');
         } elseif($res['status'] == -2) {
+            $this->session->set_flashdata('data', $data);
             $this->session->set_flashdata("errors", [0 => "Maaf, Captcha dari gambar yang anda masukkan salah<br />"
                 . "Silahkan anda cek kembali"]);
             redirect('login/index');
         } else {
+            $this->session->set_flashdata('data', $data);
             $this->session->set_flashdata("errors", [0 => "Maaf, terjadi Error yang tidak diketahui"]);
             redirect('login/index');
         }
