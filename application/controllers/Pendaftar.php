@@ -25,7 +25,7 @@ class Pendaftar extends MY_Controller {
             'img_link' => $this->getImgLink($id)[0],
             'foto_uploaded' => $this->getImgLink($id)[1],
             'img_receipt' => $this->getImgReceipt($id),
-            'status' => $this->reg->cek_status($id),
+            'status' => $this->reg->cek_status($this->session->registrant),
             'nav_pos' => 'home'
         ];
         $this->CustomView('registrant/profile', $data);
@@ -270,36 +270,6 @@ class Pendaftar extends MY_Controller {
         $this->CustomView('registrant/recap', $data);
     }
     
-    public function print_letter($id){
-        $this->blockUnloggedOne($id);
-        $registrant = $this->reg->getData(null, $id);
-        $this->session->set_userdata('registrant', $registrant);
-        $data = [
-            'title' => 'Print Surat Pernyataan',
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'nav_pos' => 'recap',
-            'img_link' => $this->getImgLink($id)[0],
-            'registrant' => $this->session->registrant,
-        ];
-        $this->load->view('registrant/print/statement_letter', $data);
-    }
-    
-    public function print_data($id){
-        $this->blockUnloggedOne($id);
-        $registrant = $this->reg->getData(null, $id);
-        $this->session->set_userdata('registrant', $registrant);
-        $data = [
-            'title' => 'Print Surat Pernyataan',
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'nav_pos' => 'recap',
-            'img_link' => $this->getImgLink($id),
-            'registrant' => $this->session->registrant,
-        ];
-        $this->load->view('registrant/print/registrant_data', $data);
-    }
-    
     public function print_data_pendaftaran($id, $action = 'download'){
         $this->blockUnloggedOne($id);
         $registrant = $this->reg->getData(null, $id);
@@ -363,7 +333,7 @@ class Pendaftar extends MY_Controller {
     // ================= Lihat Pendaftar ===========================
     
     public function lihat($sex = 'L'){
-        $registrant_data = $this->reg->getData($sex, null);
+        $registrant_data = $this->reg->getArrayData($sex, null);
         $this->load->view('registrant/list', ['sex' => $sex, 'data_registrant' => $registrant_data]);
     }
 }

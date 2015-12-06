@@ -46,11 +46,27 @@ class Model_registrant extends CI_Model {
             return $regRepo->getData($sex, $onlyShowCompleted);
         } else {
             $registrant = $this->doctrine->em->find('RegistrantEntity', $id);
+            $this->registrant = $registrant;
             return $registrant;
         }
     }
     
-     public function getCount($filter = []){
+    public function getArrayData($sex = NULL, $vars = []){
+        $data = $this->getData($sex);
+        if (empty($vars)){
+            $vars = ['id', 'name','sex','previousSchool','nisn','program', 'finalized'];
+        }
+        $arrData = [];
+        foreach ($data as $registrant){
+            $arrData [$registrant->getId()] = $registrant->getArray($vars);
+            //if($status){
+                $arrData [$registrant->getId()] ['status'] = $this->stringStatus($registrant);
+            //}
+        }
+        return $arrData;
+    }
+    
+    public function getCount($filter = []){
         $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
         if (empty($filter)){
             return $regRepo->getCount();
@@ -343,8 +359,8 @@ class Model_registrant extends CI_Model {
     
     // belum di-test
     // 0 -> Belum 1-> Sudah 2->Finalisasi
-    public function cek_status($id){
-        $registrant = $this->getData(NULL, $id);
+    public function cek_status(RegistrantEntity $registrant){
+        $id = $registrant->getId();
         $arr_result = [];
         $all_stats = 0;
         if(is_null($registrant->getRegistrantData())){
@@ -378,17 +394,37 @@ class Model_registrant extends CI_Model {
             $arr_result ['foto'] = 1;
             $all_stats++;
         }
+        if(is_null($registrant->getMainParent())){
+            $arr_result ['letter'] = 0;
+        } else {
+            $arr_result ['letter'] = 1;
+            $all_stats++;
+        }
         $file2 = read_file('./data/receipt/'.$id.'.png');
         if($file2){
             $arr_result ['payment'] = $this->cek_receipt($registrant);
-            if($arr_result['payment'] == 2){
-                $all_stats++;
-            }
         } else {
             $arr_result ['payment'] = 0;
         }
         $arr_result['completed'] = ($all_stats >=5)?true:false;
         return $arr_result;
+    }
+    
+    public function stringStatus(RegistrantEntity $registrant){
+        $status  = $this->cek_status($registrant);
+        if($registrant->getFinalized()){
+            return 'Pendaftaran telah selesai';
+        } elseif($status['completed']) {
+            return 'Data telah lengkap, kurang finalisasi';
+        } else {
+            $str = 'Data yang kurang : '; // String Status
+            if($status['data'] < 1): $str = $str.'data diri, '; endif;
+            if($status['foto'] < 1): $str = $str.'foto, '; endif;
+            if($status['father'] < 1): $str = $str.'data ayah, '; endif;
+            if($status['mother'] < 1): $str = $str.'data ibu, '; endif;
+            if($status['letter'] < 1): $str = $str.'surat pernyataan, '; endif;
+            return $str;
+        }
     }
     
     protected function cek_receipt($registrant){

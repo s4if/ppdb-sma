@@ -121,6 +121,19 @@ class RegistrantEntity
      */
     protected $deleted;
 
+    public function getArray($vars = []) {
+        if(empty($vars)){
+            $vars = ['id', 'name','sex','previousSchool','nisn','program', 'deleted', 'registrationTime','registrantData', 
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'completed'];
+        }
+        $arrData = [];
+        foreach ($vars as $var) {
+            $strFunct = 'get'.ucfirst($var);
+            $arrData [$var] = $this->$strFunct();
+        }
+        return $arrData;
+    }
+    
     public function getId() {
         return $this->id;
     }
@@ -195,7 +208,7 @@ class RegistrantEntity
     }
     
     public function getCompleted(){
-        $res = (!(empty($this->getFather())||empty($this->getMother())||empty($this->getSubscriptionCost())||
+        $res = (!(empty($this->getFather())||empty($this->getFather())||empty($this->getMother())||empty($this->getSubscriptionCost())||
                 empty($this->getInitialCost())||empty($this->getMainParent())));
         return $res;
         

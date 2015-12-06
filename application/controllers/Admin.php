@@ -102,7 +102,7 @@ class Admin extends MY_Controller {
     
     public function lihat($sex = null){
         $this->blockNonAdmin();
-        $registrant_data = (is_null($sex))?$this->reg->getData():$this->reg->getData($sex);
+        $registrant_data = (is_null($sex))?$this->reg->getArrayData():$this->reg->getArrayData($sex);
         $jk = '';
         if(!is_null($sex)){
             $jk = ($sex == 'L')?'Ikhwan':'Akhwat';
@@ -133,7 +133,7 @@ class Admin extends MY_Controller {
                 'parents' => ['father', 'mother', 'guardian']
             ]),
             'img_link' => $this->getImgLink($id),
-            'status' => $this->reg->cek_status($id),
+            'status' => $this->reg->cek_status($reg_data),
             'nav_pos' => 'registrantAdmin'
         ];
         $this->CustomView('admin/profile_registrant', $data);

@@ -249,12 +249,12 @@ body {
                                         <tbody>
                                             <?php foreach ($data_registrant as $registrant) : ?>
                                             <tr>
-                                                <td><?= $registrant->getId();?></td>
-                                                <td> <?=$registrant->getName();?> </td>
-                                                <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
-                                                <td> <?=$registrant->getPreviousSchool();?> </td>
-                                                <td> <?=  ucfirst($registrant->getProgram());?> </td>
-                                                <td> <?php echo ($registrant->getCompleted())?'Sudah Lengkap':'Belum Lengkap';?> </td>
+                                                <td> <?= $registrant['id'];?></td>
+                                                <td> <?=$registrant['name'];?> </td>
+                                                <td> <?=($registrant['sex'] == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
+                                                <td> <?=$registrant['previousSchool'];?> </td>
+                                                <td> <?=  ucfirst($registrant['program']);?> </td>
+                                                <td> <?=$registrant['status'];?> </td>
                                             </tr>
                                             <?php endforeach;?>
                                         </tbody>

@@ -94,30 +94,25 @@
                     <tbody>
                         <?php foreach ($data_registrant as $registrant) : ?>
                         <tr>
-                            <td><?= $registrant->getId();?></td>
-                            <td> <?=$registrant->getName();?> </td>
-                            <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
-                            <td> <?=$registrant->getPreviousSchool();?> </td>
-                            <td> <?=  ucfirst($registrant->getProgram());?> </td>
-                            <td> <?php echo ($registrant->getCompleted())?'Sudah Lengkap':'Belum Lengkap';?> </td>
+                            <td> <?= $registrant['id'];?></td>
+                            <td> <?=$registrant['name'];?> </td>
+                            <td> <?=($registrant['sex'] == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
+                            <td> <?=$registrant['previousSchool'];?> </td>
+                            <td> <?=  ucfirst($registrant['program']);?> </td>
+                            <td> <?=$registrant['status'];?> </td>
                             <td>
-                                <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/registrant/<?=$registrant->getId();?>">
+                                <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/registrant/<?=$registrant['id'];?>">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
-                            <?php $now = new DateTime('now');
-                            $nowTime = $now->format('d-m-Y');
-                            $regTime = $registrant->getRegistrationTime()->format('d-m-Y');
-                                if (! ($nowTime == $regTime) ):?>
-                            <a id="btnDelRegistrant<?=$registrant->getId();?>" class="btn btn-sm btn-danger">
+                            <a id="btnDelRegistrant<?=$registrant['id'];?>" class="btn btn-sm btn-danger">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                             <script type="text/javascript">
-                                $("#btnDelRegistrant<?=$registrant->getId();?>").click(function (){
-                                    $("#btnDelOk").attr("href", "<?=base_url().'admin/hapus_registrant/'.$registrant->getId();?>");
+                                $("#btnDelRegistrant<?=$registrant['id'];?>").click(function (){
+                                    $("#btnDelOk").attr("href", "<?=base_url().'admin/hapus_registrant/'.$registrant['id'];?>");
                                     $("#deleteRegistrant").modal("toggle");
                                 });
                             </script>
-                            <?php endif;?>
                             </td>
                         </tr>
                         <?php endforeach;?>
