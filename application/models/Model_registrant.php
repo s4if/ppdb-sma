@@ -54,14 +54,13 @@ class Model_registrant extends CI_Model {
     public function getArrayData($sex = NULL, $vars = []){
         $data = $this->getData($sex);
         if (empty($vars)){
-            $vars = ['id', 'name','sex','previousSchool','nisn','program', 'finalized'];
+            $vars = ['id', 'name','sex','previousSchool','nisn', 'cp', 'program', 'finalized'];
         }
         $arrData = [];
         foreach ($data as $registrant){
             $arrData [$registrant->getId()] = $registrant->getArray($vars);
-            //if($status){
-                $arrData [$registrant->getId()] ['status'] = $this->stringStatus($registrant);
-            //}
+            $arrData [$registrant->getId()] ['status'] = $this->stringStatus($registrant);
+            $arrData [$registrant->getId()] ['completed'] = ($arrData [$registrant->getId()] ['status'] == 'Pendaftaran telah selesai');
         }
         return $arrData;
     }
@@ -128,21 +127,21 @@ class Model_registrant extends CI_Model {
             return true;
         }
     }
-    
-    public function purgeData($data){
-        $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $data['id']);
-        if(is_null($this->registrant)){
-            return false;
-        } else {
-            $date = $this->registrant->getRegistrationTime();
-            $this->counter = $this->doctrine->em->find('CounterEntity', (int) $date->format('Ymd'));
-            $this->counter->removeCount();
-            $this->doctrine->em->persist($this->counter);
-            $this->doctrine->em->remove($this->registrant);
-            $this->doctrine->em->flush();
-            return true;
-        }
-    }
+//    
+//    public function purgeData($data){
+//        $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $data['id']);
+//        if(is_null($this->registrant)){
+//            return false;
+//        } else {
+//            $date = $this->registrant->getRegistrationTime();
+//            $this->counter = $this->doctrine->em->find('CounterEntity', (int) $date->format('Ymd'));
+//            $this->counter->removeCount();
+//            $this->doctrine->em->persist($this->counter);
+//            $this->doctrine->em->remove($this->registrant);
+//            $this->doctrine->em->flush();
+//            return true;
+//        }
+//    }
     
     public function deleteData($data){
         $this->registrant = $this->doctrine->em->find( 'RegistrantEntity', $data['id']);

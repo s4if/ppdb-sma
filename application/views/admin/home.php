@@ -38,7 +38,7 @@
 <div class="container-fluid">
 <div class="row">
     <div class="col-lg-4">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-pie-chart"></i> Pendaftar Ikhwan / Akhwat</h3>
             </div>
@@ -49,6 +49,47 @@
                 </div>
                 <div class="text-right">
                     <a href="<?=  base_url().'admin/lihat/'?>">Lihat Detail <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum melengkapi</h3>
+            </div>
+            <div class="panel-body">
+                <div style="max-height: 400px">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <td>
+                                    ID
+                                </td>
+                                <td>
+                                    Nama
+                                </td>
+                                <td>
+                                    CP
+                                </td>
+                                <td>
+                                    Kekurangan
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($data_registrant as $registrant) : ?>
+                            <?php if(!$registrant['completed']) : ?>
+                            <tr>
+                                <td> <?= $registrant['id'];?></td>
+                                <td> <?=$registrant['name'];?> </td>
+                                <td> <?=$registrant['cp'];?> </td>
+                                <td> <?=$registrant['status'];?> </td>
+                            </tr>
+                            <?php endif;?>
+                            <?php endforeach;?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

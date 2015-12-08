@@ -87,6 +87,7 @@
                             <td>I/A</td>
                             <td>Sekolah Asal</td>
                             <td>Program</td>
+                            <td>CP</td>
                             <td>Status Data</td>
                             <td>Aksi</td>
                         </tr>
@@ -99,6 +100,7 @@
                             <td> <?=($registrant['sex'] == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
                             <td> <?=$registrant['previousSchool'];?> </td>
                             <td> <?=  ucfirst($registrant['program']);?> </td>
+                            <td> <?=$registrant['cp'];?> </td>
                             <td> <?=$registrant['status'];?> </td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/registrant/<?=$registrant['id'];?>">
@@ -141,8 +143,6 @@
 </div>
 <script type="text/javascript">
 $(function() {
-    $('#tabel_utama').DataTable({
-        "order": [[ 0, "desc" ]]
-    });
+    $('#tabel_utama').DataTable();
 });
 </script>

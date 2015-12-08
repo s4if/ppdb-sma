@@ -45,11 +45,13 @@ class Admin extends MY_Controller {
     
     public function beranda(){
         $this->blockNonAdmin();
+        $registrant_data = $this->reg->getArrayData();
         $data = [
             'title' => 'Beranda',
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
             'nav_pos' => 'homeAdmin',
+            'data_registrant' => $registrant_data,
             'female_count' => $this->reg->getCount(['sex' => 'P']),
             'male_count' => $this->reg->getCount(['sex' => 'L'])
         ];

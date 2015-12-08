@@ -25,7 +25,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         if(!$showDeleted){
             $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
         }
-        $qb->orderBy('r.id', 'ASC');
+        $qb->orderBy('r.registrationTime', 'DESC');
         if(!is_null($sex)){
             $qb->setParameter('sex', $sex);
         }
