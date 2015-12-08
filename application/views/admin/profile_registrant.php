@@ -82,7 +82,7 @@
         <tr>
             <td> Email </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant_data->getEmail()?> </td>
+            <td> <?=$registrant_data->getCp()?> </td>
         </tr>
         <tr>
             <td> Program </td>
@@ -246,9 +246,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Email :</label>
+                        <label class="col-sm-2 control-label">Email / No. HP:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getEmail();?>">
+                            <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant_data->getCp();?>">
                         </div>
                     </div>
                     <div class="form-group">

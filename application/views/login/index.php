@@ -255,7 +255,7 @@ body {
                                     <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="<?=(array_key_exists('email', $registrant))?$registrant['email']:'';?>">
+                                    <input type="text" name="cp" required="true" id="cp" tabindex="1" class="form-control" placeholder="No. HP" value="<?=(array_key_exists('cp', $registrant))?$registrant['cp']:'';?>">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>

@@ -45,7 +45,7 @@ $reg->setId('I1511001');// [I/A].tahun(2dgt).bulan.count
 $reg->setName('Ardiyan Hananto');
 $reg->setSex('L');
 $reg->setNisn('2010249129310');
-$reg->setEmail('sanjarasa@smail.com');
+$reg->setCp('085738271625');
 $reg->setPassword(password_hash('qwerty', PASSWORD_BCRYPT));
 $reg->setPreviousSchool('SMP IT Ihsanul FIkri Mungkid');
 $reg->setProgram('Reguler');

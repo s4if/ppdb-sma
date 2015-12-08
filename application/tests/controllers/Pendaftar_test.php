@@ -107,6 +107,7 @@ class Pendaftar_test extends TestCase
                 'confirm-password' => 'salah',
                 'name' => 'Samir Dzeko Saputra',
                 'sex' => 'L',
+                'cp' => '089483726156',
                 'prev_school' => 'SMPN 1 Mungkid',
                 'program' => 'Reguler',
                 'captcha' => 'SALAH'

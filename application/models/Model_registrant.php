@@ -166,7 +166,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['sex'])) : $this->registrant->setSex($data['sex']); endif;
         if (!empty($data['prev_school'])) : $this->registrant->setPreviousSchool($data['prev_school']); endif;
         if (!empty($data['nisn'])) : $this->registrant->setNisn($data['nisn']); endif;
-        if (!empty($data['email'])) : $this->registrant->setEmail($data['email']); endif;
+        if (!empty($data['cp'])) : $this->registrant->setCp($data['cp']); endif;
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;

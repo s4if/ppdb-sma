@@ -166,9 +166,9 @@
                 <td> <?=$registrant->getNisn()?> </td>
             </tr>
             <tr>
-                <td> Email </td>
+                <td> Email / No. HP </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$registrant->getEmail()?> </td>
+                <td> <?=$registrant->getCp()?> </td>
             </tr>
             <tr>
                 <td> Program </td>

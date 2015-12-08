@@ -43,7 +43,7 @@ class RegistrantEntity
      * @Column(type="string", nullable=TRUE)
      * @var string
      */
-    protected $email;
+    protected $cp; // (8/12/2015 : Diganti No. HP)
     
     /**
      * @Column(type="string", length=8, nullable=FALSE)
@@ -158,8 +158,8 @@ class RegistrantEntity
         return $this->nisn;
     }
     
-    public function getEmail() {
-        return $this->email;
+    public function getCp() {
+        return $this->cp;
     }
 
     public function getProgram() {
@@ -266,8 +266,8 @@ class RegistrantEntity
         return $this;
     }
     
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setCp($cp) {
+        $this->cp = $cp;
         return $this;
     }
 

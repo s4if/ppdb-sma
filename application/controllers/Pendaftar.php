@@ -9,10 +9,6 @@ class Pendaftar extends MY_Controller {
         $this->load->model('Model_parent','parent');
     }
     
-    public function index(){
-        $this->beranda();
-    }
-    
     // ================= AFTER LOGIN ===========================
     
     public function beranda($id){
