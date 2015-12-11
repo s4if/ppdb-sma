@@ -25,7 +25,7 @@ class RegistrantEntity
      * @Column(type="string", length=10, nullable=FALSE)
      * @var string
      */
-    protected $sex;
+    protected $gender;
     
     /**
      * @Column(type="string", nullable=FALSE)
@@ -123,7 +123,7 @@ class RegistrantEntity
 
     public function getArray($vars = []) {
         if(empty($vars)){
-            $vars = ['id', 'name','sex','previousSchool','nisn','program', 'deleted', 'registrationTime','registrantData', 
+            $vars = ['id', 'name','gender','previousSchool','nisn','program', 'deleted', 'registrationTime','registrantData', 
                 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'completed'];
         }
         $arrData = [];
@@ -146,8 +146,8 @@ class RegistrantEntity
         return $this->name;
     }
 
-    public function getSex() {
-        return $this->sex;
+    public function getGender() {
+        return $this->gender;
     }
 
     public function getPreviousSchool() {
@@ -251,8 +251,8 @@ class RegistrantEntity
         return $this;
     }
 
-    public function setSex($sex) {
-        $this->sex = $sex;
+    public function setGender($gender) {
+        $this->gender = $gender;
         return $this;
     }
 

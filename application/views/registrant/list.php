@@ -223,10 +223,10 @@ body {
                     <div class="panel-heading ">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="<?php echo base_url().'lihat/L';?>" <?=($sex == 'L')?'class="active"':''?> >Data Pendaftar Ikhwan</a>
+                                <a href="<?php echo base_url().'lihat/L';?>" <?=($gender == 'L')?'class="active"':''?> >Data Pendaftar Ikhwan</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="<?php echo base_url().'lihat/P';?>" <?=($sex == 'P')?'class="active"':''?> >Data Pendaftar Akhwat</a>
+                                <a href="<?php echo base_url().'lihat/P';?>" <?=($gender == 'P')?'class="active"':''?> >Data Pendaftar Akhwat</a>
                             </div>
                         </div>
                         <hr>
@@ -247,16 +247,6 @@ body {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($data_registrant as $registrant) : ?>
-                                            <tr>
-                                                <td> <?= $registrant['id'];?></td>
-                                                <td> <?=$registrant['name'];?> </td>
-                                                <td> <?=($registrant['sex'] == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
-                                                <td> <?=$registrant['previousSchool'];?> </td>
-                                                <td> <?=  ucfirst($registrant['program']);?> </td>
-                                                <td> <?=$registrant['status'];?> </td>
-                                            </tr>
-                                            <?php endforeach;?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -278,10 +268,32 @@ body {
 <script src="<?=  base_url() ?>assets/js/datatables.min.js"></script>
 
 <script type="text/javascript">
-$(function() {
-    $('#tabel_utama').DataTable({
-        "order": [[ 0, "desc" ]]
+var table;
+
+$(document).ready(function() {
+
+    //datatables
+    table = $('#tabel_utama').DataTable({ 
+
+        "order": [[ 0, "desc" ]], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('pendaftar/lihat_ajax/'.$gender)?>",
+            "type": "POST"
+        }
+
     });
+
+    //datepicker
+    $('.datepicker').datepicker({
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        orientation: "top auto",
+        todayBtn: true,
+    });
+
 });
 
 </script>

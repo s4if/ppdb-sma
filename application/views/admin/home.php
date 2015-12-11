@@ -59,8 +59,8 @@
                 <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum melengkapi</h3>
             </div>
             <div class="panel-body">
-                <div style="max-height: 400px">
-                    <table class="table table-hover table-condensed">
+                <div>
+                    <table class="table table-hover table-condensed" style="max-height: 400px; overflow-y: scroll">
                         <thead>
                             <tr>
                                 <td>

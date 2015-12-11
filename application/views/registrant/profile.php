@@ -79,7 +79,7 @@
         <tr>
             <td> Jenis Kelamin </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+            <td> <?=($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
         </tr>
         <tr>
             <td> NISN </td>

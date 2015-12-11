@@ -262,9 +262,9 @@ body {
                                     <div class="">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" checked="true" name="sex" value="L"
-                                                       <?php if(array_key_exists('sex', $registrant)):?>
-                                                            <?php if($registrant['sex'] ==='L'):?>
+                                                <input type="radio" checked="true" name="gender" value="L"
+                                                       <?php if(array_key_exists('gender', $registrant)):?>
+                                                            <?php if($registrant['gender'] ==='L'):?>
                                                             checked="true"
                                                             <?php endif;?>
                                                         <?php endif;?>>
@@ -273,9 +273,9 @@ body {
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sex" value="P"
-                                                       <?php if(array_key_exists('sex', $registrant)):?>
-                                                            <?php if($registrant['sex'] ==='P'):?>
+                                                <input type="radio" name="gender" value="P"
+                                                       <?php if(array_key_exists('gender', $registrant)):?>
+                                                            <?php if($registrant['gender'] ==='P'):?>
                                                             checked="true"
                                                             <?php endif;?>
                                                         <?php endif;?>>

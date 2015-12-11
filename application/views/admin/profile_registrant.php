@@ -72,7 +72,7 @@
         <tr>
             <td> Jenis Kelamin </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=($registrant_data->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+            <td> <?=($registrant_data->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
         </tr>
         <tr>
             <td> NISN </td>
@@ -256,9 +256,9 @@
                         <div class="col-sm-8">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" checked="true" name="sex" value="L" 
-                                        <?php if(!empty($registrant_data->getSex())):?>
-                                            <?php if($registrant_data->getSex() ==='L'):?>
+                                    <input type="radio" checked="true" name="gender" value="L" 
+                                        <?php if(!empty($registrant_data->getGender())):?>
+                                            <?php if($registrant_data->getGender() ==='L'):?>
                                             checked="true"
                                             <?php endif;?>
                                         <?php endif;?>>
@@ -267,9 +267,9 @@
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="sex" value="P"
-                                        <?php if(!empty($registrant_data->getSex())):?>
-                                            <?php if($registrant_data->getSex() ==='P'):?>
+                                    <input type="radio" name="gender" value="P"
+                                        <?php if(!empty($registrant_data->getGender())):?>
+                                            <?php if($registrant_data->getGender() ==='P'):?>
                                             checked="true"
                                             <?php endif;?>
                                         <?php endif;?>>

@@ -43,7 +43,7 @@ $em = $doctrine->em;
 $reg = new RegistrantEntity();
 $reg->setId('I1511001');// [I/A].tahun(2dgt).bulan.count
 $reg->setName('Ardiyan Hananto');
-$reg->setSex('L');
+$reg->setGender('L');
 $reg->setNisn('2010249129310');
 $reg->setCp('085738271625');
 $reg->setPassword(password_hash('qwerty', PASSWORD_BCRYPT));

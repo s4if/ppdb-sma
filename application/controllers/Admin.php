@@ -52,8 +52,8 @@ class Admin extends MY_Controller {
             'admin' => $this->session->admin,
             'nav_pos' => 'homeAdmin',
             'data_registrant' => $registrant_data,
-            'female_count' => $this->reg->getCount(['sex' => 'P']),
-            'male_count' => $this->reg->getCount(['sex' => 'L'])
+            'female_count' => $this->reg->getCount(['gender' => 'P']),
+            'male_count' => $this->reg->getCount(['gender' => 'L'])
         ];
         $this->CustomView('admin/home', $data);
     }
@@ -102,19 +102,19 @@ class Admin extends MY_Controller {
         }
     }
     
-    public function lihat($sex = null){
+    public function lihat($gender = null){
         $this->blockNonAdmin();
-        $registrant_data = (is_null($sex))?$this->reg->getArrayData():$this->reg->getArrayData($sex);
+        $registrant_data = (is_null($gender))?$this->reg->getArrayData():$this->reg->getArrayData($gender);
         $jk = '';
-        if(!is_null($sex)){
-            $jk = ($sex == 'L')?'Ikhwan':'Akhwat';
+        if(!is_null($gender)){
+            $jk = ($gender == 'L')?'Ikhwan':'Akhwat';
         }
         $this->CustomView('admin/data_registrant', [
             'title' => 'Lihat Pendaftar '.$jk,
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
             'nav_pos' => 'registrantAdmin',
-            'sex' => $sex,
+            'gender' => $gender,
             'data_registrant' => $registrant_data
         ]);
     }

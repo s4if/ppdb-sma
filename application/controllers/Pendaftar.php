@@ -328,8 +328,27 @@ class Pendaftar extends MY_Controller {
     
     // ================= Lihat Pendaftar ===========================
     
-    public function lihat($sex = 'L'){
-        $registrant_data = $this->reg->getArrayData($sex, null);
-        $this->load->view('registrant/list', ['sex' => $sex, 'data_registrant' => $registrant_data]);
+    public function lihat($gender = 'L'){
+        //$registrant_data = $this->reg->getArrayData($gender, null);
+        $this->load->view('registrant/list', [
+            'gender' => $gender, 
+            //'data_registrant' => $registrant_data
+        ]);
+    }
+    
+    public function lihat_ajax($gender = 'L'){
+        $registrant_data = $this->reg->getArrayData($gender, null);
+        $data = [];
+        foreach ($registrant_data as $registrant){
+            $row = [];
+            $row[] = $registrant['id'];
+            $row[] = $registrant['name'];
+            $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
+            $row[] = $registrant['previousSchool'];
+            $row[] = ucfirst($registrant['program']);
+            $row[] = $registrant['status'];
+            $data [] = $row;
+        }
+        echo json_encode(['data' => $data]);
     }
 }

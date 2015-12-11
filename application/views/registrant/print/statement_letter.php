@@ -158,7 +158,7 @@
                 <td style="width: 8%; text-align: left">&nbsp;</td>
                 <td style="width: 15%; text-align: left">I / A</td>
                 <td style="width: 2%; text-align: left">:</td>
-                <td style="width: 75%; text-align: left"><?=($registrant->getSex() == 'L') ? 'Ikhwan' : 'Akhwat'?></td>
+                <td style="width: 75%; text-align: left"><?=($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?></td>
             </tr>
         </table>
         <p>Dengan ini menyatakan bahwa:</p>

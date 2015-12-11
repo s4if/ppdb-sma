@@ -10,11 +10,11 @@
  */
 class RegistrantRepo extends Doctrine\ORM\EntityRepository
 {
-    public function getData($sex = null, $onlyShowCompleted = false, $showDeleted = false){
+    public function getData($gender = null, $onlyShowCompleted = false, $showDeleted = false){
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->addSelect('r')->from('RegistrantEntity', 'r');
-        if(!is_null($sex)){
-            $qb->andwhere('r.sex = :sex');
+        if(!is_null($gender)){
+            $qb->andwhere('r.gender = :gender');
         }
         if($onlyShowCompleted){
             $qb->andWhere($qb->expr()->andX(
@@ -26,8 +26,8 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
             $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
         }
         $qb->orderBy('r.registrationTime', 'DESC');
-        if(!is_null($sex)){
-            $qb->setParameter('sex', $sex);
+        if(!is_null($gender)){
+            $qb->setParameter('gender', $gender);
         }
         if(!$showDeleted){
             $qb->setParameter('deleted', true);
