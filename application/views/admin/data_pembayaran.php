@@ -61,7 +61,7 @@
                         <tr>
                             <td> <?=$resi->getRegistrant()->getId();?></td>
                             <td> <?=$resi->getRegistrant()->getName();?> </td>
-                            <td> <?=($resi->getRegistrant()->getSex() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
+                            <td> <?=($resi->getRegistrant()->getGender() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
                             <td> <?=ucfirst($resi->getRegistrant()->getProgram());?> </td>
                             <td> <?=$resi->getPaymentDate()->format('d F Y')?></td>
                             <td> <?php

@@ -60,7 +60,7 @@
             </div>
             <div class="panel-body">
                 <div>
-                    <table class="table table-hover table-condensed" style="max-height: 400px; overflow-y: scroll">
+                    <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
                         <thead>
                             <tr>
                                 <td>
@@ -68,6 +68,9 @@
                                 </td>
                                 <td>
                                     Nama
+                                </td>
+                                <td>
+                                    I/A
                                 </td>
                                 <td>
                                     CP
@@ -78,16 +81,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data_registrant as $registrant) : ?>
-                            <?php if(!$registrant['completed']) : ?>
-                            <tr>
-                                <td> <?= $registrant['id'];?></td>
-                                <td> <?=$registrant['name'];?> </td>
-                                <td> <?=$registrant['cp'];?> </td>
-                                <td> <?=$registrant['status'];?> </td>
-                            </tr>
-                            <?php endif;?>
-                            <?php endforeach;?>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -102,13 +96,33 @@
 <script src="<?=  base_url() ?>assets/js/plugins/morris/morris.js"></script>
 <script>
     // Donut Chart
-    jQuery.ready(
+    
+
+var table;
+
+$(document).ready(function() {
+    
     Morris.Donut({
         element: 'chart-jml-pendaftar',
         data: [
             {label: "Ikhwan", value: <?php echo $male_count;?>},
             {label: "Akhwat", value: <?php echo $female_count;?>}
         ]
-    })
-    );
+    });
+    
+    //datatables
+    table = $('#tabel_utama').DataTable({ 
+
+        "order": [[ 0, "desc" ]], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('admin/beranda_ajax/')?>",
+            "type": "POST"
+        }
+
+    });
+
+});
+
 </script>

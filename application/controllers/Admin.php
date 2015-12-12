@@ -58,6 +58,24 @@ class Admin extends MY_Controller {
         $this->CustomView('admin/home', $data);
     }
     
+    public function beranda_ajax(){
+        $this->blockNonAdmin();
+        $data = [];
+        $registrant_data = $this->reg->getArrayData();
+        foreach ($registrant_data as $registrant){
+            if(!$registrant['completed']) {
+                $row = [];
+                $row[] = $registrant['id'];
+                $row[] = $registrant['name'];
+                $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
+                $row[] = $registrant['cp'];
+                $row[] = $registrant['status'];
+                $data [] = $row;
+            }
+        }
+        echo json_encode(['data' => $data]);
+    }
+    
     public function password(){
         $this->blockNonAdmin();
         $data = [
@@ -104,7 +122,6 @@ class Admin extends MY_Controller {
     
     public function lihat($gender = null){
         $this->blockNonAdmin();
-        $registrant_data = (is_null($gender))?$this->reg->getArrayData():$this->reg->getArrayData($gender);
         $jk = '';
         if(!is_null($gender)){
             $jk = ($gender == 'L')?'Ikhwan':'Akhwat';
@@ -115,8 +132,26 @@ class Admin extends MY_Controller {
             'admin' => $this->session->admin,
             'nav_pos' => 'registrantAdmin',
             'gender' => $gender,
-            'data_registrant' => $registrant_data
         ]);
+    }
+    
+    public function lihat_ajax($gender = null){
+        $this->blockNonAdmin();
+        $registrant_data = (is_null($gender))?$this->reg->getArrayData():$this->reg->getArrayData($gender);
+        $data = [];
+        foreach ($registrant_data as $registrant){
+            $row = [];
+            $row[] = $registrant['id'];
+            $row[] = $registrant['name'];
+            $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
+            $row[] = $registrant['previousSchool'];
+            $row[] = ucfirst($registrant['program']);
+            $row[] = $registrant['cp'];
+            $row[] = $registrant['status'];
+            $row[] = $this->load->view('admin/fragment/data_registrant', ['registrant' => $registrant], true);
+            $data [] = $row;
+        }
+        echo json_encode(['data' => $data]);
     }
     
     public function registrant($id){

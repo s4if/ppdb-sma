@@ -28,9 +28,9 @@
 
 <h1 class="page-header">
     Data Pendaftar
-    <small><?php if(!is_null($sex)): 
-        if($sex == 'L'): echo 'Ikhwan';endif; 
-        if($sex == 'P'): echo 'Akhwat';endif;
+    <small><?php if(!is_null($gender)): 
+        if($gender == 'L'): echo 'Ikhwan';endif; 
+        if($gender == 'P'): echo 'Akhwat';endif;
         endif;?>
     </small>
 </h1>
@@ -45,31 +45,29 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <div class="btn-group">
-                <div class="btn-group"role="group">
-                    <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        <span class="glyphicon glyphicon-import"></span>
-                        Kategori
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation">
-                            <a role="menuitem" href="<?=  base_url()?>admin/lihat">
-                                Semua
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a role="menuitem" href="<?=  base_url()?>admin/lihat/L">
-                                Ikhwan
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a role="menuitem" href="<?=  base_url()?>admin/lihat/P">
-                                Akhwat
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="btn-group"role="group">
+                <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    <span class="glyphicon glyphicon-import"></span>
+                    Kategori
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a role="menuitem" href="<?=  base_url()?>admin/lihat">
+                            Semua
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" href="<?=  base_url()?>admin/lihat/L">
+                            Ikhwan
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a role="menuitem" href="<?=  base_url()?>admin/lihat/P">
+                            Akhwat
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -93,31 +91,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data_registrant as $registrant) : ?>
-                        <tr>
-                            <td> <?= $registrant['id'];?></td>
-                            <td> <?=$registrant['name'];?> </td>
-                            <td> <?=($registrant['sex'] == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
-                            <td> <?=$registrant['previousSchool'];?> </td>
-                            <td> <?=  ucfirst($registrant['program']);?> </td>
-                            <td> <?=$registrant['cp'];?> </td>
-                            <td> <?=$registrant['status'];?> </td>
-                            <td>
-                                <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/registrant/<?=$registrant['id'];?>">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                            <a id="btnDelRegistrant<?=$registrant['id'];?>" class="btn btn-sm btn-danger">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </a>
-                            <script type="text/javascript">
-                                $("#btnDelRegistrant<?=$registrant['id'];?>").click(function (){
-                                    $("#btnDelOk").attr("href", "<?=base_url().'admin/hapus_registrant/'.$registrant['id'];?>");
-                                    $("#deleteRegistrant").modal("toggle");
-                                });
-                            </script>
-                            </td>
-                        </tr>
-                        <?php endforeach;?>
+                        
                     </tbody>
                 </table>
             </div>
@@ -142,7 +116,41 @@
     </div>
 </div>
 <script type="text/javascript">
-$(function() {
-    $('#tabel_utama').DataTable();
+var table;
+
+$(document).ready(function() {
+
+    //datatables
+    table = $('#tabel_utama').DataTable({ 
+
+        "order": [[ 0, "desc" ]], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('admin/lihat_ajax/'.$gender)?>",
+            "type": "POST"
+        }
+
+    });
+
 });
+
+function ikhwan(){
+    $('#btn_akhwat').removeClass('active');
+    $('#btn_ikhwan').addClass('active');
+    tabel_refresh('L');
+}
+
+function akhwat(){
+    $('#btn_ikhwan').removeClass('active');
+    $('#btn_akhwat').addClass('active');
+    tabel_refresh('P');
+}
+
+function tabel_refresh (gender){
+    url = "<?php echo site_url('admin/lihat_ajax/')?>/" + gender;
+    table.ajax.url(url).load();
+}
+
+
 </script>
