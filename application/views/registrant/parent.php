@@ -45,11 +45,11 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-    <form class="form-horizontal wrapper" role="form" method="post" action="<?=base_url();?>pendaftar/do_edit_parent/<?=$id?>/<?=$nav_pos?>">
+    <form class="form-horizontal wrapper form-data" role="form" method="post" action="#">
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
+                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
         <div class="form-group">
@@ -111,7 +111,7 @@
         </div>
         <!-- Hubungan Darah -->
         <div class="form-group">
-            <label class="col-sm-4 control-label">Hubungan<strong class="red">*</strong> :</label>
+            <label class="col-sm-4 control-label">Hubungan dengan Pendaftar<strong class="red">*</strong> :</label>
             <?php if($nav_pos == 'father' || $nav_pos == 'mother') :?>
             <div class="col-sm-6">
                 <div class="radio">
@@ -392,15 +392,76 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($nav_pos == 'father')?'<strong class="red">*</strong>':'';?> :</label>
             <div class="col-sm-6">
-                <input type="text" name="burden_count" <?php echo ($nav_pos == 'father')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
+                <input type="number" name="burden_count" <?php echo ($nav_pos == 'father')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
+                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
     </form>
     </div>
 </div>
+<script type="text/javascript">
+function save()
+{
+    $('.form-group').removeClass('has-error'); // clear error class
+    $('.btn-save').text('Menyimpan...'); //change button text
+    $('.btn-save').attr('disabled',true); //set button disable 
+    var url;
+
+    url = '<?php echo base_url().'pendaftar/ajax_edit_parent/'.$id.'/'.$nav_pos;?>';
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $('.form-data').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+
+            if(data.status) //if success close modal and reload ajax table
+            {
+                $('#alert-div').append('<div class="alert alert-success alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Data Berhasil Disimpan</p>'+
+                    '</div>'
+                );
+                $('#btn-next').removeClass('hidden');
+                
+            }
+            else
+            {
+                $('#alert-div').append('<div class="alert alert-warning alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Maaf Penyimpanan Data Gagal</p>'+
+                    '</div>');
+                for (var i = 0; i < data.inputerror.length; i++) 
+                {
+                    $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                }
+            }
+            $('.btn-save').text('Simpan'); //change button text
+            $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
+            $('.btn-save').attr('disabled',false); //set button enable 
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+            $('.btn-save').text('Simpan'); //change button text
+            $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
+            $('.btn-save').attr('disabled',false); //set button enable 
+
+        }
+    });
+}
+</script>

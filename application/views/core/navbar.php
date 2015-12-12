@@ -34,12 +34,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">PPDB SMAIT Ihsanul Fikri Mungkid</a>
+        <a class="navbar-brand" href="#"><b>PPDB SMAIT Ihsanul Fikri Mungkid</b></a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; <?=$username;?> <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; <b id="uname"><?=$username;?></b> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <?php if(!empty($registrant)) :?>

@@ -44,11 +44,11 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-    <form class="form-horizontal wrapper" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_detail/<?=$id?>">
+    <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_detail/<?=$id?>">
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
+                <a id="btn-next" class="btn btn-success <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
         <div class="form-group">
@@ -404,8 +404,8 @@
         <?php endif;?>
         <div class="form-group insert_hby">
             <div class="col-sm-offset-4 col-sm-6">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
+                <a id="btn-next" class="btn btn-success <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
     </form>
@@ -528,4 +528,64 @@
         });
         
     });
+function save()
+{
+    $('.form-group').removeClass('has-error'); // clear error class
+    $('.btn-save').text('Menyimpan...'); //change button text
+    $('.btn-save').attr('disabled',true); //set button disable 
+    var url;
+
+    url = '<?php echo base_url().'pendaftar/ajax_edit_detail/'.$id;?>';
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $('.form-data').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+
+            if(data.status) //if success close modal and reload ajax table
+            {
+                $('#alert-div').append('<div class="alert alert-success alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Data Berhasil Disimpan</p>'+
+                    '</div>'
+                );
+                $('#btn-next').removeClass('hidden');
+                
+            }
+            else
+            {
+                $('#alert-div').append('<div class="alert alert-warning alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Maaf Penyimpanan Data Gagal</p>'+
+                    '</div>');
+                for (var i = 0; i < data.inputerror.length; i++) 
+                {
+                    $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+//                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                }
+            }
+            $('.btn-save').text('Simpan'); //change button text
+            $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
+            $('.btn-save').attr('disabled',false); //set button enable 
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+            $('.btn-save').text('Simpan'); //change button text
+            $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
+            $('.btn-save').attr('disabled',false); //set button enable 
+
+        }
+    });
+}
 </script>

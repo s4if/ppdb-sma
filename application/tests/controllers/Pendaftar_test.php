@@ -152,8 +152,8 @@ class Pendaftar_test extends TestCase
                 'physical_abnormalities' => ['Jentik kaki kiri diamputasi'],
                 'hospital_sheets' => ['Pernah kecelakaan']
             ];
-            $this->request('POST', 'pendaftar/do_edit_detail/I1511001', $data);
-            $this->assertRedirect('I1511001/detail');
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_detail/I1511001', $data);
+            $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Father(){
@@ -187,8 +187,8 @@ class Pendaftar_test extends TestCase
             'income' => '300000', 
             'burden_count' => 4
             ];
-            $this->request('POST', 'pendaftar/do_edit_parent/I1511001/father', $data);
-            $this->assertRedirect('I1511001/data/father');
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/I1511001/father', $data);
+            $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Mother(){
@@ -219,11 +219,11 @@ class Pendaftar_test extends TestCase
             'job' => 'Ibu Rumah Tangga', 
             'position' => null, 
             'company' => null,
-            'income' => '0', 
+            'income' => 1, 
             'burden_count' => 4
             ];
-            $this->request('POST', 'pendaftar/do_edit_parent/I1511001/mother', $data);
-            $this->assertRedirect('I1511001/data/mother');
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/I1511001/mother', $data);
+            $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Guardian(){
@@ -257,8 +257,8 @@ class Pendaftar_test extends TestCase
             'income' => '7000000', 
             'burden_count' => 1
             ];
-            $this->request('POST', 'pendaftar/do_edit_parent/I1511001/guardian', $data);
-            $this->assertRedirect('I1511001/data/guardian');
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/I1511001/guardian', $data);
+            $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Pernyataan(){

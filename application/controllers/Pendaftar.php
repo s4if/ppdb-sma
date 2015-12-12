@@ -92,18 +92,22 @@ class Pendaftar extends MY_Controller {
         $image->show('png');
     }
     
-    public function do_edit_profil($id){
+    public function ajax_edit_profil($id){
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
         $data['id'] = $id;
         $res = $this->reg->updateData($data);
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
-            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/beranda');
+            echo json_encode([
+                'status' => true,
+                'profile' => $data,
+            ]);
         } else {
-            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect($id.'/beranda');
+            echo json_encode([
+                'status' => false,
+                'profile' => $data,
+            ]);
         }
     }
     
@@ -121,17 +125,27 @@ class Pendaftar extends MY_Controller {
         $this->CustomView('registrant/detail', $data);
     }
     
-    public function do_edit_detail($id){
+    public function ajax_edit_detail($id){
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
-        $res = $this->reg->updateDetail($id, $data);
+        $validation = $this->reg->ajaxValidation($data);
+        $errored = $validation['errored'];
+        $res = false;
+        if ($validation['valid']) {
+            $res = $this->reg->updateDetail($id, $data);
+        }
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
-            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/detail');
+            echo json_encode([
+                'status' => true,
+                'detail' => $data,
+            ]);
         } else {
-            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect($id.'/detail');
+            echo json_encode([
+                'status' => false,
+                'detail' => $data,
+                'inputerror' => $errored,
+            ]);
         }
     }
     
@@ -200,6 +214,29 @@ class Pendaftar extends MY_Controller {
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
             redirect($id.'/data/'.$type);
+        }
+    }
+    
+    public function ajax_edit_parent($id, $type){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $validation = $this->parent->ajaxValidation($data);
+        $errored = $validation['errored'];
+        $res = false;
+        if ($validation['valid']) {
+            $res = $this->parent->updateData($id, $data, $type);
+        }
+        if($res){
+            echo json_encode([
+                'status' => true,
+                'detail' => $data,
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'detail' => $data,
+                'inputerror' => $errored,
+            ]);
         }
     }
     

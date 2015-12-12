@@ -24,7 +24,7 @@
  * THE SOFTWARE.
  */
 ?>
-<div class="col-lg-12">
+<div class="col-lg-12" id="alert-div">
 <?php if(empty($this->session->flashdata('notices')) === false): ?>
 <div class="alert alert-success alert-dismissible">
 <?php

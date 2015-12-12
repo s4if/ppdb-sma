@@ -64,37 +64,37 @@
         <tr>
             <td> Nomor Pendaftaran </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getId();?> </td>
+            <td id="reg-id"> <?=$registrant->getId();?> </td>
         </tr>
         <tr>
             <td> Nama </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getName();?> </td>
+            <td id="reg-name"> <?=$registrant->getName();?> </td>
         </tr>
         <tr>
             <td> Sekolah Asal </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getPreviousSchool()?> </td>
+            <td id="reg-prevschool"> <?=$registrant->getPreviousSchool()?> </td>
         </tr>
         <tr>
             <td> Jenis Kelamin </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+            <td id="reg-gender"> <?=($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
         </tr>
         <tr>
             <td> NISN </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getNisn()?> </td>
+            <td id="reg-nisn"> <?=$registrant->getNisn()?> </td>
         </tr>
         <tr>
             <td> Email / No. HP </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getCp()?> </td>
+            <td id="reg-cp"> <?=$registrant->getCp()?> </td>
         </tr>
         <tr>
             <td> Program </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant->getProgram()?> </td>
+            <td id="reg-program"> <?=$registrant->getProgram()?> </td>
         </tr>
         <tr>
             <td colspan="3">
@@ -120,33 +120,33 @@
                 <h4 class="modal-title text-center" id="tambahModal">Edit Pendaftar</h4>
             </div>
             <div class="modal-body">
-    <form class="form-horizontal" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_profil/<?=$id?>">
+    <form class="form-horizontal form-profil" role="form" method="post" action="#">
         <div class="form-group">
-            <label class="col-sm-2 control-label">Nama :</label>
+            <label class="col-sm-3 control-label">Nama :</label>
             <div class="col-sm-8">
                 <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant->getName();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Sekolah Asal :</label>
+            <label class="col-sm-3 control-label">Sekolah Asal :</label>
             <div class="col-sm-8">
                 <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant->getPreviousSchool();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">NISN :</label>
+            <label class="col-sm-3 control-label">NISN :</label>
             <div class="col-sm-8">
                 <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant->getNisn();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Email :</label>
+            <label class="col-sm-3 control-label">Email/No.Hp :</label>
             <div class="col-sm-8">
-                <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="<?=$registrant->getCp();?>">
+                <input type="text" name="cp" id="cp" tabindex="1" class="form-control" placeholder="Email" value="<?=$registrant->getCp();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label ">Program :</label>
+            <label class="col-sm-3 control-label ">Program :</label>
             <div class="col-sm-8">
                 <select class="form-control" name="program" >
                     <option value="reguler"  
@@ -169,8 +169,8 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-8">
-                <button type="submit" class="btn btn-sm btn-primary">OK</button>
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="button" id="btn-ok" onclick="aksiOk()" class="btn btn-primary">OK</button>
                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
             </div>
         </div>
@@ -446,3 +446,72 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+function aksiOk()
+{
+    $('#btn-ok').text('saving...'); //change button text
+    $('#btn-ok').attr('disabled',true); //set button disable 
+    var url;
+
+    url = '<?php echo base_url().'pendaftar/ajax_edit_profil/'.$id;?>';
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $('.form-profil').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+
+            if(data.status) //if success close modal and reload ajax table
+            {
+                $('#alert-div').append('<div class="alert alert-success alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Edit Data Profil Berhasil</p>'+
+                    '</div>'
+                );
+                $('#reg-id').text(data.profile.id);
+                $('#reg-name').text(data.profile.name);
+                $('#uname').text(data.profile.name);
+                $('#reg-gender').text(data.profile.gender);
+                $('#reg-prevschool').text(data.profile.prev_school);
+                $('#reg-nisn').text(data.profile.nisn);
+                $('#reg-cp').text(data.profile.cp);
+                $('#reg-program').text(data.profile.program);
+                $("#editProfil").modal('hide');
+                
+            }
+            else
+            {
+                $('#alert-div').append('<div class="alert alert-warning alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Maaf Penyimpanan Data Gagal</p>'+
+                    '</div>');
+                for (var i = 0; i < data.inputerror.length; i++) 
+                {
+                    $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                }
+                $("#editProfil").modal('hide');
+            }
+            $('#btn-ok').text('save'); //change button text
+            $('#btn-ok').attr('disabled',false); //set button enable 
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+            $('#btn-ok').text('save'); //change button text
+            $('#btn-ok').attr('disabled',false); //set button enable 
+
+        }
+    });
+}
+</script>

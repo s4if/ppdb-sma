@@ -150,4 +150,45 @@ class Model_parent extends CI_Model{
         if (!is_null($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
         
     }
+    
+    public function ajaxValidation($data){
+        $input_error = [];
+        $valid = true;
+        $arr_required =  ['name', 'status', 'birth_place', 'birth_date', 'street', 'RT', 'RW', 'village', 'district', 
+            'city', 'province', 'postal_code', 'contact', 'relation',
+            'nationality', 'religion', 'education_level', 'job', 'income'];
+        foreach ($arr_required as $required){
+            if(array_key_exists($required, $data)){
+                if(empty($data[$required])){
+                    $input_error [] = $required;
+                    $valid = false;
+                }
+            } else {
+                $input_error [] = $required;
+                $valid = false;
+            }
+        }
+        if(array_key_exists('burden_count', $data)){
+            if(is_null($data['burden_count'])){
+                $input_error [] = 'burden_count';
+                $valid = false;
+            }
+        } else {
+            $input_error [] = 'burden_count';
+            $valid = false;
+        }
+//        entah kenapa ga bisa diisi angka '0' ... :v
+        if(array_key_exists('income', $data)){
+            if($data['income'] == 0){
+                //do nothing
+            }elseif(is_null($data['income'])){
+                $input_error [] = 'income';
+                $valid = false;
+            }
+        } else {
+            $input_error [] = 'income';
+            $valid = false;
+        }
+        return ['valid' => $valid, 'errored' => $input_error];
+    }
 }

@@ -234,6 +234,28 @@ class Model_registrant extends CI_Model {
         if (!empty($data['stay_with'])) : $this->registrantData->setStayWith($data['stay_with']); endif;
     }
     
+    public function ajaxValidation($data){
+        $input_error = [];
+        $valid = true;
+        $arr_required = [
+            'birth_place', 'birth_date', 'street', 'RT', 'RW', 'village', 'district', 
+            'city', 'province', 'postal_code', 'family_condition', 'nationality', 'religion', 
+            'height', 'weight', 'stay_with'
+        ];
+        foreach ($arr_required as $required){
+            if(array_key_exists($required, $data)){
+                if(empty($data[$required])){
+                    $input_error [] = $required;
+                    $valid = false;
+                }
+            } else {
+                $input_error [] = $required;
+                $valid = false;
+            }
+        }
+        return ['valid' => $valid, 'errored' => $input_error];
+    }
+    
     protected function setRegistrantExtraData($data){
         if (!empty($data['achievements'])) : $this->setAchievement($data['achievements']); endif;
         if (!empty($data['hobbies'])) : $this->setHobby($data['hobbies']); endif;
