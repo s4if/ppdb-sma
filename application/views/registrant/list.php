@@ -223,10 +223,10 @@ body {
                     <div class="panel-heading ">
                         <div class="row">
                             <div class="col-xs-6">
-                                <a href="<?php echo base_url().'lihat/L';?>" <?=($gender == 'L')?'class="active"':''?> >Data Pendaftar Ikhwan</a>
+                                <a id="btn_ikhwan" onclick="ikhwan()" class="active" href="#" >Data Pendaftar Ikhwan</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="<?php echo base_url().'lihat/P';?>" <?=($gender == 'P')?'class="active"':''?> >Data Pendaftar Akhwat</a>
+                                <a id="btn_akhwat" onclick="akhwat()" href="#" >Data Pendaftar Akhwat</a>
                             </div>
                         </div>
                         <hr>
@@ -285,16 +285,25 @@ $(document).ready(function() {
 
     });
 
-    //datepicker
-    $('.datepicker').datepicker({
-        autoclose: true,
-        format: "yyyy-mm-dd",
-        todayHighlight: true,
-        orientation: "top auto",
-        todayBtn: true,
-    });
-
 });
+
+function ikhwan(){
+    $('#btn_akhwat').removeClass('active');
+    $('#btn_ikhwan').addClass('active');
+    tabel_refresh('L');
+}
+
+function akhwat(){
+    $('#btn_ikhwan').removeClass('active');
+    $('#btn_akhwat').addClass('active');
+    tabel_refresh('P');
+}
+
+function tabel_refresh (gender){
+    url = "<?php echo site_url('pendaftar/lihat_ajax/')?>/" + gender;
+    table.ajax.url(url).load();
+}
+
 
 </script>
     
