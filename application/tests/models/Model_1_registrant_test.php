@@ -44,7 +44,6 @@ class Model_1_registrant_test extends TestCase {
             'name' => 'Fatimah',
             'gender' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
-            'nisn' => '09082083013',
             'cp' => '084738172839',
             'program' => 'reguler'
         ];
@@ -55,12 +54,9 @@ class Model_1_registrant_test extends TestCase {
         $this->setUp();
         $data['id'] = '0000';
         $this->assertFalse($this->obj->updateData($data));
-        $data['id'] = $this->obj->getData('P')[0]->getId();
+        $arr_reg =  $this->obj->getData('P');
+        $data['id'] = end($arr_reg)->getId();
         $data['prev_school'] = 'SMPIT Ihsanul Fikri Kota Magelang';
-        $data['initial_cost'] = '8500000';
-        $data['subscription_cost'] = '900000';
-        $data['main_parent'] = 'father';
-        $data['finalized'] = 'true';
         $this->assertTrue($this->obj->updateData($data));
         
         // test delete registrant
@@ -72,8 +68,29 @@ class Model_1_registrant_test extends TestCase {
         unset($data['id']);
         $this->setUp();
         $this->assertTrue($this->obj->insertData($data));
+        $this->assertTrue($this->obj->insertData($data));
+        $data['nisn'] = '09082083013';
+        $this->assertTrue($this->obj->insertData($data));
+        $data['prev_school'] = 'SMPIT Tadaarusul Qur\'an';
+        $this->assertTrue($this->obj->insertData($data));
+        $data['name'] = 'Siti Fatimah';
+        $data['prev_school'] = 'SMPIT Ihsanul Fikri Kota Magelang';
+        $this->assertTrue($this->obj->insertData($data));
     }
     
+    public function test_finalization_registrant(){
+        // FInalisasi
+        $this->setUp();
+        $arr_reg =  $this->obj->getData('P');
+        $data['id'] = end($arr_reg)->getId();
+        $data['initial_cost'] = '8500000';
+        $data['subscription_cost'] = '900000';
+        $data['main_parent'] = 'father';
+        $data['finalized'] = 'true';
+        $this->setUp();
+        $this->assertTrue($this->obj->updateData($data));
+    }
+//    
     public function test_get_data_registrant()
     {
         $registrant = $this->obj->getData('P')[0];
@@ -97,7 +114,8 @@ class Model_1_registrant_test extends TestCase {
     public function test_crud_data_registrant_detail(){
         
         //$registrant = $this->obj->getData(null, '20141201001');
-        $id = $this->obj->getData('P')[0]->getId();
+        $arr_reg =  $this->obj->getData('P');
+        $id = end($arr_reg)->getId();
         
         // test delete registrant
         $this->setUp();
@@ -140,7 +158,8 @@ class Model_1_registrant_test extends TestCase {
     public function test_get_data_registrant_detail()
     {
         $this->setUp();
-        $registrant = $this->obj->getData('P')[0];
+        $arr_reg =  $this->obj->getData('P');
+        $registrant = end($arr_reg);
         $registrantData = $registrant->getRegistrantData();
         // TODO: Hobby, achievement, HospitalSheet, PhysicalAbnormality
         $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 'familyCondition', 'nationality', 'religion', 'height', 'weight', 'stayWith'];
@@ -163,7 +182,8 @@ class Model_1_registrant_test extends TestCase {
     
     public function test_upload()
     {
-        $id = $this->obj->getData('P')[0]->getId();
+        $arr_reg =  $this->obj->getData('P');
+        $id = end($arr_reg)->getId();
         $data = [
             'payment_date' => '11-12-2015',
             'transfer_destination' => 'SMAIT Ihsanul Fikri BNI Syariah',
@@ -177,5 +197,4 @@ class Model_1_registrant_test extends TestCase {
         $this->assertTrue($this->obj->uploadReceipt(APPPATH.'tests/assets/receipt.jpg', $id, $data));
     }
     
-    // TODO : Test Subscription Cost!!
 }

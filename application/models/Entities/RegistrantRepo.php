@@ -25,7 +25,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         if(!$showDeleted){
             $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
         }
-        $qb->orderBy('r.registrationTime', 'DESC');
+        $qb->orderBy('r.id', 'ASC');
         if(!is_null($gender)){
             $qb->setParameter('gender', $gender);
         }
@@ -61,5 +61,31 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
 //        } catch (Doctrine\ORM\Query\QueryException $e) {
 //            return false;
 //        }
+    }
+    
+    public function getDataByFilter($filter){
+        try {
+            $qb = $this->getEntityManager()->createQueryBuilder();
+            $qb->select('r')
+                    ->from('RegistrantEntity', 'r');
+            foreach ($filter as $key => $value){
+                $qb->andWhere('r.'.$key .' = :set'.$key);
+            }
+            $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
+            foreach ($filter as $key => $value){
+                $qb->setParameter('set'.$key, $value);
+            }
+            $qb->setParameter('deleted', true);
+            $qb->orderBy('r.id', 'ASC');
+            $query = $qb->getQuery();
+            $result =  $query->getSingleResult();
+            return $result;
+        } catch (Doctrine\ORM\Query\QueryException $e) {
+            return null;
+        } catch (Doctrine\ORM\NoResultException $e) {
+            return null;
+        } catch (Doctrine\ORM\NonUniqueResultException $e) {
+            return null;
+        }
     }
 }

@@ -74,9 +74,15 @@ class Model_registrant extends CI_Model {
         }
     }
     
+    public function getDataByFilter($filter = []){
+        $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
+        return $regRepo->getDataByFilter($filter);
+    }
+    
     // TODO: In Production always enable try and catch
     public function insertData($data){
         try {
+            $this->duplicateCheck($data);
             $this->registrant = new RegistrantEntity();
             $data['reg_time'] = new DateTime('now');
             $data['id'] = $this->genId($data['reg_time'], $data['gender']);
@@ -87,6 +93,24 @@ class Model_registrant extends CI_Model {
             return true;
         } catch (Doctrine\DBAL\Exception\NotNullConstraintViolationException $ex){
             return false;
+        }
+    }
+    
+    // Xperimental
+    protected function duplicateCheck($data){
+        $reg = $this->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school'], ]);
+        if(is_null($reg)){
+            // do nothing
+        } elseif(array_key_exists('nisn', $data)) {
+            if($reg->getNisn() == $data['nisn']){
+                $reg->setDeleted(true);
+                $this->doctrine->em->persist($reg);
+            }
+        } else {
+            if(is_null($reg->getNisn())){
+                $reg->setDeleted(true);
+                $this->doctrine->em->persist($reg);
+            }
         }
     }
     

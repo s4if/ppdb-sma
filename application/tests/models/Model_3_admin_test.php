@@ -96,10 +96,4 @@ class Model_3_admin_test extends TestCase{
         $this->assertTrue($this->obj->deleteData($data));
     }
     
-//    public function test_delete_custom_registrant_data(){
-//        $this->setUp();
-//        $id = $this->CI->reg->getData('P')[0]->getId();
-//        $this->assertTrue($this->CI->reg->deleteData(['id' => $id]));
-//    }
-    
 }

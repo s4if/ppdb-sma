@@ -42,7 +42,8 @@ class Model_2_parent_test extends TestCase{
     public function test_crud_data_parent(){
         $this->setUp();
         $this->CI->load->model('model_registrant', 'reg');
-        $id = $this->CI->reg->getData('P')[0]->getId();
+        $arr_reg =  $this->CI->reg->getData('P');
+        $id = end($arr_reg)->getId();
         
         // test insert ayah
         $this->setUp();
@@ -108,7 +109,8 @@ class Model_2_parent_test extends TestCase{
     public function test_get_data_parent()
     {
         $this->setUp();
-        $id = $this->CI->reg->getData('P')[0]->getId();
+        $arr_reg =  $this->CI->reg->getData('P');
+        $id = end($arr_reg)->getId();
         $parentData = $this->obj->getData($id, ['father', 'mother', 'guardian']);
         $attributes = ['id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'street', 'RT', 'RW', 'village', 
             'district', 'city', 'province', 'postalCode',  'contact', 'relation', 

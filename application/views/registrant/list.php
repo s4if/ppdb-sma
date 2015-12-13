@@ -240,6 +240,7 @@ body {
                                             <tr>
                                                 <td>No. Pendaftaran</td>
                                                 <td>Nama</td>
+                                                <td>NISN</td>
                                                 <td>I/A</td>
                                                 <td>Sekolah Asal</td>
                                                 <td>Program</td>
