@@ -107,6 +107,9 @@ class Login extends MY_Controller {
     
     public function do_register(){
         $data = $this->input->post(null, true);
+//        $hasil = $this->reg->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school']]);
+//        var_dump($hasil);
+//        var_dump($data);
         $res = $this->real_do_register($data);
         if ($res['status'] == 1) {
             $this->session->set_flashdata('registrant', $res['registrant']);

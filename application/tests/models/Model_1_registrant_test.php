@@ -69,12 +69,15 @@ class Model_1_registrant_test extends TestCase {
         $this->setUp();
         $this->assertTrue($this->obj->insertData($data));
         $this->assertTrue($this->obj->insertData($data));
+        $data['prev_school'] = 'SMPIT Tadaarusul Qur\'an';
+        $this->assertTrue($this->obj->insertData($data));
+        $this->assertTrue($this->obj->insertData($data));
         $data['nisn'] = '09082083013';
         $this->assertTrue($this->obj->insertData($data));
-        $data['prev_school'] = 'SMPIT Tadaarusul Qur\'an';
         $this->assertTrue($this->obj->insertData($data));
         $data['name'] = 'Siti Fatimah';
         $data['prev_school'] = 'SMPIT Ihsanul Fikri Kota Magelang';
+        $this->assertTrue($this->obj->insertData($data));
         $this->assertTrue($this->obj->insertData($data));
     }
     

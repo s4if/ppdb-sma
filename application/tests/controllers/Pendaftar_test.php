@@ -118,8 +118,27 @@ class Pendaftar_test extends TestCase
             
             // Note : Captcha tidak bisa diuji karena session tidak bisa konsisten
             
-            //berhasil
+            // Berhasil
             $param['confirm-password'] = 'qwerty';
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
+            
+            // Kondisional 
+            $param['name'] = 'Salahuddin Al Ayyubi';
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
+            $param['prev_school'] = 'SMPIT Ihsanul Fikri Mungkid';
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
+            $param['nisn'] = '80493829';
+            $this->request('POST', ['Login', 'do_register'], $param);
+            $this->assertRedirect('login/register_berhasil');
             $this->request('POST', ['Login', 'do_register'], $param);
             $this->assertRedirect('login/register_berhasil');
         }

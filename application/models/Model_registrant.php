@@ -98,16 +98,22 @@ class Model_registrant extends CI_Model {
     
     // Xperimental
     protected function duplicateCheck($data){
-        $reg = $this->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school'], ]);
-        if(is_null($reg)){
-            // do nothing
-        } elseif(array_key_exists('nisn', $data)) {
-            if($reg->getNisn() == $data['nisn']){
+        if(!array_key_exists('nisn', $data)){
+            $data['nisn'] = '';
+        }
+        $reg = null;
+        if(empty($data['nisn'])){
+            $reg = $this->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school'], ]);
+            
+        } else {
+            $reg = $this->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school'], 'nisn' => $data['nisn'], ]);
+        }
+        if(!is_bool($reg)){
+            if(!empty($data['nisn']) && empty(is_null($reg->getNisn()))){
                 $reg->setDeleted(true);
                 $this->doctrine->em->persist($reg);
             }
-        } else {
-            if(is_null($reg->getNisn())){
+            if($data['nisn'] == $reg->getNisn()){
                 $reg->setDeleted(true);
                 $this->doctrine->em->persist($reg);
             }

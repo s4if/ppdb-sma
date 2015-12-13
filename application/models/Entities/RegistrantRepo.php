@@ -64,7 +64,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
     }
     
     public function getDataByFilter($filter){
-        try {
+//        try {
             $qb = $this->getEntityManager()->createQueryBuilder();
             $qb->select('r')
                     ->from('RegistrantEntity', 'r');
@@ -78,14 +78,14 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
             $qb->setParameter('deleted', true);
             $qb->orderBy('r.id', 'ASC');
             $query = $qb->getQuery();
-            $result =  $query->getSingleResult();
-            return $result;
-        } catch (Doctrine\ORM\Query\QueryException $e) {
-            return null;
-        } catch (Doctrine\ORM\NoResultException $e) {
-            return null;
-        } catch (Doctrine\ORM\NonUniqueResultException $e) {
-            return null;
-        }
+            $result =  $query->getResult();
+            return end($result);
+//        } catch (Doctrine\ORM\Query\QueryException $e) {
+//            return null;
+//        } catch (Doctrine\ORM\NoResultException $e) {
+//            return null;
+//        } catch (Doctrine\ORM\NonUniqueResultException $e) {
+//            return null;
+//        }
     }
 }
