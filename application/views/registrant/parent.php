@@ -48,8 +48,12 @@
     <form class="form-horizontal wrapper form-data" role="form" method="post" action="#">
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
+                <a class="btn btn-warning" href="<?=base_url().$id.'/'.$prev;?>"><span class="glyphicon glyphicon-chevron-left">&nbsp;Kembali</a>
                 <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <?php if($nav_pos == 'mother') :?>
+                    <a class="btn btn-info <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/data/guardian';?>"><span class="glyphicon glyphicon-user">&nbsp;Wali</a>
+                <?php endif;?>
+                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
             </div>
         </div>
         <div class="form-group">
@@ -397,8 +401,12 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
+                <a class="btn btn-warning" href="<?=base_url().$id.'/'.$prev;?>"><span class="glyphicon glyphicon-chevron-left">&nbsp;Kembali</a>
                 <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <?php if($nav_pos == 'mother') :?>
+                    <a class="btn btn-info <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/data/guardian';?>"><span class="glyphicon glyphicon-user">&nbsp;Wali</a>
+                <?php endif;?>
+                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
             </div>
         </div>
     </form>

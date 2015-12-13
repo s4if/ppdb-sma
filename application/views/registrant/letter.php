@@ -40,6 +40,12 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <a class="btn btn-warning" href="<?=base_url().$id.'/data/mother';?>"><span class="glyphicon glyphicon-chevron-left">&nbsp;Kembali</a>
+            <a class="btn btn-success" href="<?=base_url().$id.'/rekap';?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
+        </div>
+    </div>
+    <div class="row">
         <p>
             Pada langkah ini, anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pembangunan, SPP, dll. <br />
             Pastikan yang mengisi ini adalah <strong>Orang Tua</strong> atau anda <strong>Telah berdiskusi</strong> dengan orang tua anda. <br/>
@@ -67,7 +73,7 @@
                         Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>(Jumlah Uang SPP)</strong>.
                     </li>
                     <li class="pernyataan">
-                        Saya sanggup untuk memenuhi Iuran seragam dan Uang kesiswaan kepada pihak sekolah sebesar 
+                        Saya sanggup untuk membayar Uang Seragam dan Uang Kesiswaan kepada pihak sekolah dengan total sebesar 
                         <strong>Rp. 2.200.000,-</strong>.
                     </li>
                     <li class="pernyataan">

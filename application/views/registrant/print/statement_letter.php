@@ -176,7 +176,7 @@
                 Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>RP. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</strong>.
             </li>
             <li class="pernyataan">
-                Saya sanggup untuk memenuhi Iuran Seragam dan Iuran Kesiswaan kepada pihak sekolah dengan total sebesar 
+                Saya sanggup untuk membayar Uang Seragam dan Uang Kesiswaan kepada pihak sekolah dengan total sebesar 
                 <strong>Rp. 2.200.000,-</strong>.
             </li>
             <li class="pernyataan">

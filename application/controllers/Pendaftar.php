@@ -161,7 +161,8 @@ class Pendaftar extends MY_Controller {
             'trans' => $tn['trans'],
             'parent_data' => $parent_data,
             'nav_pos' => $type, 
-            'next' => $tn['next']
+            'next' => $tn['next'],
+            'prev' => $tn['prev']
         ];
         $this->CustomView('registrant/parent', $data);
     }
@@ -170,23 +171,27 @@ class Pendaftar extends MY_Controller {
         $trans = $next = '';
         switch ($type){
         case 'father' :
+            $prev = 'detail';
             $trans = 'Ayah';
             $next = 'data/mother';
             break;
         case 'mother' :
+            $prev = 'data/father';
             $trans = 'Ibu';
-            $next = 'data/guardian';
+            $next = 'surat';
             break;
         case 'guardian' :
+            $prev = 'data/mother';
             $trans = 'Wali';
-            $next = 'rekap';
+            $next = 'surat';
             break;
         default :
+            $prev = 'data/mother';
             $trans = 'ayah';
             $next = 'data/mother';
             break;
         }
-        return ['trans' => $trans, 'next' => $next];
+        return ['prev' => $prev,'trans' => $trans, 'next' => $next];
     }
     
     public function finalisasi($id, $finalized){

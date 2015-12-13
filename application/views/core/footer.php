@@ -47,7 +47,10 @@
 <script src="<?=  base_url() ?>assets/js/user.js"></script>
 
 <script type="text/javascript">
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        startView : 'decade',
+        language : 'id-ID'
+    });
 </script>
 
 </body>
