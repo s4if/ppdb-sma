@@ -428,7 +428,7 @@ class Model_registrant extends CI_Model {
             $arr_result ['foto'] = 0;
         } else {
             $arr_result ['foto'] = 1;
-            $all_stats++;
+            //$all_stats++;
         }
         if(is_null($registrant->getMainParent())){
             $arr_result ['letter'] = 0;
@@ -442,7 +442,7 @@ class Model_registrant extends CI_Model {
         } else {
             $arr_result ['payment'] = 0;
         }
-        $arr_result['completed'] = ($all_stats >=5)?true:false;
+        $arr_result['completed'] = ($all_stats >=4)?true:false;
         return $arr_result;
     }
     
@@ -455,7 +455,7 @@ class Model_registrant extends CI_Model {
         } else {
             $str = 'Data yang kurang : '; // String Status
             if($status['data'] < 1): $str = $str.'data diri, '; endif;
-            if($status['foto'] < 1): $str = $str.'foto, '; endif;
+            //if($status['foto'] < 1): $str = $str.'foto, '; endif;
             if($status['father'] < 1): $str = $str.'data ayah, '; endif;
             if($status['mother'] < 1): $str = $str.'data ibu, '; endif;
             if($status['letter'] < 1): $str = $str.'surat pernyataan, '; endif;

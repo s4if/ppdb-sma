@@ -232,9 +232,9 @@ body {
                                         <td><?php echo ucwords($registrant->getName());?></td>
                                     </tr>
                                     <tr>
-                                        <td>ID </td>
+                                        <td>Nomor Pendaftaran </td>
                                         <td>&nbsp;:&nbsp;</td>
-                                        <td><?php echo $registrant->getId();?></td>
+                                        <td><strong><?php echo $registrant->getId();?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>Asal Sekolah </td>

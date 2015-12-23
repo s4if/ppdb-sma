@@ -48,7 +48,7 @@
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
                 <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a id="btn-next" class="btn btn-success <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <a class="btn btn-success btn-next <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
         <div class="form-group">
@@ -405,7 +405,7 @@
         <div class="form-group insert_hby">
             <div class="col-sm-offset-4 col-sm-6">
                 <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a id="btn-next" class="btn btn-success <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+                <a class="btn btn-success btn-next <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
             </div>
         </div>
     </form>
@@ -548,6 +548,7 @@ function save()
 
             if(data.status) //if success close modal and reload ajax table
             {
+                $('#alert-div').empty();
                 $('#alert-div').append('<div class="alert alert-success alert-dismissible">'+
                     '<button type="button" class="close" data-dismiss="alert"><p>'+
                     '<span aria-hidden="true">&times;</span><span class="sr-only">'+
@@ -555,11 +556,14 @@ function save()
                     '<p>Data Berhasil Disimpan</p>'+
                     '</div>'
                 );
-                $('#btn-next').removeClass('hidden');
-                
+                $('.btn-next').removeClass('hidden');
+                btnNext = $('.btn-next');
+                $('.insert-lanjut').after(btnNext[0]);
+                $('#modal-alert-success').modal('toggle');
             }
             else
             {
+                $('#alert-div').empty();
                 $('#alert-div').append('<div class="alert alert-warning alert-dismissible">'+
                     '<button type="button" class="close" data-dismiss="alert"><p>'+
                     '<span aria-hidden="true">&times;</span><span class="sr-only">'+
@@ -571,6 +575,7 @@ function save()
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
 //                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
+                $('#modal-alert-failed').modal('toggle');
             }
             $('.btn-save').text('Simpan'); //change button text
             $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');

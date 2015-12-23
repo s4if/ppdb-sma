@@ -110,10 +110,8 @@
         }
         img.foto-profil {
             resize: both;
-            height: 200px;
-            width: 150px;
-            max-height: 200px;
-            max-width: 150px;
+            height: 4cm;
+            width: 3cm;
         }
         table.data{
             border-collapse: collapse;
@@ -134,7 +132,7 @@
     <h1 class="header-print">Data Pendaftar</h1>
     <div class="page-content">
         <h2 class="header-section">Foto Pendaftar</h2>
-        <img class="foto-profil img-rounded" src="<?=FCPATH.'data/foto/'.$id.'.png';?>" alt="foto-profil">
+        <img class="foto-profil" src="<?=FCPATH.'data/foto/'.$id.'.png';?>" alt="Foto 3x4">
         <hr />
     </div>
     <div class="page-content">
@@ -186,7 +184,7 @@
             <tr>
                 <td> TTL </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ucfirst($data->getBirthPlace()).', '.$data->getBirthDate()->format('d F Y');?> </td>
+                <td> <?php echo ucfirst($data->getBirthPlace()).', '.tgl_indo($data->getBirthDate()->format('Y m d'));?> </td>
             </tr>
             <tr>
                 <td> Alamat </td>
@@ -244,7 +242,7 @@
             <tr>
                 <td> TTL </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ucfirst($parent->getBirthPlace()).', '.$parent->getBirthDate()->format('d F Y');?> </td>
+                <td> <?php echo ucfirst($parent->getBirthPlace()).', '.tgl_indo($parent->getBirthDate()->format('Y m d'));?> </td>
             </tr>
             <tr>
                 <td> Alamat </td>

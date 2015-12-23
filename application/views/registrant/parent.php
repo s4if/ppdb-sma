@@ -53,7 +53,7 @@
                 <?php if($nav_pos == 'mother') :?>
                     <a class="btn btn-info <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/data/guardian';?>"><span class="glyphicon glyphicon-user">&nbsp;Wali</a>
                 <?php endif;?>
-                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
+                <a class="btn btn-success btn-next <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
             </div>
         </div>
         <div class="form-group">
@@ -406,7 +406,7 @@
                 <?php if($nav_pos == 'mother') :?>
                     <a class="btn btn-info <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/data/guardian';?>"><span class="glyphicon glyphicon-user">&nbsp;Wali</a>
                 <?php endif;?>
-                <a class="btn btn-success <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
+                <a class="btn btn-success btn-next <?php echo (is_null($parent_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id.'/'.$next;?>">Lanjut&nbsp;<span class="glyphicon glyphicon-chevron-right"></a>
             </div>
         </div>
     </form>
@@ -440,8 +440,10 @@ function save()
                     '<p>Data Berhasil Disimpan</p>'+
                     '</div>'
                 );
-                $('#btn-next').removeClass('hidden');
-                
+                $('.btn-next').removeClass('hidden');
+                btnNext = $('.btn-next');
+                $('.insert-lanjut').after(btnNext[0]);
+                $('#modal-alert-success').modal('toggle');
             }
             else
             {
@@ -455,6 +457,7 @@ function save()
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
                 }
+                $('#modal-alert-failed').modal('toggle');
             }
             $('.btn-save').text('Simpan'); //change button text
             $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');

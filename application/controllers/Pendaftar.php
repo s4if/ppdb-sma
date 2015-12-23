@@ -1,4 +1,4 @@
-<?php
+fo<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pendaftar extends MY_Controller {

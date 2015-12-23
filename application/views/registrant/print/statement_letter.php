@@ -198,23 +198,23 @@
                 <?php
                 $date = new DateTime('now');
                 ?>
-                <td style="width: 33%; text-align: center">Magelang, <?php echo $date->format('j F Y');?></td>
+                <td style="width: 33%; text-align: center">Magelang, <?php echo tgl_indo($date->format('Y m d'));?></td>
             </tr>
             <tr>
-                <td style="width: 33%; text-align: center">Kepala SMAIT Ihsanul Fikri</td>
-                <td style="width: 34%; text-align: center">Pewawancara</td>
-                <td style="width: 33%; text-align: center">Orang tua / wali murid</td>
+                <td style="width: 35%; text-align: center">Kepala SMAIT Ihsanul Fikri</td>
+                <td style="width: 30%; text-align: center">Pewawancara</td>
+                <td style="width: 35%; text-align: center">Orang tua / wali murid</td>
             </tr>
             <tr >
-                <td style="width: 33%; height: 60px; text-align: center"></td>
-                <td style="width: 34%; height: 60px; text-align: center"></td>
-                <td style="width: 33%; height: 60px; text-align: center; font-size: 0.65em;
+                <td style="width: 35%; height: 60px; text-align: center"></td>
+                <td style="width: 30%; height: 60px; text-align: center"></td>
+                <td style="width: 35%; height: 60px; text-align: center; font-size: 0.65em;
                     font-style: italic;">Materai Rp. 6.000,-</td>
             </tr>
             <tr>
-                <td style="width: 33%; text-align: center">...............................</td>
-                <td style="width: 34%; text-align: center">...............................</td>
-                <td style="width: 33%; text-align: center">...............................</td>
+                <td style="width: 35%; text-align: center">...............................</td>
+                <td style="width: 30%; text-align: center">...............................</td>
+                <td style="width: 35%; text-align: center">...............................</td>
             </tr>
         </table>
     </div>

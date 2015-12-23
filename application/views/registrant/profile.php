@@ -337,7 +337,7 @@
                         </td>
                         
                         <td>
-                            <a class="btn btn-xs btn-warning <?php echo ($registrant->getCompleted() && $foto_uploaded)?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
+                            <a class="btn btn-xs btn-warning <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
                                 <span class="glyphicon glyphicon-registration-mark"></span>
                                 Finalisasi
                             </a>

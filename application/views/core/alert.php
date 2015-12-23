@@ -56,3 +56,58 @@
 </div>
 <?php endif; ?>
 </div>
+
+
+<div class="modal fade" id="modal-alert-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Notifikasi</h4>
+            </div>
+            <div class="modal-body">
+                
+                        <h4 class="text-center">
+                            <span class="glyphicon glyphicon-ok-sign"></span>
+                            Data telah berhasil disimpan
+                        </h4>
+            </div>
+            <div class="modal-footer" >
+                <div class="center-block">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary insert-lanjut" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-alert-failed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Notifikasi</h4>
+            </div>
+            <div class="modal-body">
+                
+                        <h4 class="text-center">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                            Maaf, data gagal disimpan, mohon cek kembali data yang anda masukkan!
+                        </h4>
+            </div>
+            <div class="modal-footer">
+                <div class="center-block">
+                    <div class="col-md-2 col-md-offset-5">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
