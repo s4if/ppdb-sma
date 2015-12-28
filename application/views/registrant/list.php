@@ -277,6 +277,7 @@ $(document).ready(function() {
     table = $('#tabel_utama').DataTable({ 
 
         "order": [[ 0, "desc" ]], //Initial no order.
+        "scrollX": true,
 
         // Load data for the table's content from an Ajax source
         "ajax": {

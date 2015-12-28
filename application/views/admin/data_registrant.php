@@ -46,28 +46,15 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="btn-group"role="group">
-                <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                    <span class="glyphicon glyphicon-import"></span>
-                    Kategori
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation">
-                        <a role="menuitem" href="<?=  base_url()?>admin/lihat">
-                            Semua
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" href="<?=  base_url()?>admin/lihat/L">
-                            Ikhwan
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" href="<?=  base_url()?>admin/lihat/P">
-                            Akhwat
-                        </a>
-                    </li>
-                </ul>
+                <a id="btn_semua" onclick="semua()" class="btn btn-default active" href="#">
+                    Semua
+                </a>
+                <a id="btn_ikhwan" onclick="ikhwan()" class="btn btn-default" href="#">
+                    Ikhwan
+                </a>
+                <a id="btn_akhwat" onclick="akhwat()" class="btn btn-default" href="#">
+                    Akhwat
+                </a>
             </div>
         </div>
     </div>
@@ -76,8 +63,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
+                <table class="table table-striped table-bordered table-condensed" id="tabel_utama">
                     <thead>
                         <tr>
                             <td>No. Pendaftaran</td>
@@ -95,7 +81,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
 </div>
 <div class="modal fade" id='deleteRegistrant' tabindex="-1" role="dialog" aria-hidden="true">
@@ -124,6 +109,7 @@ $(document).ready(function() {
     table = $('#tabel_utama').DataTable({ 
 
         "order": [[ 0, "desc" ]], //Initial no order.
+        "scrollX": true,
 
         // Load data for the table's content from an Ajax source
         "ajax": {
@@ -136,15 +122,25 @@ $(document).ready(function() {
 });
 
 function ikhwan(){
+    $('#btn_semua').removeClass('active');
     $('#btn_akhwat').removeClass('active');
     $('#btn_ikhwan').addClass('active');
     tabel_refresh('L');
 }
 
 function akhwat(){
+    $('#btn_semua').removeClass('active');
     $('#btn_ikhwan').removeClass('active');
     $('#btn_akhwat').addClass('active');
     tabel_refresh('P');
+}
+
+function semua(){
+    $('#btn_akhwat').removeClass('active');
+    $('#btn_ikhwan').removeClass('active');
+    $('#btn_semua').addClass('active');
+    url = "<?php echo site_url('admin/lihat_ajax/')?>/";
+    table.ajax.url(url).load();
 }
 
 function tabel_refresh (gender){
