@@ -333,4 +333,11 @@ class Admin extends MY_Controller {
             redirect('admin/pembayaran/'.$id);
         }
     }
+    
+    public function export_data()
+    {
+        $this->blockNonAdmin();
+        $date = new DateTime('now');
+        $this->reg->export('Backup Data PPDB '.$date->format('d-m-Y'));
+    }
 }

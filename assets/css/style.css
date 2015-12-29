@@ -5,3 +5,6 @@ cust-center {
 .layar-utama {
     min-height: 600px
 }
+td {
+    vertical-align: middle;
+}

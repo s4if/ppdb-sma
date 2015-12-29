@@ -89,6 +89,11 @@
             border-color: #000000;
             background-color: #ffffff;
         }
+        
+        td {
+            vertical-align: text-top;
+        }
+        
         td.surat{
             font:inherit;
             font-style: italic;
@@ -211,11 +216,49 @@
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo $data->getHeight().'/'.$data->getWeight();?> </td>
             </tr>
+                <?php
+                $hp_count = $data->getHospitalSheetsCount();
+                $hb_count = $data->getHobbiesCount();
+                $pa_count = $data->getPhysicalAbnormalitiesCount();
+                $ac_count = $data->getAchievementsCount();
+                ?>
+            <tr>
+                <td rowspan="<?=($hp_count < 1)?'1':$hp_count+1;?>"> Riwayat Penyakit </td>
+                <td rowspan="<?=($hp_count < 1)?'1':$hp_count+1;?>"> &nbsp;:&nbsp; </td>
+                <?php ($hp_count < 1)?'<td>-</td>':'';?>
+            </tr>    
+                <?php foreach ($data->getHospitalSheets() as $hp):?>
+                <tr><td> <?php echo ucfirst($hp->getHospitalSheet());?> </td>
+                <?php endforeach;?>
+            <tr>
+                <td rowspan="<?=($pa_count < 1)?'1':$pa_count+1;?>"> Kelainan Jasmani </td>
+                <td rowspan="<?=($pa_count < 1)?'1':$pa_count+1;?>"> &nbsp;:&nbsp; </td>
+                <?php ($pa_count < 1)?'<td>-</td>':'';?>
+            </tr>
+                <?php foreach ($data->getPhysicalAbnormalities() as $pa):?>
+                <tr><td> <?php echo ucfirst($pa->getPhysicalAbnormality());?> </td></tr>
+                <?php endforeach;?>
             <tr>
                 <td> Tinggal Bersama </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo ucwords($data->getStayWith());?> </td>
             </tr>
+            <tr>
+                <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> Hobi </td>
+                <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> &nbsp;:&nbsp; </td>
+                <?php ($hb_count < 1)?'<td>-</td>':'';?>
+            </tr>
+                <?php foreach ($data->getHobbies() as $hb):?>
+                <tr><td> <?php echo ucfirst($hb->getHobby());?> </td></tr>
+                <?php endforeach;?>
+            <tr>
+                <td rowspan="<?=($ac_count < 1)?'1':$ac_count+1;?>"> Prestasi </td>
+                <td rowspan="<?=($ac_count < 1)?'1':$ac_count+1;?>"> &nbsp;:&nbsp; </td>
+                <?php ($hp_count < 1)?'<td>-</td>':'';?>
+            </tr>
+                <?php foreach ($data->getAchievements() as $ac):?>
+                <tr><td> <?php echo ucfirst($ac->getAchievement());?> </td></tr>
+                <?php endforeach;?>
         </table>
         <hr />
     </div>

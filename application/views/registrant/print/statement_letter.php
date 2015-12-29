@@ -194,11 +194,11 @@
             </tr>
             <tr>
                 <td style="width: 33%; text-align: center">Mengetahui,</td>
-                <td style="width: 34%;">&nbsp;</td>
+                <td style="width: 22%;">&nbsp;</td>
                 <?php
                 $date = new DateTime('now');
                 ?>
-                <td style="width: 33%; text-align: center">Magelang, <?php echo tgl_indo($date->format('Y m d'));?></td>
+                <td style="width: 45%; text-align: right">Magelang, <?php echo tgl_indo($date->format('Y m d'));?></td>
             </tr>
             <tr>
                 <td style="width: 35%; text-align: center">Kepala SMAIT Ihsanul Fikri</td>

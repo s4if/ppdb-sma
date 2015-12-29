@@ -56,6 +56,9 @@
                     Akhwat
                 </a>
             </div>
+            <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data">
+                Download Data
+            </a>
         </div>
     </div>
     <div class="row">

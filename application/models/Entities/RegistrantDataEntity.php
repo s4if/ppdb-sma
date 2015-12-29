@@ -259,6 +259,22 @@ class RegistrantDataEntity {
         return $this->hobbies;
     }
 
+    public function getAchievementsCount() {
+        return $this->achievements->count();
+    }
+    
+    public function getHospitalSheetsCount() {
+        return $this->hospitalSheets->count();
+    }
+
+    public function getPhysicalAbnormalitiesCount() {
+        return $this->physicalAbnormalities->count();
+    }
+    
+    public function getHobbiesCount() {
+        return $this->hobbies->count();
+    }
+
     public function getAchievements() {
         return $this->achievements;
     }
