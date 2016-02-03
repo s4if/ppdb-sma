@@ -158,7 +158,7 @@ class Admin extends MY_Controller {
         $this->blockNonAdmin();
         $reg_data = $this->reg->getData(null, $id);
         $data = [
-            'title' => 'Beranda',
+            'title' => 'Profil Pendaftar',
             'username' => $this->session->admin->getUsername(),
             'id' => $id,
             'admin' => $this->session->admin,
@@ -249,8 +249,7 @@ class Admin extends MY_Controller {
     public function upload_foto($id) {
         $this->blockNonAdmin();
         $fileUrl = $_FILES['file']["tmp_name"];
-        $fileType = explode('/', $_FILES['file']['type'])[1];
-        $res = $this->reg->uploadFoto($fileUrl, $fileType, $id);
+        $res = $this->reg->uploadFoto($fileUrl, $id);
         if ($res) {
             $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
             redirect('admin/registrant/'.$id);
