@@ -29,6 +29,8 @@
  *
  * @author s4if
  */
+use PHPExcel\IOFactory;
+
 class Model_registrant extends CI_Model {
     
     protected $registrant;
@@ -477,13 +479,19 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    public function export($file_name){
-        $this->excel = new PHPExcel();
-        $this->mbatik($this->njikukData('L', false), 'Ikhwan Reguler');
-        $this->mbatik($this->njikukData('P', false), 'Akhwat Reguler');
-        $this->mbatik($this->njikukData('L', true), 'Ikhwan Tahfidz');
-        $this->mbatik($this->njikukData('P', true), 'Akhwat Tahfidz');
+    public function export($file_name, $gender, $programme = false){
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+        ini_set('max_execution_time', 60);
+        ini_set('memory_limit', '256M');
         
+        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
+        $cacheSettings = array( 'memoryCacheSize ' => '256MB');
+        PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+
+        
+        $this->excel = new PHPExcel();
+        $this->mbatik($this->njikukData($gender, $programme), 'Data');
         
         $this->excel->removeSheetByIndex(0);
         header('Content-Type: application/vnd.ms-excel');
@@ -761,7 +769,59 @@ class Model_registrant extends CI_Model {
         }
         // End Mbatik Isi
         
-        //$this->excel = new PHPExcel();
         $this->excel->addSheet($worksheet);
+    }
+    
+    public function export_Uncomplete($file_name){
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+        ini_set('max_execution_time', 60);
+        ini_set('memory_limit', '256M');
+        
+        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
+        $cacheSettings = array( 'memoryCacheSize ' => '256MB');
+        PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+
+        
+        $this->excel = new PHPExcel();
+        $registrant_data = $this->getArrayData();
+        $worksheet = new PHPExcel_Worksheet();
+        $worksheet->setTitle('Data');
+        $worksheet->setCellValue('A1', 'Nomor Pendaftaran');
+        $worksheet->getColumnDimension('A')->setAutoSize(true);
+        $worksheet->setCellValue('B1', 'Nama');
+        $worksheet->getColumnDimension('B')->setAutoSize(true);
+        $worksheet->setCellValue('C1', 'I/A');
+        $worksheet->getColumnDimension('C')->setAutoSize(true);
+        $worksheet->setCellValue('D1', 'Asal Sekolah');
+        $worksheet->getColumnDimension('D')->setAutoSize(true);
+        $worksheet->setCellValue('E1', 'Contact');
+        $worksheet->getColumnDimension('E')->setAutoSize(true);
+        $worksheet->setCellValue('F1', 'Status Kekurangan');
+        $worksheet->getColumnDimension('F')->setAutoSize(true);
+        $row_iterate = 2;
+        foreach ($registrant_data as $registrant){
+            if(!$registrant['completed']) {
+                $row = [];
+                $row[] = $registrant['id'];
+                $row[] = strtoupper($registrant['name']);
+                $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
+                $row[] = strtoupper($registrant['previousSchool']);
+                $row[] = $registrant['cp'];
+                $row[] = $registrant['status'];
+                $worksheet->fromArray($row, '', 'A'.$row_iterate);
+                $row_iterate++;
+            }
+        }
+        $this->excel->removeSheetByIndex(0);
+        $this->excel->addSheet($worksheet);
+        
+        
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
+        header('Cache-Control: max-age=0');
+        $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+        $objWriter->save('php://output');
+        exit;
     }
 }

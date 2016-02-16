@@ -59,7 +59,8 @@
                 <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum melengkapi</h3>
             </div>
             <div class="panel-body">
-                <div>
+                <div class="row">
+                    <div class="col-md-12">
                     <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
                         <thead>
                             <tr>
@@ -84,6 +85,14 @@
                             
                         </tbody>
                     </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data_uncomplete">
+                        Download Data
+                    </a>
+                    </div>
                 </div>
             </div>
         </div>

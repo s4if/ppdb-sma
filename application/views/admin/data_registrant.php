@@ -56,9 +56,19 @@
                     Akhwat
                 </a>
             </div>
-            <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data">
-                Download Data
-            </a>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Download Data <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="<?=base_url()?>admin/export_data/L/Reguler">Ikhwan Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/L/Tahfidz">Ikhwan Tahfidz</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="<?=base_url()?>admin/export_data/P/Reguler">Akhwat Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz">Akhwat Tahfidz</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="row">
