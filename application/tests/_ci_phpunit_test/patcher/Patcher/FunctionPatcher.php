@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -36,6 +36,8 @@ class FunctionPatcher extends AbstractPatcher
 		'microtime',
 		'date',
 		'function_exists',
+		'header',
+		'setcookie',
 		// Functions that have param called by reference
 		// Need to prepare method in FunctionPatcher\Proxy class
 		'openssl_random_pseudo_bytes',

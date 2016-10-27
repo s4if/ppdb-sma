@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c089650e0070387f304e6a9a8c96d7dc",
-    "content-hash": "3e035ceb5ff02d7ce1a061069df39eee",
+    "hash": "69c3a6e6be543ba86482bc2ff27eb8df",
+    "content-hash": "4b30a281f9bdc661c1f795c083b9a9cc",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1332,23 +1332,23 @@
         },
         {
             "name": "kenjis/ci-phpunit-test",
-            "version": "v0.9.1",
+            "version": "v0.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kenjis/ci-phpunit-test.git",
-                "reference": "d94bda460cb33472c345c378ad35a384ef8c2e96"
+                "reference": "a7c1fff7b413a328aedd6a466e7b8412cbbc11fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/d94bda460cb33472c345c378ad35a384ef8c2e96",
-                "reference": "d94bda460cb33472c345c378ad35a384ef8c2e96",
+                "url": "https://api.github.com/repos/kenjis/ci-phpunit-test/zipball/a7c1fff7b413a328aedd6a466e7b8412cbbc11fa",
+                "reference": "a7c1fff7b413a328aedd6a466e7b8412cbbc11fa",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "replace": {
-                "nikic/php-parser": "1.4.1"
+                "nikic/php-parser": "2.1.0"
             },
             "type": "library",
             "extra": {
@@ -1370,11 +1370,12 @@
             "homepage": "http://kenjis.github.io/ci-phpunit-test/",
             "keywords": [
                 "codeigniter",
+                "monkey patch",
                 "phpunit",
                 "test",
                 "unit testing"
             ],
-            "time": "2015-11-21 23:20:48"
+            "time": "2016-07-23 13:14:37"
         },
         {
             "name": "phpdocumentor/reflection-common",

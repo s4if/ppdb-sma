@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -68,11 +68,6 @@ EOL;
 			{
 				$new_source .= $token[1];
 			}
-		}
-
-		if ($replacement !== false)
-		{
-			throw new LogicException('Replacement data still remain');
 		}
 
 		return $new_source;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -55,6 +55,14 @@ class CIPHPUnitTestRouter
 
 		if ($e404)
 		{
+			// If 404, CodeIgniter instance is not created yet. So create it here.
+			// Because we need CI->output->_status
+			$CI =& get_instance();
+			if ($CI instanceof CIPHPUnitTestNullCodeIgniter)
+			{
+				CIPHPUnitTest::createCodeIgniterInstance();
+			}
+
 			show_404($RTR->directory.$class.'/'.$method.' is not found');
 		}
 

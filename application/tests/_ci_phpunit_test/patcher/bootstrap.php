@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -28,6 +28,8 @@ class_alias('Kenjis\MonkeyPatch\MonkeyPatchManager', 'MonkeyPatchManager');
 
 // And you have to configure for your application
 //MonkeyPatchManager::init([
+//	// PHP Parser: PREFER_PHP7, PREFER_PHP5, ONLY_PHP7, ONLY_PHP5
+//	'php_parser' => 'PREFER_PHP5',
 //	// Project root directory
 //	'root_dir' => APPPATH . '../',
 //	// Cache directory
@@ -46,6 +48,7 @@ class_alias('Kenjis\MonkeyPatch\MonkeyPatchManager', 'MonkeyPatchManager');
 //		'ExitPatcher',
 //		'FunctionPatcher',
 //		'MethodPatcher',
+//		'ConstantPatcher',
 //	],
 //	// Additional functions to patch
 //	'functions_to_patch' => [

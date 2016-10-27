@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -10,6 +10,11 @@
 
 class CIPHPUnitTestSuperGlobal
 {
+	public static function set_Global($name, $value)
+	{
+		$GLOBALS[$name] = $value;
+	}
+
 	public function set_POST($params)
 	{
 		if (is_array($params))

@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -28,12 +28,11 @@ class CIPHPUnitTestRequest
 	protected $callables = [];
 	
 	/**
-	 * @var callable callable called pre controller constructor
+	 * @var callable[] callable called pre controller constructor
 	 */
-	protected $callablePreConstructor;
+	protected $callablePreConstructors = [];
 
 	protected $enableHooks = false;
-	protected $CI;
 	
 	/**
 	 * @var CI_Hooks
@@ -80,13 +79,24 @@ class CIPHPUnitTestRequest
 	}
 
 	/**
-	 * Set callable pre constructor
+	 * Set (and Reset) callable pre constructor
 	 * 
 	 * @param callable $callable function to run before controller instantiation
 	 */
 	public function setCallablePreConstructor(callable $callable)
 	{
-		$this->callablePreConstructor = $callable;
+		$this->callablePreConstructors = [];
+		$this->callablePreConstructors[] = $callable;
+	}
+
+	/**
+	 * Add callable pre constructor
+	 * 
+	 * @param callable $callable function to run before controller instantiation
+	 */
+	public function addCallablePreConstructor(callable $callable)
+	{
+		$this->callablePreConstructors[] = $callable;
 	}
 
 	/**
@@ -108,10 +118,6 @@ class CIPHPUnitTestRequest
 	 */
 	public function request($http_method, $argv, $params = [])
 	{
-		// We need this because if 404 route, no controller is created.
-		// But we need $this->CI->output->_status
-		$this->CI =& get_instance();
-
 		if (is_string($argv))
 		{
 			$argv = ltrim($argv, '/');
@@ -146,7 +152,8 @@ class CIPHPUnitTestRequest
 			{
 				set_status_header($e->getCode());
 			}
-			$this->CI->output->_status['redirect'] = $e->getMessage();
+			$CI =& get_instance();
+			$CI->output->_status['redirect'] = $e->getMessage();
 		}
 		// show_404()
 		catch (CIPHPUnitTestShow404Exception $e)
@@ -203,12 +210,20 @@ class CIPHPUnitTestRequest
 		// 404 checking
 		if (! class_exists($class) || ! method_exists($class, $method))
 		{
+			// If 404, CodeIgniter instance is not created yet. So create it here
+			// Because we need CI->output->_status to store info
+			$CI =& get_instance();
+			if ($CI instanceof CIPHPUnitTestNullCodeIgniter)
+			{
+				CIPHPUnitTest::createCodeIgniterInstance();
+			}
+
 			show_404($class.'::'.$method . '() is not found');
 		}
 
 		$params = $argv;
 
-		return $this->createAndCallController($class, $method, $params);
+		return $this->createAndCallController($class, $method, $params, false);
 	}
 
 	/**
@@ -254,8 +269,10 @@ class CIPHPUnitTestRequest
 	{
 		if ($this->enableHooks)
 		{
-			$this->hooks->call_hook($hook);
+			return $this->hooks->call_hook($hook);
 		}
+
+		return false;
 	}
 
 	protected function setRawInputStream($string)
@@ -271,25 +288,31 @@ class CIPHPUnitTestRequest
 		}
 	}
 
-	protected function createAndCallController($class, $method, $params)
+	protected function createAndCallController($class, $method, $params, $call_display = true)
 	{
 		ob_start();
 
 		$this->callHook('pre_controller');
 
 		// Run callablePreConstructor
-		if (is_callable($this->callablePreConstructor))
+		if ($this->callablePreConstructors !== [])
 		{
-			$callable = $this->callablePreConstructor;
-			$callable();
+			foreach ($this->callablePreConstructors as $callable)
+			{
+				$callable();
+			}
 		}
 
 		// Create controller
+		if (CIPHPUnitTest::wiredesignzHmvcInstalled())
+		{
+			new CI();
+		}
 		$controller = new $class;
-		$this->CI =& get_instance();
+		$CI =& get_instance();
 
 		// Set CodeIgniter instance to TestCase
-		$this->testCase->setCI($this->CI);
+		$this->testCase->setCI($CI);
 
 		// Set default response code 200
 		set_status_header(200);
@@ -298,7 +321,7 @@ class CIPHPUnitTestRequest
 		{
 			foreach ($this->callables as $callable)
 			{
-				$callable($this->CI);
+				$callable($CI);
 			}
 		}
 
@@ -306,14 +329,20 @@ class CIPHPUnitTestRequest
 
 		// Call controller method
 		call_user_func_array([$controller, $method], $params);
+
+		$this->callHook('post_controller');
+
+		if ($call_display && $this->callHook('display_override') === false)
+		{
+			$CI->output->_display();
+		}
+
 		$output = ob_get_clean();
 
 		if ($output == '')
 		{
-			$output = $this->CI->output->get_output();
+			$output = $CI->output->get_output();
 		}
-
-		$this->callHook('post_controller');
 
 		return $output;
 	}
@@ -326,11 +355,12 @@ class CIPHPUnitTestRequest
 	 */
 	public function getStatus()
 	{
-		if (! isset($this->CI->output->_status))
+		$CI =& get_instance();
+		if (! isset($CI->output->_status))
 		{
 			throw new LogicException('Status code is not set. You must call $this->request() first');
 		}
 
-		return $this->CI->output->_status;
+		return $CI->output->_status;
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -28,6 +28,9 @@ function reset_instance()
 	load_class('', '', NULL, TRUE);
 	is_loaded('', TRUE);
 
+	// Reset config functions
+	reset_config();
+
 	// Close db connection
 	$CI =& get_instance();
 	if (isset($CI->db))
@@ -49,18 +52,31 @@ function reset_instance()
 	}
 
 	// Load core classes
-	load_class('Benchmark', 'core');
-	load_class('Hooks', 'core');
-	load_class('Config', 'core');
-//	load_class('Utf8', 'core');
-	load_class('URI', 'core');
-	load_class('Router', 'core');
-	load_class('Output', 'core');
-	load_class('Security', 'core');
-	load_class('Input', 'core');
-	load_class('Lang', 'core');
-	
+	$BM =& load_class('Benchmark', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('BM', $BM);
+	$EXT =& load_class('Hooks', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('EXT', $EXT);
+	$CFG =& load_class('Config', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('CFG', $CFG);
+	$UNI =& load_class('URI', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('UNI', $UNI);
+//	$URI =& load_class('Utf8', 'core');
+//	CIPHPUnitTestSuperGlobal::set_Global('URI', $URI);
+	$RTR =& load_class('Router', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('RTR', $RTR);
+	$OUT =& load_class('Output', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('OUT', $OUT);
+	$SEC =& load_class('Security', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('SEC', $SEC);
+	$IN =& load_class('Input', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('IN', $IN);
+	$LANG =& load_class('Lang', 'core');
+	CIPHPUnitTestSuperGlobal::set_Global('LANG', $LANG);
+
 	CIPHPUnitTest::loadLoader();
+
+	// Remove CodeIgniter instance
+	$CI = new CIPHPUnitTestNullCodeIgniter();
 }
 
 /**
@@ -71,4 +87,13 @@ function reset_instance()
 function set_is_cli($return)
 {
 	is_cli($return);
+}
+
+/**
+ * Reset config functions
+ */
+function reset_config()
+{
+	get_config([], TRUE);
+	config_item(NULL, TRUE);
 }

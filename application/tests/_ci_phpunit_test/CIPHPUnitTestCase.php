@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -52,6 +52,9 @@ class CIPHPUnitTestCase extends PHPUnit_Framework_TestCase
 			'index.php',
 		];
 		$_SERVER['argc'] = 1;
+		
+		// Reset current directroy
+		chdir(FCPATH);
 	}
 
 	/**
@@ -60,7 +63,7 @@ class CIPHPUnitTestCase extends PHPUnit_Framework_TestCase
 	public function resetInstance()
 	{
 		reset_instance();
-		new CI_Controller();
+		CIPHPUnitTest::createCodeIgniterInstance();
 		$this->CI =& get_instance();
 	}
 
@@ -78,6 +81,11 @@ class CIPHPUnitTestCase extends PHPUnit_Framework_TestCase
 				}
 
 				MonkeyPatch::resetFunctions();
+			}
+
+			if (MonkeyPatchManager::isEnabled('ConstantPatcher'))
+			{
+				MonkeyPatch::resetConstants();
 			}
 
 			if (MonkeyPatchManager::isEnabled('MethodPatcher'))
@@ -132,12 +140,13 @@ class CIPHPUnitTestCase extends PHPUnit_Framework_TestCase
 	 * $email = $this->getDouble('CI_Email', ['send' => TRUE]);
 	 *
 	 * @param  string $classname
-	 * @param  array  $params    [method_name => return_value]
+	 * @param  array  $params             [method_name => return_value]
+	 * @param  bool   $enable_constructor enable constructor or not
 	 * @return object PHPUnit mock object
 	 */
-	public function getDouble($classname, $params)
+	public function getDouble($classname, $params, $enable_constructor = false)
 	{
-		return $this->double->getDouble($classname, $params);
+		return $this->double->getDouble($classname, $params, $enable_constructor);
 	}
 
 	/**
@@ -263,6 +272,58 @@ class CIPHPUnitTestCase extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * Asserts HTTP response cookie
+	 * 
+	 * @param string       $name            cookie name
+	 * @param string|array $value           cookie value|array of cookie params
+	 * @param bool         $allow_duplicate whether to allow duplicated cookies
+	 */
+	public function assertResponseCookie($name, $value, $allow_duplicate = false)
+	{
+		$CI =& get_instance();
+		$cookies = isset($CI->output->_cookies[$name])
+			? $CI->output->_cookies[$name] : null;
+
+		if ($cookies === null)
+		{
+			$this->fail("The cookie '$name' is not set.\nNote that `assertResponseCookie()` can only assert cookies set by `\$this->input->set_cookie()`");
+		}
+
+		$count = count($cookies);
+		if ($count > 1 && ! $allow_duplicate)
+		{
+			$values = [];
+			foreach ($cookies as $key => $val)
+			{
+				$values[] = "'{$val['value']}'";
+			}
+			$values = implode(' and ', $values);
+			$this->fail("You have more than one cookie '$name'. The values are $values.\nIf it is okay, please set `true` as the 3rd argument of `assertResponseCookie()`");
+		}
+
+		// Get the last cookie
+		$cookie = $cookies[$count - 1];
+		if (is_string($value))
+		{
+			$this->assertEquals(
+				$value,
+				$cookie['value'],
+				"The cookie '$name' value is not '$value' but '{$cookie['value']}'."
+			);
+			return;
+		}
+
+		foreach ($value as $key => $val)
+		{
+			$this->assertEquals(
+				$value[$key],
+				$cookie[$key],
+				"The cookie '$name' $key is not '{$value[$key]}' but '{$cookie[$key]}'."
+			);
+		}
+	}
+
+	/**
 	 * Asserts Redirect
 	 * 
 	 * @param string $uri  URI to redirect
@@ -282,7 +343,12 @@ class CIPHPUnitTestCase extends PHPUnit_Framework_TestCase
 			$CI =& get_instance();
 			$CI->load->helper('url');
 		}
-		$absolute_url = site_url($uri);
+
+		if (! preg_match('#^(\w+:)?//#i', $uri))
+		{
+			$uri = site_url($uri);
+		}
+		$absolute_url = $uri;
 		$expected = 'Redirect to ' . $absolute_url;
 
 		$this->assertSame(

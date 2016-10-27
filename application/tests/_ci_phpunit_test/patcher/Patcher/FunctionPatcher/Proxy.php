@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of CI PHPUnit Test
+ * Part of ci-phpunit-test
  *
  * @author     Kenji Suzuki <https://github.com/kenjis>
  * @license    MIT License
@@ -250,7 +250,7 @@ class Proxy
 	}
 
 	public static function openssl_random_pseudo_bytes(
-		$length, &$crypto_strong
+		$length, &$crypto_strong = null
 	)
 	{
 		$function = 'openssl_random_pseudo_bytes';
@@ -263,18 +263,18 @@ class Proxy
 			$crypto_strong = true;
 		}
 
-		if (isset(self::$patches['openssl_random_pseudo_bytes']))
+		if (array_key_exists($function, self::$patches))
 		{
-			if (is_callable(self::$patches['openssl_random_pseudo_bytes']))
+			if (is_callable(self::$patches[$function]))
 			{
-				$callable = self::$patches['openssl_random_pseudo_bytes'];
+				$callable = self::$patches[$function];
 				return call_user_func_array(
 					$callable,
 					[$length, &$crypto_strong]
 				);
 			}
 
-			return self::$patches['openssl_random_pseudo_bytes'];
+			return self::$patches[$function];
 		}
 
 		return openssl_random_pseudo_bytes($length, $crypto_strong);
