@@ -208,19 +208,6 @@ class Pendaftar extends MY_Controller {
             redirect($id.'/beranda');
         }
     }
-
-    public function do_edit_parent($id, $type){
-        $this->blockUnloggedOne($id);
-        $data = $this->input->post(null, true);
-        $res = $this->parent->updateData($id, $data, $type);
-        if($res){
-            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/data/'.$type);
-        } else {
-            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect($id.'/data/'.$type);
-        }
-    }
     
     public function ajax_edit_parent($id, $type){
         $this->blockUnloggedOne($id);

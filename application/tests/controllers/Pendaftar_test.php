@@ -30,29 +30,6 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('login');
         }
         
-        public function test_login_fail()
-        {
-            $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => '00000000000',
-                'password' => 'qwerty'
-            ]);
-            $this->assertRedirect('login/index');
-        }
-        
-        public function test_login_ok()
-        {
-            $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
-                'password' => 'qwerty'
-            ]);
-            $this->assertRedirect('I1511001/beranda');
-        }
-        
-        public function test_logout(){
-            $this->request('GET', 'login/do_logout');
-            $this->assertRedirect('login/index');
-        }
-        
         public function test_ganti_password(){
             $this->request('POST', ['Login', 'do_login'],[
                 'id_pendaftaran' => 'I1511001',
@@ -75,7 +52,7 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('I1511001/password');
         }
         
-        public function test_beranda()
+        public function test_lihat_halaman()
         {
             // Passwordnya sudah berubah
             $this->request('POST', ['Login', 'do_login'],[

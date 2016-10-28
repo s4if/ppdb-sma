@@ -5,3 +5,11 @@ Pendaftar -> Registrant
 Riwayat Penyakit -> Hospital Sheet
 
 Pada Orang tua, dibuat kalau sudah meninggal, contact, job, income jadi tidak diperlukan
+
+=======================
+Notes 2016
+=======================
+- Kurang csrf
+- Nomor telepon dipisah jadi 2 : +62 dan 8XXXXXX
+- Alamat ayah & ibu secara default sama jika tinggalnya bersama ortu
+- Tambah autocomplete alamat

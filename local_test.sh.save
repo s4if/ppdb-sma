@@ -6,11 +6,15 @@ vendor/doctrine/orm/bin/doctrine orm:schema-tool:drop --force
 # Create
 vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
 
-# Recreate data
-rm -fRv data/foto/
-rm -fRv data/receipt/
+
+# ReCreate
 mkdir -p data/foto/
 mkdir -p data/receipt/
+
+
+# Hapus Foto Upload-an
+rm -fRv data/foto/*
+rm -fRv data/receipt/*
 
 # Seeding data
 php seeder.php
