@@ -22,4 +22,4 @@ script:
   
 after_script:
   - cd ../..
-  - php vendor/bin/coveralls -v
+  - travis_retry php vendor/bin/coveralls -v
