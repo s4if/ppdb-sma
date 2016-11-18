@@ -120,20 +120,16 @@ class RegistrantDataEntity {
      */
     protected $religion;
     
-    //TODO: Penyakit Here
-    //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
-     * @OneToMany(targetEntity="HospitalSheetEntity", mappedBy="registrant", orphanRemoval=true)
-     * @JoinColumn(onDelete="CASCADE")
-     **/
+     * @Column(type="string", length=1024, nullable=true)
+     * @var string
+     */
     protected $hospitalSheets;
     
-    //TODO: Kelainan Jasmani Here
-    //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
-     * @OneToMany(targetEntity="PhysicalAbnormalityEntity", mappedBy="registrant", orphanRemoval=true)
-     * @JoinColumn(onDelete="CASCADE")
-     **/
+     * @Column(type="string", length=1024, nullable=true)
+     * @var string
+     */
     protected $physicalAbnormalities;
     
     /**
@@ -154,27 +150,19 @@ class RegistrantDataEntity {
      */
     protected $stayWith; // NOTE: Tinggal dengan siapa
     
-    // TODO: Hobi
-    //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
-     * @OneToMany(targetEntity="HobbyEntity", mappedBy="registrant", orphanRemoval=true)
-     * @JoinColumn(onDelete="CASCADE")
-     **/
+     * @Column(type="string", length=1024, nullable=true)
+     * @var string
+     */
     protected $hobbies;
     
-    // TODO: Prestasi
-    //TODO: saat add data, data siswa juga di-addkan di sini $this->[var]->addRegistrant($this)
     /**
-     * @OneToMany(targetEntity="AchievementEntity", mappedBy="registrant", orphanRemoval=true)
-     * @JoinColumn(onDelete="CASCADE")
-     **/
+     * @Column(type="string", length=1024, nullable=true)
+     * @var string
+     */
     protected $achievements;
     
     public function __construct() {
-        $this->hospitalSheets = new ArrayCollection();
-        $this->physicalAbnormalities = new ArrayCollection();
-        $this->hobbies = new ArrayCollection();
-        $this->achievements = new ArrayCollection();
     }
     
     public function getBirthPlace() {
@@ -246,37 +234,49 @@ class RegistrantDataEntity {
     public function getStayWith() {
         return $this->stayWith;
     }
-
-    public function getHospitalSheets() {
-        return $this->hospitalSheets;
+    
+    public function getAchievements() {//ini
+        $acvArr = explode(";", $this->achievements);
+        array_pop($acvArr);
+        return $acvArr;
     }
 
-    public function getPhysicalAbnormalities() {
-        return $this->physicalAbnormalities;
+    public function getHospitalSheets() {// ini
+        $hsArr = explode(';', $this->hospitalSheets);
+        array_pop($hsArr);
+        return $hsArr;
+    }
+
+    public function getPhysicalAbnormalities() {// ini
+        $paArr = explode(';', $this->physicalAbnormalities);
+        array_pop($paArr);
+        return $paArr;
     }
     
-    public function getHobbies() {
-        return $this->hobbies;
+    public function getHobbies() {//ini
+        $hbArr = explode(";", $this->hobbies);
+        array_pop($hbArr);
+        return $hbArr;
     }
 
     public function getAchievementsCount() {
-        return $this->achievements->count();
+        $achievementArr = explode(";", $this->achievements);
+        return count($achievementArr)-1;
     }
     
     public function getHospitalSheetsCount() {
-        return $this->hospitalSheets->count();
+        $hsArr = explode(';', $this->hospitalSheets);
+        return count($hsArr)-1;
     }
 
     public function getPhysicalAbnormalitiesCount() {
-        return $this->physicalAbnormalities->count();
+        $pabArr = explode(';', $this->physicalAbnormalities);
+        return count($pabArr)-1;
     }
     
     public function getHobbiesCount() {
-        return $this->hobbies->count();
-    }
-
-    public function getAchievements() {
-        return $this->achievements;
+        $hobbiesArr = explode(";", $this->hobbies);
+        return count($hobbiesArr)-1;
     }
 
     public function setBirthPlace($birthPlace) {
@@ -364,48 +364,40 @@ class RegistrantDataEntity {
         return $this;
     }
     
-    public function addHobby(HobbyEntity $hobby){
-        $hobby->setRegistrant($this);
-        $this->hobbies[] = $hobby;
+    public function addHobby($hobby){
+        $this->hobbies = $this->hobbies.$hobby.';';
     }
     
-    public function addAchievement(AchievementEntity $achievement){
-        $achievement->setRegistrant($this);
-        $this->achievements[] = $achievement;
+    public function addAchievement( $achievement){
+        $this->achievements = $this->achievements.$achievement.';';
     }
     
-    public function addHospitalSheet(HospitalSheetEntity $hospitalSheet){
-        $hospitalSheet->setRegistrant($this);
-        $this->hospitalSheets[] = $hospitalSheet;
+    public function addHospitalSheet($hospitalSheet){
+        $this->hospitalSheets = $this->hospitalSheets.$hospitalSheet.';';
     }
     
-    public function addPhysicalAbnormality(PhysicalAbnormalityEntity $physicalAbnormalities){
-        $physicalAbnormalities->setRegistrant($this);
-        $this->physicalAbnormalities[] = $physicalAbnormalities;
+    public function addPhysicalAbnormality($physicalAbnormalities){
+        $this->physicalAbnormalities = $this->physicalAbnormalities.$physicalAbnormalities.';';
     }
     
     // TODO: Cari Cara untuk Remove
-    public function removeHobby(HobbyEntity $hobby){
-        $this->hobbies->removeElement($hobby);
-        $hobby->removeRegistrant();
+    public function removeHobby(){ // all
+        $this->hobbies = null;
         return $this;
     }
     
-    public function removeAchievement(AchievementEntity $achievement){
-        $this->achievements->removeElement($achievement);
-        $achievement->removeRegistrant();
+    public function removeAchievement(){ // all
+        $this->achievements = null;
         return $this;
     }
     
-    public function removeHospitalSheet(HospitalSheetEntity $hospitalSheet){
-        $this->hospitalSheets->removeElement($hospitalSheet);
-        $hospitalSheet->removeRegistrant();
+    public function removeHospitalSheet(){ //  all
+        $this->hospitalSheets = null;
         return $this;
     }
     
-    public function removePhysicalAbnormality(PhysicalAbnormalityEntity $physicalAbnormalities){
-        $this->physicalAbnormalities->removeElement($physicalAbnormalities);
-        $physicalAbnormalities->removeRegistrant();
+    public function removePhysicalAbnormality(){ // all
+        $this->physicalAbnormalities = null;
         return $this;
     }
     

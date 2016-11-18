@@ -165,22 +165,13 @@ class Model_1_registrant_test extends TestCase {
         $registrant = end($arr_reg);
         $registrantData = $registrant->getRegistrantData();
         // TODO: Hobby, achievement, HospitalSheet, PhysicalAbnormality
-        $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 'familyCondition', 'nationality', 'religion', 'height', 'weight', 'stayWith'];
+        $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 
+            'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 
+            'familyCondition', 'nationality', 'religion', 'height', 'weight', 
+            'stayWith', 'physicalAbnormalities', 'hospitalSheets', 'hobbies', 'achievements'];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrantData);
         }
-        
-        // Test Semua Array Collection di Data... 
-        $this->setUp();
-        $rData = $registrant->getRegistrantData();
-        $achievement = $rData->getAchievements()[0];
-        $this->assertObjectHasAttribute('achievement', $achievement);
-        $hobby = $rData->getHobbies()[0];
-        $this->assertObjectHasAttribute('hobby', $hobby);
-        $hs = $rData->getHospitalSheets()[0];
-        $this->assertObjectHasAttribute('hospitalSheet', $hs);
-        $pa = $rData->getPhysicalAbnormalities()[0];
-        $this->assertObjectHasAttribute('physicalAbnormality', $pa);
     }
     
     public function test_upload()

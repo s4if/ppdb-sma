@@ -166,77 +166,7 @@
                 <input type="number" required="true" name="weight" id="birth_date" tabindex="1" class="form-control" placeholder="Berat Badan" value="<?=$registrant_detail->getWeight();?>">
             </div>
         </div>
-        <!-- TODO: Riwayat Penyakit -->
-        <?php if($registrant_detail->getHospitalSheets()->isEmpty()):?>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
-            <div class="col-sm-4">
-                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-        </div>
-        <?php else :
-            $count = 0;
-            foreach ($registrant_detail->getHospitalSheets() as $h_s):
-                ?>
-        <div class="form-group">
-            <?php if($count == 0): $count++;?>
-            <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
-            <div class="col-sm-4">
-                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s->getHospitalSheet();?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-            <?php else : ?>
-            <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s->getHospitalSheet();?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php endforeach;?>
-        <?php endif;?>
-        <!-- TODO: Kelainan Jasmani -->
-        <?php if($registrant_detail->getPhysicalAbnormalities()->isEmpty()):?>
-        <div class="form-group insert_hs">
-            <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
-            <div class="col-sm-4">
-                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-        </div>
-        <?php else :
-            $count = 0;
-            foreach ($registrant_detail->getPhysicalAbnormalities() as $p_a):
-                ?>
-        <div class="form-group insert_hs">
-            <?php if($count == 0): $count++;?>
-            <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
-            <div class="col-sm-4">
-                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a->getPhysicalAbnormality();?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-            <?php else : ?>
-            <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a->getPhysicalAbnormality();?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <?php endif; ?>
-        </div>
-        <?php endforeach;?>
-        <?php endif;?>
-        <div class="form-group insert_pa">
             <label class="col-sm-4 control-label">Tinggal Bersama :</label>
             <div class="col-sm-7">
                 <div class="radio">
@@ -285,9 +215,79 @@
                 </div>
             </div>
         </div>
-        <!-- TODO: Prestasi -->
-        <?php if($registrant_detail->getAchievements()->isEmpty()):?>
+        <!-- TODO: Riwayat Penyakit -->
+        <?php if($registrant_detail->getHospitalSheetsCount() == 0):?>
         <div class="form-group">
+            <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
+            <div class="col-sm-4">
+                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="">
+            </div>
+            <div class="col-sm-4">
+                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+        <?php else :
+            $count = 0;
+            foreach ($registrant_detail->getHospitalSheets() as $h_s):
+                ?>
+        <div class="form-group">
+            <?php if($count == 0): $count++;?>
+            <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
+            <div class="col-sm-4">
+                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
+            </div>
+            <div class="col-sm-4">
+                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+            <?php else : ?>
+            <div class="col-sm-offset-4 col-sm-4">
+                <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
+            </div>
+            <div class="col-sm-4">
+                <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endforeach;?>
+        <?php endif;?>
+        <!-- TODO: Kelainan Jasmani -->
+        <?php if($registrant_detail->getPhysicalAbnormalitiesCount() == 0):?>
+        <div class="form-group insert_hs">
+            <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
+            <div class="col-sm-4">
+                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">
+            </div>
+            <div class="col-sm-4">
+                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        </div>
+        <?php else :
+            $count = 0;
+            foreach ($registrant_detail->getPhysicalAbnormalities() as $p_a):
+                ?>
+        <div class="form-group <?php if($count == 0){echo 'insert_hs';}?>">
+            <?php if($count == 0): $count++;?>
+            <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
+            <div class="col-sm-4">
+                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
+            </div>
+            <div class="col-sm-4">
+                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+            <?php else : ?>
+            <div class="col-sm-offset-4 col-sm-4">
+                <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
+            </div>
+            <div class="col-sm-4">
+                <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php endforeach;?>
+        <?php endif;?>
+        <!-- TODO: Prestasi -->
+        <?php if($registrant_detail->getAchievementsCount() == 0):?>
+        <div class="form-group insert_pa">
             <label class="col-sm-4 control-label"> Prestasi yang Diraih :</label>
             <div class="col-sm-4">
                 <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="">
@@ -300,18 +300,18 @@
             $count = 0;
             foreach ($registrant_detail->getAchievements() as $acv):
                 ?>
-        <div class="form-group">
+        <div class="form-group <?php if($count == 0){echo 'insert_pa';}?>">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-4 control-label">Prestasi yang Diraih :</label>
             <div class="col-sm-4">
-                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv->getAchievement();?>">
+                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
             </div>
             <div class="col-sm-4">
                 <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv->getAchievement();?>">
+                <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -321,7 +321,7 @@
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Hobi -->
-        <?php if($registrant_detail->getHobbies()->isEmpty()): //Keep If & Else div sinkron!!!?>
+        <?php if($registrant_detail->getHobbiesCount() == 0): //Keep If & Else div sinkron!!!?>
         <div class="form-group insert_acv">
             <label class="col-sm-4 control-label">Hobi :</label>
             <div class="col-sm-4">
@@ -335,18 +335,18 @@
             $count = 0;
             foreach ($registrant_detail->getHobbies() as $hobby):
                 ?>
-        <div class="form-group insert_acv">
+        <div class="form-group <?php if($count == 0){ echo 'insert_acv';}?>">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-4 control-label">Hobi :</label>
             <div class="col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby;?>">
             </div>
             <div class="col-sm-4">
                 <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>

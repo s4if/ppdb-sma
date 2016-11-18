@@ -263,7 +263,7 @@
             </div>
         </div>
         <!-- TODO: Riwayat Penyakit -->
-        <?php if($reg_data->getHospitalSheets()->isEmpty()):?>
+        <?php if($reg_data->getHospitalSheetsCount() == 0):?>
         <div class="form-group">
             <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
             <div class="col-sm-4">
@@ -281,14 +281,14 @@
             <?php if($count == 0): $count++;?>
             <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
             <div class="col-sm-4">
-                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s->getHospitalSheet();?>">
+                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
             </div>
             <div class="col-sm-4">
                 <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s->getHospitalSheet();?>">
+                <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -298,7 +298,7 @@
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Kelainan Jasmani -->
-        <?php if($reg_data->getPhysicalAbnormalities()->isEmpty()):?>
+        <?php if($reg_data->getPhysicalAbnormalitiesCount() == 0):?>
         <div class="form-group insert_hs">
             <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
             <div class="col-sm-4">
@@ -312,18 +312,18 @@
             $count = 0;
             foreach ($reg_data->getPhysicalAbnormalities() as $p_a):
                 ?>
-        <div class="form-group insert_hs">
+        <div class="form-group <?php if($count == 0){echo 'insert_hs';}?>">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
             <div class="col-sm-4">
-                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a->getPhysicalAbnormality();?>">
+                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
             </div>
             <div class="col-sm-4">
                 <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a->getPhysicalAbnormality();?>">
+                <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -333,7 +333,7 @@
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Prestasi -->
-        <?php if($reg_data->getAchievements()->isEmpty()):?>
+        <?php if($reg_data->getAchievementsCount() == 0):?>
         <div class="form-group insert_pa">
             <label class="col-sm-4 control-label"> Prestasi yang Diraih :</label>
             <div class="col-sm-4">
@@ -347,18 +347,18 @@
             $count = 0;
             foreach ($reg_data->getAchievements() as $acv):
                 ?>
-        <div class="form-group insert_pa">
+        <div class="form-group <?php if($count == 0){echo 'insert_pa';}?>">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-4 control-label">Prestasi yang Diraih :</label>
             <div class="col-sm-4">
-                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv->getAchievement();?>">
+                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
             </div>
             <div class="col-sm-4">
                 <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv->getAchievement();?>">
+                <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -368,7 +368,7 @@
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Hobi -->
-        <?php if($reg_data->getHobbies()->isEmpty()): //Keep If & Else div sinkron!!!?>
+        <?php if($reg_data->getHobbiesCount() == 0): //Keep If & Else div sinkron!!!?>
         <div class="form-group insert_acv">
             <label class="col-sm-4 control-label">Hobi :</label>
             <div class="col-sm-4">
@@ -382,18 +382,18 @@
             $count = 0;
             foreach ($reg_data->getHobbies() as $hobby):
                 ?>
-        <div class="form-group insert_acv">
+        <div class="form-group <?php if($count == 0){ echo 'insert_acv';}?>">
             <?php if($count == 0): $count++;?>
             <label class="col-sm-4 control-label">Hobi :</label>
             <div class="col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby;?>">
             </div>
             <div class="col-sm-4">
                 <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby->getHobby();?>">
+                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>

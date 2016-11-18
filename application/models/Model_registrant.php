@@ -298,62 +298,30 @@ class Model_registrant extends CI_Model {
     
     // TODO: Apakah perlu untuk dibuat cara menghapusnya?
     protected function setAchievement($achievements){
-        $arr_ach = $this->registrantData->getAchievements();
-        foreach ($arr_ach as $achievement){
-            $this->registrantData->removeAchievement($achievement);
-            $this->doctrine->em->remove($achievement);
-        }
+        $this->registrantData->removeAchievement();
         foreach ($achievements as $achievement){
-            $obj = new AchievementEntity();
-            $obj->setAchievement($achievement);
-            $obj->setRegistrant($this->registrantData);
-            $this->doctrine->em->persist($obj);
-            $this->registrantData->addAchievement($obj);
+            $this->registrantData->addAchievement($achievement);
         }
     }
     
     protected function setHobby($hobbies){
-        $arr_hobbies = $this->registrantData->getHobbies();
-        foreach ($arr_hobbies as $hobby) {
-            $this->registrantData->removeHobby($hobby);
-            $this->doctrine->em->remove($hobby);
-        }
+        $this->registrantData->removeHobby();
         foreach ($hobbies as $hobby){
-            $obj = new HobbyEntity();
-            $obj->setHobby($hobby);
-            $obj->setRegistrant($this->registrantData);
-            $this->doctrine->em->persist($obj);
-            $this->registrantData->addHobby($obj);
+            $this->registrantData->addHobby($hobby);
         }
     }
     
     protected function setHospitalSheet($hospitalSheets){
-        $arr_hs = $this->registrantData->getHospitalSheets();
-        foreach($arr_hs as $hs){
-            $this->registrantData->removeHospitalSheet($hs);
-            $this->doctrine->em->remove($hs);
-        }
+        $this->registrantData->removeHospitalSheet();
         foreach ($hospitalSheets as $hospitalSheet){
-            $obj = new HospitalSheetEntity();
-            $obj->setHospitalSheet($hospitalSheet);
-            $obj->setRegistrant($this->registrantData);
-            $this->doctrine->em->persist($obj);
-            $this->registrantData->addHospitalSheet($obj);
+            $this->registrantData->addHospitalSheet($hospitalSheet);
         }
     }
     
     protected function setPhysicalAbnormality($physicalAbnormalities){
-        $arr_pa = $this->registrantData->getPhysicalAbnormalities();
-        foreach ($arr_pa as $pa) {
-            $this->registrantData->removePhysicalAbnormality($pa);
-            $this->doctrine->em->remove($pa);
-        }
+        $this->registrantData->removePhysicalAbnormality();
         foreach ($physicalAbnormalities as $physicalAbnormality){
-            $obj = new PhysicalAbnormalityEntity();
-            $obj->setPhysicalAbnormality($physicalAbnormality);
-            $obj->setRegistrant($this->registrantData);
-            $this->doctrine->em->persist($obj);
-            $this->registrantData->addPhysicalAbnormality($obj);
+            $this->registrantData->addPhysicalAbnormality($physicalAbnormality);
         }
     }
     
