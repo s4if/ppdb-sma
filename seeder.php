@@ -42,6 +42,7 @@ $em = $doctrine->em;
 // Registrant Seeder
 $reg = new RegistrantEntity();
 $reg->setId('I1511001');// [I/A].tahun(2dgt).bulan.count
+$reg->setUsername('hanan');
 $reg->setName('Ardiyan Hananto');
 $reg->setGender('L');
 $reg->setNisn('2010249129310');

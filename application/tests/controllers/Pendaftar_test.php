@@ -23,7 +23,7 @@ class Pendaftar_test extends TestCase
                 $output2 = $this->request('GET', 'lihat/P');
 		$this->assertContains('Data Pendaftar Akhwat', $output2);
 	}
-        
+        /**
         public function test_beranda_blocked()
         {
             $this->request('GET', 'I1511001/beranda');
@@ -300,4 +300,6 @@ class Pendaftar_test extends TestCase
 			'Your APPPATH seems to be wrong. Check your $application_folder in tests/Bootstrap.php'
 		);
 	}
+         * 
+         */
 }

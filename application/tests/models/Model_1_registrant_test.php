@@ -42,12 +42,18 @@ class Model_1_registrant_test extends TestCase {
         $data = [
             'password' => 'qwerty',
             'name' => 'Fatimah',
+            'username' => 'fatimah',
             'gender' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'cp' => '084738172839',
             'program' => 'reguler'
         ];
         // test insert registrant
+        $this->assertTrue($this->obj->insertData($data));
+        $this->setUp();
+        $this->assertFalse($this->obj->insertData($data));
+        $this->setUp();
+        $data['username'] = 'fatim';
         $this->assertTrue($this->obj->insertData($data));
         
         //test edit registrant
@@ -64,21 +70,6 @@ class Model_1_registrant_test extends TestCase {
         $this->assertTrue($this->obj->deleteData($data));
         $this->assertFalse($this->obj->deleteData($data));
         
-        // Use Data
-        unset($data['id']);
-        $this->setUp();
-        $this->assertTrue($this->obj->insertData($data));
-        $this->assertTrue($this->obj->insertData($data));
-        $data['prev_school'] = 'SMPIT Tadaarusul Qur\'an';
-        $this->assertTrue($this->obj->insertData($data));
-        $this->assertTrue($this->obj->insertData($data));
-        $data['nisn'] = '09082083013';
-        $this->assertTrue($this->obj->insertData($data));
-        $this->assertTrue($this->obj->insertData($data));
-        $data['name'] = 'Siti Fatimah';
-        $data['prev_school'] = 'SMPIT Ihsanul Fikri Kota Magelang';
-        $this->assertTrue($this->obj->insertData($data));
-        $this->assertTrue($this->obj->insertData($data));
     }
     
     public function test_finalization_registrant(){
@@ -99,7 +90,7 @@ class Model_1_registrant_test extends TestCase {
         $registrant = $this->obj->getData('P')[0];
         $registrants = $this->obj->getData();
         $registrants_2 = $this->obj->getData('P');
-        $attributes = ['id','password','name','gender', 'cp', 'previousSchool','nisn','program', 'deleted',
+        $attributes = ['id', 'username','password','name','gender', 'cp', 'previousSchool','nisn','program', 'deleted',
             'registrationTime','registrantData', 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost'];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);

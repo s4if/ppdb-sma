@@ -5,9 +5,15 @@
 class RegistrantEntity
 {
     /**
-     * @Id @GeneratedValue(strategy="NONE") @Column(type="string")
+     * @Id @GeneratedValue(strategy="AUTO") @Column(type="integer")
      */
-    protected $id; //TODO : Make ID Custom like 121220151 [tgl+pendaftar ke berapa]
+    protected $id;
+    
+    /**
+     * @Column(type="string", nullable=FALSE, length=15, unique=TRUE)
+     * @var string
+     */
+    protected $username;
     
     /**
      * @Column(type="string", nullable=FALSE)
@@ -137,6 +143,10 @@ class RegistrantEntity
     public function getId() {
         return $this->id;
     }
+    
+    public function getUsername() {
+        return $this->username;
+    }
 
     public function getPassword() {
         return $this->password;
@@ -238,6 +248,11 @@ class RegistrantEntity
     
     public function setId($id) {
         $this->id = $id;
+        return $this;
+    }
+    
+    public function setUsername($username) {
+        $this->username = $username;
         return $this;
     }
 
