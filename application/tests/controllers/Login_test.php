@@ -36,13 +36,13 @@ class Login_test extends TestCase
         $output = $this->request('GET', ['Login', 'index']);
         $this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
         $output2 = $this->request('GET', ['Login', 'admin']);
-        $this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
+        $this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output2);
     }
-    /**
+   
     public function test_login_fail()
     {
         $this->request('POST', ['Login', 'do_login'],[
-            'id_pendaftaran' => '00000000000',
+            'username' => '00000000000',
             'password' => 'qwerty'
         ]);
         $this->assertRedirect('login/index');
@@ -51,17 +51,17 @@ class Login_test extends TestCase
     public function test_login_ok()
     {
         $this->request('POST', ['Login', 'do_login'],[
-            'id_pendaftaran' => 'I1511001',
+            'username' => 'hanan',
             'password' => 'qwerty'
         ]);
-        $this->assertRedirect('I1511001/beranda');
+        $this->assertRedirect('1/beranda');
     }
 
     public function test_logout(){
         $this->request('GET', 'login/do_logout');
         $this->assertRedirect('login/index');
     }
-    **/
+    
     public function test_login_admin_fail()
     {
         $this->request('POST', ['Login', 'do_login_admin'],[

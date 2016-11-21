@@ -37,6 +37,20 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         return $result;
     }
     
+    public function getDataByUsername($username) {
+        try { 
+            $qb = $this->getEntityManager()->createQueryBuilder();
+            $qb->addSelect('r')->from('RegistrantEntity', 'r')
+                    ->andwhere('r.username = :username')
+                    ->setParameter('username', $username);
+            $query = $qb->getQuery();
+            $result =  $query->getSingleResult();
+            return $result;
+        }  catch (Doctrine\ORM\NoResultException $e){
+            return null;
+        }
+    }
+
     public function getDataByJurusan($gender = null, $tahfidz = false, $showDeleted = false){
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->Select(['r']);

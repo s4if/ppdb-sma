@@ -51,17 +51,30 @@ class Login extends MY_Controller {
         }
         $this->load->view('login/index', ['builder' => $builder, 'registrant' => $registrant]);
     }
+    
+    public function uname_avaible(){
+        $data = $this->input->post(null, true);
+        $result = $this->reg->getDataByUsername($data['username']);
+        if($result != null){
+            // username is already exist 
+            echo '<div style="color: red;">Username <b>'.$data['username'].'</b> sudah ada yang memakai! </div>';
+        }
+        else{
+            // username is avaialable to use.
+            echo '<div style="color: green;">Username <b>'.$data['username'].'</b> tersedia! </div>';
+        }
+    }
 
 
     public function do_login(){
         $data = $this->input->post(null, true);
-        $registrant = $this->reg->getData(null, $data['id_pendaftaran']);
+        $registrant = $this->reg->getDataByUsername($data['username']);
         $res = 0;
         if(!is_null($registrant)){
             if(password_verify($data['password'], $registrant->getPassword())){
                 $this->session->set_userdata('registrant', $registrant);
                 $res = 1;
-                redirect($data['id_pendaftaran'].'/beranda');
+                redirect($registrant->getId().'/beranda');
             } else {
                 $res = -2;
                 $this->session->set_flashdata("errors", [0 => "Maaf, Password yang anda masukkan salah, <br />"
@@ -107,9 +120,7 @@ class Login extends MY_Controller {
     
     public function do_register(){
         $data = $this->input->post(null, true);
-//        $hasil = $this->reg->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school']]);
-//        var_dump($hasil);
-//        var_dump($data);
+        $data['cp'] = $data['cp_prefix'].$data['cp_suffix'];
         $res = $this->real_do_register($data);
         if ($res['status'] == 1) {
             $this->session->set_flashdata('registrant', $res['registrant']);

@@ -15,7 +15,7 @@ class Pendaftar extends MY_Controller {
         $this->blockUnloggedOne($id);
         $data = [
             'title' => 'Beranda',
-            'username' => $this->session->registrant->getName(),
+            'username' => $this->session->registrant->getUsername(),
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
             'img_link' => $this->getImgLink($id)[0],

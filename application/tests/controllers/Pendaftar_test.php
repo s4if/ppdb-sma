@@ -23,55 +23,55 @@ class Pendaftar_test extends TestCase
                 $output2 = $this->request('GET', 'lihat/P');
 		$this->assertContains('Data Pendaftar Akhwat', $output2);
 	}
-        /**
+        
         public function test_beranda_blocked()
         {
-            $this->request('GET', 'I1511001/beranda');
+            $this->request('GET', '1/beranda');
             $this->assertRedirect('login');
         }
         
         public function test_ganti_password(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'qwerty'
             ]);
-            $output = $this->request('GET', 'I1511001/password');
+            $output = $this->request('GET', '1/password');
             $this->assertContains('<title>Password</title>', $output);
             $param = [
                 'stored_password' => 'qwertyu',
                 'new_password' => 'zaraki',
                 'confirm_password' => 'qwerty'
             ];
-            $this->request('POST', 'pendaftar/change_password/I1511001', $param);
-            $this->assertRedirect('I1511001/password');
+            $this->request('POST', 'pendaftar/change_password/1', $param);
+            $this->assertRedirect('1/password');
             $param['confirm_password'] = 'zaraki';
-            $this->request('POST', 'pendaftar/change_password/I1511001', $param);
-            $this->assertRedirect('I1511001/password');
+            $this->request('POST', 'pendaftar/change_password/1', $param);
+            $this->assertRedirect('1/password');
             $param['stored_password'] = 'qwerty';
-            $this->request('POST', 'pendaftar/change_password/I1511001', $param);
-            $this->assertRedirect('I1511001/password');
+            $this->request('POST', 'pendaftar/change_password/1', $param);
+            $this->assertRedirect('1/password');
         }
         
         public function test_lihat_halaman()
         {
             // Passwordnya sudah berubah
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $output = $this->request('GET','I1511001/beranda');
+            $output = $this->request('GET','1/beranda');
             $this->assertContains('<title>Beranda</title>', $output);
-            $output2 = $this->request('GET','I1511001/detail');
+            $output2 = $this->request('GET','1/detail');
             $this->assertContains('<title>Edit Data Diri</title>', $output2);
-            $output3 = $this->request('GET','I1511001/data/father');
+            $output3 = $this->request('GET','1/data/father');
             $this->assertContains('<title>Edit Data Ayah</title>', $output3);
-            $output4 = $this->request('GET','I1511001/data/mother');
+            $output4 = $this->request('GET','1/data/mother');
             $this->assertContains('<title>Edit Data Ibu</title>', $output4);
-            $output5 = $this->request('GET','I1511001/data/guardian');
+            $output5 = $this->request('GET','1/data/guardian');
             $this->assertContains('<title>Edit Data Wali</title>', $output5);
-            $output6 = $this->request('GET','I1511001/rekap');
+            $output6 = $this->request('GET','1/rekap');
             $this->assertContains('<title>Rekap Data</title>', $output6);
-            $output7 = $this->request('GET','I1511001/surat');
+            $output7 = $this->request('GET','1/surat');
             $this->assertContains('<title>Surat Pernyataan</title>', $output7);
             
         }
@@ -81,10 +81,12 @@ class Pendaftar_test extends TestCase
             $this->request('GET', ['Login', 'index']);
             $param = [
                 'password' => 'qwerty',
+                'username' => 'dzeko',
                 'confirm-password' => 'salah',
                 'name' => 'Samir Dzeko Saputra',
                 'gender' => 'L',
-                'cp' => '089483726156',
+                'cp_prefix'=> '+62',
+                'cp_suffix' => '89483726156',
                 'prev_school' => 'SMPN 1 Mungkid',
                 'program' => 'Reguler',
                 'captcha' => 'SALAH'
@@ -100,32 +102,16 @@ class Pendaftar_test extends TestCase
             $this->request('POST', ['Login', 'do_register'], $param);
             $this->assertRedirect('login/register_berhasil');
             $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
+            $this->assertRedirect('login/index');
             
-            // Kondisional 
-            $param['name'] = 'Salahuddin Al Ayyubi';
-            $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
-            $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
-            $param['prev_school'] = 'SMPIT Ihsanul Fikri Mungkid';
-            $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
-            $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
-            $param['nisn'] = '80493829';
-            $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
-            $this->request('POST', ['Login', 'do_register'], $param);
-            $this->assertRedirect('login/register_berhasil');
         }
         
         public function test_isi_detail(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $this->assertRedirect('I1511001/beranda');
+            $this->assertRedirect('1/beranda');
             $data = [
                 'birth_place' => 'Semarang', 
                 'birth_date' => '19-2-2000', 
@@ -148,16 +134,16 @@ class Pendaftar_test extends TestCase
                 'physical_abnormalities' => ['Jentik kaki kiri diamputasi'],
                 'hospital_sheets' => ['Pernah kecelakaan']
             ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_detail/I1511001', $data);
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_detail/1', $data);
             $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Father(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $this->assertRedirect('I1511001/beranda');
+            $this->assertRedirect('1/beranda');
             $data = [
             'type' => 'father', 
             'name' => "Suraji", 
@@ -183,16 +169,16 @@ class Pendaftar_test extends TestCase
             'income' => '300000', 
             'burden_count' => 4
             ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/I1511001/father', $data);
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/father', $data);
             $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Mother(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $this->assertRedirect('I1511001/beranda');
+            $this->assertRedirect('1/beranda');
             $data = [
             'type' => 'mother', 
             'name' => "Suharsah", 
@@ -218,16 +204,16 @@ class Pendaftar_test extends TestCase
             'income' => 1, 
             'burden_count' => 4
             ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/I1511001/mother', $data);
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/mother', $data);
             $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Guardian(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $this->assertRedirect('I1511001/beranda');
+            $this->assertRedirect('1/beranda');
             $data = [
             'type' => 'guardian', 
             'name' => "Rizaki Al Farisi", 
@@ -253,16 +239,16 @@ class Pendaftar_test extends TestCase
             'income' => '7000000', 
             'burden_count' => 1
             ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/I1511001/guardian', $data);
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/guardian', $data);
             $this->assertContains('"status":true', $output);
         }
         
         public function test_isi_Pernyataan(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $this->assertRedirect('I1511001/beranda');
+            $this->assertRedirect('1/beranda');
             $data = [
                 'raw_icost' => '-999',
                 'other_icost' => '15000000',
@@ -270,18 +256,18 @@ class Pendaftar_test extends TestCase
                 'other_scost' => '1300000',
                 'main_parent' => 'father'
             ];
-            $this->request('POST', 'pendaftar/isi_pernyataan/I1511001', $data);
-            $this->assertRedirect('I1511001/surat');
+            $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);
+            $this->assertRedirect('1/surat');
         }
         
         public function test_finalisasi(){
             $this->request('POST', ['Login', 'do_login'],[
-                'id_pendaftaran' => 'I1511001',
+                'username' => 'hanan',
                 'password' => 'zaraki'
             ]);
-            $this->assertRedirect('I1511001/beranda');
-            $this->request('GET', 'pendaftar/finalisasi/I1511001/true');
-            $this->assertRedirect('I1511001/beranda');
+            $this->assertRedirect('1/beranda');
+            $this->request('GET', 'pendaftar/finalisasi/1/true');
+            $this->assertRedirect('1/beranda');
         }
         
 	public function test_method_404()
@@ -300,6 +286,4 @@ class Pendaftar_test extends TestCase
 			'Your APPPATH seems to be wrong. Check your $application_folder in tests/Bootstrap.php'
 		);
 	}
-         * 
-         */
 }

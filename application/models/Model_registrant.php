@@ -54,6 +54,10 @@ class Model_registrant extends CI_Model {
         }
     }
     
+    public function getDataByUsername($username) {
+        return $this->doctrine->em->getRepository('RegistrantEntity')->getDataByUsername($username);
+    }
+    
     public function getArrayData($gender = NULL, $vars = []){
         $data = $this->getData($gender);
         if (empty($vars)){
@@ -126,9 +130,9 @@ class Model_registrant extends CI_Model {
 //    }
     
     // Xperimental
-//    public function getRegistrant() {
-//        return $this->registrant;
-//    }
+    public function getRegistrant() {
+        return $this->registrant;
+    }
     // ===========
     
     // generate Id berdasarkan counter

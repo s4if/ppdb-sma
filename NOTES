@@ -13,3 +13,7 @@ Notes 2016
 - Nomor telepon dipisah jadi 2 : +62 dan 8XXXXXX
 - Alamat ayah & ibu secara default sama jika tinggalnya bersama ortu
 - Tambah autocomplete alamat
+
+======================
+Technical Notes :
+ - Login pake Username, tapi under the hood pake ID.

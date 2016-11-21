@@ -231,7 +231,7 @@ body {
                             <div class="col-lg-12">
                                 <form id="login-form" action="<?php echo base_url().'login/do_login/'?>" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="id_pendaftaran" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Nomor Pendaftaran" value="" required="true">
+                                        <input type="text" name="username" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Username" value="" required="true">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="true">
@@ -246,6 +246,12 @@ body {
                                 </form>
                                 <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
+                                    <input type="text" required="true" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="<?=(array_key_exists('username', $registrant))?$registrant['username']:'';?>">
+                                </div>
+                                <div id="status"class="form-group">
+                                    
+                                </div>
+                                <div class="form-group">
                                     <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
                                 </div>
                                 <div class="form-group">
@@ -255,7 +261,8 @@ body {
                                     <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="cp" required="true" id="cp" tabindex="1" class="form-control" placeholder="No. HP" value="<?=(array_key_exists('cp', $registrant))?$registrant['cp']:'';?>">
+                                    <input class="col-xs-2" type="text" name="cp_prefix" required="true" id="cp_prefix" tabindex="1" class="form-control" placeholder="" value="+62">
+                                    <input class="col-xs-10" type="text" name="cp_suffix" required="true" id="cp_suffix" tabindex="1" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>
@@ -357,7 +364,21 @@ $(function() {
         $(this).addClass('active');
         e.preventDefault();
     });
+    $("#username").keyup(function(){
+        // get text username text field value 
+        var username = $("#username").val();
 
+        // check username name only if length is greater than or equal to 3
+        if(username.length >= 3)
+        {
+            $("#status").html('Checking availability...');
+            // check username 
+            $.post("<?=  base_url() ?>login/uname_avaible", {username: username}, function(data, status){
+                $("#status").html(data);
+            });
+        }
+
+    });
 });
 
 </script>
