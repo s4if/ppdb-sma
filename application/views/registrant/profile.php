@@ -307,7 +307,7 @@
                             Kuitansi Pembayaran
                         </td>
                         <td>
-                            <? php 
+                            <?php 
                             switch ($status ['payment']) :
                             case -1: echo 'File yang diupload salah <span class="glyphicon glyphicon-alert"></span>'; break;
                             case 0: echo 'Belum Diupload <span class="glyphicon glyphicon-remove-sign"></span>'; break;

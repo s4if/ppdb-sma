@@ -24,7 +24,7 @@ class Pendaftar extends MY_Controller {
             'status' => $this->reg->cek_status($this->session->registrant),
             'nav_pos' => 'home'
         ];
-        $this->CustomView('registrant/profile', $data);
+        $this->CustomView('registrant/dashboard', $data);
     }
     
     public function password($id){
@@ -67,6 +67,22 @@ class Pendaftar extends MY_Controller {
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
             redirect($data['id'].'/password');
+        }
+    }
+    
+    public function generate_kodeunik($id, $gender){
+        $this->blockUnloggedOne($id);
+        $res = $this->reg->genKode($id, $gender);
+        if($res['status']){
+            echo json_encode([
+                'status' => true,
+                'kode' => $res['kode'],
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'kode' => $res['kode'],
+            ]);
         }
     }
     

@@ -96,4 +96,14 @@ class Model_3_admin_test extends TestCase{
         $this->assertTrue($this->obj->deleteData($data));
     }
     
+    public function test_verify(){
+        $this->setUp();
+        $arr_rec =  $this->obj->getReceipt();
+        $data = [
+            'id' => end($arr_rec)->getId(),
+            'verified' => true,
+        ];
+        $this->setUp();
+        $this->assertTrue($this->obj->updatePayment($data));
+    }
 }

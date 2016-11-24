@@ -106,53 +106,35 @@ class Model_registrant extends CI_Model {
     }
     
     // Xperimental
-//    protected function duplicateCheck($data){
-//        if(!array_key_exists('nisn', $data)){
-//            $data['nisn'] = '';
-//        }
-//        $reg = null;
-//        if(empty($data['nisn'])){
-//            $reg = $this->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school'], ]);
-//            
-//        } else {
-//            $reg = $this->getDataByFilter(['name' => $data['name'], 'previousSchool' => $data['prev_school'], 'nisn' => $data['nisn'], ]);
-//        }
-//        if(!is_bool($reg)){
-//            if(!empty($data['nisn']) && empty(is_null($reg->getNisn()))){
-//                $reg->setDeleted(true);
-//                $this->doctrine->em->persist($reg);
-//            }
-//            if($data['nisn'] == $reg->getNisn()){
-//                $reg->setDeleted(true);
-//                $this->doctrine->em->persist($reg);
-//            }
-//        }
-//    }
-    
-    // Xperimental
     public function getRegistrant() {
         return $this->registrant;
     }
     // ===========
     
     // generate Id berdasarkan counter
-//    protected function genId(DateTime $date, $gender){
-//        $this->counter = $this->doctrine->em->find('CounterEntity', (int) $date->format('Ymd'));
-//        $regCount = $this->doctrine->em->getRepository('RegistrantEntity')->getCount();
-//        $strCount = (string)str_pad(($regCount+1), 3, '0', STR_PAD_LEFT);
-//        $strGender = ($gender == 'L')?'I':'A';
-//        $strDate = (string)$date->format('ym');
-//        if (is_null($this->counter)){
-//            $this->counter = new CounterEntity();
-//            $this->counter->setDate($date);
-//            $this->counter->addCount();
-//            $this->doctrine->em->persist($this->counter);
-//            return $strGender.$strDate.$strCount;
-//        } else {
-//            $this->counter->addCount();
-//            return $strGender.$strDate.$strCount;
-//        }
-//    }
+    public function genKode($id, $gender){
+        $counter = $this->doctrine->em->find('CounterEntity', 1);
+        $registrant = $this->doctrine->em->find('RegistrantEntity', $id);
+        $kode = "";
+        if (is_null($registrant->getKode()) && $gender == $registrant->getGender()){
+            if($gender == 'P'){
+                $counter->addFemaleCount();
+                $kode = sprintf("%03d", 500 + $counter->getFemaleCount());
+                $registrant->setKode($kode);
+            } else {
+                $counter->addMaleCount();
+                $kode = sprintf("%03d", $counter->getMaleCount());
+                $registrant->setKode($kode);
+            }
+            $this->doctrine->em->persist($counter);
+            $this->doctrine->em->persist($registrant);
+            $this->doctrine->em->flush();
+            return ['status' => true, 'kode' => $kode];
+        } else {
+            $kode = $registrant->getKode();
+            return ['status' => true, 'kode' => $kode];
+        }
+    }
     
     public function updateData($data){
         $this->registrant = $this->doctrine->em->find('RegistrantEntity', $data['id']);

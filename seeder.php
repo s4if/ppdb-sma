@@ -52,6 +52,14 @@ $reg->setProgram('Reguler');
 $reg->setRegistrationTime(new DateTime('1-12-2014'));
 $em->persist($reg);
 $em->flush();
+// ==== Counter Seeder ====
+$counter = new CounterEntity();
+$counter->setId(1);
+$counter->setDate(new DateTime('now'));
+$counter->setMaleCount(0);
+$counter->setFemaleCount(0);
+$em->persist($counter);
+$em->flush();
 // =======================================
 //// Registrant Data Seeder
 //$rData = new RegistrantDataEntity();

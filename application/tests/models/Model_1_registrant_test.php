@@ -84,6 +84,16 @@ class Model_1_registrant_test extends TestCase {
         $this->setUp();
         $this->assertTrue($this->obj->updateData($data));
     }
+    
+    public function test_get_kode_registrant(){
+        // FInalisasi
+        $this->setUp();
+        $arr_reg =  $this->obj->getData('P');
+        $id = end($arr_reg)->getId();
+        $gender = end($arr_reg)->getGender();
+        $this->setUp();
+        $this->assertTrue($this->obj->genKode($id, $gender)['status']);
+    }
 //    
     public function test_get_data_registrant()
     {

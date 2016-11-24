@@ -102,23 +102,26 @@ class Model_admin extends CI_Model {
     }
     
     public function updatePayment($data){
-        $this->admin = $this->doctrine->em->find('PaymentEntity', $data['id']);
-        if(is_null($this->admin)){
+        $this->payment = $this->doctrine->em->find('PaymentEntity', $data['id']);
+        if(is_null($this->payment)){
             return false;
         } else {
+            $reg = $this->payment->getRegistrant();
+            $reg->setVerified($data['verified']);
             $this->setPaymentData($data);
-            $this->doctrine->em->persist($this->admin);
+            $this->doctrine->em->persist($this->payment);
+            $this->doctrine->em->persist($reg);
             $this->doctrine->em->flush();
             return true;
         }
     }
     
     public function deletePayment($data){
-        $this->admin = $this->doctrine->em->find('PaymentEntity', $data['id']);
-        if(is_null($this->admin)){
+        $this->payment = $this->doctrine->em->find('PaymentEntity', $data['id']);
+        if(is_null($this->payment)){
             return false;
         } else {
-            $this->doctrine->em->remove($this->admin);
+            $this->doctrine->em->remove($this->payment);
             $this->doctrine->em->flush();
             return true;
         }
@@ -127,12 +130,12 @@ class Model_admin extends CI_Model {
     //jika ada error yang berkaitan dengan set data, lihat urutan pemberian data pada fungsi
     //['id', 'registrant', 'paymentDate', 'verificationDate', 'verified', 'message']
     protected function setPaymentData($data){
-        if (!empty($data['id'])) : $this->admin->setId($data['id']); endif;
-        if (!empty($data['registrant'])) : $this->admin->setRegistrant($data['registrant']); endif;
-        if (!empty($data['payment_date'])) : $this->admin->setPaymentDate(new DateTime($data['payment_date'])); endif;
-        if (!empty($data['verification_date'])) : $this->admin->setVerificationDate(new DateTime($data['verification_date'])); endif;
-        if (!empty($data['verified'])) : $this->admin->setVerified($data['verified']); endif;
-        if (!empty($data['message'])) : $this->admin->setMessage($data['message']); endif;
+        if (!empty($data['id'])) : $this->payment->setId($data['id']); endif;
+        if (!empty($data['registrant'])) : $this->payment->setRegistrant($data['registrant']); endif;
+        if (!empty($data['payment_date'])) : $this->payment->setPaymentDate(new DateTime($data['payment_date'])); endif;
+        if (!empty($data['verification_date'])) : $this->payment->setVerificationDate(new DateTime($data['verification_date'])); endif;
+        if (!empty($data['verified'])) : $this->payment->setVerified($data['verified']); endif;
+        if (!empty($data['message'])) : $this->payment->setMessage($data['message']); endif;
     }
     
 }

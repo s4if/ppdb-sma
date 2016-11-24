@@ -16,6 +16,18 @@ class RegistrantEntity
     protected $username;
     
     /**
+     * @Column(type="string", nullable=TRUE, length=15, unique=TRUE)
+     * @var string
+     */
+    protected $regId; // Nomor pendaftaran
+    
+    /**
+     * @Column(type="string", length=4, nullable=TRUE, unique=TRUE)
+     * @var string
+     */
+    protected $kode; // Nomor Unik
+    
+    /**
      * @Column(type="string", nullable=FALSE)
      * @var string
      */
@@ -115,6 +127,13 @@ class RegistrantEntity
      */
     protected $mainParent;
     
+    
+    /**
+     * @Column(type="string", nullable=TRUE)
+     * @var boolean
+     */
+    protected $verified; //null = belum, valid  = sudah, tidak valid = salah
+    
     /**
      * @Column(type="boolean", nullable=TRUE)
      * @var boolean
@@ -146,6 +165,10 @@ class RegistrantEntity
     
     public function getUsername() {
         return $this->username;
+    }
+    
+    public function getRegId() {
+        return $this->regId;
     }
 
     public function getPassword() {
@@ -218,7 +241,8 @@ class RegistrantEntity
     }
     
     public function getCompleted(){
-        $res = (!(empty($this->getFather())||empty($this->getFather())||empty($this->getMother())||empty($this->getSubscriptionCost())||
+        $res = (!(empty($this->getFather())||empty($this->getFather())||
+                empty($this->getMother())||empty($this->getSubscriptionCost())||
                 empty($this->getInitialCost())||empty($this->getMainParent())));
         return $res;
         
@@ -230,6 +254,23 @@ class RegistrantEntity
 
     public function getFinalized() {
         return is_null($this->finalized)?false:$this->finalized;
+    }
+    
+    public function getKode() {
+        return $this->kode;
+    }
+    public function getVerified() {
+        return $this->verified;
+    }
+
+    public function setVerified($verified) {
+        $this->verified = $verified;
+        return $this;
+    }
+
+    public function setKode($kode) {
+        $this->kode = $kode;
+        return $this;
     }
 
     public function setFinalized($finalized){
@@ -253,6 +294,11 @@ class RegistrantEntity
     
     public function setUsername($username) {
         $this->username = $username;
+        return $this;
+    }
+    
+    public function setRegId($regId) {
+        $this->regId = $regId;
         return $this;
     }
 
