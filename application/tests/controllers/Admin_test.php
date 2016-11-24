@@ -52,8 +52,8 @@ class Admin_test extends TestCase{
         $this->assertContains('<title>Lihat Pendaftar Akhwat</title>', $output);
         $output = $this->request('GET','admin/pembayaran');
         $this->assertContains('<title>Lihat Resi Pembayaran</title>', $output);
-//        $output = $this->request('GET','admin/registrant/I1511001');
-//        $this->assertContains('<title>Profil Pendaftar</title>', $output);
+        $output = $this->request('GET','admin/registrant/1');
+        $this->assertContains('<title>Profil Pendaftar</title>', $output);
         $output = $this->request('GET','admin/password');
         $this->assertContains('<title>Password</title>', $output);
     }
@@ -68,5 +68,5 @@ class Admin_test extends TestCase{
         $this->assertContains('"data":', $output);
         $output = $this->ajaxRequest('POST', ['admin', 'lihat_ajax']);
         $this->assertContains('"data":', $output);
-    }
+    }    
 }

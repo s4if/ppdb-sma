@@ -13,11 +13,14 @@ class Pendaftar extends MY_Controller {
     
     public function beranda($id){
         $this->blockUnloggedOne($id);
+        $username = $this->session->registrant->getUsername();
+        $registrant = $this->reg->getDataByUsername($username);
+        $this->session->registrant = $registrant;
         $data = [
             'title' => 'Beranda',
-            'username' => $this->session->registrant->getUsername(),
+            'username' => $username,
             'id' => $this->session->registrant->getId(),
-            'registrant' => $this->session->registrant,
+            'registrant' => $registrant,
             'img_link' => $this->getImgLink($id)[0],
             'foto_uploaded' => $this->getImgLink($id)[1],
             'img_receipt' => $this->getImgReceipt($id),
@@ -267,10 +270,10 @@ class Pendaftar extends MY_Controller {
         $fileUrl = $_FILES['file']["tmp_name"];
         $res = $this->reg->uploadReceipt($fileUrl, $id, $data);
         if ($res) {
-            $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
+            $this->session->set_flashdata("notices", [0 => "Upload Kwitansi Berhasil!"]);
             redirect($id.'/beranda');
         } else {
-            $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
+            $this->session->set_flashdata("errors", [0 => "Upload Kiwtansi Gagal!"]);
             redirect($id.'/beranda');
         }
     }

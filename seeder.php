@@ -52,6 +52,18 @@ $reg->setProgram('Reguler');
 $reg->setRegistrationTime(new DateTime('1-12-2014'));
 $em->persist($reg);
 $em->flush();
+// Payment
+$payment = new PaymentEntity();
+$payment->setRegistrant($reg);
+$payment->setPaymentDate(new DateTime('now'));
+$payment->setVerificationDate(new DateTime('now'));
+$payment->setVerified('valid');
+$payment->setAmount('250000');
+$em->persist($payment);
+$reg->setVerified($payment->getVerified());
+$reg->setPaymentData($payment);
+$em->persist($reg);
+$em->flush();
 // ==== Counter Seeder ====
 $counter = new CounterEntity();
 $counter->setId(1);

@@ -331,8 +331,6 @@ class Model_registrant extends CI_Model {
         try {
             $imagine = new Imagine\Gd\Imagine();
             $image = $imagine->open($file_url);
-            $box = new Imagine\Image\Box(600, 800);
-            $image->resize($box);
             $image->save(FCPATH.'data/receipt/'.$id.'.png');
             $this->receipt_data($id, $data);
             return true;
@@ -343,7 +341,12 @@ class Model_registrant extends CI_Model {
     
     protected function receipt_data($id, $data){
         $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
-        $this->paymentData = new PaymentEntity();
+        $this->paymentData = $this->registrant->getPaymentData();
+        if(is_null($this->paymentData)){
+            $this->paymentData = new PaymentEntity();
+        }
+        $this->registrant->setVerified(NULL);
+        $this->paymentData->setVerified(NULL);
         $this->paymentData->setAmount($data['amount']);
         $this->paymentData->setPaymentDate(new DateTime($data['payment_date']));
         $this->paymentData->setRegistrant($this->registrant);

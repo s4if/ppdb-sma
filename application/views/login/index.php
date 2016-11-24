@@ -258,11 +258,13 @@ body {
                                     <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
+                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" pattern="^([0-9]{1,20}$)" title="Hanya angka!"
+                                           value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
                                 </div>
                                 <div class="form-group">
                                     <input class="col-xs-2" type="text" name="cp_prefix" required="true" id="cp_prefix" tabindex="1" class="form-control" placeholder="" value="+62">
-                                    <input class="col-xs-10" type="text" name="cp_suffix" required="true" id="cp_suffix" tabindex="1" class="form-control" placeholder="">
+                                    <input class="col-xs-10" type="text" name="cp_suffix" pattern="^[1-9]([0-9]{1,13}$)" title="Hanya angka tanpa awalan '0'!"
+                                           required="true" id="cp_suffix" tabindex="1" class="form-control" placeholder="Telp tanpa awalan cth: 85727411xxx">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>

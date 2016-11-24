@@ -64,21 +64,9 @@
             <li id="navHome">
                 <a href="<?=  base_url().$id.'/beranda/'?>">Beranda</a>
             </li>
-            <?php if((!$registrant->getFinalized())):?>
-            <li id="navDetail">
-                <a href="<?=  base_url().$id.'/detail/'?>">Data Diri</a>
-            </li>
-            <li id="navFather">
-                <a href="<?=  base_url().$id.'/data/father/'?>">Data Ayah</a>
-            </li>
-            <li id="navMother">
-                <a href="<?=  base_url().$id.'/data/mother/'?>">Data Ibu</a>
-            </li>
-            <li id="navGuardian">
-                <a href="<?=  base_url().$id.'/data/guardian/'?>">Data Wali</a>
-            </li>
-            <li id="navLetter">
-                <a href="<?=  base_url().$id.'/surat'?>">Surat Pernyataan</a>
+            <?php if((!$registrant->getFinalized())&&$registrant->getVerified() == 'valid'):?>
+            <li id="navForm">
+                <a href="<?=  base_url().$id.'/formulir'?>">Isi Data</a>
             </li>
             <?php endif;?>
             <li id="navRecap">

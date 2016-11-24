@@ -101,9 +101,22 @@ class Model_3_admin_test extends TestCase{
         $arr_rec =  $this->obj->getReceipt();
         $data = [
             'id' => end($arr_rec)->getId(),
-            'verified' => true,
+            'verified' => 'valid',
         ];
         $this->setUp();
         $this->assertTrue($this->obj->updatePayment($data));
+    }
+    
+    public function test_delete(){
+        $this->setUp();
+        $arr_rec =  $this->obj->getReceipt();
+        $data = [
+            'id' => end($arr_rec)->getId(),
+            'verified' => 'valid',
+        ];
+        $this->setUp();
+        $this->assertTrue($this->obj->deletePayment($data));
+        $this->assertFalse($this->obj->deletePayment($data));
+        $this->assertFalse($this->obj->updatePayment($data));
     }
 }
