@@ -36,39 +36,14 @@
     </li>
 </ol>
 <div class="jumbotron">
-    <?php if($registrant->getVerified() == 'valid') :?>
-    <h1>Selamat, Anda telah menyelesaikan tahap pertama!</h1>
-    <p>
-        Terimakasih anda telah membayar dan menunggu proses verifikasi pembayaran.
-        Pembayaran biaya pendaftaran telah selesai, sekarang anda bisa mengisi data
-        dan menyelesaikan pendaftaran dengan mengeklik tombol dibawah :
-    </p>
-    <a class="btn btn-success" href="#">Isi data</a>
-    <?php elseif($registrant->getVerified() == 'tidak valid'): ?>
-    <h1>Mohon maaf</h1>
-    <p>
-        Mohon maaf, bukti pembayaran yang anda upload salah atau tidak bisa terbaca. 
-        Silahkan scan atau foto ulang kwitansi pembayaran anda dengan jelas lalu upload 
-        dengan klik tombol di bawah
-    </p>
-    <a class="btn btn-warning" data-toggle="modal" data-target="#uploadKwitansi" id="btn-kwitansi">
-        <span class="glyphicon glyphicon-upload"></span>
-        Upload Kwitansi
-    </a>
-    <?php elseif(!is_null($registrant->getPaymentData())): ?>
-    <h1>Terimakasih sudah membayar!</h1>
-    <p>
-        Pembayaran sedang diproses, silahkan tunggu 1x24 jam. <br/>
-        Jika belum ada pemberitahuan, bisa menghubungi customer service kami di
-        nomor : 085xxxxxxxx.
-    </p>
-    <?php else :?>
+    <?php if(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
         Sebelum anda mengisi data pribadi, silahkan membayar dulu biaya pendaftaran peserta 
-        sebesar <strong>Rp. 250.000,-</strong> di rekening BNI Syariah dengan No. xxxx atas nama xxx
-        dengan menyertakan kode unik.<br /> Kode unik bisa diminta dengan mengeklik tombol :
+        sebesar <strong>Rp. 250.000,-</strong> ditambah nomor unik (Contoh = 250.123) di rekening 
+        BNI Syariah dengan No. xxxx atas nama xxx.
+        <br /> Kode unik bisa diminta dengan mengeklik tombol :
     </p>
     <p><a class="btn btn-primary" id="btn-gen" role="button" onclick="kodeUnik()">Minta kode unik</a></p>
     <h1 id="kode-unik"></h1>
@@ -81,6 +56,13 @@
         <span class="glyphicon glyphicon-upload"></span>
         Upload Kwitansi
     </a>
+    <?php else :?>
+    <h1>Selamat, Anda telah menyelesaikan tahap pertama!</h1>
+    <p>
+        Terimakasih anda telah membayar biaya pembayaran. Silahkan anda bisa mengisi data
+        dan menyelesaikan pendaftaran dengan mengeklik tombol dibawah :
+    </p>
+    <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
     <?php endif;?>
 </div>
 

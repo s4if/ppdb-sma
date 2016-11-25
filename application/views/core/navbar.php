@@ -64,8 +64,8 @@
             <li id="navHome">
                 <a href="<?=  base_url().$id.'/beranda/'?>">Beranda</a>
             </li>
-            <?php if((!$registrant->getFinalized())&&$registrant->getVerified() == 'valid'):?>
-            <li id="navForm">
+            <?php if((!$registrant->getFinalized())&&(!is_null($registrant->getPaymentData()))):?>
+            <li id="navFormulir">
                 <a href="<?=  base_url().$id.'/formulir'?>">Isi Data</a>
             </li>
             <?php endif;?>

@@ -130,18 +130,59 @@ class Pendaftar extends MY_Controller {
         }
     }
     
-    public function detail($id){
+    public function formulir($id){
         $this->blockUnloggedOne($id);
         $reg_data = $this->reg->getRegistrantData($this->session->registrant);
+        $parent_form = $this->parents($id, 'father').' '.$this->parents($id, 'mother');
         $data = [
-            'title' => 'Edit Data Diri',
+            'title' => 'Formulir',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
             'registrant' => $this->session->registrant,
             'reg_data' => $reg_data,
-            'nav_pos' => 'detail'
+            'parent_form' => $parent_form,
+            'nav_pos' => 'formulir'
         ];
-        $this->CustomView('registrant/detail', $data);
+        $this->CustomView('registrant/forms', $data);
+    }
+    
+    private function parents($id, $type){
+        $key_arr = [
+            'father' => 'ayah',
+            'mother' => 'ibu',
+            'guardian' => 'wali'
+        ];
+        $parent_data = (empty($this->parent->getData($id, [$type])[$type]))? $parent_data = $this->parent->create(): $this->parent->getData($id, [$type])[$type];
+        $string = $this->load->view("registrant/parent",[
+            'parent_data' => $parent_data,
+            'key' => $key_arr[$type],
+            'type' => $type
+        ],true);
+        return $string;
+    }
+    
+    public function ajax_edit_all($id){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $validation = $this->reg->ajaxValidation($data);
+        $errored = $validation['errored'];
+        $res = false;
+        if ($validation['valid']) {
+            $res = $this->reg->updateDetail($id, $data);
+        }
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            echo json_encode([
+                'status' => true,
+                'detail' => $data,
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'detail' => $data,
+                'inputerror' => $errored,
+            ]);
+        }
     }
     
     public function ajax_edit_detail($id){
@@ -166,51 +207,6 @@ class Pendaftar extends MY_Controller {
                 'inputerror' => $errored,
             ]);
         }
-    }
-    
-    public function data($id, $type){
-        $this->blockUnloggedOne($id);
-        $parent_data = (empty($this->parent->getData($id, [$type])[$type]))? $parent_data = $this->parent->create(): $this->parent->getData($id, [$type])[$type];
-        $tn = $this->typeTrans($type);
-        $data = [
-            'title' => 'Edit Data '.$tn['trans'],
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'registrant' => $this->session->registrant,
-            'trans' => $tn['trans'],
-            'parent_data' => $parent_data,
-            'nav_pos' => $type, 
-            'next' => $tn['next'],
-            'prev' => $tn['prev']
-        ];
-        $this->CustomView('registrant/parent', $data);
-    }
-    
-    private  function typeTrans($type){
-        $trans = $next = '';
-        switch ($type){
-        case 'father' :
-            $prev = 'detail';
-            $trans = 'Ayah';
-            $next = 'data/mother';
-            break;
-        case 'mother' :
-            $prev = 'data/father';
-            $trans = 'Ibu';
-            $next = 'surat';
-            break;
-        case 'guardian' :
-            $prev = 'data/mother';
-            $trans = 'Wali';
-            $next = 'surat';
-            break;
-        default :
-            $prev = 'data/mother';
-            $trans = 'ayah';
-            $next = 'data/mother';
-            break;
-        }
-        return ['prev' => $prev,'trans' => $trans, 'next' => $next];
     }
     
     public function finalisasi($id, $finalized){

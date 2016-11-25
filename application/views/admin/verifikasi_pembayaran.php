@@ -65,9 +65,9 @@
         <div class="col-lg-12">
             <table>
                 <tr>
-                    <td> Nomor Pendaftaran </td>
+                    <td> Username </td>
                     <td> &nbsp;:&nbsp; </td>
-                    <td> <?=$resi->getRegistrant()->getId();?> </td>
+                    <td> <?=$resi->getRegistrant()->getUsername();?> </td>
                 </tr>
                 <tr>
                     <td> Nama </td>

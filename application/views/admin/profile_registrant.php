@@ -55,9 +55,9 @@
     <div class="col-md-8">
         <table>
         <tr>
-            <td> Nomor Pendaftaran </td>
+            <td> Username </td>
             <td> &nbsp;:&nbsp; </td>
-            <td> <?=$registrant_data->getId();?> </td>
+            <td> <?=$registrant_data->getUsername();?> </td>
         </tr>
         <tr>
             <td> Nama </td>

@@ -79,7 +79,7 @@
                 <table class="table table-striped table-bordered table-condensed" id="tabel_utama">
                     <thead>
                         <tr>
-                            <td>No. Pendaftaran</td>
+                            <td>No.</td>
                             <td>Nama</td>
                             <td>I/A</td>
                             <td>Sekolah Asal</td>

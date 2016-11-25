@@ -47,7 +47,7 @@
                 <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
                     <thead>
                         <tr>
-                            <td>No. Pendaftaran</td>
+                            <td>No.</td>
                             <td>Nama</td>
                             <td>I/A</td>
                             <td>Program</td>
@@ -57,9 +57,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data_pembayaran as $resi) :?>
+                        <?php $no = 1; foreach ($data_pembayaran as $resi) :?>
                         <tr>
-                            <td> <?=$resi->getRegistrant()->getId();?></td>
+                            <td> <?=$no;?></td>
                             <td> <?=$resi->getRegistrant()->getName();?> </td>
                             <td> <?=($resi->getRegistrant()->getGender() == 'L') ? 'Ikhwan' : 'Akhwat';?> </td>
                             <td> <?=ucfirst($resi->getRegistrant()->getProgram());?> </td>
@@ -72,6 +72,7 @@
                             } else {
                                 echo 'File yang diupload salah <span class="glyphicon glyphicon-alert"></span>';
                             }
+                            $no++;
                             ?></td>
                             <td>
                                 <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/pembayaran/<?=$resi->getId();?>">

@@ -151,42 +151,45 @@ class Model_parent extends CI_Model{
         
     }
     
-    public function ajaxValidation($data){
+    public function ajaxValidation($data, $type){
         $input_error = [];
         $valid = true;
         $arr_required =  ['name', 'status', 'birth_place', 'birth_date', 'street', 'RT', 'RW', 'village', 'district', 
             'city', 'province', 'postal_code', 'contact', 'relation',
-            'nationality', 'religion', 'education_level', 'job', 'income'];
+            'nationality', 'religion', 'education_level', 'job'];
+        if($type == 'father'){
+            $arr_required[] = 'income';
+        }
         foreach ($arr_required as $required){
             if(array_key_exists($required, $data)){
-                if(empty($data[$required])){
-                    $input_error [] = $required;
+                if(empty($data[$type.'_'.$required])){
+                    $input_error [] = $type.'_'.$required;
                     $valid = false;
                 }
             } else {
-                $input_error [] = $required;
+                $input_error [] = $type.'_'.$required;
                 $valid = false;
             }
         }
-        if(array_key_exists('burden_count', $data)){
-            if(is_null($data['burden_count'])){
-                $input_error [] = 'burden_count';
+        if(array_key_exists($type.'_burden_count', $data)){
+            if(is_null($data[$type.'_burden_count'])){
+                $input_error [] = $type.'_burden_count';
                 $valid = false;
             }
         } else {
-            $input_error [] = 'burden_count';
+            $input_error [] = $type.'_burden_count';
             $valid = false;
         }
 //        entah kenapa ga bisa diisi angka '0' ... :v
-        if(array_key_exists('income', $data)){
-            if($data['income'] == 0){
+        if(array_key_exists($type.'_income', $data)){
+            if($data[$type.'_income'] == 0){
                 //do nothing
-            }elseif(is_null($data['income'])){
-                $input_error [] = 'income';
+            }elseif(is_null($data[$type.'_income'])){
+                $input_error [] = $type.'_income';
                 $valid = false;
             }
         } else {
-            $input_error [] = 'income';
+            $input_error [] = $type.'_income';
             $valid = false;
         }
         return ['valid' => $valid, 'errored' => $input_error];
