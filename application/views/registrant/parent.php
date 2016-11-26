@@ -65,35 +65,35 @@
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>relation" value="anak kandung" 
+                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=$key?> kandung" 
                             <?php if(!empty($parent_data->getRelation())):?>
-                                <?php if($parent_data->getRelation() ==='anak kandung'):?>
+                                <?php if($parent_data->getRelation() ===$key.' kandung'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
-                        Anak Kandung
+                        <?=$key?> Kandung
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>relation" value="anak tiri" 
+                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=$key?> tiri" 
                             <?php if(!empty($parent_data->getRelation())):?>
-                                <?php if($parent_data->getRelation() ==='anak tiri'):?>
+                                <?php if($parent_data->getRelation() ===$key.' tiri'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
-                        Anak Tiri
+                        <?=$key?> Tiri
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>relation" value="anak angkat" 
+                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=$key?> angkat" 
                             <?php if(!empty($parent_data->getRelation())):?>
-                                <?php if($parent_data->getRelation() ==='anak angkat'):?>
+                                <?php if($parent_data->getRelation() ===$key.' angkat'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
-                        Anak Angkat
+                        <?=$key?> Angkat
                     </label>
                 </div>
             </div>
@@ -339,9 +339,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($key == 'father')?'<strong class="red">*</strong>':'';?> :</label>
+            <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($key == 'ayah')?'<strong class="red">*</strong>':'';?> :</label>
             <div class="col-sm-6">
-                <input type="number" name="<?= $type.'_';?>burden_count" <?php echo ($key == 'father')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
+                <input type="number" name="<?= $type.'_';?>burden_count" <?php echo ($key == 'ayah')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
         <hr/>

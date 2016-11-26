@@ -162,13 +162,13 @@ class ParentEntity {
     protected $company;
     
     /**
-     * @Column(type="bigint", nullable=TRUE)
+     * @Column(type="string", nullable=TRUE)
      * @var string
      */
     protected $income;
     
     /**
-     * @Column(type="integer", nullable=TRUE)
+     * @Column(type="string", nullable=TRUE)
      * @var integer
      */
     protected $burdenCount;

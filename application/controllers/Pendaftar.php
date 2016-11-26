@@ -164,13 +164,8 @@ class Pendaftar extends MY_Controller {
     public function ajax_edit_all($id){
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
-        $validation = $this->reg->ajaxValidation($data);
-        $errored = $validation['errored'];
-        $res = false;
-        if ($validation['valid']) {
-            $res = $this->reg->updateDetail($id, $data);
-        }
-        if($res){
+        $res = $this->do_edit_all($id, $data);
+        if($res['success']){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             echo json_encode([
                 'status' => true,
@@ -180,33 +175,55 @@ class Pendaftar extends MY_Controller {
             echo json_encode([
                 'status' => false,
                 'detail' => $data,
-                'inputerror' => $errored,
+                'inputerror' => $res['errorred'],
             ]);
         }
     }
     
-    public function ajax_edit_detail($id){
-        $this->blockUnloggedOne($id);
-        $data = $this->input->post(null, true);
-        $validation = $this->reg->ajaxValidation($data);
-        $errored = $validation['errored'];
-        $res = false;
-        if ($validation['valid']) {
-            $res = $this->reg->updateDetail($id, $data);
+    private function do_edit_all($id, $data){
+        $types = ['father', 'mother'];
+        $val['registrant'] = $this->reg->ajaxValidation($data);
+        $res = [];
+        foreach($types as $type){
+            $parent_data = [
+                'type' => $type,
+                'name' => $data[$type.'_name'],
+                'status' => $data[$type.'_status'], 
+                'birth_place' => $data[$type.'_birth_place'],
+                'birth_date'=> $data[$type.'_birth_date'],
+                'street' => $data[$type.'_street'],
+                'RT' => $data[$type.'_RT'],
+                'RW' => $data[$type.'_RW'],
+                'village' => $data[$type.'_village'],
+                'district' => $data[$type.'_district'],
+                'city' => $data[$type.'_city'],
+                'province' => $data[$type.'_province'],
+                'postal_code' => $data[$type.'_postal_code'],
+                'contact' => $data[$type.'_contact'],
+                'relation' => $data[$type.'_relation'],
+                'nationality' => $data[$type.'_nationality'],
+                'religion' => $data[$type.'_religion'],
+                'education_level' => $data[$type.'_education_level'],
+                'job' => $data[$type.'_job'],
+                'position' => $data[$type.'_position'],
+                'company' => $data[$type.'_company'],
+                'income' => $data[$type.'_income'],
+                'burden_count' => $data[$type.'_burden_count']
+            ];
+            $val[$type] = $this->parent->ajaxValidation($parent_data, $type);
+            if($val[$type]['valid']){
+                $res[$type] = $this->parent->updateData($id, $parent_data, $type);
+            }
         }
-        if($res){
-            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
-            echo json_encode([
-                'status' => true,
-                'detail' => $data,
-            ]);
-        } else {
-            echo json_encode([
-                'status' => false,
-                'detail' => $data,
-                'inputerror' => $errored,
-            ]);
+        if($val['registrant']['valid']){
+            $res['registrant'] = $this->reg->updateDetail($id, $data);
         }
+        $final_result = true;
+        foreach ($res as $result){
+            $final_result = $final_result && $result;
+        }
+        $errored = array_merge($val['registrant']['errored'], $val['father']['errored'], $val['mother']['errored']);
+        return ['success'=>$final_result,'errorred'=>$errored];
     }
     
     public function finalisasi($id, $finalized){
@@ -223,30 +240,7 @@ class Pendaftar extends MY_Controller {
             redirect($id.'/beranda');
         }
     }
-    
-    public function ajax_edit_parent($id, $type){
-        $this->blockUnloggedOne($id);
-        $data = $this->input->post(null, true);
-        $validation = $this->parent->ajaxValidation($data);
-        $errored = $validation['errored'];
-        $res = false;
-        if ($validation['valid']) {
-            $res = $this->parent->updateData($id, $data, $type);
-        }
-        if($res){
-            echo json_encode([
-                'status' => true,
-                'detail' => $data,
-            ]);
-        } else {
-            echo json_encode([
-                'status' => false,
-                'detail' => $data,
-                'inputerror' => $errored,
-            ]);
-        }
-    }
-    
+
     public function upload_foto($id) {
         $this->blockUnloggedOne($id);
         $fileUrl = $_FILES['file']["tmp_name"];

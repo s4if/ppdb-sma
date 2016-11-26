@@ -62,8 +62,9 @@ class Pendaftar_test extends TestCase
             $output = $this->request('GET','1/beranda');
             $this->assertContains('<title>Beranda</title>', $output);
             $output5 = $this->request('GET','1/formulir');
-            $this->assertContains('<title>Edit Data Wali</title>', $output5);
-            $this->assertContains('<title>Edit Data Wali</title>', $output5);
+            $this->assertContains('<title>Formulir</title>', $output5);
+            $this->assertContains('<strong class="red">Data Ayah</strong>', $output5);
+            $this->assertContains('<strong class="red">Data Ibu</strong>', $output5);
             $output6 = $this->request('GET','1/rekap');
             $this->assertContains('<title>Rekap Data</title>', $output6);
             //$output7 = $this->request('GET','1/surat');
@@ -100,7 +101,7 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('login/index');
             
         }
-        /*
+        
         public function test_isi_detail(){
             $this->request('POST', ['Login', 'do_login'],[
                 'username' => 'hanan',
@@ -127,10 +128,62 @@ class Pendaftar_test extends TestCase
                 'hobbies' => ['makan', 'tidur', 'baca komik'],
                 'achievements' => ['Juara 1 OSN Fisika SMP'],
                 'physical_abnormalities' => ['Jentik kaki kiri diamputasi'],
-                'hospital_sheets' => ['Pernah kecelakaan']
+                'hospital_sheets' => ['Pernah kecelakaan'],
+                //father
+                'father_name' => "Suraji", 
+                'father_status' => 'Hidup', 
+                'father_birth_place' => 'Blora', 
+                'father_birth_date' => '12-12-1981',
+                'father_street' => 'Rambeanak II', 
+                'father_RT' => 1,
+                'father_RW' => 3, 
+                'father_village' => 'Rambeanak', 
+                'father_district' => 'Mungkid', 
+                'father_city' => 'Kab. Magelang', 
+                'father_province' => 'Jawa Tengah', 
+                'father_postal_code' => 56551,
+                'father_contact' => '08965478865', 
+                'father_relation' => 'Kandung', 
+                'father_nationality' => 'WNI', 
+                'father_religion' => 'ISLAM', 
+                'father_education_level' => 'SMA', 
+                'father_job' => 'Kuli Bangunan', 
+                'father_position' => null, 
+                'father_company' => null,
+                'father_income' => '300000', 
+                'father_burden_count' => 4,
+                //mother
+                'mother_name' => "Suharsah", 
+                'mother_status' => 'Hidup', 
+                'mother_birth_place' => 'Blora', 
+                'mother_birth_date' => '12-11-1982',
+                'mother_street' => 'Rambeanak II', 
+                'mother_RT' => 1,
+                'mother_RW' => 3, 
+                'mother_village' => 'Rambeanak', 
+                'mother_district' => 'Mungkid', 
+                'mother_city' => 'Kab. Magelang', 
+                'mother_province' => 'Jawa Tengah', 
+                'mother_postal_code' => 56551,
+                'mother_contact' => '08965478865', 
+                'mother_relation' => 'Kandung', 
+                'mother_nationality' => 'WNI', 
+                'mother_religion' => 'ISLAM', 
+                'mother_education_level' => 'SMA', 
+                'mother_job' => 'Ibu Rumah Tangga', 
+                'mother_position' => null, 
+                'mother_company' => null,
+                'mother_income' => 1, 
+                'mother_burden_count' => 4,                
             ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_detail/1', $data);
+            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
             $this->assertContains('"status":true', $output);
+            $this->setUp();
+            $data['village'] = null;
+            $data['mother_village'] = null;
+            $data['father_village'] = null;
+            $output2 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
+            $this->assertContains('"status":false', $output2);
         }
         
         public function test_generate_kode(){
@@ -141,80 +194,9 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('1/beranda');
             $output = $this->ajaxRequest('POST', 'pendaftar/generate_kodeunik/1/L');
             $this->assertContains('"status":true', $output);
-            $output = $this->ajaxRequest('POST', 'pendaftar/generate_kodeunik/1/L');
             $this->assertContains('"kode":"001"', $output);
         }
-        
-        public function test_isi_Father(){
-            $this->request('POST', ['Login', 'do_login'],[
-                'username' => 'hanan',
-                'password' => 'zaraki'
-            ]);
-            $this->assertRedirect('1/beranda');
-            $data = [
-            'type' => 'father', 
-            'name' => "Suraji", 
-            'status' => 'Hidup', 
-            'birth_place' => 'Blora', 
-            'birth_date' => '12-12-1981',
-            'street' => 'Rambeanak II', 
-            'RT' => 1,
-            'RW' => 3, 
-            'village' => 'Rambeanak', 
-            'district' => 'Mungkid', 
-            'city' => 'Kab. Magelang', 
-            'province' => 'Jawa Tengah', 
-            'postal_code' => 56551,
-            'contact' => '08965478865', 
-            'relation' => 'Kandung', 
-            'nationality' => 'WNI', 
-            'religion' => 'ISLAM', 
-            'education_level' => 'SMA', 
-            'job' => 'Kuli Bangunan', 
-            'position' => null, 
-            'company' => null,
-            'income' => '300000', 
-            'burden_count' => 4
-            ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/father', $data);
-            $this->assertContains('"status":true', $output);
-        }
-        
-        public function test_isi_Mother(){
-            $this->request('POST', ['Login', 'do_login'],[
-                'username' => 'hanan',
-                'password' => 'zaraki'
-            ]);
-            $this->assertRedirect('1/beranda');
-            $data = [
-            'type' => 'mother', 
-            'name' => "Suharsah", 
-            'status' => 'Hidup', 
-            'birth_place' => 'Blora', 
-            'birth_date' => '12-11-1982',
-            'street' => 'Rambeanak II', 
-            'RT' => 1,
-            'RW' => 3, 
-            'village' => 'Rambeanak', 
-            'district' => 'Mungkid', 
-            'city' => 'Kab. Magelang', 
-            'province' => 'Jawa Tengah', 
-            'postal_code' => 56551,
-            'contact' => '08965478865', 
-            'relation' => 'Kandung', 
-            'nationality' => 'WNI', 
-            'religion' => 'ISLAM', 
-            'education_level' => 'SMA', 
-            'job' => 'Ibu Rumah Tangga', 
-            'position' => null, 
-            'company' => null,
-            'income' => 1, 
-            'burden_count' => 4
-            ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/mother', $data);
-            $this->assertContains('"status":true', $output);
-        }
-        
+        /*
         public function test_isi_Guardian(){
             $this->request('POST', ['Login', 'do_login'],[
                 'username' => 'hanan',
@@ -249,7 +231,7 @@ class Pendaftar_test extends TestCase
             $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/guardian', $data);
             $this->assertContains('"status":true', $output);
         }
-        
+        */
         public function test_isi_Pernyataan(){
             $this->request('POST', ['Login', 'do_login'],[
                 'username' => 'hanan',
@@ -276,7 +258,7 @@ class Pendaftar_test extends TestCase
             $this->request('GET', 'pendaftar/finalisasi/1/true');
             $this->assertRedirect('1/beranda');
         }
-        */
+        
 	public function test_method_404()
 	{
 		$this->request('GET', ['Welcome', 'method_not_exist']);

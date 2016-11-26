@@ -68,6 +68,9 @@
             <li id="navFormulir">
                 <a href="<?=  base_url().$id.'/formulir'?>">Isi Data</a>
             </li>
+            <li id="navLetter">
+                <a href="<?=  base_url().$id.'/surat'?>">Surat Pernyataan</a>
+            </li>
             <?php endif;?>
             <li id="navRecap">
                 <a href="<?=  base_url().$id.'/rekap'?>">Rekap</a>

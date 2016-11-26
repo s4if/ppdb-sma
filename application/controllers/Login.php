@@ -125,6 +125,7 @@ class Login extends MY_Controller {
         if ($res['status'] == 1) {
             $this->session->set_flashdata('registrant', $res['registrant']);
             $this->session->set_flashdata('password', $data['password']);
+            $this->session->set_userdata('registrant', $res['registrant']);
             redirect('login/register_berhasil');
         } elseif($res['status'] == -1) {
             $this->session->set_flashdata('data', $data);
