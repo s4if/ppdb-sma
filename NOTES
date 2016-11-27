@@ -10,11 +10,13 @@ Pada Orang tua, dibuat kalau sudah meninggal, contact, job, income jadi tidak di
 Notes 2016
 =======================
 - Kurang csrf
-- Nomor telepon dipisah jadi 2 : +62 dan 8XXXXXX
+- Nomor telepon dipisah jadi 2 : +62 dan 8XXXXXX (OK)
 - Alamat ayah & ibu secara default sama jika tinggalnya bersama ortu
 - Tambah autocomplete alamat
 
 ======================
 Technical Notes :
  - Login pake Username, tapi under the hood pake ID. (OK)
- - Ortu diganti pake tahun lahir
+ - Ortu diganti pake tahun lahir (Konsultasi Dulu)
+// 27 nov 2016
+ - Kurang Kartu pendaftaran $ nomor Test!

@@ -268,11 +268,11 @@ class ParentEntity {
     }
     
     public function getIncome() {
-        return $this->income;
+        return (empty($this->income))?'0':$this->income;
     }
 
     public function getBurdenCount() {
-        return $this->burdenCount;
+        return (empty($this->burdenCount))?'0':$this->burdenCount;
     }
     
     public function setType($type) {

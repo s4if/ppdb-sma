@@ -61,14 +61,16 @@ class Pendaftar_test extends TestCase
             ]);
             $output = $this->request('GET','1/beranda');
             $this->assertContains('<title>Beranda</title>', $output);
+            $output2 = $this->request('GET','1/password');
+            $this->assertContains('<title>Password</title>', $output2);
             $output5 = $this->request('GET','1/formulir');
             $this->assertContains('<title>Formulir</title>', $output5);
             $this->assertContains('<strong class="red">Data Ayah</strong>', $output5);
             $this->assertContains('<strong class="red">Data Ibu</strong>', $output5);
             $output6 = $this->request('GET','1/rekap');
             $this->assertContains('<title>Rekap Data</title>', $output6);
-            //$output7 = $this->request('GET','1/surat');
-            //$this->assertContains('<title>Surat Pernyataan</title>', $output7);
+            $output7 = $this->request('GET','1/surat');
+            $this->assertContains('<title>Surat Pernyataan</title>', $output7);
             
         }
         

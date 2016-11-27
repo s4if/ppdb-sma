@@ -21,8 +21,6 @@ class Pendaftar extends MY_Controller {
             'username' => $username,
             'id' => $this->session->registrant->getId(),
             'registrant' => $registrant,
-            'img_link' => $this->getImgLink($id)[0],
-            'foto_uploaded' => $this->getImgLink($id)[1],
             'img_receipt' => $this->getImgReceipt($id),
             'status' => $this->reg->cek_status($this->session->registrant),
             'nav_pos' => 'home'
@@ -141,7 +139,8 @@ class Pendaftar extends MY_Controller {
             'registrant' => $this->session->registrant,
             'reg_data' => $reg_data,
             'parent_form' => $parent_form,
-            'nav_pos' => 'formulir'
+            'nav_pos' => 'formulir',
+            'img_link' => $this->getImgLink($id)[0],
         ];
         $this->CustomView('registrant/forms', $data);
     }
@@ -183,7 +182,7 @@ class Pendaftar extends MY_Controller {
     private function do_edit_all($id, $data){
         $types = ['father', 'mother'];
         $val['registrant'] = $this->reg->ajaxValidation($data);
-        $res = [];
+        $agg_res = true;
         foreach($types as $type){
             $parent_data = [
                 'type' => $type,
@@ -212,16 +211,15 @@ class Pendaftar extends MY_Controller {
             ];
             $val[$type] = $this->parent->ajaxValidation($parent_data, $type);
             if($val[$type]['valid']){
-                $res[$type] = $this->parent->updateData($id, $parent_data, $type);
+               $res[$type] = $this->parent->updateData($id, $parent_data, $type);
+            } else {
+                $agg_res = false;
             }
         }
         if($val['registrant']['valid']){
             $res['registrant'] = $this->reg->updateDetail($id, $data);
         }
-        $final_result = true;
-        foreach ($res as $result){
-            $final_result = $final_result && $result;
-        }
+        $final_result = $res['registrant'] && $agg_res;
         $errored = array_merge($val['registrant']['errored'], $val['father']['errored'], $val['mother']['errored']);
         return ['success'=>$final_result,'errorred'=>$errored];
     }
@@ -247,10 +245,10 @@ class Pendaftar extends MY_Controller {
         $res = $this->reg->uploadFoto($fileUrl, $id);
         if ($res) {
             $this->session->set_flashdata("notices", [0 => "Upload Foto Berhasil!"]);
-            redirect($id.'/beranda');
+            redirect($id.'/formulir');
         } else {
             $this->session->set_flashdata("errors", [0 => "Upload Foto Gagal!"]);
-            redirect($id.'/beranda');
+            redirect($id.'/formulir');
         }
     }
     
@@ -355,7 +353,7 @@ class Pendaftar extends MY_Controller {
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/surat');
+            redirect($id.'/rekap');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
             redirect($id.'/surat');
@@ -374,8 +372,8 @@ class Pendaftar extends MY_Controller {
         ]);
     }
     
-    public function lihat_ajax($gender = 'L'){
-        $registrant_data = $this->reg->getArrayData($gender, null);
+    public function lihat_ajax($gender = 'L', $completed = false){
+        $registrant_data = $this->reg->getArrayData($gender, null, $completed);
         $data = [];
         foreach ($registrant_data as $registrant){
             $row = [];

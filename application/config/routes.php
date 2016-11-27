@@ -61,5 +61,6 @@ $route['lihat'] = 'pendaftar/lihat';
 $route['lihat/(:any)'] = 'pendaftar/lihat/$1';
 $route['([0-9]+)/beranda'] = 'pendaftar/beranda/$1';
 $route['([0-9]+)/formulir'] = 'pendaftar/formulir/$1';
+$route['([0-9]+)/password'] = 'pendaftar/password/$1';
 $route['([0-9]+)/surat'] = 'pendaftar/surat/$1';
 $route['([0-9]+)/rekap'] = 'pendaftar/rekap/$1';

@@ -90,12 +90,9 @@ class Login extends MY_Controller {
     }
     
     public function register_berhasil(){
-        $registrant = $this->session->flashdata('registrant');
-        $password = $this->session->flashdata('password');
+        $registrant = $this->session->registrant;
         if(!empty($registrant)){
-            $this->session->set_flashdata('registrant', $registrant);
-            $this->session->set_flashdata('password', $password);
-            $this->load->view('login/berhasil', ['registrant' => $registrant, 'password' => $password]);
+            $this->load->view('login/berhasil', ['registrant' => $registrant]);
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Anda tidak boleh melihat halaman ini lagi!"]);
             redirect('login/index');
@@ -123,8 +120,6 @@ class Login extends MY_Controller {
         $data['cp'] = $data['cp_prefix'].$data['cp_suffix'];
         $res = $this->real_do_register($data);
         if ($res['status'] == 1) {
-            $this->session->set_flashdata('registrant', $res['registrant']);
-            $this->session->set_flashdata('password', $data['password']);
             $this->session->set_userdata('registrant', $res['registrant']);
             redirect('login/register_berhasil');
         } elseif($res['status'] == -1) {

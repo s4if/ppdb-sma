@@ -65,35 +65,35 @@
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=$key?> kandung" 
+                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=ucfirst($key)?> kandung" 
                             <?php if(!empty($parent_data->getRelation())):?>
-                                <?php if($parent_data->getRelation() ===$key.' kandung'):?>
+                                <?php if($parent_data->getRelation() ===ucfirst($key).' kandung'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
-                        <?=$key?> Kandung
+                        <?=ucfirst($key)?> Kandung
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=$key?> tiri" 
+                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=ucfirst($key)?> tiri" 
                             <?php if(!empty($parent_data->getRelation())):?>
-                                <?php if($parent_data->getRelation() ===$key.' tiri'):?>
+                                <?php if($parent_data->getRelation() ===ucfirst($key).' tiri'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
-                        <?=$key?> Tiri
+                        <?=ucfirst($key)?> Tiri
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=$key?> angkat" 
+                        <input type="radio" name="<?= $type.'_';?>relation" value="<?=ucfirst($key)?> angkat" 
                             <?php if(!empty($parent_data->getRelation())):?>
-                                <?php if($parent_data->getRelation() ===$key.' angkat'):?>
+                                <?php if($parent_data->getRelation() ===ucfirst($key).' angkat'):?>
                                 checked="true"
                                 <?php endif;?>
                             <?php endif;?>>
-                        <?=$key?> Angkat
+                        <?=ucfirst($key)?> Angkat
                     </label>
                 </div>
             </div>

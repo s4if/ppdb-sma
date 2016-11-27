@@ -11,6 +11,20 @@
         color: red;
         font-weight: bolder;
     }
+    .foto-profil {
+        resize: both;
+        height: 100%;
+        width: 100%;
+        max-height: 200px;
+        max-width: 150px;
+    }
+    .foto-kwitansi {
+        resize: both;
+        height: 100%;
+        width: 100%;
+        max-height: 800px;
+        max-width: 600px;
+    }
 </style>
 <h1 class="page-header">
     Pendaftar
@@ -25,12 +39,68 @@
     </li>
 </ol>
 <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-2">
+        <img class="foto-profil img-rounded" src="<?=$img_link;?>" alt="foto-profil">
+    </div>
+    <div class="col-md-8">
+        <table>
+        <tr>
+            <td> Nomor Pendaftaran </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-id"> <?=$registrant->getId();?> </td>
+        </tr>
+        <tr>
+            <td> Nama </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-name"> <?=$registrant->getName();?> </td>
+        </tr>
+        <tr>
+            <td> Sekolah Asal </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-prevschool"> <?=$registrant->getPreviousSchool()?> </td>
+        </tr>
+        <tr>
+            <td> Jenis Kelamin </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-gender"> <?=($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?> </td>
+        </tr>
+        <tr>
+            <td> NISN </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-nisn"> <?=$registrant->getNisn()?> </td>
+        </tr>
+        <tr>
+            <td> Email / No. HP </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-cp"> <?=$registrant->getCp()?> </td>
+        </tr>
+        <tr>
+            <td> Program </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td id="reg-program"> <?=$registrant->getProgram()?> </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <a class="btn btn-sm btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#ModalImport">
+                    <span class="glyphicon glyphicon-upload"></span>
+                    Upload Foto
+                </a>
+                <a class="btn btn-sm btn-info <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#editProfil" >
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edit Profil
+                </a>
+            </td>
+        </tr>
+    </table>
+    </div>
+    &nbsp;
+    </div>
+    <h2>Silahkan Isi Data Pada Formulir Dibawah</h2>
     <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_all/<?=$id?>">
+        <hr/>
         <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-6">
-                <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success btn-next <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
-            </div>
+            <label class="col-sm-6 control-label"><strong class="red">Data Detail</strong></label>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Tempat Lahir<strong class="red">*</strong> :</label>
@@ -388,12 +458,150 @@
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-6">
                 <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
-                <a class="btn btn-success btn-next <?php echo (is_null($reg_data->getBirthDate()))?'hidden':'';?>" href="<?=base_url().$id;?>/data/father/"><span class="glyphicon glyphicon-chevron-right">&nbsp;Lanjut</a>
+            </div>
+        </div>
+    </form>    
+</div>
+<div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editProfil" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center" id="tambahModal">Edit Pendaftar</h4>
+            </div>
+            <div class="modal-body">
+    <form class="form-horizontal form-profil" role="form" method="post" action="#">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Nama :</label>
+            <div class="col-sm-8">
+                <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant->getName();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Sekolah Asal :</label>
+            <div class="col-sm-8">
+                <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant->getPreviousSchool();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">NISN :</label>
+            <div class="col-sm-8">
+                <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN" value="<?=$registrant->getNisn();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email/No.Hp :</label>
+            <div class="col-sm-8">
+                <input type="text" name="cp" id="cp" tabindex="1" class="form-control" placeholder="Email" value="<?=$registrant->getCp();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Program :</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="program" >
+                    <option value="reguler"  
+                        <?php if(!empty($registrant->getProgram())):?>
+                            <?php if($registrant->getProgram()=='reguler'): ?>
+                                    selected="true"
+                            <?php endif;?>
+                        <?php endif;?>>
+                        Reguler
+                    </option>
+                    <option value="tahfidz"  
+                        <?php if(!empty($registrant->getProgram())):?>
+                            <?php if($registrant->getProgram()=='tahfidz'): ?>
+                                    selected="true"
+                            <?php endif;?>
+                        <?php endif;?>>
+                        Tahfidz
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="button" id="btn-ok" onclick="aksiOk()" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </form>
-    <hr/> <!-- Form data -->
-    
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-alert-failed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Notifikasi</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">
+                    <span class="glyphicon glyphicon-remove-sign"></span>
+                    Maaf, data gagal disimpan, mohon cek kembali data yang anda masukkan!
+                </h4>
+            </div>
+            <div class="modal-footer">
+                <div class="center-block">
+                    <div class="col-md-2 col-md-offset-5">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-alert-success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Notifikasi</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">
+                    <span class="glyphicon glyphicon-ok-sign"></span>
+                    Data telah berhasil disimpan
+                </h4>
+            </div>
+            <div class="modal-footer" >
+                <div class="center-block">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-success" href="<?=  base_url().$id.'/surat'?>">
+                                Lanjut
+                            </a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalImport" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="ModalImportLabel>">Pilih File</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>File berupa Foto Berwarna degan proporsi 4x3</label>
+                        <input type="file" id="file" name="file" required="true">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -573,6 +781,72 @@ function save()
             $('.btn-save').text('Simpan'); //change button text
             $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
             $('.btn-save').attr('disabled',false); //set button enable 
+
+        }
+    });
+}
+function aksiOk()
+{
+    $('#btn-ok').text('saving...'); //change button text
+    $('#btn-ok').attr('disabled',true); //set button disable 
+    var url;
+
+    url = '<?php echo base_url().'pendaftar/ajax_edit_profil/'.$id;?>';
+
+    // ajax adding data to database
+    $.ajax({
+        url : url,
+        type: "POST",
+        data: $('.form-profil').serialize(),
+        dataType: "JSON",
+        success: function(data)
+        {
+
+            if(data.status) //if success close modal and reload ajax table
+            {
+                $('#alert-div').append('<div class="alert alert-success alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Edit Data Profil Berhasil</p>'+
+                    '</div>'
+                );
+                $('#reg-id').text(data.profile.id);
+                $('#reg-name').text(data.profile.name);
+                $('#uname').text(data.profile.name);
+                $('#reg-gender').text(data.profile.gender);
+                $('#reg-prevschool').text(data.profile.prev_school);
+                $('#reg-nisn').text(data.profile.nisn);
+                $('#reg-cp').text(data.profile.cp);
+                $('#reg-program').text(data.profile.program);
+                $("#editProfil").modal('hide');
+                
+            }
+            else
+            {
+                $('#alert-div').append('<div class="alert alert-warning alert-dismissible">'+
+                    '<button type="button" class="close" data-dismiss="alert"><p>'+
+                    '<span aria-hidden="true">&times;</span><span class="sr-only">'+
+                    'Close</span></button>'+
+                    '<p>Maaf Penyimpanan Data Gagal</p>'+
+                    '</div>');
+                for (var i = 0; i < data.inputerror.length; i++) 
+                {
+                    $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                }
+                $("#editProfil").modal('hide');
+            }
+            $('#btn-ok').text('save'); //change button text
+            $('#btn-ok').attr('disabled',false); //set button enable 
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error adding / update data');
+            $('#btn-ok').text('save'); //change button text
+            $('#btn-ok').attr('disabled',false); //set button enable 
 
         }
     });

@@ -58,8 +58,8 @@ class Model_registrant extends CI_Model {
         return $this->doctrine->em->getRepository('RegistrantEntity')->getDataByUsername($username);
     }
     
-    public function getArrayData($gender = NULL, $vars = []){
-        $data = $this->getData($gender);
+    public function getArrayData($gender = NULL, $vars = [], $completed = false){
+        $data = $this->getData($gender, null, $completed);
         if (empty($vars)){
             $vars = ['id', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'finalized'];
         }
@@ -165,7 +165,7 @@ class Model_registrant extends CI_Model {
     
     //jika ada error yang berkaitan dengan set data, lihat urutan pemberian data pada fungsi
     protected function setRegistrantData($data){
-        if (!empty($data['id'])) : $this->registrant->setId($data['id']); endif;
+        if (!empty($data['reg_id'])) : $this->registrant->setRegId($data['reg_id']); endif;
         if (!empty($data['password'])) : $this->registrant->setPassword(password_hash($data['password'], PASSWORD_BCRYPT)); endif;
         if (!empty($data['username'])) : $this->registrant->setUsername($data['username']); endif;
         if (!empty($data['name'])) : $this->registrant->setName($data['name']); endif;

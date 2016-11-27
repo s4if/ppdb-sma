@@ -242,9 +242,6 @@ body {
                                         <td><?php echo $registrant->getPreviousSchool();?></td>
                                     </tr>
                                 </table>
-                                <p style="text-align: center;">
-                                    Silahkan digunakan untuk Login ke sistem PPDB dan melengkapi data-data lain yang diperlukan.
-                                </p>
                                 <div class="row">
                                     <a class="btn btn-primary col-sm-offset-3 col-sm-3" href="<?php echo base_url().$registrant->getId().'/beranda'?>">Masuk</a>
                                 </div>

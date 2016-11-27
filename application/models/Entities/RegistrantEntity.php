@@ -277,6 +277,7 @@ class RegistrantEntity
         if($finalized){
             if($this->getCompleted()){
                 $this->finalized = $finalized;
+                $this->setRegId();
                 return 1;
             } else {
                 return -1;
@@ -297,9 +298,10 @@ class RegistrantEntity
         return $this;
     }
     
-    public function setRegId($regId) {
-        $this->regId = $regId;
-        return $this;
+    private function setRegId() {
+        $prefix = ($this->gender == 'L')?'I':'A';
+        $prefix2 = ($this->program == 'tahfidz')?'T':'R';
+        $this->regId = $prefix . $prefix2 . $this->kode;
     }
 
     public function setPassword($password) {
