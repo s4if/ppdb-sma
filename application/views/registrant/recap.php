@@ -74,7 +74,11 @@
             <tr>
                 <td> Nomor Pendaftaran </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$registrant->getId();?> </td>
+                <td> <?php
+                $prefix1 = ($registrant->getGender()=='L')?'I':'A';
+                $prefix2 = ($registrant->getProgram()=='tahfidz')?'T':'R';
+                echo $prefix1.$prefix2.$registrant->getKode();
+                ?> </td>
             </tr>
             <tr>
                 <td> Nama </td>

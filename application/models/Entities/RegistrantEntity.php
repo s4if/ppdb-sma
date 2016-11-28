@@ -148,7 +148,7 @@ class RegistrantEntity
 
     public function getArray($vars = []) {
         if(empty($vars)){
-            $vars = ['id', 'name','gender','previousSchool','nisn','program', 'deleted', 'registrationTime','registrantData', 
+            $vars = ['id', 'regIds', 'name','gender','previousSchool','nisn','program', 'deleted', 'registrationTime','registrantData', 
                 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'completed'];
         }
         $arrData = [];

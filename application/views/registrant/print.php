@@ -106,7 +106,11 @@ body {
 	text-decoration: underline;
 	color: #666;
 }
-
+img.foto-profil {
+            resize: both;
+            height: 4cm;
+            width: 3cm;
+        }
 .btn-register {
 	background-color: #1CB94E;
 	outline: none;
@@ -156,99 +160,47 @@ body {
 </head>
 
 <body>
-    <div class="navbar navbar-fixed-top navbar-transparent" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand brand-shifted" href="http://ppdb.smait-ihsanulfikri.sch.id">PPDB SMAIT Ihsanul Fikri</a>
-                </div>
-                <!-- Navbar collapse -->
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right shifted">
-                        <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
-                        <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
-                        <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div><!-- /.Fixed navbar -->
     <div class="container">
-        <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-<?php if(empty($this->session->flashdata('notices')) === false): ?>
-<div class="alert alert-success alert-dismissible">
-<?php
-    echo '<button type="button" class="close" data-dismiss="alert"><p>' . 
-            '<span aria-hidden="true">&times;</span><span class="sr-only">'.
-            'Close</span></button>'.
-            implode('</p><p>', $this->session->flashdata('notices')) . '</p>';	
-    ?>
-</div>
-<?php endif; ?>
-<?php if(empty($this->session->flashdata('errors')) === false): ?>
-<div class="alert alert-danger alert-dismissible">
-<?php
-    echo '<button type="button" class="close" data-dismiss="alert"><p>' . 
-            '<span aria-hidden="true">&times;</span><span class="sr-only">'.
-            'Close</span></button>'.
-            implode('</p><p>', $this->session->flashdata('errors')) . '</p></span></button>';	
-    ?>
-</div>
-<?php endif; ?>
-<?php if(empty($this->session->flashdata('warnings')) === false): ?>
-<div class="alert alert-warning alert-dismissible">
-<?php
-    echo '<button type="button" class="close" data-dismiss="alert"><p>' . 
-            '<span aria-hidden="true">&times;</span><span class="sr-only">'.
-            'Close</span></button>'.
-            implode('</p><p>', $this->session->flashdata('warnings')) . '</p></span></button>';	
-    ?>
-</div>
-<?php endif; ?>
-</div>
-        </div>
     	<div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-success">
                     <div class="panel-heading ">
-                        <h1 style="text-align: center;">Registrasi Berhasil</h1>
+                        <h1 style="text-align: center;">Kartu Ujian</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-sm-12">
                                 <p style="text-align: center;">
-                                    Registrasi tahap pertama PPDB SMAIT Ihsanul Fikri Mungkid telah berhasil. 
+                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:2016/2017 telah berhasil. 
                                     Data yang ter-input adalah sebagai berikut :
                                 </p>
                                 <table class="table table-responsive table-condensed table-borderless">
                                     <tr>
+                                        <td rowspan="4">
+                                            <img class="foto-profil" src="<?=FCPATH.'data/foto/'.$registrant->getId().'.png';?>" alt="Foto 3x4">
+                                        </td>
                                         <td>Nama </td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td><?php echo ucwords($registrant->getName());?></td>
                                     </tr>
                                     <tr>
-                                        <td>ID </td>
+                                        <td>I/A </td>
                                         <td>&nbsp;:&nbsp;</td>
-                                        <td><?php echo $registrant->getId();?></td>
+                                        <td><?php echo ($registrant->getGender()=='L')?'Ikhwan':'Akhwat';?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>No. Pendaftaran </td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td><?php echo $registrant->getRegId();?></td>
                                     </tr>
                                     <tr>
                                         <td>Asal Sekolah </td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td><?php echo $registrant->getPreviousSchool();?></td>
                                     </tr>
-                                    <tr>
-                                        <td>Password </td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td><?=$password?></td>
-                                    </tr>
                                 </table>
                                 <p style="text-align: center;">
-                                    Silahkan digunakan untuk Login ke sistem PPDB dan melengkapi data-data lain yang diperlukan.
+                                    Silahkan dibawa saat tes tertulis sebagai bukti pendaftaran.
                                 </p>
                             </div>
                         </div>

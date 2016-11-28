@@ -360,6 +360,21 @@ class Pendaftar extends MY_Controller {
         }
     }
     
+    public function print_kartu(){
+        $registrant = $this->session->registrant;
+        if(!empty($registrant)){
+            $pdf = new mikehaertl\wkhtmlto\Pdf();
+            $pdf->setOptions($this->pdfOption());
+            $reg_data = $this->load->view('registrant/print', ['registrant' => $registrant], true);
+            $pdf->addPage($reg_data);
+            $res = $pdf->send('Kartu Pendaftaran '.$registrant->getId().' .pdf');
+            if (!$res) { echo $pdf->getError(); }
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Anda tidak boleh melihat halaman ini lagi!"]);
+            redirect('login/index');
+        }
+    }
+    
     // =========================================================
     
     // ================= Lihat Pendaftar ===========================
@@ -377,7 +392,7 @@ class Pendaftar extends MY_Controller {
         $data = [];
         foreach ($registrant_data as $registrant){
             $row = [];
-            $row[] = $registrant['id'];
+            $row[] = $registrant['regId'];
             $row[] = $registrant['name'];
             $row[] = $registrant['nisn'];
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';

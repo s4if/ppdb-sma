@@ -61,7 +61,7 @@ class Model_registrant extends CI_Model {
     public function getArrayData($gender = NULL, $vars = [], $completed = false){
         $data = $this->getData($gender, null, $completed);
         if (empty($vars)){
-            $vars = ['id', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'finalized'];
+            $vars = ['id','regId', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'finalized'];
         }
         $arrData = [];
         foreach ($data as $registrant){

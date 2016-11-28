@@ -42,8 +42,10 @@
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
         Tes akan dilaksanakan tanggal 20 Februari 2016<br/>
         Hasil tes akan diumumkan tanggal 27 Februari 2016<br/>
-        Stay Tuned! <small>Yang kurang Kartu Pendaftaran... T.T</small>
-    </p>
+        Silahkan Unduh dan cetak kartu pendaftaran.
+    </p>        
+    <a class="btn btn-success" href="<?=  base_url().'pendaftar/print_kartu'?>">Unduh Kartu Pendaftarran</a>
+
     <?php elseif(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>

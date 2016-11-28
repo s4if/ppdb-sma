@@ -99,22 +99,6 @@ class Login extends MY_Controller {
         }
     }
     
-    public function print_registrasi(){
-        $registrant = $this->session->flashdata('registrant');
-        $password = $this->session->flashdata('password');
-        if(!empty($registrant)){
-            $pdf = new mikehaertl\wkhtmlto\Pdf();
-            $pdf->setOptions($this->pdfOption());
-            $reg_data = $this->load->view('login/print', ['registrant' => $registrant, 'password' => $password], true);
-            $pdf->addPage($reg_data);
-            $res = $pdf->send('Data Pendaftaran '.$registrant->getId().' .pdf');
-            if (!$res) { echo $pdf->getError(); }
-        } else {
-            $this->session->set_flashdata("errors", [0 => "Maaf, Anda tidak boleh melihat halaman ini lagi!"]);
-            redirect('login/index');
-        }
-    }
-    
     public function do_register(){
         $data = $this->input->post(null, true);
         $data['cp'] = $data['cp_prefix'].$data['cp_suffix'];
