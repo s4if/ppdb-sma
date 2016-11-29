@@ -24,381 +24,500 @@
  * THE SOFTWARE.
  */
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * @Entity @Table(name="registrant_data")
-*/
-class RegistrantDataEntity {
-    
+ */
+class RegistrantDataEntity
+{
     /**
      * @Id @GeneratedValue(strategy="AUTO") @Column(type="integer")
+     *
      * @var int
      */
     protected $id;
-    
+
     /**
      * @OneToOne(targetEntity="RegistrantEntity", inversedBy="registrantData", cascade={"persist"})
      **/
     protected $registrant;
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $birthPlace;
-    
+
     /**
      * @Column(type="date", nullable=FALSE)
+     *
      * @var DateTime
      */
     protected $birthDate;
-    
+
     /**
      * @Column(type="string", nullable=TRUE)
+     *
      * @var string
      */
     protected $street; // Dusun
-    
+
     /**
      * @Column(type="integer", nullable=TRUE)
-     * @var integer
+     *
+     * @var int
      */
     protected $RT; // RT
-    
+
     /**
      * @Column(type="integer", nullable=TRUE)
-     * @var integer
+     *
+     * @var int
      */
     protected $RW; // RW
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $village; // Desa
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $district; // Kecamatan
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $city; // Kota
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $province;
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $postalCode;
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $familyCondition; //NOTE : Ini isinya ortu lengkap, yatim, piatu, yatim piatu
-    
+
     /**
      * @Column(type="string", length=4, nullable=FALSE)
+     *
      * @var string
      */
     protected $nationality;
-    
+
     /**
      * @Column(type="string", length=10, nullable=FALSE)
+     *
      * @var string
      */
     protected $religion;
-    
+
     /**
      * @Column(type="string", length=1024, nullable=true)
+     *
      * @var string
      */
     protected $hospitalSheets;
-    
+
     /**
      * @Column(type="string", length=1024, nullable=true)
+     *
      * @var string
      */
     protected $physicalAbnormalities;
-    
+
     /**
      * @Column(type="integer", nullable=FALSE)
+     *
      * @var int
      */
     protected $height;
-    
+
     /**
      * @Column(type="integer", nullable=FALSE)
+     *
      * @var int
      */
     protected $weight;
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $stayWith; // NOTE: Tinggal dengan siapa
-    
+
     /**
      * @Column(type="string", length=1024, nullable=true)
+     *
      * @var string
      */
     protected $hobbies;
-    
+
     /**
      * @Column(type="string", length=1024, nullable=true)
+     *
      * @var string
      */
     protected $achievements;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
     }
-    
-    public function getBirthPlace() {
+
+    public function getBirthPlace()
+    {
         return $this->birthPlace;
     }
 
-    public function getBirthDate() {
+    public function getBirthDate()
+    {
         return $this->birthDate;
     }
 
-    public function getAddress() {
-        $str_address = $this->street." RT ".$this->RT." RW ".$this->RW." "
-                .$this->village.", ".$this->district." ".$this->city." ".$this->province;
+    public function getAddress()
+    {
+        $str_address = $this->street.' RT '.$this->RT.' RW '.$this->RW.' '
+                .$this->village.', '.$this->district.' '.$this->city.' '.$this->province;
+
         return $str_address;
     }
-    
-    public function getStreet() {
+
+    public function getStreet()
+    {
         return $this->street;
     }
-    
-    public function getRT() {
+
+    public function getRT()
+    {
         return $this->RT;
     }
 
-    public function getRW() {
+    public function getRW()
+    {
         return $this->RW;
     }
 
-    public function getVillage() {
+    public function getVillage()
+    {
         return $this->village;
     }
 
-    public function getDistrict() {
+    public function getDistrict()
+    {
         return $this->district;
     }
 
-    public function getCity() {
+    public function getCity()
+    {
         return $this->city;
     }
 
-    public function getProvince() {
+    public function getProvince()
+    {
         return $this->province;
     }
 
-    public function getPostalCode() {
+    public function getPostalCode()
+    {
         return $this->postalCode;
     }
 
-    public function getFamilyCondition() {
+    public function getFamilyCondition()
+    {
         return $this->familyCondition;
     }
 
-    public function getNationality() {
+    public function getNationality()
+    {
         return $this->nationality;
     }
 
-    public function getReligion() {
+    public function getReligion()
+    {
         return $this->religion;
     }
-    
-    public function getHeight() {
+
+    public function getHeight()
+    {
         return $this->height;
     }
 
-    public function getWeight() {
+    public function getWeight()
+    {
         return $this->weight;
     }
 
-    public function getStayWith() {
+    public function getStayWith()
+    {
         return $this->stayWith;
     }
-    
-    public function getAchievements() {//ini
-        $acvArr = explode(";", $this->achievements);
-        array_pop($acvArr);
-        return $acvArr;
+
+    public function getAchievements($array = true)
+    {
+        //ini
+        if ($array) {
+            $acvArr = explode(';', $this->achievements);
+            array_pop($acvArr);
+
+            return $acvArr;
+        } else {
+            return $this->achievements;
+        }
     }
 
-    public function getHospitalSheets() {// ini
+    public function getHospitalSheets($array = true)
+    {
+        // ini
+        if ($array) {
+            $hsArr = explode(';', $this->hospitalSheets);
+            array_pop($hsArr);
+
+            return $hsArr;
+        } else {
+            return $this->hospitalSheets;
+        }
+    }
+
+    public function getPhysicalAbnormalities($array = true)
+    {
+        // ini
+        if ($array) {
+            $paArr = explode(';', $this->physicalAbnormalities);
+            array_pop($paArr);
+
+            return $paArr;
+        } else {
+            return $this->physicalAbnormalities;
+        }
+    }
+
+    public function getHobbies($array = true)
+    {
+        //ini
+        if ($array) {
+            $hbArr = explode(';', $this->hobbies);
+            array_pop($hbArr);
+
+            return $hbArr;
+        } else {
+            return $this->hobbies;
+        }
+    }
+
+    public function getAchievementsCount()
+    {
+        $achievementArr = explode(';', $this->achievements);
+
+        return count($achievementArr) - 1;
+    }
+
+    public function getHospitalSheetsCount()
+    {
         $hsArr = explode(';', $this->hospitalSheets);
-        array_pop($hsArr);
-        return $hsArr;
+
+        return count($hsArr) - 1;
     }
 
-    public function getPhysicalAbnormalities() {// ini
-        $paArr = explode(';', $this->physicalAbnormalities);
-        array_pop($paArr);
-        return $paArr;
-    }
-    
-    public function getHobbies() {//ini
-        $hbArr = explode(";", $this->hobbies);
-        array_pop($hbArr);
-        return $hbArr;
-    }
-
-    public function getAchievementsCount() {
-        $achievementArr = explode(";", $this->achievements);
-        return count($achievementArr)-1;
-    }
-    
-    public function getHospitalSheetsCount() {
-        $hsArr = explode(';', $this->hospitalSheets);
-        return count($hsArr)-1;
-    }
-
-    public function getPhysicalAbnormalitiesCount() {
+    public function getPhysicalAbnormalitiesCount()
+    {
         $pabArr = explode(';', $this->physicalAbnormalities);
-        return count($pabArr)-1;
-    }
-    
-    public function getHobbiesCount() {
-        $hobbiesArr = explode(";", $this->hobbies);
-        return count($hobbiesArr)-1;
+
+        return count($pabArr) - 1;
     }
 
-    public function setBirthPlace($birthPlace) {
+    public function getHobbiesCount()
+    {
+        $hobbiesArr = explode(';', $this->hobbies);
+
+        return count($hobbiesArr) - 1;
+    }
+
+    public function setBirthPlace($birthPlace)
+    {
         $this->birthPlace = $birthPlace;
+
         return $this;
     }
 
-    public function setBirthDate(DateTime $birthDate) {
+    public function setBirthDate(DateTime $birthDate)
+    {
         $this->birthDate = $birthDate;
+
         return $this;
     }
-    
-    public function setStreet($street) {
+
+    public function setStreet($street)
+    {
         $this->street = $street;
+
         return $this;
     }
-    
-    public function setRT($RT) {
+
+    public function setRT($RT)
+    {
         $this->RT = $RT;
+
         return $this;
     }
 
-    public function setRW($RW) {
+    public function setRW($RW)
+    {
         $this->RW = $RW;
+
         return $this;
     }
 
-    public function setVillage($village) {
+    public function setVillage($village)
+    {
         $this->village = $village;
+
         return $this;
     }
 
-    public function setDistrict($district) {
+    public function setDistrict($district)
+    {
         $this->district = $district;
+
         return $this;
     }
 
-    public function setCity($city) {
+    public function setCity($city)
+    {
         $this->city = $city;
+
         return $this;
     }
 
-    public function setProvince($province) {
+    public function setProvince($province)
+    {
         $this->province = $province;
+
         return $this;
     }
 
-    public function setPostalCode($postalCode) {
+    public function setPostalCode($postalCode)
+    {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
-    public function setFamilyCondition($familyCondition) {
+    public function setFamilyCondition($familyCondition)
+    {
         $this->familyCondition = $familyCondition;
+
         return $this;
     }
 
-    public function setNationality($nationality) {
+    public function setNationality($nationality)
+    {
         $this->nationality = $nationality;
+
         return $this;
     }
 
-    public function setReligion($religion) {
+    public function setReligion($religion)
+    {
         $this->religion = $religion;
+
         return $this;
     }
 
-    public function setHeight($height) {
+    public function setHeight($height)
+    {
         $this->height = $height;
+
         return $this;
     }
 
-    public function setWeight($weight) {
+    public function setWeight($weight)
+    {
         $this->weight = $weight;
-        return $this;
-    }
-    
-    public function setRegistrant(RegistrantEntity $registrant) {
-        $this->registrant = $registrant;
+
         return $this;
     }
 
-    public function setStayWith($stayWith) {
-        $this->stayWith = $stayWith;
+    public function setRegistrant(RegistrantEntity $registrant)
+    {
+        $this->registrant = $registrant;
+
         return $this;
     }
-    
-    public function addHobby($hobby){
+
+    public function setStayWith($stayWith)
+    {
+        $this->stayWith = $stayWith;
+
+        return $this;
+    }
+
+    public function addHobby($hobby)
+    {
         $this->hobbies = $this->hobbies.$hobby.';';
     }
-    
-    public function addAchievement( $achievement){
+
+    public function addAchievement($achievement)
+    {
         $this->achievements = $this->achievements.$achievement.';';
     }
-    
-    public function addHospitalSheet($hospitalSheet){
+
+    public function addHospitalSheet($hospitalSheet)
+    {
         $this->hospitalSheets = $this->hospitalSheets.$hospitalSheet.';';
     }
-    
-    public function addPhysicalAbnormality($physicalAbnormalities){
+
+    public function addPhysicalAbnormality($physicalAbnormalities)
+    {
         $this->physicalAbnormalities = $this->physicalAbnormalities.$physicalAbnormalities.';';
     }
-    
+
     // TODO: Cari Cara untuk Remove
-    public function removeHobby(){ // all
+    public function removeHobby()
+    { // all
         $this->hobbies = null;
+
         return $this;
     }
-    
-    public function removeAchievement(){ // all
+
+    public function removeAchievement()
+    { // all
         $this->achievements = null;
+
         return $this;
     }
-    
-    public function removeHospitalSheet(){ //  all
+
+    public function removeHospitalSheet()
+    { //  all
         $this->hospitalSheets = null;
+
         return $this;
     }
-    
-    public function removePhysicalAbnormality(){ // all
+
+    public function removePhysicalAbnormality()
+    { // all
         $this->physicalAbnormalities = null;
+
         return $this;
     }
-    
 }

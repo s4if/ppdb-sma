@@ -279,10 +279,11 @@
     </div>
     <?php endif; ?>
     <?php endforeach; ?>
-    <a class="btn btn-lg btn-warning <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
+    <a class="btn btn-warning <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
         <span class="glyphicon glyphicon-registration-mark"></span>
         Finalisasi
     </a>
+    <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Edit data</a>
     </div>
 </div>
 
@@ -329,7 +330,7 @@
 <script>
     $(document).ready(function () {
 
-        $('#memberModal').modal('show');
+        <?php if(!$registrant->getFinalized()) {?>$('#memberModal').modal('show');<?php }?>
 
     });
 </script>

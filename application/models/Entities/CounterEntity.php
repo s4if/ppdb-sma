@@ -26,101 +26,124 @@
 
 /**
  * @Entity() @Table(name="counter")
-*/
-class CounterEntity {
+ */
+class CounterEntity
+{
     /**
      * @Id @GeneratedValue(strategy="NONE") @Column(type="bigint")
      */
     protected $id;
     /**
      * @Column(type="date")
+     *
      * @var DateTime
      */
     protected $date;
     /**
      * @Column(type="integer")
-     * @var integer
+     *
+     * @var int
      */
     protected $maleCount;
     /**
      * @Column(type="integer")
-     * @var integer
+     *
+     * @var int
      */
     protected $femaleCount;
-    
-    public function getId() {
+
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getDate() {
+    public function getDate()
+    {
         return $this->date;
     }
 
-    public function getMaleCount() {
+    public function getMaleCount()
+    {
         return $this->maleCount;
     }
-    
-    public function getFemaleCount() {
+
+    public function getFemaleCount()
+    {
         return $this->femaleCount;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
+
         return $this;
     }
-        
+
     // Juga set ID
-    public function setDate(DateTime $date) {
+    public function setDate(DateTime $date)
+    {
         $this->date = $date;
+
         return $this;
     }
 
     //NOTE: setiap ada pendaftar ditambah 1!
-    public function addMaleCount() {
-        if(is_null($this->getMaleCount())){
+    public function addMaleCount()
+    {
+        if (is_null($this->getMaleCount())) {
             $this->maleCount = 1;
         } else {
-            $this->maleCount = $this->maleCount+1;
+            $this->maleCount = $this->maleCount + 1;
         }
+
         return $this;
     }
-    
-    public function removeMaleCount() {
-        if(is_null($this->getMaleCount())){
+
+    public function removeMaleCount()
+    {
+        if (is_null($this->getMaleCount())) {
             $this->maleCount = 0;
         } else {
-            $this->maleCount = $this->maleCount-1;
+            $this->maleCount = $this->maleCount - 1;
         }
+
         return $this;
     }
-    
+
     //NOTE: setiap ada pendaftar ditambah 1!
-    public function addFemaleCount() {
-        if(is_null($this->getFemaleCount())){
+    public function addFemaleCount()
+    {
+        if (is_null($this->getFemaleCount())) {
             $this->femaleCount = 1;
         } else {
-            $this->femaleCount = $this->femaleCount+1;
+            $this->femaleCount = $this->femaleCount + 1;
         }
+
         return $this;
     }
-    
-    public function removeFemaleCount() {
-        if(is_null($this->getFemaleCount())){
+
+    public function removeFemaleCount()
+    {
+        if (is_null($this->getFemaleCount())) {
             $this->femaleCount = 0;
         } else {
-            $this->femaleCount = $this->femaleCount-1;
+            $this->femaleCount = $this->femaleCount - 1;
         }
+
         return $this;
     }
-    
-    public function setMaleCount($maleCount) {
+
+    public function setMaleCount($maleCount)
+    {
         $this->maleCount = $maleCount;
+
         return $this;
     }
 
-    public function setFemaleCount($femaleCount) {
+    public function setFemaleCount($femaleCount)
+    {
         $this->femaleCount = $femaleCount;
+
         return $this;
     }
-
 }

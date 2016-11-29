@@ -177,6 +177,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
+        if (!empty($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
         if (!empty($data['deleted'])) : $this->registrant->setDeleted($data['deleted']); endif;
@@ -385,14 +386,6 @@ class Model_registrant extends CI_Model {
         } else {
             $arr_result ['guardian'] = 1;
         }
-        $this->load->helper('file');
-        $file = read_file('./data/foto/'.$id.'.png');
-        if(!$file){
-            $arr_result ['foto'] = 0;
-        } else {
-            $arr_result ['foto'] = 1;
-            //$all_stats++;
-        }
         if(is_null($registrant->getMainParent())){
             $arr_result ['letter'] = 0;
         } else {
@@ -411,14 +404,16 @@ class Model_registrant extends CI_Model {
     
     public function stringStatus(RegistrantEntity $registrant){
         $status  = $this->cek_status($registrant);
-        if($registrant->getFinalized()){
+        if($registrant->getVerified()=='tidak valid'){
+            return 'Bukti Pendaftaran Tidak Valid';
+        }
+        elseif($registrant->getFinalized()){
             return 'Pendaftaran telah selesai';
         } elseif($status['completed']) {
             return 'Data telah lengkap, kurang finalisasi';
         } else {
             $str = 'Data yang kurang : '; // String Status
             if($status['data'] < 1): $str = $str.'data diri, '; endif;
-            //if($status['foto'] < 1): $str = $str.'foto, '; endif;
             if($status['father'] < 1): $str = $str.'data ayah, '; endif;
             if($status['mother'] < 1): $str = $str.'data ibu, '; endif;
             if($status['letter'] < 1): $str = $str.'surat pernyataan, '; endif;
@@ -426,7 +421,7 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    protected function cek_receipt($registrant){
+    private function cek_receipt($registrant){
         if(!empty($registrant->getPaymentData())){
             $payment = $registrant->getPaymentData();
             if($payment->getVerified() == null){
@@ -439,7 +434,7 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    public function export($file_name, $gender, $programme = false){
+    public function export($file_name, $gender, $programme = false, $test = false){
         error_reporting(E_ALL);
         ini_set("display_errors", 1);
         ini_set('max_execution_time', 60);
@@ -454,12 +449,16 @@ class Model_registrant extends CI_Model {
         $this->mbatik($this->njikukData($gender, $programme), 'Data');
         
         $this->excel->removeSheetByIndex(0);
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
-        header('Cache-Control: max-age=0');
-        $objWriter = new PHPExcel_Writer_Excel5($this->excel);
-        $objWriter->save('php://output');
-        exit;
+        if($test){
+            return TRUE;
+        } else {
+            header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
+            header('Cache-Control: max-age=0');
+            $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+            $objWriter->save('php://output');
+            exit;
+        }
     }
     
     private function njikukData($gender, $tahfidz){
@@ -640,27 +639,11 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('K'.$row, ucfirst($rData->getReligion()));
                 $worksheet->SetCellValue('L'.$row, $rData->getHeight());
                 $worksheet->SetCellValue('M'.$row, $rData->getWeight());
-                $str_hp = '';   
-                foreach ($rData->getHospitalSheets() as $hp) {
-                    $str_hp = $str_hp.$hp->getHospitalSheet().', ';
-                }
-                $worksheet->SetCellValue('N'.$row, $str_hp);
-                $str_pa = '';
-                foreach ($rData->getPhysicalAbnormalities() as $pa) {
-                    $str_pa = $str_pa.$pa->getPhysicalAbnormality().', ';
-                }
-                $worksheet->SetCellValue('O'.$row, $str_pa);
+                $worksheet->SetCellValue('N'.$row, $rData->getHospitalSheets(false));
+                $worksheet->SetCellValue('O'.$row, $rData->getPhysicalAbnormalities(false));
                 $worksheet->SetCellValue('P'.$row, ucwords($rData->getStayWith()));
-                $str_hb = '';
-                foreach ($rData->getHobbies() as $hb) {
-                    $str_hb = $str_hb.$hb->getHobby().', ';
-                }
-                $worksheet->SetCellValue('Q'.$row, $str_hb);
-                $str_ac = '';
-                foreach ($rData->getAchievements() as $ac) {
-                    $str_ac = $str_ac.$ac->getAchievement().', ';
-                }
-                $worksheet->SetCellValue('R'.$row, $str_ac);
+                $worksheet->SetCellValue('Q'.$row, $rData->getHobbies(false));
+                $worksheet->SetCellValue('R'.$row, $rData->getAchievements(false));
             }
             
             // Registrant Payment
@@ -732,7 +715,7 @@ class Model_registrant extends CI_Model {
         $this->excel->addSheet($worksheet);
     }
     
-    public function export_Uncomplete($file_name){
+    public function export_Uncomplete($file_name, $test = false){
         error_reporting(E_ALL);
         ini_set("display_errors", 1);
         ini_set('max_execution_time', 60);
@@ -776,12 +759,15 @@ class Model_registrant extends CI_Model {
         $this->excel->removeSheetByIndex(0);
         $this->excel->addSheet($worksheet);
         
-        
-        header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
-        header('Cache-Control: max-age=0');
-        $objWriter = new PHPExcel_Writer_Excel5($this->excel);
-        $objWriter->save('php://output');
-        exit;
+        if ($test){
+            return true;
+        }  else {
+             header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
+            header('Cache-Control: max-age=0');
+            $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+            $objWriter->save('php://output');
+            exit;
+        }
     }
 }

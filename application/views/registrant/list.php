@@ -239,7 +239,6 @@ body {
                                         <tr>
                                             <td>No. Pendaftaran</td>
                                             <td>Nama</td>
-                                            <td>NISN</td>
                                             <td>I/A</td>
                                             <td>Sekolah Asal</td>
                                             <td>Program</td>
@@ -279,7 +278,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('pendaftar/lihat_ajax/'.$gender)?>",
+            "url": "<?php echo site_url('pendaftar/lihat_ajax/'.$gender.'/true')?>",
             "type": "POST"
         }
 
@@ -300,7 +299,7 @@ function akhwat(){
 }
 
 function tabel_refresh (gender){
-    url = "<?php echo site_url('pendaftar/lihat_ajax/')?>/" + gender;
+    url = "<?php echo site_url('pendaftar/lihat_ajax/')?>/" + gender + "/true";
     table.ajax.url(url).load();
 }
 

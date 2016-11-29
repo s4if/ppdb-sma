@@ -394,7 +394,6 @@ class Pendaftar extends MY_Controller {
             $row = [];
             $row[] = $registrant['regId'];
             $row[] = $registrant['name'];
-            $row[] = $registrant['nisn'];
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
             $row[] = $registrant['previousSchool'];
             $row[] = ucfirst($registrant['program']);

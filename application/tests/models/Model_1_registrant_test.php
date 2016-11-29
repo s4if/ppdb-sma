@@ -192,4 +192,15 @@ class Model_1_registrant_test extends TestCase {
         $this->assertTrue($this->obj->uploadReceipt(APPPATH.'tests/assets/receipt.jpg', $id, $data));
     }
     
+    
+    public function test_export(){
+        $this->setUp();
+        $this->assertTrue($this->obj->export('Coba', 'P', false, true));
+    }
+    
+    public function test_export_uncomplete(){
+        $this->setUp();
+        $this->assertTrue($this->obj->export_Uncomplete('Coba', true));
+    }
+    
 }

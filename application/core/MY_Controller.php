@@ -1,5 +1,6 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
+defined('BASEPATH') or exit('No direct script access allowed');
 /*
  * The MIT License
  *
@@ -25,72 +26,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 /**
- * Description of MY_Controller
+ * Description of MY_Controller.
  *
  * @author s4if
  */
-class MY_Controller extends CI_Controller {
-    
-    /* 
+class MY_Controller extends CI_Controller
+{
+    /*
      * CDN itu untuk memilih menggunakan CDN ato tidak...
      */
     const CDN = false;
 
-    function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         setlocale(LC_ALL, 'id_ID');
     }
-    
-    protected function CustomView($view_name, $data = []){
+
+    protected function CustomView($view_name, $data = [])
+    {
         // set pakai cdn atau tidak
         $data['cdn'] = self::CDN;
-        
-        $fragment['header'] = $this->load->view("core/header", $data, TRUE);
-        $fragment['navbar'] = $this->load->view("core/navbar", $data, true);
-        $fragment['alert'] = $this->load->view("core/alert",'',true);
+
+        $fragment['header'] = $this->load->view('core/header', $data, true);
+        $fragment['navbar'] = $this->load->view('core/navbar', $data, true);
+        $fragment['alert'] = $this->load->view('core/alert', '', true);
         $fragment['content'] = $this->load->view($view_name, $data, true);
-        $fragment['footer'] = $this->load->view("core/footer", $data, true);
+        $fragment['footer'] = $this->load->view('core/footer', $data, true);
         $this->load->view('core/skeleton', $fragment);
     }
-    
+
     //nilai true jika hanya bisa diakses setelah login
-    protected function blockLoggedOne(){
-        if($this->session->has_userdata('registrant')){
-            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, <br \>"
-                . "Tidak boleh mengakses halaman login jika sesi belum berakhir"]);
+    protected function blockLoggedOne()
+    {
+        if ($this->session->has_userdata('registrant')) {
+            $this->session->set_flashdata('errors', [0 => "Akses dihentikan, <br \>"
+                .'Tidak boleh mengakses halaman login jika sesi belum berakhir', ]);
             redirect('pendaftar/home', 'refresh');
         }
     }
-    
-    protected function blockUnloggedOne($id, $adminBypass = false){
-        if($this->session->has_userdata('admin') && $adminBypass){
-           // Do Nothing 
+
+    protected function blockUnloggedOne($id, $adminBypass = false)
+    {
+        if ($this->session->has_userdata('admin') && $adminBypass) {
+            // Do Nothing
         } else {
-            if(!$this->session->has_userdata('registrant')){
-                $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Harap login Dulu!"]);
+            if (!$this->session->has_userdata('registrant')) {
+                $this->session->set_flashdata('errors', [0 => 'Akses dihentikan, Harap login Dulu!']);
                 redirect('login', 'refresh');
-            }  elseif(!($this->session->registrant->getId() == $id)) {
-                $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Orang Lain!"]);
+            } elseif (!($this->session->registrant->getId() == $id)) {
+                $this->session->set_flashdata('errors', [0 => 'Akses dihentikan, Anda tidak boleh melihat halaman Orang Lain!']);
                 redirect($this->session->registrant->getId().'/beranda', 'refresh');
             } else {
                 // Do Nothing
             }
         }
     }
-    
-    protected function blockNonAdmin($root = false){
-        if(!$this->session->has_userdata('admin')){
-            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Harap login Dulu!"]);
+
+    protected function blockNonAdmin($root = false)
+    {
+        if (!$this->session->has_userdata('admin')) {
+            $this->session->set_flashdata('errors', [0 => 'Akses dihentikan, Harap login Dulu!']);
             redirect('login/admin', 'refresh');
-        }  elseif(($this->session->admin->getRoot() == $root || !$root)) {
+        } elseif (($this->session->admin->getRoot() == $root || !$root)) {
             // Do Nothing
         } else {
-            $this->session->set_flashdata("errors",[0 => "Akses dihentikan, Anda tidak boleh melihat halaman Ini!"]);
+            $this->session->set_flashdata('errors', [0 => 'Akses dihentikan, Anda tidak boleh melihat halaman Ini!']);
             redirect('admin', 'refresh');
         }
     }
-    
-    protected function pdfOption(){
+
+    protected function pdfOption()
+    {
         $options = [
             'page-size' => 'A4',
             'dpi' => 96,
@@ -102,8 +109,9 @@ class MY_Controller extends CI_Controller {
             'header-spacing' => 15,
             'footer-spacing' => 5,
             'disable-smart-shrinking',
-            'no-outline'
+            'no-outline',
         ];
+
         return $options;
     }
 }

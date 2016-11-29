@@ -26,111 +26,135 @@
 
 /**
  * @Entity(repositoryClass="PaymentRepo") @Table(name="payment_data")
-*/
-class PaymentEntity {
-    
+ */
+class PaymentEntity
+{
     /**
      * @Id @GeneratedValue(strategy="AUTO") @Column(type="integer")
+     *
      * @var int
      */
     protected $id;
-    
+
     /**
      * @OneToOne(targetEntity="RegistrantEntity", inversedBy="paymentData", cascade={"persist"})
      **/
     protected $registrant;
-    
+
     /**
      * @Column(type="date", nullable=FALSE)
+     *
      * @var DateTime
      */
     protected $paymentDate;
-    
+
     /**
      * @Column(type="bigint", nullable=FALSE)
+     *
      * @var string
      */
     protected $amount;
-    
+
     /**
      * @Column(type="date", nullable=TRUE)
+     *
      * @var DateTime
      */
     protected $verificationDate;
-    
+
     /**
      * @Column(type="string", nullable=true)
      */
-    protected $verified;// null = belum, valid = ok, tidak valid = salah
-    
+    protected $verified; // null = belum, valid = ok, tidak valid = salah
+
     /**
      * @Column(type="string", nullable=true)
+     *
      * @var string
      */
     protected $message;
-    
-    public function getId() {
+
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getRegistrant() {
+    public function getRegistrant()
+    {
         return $this->registrant;
     }
 
-    public function getPaymentDate() {
+    public function getPaymentDate()
+    {
         return $this->paymentDate;
     }
 
-    public function getAmount() {
+    public function getAmount()
+    {
         return $this->amount;
     }
 
-    public function getVerificationDate() {
+    public function getVerificationDate()
+    {
         return $this->verificationDate;
     }
 
-    public function getVerified() {
+    public function getVerified()
+    {
         return $this->verified;
     }
 
-    public function getMessage() {
+    public function getMessage()
+    {
         return $this->message;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
+
         return $this;
     }
 
-    public function setRegistrant($registrant) {
+    public function setRegistrant($registrant)
+    {
         $this->registrant = $registrant;
+
         return $this;
     }
 
-    public function setPaymentDate(DateTime $paymentDate) {
+    public function setPaymentDate(DateTime $paymentDate)
+    {
         $this->paymentDate = $paymentDate;
+
         return $this;
     }
 
-    public function setAmount($amount) {
+    public function setAmount($amount)
+    {
         $this->amount = $amount;
+
         return $this;
     }
 
-    public function setVerificationDate(DateTime $verificationDate) {
+    public function setVerificationDate(DateTime $verificationDate)
+    {
         $this->verificationDate = $verificationDate;
+
         return $this;
     }
 
-    public function setVerified($verified) {
+    public function setVerified($verified)
+    {
         $this->verified = $verified;
+
         return $this;
     }
 
-    public function setMessage($message) {
+    public function setMessage($message)
+    {
         $this->message = $message;
+
         return $this;
     }
-
-
 }

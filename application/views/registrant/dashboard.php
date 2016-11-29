@@ -36,7 +36,18 @@
     </li>
 </ol>
 <div class="jumbotron">
-    <?php if($registrant->getFinalized()) :?>
+    <?php if($registrant->getVerified() == 'tidak valid'): ?>
+    <h1>Mohon maaf</h1>
+    <p>
+        Mohon maaf, bukti pembayaran yang anda upload salah atau tidak bisa terbaca. 
+        Silahkan scan atau foto kembali kwitansi pembayaran anda dengan jelas lalu upload 
+        dengan klik tombol di bawah.
+    </p>
+    <a class="btn btn-warning" data-toggle="modal" data-target="#uploadKwitansi" id="btn-kwitansi" >
+        <span class="glyphicon glyphicon-upload"></span>
+        Upload Kwitansi
+    </a>
+    <?php elseif($registrant->getFinalized()) :?>
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
@@ -45,7 +56,6 @@
         Silahkan Unduh dan cetak kartu pendaftaran.
     </p>        
     <a class="btn btn-success" href="<?=  base_url().'pendaftar/print_kartu'?>">Unduh Kartu Pendaftarran</a>
-
     <?php elseif(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>
@@ -75,7 +85,26 @@
     <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
     <?php endif;?>
 </div>
-
+<?php if($registrant->getFinalized()) :?>
+<div class="panel panel-success col-md-12">
+  <div class="panel-body">
+    <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
+        <thead>
+            <tr>
+                <td>No. Pendaftaran</td>
+                <td>Nama</td>
+                <td>I/A</td>
+                <td>Sekolah Asal</td>
+                <td>Program</td>
+                <td>Status Data</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+  </div>
+</div>
+<?php endif;?>
 <div class="modal fade" id="uploadKwitansi" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -173,5 +202,21 @@ function kodeUnik()
 
         }
     });
-}
+}$(document).ready(function() {
+
+    //datatables
+    table = $('#tabel_utama').DataTable({ 
+
+        "order": [[ 0, "desc" ]], //Initial no order.
+        "scrollX": true,
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('pendaftar/lihat_ajax/'.$registrant->getGender().'/true')?>",
+            "type": "POST"
+        }
+
+    });
+
+});
 </script>

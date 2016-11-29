@@ -26,52 +26,63 @@
 
 /**
  * @Entity(repositoryClass="AdminRepo") @Table(name="admins")
-*/
-class AdminEntity {
-    
+ */
+class AdminEntity
+{
     /**
      * @Id @GeneratedValue(strategy="NONE") @Column(type="string")
+     *
      * @var string
      */
     protected $username;
-    
+
     /**
      * @Column(type="string", nullable=FALSE)
+     *
      * @var string
      */
     protected $password;
-    
+
     /**
      * @Column(type="boolean", nullable=FALSE)
-     * @var boolean
+     *
+     * @var bool
      */
     protected $root; // nilainya true atau false
-    
-    public function getUsername() {
+
+    public function getUsername()
+    {
         return $this->username;
     }
 
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
-    
-    public function getRoot() {
+
+    public function getRoot()
+    {
         return $this->root;
     }
 
-    public function setRoot($root) {
+    public function setRoot($root)
+    {
         $this->root = $root;
+
         return $this;
     }
 
-    public function setUsername($username) {
+    public function setUsername($username)
+    {
         $this->username = $username;
+
         return $this;
     }
 
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
+
         return $this;
     }
-    
 }

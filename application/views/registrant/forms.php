@@ -48,7 +48,7 @@
         <tr>
             <td> Nomor Pendaftaran </td>
             <td> &nbsp;:&nbsp; </td>
-            <td id="reg-id"> <?=$registrant->getId();?> </td>
+            <td id="reg-id"> <?=$registrant->getRegId();?> </td>
         </tr>
         <tr>
             <td> Nama </td>
