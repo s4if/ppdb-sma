@@ -42,7 +42,7 @@ $em = $doctrine->em;
 // Admin Seeder
 $admin = new AdminEntity();
 $admin->setUsername('ppdb-admin');
-$admin->setPassword(password_hash('Bismillah2016', PASSWORD_BCRYPT));
+$admin->setPassword(password_hash('ZaidBinHaritsah1617', PASSWORD_BCRYPT));
 $admin->setRoot(TRUE);
 $em->persist($admin);
 $em->flush();
