@@ -42,8 +42,15 @@ $em = $doctrine->em;
 // Admin Seeder
 $admin = new AdminEntity();
 $admin->setUsername('ppdb-admin');
-$admin->setPassword(password_hash('ZaidBinHaritsah1617', PASSWORD_BCRYPT));
+$admin->setPassword(password_hash('defaultpassword', PASSWORD_BCRYPT));
 $admin->setRoot(TRUE);
 $em->persist($admin);
 $em->flush();
 // =======================================
+$counter = new CounterEntity();
+$counter->setId(1);
+$counter->setDate(new DateTime('now'));
+$counter->setMaleCount(0);
+$counter->setFemaleCount(0);
+$em->persist($counter);
+$em->flush();

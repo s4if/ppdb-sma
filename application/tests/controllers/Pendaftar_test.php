@@ -136,7 +136,7 @@ class Pendaftar_test extends TestCase
                 'father_name' => "Suraji", 
                 'father_status' => 'Hidup', 
                 'father_birth_place' => 'Blora', 
-                'father_birth_date' => '12-12-1981',
+                'father_birth_date' => '1981',
                 'father_street' => 'Rambeanak II', 
                 'father_RT' => 1,
                 'father_RW' => 3, 
@@ -159,7 +159,7 @@ class Pendaftar_test extends TestCase
                 'mother_name' => "Suharsah", 
                 'mother_status' => 'Hidup', 
                 'mother_birth_place' => 'Blora', 
-                'mother_birth_date' => '12-11-1982',
+                'mother_birth_date' => '1982',
                 'mother_street' => 'Rambeanak II', 
                 'mother_RT' => 1,
                 'mother_RW' => 3, 
@@ -246,6 +246,7 @@ class Pendaftar_test extends TestCase
                 'other_icost' => '15000000',
                 'raw_scost' => '-999',
                 'other_scost' => '1300000',
+                'boarding_kit'=> true,
                 'main_parent' => 'father'
             ];
             $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);

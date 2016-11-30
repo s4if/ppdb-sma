@@ -151,25 +151,6 @@
                             2
                         </td>
                         <td>
-                            Foto Pendaftaran
-                        </td>
-                        <td>
-                            <?php echo ($status ['foto'] > 0)?
-                            'Sudah Diunggah <span class="glyphicon glyphicon-ok-sign"></span>'
-                            :'Belum Diunggah <span class="glyphicon glyphicon-remove-sign"></span>';?>
-                        </td>
-                        <td>
-                            <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#ModalImport">
-                                <span class="glyphicon glyphicon-upload"></span>
-                                Upload Foto
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3
-                        </td>
-                        <td>
                             Data Ayah
                         </td>
                         <td>
@@ -183,7 +164,7 @@
                     </tr>
                     <tr>
                         <td>
-                            4
+                            3
                         </td>
                         <td>
                             Data Ibu
@@ -199,7 +180,7 @@
                     </tr>
                     <tr>
                         <td>
-                            5
+                            4
                         </td>
                         <td>
                             Data Wali (Hanya yang bersama Wali)

@@ -129,7 +129,7 @@ class Model_parent extends CI_Model{
         if (!is_null($data['name'])) : $this->$var->setName($data['name']); endif;
         if (!is_null($data['status'])) : $this->$var->setStatus($data['status']); endif;
         if (!is_null($data['birth_place'])) : $this->$var->setBirthPlace($data['birth_place']); endif;
-        if (!is_null($data['birth_date'])) : $this->$var->setBirthDate(new DateTime($data['birth_date'])); endif;
+        if (!is_null($data['birth_date'])) : $this->$var->setBirthDate($data['birth_date']); endif;
         if (!empty($data['street'])) : $this->$var->setStreet($data['street']); endif;
         if (!empty($data['RT'])) : $this->$var->setRT($data['RT']); endif;
         if (!empty($data['RW'])) : $this->$var->setRW($data['RW']); endif;

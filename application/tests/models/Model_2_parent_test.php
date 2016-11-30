@@ -52,7 +52,7 @@ class Model_2_parent_test extends TestCase{
             'name' => "Arikunto", 
             'status' => 'Hidup',  //Cerai, Hidup, Almarhum
             'birth_place' => 'Blora', 
-            'birth_date' => '12-12-1981', 
+            'birth_date' => '1981', 
             //'address' => 'Dsn Karang Wuri, Semar Kab. Semarang', 
             'street' => 'Rambeanak II', 
             'RT' => 1,
@@ -79,7 +79,7 @@ class Model_2_parent_test extends TestCase{
         $data['type'] = 'mother';
         $data['name'] = 'Suharsimi';
         $data['status'] = 'Almarhum';
-        $data['birth_date'] = '11-11-1983';
+        $data['birth_date'] = '1983';
         $data['job'] = null;
         $data['income'] = 0;
         $this->assertTrue($this->obj->updateData($id, $data, $data['type']));
@@ -88,7 +88,7 @@ class Model_2_parent_test extends TestCase{
         $data['type'] = 'guardian';
         $data['name'] = 'Danny Sutanto';
         $data['status'] = 'Hidup';
-        $data['birth_date'] = '11-11-1990';
+        $data['birth_date'] = '1990';
         $data['job'] = 'Linux Kernel Developer';
         $data['position'] = 'Kernel Driver Developer';
         $data['company'] = 'Alvanz Drone Instrument ltd.';

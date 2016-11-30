@@ -54,8 +54,7 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Tanggal Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input class="form-control datepicker" type="text" required="true"
-                       data-date-format="dd-mm-yyyy" name="<?= $type.'_';?>birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate()->format('d-m-Y');?>">
+                <input class="form-control" type="text" required="true" name="<?= $type.'_';?>birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate();?>">
             </div>
         </div>
         <!-- Hubungan Darah -->

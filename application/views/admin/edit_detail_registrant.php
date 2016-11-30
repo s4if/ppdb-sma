@@ -429,11 +429,10 @@
                             <input type="text" required="true" name="name" class="form-control" placeholder="Masukkan Nama" value="<?=$parent_data->getName();?>">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group">->format('d-m-Y'
                         <label class="col-sm-4 control-label">Tanggal Lahir :</label>
                         <div class="col-sm-7">
-                            <input class="form-control datepicker" type="text" required="true"
-                                   data-date-format="dd-mm-yyyy" name="birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate()->format('d-m-Y');?>">
+                            <input class="form-control" type="text" required="true" name="birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate();?>">
                         </div>
                     </div>
                     <div class="form-group">

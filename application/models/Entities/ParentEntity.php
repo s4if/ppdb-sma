@@ -65,9 +65,9 @@ class ParentEntity
     protected $birthPlace;
 
     /**
-     * @Column(type="date", nullable=FALSE)
+     * @Column(type="integer", nullable=FALSE)
      *
-     * @var DateTime
+     * @var int
      */
     protected $birthDate;
 
@@ -353,7 +353,7 @@ class ParentEntity
         return $this;
     }
 
-    public function setBirthDate(DateTime $birthDate)
+    public function setBirthDate($birthDate)
     {
         $this->birthDate = $birthDate;
 

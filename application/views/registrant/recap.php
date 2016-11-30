@@ -217,7 +217,7 @@
             <tr>
                 <td> TTL </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ucfirst($parent->getBirthPlace()).', '.tgl_indo($parent->getBirthDate()->format('Y m d'));?> </td>
+                <td> <?php echo ucfirst($parent->getBirthPlace()).', '.tgl_indo($parent->getBirthDate());?> </td>
             </tr>
             <tr>
                 <td> Alamat </td>
