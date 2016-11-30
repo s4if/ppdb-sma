@@ -60,7 +60,7 @@
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
-        Sebelum anda mengisi data pribadi, silahkan membayar dulu biaya pendaftaran peserta 
+        Sebelum anda mengisi data pribadi, silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
         sebesar <strong>Rp. 250.000,-</strong> ditambah <strong>nomor unik (Contoh = 250.123)</strong> di rekening 
         <strong>Bank Syariah Mandiri</strong> dengan <strong>No. ⁠⁠⁠7104471077</strong> atas nama 
         <strong>PPDB  SMAIT IHSANUL FIKRI 2017/2018</strong>. <br /> Kode unik bisa diminta dengan mengeklik tombol :
@@ -69,7 +69,7 @@
     <h1 id="kode-unik"></h1>
     <hr />
     <p>
-        Setelah transfer selesai, upload hasil scan / foto kuitansi pembayaran untuk diferifikasi
+        Setelah transfer selesai, upload hasil scan / foto kuitansi pembayaran untuk diverifikasi
         oleh panitia pada tombol dibawah ini.
     </p>
     <a class="btn btn-warning" data-toggle="modal" data-target="#uploadKwitansi" id="btn-kwitansi" disabled="true">
@@ -79,7 +79,7 @@
     <?php else :?>
     <h1>Selamat, Anda telah menyelesaikan tahap pertama!</h1>
     <p>
-        Terimakasih anda telah membayar biaya pembayaran. Silahkan anda bisa mengisi data
+        Terimakasih anda telah membayar biaya pendaftaran. Silahkan anda bisa mengisi data
         dan menyelesaikan pendaftaran dengan mengeklik tombol dibawah :
     </p>
     <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
@@ -128,8 +128,8 @@
                         <label class="col-sm-4 control-label">Jumlah :</label>
                         <div class="col-sm-6">
                             <input type="text" required="true" name="amount" class="form-control" 
-                                   pattern="^[1-9]([0-9]{1,20}$)" title="Hanya angka!"
-                                   placeholder="Jumlah" value="">
+                                   id="jml-uang"pattern="^[1-9]([0-9]{1,20}$)" title="Hanya angka!"
+                                   value="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -178,6 +178,8 @@ function kodeUnik()
                 );
                 $('#kode-unik').text(data.kode);
                 $('#btn-gen').text('Berhasil');
+                var placeh = "Contoh : '250"+data.kode+"' tanpa titik!";
+                $('#jml-uang').attr('placeholder', placeh);
                 $('#btn-kwitansi').attr('disabled', false);
             }
             else

@@ -143,13 +143,13 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">RT - RW<strong class="red">*</strong> :</label>
             <div class="col-sm-2">
-                <input type="text" required="true" name="<?= $type.'_';?>RT" class="form-control" placeholder="RT" value="<?=$parent_data->getRT();?>">
+                <input type="number" required="true" name="<?= $type.'_';?>RT" class="form-control" placeholder="RT" value="<?=$parent_data->getRT();?>">
             </div>
             <div class="col-sm-1 text-center">
                 -
             </div>
             <div class="col-sm-2">
-                <input type="text" required="true" name="<?= $type.'_';?>RW" class="form-control" placeholder="RW" value="<?=$parent_data->getRW();?>">
+                <input type="number" required="true" name="<?= $type.'_';?>RW" class="form-control" placeholder="RW" value="<?=$parent_data->getRW();?>">
             </div>
         </div>
         <div class="form-group">

@@ -200,7 +200,7 @@ img.foto-profil {
                                     </tr>
                                 </table>
                                 <p style="text-align: center;">
-                                    Silahkan dibawa saat tes tertulis sebagai bukti pendaftaran.
+                                    Silahkan dibawa saat tes tertulis sebagai kartu peserta tes dan bukti pendaftaran.
                                 </p>
                             </div>
                         </div>

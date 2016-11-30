@@ -179,6 +179,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
         if (!empty($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
+        if (!empty($data['land_donation'])) : $this->registrant->setLandDonation($data['land_donation']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
         if (!empty($data['deleted'])) : $this->registrant->setDeleted($data['deleted']); endif;
     }

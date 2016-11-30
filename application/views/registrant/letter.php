@@ -67,12 +67,19 @@
                         Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>(Jumlah Uang SPP)</strong>.
                     </li>
                     <li class="pernyataan">
-                        Saya sanggup untuk membayar Uang Seragam (Rp. 1.700.000,-), Uang Kesiswaan (Rp. 600.000,-) dan uang buku (Rp. 1400.000,-)
-                        kepada pihak sekolah dengan total sebesar <strong>Rp. 2.700.000,-</strong>.
+                        Saya bersedia untuk mewakafkan dana untuk perluasan tanah sekolah sebesar <strong>(Jumlah Uang Wakaf Tanah)</strong>.
+                    </li>
+                    <li class="pernyataan">
+                        Saya sanggup untuk membayar 
+                        Dana Seragam (Rp. 1.650.000,-), 
+                        Dana Kesiswaan (Rp. 600.000,-), 
+                        Dana Kesehatan (Rp. 250.000,-) dan 
+                        Dana buku (Rp. 1.400.000,-)
+                        kepada pihak sekolah dengan total sebesar <strong>Rp. 3.900.000,-</strong>.
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
-                        tidak akan menuntu segala yang telah saya bayarkan sebelumnya.
+                        tidak akan menuntut segala yang telah saya bayarkan sebelumnya.
                     </li>
                 </ol>
             </div>
@@ -83,7 +90,7 @@
     </div>
     <div class="row">
         <p>
-            Jika anda telah membaca dan setuju, silahkan isi form dibawah ini.
+            Jika anda telah membaca dan setuju, silahkan isi form dibawah ini untuk menentukan jumlah kesediaan membayar.
         </p>
     </div>
     <div class="row">
@@ -141,7 +148,8 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
-                    <input type="number" name="other_icost" class="form-control" placeholder="Masukkan Jumlah Melebih 10Juta Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
+                    <input type="number" pattern="^([0-9]{1,9}$)" name="other_icost" title="Maksimal 9 digit angka!"
+                           class="form-control" placeholder="Masukkan Jumlah Melebih 10Juta Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
                 </div>
             </div>
             <div class="form-group">
@@ -195,9 +203,80 @@
                     </div>
                 </div>
             </div>
+            
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
-                    <input type="number" name="other_scost" class="form-control" placeholder="Masukkan Jumlah Melebih 1Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
+                    <input type="number" name="other_scost" pattern="^([0-9]{1,8}$)" title="Maksimal 8 digit angka!"
+                           class="form-control" placeholder="Masukkan Jumlah Melebih 1Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Wakaf Tanah :</label>
+                <div class="col-sm-4">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="raw_lcost" value="500000" 
+                                <?php if(!empty($registrant->getLandDonation())):?>
+                                    <?php if($registrant->getLandDonation() == '500000'):?>
+                                    checked="true"
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 500.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="raw_lcost" value="1000000" 
+                                <?php if(!empty($registrant->getLandDonation())):?>
+                                    <?php if($registrant->getLandDonation() == '1000000'):?>
+                                    checked="true"
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 1.000.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="raw_lcost" value="1500000" 
+                                <?php if(!empty($registrant->getLandDonation())):?>
+                                    <?php if($registrant->getLandDonation() == '1500000'):?>
+                                    checked="true"
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 1.500.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="raw_lcost" value="2000000" 
+                                <?php if(!empty($registrant->getLandDonation())):?>
+                                    <?php if($registrant->getLandDonation() == '2000000'):?>
+                                    checked="true"
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 2.000.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="raw_lcost" value="-999" 
+                                <?php if(!empty($registrant->getLandDonation())):?>
+                                    <?php if(!($registrant->getLandDonation() == '500000'||
+                                            $registrant->getLandDonation() == '1000000' ||
+                                            $registrant->getLandDonation() == '2000000' ||
+                                            $registrant->getLandDonation() == '1500000')):?>
+                                    checked="true"
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Lebih dari 2 Juta Rupiah
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-3">
+                    <input type="number" name="other_lcost" pattern="^([0-9]{1,9}$)" title="Maksimal 8 digit angka!"
+                           class="form-control" placeholder="Masukkan Jumlah Melebih 2Juta Tanpa Titik" value="<?=$registrant->getLandDonation();?>">
                 </div>
             </div>
             <div class="form-group">
@@ -206,7 +285,7 @@
                     <span id="helpBlock" class="help-block">
                         Kami menyediakan perlengkapan yang dibutuhkan oleh siswa-siswa di asrama
                         seperti kasur, sprei, bantal, guling, selimut dll dengan harga estimasi
-                        Rp. 1.000.000,-. <br />Apakah anda bersedia memesan perlengkapan asrama dari kami?
+                        Rp. 940.000,-. <br />Apakah anda bersedia memesan perlengkapan asrama dari kami?
                     </span>
                     <div class="radio">
                         <label>
@@ -214,7 +293,7 @@
                                 <?php if($registrant->getBoardingKit()):?>
                                     checked="true"
                                 <?php endif;?>>
-                            Ya (Biaya total 1 Juta Rupiah)
+                            Ya (Biaya tambahan 940 Ribu Rupiah)
                         </label>
                     </div>
                     <div class="radio">

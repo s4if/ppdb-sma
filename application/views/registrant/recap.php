@@ -279,11 +279,71 @@
     </div>
     <?php endif; ?>
     <?php endforeach; ?>
-    <a class="btn btn-warning <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
+    <?php if (!is_null($registrant->getRegistrantData())) :?>
+    <div class="page-content">
+        <h2 class="header-section">Detail Pembayaran</h2>
+        <table class="data">
+            <tr>
+                <td> Infaq Pendidikan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. <?php echo number_format($registrant->getInitialCost(),2,',','.');?> </td>
+            </tr>
+            <tr>
+                <td> SPP </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. <?php echo number_format($registrant->getSubscriptionCost(),2,',','.');?> </td>
+            </tr>
+            <tr>
+                <td> Wakaf Tanah </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. <?php echo number_format($registrant->getLandDonation(),2,',','.');?> </td>
+            </tr>
+            <tr>
+                <td> Seragam </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. 1.650.000,00 </td>
+            </tr>
+            <tr>
+                <td> Dana Kesiswaan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. 600.000,00 </td>
+            </tr>
+            <tr>
+                <td> Dana Kesehatan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. 250.000,00 </td>
+            </tr>
+            <tr>
+                <td> Dana Buku </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. 1.400.000,00 </td>
+            </tr>
+            <tr>
+                <td> Perlengkapan Asrama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ($registrant->getBoardingKit())?"Rp. 940.000,00":"Rp. 0,00";?> </td>
+            </tr>
+            <tr>
+                <td> <strong>Total</strong> </td>
+                <td> &nbsp;:&nbsp; </td>
+                <?php 
+                $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation()+3900000;
+                $total = ($registrant->getBoardingKit())?$tot+940000:$tot
+                ?>
+                <td> Rp. <?php echo number_format($total,2,',','.');?> </td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+    <?php endif;?>
+    <a class="btn btn-success <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
         <span class="glyphicon glyphicon-registration-mark"></span>
         Finalisasi
     </a>
-    <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Edit data</a>
+    <?php if(!$registrant->getFinalized()) :?>
+    <a class="btn btn-warning" href="<?=  base_url().$id.'/formulir'?>">Edit Data</a>
+    <a class="btn btn-danger" href="<?=  base_url().$id.'/surat'?>">Edit Pembayaran</a>
+    <?php endif;?>
     </div>
 </div>
 

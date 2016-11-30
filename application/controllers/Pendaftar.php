@@ -347,7 +347,7 @@ class Pendaftar extends MY_Controller {
         $data = $this->input->post(null, true);
         $data['initial_cost'] = ($data['raw_icost'] == '-999')?$data['other_icost']:$data['raw_icost'];
         $data['subscription_cost'] = ($data['raw_scost'] == '-999')?$data['other_scost']:$data['raw_scost'];
-//        var_dump($data);
+        $data['land_donation'] = ($data['raw_lcost'] == '-999')?$data['other_lcost']:$data['raw_lcost'];
         $data['id'] = $id;
         $res = $this->reg->updateData($data);
         if($res){

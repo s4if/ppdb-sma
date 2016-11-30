@@ -137,6 +137,13 @@ class RegistrantEntity
      * @var string
      */
     protected $subscriptionCost; // Uang Bulanan
+    
+    /**
+     * @Column(type="bigint", nullable=TRUE)
+     *
+     * @var string
+     */
+    protected $landDonation; // Uang Bulanan
 
     /**
      * @Column(type="boolean", nullable=TRUE)
@@ -177,7 +184,7 @@ class RegistrantEntity
     {
         if (empty($vars)) {
             $vars = ['id', 'regIds', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
-                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'completed', ];
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', 'completed', ];
         }
         $arrData = [];
         foreach ($vars as $var) {
@@ -320,6 +327,14 @@ class RegistrantEntity
     public function getBoardingKit()
     {
         return (is_null($this->boardingKit)) ? false : $this->boardingKit;
+    }
+    public function getLandDonation() {
+        return $this->landDonation;
+    }
+
+    public function setLandDonation($landDonation) {
+        $this->landDonation = $landDonation;
+        return $this;
     }
 
     public function setBoardingKit($boardingKit)

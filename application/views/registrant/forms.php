@@ -127,13 +127,13 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">RT - RW<strong class="red">*</strong> :</label>
             <div class="col-sm-2">
-                <input type="text" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$reg_data->getRT();?>">
+                <input type="number" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$reg_data->getRT();?>">
             </div>
             <div class="col-sm-1 text-center">
                 -
             </div>
             <div class="col-sm-2">
-                <input type="text" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$reg_data->getRW();?>">
+                <input type="number" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$reg_data->getRW();?>">
             </div>
         </div>
         <div class="form-group">
@@ -163,7 +163,7 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Kode Pos<strong class="red">*</strong> :</label>
             <div class="col-sm-4">
-                <input type="text" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$reg_data->getPostalCode();?>">
+                <input type="number" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$reg_data->getPostalCode();?>">
             </div>
         </div>
         <div class="form-group">
@@ -565,7 +565,8 @@
             <div class="modal-body">
                 <h4 class="text-center">
                     <span class="glyphicon glyphicon-ok-sign"></span>
-                    Data telah berhasil disimpan
+                    Data telah berhasil disimpan. <br/>
+                    Silahkan melanjutkan untuk mengisi surat pernyataan dengan menekan tombol lanjut.
                 </h4>
             </div>
             <div class="modal-footer" >
