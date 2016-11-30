@@ -157,13 +157,13 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Tinggi :</label>
             <div class="col-sm-7">
-                <input type="number" required="true" name="height" id="birth_date" tabindex="1" class="form-control" placeholder="Tinggi Badan" value="<?=$registrant_detail->getHeight();?>">
+                <input type="number" required="true" name="height" id="height" tabindex="1" class="form-control" placeholder="Tinggi Badan" value="<?=$registrant_detail->getHeight();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Berat :</label>
             <div class="col-sm-7">
-                <input type="number" required="true" name="weight" id="birth_date" tabindex="1" class="form-control" placeholder="Berat Badan" value="<?=$registrant_detail->getWeight();?>">
+                <input type="number" required="true" name="weight" id="weight" tabindex="1" class="form-control" placeholder="Berat Badan" value="<?=$registrant_detail->getWeight();?>">
             </div>
         </div>
         <div class="form-group">
@@ -429,8 +429,8 @@
                             <input type="text" required="true" name="name" class="form-control" placeholder="Masukkan Nama" value="<?=$parent_data->getName();?>">
                         </div>
                     </div>
-                    <div class="form-group">->format('d-m-Y'
-                        <label class="col-sm-4 control-label">Tanggal Lahir :</label>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Tahun Lahir :</label>
                         <div class="col-sm-7">
                             <input class="form-control" type="text" required="true" name="birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate();?>">
                         </div>

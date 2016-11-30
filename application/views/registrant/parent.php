@@ -52,9 +52,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Tanggal Lahir<strong class="red">*</strong> :</label>
+            <label class="col-sm-4 control-label">Tahun Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input class="form-control" type="text" required="true" name="<?= $type.'_';?>birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate();?>">
+                <input class="form-control" type="number" required="true" name="<?= $type.'_';?>birth_date" value="<?php echo (is_null($parent_data->getBirthDate()))?'':$parent_data->getBirthDate();?>">
             </div>
         </div>
         <!-- Hubungan Darah -->
