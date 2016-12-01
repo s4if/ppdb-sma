@@ -17,10 +17,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
             $qb->andwhere('r.gender = :gender');
         }
         if ($onlyShowCompleted) {
-            $qb->andWhere($qb->expr()->andX(
-                    $qb->expr()->isNotNull('r.father'),
-                    $qb->expr()->isNotNull('r.mother')
-                    ));
+            $qb->andWhere('r.finalized = true');
         }
         if (!$showDeleted) {
             $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));

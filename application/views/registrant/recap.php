@@ -40,19 +40,16 @@
 </ol>
 <div class="container-fluid">
     <style>
+        strong.red {
+            color: red;
+            font-weight: bolder;
+        }
         img.foto-profil {
             resize: both;
             height: 100%;
             width: 100%;
             max-height: 200px;
             max-width: 150px;
-        }
-        table.data{
-            border-collapse: collapse;
-            padding-bottom: 0.5em;
-            padding-top: 0.5em;
-            font-size: 1.3em;
-            font-size-adjust: 0.2em;
         }
     </style>
     <div class="print-body">
@@ -324,23 +321,23 @@
                 <td> <?php echo ($registrant->getBoardingKit())?"Rp. 940.000,00":"Rp. 0,00";?> </td>
             </tr>
             <tr>
-                <td> <strong>Total</strong> </td>
+                <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
                 $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation()+3900000;
                 $total = ($registrant->getBoardingKit())?$tot+940000:$tot
                 ?>
-                <td> Rp. <?php echo number_format($total,2,',','.');?> </td>
+                <td> <strong class="red">Rp. <?php echo number_format($total,2,',','.');?></strong> </td>
             </tr>
         </table>
         <hr />
     </div>
     <?php endif;?>
+    <?php if(!$registrant->getFinalized()) :?>
     <a class="btn btn-success <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
         <span class="glyphicon glyphicon-registration-mark"></span>
         Finalisasi
     </a>
-    <?php if(!$registrant->getFinalized()) :?>
     <a class="btn btn-warning" href="<?=  base_url().$id.'/formulir'?>">Edit Data</a>
     <a class="btn btn-danger" href="<?=  base_url().$id.'/surat'?>">Edit Pembayaran</a>
     <?php endif;?>

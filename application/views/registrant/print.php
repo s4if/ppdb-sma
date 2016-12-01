@@ -171,7 +171,7 @@ img.foto-profil {
                         <div class="row">
                             <div class="col-sm-12">
                                 <p style="text-align: center;">
-                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:2016/2017 telah berhasil. 
+                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:2017/2018 telah berhasil. 
                                     Data yang ter-input adalah sebagai berikut :
                                 </p>
                                 <table class="table table-responsive table-condensed table-borderless">

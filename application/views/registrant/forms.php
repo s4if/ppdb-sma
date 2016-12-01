@@ -778,7 +778,7 @@ function save()
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
-            alert('Error adding / update data');
+            alert('Maaf, Terjadi kesalahan! Silahkan cek kembali isian anda!');
             $('.btn-save').text('Simpan'); //change button text
             $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
             $('.btn-save').attr('disabled',false); //set button enable 

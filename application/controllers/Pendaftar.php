@@ -390,8 +390,11 @@ class Pendaftar extends MY_Controller {
     public function lihat_ajax($gender = 'L', $completed = false){
         $registrant_data = $this->reg->getArrayData($gender, null, $completed);
         $data = [];
+        $id = 1;
         foreach ($registrant_data as $registrant){
             $row = [];
+            $row[] = $id;
+            $id++;
             $row[] = $registrant['regId'];
             $row[] = $registrant['name'];
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';

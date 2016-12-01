@@ -177,7 +177,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
-        if (!empty($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
+        if (!is_null($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['land_donation'])) : $this->registrant->setLandDonation($data['land_donation']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
@@ -407,8 +407,10 @@ class Model_registrant extends CI_Model {
         $status  = $this->cek_status($registrant);
         if($registrant->getVerified()=='tidak valid'){
             return 'Bukti Pendaftaran Tidak Valid';
+        }elseif (is_null($registrant->getVerified())) {
+            return 'Proses Verifikasi Pembayaran';
         }
-        elseif($registrant->getFinalized()){
+        elseif($registrant->getFinalized() && ($registrant->getVerified()=='valid')){
             return 'Pendaftaran telah selesai';
         } elseif($status['completed']) {
             return 'Data telah lengkap, kurang finalisasi';

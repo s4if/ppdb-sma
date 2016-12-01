@@ -23,7 +23,7 @@
 <!-- Custom CSS -->
 <style>
 body {
-    padding-top: 150px;
+    padding-top: 120px;
     background-image: url("<?php echo base_url().'assets/images/bg-login-1718.jpg';?>")
 }
 .panel-login {
@@ -208,13 +208,13 @@ body {
     ?>
 </div>
 <?php endif; ?>
-<!--            <div class="alert alert-info alert-dismissible">
+            <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class=" text-center"><strong>Pengumuman:</strong> Mulai 2 Desember 2015, data yang ditampilkan disini adalah pendaftar yang minimal telah melengkapi data
-                pribadi dan data orang tua. <br/>
+                <p class=" text-center"><strong>Pengumuman:</strong>
+                    Data yang tertampil pada halaman ini adalah data peserta yang telah melakukan pendaftaran sampai selesai.<br/>
                 Segera lengkapi data pendaftaran anda untuk bisa bergabung dengan keluarga besar SMAIT Ihsanul Fikri Mungkid.<br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div>-->
+            </div>
 </div>
         </div>
     	<div class="row">
@@ -237,6 +237,7 @@ body {
                                 <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
                                     <thead>
                                         <tr>
+                                            <td>No. Urut</td>
                                             <td>No. Pendaftaran</td>
                                             <td>Nama</td>
                                             <td>I/A</td>
