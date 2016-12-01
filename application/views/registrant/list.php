@@ -124,27 +124,27 @@ body {
 }
 @media screen and (min-width: 680px) {
 .navbar-transparent {
-    background: transparent;
+    background: rgba(255,255,255,0.6);
     background-image: none;
-    border-color: transparent;
+    border-color: rgba(255,255,255,0.6);
 }
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    background: transparent;
+    background: rgba(255,255,255,0.6);
     background-image: none;
-    border-color: transparent;
+    border-color: rgba(255,255,255,0.6);
 }}
 #navbar ul li.active {
-    background:transparent;
+    background:rgba(255,255,255,0.6);
     background-image: none;
-    border-color: transparent;
+    border-color: rgba(255,255,255,0.6);
 }
 
-#navbar ul li:hover {       
-    background:transparent;
+#navbar ul li:hover {
+    background:rgba(255,255,255,0.6);
     background-image: none;
-    border-color: transparent;
+    border-color: rgba(255,255,255,0.6);
 }
 </style>
 
@@ -163,7 +163,7 @@ body {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand brand-shifted" href="http://ppdb.smait-ihsanulfikri.sch.id">PPDB SMAIT Ihsanul Fikri</a>
+                    <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">PPDB SMAIT Ihsanul Fikri</a>
                 </div>
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">
