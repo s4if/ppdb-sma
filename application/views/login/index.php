@@ -25,8 +25,8 @@
 <!-- Custom CSS -->
 <style>
 body {
-    padding-top: 90px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login.jpg';?>");
+    padding-top: 150px;
+    background-image: url("<?php echo base_url().'assets/images/bg-login-1718.jpg';?>");
 }
 .panel-login {
 	border-color: #ccc;
