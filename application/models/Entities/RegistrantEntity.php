@@ -301,8 +301,8 @@ class RegistrantEntity
     {
         $res = (!(empty($this->getFather()) || empty($this->getFather()) ||
                 empty($this->getMother()) || empty($this->getSubscriptionCost()) ||
-                empty($this->getInitialCost()) || empty($this->getMainParent())));
-
+                empty($this->getInitialCost()) || empty($this->getMainParent()) || 
+                empty($this->getRegistrantData())));
         return $res;
     }
 

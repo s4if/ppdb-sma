@@ -130,6 +130,7 @@ class Pendaftar extends MY_Controller {
     
     public function formulir($id){
         $this->blockUnloggedOne($id);
+        $this->blockNonPayers($this->session->registrant);
         $reg_data = $this->reg->getRegistrantData($this->session->registrant);
         $parent_form = $this->parents($id, 'father').' '.$this->parents($id, 'mother');
         $data = [
@@ -289,6 +290,7 @@ class Pendaftar extends MY_Controller {
     
     public function rekap($id){
         $this->blockUnloggedOne($id);
+        $this->blockNonPayers($this->session->registrant);
         $registrant = $this->reg->getData(null, $id);
         $this->session->set_userdata('registrant', $registrant);
         $data = [
@@ -332,6 +334,7 @@ class Pendaftar extends MY_Controller {
     
     public function surat($id){
         $this->blockUnloggedOne($id);
+        $this->blockNonPayers($this->session->registrant);
         $data = [
             'title' => 'Surat Pernyataan',
             'username' => $this->session->registrant->getName(),

@@ -95,6 +95,13 @@ class MY_Controller extends CI_Controller
             redirect('admin', 'refresh');
         }
     }
+    
+    protected function blockNonPayers($registrant){
+        if(is_null($registrant->getPaymentData())){
+            $this->session->set_flashdata('errors', [0 => 'Akses dihentikan, Harap Harap Membayar Dulu!']);
+            redirect($registrant->getId().'/beranda', 'refresh');
+        }
+    }
 
     protected function pdfOption()
     {
