@@ -73,9 +73,10 @@
                         Saya sanggup untuk membayar 
                         Dana Seragam (Rp. 1.650.000,-), 
                         Dana Kesiswaan (Rp. 600.000,-), 
-                        Dana Kesehatan (Rp. 250.000,-) dan 
-                        Dana buku (Rp. 1.400.000,-)
-                        kepada pihak sekolah dengan total sebesar <strong>Rp. 3.900.000,-</strong>.
+                        Dana Kesehatan (Rp. 250.000,-), 
+                        Dana Buku (Rp. 1.400.000,-) dan
+                        Dana Perlengkapan Asrama (Rp. 940.000,-) 
+                        kepada pihak sekolah dengan total sebesar <strong>Rp. 4.840.000,-</strong>.
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -277,34 +278,7 @@
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" name="other_lcost" pattern="^([0-9]{1,9}$)" title="Maksimal 8 digit angka!"
                            class="form-control" placeholder="Masukkan Jumlah Melebih 2Juta Tanpa Titik" value="<?=$registrant->getLandDonation();?>">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Perlengkapan Asrama :</label>
-                <div class="col-sm-4">
-                    <span id="helpBlock" class="help-block">
-                        Kami menyediakan perlengkapan yang dibutuhkan oleh siswa-siswa di asrama
-                        seperti kasur, sprei, bantal, guling, selimut dll dengan harga estimasi
-                        Rp. 940.000,-. <br />Apakah anda bersedia memesan perlengkapan asrama dari kami?
-                    </span>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="boarding_kit" value="1" 
-                                <?php if($registrant->getBoardingKit()):?>
-                                    checked="true"
-                                <?php endif;?>>
-                            Ya (Biaya tambahan 940 Ribu Rupiah)
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="boarding_kit" value="0" 
-                                <?php if(!$registrant->getBoardingKit()):?>
-                                    checked="true"
-                                <?php endif;?>>
-                            Tidak (Akan melengkapi sendiri perlengkapan asrama)
-                        </label>
-                    </div>
+                    <input type="number" name="boarding_kit" hidden="true" value="1">
                 </div>
             </div>
             <div class="form-group">
