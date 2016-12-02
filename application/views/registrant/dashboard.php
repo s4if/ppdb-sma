@@ -61,7 +61,7 @@
     <p>
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
         Sebelum anda mengisi data pribadi, silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
-        sebesar <strong>Rp. 250.000,-</strong> ditambah <strong>nomor unik (Contoh = 250.123)</strong> di rekening 
+        sebesar <strong>Rp. 200.000,-</strong> ditambah <strong>nomor unik (Contoh = 200.123)</strong> di rekening 
         <strong>Bank Syariah Mandiri</strong> dengan <strong>No. ⁠⁠⁠7104471077</strong> atas nama 
         <strong>PPDB  SMAIT IHSANUL FIKRI 2017/2018</strong>. <br /> Kode unik bisa diminta dengan mengeklik tombol :
     </p>
@@ -179,7 +179,7 @@ function kodeUnik()
                 );
                 $('#kode-unik').text(data.kode);
                 $('#btn-gen').text('Berhasil');
-                var placeh = "Contoh : '250"+data.kode+"' tanpa titik!";
+                var placeh = "Contoh : '200"+data.kode+"' tanpa titik!";
                 $('#jml-uang').attr('placeholder', placeh);
                 $('#btn-kwitansi').attr('disabled', false);
             }
