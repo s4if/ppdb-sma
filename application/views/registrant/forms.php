@@ -180,6 +180,8 @@
                                 <?php if($reg_data->getFamilyCondition() ==='lengkap'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         Lengkap
                     </label>
@@ -229,6 +231,8 @@
                                 <?php if($reg_data->getStayWith() ==='orang tua'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         Orang Tua
                     </label>

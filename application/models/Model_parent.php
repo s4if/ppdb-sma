@@ -154,10 +154,10 @@ class Model_parent extends CI_Model{
     public function ajaxValidation($data, $type){
         $input_error = [];
         $valid = true;
-        $arr_required =  ['name', 'status', 'birth_place', 'birth_date', 'street', 'RT', 'RW', 'village', 'district', 
+        $arr_required =  ['name', 'status', 'birth_place', 'birth_date', 'street', 'village', 'district', 
             'city', 'province', 'postal_code', 'contact', 'relation',
             'nationality', 'religion', 'education_level', 'job'];
-        if($type == 'father'){
+        if($type == 'father' && $data[$type.'_status'] == 'masih hidup'){
             $arr_required[] = 'burden_count';
             $arr_required[] = 'income';
         }

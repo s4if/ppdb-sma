@@ -17,6 +17,8 @@
                                 <?php if($parent_data->getStatus() ==='masih hidup'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         Masih Hidup
                     </label>
@@ -69,6 +71,8 @@
                                 <?php if($parent_data->getRelation() ===ucfirst($key).' kandung'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         <?=ucfirst($key)?> Kandung
                     </label>
@@ -267,6 +271,8 @@
                                 <?php if($parent_data->getEducationLevel() ==='S1'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         S1
                     </label>

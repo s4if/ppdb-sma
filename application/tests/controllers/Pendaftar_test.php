@@ -183,10 +183,19 @@ class Pendaftar_test extends TestCase
             $this->assertContains('"status":true', $output);
             $this->setUp();
             $data['village'] = null;
-            $data['mother_village'] = null;
-            $data['father_village'] = null;
             $output2 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
             $this->assertContains('"status":false', $output2);
+            $data['village'] = 'Rambeanak';
+            $data['mother_village'] = null;
+            $output3 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
+            $this->assertContains('"status":false', $output3);
+            $data['mother_village'] = 'Rambeanak';
+            $data['father_village'] = null;
+            $output4 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
+            $this->assertContains('"status":false', $output4);
+            $data['father_village'] = 'Rambeanaak';
+            $output5 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
+            $this->assertContains('"status":true', $output5);
         }
         
         public function test_generate_kode(){

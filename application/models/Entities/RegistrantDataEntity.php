@@ -197,9 +197,10 @@ class RegistrantDataEntity
 
     public function getAddress()
     {
-        $str_address = $this->street.' RT '.$this->RT.' RW '.$this->RW.' '
+        $str_RT = (is_null($this->RT))?'': $this->RT;
+        $str_RW = (is_null($this->RW))?'':  $this->RW;
+        $str_address = $this->street.' RT '.$str_RT.' RW '.$str_RW.' '
                 .$this->village.', '.$this->district.' '.$this->city.' '.$this->province;
-
         return $str_address;
     }
 

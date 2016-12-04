@@ -25,5 +25,11 @@ Technical Notes :
  - Recap & Print disesuaikan dengan data (Kurang Print)
 // 2 Des
  - Bug Akses formulir dan surat (OK)
- - Cek Foto diaktifkan saja (OK)
+ - Cek Foto diaktifkan (OK)
  - Status Pendaftaran diutamakan kelengkapan! (OK)
+// 4 Des
+ - Ada alamat yang ga ad RT-nya, kalau bisa dibuat ga wajib (OK)
+ - Nomor telepon ada kasus ga diisi bisa (Karena di HP)
+ - Edit data peserta dari admin belum update (OK)
+ - Setiap radio memiliki default (OK)
+ - Error array unset ketika registrant gagal diupdate. (OK)

@@ -86,61 +86,25 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         return $result;
     }
 
-    public function getCount()
-    {
-        $query = $this->getEntityManager()->createQuery('SELECT COUNT(r.id) FROM RegistrantEntity r');
-        $count = $query->getSingleScalarResult();
-
-        return $count;
-    }
-
     public function getCountByFilter($filter)
     {
-        //        try {
-            $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb->select('COUNT(r.id)')
-                    ->from('RegistrantEntity', 'r');
-        foreach ($filter as $key => $value) {
-            $qb->andWhere('r.'.$key.' = :set'.$key);
-        }
-        $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
-        foreach ($filter as $key => $value) {
-            $qb->setParameter('set'.$key, $value);
-        }
-        $qb->setParameter('deleted', true);
-        $count = $qb->getQuery()->getSingleScalarResult();
+        try {
+                $qb = $this->getEntityManager()->createQueryBuilder();
+            $qb->select('COUNT(r.id)')
+                        ->from('RegistrantEntity', 'r');
+            foreach ($filter as $key => $value) {
+                $qb->andWhere('r.'.$key.' = :set'.$key);
+            }
+            $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
+            foreach ($filter as $key => $value) {
+                $qb->setParameter('set'.$key, $value);
+            }
+            $qb->setParameter('deleted', true);
+            $count = $qb->getQuery()->getSingleScalarResult();
 
-        return $count;
-//        } catch (Doctrine\ORM\Query\QueryException $e) {
-//            return false;
-//        }
-    }
-
-    public function getDataByFilter($filter)
-    {
-        //        try {
-            $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb->select('r')
-                    ->from('RegistrantEntity', 'r');
-        foreach ($filter as $key => $value) {
-            $qb->andWhere('r.'.$key.' = :set'.$key);
+            return $count;
+        } catch (Doctrine\ORM\Query\QueryException $e) {
+            return false;
         }
-        $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
-        foreach ($filter as $key => $value) {
-            $qb->setParameter('set'.$key, $value);
-        }
-        $qb->setParameter('deleted', true);
-        $qb->orderBy('r.id', 'ASC');
-        $query = $qb->getQuery();
-        $result = $query->getResult();
-
-        return end($result);
-//        } catch (Doctrine\ORM\Query\QueryException $e) {
-//            return null;
-//        } catch (Doctrine\ORM\NoResultException $e) {
-//            return null;
-//        } catch (Doctrine\ORM\NonUniqueResultException $e) {
-//            return null;
-//        }
     }
 }

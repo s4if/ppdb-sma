@@ -261,7 +261,7 @@ class Model_registrant extends CI_Model {
         $input_error = [];
         $valid = true;
         $arr_required = [
-            'birth_place', 'birth_date', 'street', 'RT', 'RW', 'village', 'district', 
+            'birth_place', 'birth_date', 'street', 'village', 'district', 
             'city', 'province', 'postal_code', 'family_condition', 'nationality', 'religion', 
             'height', 'weight', 'stay_with'
         ];

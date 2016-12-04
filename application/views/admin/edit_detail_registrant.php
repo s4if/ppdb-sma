@@ -85,6 +85,8 @@
                                 <?php if($registrant_detail->getFamilyCondition() ==='lengkap'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         Lengkap
                     </label>
@@ -176,6 +178,8 @@
                                 <?php if($registrant_detail->getStayWith() ==='orang tua'):?>
                                 checked="true"
                                 <?php endif;?>
+                            <?php else :?>
+                                checked="true"
                             <?php endif;?>>
                         Orang Tua
                     </label>
@@ -395,6 +399,8 @@
                                             <?php if($parent_data->getStatus() ==='masih hidup'):?>
                                             checked="true"
                                             <?php endif;?>
+                                        <?php else :?>
+                                            checked="true"
                                         <?php endif;?>>
                                     Masih Hidup
                                 </label>
@@ -498,39 +504,43 @@
                     <!-- Hubungan Darah -->
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Hubungan :</label>
-                        <?php if($parent == 'father' || $parent == 'mother') :?>
+                        <?php if($parent == 'father' || $parent == 'mother') :
+                            $str_parr = ($parent == 'father')?'Ayah':'Ibu';
+                            ?>
                         <div class="col-sm-7">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="relation" value="anak kandung" 
+                                    <input type="radio" name="relation" value="<?=$str_parr?> kandung" 
                                         <?php if(!empty($parent_data->getRelation())):?>
-                                            <?php if($parent_data->getRelation() ==='anak kandung'):?>
+                                            <?php if($parent_data->getRelation() === $str_parr.' kandung'):?>
                                             checked="true"
                                             <?php endif;?>
+                                        <?php else :?>
+                                            checked="true"
                                         <?php endif;?>>
-                                    Anak Kandung
+                                    <?=$str_parr?> Kandung
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="relation" value="anak tiri" 
+                                    <input type="radio" name="relation" value="<?=$str_parr?> tiri" 
                                         <?php if(!empty($parent_data->getRelation())):?>
-                                            <?php if($parent_data->getRelation() ==='anak tiri'):?>
+                                            <?php if($parent_data->getRelation() ===$str_parr.' tiri'):?>
                                             checked="true"
                                             <?php endif;?>
                                         <?php endif;?>>
-                                    Anak Tiri
+                                    <?=$str_parr?> Tiri
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="relation" value="anak angkat" 
+                                    <input type="radio" name="relation" value=<?=$str_parr?>" angkat" 
                                         <?php if(!empty($parent_data->getRelation())):?>
-                                            <?php if($parent_data->getRelation() ==='anak angkat'):?>
+                                            <?php if($parent_data->getRelation() ===$str_parr.' angkat'):?>
                                             checked="true"
                                             <?php endif;?>
                                         <?php endif;?>>
-                                    Anak Angkat
+                                    <?=$str_parr?> Angkat
                                 </label>
                             </div>
                         </div>
@@ -550,6 +560,8 @@
                                         <?php if($parent_data->getNationality()=='WNI'): ?>
                                                 selected="true"
                                         <?php endif;?>
+                                    <?php else :?>
+                                            checked="true"
                                     <?php endif;?>>
                                     WNI
                                 </option>
@@ -646,6 +658,8 @@
                                             <?php if($parent_data->getEducationLevel() ==='S1'):?>
                                             checked="true"
                                             <?php endif;?>
+                                        <?php else :?>
+                                            checked="true"
                                         <?php endif;?>>
                                     S1
                                 </label>

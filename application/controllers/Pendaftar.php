@@ -219,6 +219,8 @@ class Pendaftar extends MY_Controller {
         }
         if($val['registrant']['valid']){
             $res['registrant'] = $this->reg->updateDetail($id, $data);
+        } else {
+            $res['registrant'] = false;
         }
         $final_result = $res['registrant'] && $agg_res;
         $errored = array_merge($val['registrant']['errored'], $val['father']['errored'], $val['mother']['errored']);
