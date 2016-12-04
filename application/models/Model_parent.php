@@ -157,7 +157,7 @@ class Model_parent extends CI_Model{
         $arr_required =  ['name', 'status', 'birth_place', 'birth_date', 'street', 'village', 'district', 
             'city', 'province', 'postal_code', 'contact', 'relation',
             'nationality', 'religion', 'education_level', 'job'];
-        if($type == 'father' && $data[$type.'_status'] == 'masih hidup'){
+        if($type == 'father'){
             $arr_required[] = 'burden_count';
             $arr_required[] = 'income';
         }
