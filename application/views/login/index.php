@@ -170,6 +170,7 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
+                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-20172018/">Petunjuk</a></li>
                     <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                     <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                     <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
@@ -246,7 +247,9 @@ body {
                                 </form>
                                 <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
-                                    <input type="text" required="true" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="<?=(array_key_exists('username', $registrant))?$registrant['username']:'';?>">
+                                    <input type="text" required="true" name="username" id="username" tabindex="1" 
+                                           class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"
+                                           value="<?=(array_key_exists('username', $registrant))?$registrant['username']:'';?>">
                                 </div>
                                 <div id="status"class="form-group">
                                     

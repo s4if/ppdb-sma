@@ -168,6 +168,7 @@ body {
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right shifted">
+                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-20172018/">Petunjuk</a></li>
                         <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                         <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                         <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
@@ -208,13 +209,13 @@ body {
     ?>
 </div>
 <?php endif; ?>
-            <div class="alert alert-info alert-dismissible">
+<!--            <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p class=" text-center"><strong>Pengumuman:</strong>
                     Data yang tertampil pada halaman ini adalah data peserta yang telah melakukan pendaftaran sampai selesai.<br/>
                 Segera lengkapi data pendaftaran anda untuk bisa bergabung dengan keluarga besar SMAIT Ihsanul Fikri Mungkid.<br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div>
+            </div>-->
 </div>
         </div>
     	<div class="row">

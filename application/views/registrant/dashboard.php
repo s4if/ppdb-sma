@@ -51,8 +51,8 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
-        Tes akan dilaksanakan tanggal 20 Februari 2016<br/>
-        Hasil tes akan diumumkan tanggal 27 Februari 2016<br/>
+        Tes akan dilaksanakan tanggal 12 Februari 2016<br/>
+        Hasil tes akan diumumkan tanggal 20 Februari 2016<br/>
         Silahkan Unduh dan cetak kartu pendaftaran.
     </p>        
     <a class="btn btn-success" href="<?=  base_url().'pendaftar/print_kartu'?>">Unduh Kartu Pendaftarran</a>

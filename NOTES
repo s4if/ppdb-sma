@@ -33,3 +33,11 @@ Technical Notes :
  - Edit data peserta dari admin belum update (OK)
  - Setiap radio memiliki default (OK)
  - Error array unset ketika registrant gagal diupdate. (OK)
+// 6 Des
+ - Tanggal diperbaiki, (test => 12 feb, pengumuman => 20 febs) (OK)
+ - Diberi keterangan hubungi siapa kalau gagal (OK)
+ - Link Menuju Petunjuk PPDB (OK)
+// 7 Des
+ - Batasi Panjang Username
+ - Info Username di beranda & kartu pendaftar
+ - upload foto kalau sudah finalisasi?

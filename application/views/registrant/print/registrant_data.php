@@ -228,7 +228,7 @@
                 <?php ($hp_count < 1)?'<td>-</td>':'';?>
             </tr>    
                 <?php foreach ($data->getHospitalSheets() as $hp):?>
-                <tr><td> <?php echo ucfirst($hp->getHospitalSheet());?> </td>
+                <tr><td> <?php echo ucfirst($hp);?> </td>
                 <?php endforeach;?>
             <tr>
                 <td rowspan="<?=($pa_count < 1)?'1':$pa_count+1;?>"> Kelainan Jasmani </td>
@@ -236,7 +236,7 @@
                 <?php ($pa_count < 1)?'<td>-</td>':'';?>
             </tr>
                 <?php foreach ($data->getPhysicalAbnormalities() as $pa):?>
-                <tr><td> <?php echo ucfirst($pa->getPhysicalAbnormality());?> </td></tr>
+                <tr><td> <?php echo ucfirst($pa);?> </td></tr>
                 <?php endforeach;?>
             <tr>
                 <td> Tinggal Bersama </td>
@@ -249,7 +249,7 @@
                 <?php ($hb_count < 1)?'<td>-</td>':'';?>
             </tr>
                 <?php foreach ($data->getHobbies() as $hb):?>
-                <tr><td> <?php echo ucfirst($hb->getHobby());?> </td></tr>
+                <tr><td> <?php echo ucfirst($hb);?> </td></tr>
                 <?php endforeach;?>
             <tr>
                 <td rowspan="<?=($ac_count < 1)?'1':$ac_count+1;?>"> Prestasi </td>
@@ -257,7 +257,7 @@
                 <?php ($hp_count < 1)?'<td>-</td>':'';?>
             </tr>
                 <?php foreach ($data->getAchievements() as $ac):?>
-                <tr><td> <?php echo ucfirst($ac->getAchievement());?> </td></tr>
+                <tr><td> <?php echo ucfirst($ac);?> </td></tr>
                 <?php endforeach;?>
         </table>
         <hr />

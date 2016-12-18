@@ -393,7 +393,8 @@ class Pendaftar extends MY_Controller {
     }
     
     public function lihat_ajax($gender = 'L', $completed = false){
-        $registrant_data = $this->reg->getArrayData($gender, null, $completed);
+        //$registrant_data = $this->reg->getArrayData($gender, null, $completed);
+        $registrant_data = $this->reg->getArrayData($gender);
         $data = [];
         $id = 1;
         foreach ($registrant_data as $registrant){

@@ -78,12 +78,13 @@ class Login extends MY_Controller {
             } else {
                 $res = -2;
                 $this->session->set_flashdata("errors", [0 => "Maaf, Password yang anda masukkan salah, <br />"
-                    . "Silahkan anda cek kembali"]);
+                    . "Silahkan anda cek kembali atau hubungi <strong>Ust.Hanif 085743020585</strong> untuk mereset"
+                    . "password."]);
                 redirect('login/index');
             }
         } else {
             $res = -1;
-            $this->session->set_flashdata("errors", [0 => "Maaf, pendaftar dengan ID :".$data['id']." tidak ditemukan, <br />"
+            $this->session->set_flashdata("errors", [0 => "Maaf, pendaftar dengan Username :".$data['username']." tidak ditemukan, <br />"
                 . "Silahkan anda cek kembali"]);
             redirect('login/index');
         }
