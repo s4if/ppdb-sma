@@ -38,6 +38,9 @@ Technical Notes :
  - Diberi keterangan hubungi siapa kalau gagal (OK)
  - Link Menuju Petunjuk PPDB (OK)
 // 7 Des
- - Batasi Panjang Username
- - Info Username di beranda & kartu pendaftar
- - upload foto kalau sudah finalisasi?
+ - Batasi Panjang Username  (OK)
+ - Info Username di beranda & kartu pendaftar (OK)
+ - Background admin tidak sama dengan login (OK)
+ - upload foto bukan syarat wajib pendaftaran (OK)
+ - Perbaikan kalimat status pendaftaran (OK)
+ - Fix error edit profil (OK)

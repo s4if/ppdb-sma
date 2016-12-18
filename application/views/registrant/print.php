@@ -177,7 +177,7 @@ img.foto-profil {
                                 <table class="table table-responsive table-condensed table-borderless">
                                     <tr>
                                         <td rowspan="4">
-                                            <img class="foto-profil" src="<?=FCPATH.'data/foto/'.$registrant->getId().'.png';?>" alt="Foto 3x4">
+                                            <img class="foto-profil" src="<?=FCPATH.'data/foto/'.$registrant->getId().'.png';?>" alt="Tempelkan Fto 3x4CM">
                                         </td>
                                         <td>Nama </td>
                                         <td>&nbsp;:&nbsp;</td>

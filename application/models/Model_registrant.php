@@ -176,7 +176,9 @@ class Model_registrant extends CI_Model {
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
-        if (!is_null($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
+        if  (!empty($data['boarding_kit'])) {
+            if (!is_null($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
+        }
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['land_donation'])) : $this->registrant->setLandDonation($data['land_donation']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
@@ -387,13 +389,13 @@ class Model_registrant extends CI_Model {
             $arr_result ['guardian'] = 1;
         }
         $this->load->helper('file');
-        $file = read_file('./data/foto/'.$id.'.png');
-        if(!$file){
-            $arr_result ['foto'] = 0;
-        } else {
-            $arr_result ['foto'] = 1;
-            $all_stats++;
-        }
+//        $file = read_file('./data/foto/'.$id.'.png');
+//        if(!$file){
+//            $arr_result ['foto'] = 0;
+//        } else {
+//            $arr_result ['foto'] = 1;
+//            $all_stats++;
+//        }
         if(is_null($registrant->getMainParent())){
             $arr_result ['letter'] = 0;
         } else {
@@ -406,7 +408,7 @@ class Model_registrant extends CI_Model {
         } else {
             $arr_result ['payment'] = 0;
         }
-        $arr_result['completed'] = ($all_stats >=5)?true:false;
+        $arr_result['completed'] = ($all_stats >=4)?true:false;
         return $arr_result;
     }
     
@@ -416,7 +418,7 @@ class Model_registrant extends CI_Model {
             if(!$registrant->getFinalized()){
                 return 'Data telah lengkap, kurang finalisasi';
             }elseif (is_null($registrant->getVerified())) {
-                return 'Proses Verifikasi Pembayaran';
+                return 'Pendaftaran selesai, menunggu verifikasi pembayaran';
             }elseif($registrant->getVerified()=='tidak valid'){
                 return 'Bukti Pendaftaran Tidak Valid';
             }elseif($registrant->getFinalized() && ($registrant->getVerified()=='valid')){
@@ -428,7 +430,7 @@ class Model_registrant extends CI_Model {
             if($status['father'] < 1): $str = $str.'data ayah, '; endif;
             if($status['mother'] < 1): $str = $str.'data ibu, '; endif;
             if($status['letter'] < 1): $str = $str.'surat pernyataan, '; endif;
-            if($status['foto'] < 1): $str = $str.'Foto, '; endif;
+//            if($status['foto'] < 1): $str = $str.'Foto, '; endif;
             return $str;
         }
     }

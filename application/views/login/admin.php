@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>
+<title>Admin PPDB SMA</title>
 
 <!-- Di server, jangan lupa untuk diganti menjadi CDN -->
 
@@ -26,7 +26,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-1718.jpg';?>")
+    background-color: #007FFF;
 }
 .panel-login {
 	border-color: #ccc;
@@ -219,7 +219,7 @@ body {
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-6 col-xs-offset-3">
-                                <a href="#" class="active" id="login-form-link">Masuk</a>
+                                <a href="#" class="active" id="login-form-link">Login Admin</a>
                             </div>
                         </div>
                         <hr>

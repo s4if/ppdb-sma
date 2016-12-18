@@ -33,7 +33,7 @@ class Admin_test extends TestCase{
     public function test_index()
     {
         $output = $this->request('GET', ['Login', 'admin']);
-        $this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
+        $this->assertContains('<title>Admin PPDB SMA</title>', $output);
     }
     
     public function test_lihat_halaman()

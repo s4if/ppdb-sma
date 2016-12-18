@@ -36,7 +36,7 @@ class Login_test extends TestCase
         $output = $this->request('GET', ['Login', 'index']);
         $this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
         $output2 = $this->request('GET', ['Login', 'admin']);
-        $this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output2);
+        $this->assertContains('<title>Admin PPDB SMA</title>', $output2);
     }
    
     public function test_login_fail()
