@@ -102,6 +102,8 @@
 
     
     <?php endif;?>
+
+<!-- </head> -->
     
 </head>
 

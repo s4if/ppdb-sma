@@ -54,6 +54,17 @@ class Model_registrant extends CI_Model {
         }
     }
     
+    public function getUnpaidData(){
+        $oriData = $this->getArrayData();
+        $resData = [];
+        foreach ($oriData as $data){
+            if($data['status'] == "Belum Membayar Biaya Pendaftaran"){
+                $resData[] = $data;
+            }
+        }
+        return $resData;
+    }
+
     public function getDataByUsername($username) {
         return $this->doctrine->em->getRepository('RegistrantEntity')->getDataByUsername($username);
     }
@@ -61,13 +72,15 @@ class Model_registrant extends CI_Model {
     public function getArrayData($gender = NULL, $vars = [], $completed = false){
         $data = $this->getData($gender, null, $completed);
         if (empty($vars)){
-            $vars = ['id','regId', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'finalized'];
+            $vars = ['id','regId', 'kode', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'finalized'];
         }
         $arrData = [];
         foreach ($data as $registrant){
-            $arrData [$registrant->getId()] = $registrant->getArray($vars);
-            $arrData [$registrant->getId()] ['status'] = $this->stringStatus($registrant);
-            $arrData [$registrant->getId()] ['completed'] = ($arrData [$registrant->getId()] ['status'] == 'Pendaftaran telah selesai');
+            $id = $registrant->getId();
+            $arrData [$id] = $registrant->getArray($vars);
+            $reg_status = $this->stringStatus($registrant);
+            $arrData [$id] ['status'] = $reg_status['status'];
+            $arrData [$id] ['completed'] = $reg_status['completed'];
         }
         return $arrData;
     }
@@ -362,7 +375,7 @@ class Model_registrant extends CI_Model {
     // belum di-test
     // 0 -> Belum 1-> Sudah 2->Finalisasi
     public function cek_status(RegistrantEntity $registrant){
-        $id = $registrant->getId();
+        //$id = $registrant->getId();
         $arr_result = [];
         $all_stats = 0;
         if(is_null($registrant->getRegistrantData())){
@@ -388,7 +401,7 @@ class Model_registrant extends CI_Model {
         } else {
             $arr_result ['guardian'] = 1;
         }
-        $this->load->helper('file');
+        //$this->load->helper('file');
 //        $file = read_file('./data/foto/'.$id.'.png');
 //        if(!$file){
 //            $arr_result ['foto'] = 0;
@@ -396,42 +409,53 @@ class Model_registrant extends CI_Model {
 //            $arr_result ['foto'] = 1;
 //            $all_stats++;
 //        }
+        if($registrant->getFinalized()){
+            $arr_result ['finalized'] = 0;
+        } else {
+            $arr_result ['finalized'] = 1;
+            $all_stats++;
+        }
         if(is_null($registrant->getMainParent())){
             $arr_result ['letter'] = 0;
         } else {
             $arr_result ['letter'] = 1;
             $all_stats++;
         }
-        $file2 = read_file('./data/receipt/'.$id.'.png');
-        if($file2){
+        if(!empty($registrant->getPaymentData())){
             $arr_result ['payment'] = $this->cek_receipt($registrant);
         } else {
             $arr_result ['payment'] = 0;
         }
-        $arr_result['completed'] = ($all_stats >=4)?true:false;
+        $arr_result['completed'] = ($all_stats >=5)?true:false;
         return $arr_result;
     }
     
-    public function stringStatus(RegistrantEntity $registrant){
+    private function stringStatus(RegistrantEntity $registrant){
         $status  = $this->cek_status($registrant);
         if($status['completed']) {
+            $str = "";
             if(!$registrant->getFinalized()){
-                return 'Data telah lengkap, kurang finalisasi';
+                $str = 'Data telah lengkap, kurang finalisasi';
             }elseif (is_null($registrant->getVerified())) {
-                return 'Pendaftaran selesai, menunggu verifikasi pembayaran';
+                $str = 'Pendaftaran selesai, menunggu verifikasi pembayaran';
             }elseif($registrant->getVerified()=='tidak valid'){
-                return 'Bukti Pendaftaran Tidak Valid';
+                $str = 'Bukti Pendaftaran Tidak Valid';
             }elseif($registrant->getFinalized() && ($registrant->getVerified()=='valid')){
-                return 'Pendaftaran telah selesai';
-            } 
-        } else {
+                $str = 'Pendaftaran telah selesai';
+            }
+            return ['status' => $str, 'completed' => $status['completed']];
+        } elseif ($status['payment']==0) {
+            $str = "Belum Membayar Biaya Pendaftaran";
+            return ['status' => $str, 'completed' => $status['completed']];
+        }else {
             $str = 'Data yang kurang : '; // String Status
             if($status['data'] < 1): $str = $str.'data diri, '; endif;
             if($status['father'] < 1): $str = $str.'data ayah, '; endif;
             if($status['mother'] < 1): $str = $str.'data ibu, '; endif;
             if($status['letter'] < 1): $str = $str.'surat pernyataan, '; endif;
+            if($status['finalized'] < 1): $str = $str.'Finalisasi, '; endif;
 //            if($status['foto'] < 1): $str = $str.'Foto, '; endif;
-            return $str;
+            return ['status' => $str, 'completed' => $status['completed']];
         }
     }
     
@@ -729,7 +753,7 @@ class Model_registrant extends CI_Model {
         $this->excel->addSheet($worksheet);
     }
     
-    public function export_Uncomplete($file_name, $test = false){
+    public function export_Uncomplete($file_name, $test = false, $unpaid = false){
         error_reporting(E_ALL);
         ini_set("display_errors", 1);
         ini_set('max_execution_time', 60);
@@ -741,7 +765,12 @@ class Model_registrant extends CI_Model {
 
         
         $this->excel = new PHPExcel();
-        $registrant_data = $this->getArrayData();
+        $registrant_data = null;
+        if ($unpaid){
+            $registrant_data = $this->getUnpaidData();
+        } else {
+            $registrant_data = $this->getArrayData();
+        }
         $worksheet = new PHPExcel_Worksheet();
         $worksheet->setTitle('Data');
         $worksheet->setCellValue('A1', 'Nomor Pendaftaran');

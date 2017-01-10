@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * RegistrantRepo.
  *
@@ -85,7 +84,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
 
         return $result;
     }
-
+    
     public function getCountByFilter($filter)
     {
         try {

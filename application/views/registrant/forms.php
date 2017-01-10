@@ -599,10 +599,11 @@
             <div class="modal-body">
                 <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>File berupa Foto Berwarna degan proporsi 4x3</label>
+                        <label>Silahkan upload fil foto resmi dengan proporsi 4x3</label>
                         <input type="file" id="file" name="file" required="true">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Nanti</button>
                 </form>
             </div>
         </div>
@@ -856,4 +857,12 @@ function aksiOk()
         }
     });
 }
+
+$(document).ready(function () {
+<?php
+$default = base_url().'assets/images/default.png';
+if($default == $img_link){ ?>
+    $('#ModalImport').modal('show');
+<?php }?>
+});
 </script>

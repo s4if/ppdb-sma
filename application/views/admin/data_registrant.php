@@ -80,6 +80,8 @@
                     <thead>
                         <tr>
                             <td>No.</td>
+                            <td>Username</td>
+                            <td>Kode Unik</td>
                             <td>Nama</td>
                             <td>I/A</td>
                             <td>Sekolah Asal</td>

@@ -58,10 +58,14 @@ class Admin extends MY_Controller {
         $this->CustomView('admin/home', $data);
     }
     
-    public function beranda_ajax(){
+    public function uncomplete_ajax($unpaid = 'paid'){
         $this->blockNonAdmin();
         $data = [];
-        $registrant_data = $this->reg->getArrayData();
+        if($unpaid == 'paid'){
+            $registrant_data = $this->reg->getArrayData();
+        } else {
+            $registrant_data = $this->reg->getUnpaidData();
+        }
         foreach ($registrant_data as $registrant){
             if(!$registrant['completed']) {
                 $row = [];
@@ -142,6 +146,8 @@ class Admin extends MY_Controller {
         foreach ($registrant_data as $registrant){
             $row = [];
             $row[] = $registrant['id'];
+            $row[] = $registrant['username'];
+            $row[] = $registrant['kode'];
             $row[] = $registrant['name'];
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
             $row[] = $registrant['previousSchool'];
@@ -348,5 +354,12 @@ class Admin extends MY_Controller {
         $this->blockNonAdmin();
         $date = new DateTime('now');
         $this->reg->export_Uncomplete('Data Belum Lengkap '.$date->format('d-m-Y'));
+    }
+    
+    public function export_data_unpaid()
+    {
+        $this->blockNonAdmin();
+        $date = new DateTime('now');
+        $this->reg->export_Uncomplete('Data Belum Membayar '.$date->format('d-m-Y'), false, true);
     }
 }

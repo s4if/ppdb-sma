@@ -44,3 +44,14 @@ Technical Notes :
  - upload foto bukan syarat wajib pendaftaran (OK)
  - Perbaikan kalimat status pendaftaran (OK)
  - Fix error edit profil (OK)
+// 19 Des 
+ - Buat form khusus pendaftar offline (Pending)
+// 30 Des
+ - form upload foto otomatis muncul di isi data (OK)
+// 10 Jan
+ - Tambah Data Pendaftar yang belum bayar (OK)
+ - Mengatasi Inject Telkom (OK)
+ - Download data yang belum bayar (OK)
+ - Panel Uncomplete di beranda admin tidak menampilkan yang sudah selesai (OK)
+ - Fix Wording dll (OK)
+ - Menampilkan Username dan Kode Unik di Lihat Pendaftar Admin (OK)

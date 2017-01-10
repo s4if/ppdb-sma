@@ -64,7 +64,9 @@ class Admin_test extends TestCase{
             'username' => 'admin',
             'password' => 'qwerty'
         ]);
-        $output = $this->ajaxRequest('POST', ['admin', 'beranda_ajax']);
+        $output = $this->ajaxRequest('POST', ['admin', 'uncomplete_ajax']);
+        $this->assertContains('"data":', $output);
+        $output = $this->ajaxRequest('POST', ['admin','uncomplete_ajax'], ['unpaid']);
         $this->assertContains('"data":', $output);
         $output = $this->ajaxRequest('POST', ['admin', 'lihat_ajax']);
         $this->assertContains('"data":', $output);

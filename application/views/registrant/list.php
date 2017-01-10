@@ -151,6 +151,8 @@ body {
 <!-- JQuery JS -->
 <script src="<?=  base_url() ?>assets/js/jquery-2.1.4.min.js"></script>
 
+<!-- </head> -->
+
 </head>
 
 <body>
@@ -307,6 +309,8 @@ function tabel_refresh (gender){
 
 
 </script>
-    
+
+<!-- </body></html> -->
+
 </body>
 </html>
