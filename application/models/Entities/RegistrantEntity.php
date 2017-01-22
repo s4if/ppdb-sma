@@ -180,12 +180,9 @@ class RegistrantEntity
      */
     protected $deleted;
 
-    public function getArray($vars = [])
+    public function getArray($vars = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', ])
     {
-        if (empty($vars)) {
-            $vars = ['id', 'regIds', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
-                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', 'completed', ];
-        }
         $arrData = [];
         foreach ($vars as $var) {
             $strFunct = 'get'.ucfirst($var);

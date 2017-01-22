@@ -104,11 +104,11 @@ class Model_registrant extends CI_Model {
             return $regRepo->getCountByFilter($filter);
         }
     }
-    
-    public function getDataByFilter($filter = []){
-        $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
-        return $regRepo->getDataByFilter($filter);
-    }
+//    
+//    public function getDataByFilter($filter = []){
+//        $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
+//        return $regRepo->getDataByFilter($filter);
+//    }
     
     // TODO: In Production always enable try and catch
     public function insertData($data){

@@ -43,6 +43,7 @@ class Model_1_registrant_test extends TestCase {
             'password' => 'qwerty',
             'name' => 'Fatimah',
             'username' => 'fatimah',
+            'nisn' => '0943292385234',
             'gender' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'cp' => '084738172839',
@@ -80,6 +81,7 @@ class Model_1_registrant_test extends TestCase {
         $data['initial_cost'] = '8500000';
         $data['subscription_cost'] = '900000';
         $data['main_parent'] = 'father';
+        $data['landDonation'] = '1000000';
         $data['finalized'] = 'true';
         $this->setUp();
         $this->assertTrue($this->obj->updateData($data));
@@ -100,8 +102,8 @@ class Model_1_registrant_test extends TestCase {
         $registrant = $this->obj->getData('P')[0];
         $registrants = $this->obj->getData();
         $registrants_2 = $this->obj->getData('P');
-        $attributes = ['id', 'username','password','name','gender', 'cp', 'previousSchool','nisn','program', 'deleted',
-            'registrationTime','registrantData', 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost'];
+        $attributes = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', ];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);
         }
@@ -112,6 +114,8 @@ class Model_1_registrant_test extends TestCase {
             $this->assertObjectHasAttribute($attributeName, $registrants_2[0]);
         }
         $this->assertEquals( [], $this->obj->getData('XY'));
+        $this->assertNotEquals([], $this->obj->getUnpaidData());
+        $this->assertNotEquals([], $this->obj->getIncompleteData());
         $this->assertNull($this->obj->getData(null,'0000'));
     }
     
@@ -206,11 +210,15 @@ class Model_1_registrant_test extends TestCase {
     public function test_export(){
         $this->setUp();
         $this->assertTrue($this->obj->export('Coba', 'P', false, true));
+        $this->assertTrue($this->obj->export('Coba', 'L', false, true));
+        $this->assertTrue($this->obj->export('Coba', 'P', true, true));
+        $this->assertTrue($this->obj->export('Coba', 'L', true, true));
     }
     
     public function test_export_uncomplete(){
         $this->setUp();
         $this->assertTrue($this->obj->export_Uncomplete('Coba', true));
+        $this->assertTrue($this->obj->export_Uncomplete('Coba', true, false));
     }
     
 }
