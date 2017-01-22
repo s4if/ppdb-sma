@@ -88,37 +88,37 @@ class Model_parent extends CI_Model{
         return true;
     }
     
-    public function deleteData($id, $pos){
-        $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
-        if(is_null($this->registrant)){
-            return false;
-        } else {
-//             try kalau di production harus diaktifkan
-            try{
-                return $this->doDelete($pos);
-            } catch (Doctrine\DBAL\Exception\DriverException $ex) {
-                return false;
-            }
-        }
-    }
-    
-    private function doDelete($pos){
-        $res = false;
-        $gfunct = 'get'.ucfirst(strtolower($pos));
-        $sfunct = 'set'.ucfirst(strtolower($pos));
-        $var = strtolower($pos);
-        $this->$var = $this->registrant->$gfunct();
-        if(is_null($this->$var)){
-            $res =  true;
-        } else {
-            $this->registrant->$sfunct(null);
-            $this->doctrine->em->persist($this->registrant);
-            $this->doctrine->em->remove($this->$var);
-            $this->doctrine->em->flush();
-            $res = true;
-        }
-        return $res;
-    }
+//    public function deleteData($id, $pos){
+//        $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
+//        if(is_null($this->registrant)){
+//            return false;
+//        } else {
+////             try kalau di production harus diaktifkan
+//            try{
+//                return $this->doDelete($pos);
+//            } catch (Doctrine\DBAL\Exception\DriverException $ex) {
+//                return false;
+//            }
+//        }
+//    }
+//    
+//    private function doDelete($pos){
+//        $res = false;
+//        $gfunct = 'get'.ucfirst(strtolower($pos));
+//        $sfunct = 'set'.ucfirst(strtolower($pos));
+//        $var = strtolower($pos);
+//        $this->$var = $this->registrant->$gfunct();
+//        if(is_null($this->$var)){
+//            $res =  true;
+//        } else {
+//            $this->registrant->$sfunct(null);
+//            $this->doctrine->em->persist($this->registrant);
+//            $this->doctrine->em->remove($this->$var);
+//            $this->doctrine->em->flush();
+//            $res = true;
+//        }
+//        return $res;
+//    }
     
     //jika ada error yang berkaitan dengan set data, lihat urutan pemberian data pada fungsi
     // ['id', 'type', 'name', 'status', 'birthPlace', 'birthDate', 'address', 'contact', 'relation',

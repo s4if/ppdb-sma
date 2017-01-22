@@ -173,6 +173,16 @@ class Model_1_registrant_test extends TestCase {
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrantData);
         }
+        $this->assertArrayNotHasKey('status', $registrantData->getAchievements());
+        $this->assertStringNotMatchesFormat('Error', $registrantData->getAchievements(false));
+        $this->assertArrayNotHasKey('status', $registrantData->getHospitalSheets());
+        $this->assertStringNotMatchesFormat('Error', $registrantData->getHospitalSheets(false));
+        $this->assertArrayNotHasKey('status', $registrantData->getPhysicalAbnormalities());
+        $this->assertStringNotMatchesFormat('Error', $registrantData->getPhysicalAbnormalities(false));
+        $this->assertArrayNotHasKey('status', $registrantData->getHobbies());
+        $this->assertStringNotMatchesFormat('Error', $registrantData->getHobbies(false));
+        // address
+        $this->assertStringNotMatchesFormat('Error', $registrantData->getAddress());        
     }
     
     public function test_upload()

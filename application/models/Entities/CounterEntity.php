@@ -99,17 +99,6 @@ class CounterEntity
         return $this;
     }
 
-    public function removeMaleCount()
-    {
-        if (is_null($this->getMaleCount())) {
-            $this->maleCount = 0;
-        } else {
-            $this->maleCount = $this->maleCount - 1;
-        }
-
-        return $this;
-    }
-
     //NOTE: setiap ada pendaftar ditambah 1!
     public function addFemaleCount()
     {
@@ -117,17 +106,6 @@ class CounterEntity
             $this->femaleCount = 1;
         } else {
             $this->femaleCount = $this->femaleCount + 1;
-        }
-
-        return $this;
-    }
-
-    public function removeFemaleCount()
-    {
-        if (is_null($this->getFemaleCount())) {
-            $this->femaleCount = 0;
-        } else {
-            $this->femaleCount = $this->femaleCount - 1;
         }
 
         return $this;

@@ -70,5 +70,16 @@ class Admin_test extends TestCase{
         $this->assertContains('"data":', $output);
         $output = $this->ajaxRequest('POST', ['admin', 'lihat_ajax']);
         $this->assertContains('"data":', $output);
-    }    
+    } 
+    public function test_edit_pembayaran()
+    {
+        $this->request('POST', ['Login', 'do_login_admin'],[
+            'username' => 'admin',
+            'password' => 'qwerty'
+        ]);
+        $this->request('POST', 'admin/verifikasi/1/valid');
+        $this->assertRedirect('admin/pembayaran/1');
+        $this->request('POST', 'admin/verifikasi/1/tidak');
+        $this->assertRedirect('admin/pembayaran/1');
+    }
 }
