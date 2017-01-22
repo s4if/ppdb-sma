@@ -64,6 +64,17 @@ class Model_registrant extends CI_Model {
         }
         return $resData;
     }
+    
+    public function getIncompleteData(){
+        $oriData = $this->getArrayData();
+        $resData = [];
+        foreach ($oriData as $data){
+            if(!($data['status'] == "Belum Membayar Biaya Pendaftaran")&& !$data['completed']){
+                $resData[] = $data;
+            }
+        }
+        return $resData;
+    }
 
     public function getDataByUsername($username) {
         return $this->doctrine->em->getRepository('RegistrantEntity')->getDataByUsername($username);
@@ -663,7 +674,7 @@ class Model_registrant extends CI_Model {
             //$registrant = new RegistrantEntity();
             $rData = $registrant->getRegistrantData();
             // Registrant Data
-            $worksheet->SetCellValue('A'.$row, $registrant->getId());
+            $worksheet->SetCellValue('A'.$row, $registrant->getRegId());
             $worksheet->SetCellValue('B'.$row, $registrant->getNisn());
             $worksheet->SetCellValue('C'.$row, $registrant->getName());
             $worksheet->SetCellValue('D'.$row, ($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat');
@@ -693,7 +704,7 @@ class Model_registrant extends CI_Model {
             if(!empty($fData)){
                 $worksheet->SetCellValue('S'.$row, $fData->getName());
                 $worksheet->SetCellValue('T'.$row, $fData->getStatus());
-                $worksheet->SetCellValue('U'.$row, ucfirst($fData->getBirthPlace()).', '.tgl_indo($fData->getBirthDate()->format('Y m d')));
+                $worksheet->SetCellValue('U'.$row, ucfirst($fData->getBirthPlace()).', '.$fData->getBirthDate());
                 $worksheet->SetCellValue('V'.$row, $fData->getAddress());
                 $worksheet->SetCellValue('W'.$row, $fData->getContact());
                 $worksheet->SetCellValue('X'.$row, ucwords($fData->getRelation()));
@@ -712,7 +723,7 @@ class Model_registrant extends CI_Model {
             if(!empty($mData)){
                 $worksheet->SetCellValue('AG'.$row, $mData->getName());
                 $worksheet->SetCellValue('AH'.$row, $mData->getStatus());
-                $worksheet->SetCellValue('AI'.$row, ucfirst($mData->getBirthPlace()).', '.tgl_indo($mData->getBirthDate()->format('Y m d')));
+                $worksheet->SetCellValue('AI'.$row, ucfirst($mData->getBirthPlace()).', '.$mData->getBirthDate());
                 $worksheet->SetCellValue('AJ'.$row, $mData->getAddress());
                 $worksheet->SetCellValue('AK'.$row, $mData->getContact());
                 $worksheet->SetCellValue('AL'.$row, ucwords($mData->getRelation()));
@@ -731,7 +742,7 @@ class Model_registrant extends CI_Model {
             if(!empty($gData)){
                 $worksheet->SetCellValue('AU'.$row, $gData->getName());
                 $worksheet->SetCellValue('AV'.$row, $gData->getStatus());
-                $worksheet->SetCellValue('AW'.$row, ucfirst($gData->getBirthPlace()).', '.tgl_indo($gData->getBirthDate()->format('Y m d')));
+                $worksheet->SetCellValue('AW'.$row, ucfirst($gData->getBirthPlace()).', '.$gData->getBirthDate());
                 $worksheet->SetCellValue('AX'.$row, $gData->getAddress());
                 $worksheet->SetCellValue('AY'.$row, $gData->getContact());
                 $worksheet->SetCellValue('AZ'.$row, ucwords($gData->getRelation()));
@@ -769,7 +780,7 @@ class Model_registrant extends CI_Model {
         if ($unpaid){
             $registrant_data = $this->getUnpaidData();
         } else {
-            $registrant_data = $this->getArrayData();
+            $registrant_data = $this->getIncompleteData();
         }
         $worksheet = new PHPExcel_Worksheet();
         $worksheet->setTitle('Data');

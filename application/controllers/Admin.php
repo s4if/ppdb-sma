@@ -62,7 +62,7 @@ class Admin extends MY_Controller {
         $this->blockNonAdmin();
         $data = [];
         if($unpaid == 'paid'){
-            $registrant_data = $this->reg->getArrayData();
+            $registrant_data = $this->reg->getIncompleteData();
         } else {
             $registrant_data = $this->reg->getUnpaidData();
         }

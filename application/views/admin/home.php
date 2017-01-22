@@ -54,6 +54,52 @@
         </div>
     </div>
     <div class="col-lg-8">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum membayar</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                    <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_unpaid">
+                        <thead>
+                            <tr>
+                                <td>
+                                    ID
+                                </td>
+                                <td>
+                                    Nama
+                                </td>
+                                <td>
+                                    I/A
+                                </td>
+                                <td>
+                                    CP
+                                </td>
+                                <td>
+                                    Kekurangan
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data_unpaid/">
+                        Download Data
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
         <div class="panel panel-yellow">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum melengkapi</h3>
@@ -90,52 +136,6 @@
                 <div class="row">
                     <div class="col-md-12">
                     <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data_uncomplete">
-                        Download Data
-                    </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-8">
-        <div class="panel panel-red">
-            <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum melengkapi</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                    <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_unpaid">
-                        <thead>
-                            <tr>
-                                <td>
-                                    ID
-                                </td>
-                                <td>
-                                    Nama
-                                </td>
-                                <td>
-                                    I/A
-                                </td>
-                                <td>
-                                    CP
-                                </td>
-                                <td>
-                                    Kekurangan
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                    <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data_unpaid/">
                         Download Data
                     </a>
                     </div>

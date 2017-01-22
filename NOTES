@@ -55,3 +55,6 @@ Technical Notes :
  - Panel Uncomplete di beranda admin tidak menampilkan yang sudah selesai (OK)
  - Fix Wording dll (OK)
  - Menampilkan Username dan Kode Unik di Lihat Pendaftar Admin (OK)
+// 20 Jan
+ - Memperbaiki tampilan panel di admin home (OK)
+ - Memperbaiki Export ke Excel (OK)

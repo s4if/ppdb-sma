@@ -50,7 +50,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         }
     }
 
-    public function getDataByJurusan($gender = null, $tahfidz = false, $showDeleted = false)
+    public function getDataByJurusan($gender = null, $tahfidz = false, $showDeleted = false, $finalized = true)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->Select(['r']);
@@ -59,7 +59,8 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         if (!is_null($gender)) {
             $qb->andwhere('r.gender = :gender');
         }
-        $qb->andWhere($qb->expr()->neq('r.deleted', ':deleted'));
+        $qb->andWhere($qb->expr()->eq('r.deleted', ':deleted'));
+        $qb->andWhere($qb->expr()->eq('r.finalized', ':finalized'));
         $qb->orderBy('r.id', 'ASC');
         if (!is_null($gender)) {
             $qb->setParameter('gender', $gender);
@@ -69,7 +70,8 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         } else {
             $qb->setParameter('program', 'Reguler');
         }
-        $qb->setParameter('deleted', !$showDeleted);
+        $qb->setParameter('deleted', $showDeleted);
+        $qb->setParameter('finalized', $finalized);
         $query = $qb->getQuery();
 
         $query->setFetchMode('RegistrantEntity', 'registrantData', \Doctrine\ORM\Mapping\ClassMetadata::FETCH_EAGER);
