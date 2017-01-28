@@ -420,7 +420,7 @@ class Model_registrant extends CI_Model {
 //            $arr_result ['foto'] = 1;
 //            $all_stats++;
 //        }
-        if($registrant->getFinalized()){
+        if(!$registrant->getFinalized()){
             $arr_result ['finalized'] = 0;
         } else {
             $arr_result ['finalized'] = 1;
