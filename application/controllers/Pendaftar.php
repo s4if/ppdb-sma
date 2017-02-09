@@ -310,16 +310,16 @@ class Pendaftar extends MY_Controller {
         $this->blockUnloggedOne($id);
         $registrant = $this->reg->getData(null, $id);
         $this->session->set_userdata('registrant', $registrant);
-        $data = [
-            'title' => 'Print Surat Pernyataan',
-            'username' => $this->session->registrant->getName(),
-            'id' => $this->session->registrant->getId(),
-            'nav_pos' => 'recap',
-            'img_link' => $this->getImgLink($id)[0],
-            'registrant' => $this->session->registrant,
-        ];
         $pdf = new mikehaertl\wkhtmlto\Pdf();
         $pdf->setOptions($this->pdfOption());
+        $data = [
+            'title' => 'Print Surat Pernyataan',
+            'username' => $registrant->getName(),
+            'id' => $registrant->getId(),
+            'nav_pos' => 'recap',
+            'img_link' => $this->getImgLink($id)[0],
+            'registrant' => $registrant,
+        ];
         $reg_data = $this->load->view('registrant/print/registrant_data', $data, TRUE);
         $pdf->addPage($reg_data);
         if(($registrant->getCompleted())){

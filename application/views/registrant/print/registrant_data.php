@@ -146,17 +146,17 @@
             <tr>
                 <td> Nomor Pendaftaran </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$registrant->getId();?> </td>
+                <td> <?=$registrant->getRegId();?> </td>
             </tr>
             <tr>
                 <td> Nama </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$registrant->getName();?> </td>
+                <td> <?=  strtoupper($registrant->getName());?> </td>
             </tr>
             <tr>
                 <td> Sekolah Asal </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$registrant->getPreviousSchool()?> </td>
+                <td> <?= strtoupper($registrant->getPreviousSchool())?> </td>
             </tr>
             <tr>
                 <td> Jenis Kelamin </td>
@@ -275,7 +275,7 @@
             <tr>
                 <td> Nama </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo $parent->getName();?> </td>
+                <td> <?php echo strtoupper($parent->getName());?> </td>
             </tr>
             <tr>
                 <td> Status </td>

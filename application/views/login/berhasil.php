@@ -126,27 +126,27 @@ body {
 }
 @media screen and (min-width: 680px) {
 .navbar-transparent {
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,1);
     background-image: none;
-    border-color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,1);
 }
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,1);
     background-image: none;
-    border-color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,1);
 }}
 #navbar ul li.active {
-    background:rgba(255,255,255,0.6);
+    background:rgba(255,255,255,1);
     background-image: none;
-    border-color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,1);
 }
 
 #navbar ul li:hover {
-    background:rgba(255,255,255,0.6);
+    background:rgba(255,255,255,1);
     background-image: none;
-    border-color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,1);
 }
 </style>
 
@@ -173,6 +173,7 @@ body {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right shifted">
                         <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-20172018/">Petunjuk</a></li>
+                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/informasi-teknis-pelaksanaan-tes-ppdb-20172018/">Teknis Tes PPDB</a></li>
                         <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                         <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                         <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>

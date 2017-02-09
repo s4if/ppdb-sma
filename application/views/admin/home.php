@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="col-lg-8">
-        <div class="panel panel-red">
+        <div class="panel panel-danger">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum membayar</h3>
             </div>
@@ -79,6 +79,9 @@
                                 <td>
                                     Kekurangan
                                 </td>
+                                <td>
+                                    Asal sekolah
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,6 +95,9 @@
                     <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data_unpaid/">
                         Download Data
                     </a>
+                    <a class="btn btn-info" href="<?=  base_url()?>admin/print_kartu_incomplete/true/">
+                        Print Kartu
+                    </a>
                     </div>
                 </div>
             </div>
@@ -100,7 +106,7 @@
 </div>
 <div class="row">
     <div class="col-lg-8">
-        <div class="panel panel-yellow">
+        <div class="panel panel-warning">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-user"></i> Pendaftar Yang belum melengkapi</h3>
             </div>
@@ -125,6 +131,9 @@
                                 <td>
                                     Kekurangan
                                 </td>
+                                <td>
+                                    Asal sekolah
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
@@ -137,6 +146,9 @@
                     <div class="col-md-12">
                     <a class="btn btn-primary" href="<?=  base_url()?>admin/export_data_uncomplete">
                         Download Data
+                    </a>
+                    <a class="btn btn-info" href="<?=  base_url()?>admin/print_kartu_incomplete/">
+                        Print Kartu
                     </a>
                     </div>
                 </div>

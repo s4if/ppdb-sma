@@ -74,6 +74,7 @@ class Admin extends MY_Controller {
                 $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
                 $row[] = $registrant['cp'];
                 $row[] = $registrant['status'];
+                $row[] = $registrant['previousSchool'];
                 $data [] = $row;
             }
         }
@@ -361,5 +362,23 @@ class Admin extends MY_Controller {
         $this->blockNonAdmin();
         $date = new DateTime('now');
         $this->reg->export_Uncomplete('Data Belum Membayar '.$date->format('d-m-Y'), false, true);
+    }
+    
+    public function print_kartu_incomplete($unpaid = "false"){
+        $registrant_data = [];
+        if ($unpaid == "true"){
+            $registrant_data = $this->reg->getUnpaidData();
+        } else {
+            $registrant_data = $this->reg->getIncompleteData();
+        }
+        $pdf = new mikehaertl\wkhtmlto\Pdf();
+        $pdf->setOptions($this->pdfOption());
+        foreach ($registrant_data as $registrant){
+            $reg_data = $this->load->view('registrant/print', ['registrant' => $registrant['object']], true);
+            $pdf->addPage($reg_data);
+        }
+        $suffix = ($unpaid == "true")?"belum membayar":"belum lengkap";
+        $res = $pdf->send('Kartu pendaftar yang '.$suffix.' .pdf');
+        if (!$res) { echo $pdf->getError(); }
     }
 }

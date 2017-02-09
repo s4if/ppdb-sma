@@ -290,8 +290,13 @@ class RegistrantEntity
     public function getMainParentObj()
     {
         $var = strtolower($this->mainParent);
-
-        return $this->$var;
+        $main_parent = null;
+        if(is_null($this->$var)){
+            $main_parent = $this->father;
+        } else {
+            $main_parent = $this->$var;
+        }
+        return $main_parent;
     }
 
     public function getCompleted()

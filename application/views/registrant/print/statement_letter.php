@@ -124,7 +124,7 @@
                 <td style="width: 8%; text-align: left">&nbsp;</td>
                 <td style="width: 15%; text-align: left">Nama</td>
                 <td style="width: 2%; text-align: left">:</td>
-                <td style="width: 75%; text-align: left"><strong><?=$registrant->getMainParentObj()->getName(); // TODO: Dibuat fleksibel, ayah, ibu, atau wali?></strong></td>
+                <td style="width: 75%; text-align: left"><strong><?=  strtoupper($registrant->getMainParentObj()->getName()); // TODO: Dibuat fleksibel, ayah, ibu, atau wali?></strong></td>
             </tr>
             <tr>
                 <td style="width: 8%; text-align: left">&nbsp;</td>
@@ -146,13 +146,13 @@
                 <td style="width: 8%; text-align: left">&nbsp;</td>
                 <td style="width: 15%; text-align: left">Nama</td>
                 <td style="width: 2%; text-align: left">:</td>
-                <td style="width: 75%; text-align: left"><strong><?=$registrant->getName();?></strong></td>
+                <td style="width: 75%; text-align: left"><strong><?=  strtoupper($registrant->getName());?></strong></td>
             </tr>
             <tr>
                 <td style="width: 8%; text-align: left">&nbsp;</td>
                 <td style="width: 15%; text-align: left">No. Daftar</td>
                 <td style="width: 2%; text-align: left">:</td>
-                <td style="width: 75%; text-align: left"><?=$registrant->getId();?></td>
+                <td style="width: 75%; text-align: left"><?=$registrant->getRegId();?></td>
             </tr>
             <tr>
                 <td style="width: 8%; text-align: left">&nbsp;</td>
@@ -176,8 +176,16 @@
                 Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>RP. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</strong>.
             </li>
             <li class="pernyataan">
-                Saya sanggup untuk membayar Uang Seragam dan Uang Kesiswaan kepada pihak sekolah dengan total sebesar 
-                <strong>Rp. 2.200.000,-</strong>.
+                Saya bersedia untuk mewakafkan dana untuk perluasan tanah sekolah sebesar <strong>RP. <?= number_format($registrant->getLandDonation(), 0, ',', '.');?>,-</strong>.
+            </li>
+            <li class="pernyataan">
+                Saya sanggup untuk membayar 
+                Dana Seragam (Rp. 1.650.000,-), 
+                Dana Kesiswaan (Rp. 600.000,-), 
+                Dana Kesehatan (Rp. 250.000,-), 
+                Dana Buku (Rp. 1.400.000,-) dan
+                Dana Perlengkapan Asrama (Rp. 940.000,-) 
+                kepada pihak sekolah dengan total sebesar <strong>Rp. 4.840.000,-</strong>.
             </li>
             <li class="pernyataan">
                 Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 

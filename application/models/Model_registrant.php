@@ -43,6 +43,10 @@ class Model_registrant extends CI_Model {
         parent::__construct();
     }
     
+    public function create(){
+        return new RegistrantEntity();
+    }
+    
     public function getData($gender = NULL, $id = null, $onlyShowCompleted = false){
         if(is_null($id)){
             $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
@@ -92,6 +96,7 @@ class Model_registrant extends CI_Model {
             $reg_status = $this->stringStatus($registrant);
             $arrData [$id] ['status'] = $reg_status['status'];
             $arrData [$id] ['completed'] = $reg_status['completed'];
+            $arrData [$id] ['object'] = $registrant;
         }
         return $arrData;
     }
@@ -135,7 +140,7 @@ class Model_registrant extends CI_Model {
     // ===========
     
     // generate Id berdasarkan counter
-    public function genKode($id, $gender){
+    public function genKode($id, $gender, $flush = true){
         $counter = $this->doctrine->em->find('CounterEntity', 1);
         $registrant = $this->doctrine->em->find('RegistrantEntity', $id);
         $kode = "";
@@ -151,7 +156,9 @@ class Model_registrant extends CI_Model {
             }
             $this->doctrine->em->persist($counter);
             $this->doctrine->em->persist($registrant);
-            $this->doctrine->em->flush();
+            if ($flush) {
+                $this->doctrine->em->flush();
+            }
             return ['status' => true, 'kode' => $kode];
         } else {
             $kode = $registrant->getKode();
@@ -231,6 +238,7 @@ class Model_registrant extends CI_Model {
                     $this->registrantData = $this->registrant->getRegistrantData();
                 }
             $this->setRegistrantDetail($data);
+            $this->genKode($this->registrant->getId(), $this->registrant->getGender(), false);
             $this->registrantData->setRegistrant($this->registrant);
             $this->doctrine->em->persist($this->registrantData);
             $this->registrant->setRegistrantData($this->registrantData);
@@ -366,7 +374,7 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    protected function receipt_data($id, $data){
+    public function receipt_data($id, $data){
         $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
         $this->paymentData = $this->registrant->getPaymentData();
         if(is_null($this->paymentData)){
@@ -495,7 +503,7 @@ class Model_registrant extends CI_Model {
 
         
         $this->excel = new PHPExcel();
-        $this->mbatik($this->njikukData($gender, $programme), 'Data');
+        $this->mbatik($this->getDataByJurusan($gender, $programme), 'Data');
         
         $this->excel->removeSheetByIndex(0);
         if($test){
@@ -510,7 +518,7 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    private function njikukData($gender, $tahfidz){
+    private function getDataByJurusan($gender, $tahfidz){
         $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
         return $regRepo->getDataByJurusan($gender, $tahfidz); //tahfidz = boolean
     }
@@ -666,6 +674,8 @@ class Model_registrant extends CI_Model {
         $worksheet->SetCellValue('BI4', 'Infaq Pendidikan');
         $worksheet->getColumnDimension('BJ')->setAutoSize(true);
         $worksheet->SetCellValue('BJ4', 'SPP');
+        $worksheet->getColumnDimension('BK')->setAutoSize(true);
+        $worksheet->SetCellValue('BK4', 'Wakaf Tanah');
         // End Pembayaran
         
         // Start Mbatik Isi
@@ -698,6 +708,7 @@ class Model_registrant extends CI_Model {
             // Registrant Payment
             $worksheet->SetCellValue('BI'.$row, $registrant->getInitialCost());
             $worksheet->SetCellValue('BJ'.$row, $registrant->getSubscriptionCost());
+            $worksheet->SetCellValue('BK'.$row, $registrant->getLandDonation());
             
             // Registrant Father
             $fData = $registrant->getFather();

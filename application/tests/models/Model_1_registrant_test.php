@@ -56,6 +56,8 @@ class Model_1_registrant_test extends TestCase {
         $this->setUp();
         $data['username'] = 'fatim';
         $this->assertTrue($this->obj->insertData($data));
+        $data['username'] = 'fatim2';
+        $this->obj->insertData($data);
         
         //test edit registrant
         $this->setUp();
@@ -85,6 +87,20 @@ class Model_1_registrant_test extends TestCase {
         $data['finalized'] = 'true';
         $this->setUp();
         $this->assertTrue($this->obj->updateData($data));
+    }
+    
+    public function test_upload_receipt(){
+        // FInalisasi
+        $this->setUp();
+        $arr_reg =  $this->obj->getData('P');
+        $id = end($arr_reg)->getId();
+        $data['payment_date'] = '19-2-2017';
+        $data['amount'] = '200000';
+        $this->setUp();
+        $this->assertNull($this->obj->receipt_data($id,$data));
+        $this->setUp();
+        $id = $arr_reg[0]->getId();
+        $this->assertNull($this->obj->receipt_data($id,$data));
     }
     
     public function test_get_kode_registrant(){
