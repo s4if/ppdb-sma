@@ -263,7 +263,37 @@ body {
             </div>
         </div>
     </div>
+<div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="pengumumanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                 <h4 class="modal-title" id="pengumumanModalLabel">PENGUMUMAN</h4>
+
+            </div>
+            <div class="modal-body">
+                <p style="text-align: left;"><em>Assalaamu&#8217;alaykum.wr.wb. </em></p>
+                <p>Seperti yang telah disampaikan sebelumnya bahwa seluruh peserta Tes PPDB SMAIT Ihsanul Fikri (baik program Reguler atau Tahfidz) wajib mengikuti tes Qur&#8217;an berupa Tahsin dan Hafalan Juz 30 yang dijadwalkan pada pukul 10.00 sd 12.00 beriringan dengan pengukuran seragam.</p>
+                <p><strong>KHUSUS </strong>untuk pendaftar PROGRAM TAHFIDZ, ada tes tambahan yaitu hafalan <strong>SURAH MARYAM</strong> dari <strong>ayat 77 sd SELESAI</strong> pada pukul 13.00 sd 15.00.</p>
+                <p>Demikian kami beritahukan. Wassalaamualaykum. Wr.wb.</p>
+                <p>&nbsp;</p>
+                <p>Panitia PPDB SMAITIF 2017/2018</p>
+            </div>
+            <div class="modal-footer">
+                <a href="http://smait.ihsanulfikri.sch.id/program-tahfidz-tes-tambahan-untuk-program-tahfidz/" class="btn btn-info">Info Lebih Lanjut</a>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+
+        $('#pengumumanModal').modal('show');
+
+    });
+</script>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
 

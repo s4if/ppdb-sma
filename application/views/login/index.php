@@ -214,6 +214,12 @@ body {
     ?>
 </div>
 <?php endif; ?>
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class=" text-center"><strong>Pengumuman:</strong><br/>
+                Mohon maaf, pendaftaran telah ditutup pada tanggal 10 Februari 2017 Pukul 23:59 WIB <br/>
+                <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
+            </div>
 </div>
         </div>
     	<div class="row">
@@ -224,9 +230,9 @@ body {
                             <div class="col-xs-6">
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
                             </div>
-                            <div class="col-xs-6">
+<!--                            <div class="col-xs-6">
                                 <a href="#" id="register-form-link">Daftar</a>
-                            </div>
+                            </div>-->
                         </div>
                         <hr>
                     </div>
@@ -248,7 +254,7 @@ body {
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
+<!--                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" required="true" name="username" id="username" tabindex="1" 
                                            class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"
@@ -328,7 +334,7 @@ body {
                                 <div class="form-group">
                                     <input type="password" required="true" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
                                 </div>
-                                <!-- TODO: Chaptca (Pake gregwar yang di download-an)-->
+                                 TODO: Chaptca (Pake gregwar yang di download-an)
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label class=" control-label">Captcha :</label>
@@ -345,7 +351,7 @@ body {
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </form>-->
                         </div>
                     </div>
                 </div>
@@ -353,6 +359,37 @@ body {
         </div>
     </div>
 </div>
+<div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="pengumumanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                 <h4 class="modal-title" id="pengumumanModalLabel">PENGUMUMAN</h4>
+
+            </div>
+            <div class="modal-body">
+                <p style="text-align: left;"><em>Assalaamu&#8217;alaykum.wr.wb. </em></p>
+                <p>Seperti yang telah disampaikan sebelumnya bahwa seluruh peserta Tes PPDB SMAIT Ihsanul Fikri (baik program Reguler atau Tahfidz) wajib mengikuti tes Qur&#8217;an berupa Tahsin dan Hafalan Juz 30 yang dijadwalkan pada pukul 10.00 sd 12.00 beriringan dengan pengukuran seragam.</p>
+                <p><strong>KHUSUS </strong>untuk pendaftar PROGRAM TAHFIDZ, ada tes tambahan yaitu hafalan <strong>SURAH MARYAM</strong> dari <strong>ayat 77 sd SELESAI</strong> pada pukul 13.00 sd 15.00.</p>
+                <p>Demikian kami beritahukan. Wassalaamualaykum. Wr.wb.</p>
+                <p>&nbsp;</p>
+                <p>Panitia PPDB SMAITIF 2017/2018</p>
+            </div>
+            <div class="modal-footer">
+                <a href="http://smait.ihsanulfikri.sch.id/program-tahfidz-tes-tambahan-untuk-program-tahfidz/" class="btn btn-info">Info Lebih Lanjut</a>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $('#pengumumanModal').modal('show');
+
+    });
+</script>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
