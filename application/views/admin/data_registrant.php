@@ -68,7 +68,7 @@
                   <li><a href="<?=base_url()?>admin/export_data/P/Reguler">Akhwat Reguler</a></li>
                   <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz">Akhwat Tahfidz</a></li>
                 </ul>
-            </div>     
+            </div>
         </div>
     </div>
     <div class="row">
