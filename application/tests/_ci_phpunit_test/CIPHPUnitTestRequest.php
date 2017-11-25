@@ -58,6 +58,16 @@ class CIPHPUnitTestRequest
 	}
 
 	/**
+	 * Set $_FILES
+	 * 
+	 * @param array $files
+	 */
+	public function setFiles(array $files)
+	{
+		$this->superGlobal->set_FILES($files);
+	}
+
+	/**
 	 * Set (and Reset) callable
 	 * 
 	 * @param callable $callable function to run after controller instantiation
@@ -167,6 +177,12 @@ class CIPHPUnitTestRequest
 			$this->processError($e);
 			return $e->getMessage();
 		}
+		// exit()
+		catch (CIPHPUnitTestExitException $e)
+		{
+			$output = ob_get_clean();
+			return $output;
+		}
 	}
 
 	protected function processError(Exception $e)
@@ -236,6 +252,7 @@ class CIPHPUnitTestRequest
 	protected function requestUri($http_method, $uri, $request_params)
 	{
 		$_SERVER['argv'] = ['index.php', $uri];
+		$_SERVER['PATH_INFO'] = '/'.$uri;
 
 		// Force cli mode because if not, it changes URI (and RTR) behavior
 		$cli = is_cli();

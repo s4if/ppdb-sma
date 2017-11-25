@@ -214,12 +214,12 @@ body {
     ?>
 </div>
 <?php endif; ?>
-            <div class="alert alert-warning alert-dismissible">
+<!--            <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p class=" text-center"><strong>Pengumuman:</strong><br/>
                 Mohon maaf, pendaftaran telah ditutup pada tanggal 10 Februari 2017 Pukul 23:59 WIB <br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div>
+            </div>-->
 </div>
         </div>
     	<div class="row">
@@ -230,9 +230,9 @@ body {
                             <div class="col-xs-6">
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
                             </div>
-<!--                            <div class="col-xs-6">
+                            <div class="col-xs-6">
                                 <a href="#" id="register-form-link">Daftar</a>
-                            </div>-->
+                            </div>
                         </div>
                         <hr>
                     </div>
@@ -241,10 +241,10 @@ body {
                             <div class="col-lg-12">
                                 <form id="login-form" action="<?php echo base_url().'login/do_login/'?>" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="username" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Username" value="" required="true">
+                                        <input type="text" name="username" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Username" value="" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="true">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -254,39 +254,39 @@ body {
                                         </div>
                                     </div>
                                 </form>
-<!--                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
+                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
-                                    <input type="text" required="true" name="username" id="username" tabindex="1" 
+                                    <input type="text" required name="username" id="username" tabindex="1" 
                                            class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"
                                            value="<?=(array_key_exists('username', $registrant))?$registrant['username']:'';?>">
                                 </div>
-                                <div id="status"class="form-group">
+                                <div id="status" class="form-group">
                                     
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
+                                    <input type="text" required name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
+                                    <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Tidak Wajib)" pattern="^([0-9]{1,20}$)" title="Hanya angka!"
+                                    <input type="text" required name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Wajib)" pattern="^([0-9]{1,20}$)" title="Hanya angka!"
                                            value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input class="col-xs-2" type="text" name="cp_prefix" required="true" id="cp_prefix" tabindex="1" class="form-control" placeholder="" value="+62">
-                                    <input class="col-xs-10" type="text" name="cp_suffix" pattern="^[1-9]([0-9]{1,13}$)" title="Hanya angka tanpa awalan '0'!"
-                                           required="true" id="cp_suffix" tabindex="1" class="form-control" placeholder="Telp tanpa awalan cth: 85727411xxx">
+                                    <input class="col-xs-2 form-control" type="text" name="cp_prefix" required id="cp_prefix" tabindex="1" placeholder="" value="+62">
+                                    <input class="col-xs-10 form-control" type="text" name="cp_suffix" pattern="^[1-9]([0-9]{1,13}$)" title="Hanya angka tanpa awalan '0'!"
+                                           required id="cp_suffix" tabindex="1" placeholder="Telp tanpa awalan cth: 85727411xxx">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>
                                     <div class="">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" checked="true" name="gender" value="L"
+                                                <input type="radio" name="gender" value="L"
                                                        <?php if(array_key_exists('gender', $registrant)):?>
                                                             <?php if($registrant['gender'] ==='L'):?>
-                                                            checked="true"
+                                                            checked
                                                             <?php endif;?>
                                                         <?php endif;?>>
                                                 Laki - Laki
@@ -297,7 +297,7 @@ body {
                                                 <input type="radio" name="gender" value="P"
                                                        <?php if(array_key_exists('gender', $registrant)):?>
                                                             <?php if($registrant['gender'] ==='P'):?>
-                                                            checked="true"
+                                                            checked
                                                             <?php endif;?>
                                                         <?php endif;?>>
                                                 Perempuan
@@ -309,18 +309,34 @@ body {
                                     <label class=" control-label">Program :</label>
                                     <div class="">
                                         <select class="form-control" name="program">
-                                            <option value="reguler"
+                                            <option value="IPA Reguler"
                                                     <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='reguler'): ?>
-                                                                selected="true"
+                                                        <?php if($registrant['program']=='IPA Reguler'): ?>
+                                                                selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Reguler
                                             </option>
-                                            <option value="tahfidz" 
+                                            <option value="IPS Reguler"
                                                     <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='tahfidz'): ?>
-                                                                selected="true"
+                                                        <?php if($registrant['program']=='IPS Reguler'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Reguler
+                                            </option>
+                                            <option value="IPA Tahfidz"
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='IPA Tahfidz'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Reguler
+                                            </option>
+                                            <option value="IPS Tahfidz" 
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='IPS Tahfidz'): ?>
+                                                                selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Tahfidz
@@ -329,10 +345,10 @@ body {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" required="true" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    <input type="password" required name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" required="true" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                    <input type="password" required name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
                                 </div>
                                  TODO: Chaptca (Pake gregwar yang di download-an)
                                 <div class="form-group">
@@ -342,7 +358,7 @@ body {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required="true" name="captcha" id="captcha" tabindex="1" class="form-control" placeholder="Masukkan Teks Dari Gambar Diatas" value="">
+                                    <input type="text" required name="captcha" id="captcha" tabindex="1" class="form-control" placeholder="Masukkan Teks Dari Gambar Diatas" value="">
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
@@ -351,7 +367,7 @@ body {
                                         </div>
                                     </div>
                                 </div>
-                            </form>-->
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -384,11 +400,6 @@ body {
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-
-        $('#pengumumanModal').modal('show');
-
-    });
 </script>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
