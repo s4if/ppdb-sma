@@ -227,6 +227,23 @@ class Pendaftar extends MY_Controller {
         return ['success'=>$final_result,'errorred'=>$errored];
     }
     
+    public function rapor($id){
+        $this->blockUnloggedOne($id);
+        $this->blockNonPayers($this->session->registrant);
+        $reg_data = $this->reg->getRegistrantData($this->session->registrant);
+        $parent_form = $this->parents($id, 'father').' '.$this->parents($id, 'mother');
+        $data = [
+            'title' => 'Formulir Rapor',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
+            'reg_data' => $reg_data,
+            'parent_form' => $parent_form,
+            'nav_pos' => 'formulir',
+        ];
+        $this->CustomView('registrant/forms', $data);
+    }
+    
     public function finalisasi($id, $finalized){
         $this->blockUnloggedOne($id);
         $data['id'] = $id;

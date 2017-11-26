@@ -25,7 +25,7 @@
  */
 
 /**
- * @Entity @Table(name="rapor")
+ * @Entity(repositoryClass="RaporRepo") @Table(name="rapor")
  */
 class RaporEntity
 {
@@ -35,6 +35,11 @@ class RaporEntity
      * @var int
      */
     protected $id;
+    
+    /**
+     * @OneToOne(targetEntity="RegistrantEntity", mappedBy="rapor")
+     */
+    private $registrant;
 
     //=== Matematika
     /**
@@ -460,6 +465,19 @@ class RaporEntity
      * @var int
      */
     protected $kkm_ind_s6;
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getRegistrant() {
+        return $this->registrant;
+    }
+
+    public function setRegistrant($registrant) {
+        $this->registrant = $registrant;
+        return $this;
+    }
     
     public function getAll(){
         $data = [];

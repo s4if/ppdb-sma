@@ -137,6 +137,12 @@ class RegistrantEntity
      * @var PaymentEntity
      **/
     protected $paymentData;
+    
+    /**
+     * @OneToOne(targetEntity="RaporEntity", inversedBy="registrant")
+     * @JoinColumn(name="rapor_id", referencedColumnName="id")
+     */
+    private $rapor;
 
     /**
      * @Column(type="bigint", nullable=TRUE)
@@ -354,6 +360,20 @@ class RegistrantEntity
 
     public function getRelToIPS() {
         return $this->relToIPS;
+    }
+    
+    public function getRapor() {
+        return $this->rapor;
+    }
+    
+    public function deleteRapor(){
+        $this->rapor = null;
+        return $this;
+    }
+
+    public function setRapor(RaporEntity $rapor) {
+        $this->rapor = $rapor;
+        return $this;
     }
 
     public function setRelToRegular($relToRegular) {

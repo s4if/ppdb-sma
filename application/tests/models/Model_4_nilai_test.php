@@ -34,9 +34,9 @@ class Model_4_nilai_test extends TestCase{
     public function setUp()
     {
         $this->resetInstance();
-        $this->CI->load->model('model_admin', 'admin');
+        $this->CI->load->model('model_rapor', 'rapor');
         $this->CI->load->model('model_registrant', 'reg');
-        $this->obj = $this->CI->admin;
+        $this->obj = $this->CI->rapor;
     }
     
     public function test_nilai_entities(){
@@ -70,5 +70,85 @@ class Model_4_nilai_test extends TestCase{
         //getAll
         $data = $nilai->getAll();
         $this->assertEquals($data[1]['ipa']['kkm'], 80);
+    }
+    
+    public function test_crud_rapor(){
+        $this->setUp();
+        $arr_reg =  $this->CI->reg->getData('P');
+        $reg = end($arr_reg);
+        $data = [
+            'kkm_ipa_1' => 80,
+            'kkm_ipa_2' => 80,
+            'kkm_ipa_3' => 80,
+            'kkm_ipa_4' => 80,
+            'kkm_ipa_5' => 80,
+            'kkm_ipa_6' => 80,
+            'kkm_ips_1' => 80,
+            'kkm_ips_2' => 80,
+            'kkm_ips_3' => 80,
+            'kkm_ips_4' => 80,
+            'kkm_ips_5' => 80,
+            'kkm_ips_6' => 80,
+            'kkm_ing_1' => 80,
+            'kkm_ing_2' => 80,
+            'kkm_ing_3' => 80,
+            'kkm_ing_4' => 80,
+            'kkm_ing_5' => 80,
+            'kkm_ing_6' => 80,
+            'kkm_ind_1' => 80,
+            'kkm_ind_2' => 80,
+            'kkm_ind_3' => 80,
+            'kkm_ind_4' => 80,
+            'kkm_ind_5' => 80,
+            'kkm_ind_6' => 80,
+            'kkm_mtk_1' => 80,
+            'kkm_mtk_2' => 80,
+            'kkm_mtk_3' => 80,
+            'kkm_mtk_4' => 80,
+            'kkm_mtk_5' => 80,
+            'kkm_mtk_6' => 80,
+            'nilai_ipa_1' => 85,
+            'nilai_ipa_2' => 85,
+            'nilai_ipa_3' => 85,
+            'nilai_ipa_4' => 85,
+            'nilai_ipa_5' => 85,
+            'nilai_ipa_6' => 85,
+            'nilai_ips_1' => 85,
+            'nilai_ips_2' => 85,
+            'nilai_ips_3' => 85,
+            'nilai_ips_4' => 85,
+            'nilai_ips_5' => 85,
+            'nilai_ips_6' => 85,
+            'nilai_ing_1' => 85,
+            'nilai_ing_2' => 85,
+            'nilai_ing_3' => 85,
+            'nilai_ing_4' => 85,
+            'nilai_ing_5' => 85,
+            'nilai_ing_6' => 85,
+            'nilai_ind_1' => 85,
+            'nilai_ind_2' => 85,
+            'nilai_ind_3' => 85,
+            'nilai_ind_4' => 85,
+            'nilai_ind_5' => 85,
+            'nilai_ind_6' => 85,
+            'nilai_mtk_1' => 85,
+            'nilai_mtk_2' => 85,
+            'nilai_mtk_3' => 85,
+            'nilai_mtk_4' => 85,
+            'nilai_mtk_5' => 85,
+            'nilai_mtk_6' => 85,
+        ];
+        $this->assertTrue($this->obj->updateData($data, $reg));
+        
+        //edit
+        $data['nilai_mtk_3'] = 88;
+        $this->assertTrue($this->obj->updateData($data, $reg));
+        
+        //delete
+        $this->assertTrue($this->obj->deleteData($reg));
+        $this->assertFalse($this->obj->deleteData($reg)); // sudah dihapus, jadi error
+        
+        // Inser u/ test selanjutnya
+        $this->obj->updateData($data, $reg);
     }
 }
