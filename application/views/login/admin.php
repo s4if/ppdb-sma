@@ -229,10 +229,10 @@ body {
                             <div class="col-lg-12">
                                 <form id="login-form" action="<?php echo base_url().'login/do_login_admin/'?>" method="post" role="form" style="display: block;">
                                     <div class="form-group">
-                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="" required="true">
+                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="true">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -249,7 +249,6 @@ body {
             </div>
         </div>
     </div>
-</div>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
    

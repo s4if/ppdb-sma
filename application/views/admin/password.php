@@ -44,21 +44,21 @@
             <label class="col-sm-2 control-label">Password Lama :</label>
             <div class="col-sm-6 error">
                 <input type="password" class="form-control" name="stored_password" 
-                       placeholder="Masukkan Password Lama" value="" required="true">
+                       placeholder="Masukkan Password Lama" value="" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Password Baru :</label>
             <div class="col-sm-6">
                 <input type="password" class="form-control" name="new_password" 
-                       placeholder="Masukkan Password Baru" value="" required="true">
+                       placeholder="Masukkan Password Baru" value="" required>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Konfirmasi :</label>
             <div class="col-sm-6">
                 <input type="password" class="form-control" name="confirm_password" 
-                       placeholder="Konfirmasi" value="" required="true">
+                       placeholder="Konfirmasi" value="" required>
             </div>
         </div>
         <div class="form-group">

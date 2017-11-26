@@ -50,7 +50,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         }
     }
 
-    public function getDataByJurusan($gender = null, $tahfidz = false, $showDeleted = false, $finalized = true)
+    public function getDataByJurusan($tahfidz, $gender = null, $showDeleted = false, $finalized = true)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->Select(['r']);
@@ -65,11 +65,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         if (!is_null($gender)) {
             $qb->setParameter('gender', $gender);
         }
-        if ($tahfidz) {
-            $qb->setParameter('program', 'Tahfidz');
-        } else {
-            $qb->setParameter('program', 'Reguler');
-        }
+        $qb->setParameter('program', $tahfidz);
         $qb->setParameter('deleted', $showDeleted);
         $qb->setParameter('finalized', $finalized);
         $query = $qb->getQuery();

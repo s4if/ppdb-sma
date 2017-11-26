@@ -340,14 +340,14 @@ class Admin extends MY_Controller {
         }
     }
     
-    public function export_data($gender = 'L', $programme = 'tahfidz')
+    public function export_data($gender = 'L', $programme = 'tahfidz', $study= 'IPA')
     {
         $this->blockNonAdmin();
         $strGender = ('L' == strtoupper($gender))?'Ikhwan':'Akhwat';
-        $boolProgramme = ('tahfidz' == strtolower($programme));
         $date = new DateTime('now');
-        $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '.  ucfirst(strtolower($programme)).' '.$date->format('d-m-Y'),
-            $gender, $boolProgramme);
+        $strProgramme = strtoupper($study) . ' ' .  ucfirst($programme);
+        $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
+            $gender, $strProgramme);
     }
     
     public function export_data_uncomplete()

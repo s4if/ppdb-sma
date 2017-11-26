@@ -172,8 +172,6 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-20172018/">Petunjuk</a></li>
-                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/informasi-teknis-pelaksanaan-tes-ppdb-20172018/">Teknis Tes PPDB</a></li>
                     <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                     <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                     <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
@@ -275,6 +273,8 @@ body {
                                 </div>
                                 <div class="form-group">
                                     <input class="col-xs-2 form-control" type="text" name="cp_prefix" required id="cp_prefix" tabindex="1" placeholder="" value="+62">
+                                </div>
+                                <div class="form-group">
                                     <input class="col-xs-10 form-control" type="text" name="cp_suffix" pattern="^[1-9]([0-9]{1,13}$)" title="Hanya angka tanpa awalan '0'!"
                                            required id="cp_suffix" tabindex="1" placeholder="Telp tanpa awalan cth: 85727411xxx">
                                 </div>
@@ -315,7 +315,7 @@ body {
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                Reguler
+                                                IPA Reguler
                                             </option>
                                             <option value="IPS Reguler"
                                                     <?php if(array_key_exists('program', $registrant)):?>
@@ -323,7 +323,7 @@ body {
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                Reguler
+                                                IPS Reguler
                                             </option>
                                             <option value="IPA Tahfidz"
                                                     <?php if(array_key_exists('program', $registrant)):?>
@@ -331,7 +331,7 @@ body {
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                Reguler
+                                                IPA Tahfidz
                                             </option>
                                             <option value="IPS Tahfidz" 
                                                     <?php if(array_key_exists('program', $registrant)):?>
@@ -339,7 +339,7 @@ body {
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                Tahfidz
+                                                IPS Tahfidz
                                             </option>
                                         </select>
                                     </div>
@@ -350,7 +350,6 @@ body {
                                 <div class="form-group">
                                     <input type="password" required name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
                                 </div>
-                                 TODO: Chaptca (Pake gregwar yang di download-an)
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label class=" control-label">Captcha :</label>

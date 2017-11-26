@@ -170,8 +170,6 @@ body {
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right shifted">
-                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-20172018/">Petunjuk</a></li>
-                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/informasi-teknis-pelaksanaan-tes-ppdb-20172018/">Teknis Tes PPDB</a></li>
                         <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                         <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                         <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
@@ -288,11 +286,11 @@ body {
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-
-        $('#pengumumanModal').modal('show');
-
-    });
+//    $(document).ready(function () {
+//
+//        $('#pengumumanModal').modal('show');
+//
+//    });
 </script>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>

@@ -47,7 +47,7 @@ class Model_1_registrant_test extends TestCase {
             'gender' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'cp' => '084738172839',
-            'program' => 'reguler'
+            'program' => 'IPA Tahfidz'
         ];
         // test insert registrant
         $this->assertTrue($this->obj->insertData($data));
@@ -84,6 +84,8 @@ class Model_1_registrant_test extends TestCase {
         $data['subscription_cost'] = '900000';
         $data['main_parent'] = 'father';
         $data['landDonation'] = '1000000';
+        $data['relegate_to_ips'] = 'true';
+        $data['relegate_to_regular'] = 'true';
         $data['finalized'] = 'true';
         $this->setUp();
         $this->assertTrue($this->obj->updateData($data));
@@ -119,7 +121,8 @@ class Model_1_registrant_test extends TestCase {
         $registrants = $this->obj->getData();
         $registrants_2 = $this->obj->getData('P');
         $attributes = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
-                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', ];
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToIPS', 'relToRegular',
+                'subscriptionCost', 'boardingKit', 'landDonation', ];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);
         }
@@ -185,7 +188,6 @@ class Model_1_registrant_test extends TestCase {
         $arr_reg =  $this->obj->getData('P');
         $registrant = end($arr_reg);
         $registrantData = $registrant->getRegistrantData();
-        // TODO: Hobby, achievement, HospitalSheet, PhysicalAbnormality
         $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 
             'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 
             'familyCondition', 'nationality', 'religion', 'height', 'weight', 

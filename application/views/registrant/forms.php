@@ -105,13 +105,13 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Tempat Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input type="text" required="true" name="birth_place" class="form-control" placeholder="Tempat Lahir" value="<?=$reg_data->getBirthPlace();?>">
+                <input type="text" required name="birth_place" class="form-control" placeholder="Tempat Lahir" value="<?=$reg_data->getBirthPlace();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Tanggal Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input class="form-control datepicker" type="text" required="true"
+                <input class="form-control datepicker" type="text" required
                        data-date-format="dd-mm-yyyy" name="birth_date" value="<?php echo (is_null($reg_data->getBirthDate()))?'':$reg_data->getBirthDate()->format('d-m-Y');?>">
             </div>
         </div>
@@ -121,49 +121,49 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Dusun / Jalan<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
-                <input type="text" required="true" name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$reg_data->getStreet();?>">
+                <input type="text" required name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$reg_data->getStreet();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">RT - RW<strong class="red">*</strong> :</label>
             <div class="col-sm-2">
-                <input type="number" required="true" name="RT" class="form-control" placeholder="RT" value="<?=$reg_data->getRT();?>">
+                <input type="number" required name="RT" class="form-control" placeholder="RT" value="<?=$reg_data->getRT();?>">
             </div>
             <div class="col-sm-1 text-center">
                 -
             </div>
             <div class="col-sm-2">
-                <input type="number" required="true" name="RW" class="form-control" placeholder="RW" value="<?=$reg_data->getRW();?>">
+                <input type="number" required name="RW" class="form-control" placeholder="RW" value="<?=$reg_data->getRW();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Desa / Kelurahan<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
-                <input type="text" required="true" name="village" class="form-control" placeholder="Masukkan Desa/Kelurahan" value="<?=$reg_data->getVillage();?>">
+                <input type="text" required name="village" class="form-control" placeholder="Masukkan Desa/Kelurahan" value="<?=$reg_data->getVillage();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Kecamatan<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
-                <input type="text" required="true" name="district" class="form-control" placeholder="Masukkan Kecamatan" value="<?=$reg_data->getDistrict();?>">
+                <input type="text" required name="district" class="form-control" placeholder="Masukkan Kecamatan" value="<?=$reg_data->getDistrict();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Kota / Kabupaten<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
-                <input type="text" required="true" name="city" class="form-control" placeholder="Masukkan kota/kabupaten" value="<?=$reg_data->getCity();?>">
+                <input type="text" required name="city" class="form-control" placeholder="Masukkan kota/kabupaten" value="<?=$reg_data->getCity();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Provinsi<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
-                <input type="text" required="true" name="province" class="form-control" placeholder="Masukkan Provinsi" value="<?=$reg_data->getProvince();?>">
+                <input type="text" required name="province" class="form-control" placeholder="Masukkan Provinsi" value="<?=$reg_data->getProvince();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Kode Pos<strong class="red">*</strong> :</label>
             <div class="col-sm-4">
-                <input type="number" required="true" name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$reg_data->getPostalCode();?>">
+                <input type="number" required name="postal_code" class="form-control" placeholder="Masukkan Kode Pos" value="<?=$reg_data->getPostalCode();?>">
             </div>
         </div>
         <div class="form-group">
@@ -178,10 +178,10 @@
                         <input type="radio" name="family_condition" value="lengkap" 
                             <?php if(!empty($reg_data->getFamilyCondition())):?>
                                 <?php if($reg_data->getFamilyCondition() ==='lengkap'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php else :?>
-                                checked="true"
+                                checked
                             <?php endif;?>>
                         Lengkap
                     </label>
@@ -191,7 +191,7 @@
                         <input type="radio" name="family_condition" value="yatim" 
                             <?php if(!empty($reg_data->getFamilyCondition())):?>
                                 <?php if($reg_data->getFamilyCondition() ==='yatim'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php endif;?>>
                         Yatim
@@ -202,7 +202,7 @@
                         <input type="radio" name="family_condition" value="piatu" 
                             <?php if(!empty($reg_data->getFamilyCondition())):?>
                                 <?php if($reg_data->getFamilyCondition() ==='piatu'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php endif;?>>
                         Piatu
@@ -213,7 +213,7 @@
                         <input type="radio" name="family_condition" value="yatim piatu" 
                             <?php if(!empty($reg_data->getFamilyCondition())):?>
                                 <?php if($reg_data->getFamilyCondition() ==='yatim piatu'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php endif;?>>
                         Yatim Piatu
@@ -229,10 +229,10 @@
                         <input type="radio" name="stay_with" value="orang tua" 
                             <?php if(!empty($reg_data->getStayWith())):?>
                                 <?php if($reg_data->getStayWith() ==='orang tua'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php else :?>
-                                checked="true"
+                                checked
                             <?php endif;?>>
                         Orang Tua
                     </label>
@@ -242,7 +242,7 @@
                         <input type="radio" name="stay_with" value="kakek nenek" 
                             <?php if(!empty($reg_data->getStayWith())):?>
                                 <?php if($reg_data->getStayWith() ==='kakek nenek'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php endif;?>>
                         Kakek Nenek
@@ -253,7 +253,7 @@
                         <input type="radio" name="stay_with" value="kerabat" 
                             <?php if(!empty($reg_data->getStayWith())):?>
                                 <?php if($reg_data->getStayWith() ==='kerabat'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php endif;?>>
                         Kerabat
@@ -264,7 +264,7 @@
                         <input type="radio" name="stay_with" value="lainnya" 
                             <?php if(!empty($reg_data->getStayWith())):?>
                                 <?php if($reg_data->getStayWith() ==='yatim piatu'):?>
-                                checked="true"
+                                checked
                                 <?php endif;?>
                             <?php endif;?>>
                         Lainnya
@@ -283,7 +283,7 @@
                     <option value="WNI"  
                         <?php if(!empty($reg_data->getNationality())):?>
                             <?php if($reg_data->getNationality()=='WNI'): ?>
-                                    selected="true"
+                                    selected
                             <?php endif;?>
                         <?php endif;?>>
                         WNI
@@ -291,7 +291,7 @@
                     <option value="WNA"  
                         <?php if(!empty($reg_data->getNationality())):?>
                             <?php if($reg_data->getNationality()=='WNA'): ?>
-                                    selected="true"
+                                    selected
                             <?php endif;?>
                         <?php endif;?>>
                         WNA
@@ -302,19 +302,19 @@
         <div class="form-group">
             <label class="col-sm-4 control-label">Agama<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input type="text" required="true" name="religion" id="religion" tabindex="1" class="form-control" placeholder="Agama" value="<?=$reg_data->getReligion();?>">
+                <input type="text" required name="religion" id="religion" tabindex="1" class="form-control" placeholder="Agama" value="<?=$reg_data->getReligion();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Tinggi<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input type="number" required="true" name="height" id="birth_date" tabindex="1" class="form-control" placeholder="Tinggi Badan" value="<?=$reg_data->getHeight();?>">
+                <input type="number" required name="height" id="birth_date" tabindex="1" class="form-control" placeholder="Tinggi Badan" value="<?=$reg_data->getHeight();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Berat<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
-                <input type="number" required="true" name="weight" id="birth_date" tabindex="1" class="form-control" placeholder="Berat Badan" value="<?=$reg_data->getWeight();?>">
+                <input type="number" required name="weight" id="birth_date" tabindex="1" class="form-control" placeholder="Berat Badan" value="<?=$reg_data->getWeight();?>">
             </div>
         </div>
         <!-- TODO: Riwayat Penyakit -->
@@ -343,7 +343,7 @@
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
+                <input type="text" required name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -378,7 +378,7 @@
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
+                <input type="text" required name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -413,7 +413,7 @@
             </div>
             <?php else : ?>
             <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
+                <input type="text" required name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
             </div>
             <div class="col-sm-4">
                 <a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
@@ -478,13 +478,13 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">Nama :</label>
             <div class="col-sm-8">
-                <input type="text" required="true" name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant->getName();?>">
+                <input type="text" required name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=$registrant->getName();?>">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">Sekolah Asal :</label>
             <div class="col-sm-8">
-                <input type="text" required="true" name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant->getPreviousSchool();?>">
+                <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=$registrant->getPreviousSchool();?>">
             </div>
         </div>
         <div class="form-group">
@@ -502,22 +502,38 @@
         <div class="form-group">
             <label class="col-sm-3 control-label ">Program :</label>
             <div class="col-sm-8">
-                <select class="form-control" name="program" >
-                    <option value="reguler"  
-                        <?php if(!empty($registrant->getProgram())):?>
-                            <?php if($registrant->getProgram()=='reguler'): ?>
-                                    selected="true"
-                            <?php endif;?>
-                        <?php endif;?>>
-                        Reguler
+                <select class="form-control" name="program">
+                    <option value="IPA Reguler"
+                            <?php if(array_key_exists('program', $registrant)):?>
+                                <?php if($registrant['program']=='IPA Reguler'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        IPA Reguler
                     </option>
-                    <option value="tahfidz"  
-                        <?php if(!empty($registrant->getProgram())):?>
-                            <?php if($registrant->getProgram()=='tahfidz'): ?>
-                                    selected="true"
-                            <?php endif;?>
-                        <?php endif;?>>
-                        Tahfidz
+                    <option value="IPS Reguler"
+                            <?php if(array_key_exists('program', $registrant)):?>
+                                <?php if($registrant['program']=='IPS Reguler'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        IPS Reguler
+                    </option>
+                    <option value="IPA Tahfidz"
+                            <?php if(array_key_exists('program', $registrant)):?>
+                                <?php if($registrant['program']=='IPA Tahfidz'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        IPA Tahfidz
+                    </option>
+                    <option value="IPS Tahfidz" 
+                            <?php if(array_key_exists('program', $registrant)):?>
+                                <?php if($registrant['program']=='IPS Tahfidz'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        IPS Tahfidz
                     </option>
                 </select>
             </div>
@@ -600,7 +616,7 @@
                 <form role="form" method="post" action="<?=base_url();?>pendaftar/upload_foto/<?=$registrant->getId()?>" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Silahkan upload fil foto resmi dengan proporsi 4x3</label>
-                        <input type="file" id="file" name="file" required="true">
+                        <input type="file" id="file" name="file" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Nanti</button>
@@ -625,7 +641,7 @@
                 x_acv++; //text box increment
                 var inpt = '<div class="form-group">'+
                     '<div class="col-sm-offset-4 col-sm-4">'+
-                    '<input type="text" required="true" name="achievements[]" class="form-control" placeholder="Prestasi" value="">'+
+                    '<input type="text" required name="achievements[]" class="form-control" placeholder="Prestasi" value="">'+
                     '</div>'+
                     '<div class="col-sm-4">'+
                     '<a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
@@ -653,7 +669,7 @@
                 x_hby++; //text box increment
                 var inpt = '<div class="form-group">'+
                     '<div class="col-sm-offset-4 col-sm-4">'+
-                    '<input type="text" required="true" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">'+
+                    '<input type="text" required name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">'+
                     '</div>'+
                     '<div class="col-sm-4">'+
                     '<a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
@@ -681,7 +697,7 @@
                 x_hs++; //text box increment
                 var inpt = '<div class="form-group">'+
                     '<div class="col-sm-offset-4 col-sm-4">'+
-                    '<input type="text" required="true" name="hospital_sheets[]" class="form-control" placeholder="Masukkan Riwayat Penyakit" value="">'+
+                    '<input type="text" required name="hospital_sheets[]" class="form-control" placeholder="Masukkan Riwayat Penyakit" value="">'+
                     '</div>'+
                     '<div class="col-sm-4">'+
                     '<a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+
@@ -709,7 +725,7 @@
                 x_pa++; //text box increment
                 var inpt = '<div class="form-group">'+
                     '<div class="col-sm-offset-4 col-sm-4">'+
-                    '<input type="text" required="true" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">'+
+                    '<input type="text" required name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="">'+
                     '</div>'+
                     '<div class="col-sm-4">'+
                     '<a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>'+

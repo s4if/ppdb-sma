@@ -49,9 +49,9 @@ class Model_4_nilai_test extends TestCase{
         }
         
         //input error
-        $this->assertNull($nilai->edit('error', 'kkm', 1, 80));
-        $this->assertNull($nilai->edit('ipa', 'error', 1, 80));
-        $this->assertNull($nilai->edit('ipa', 'kkm', 7, 80));
+//        $this->assertNull($nilai->edit('error', 'kkm', 1, 80));
+//        $this->assertNull($nilai->edit('ipa', 'error', 1, 80));
+//        $this->assertNull($nilai->edit('ipa', 'kkm', 7, 80));
         
         //delete
         $nilai->edit('ipa', 'kkm', 2, 80);

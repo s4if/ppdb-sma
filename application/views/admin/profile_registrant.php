@@ -262,22 +262,38 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label ">Program :</label>
                         <div class="col-sm-8">
-                            <select class="form-control" name="program" >
-                                <option value="reguler"  
-                                    <?php if(!empty($registrant_data->getProgram())):?>
-                                        <?php if($registrant_data->getProgram()=='reguler'): ?>
-                                                selected="true"
-                                        <?php endif;?>
-                                    <?php endif;?>>
-                                    Reguler
+                            <select class="form-control" name="program">
+                                <option value="IPA Reguler"
+                                        <?php if(array_key_exists('program', $registrant)):?>
+                                            <?php if($registrant['program']=='IPA Reguler'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    IPA Reguler
                                 </option>
-                                <option value="tahfidz"  
-                                    <?php if(!empty($registrant_data->getProgram())):?>
-                                        <?php if($registrant_data->getProgram()=='tahfidz'): ?>
-                                                selected="true"
-                                        <?php endif;?>
-                                    <?php endif;?>>
-                                    Tahfidz
+                                <option value="IPS Reguler"
+                                        <?php if(array_key_exists('program', $registrant)):?>
+                                            <?php if($registrant['program']=='IPS Reguler'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    IPS Reguler
+                                </option>
+                                <option value="IPA Tahfidz"
+                                        <?php if(array_key_exists('program', $registrant)):?>
+                                            <?php if($registrant['program']=='IPA Tahfidz'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    IPA Tahfidz
+                                </option>
+                                <option value="IPS Tahfidz" 
+                                        <?php if(array_key_exists('program', $registrant)):?>
+                                            <?php if($registrant['program']=='IPS Tahfidz'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    IPS Tahfidz
                                 </option>
                             </select>
                         </div>

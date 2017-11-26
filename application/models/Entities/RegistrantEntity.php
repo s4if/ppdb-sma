@@ -73,11 +73,25 @@ class RegistrantEntity
     protected $cp; // (8/12/2015 : Diganti No. HP)
 
     /**
-     * @Column(type="string", length=8, nullable=FALSE)
+     * @Column(type="string", length=15, nullable=FALSE)
      *
      * @var string
      */
-    protected $program; // NOTE: Program tahta/reguler, string sj biar enak
+    protected $program; // NOTE: IPA Reguler, IPS Reguler, IPA Tahfidz, IPS Tahfidz
+    
+    /**
+     * @Column(type="string", length=6, nullable=TRUE)
+     *
+     * @var string
+     */
+    protected $relToRegular; // semi boolean
+    
+    /**
+     * @Column(type="string", length=6, nullable=TRUE)
+     *
+     * @var string
+     */
+    protected $relToIPS; // semi boolean (true/false)
 
     /**
      * @Column(type="datetime", nullable=FALSE)
@@ -334,6 +348,24 @@ class RegistrantEntity
         return $this->landDonation;
     }
 
+    public function getRelToRegular() {
+        return $this->relToRegular;
+    }
+
+    public function getRelToIPS() {
+        return $this->relToIPS;
+    }
+
+    public function setRelToRegular($relToRegular) {
+        $this->relToRegular = $relToRegular;
+        return $this;
+    }
+
+    public function setRelToIPS($relToIPS) {
+        $this->relToIPS = $relToIPS;
+        return $this;
+    }
+    
     public function setLandDonation($landDonation) {
         $this->landDonation = $landDonation;
         return $this;

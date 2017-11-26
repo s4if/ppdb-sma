@@ -87,7 +87,7 @@ class Pendaftar_test extends TestCase
                 'cp_prefix'=> '+62',
                 'cp_suffix' => '89483726156',
                 'prev_school' => 'SMPN 1 Mungkid',
-                'program' => 'Reguler',
+                'program' => 'IPA Reguler',
                 'captcha' => 'SALAH'
             ];
             // Gagal
@@ -208,42 +208,42 @@ class Pendaftar_test extends TestCase
             $this->assertContains('"status":true', $output);
             $this->assertContains('"kode":"001"', $output);
         }
-        /*
-        public function test_isi_Guardian(){
-            $this->request('POST', ['Login', 'do_login'],[
-                'username' => 'hanan',
-                'password' => 'zaraki'
-            ]);
-            $this->assertRedirect('1/beranda');
-            $data = [
-            'type' => 'guardian', 
-            'name' => "Rizaki Al Farisi", 
-            'status' => 'Hidup', 
-            'birth_place' => 'Blora', 
-            'birth_date' => '15-11-1991',
-            'street' => 'Sukarno No. 43', 
-            'RT' => 1,
-            'RW' => 3, 
-            'village' => 'Kramat Utara', 
-            'district' => 'Kramat', 
-            'city' => 'Jakarta Utara', 
-            'province' => 'DKI Jakarta', 
-            'postal_code' => 56551,
-            'contact' => '08965468864', 
-            'relation' => 'Sepupu', 
-            'nationality' => 'WNI', 
-            'religion' => 'ISLAM', 
-            'education_level' => 'S1', 
-            'job' => 'Programmer', 
-            'position' => 'Junior Programmer', 
-            'company' => 'Google Indonesia',
-            'income' => '7000000', 
-            'burden_count' => 1
-            ];
-            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/guardian', $data);
-            $this->assertContains('"status":true', $output);
-        }
-        */
+        
+//        public function test_isi_Guardian(){
+//            $this->request('POST', ['Login', 'do_login'],[
+//                'username' => 'hanan',
+//                'password' => 'zaraki'
+//            ]);
+//            $this->assertRedirect('1/beranda');
+//            $data = [
+//            'type' => 'guardian', 
+//            'name' => "Rizaki Al Farisi", 
+//            'status' => 'Hidup', 
+//            'birth_place' => 'Blora', 
+//            'birth_date' => '15-11-1991',
+//            'street' => 'Sukarno No. 43', 
+//            'RT' => 1,
+//            'RW' => 3, 
+//            'village' => 'Kramat Utara', 
+//            'district' => 'Kramat', 
+//            'city' => 'Jakarta Utara', 
+//            'province' => 'DKI Jakarta', 
+//            'postal_code' => 56551,
+//            'contact' => '08965468864', 
+//            'relation' => 'Sepupu', 
+//            'nationality' => 'WNI', 
+//            'religion' => 'ISLAM', 
+//            'education_level' => 'S1', 
+//            'job' => 'Programmer', 
+//            'position' => 'Junior Programmer', 
+//            'company' => 'Google Indonesia',
+//            'income' => '7000000', 
+//            'burden_count' => 1
+//            ];
+//            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/guardian', $data);
+//            $this->assertContains('"status":true', $output);
+//        }
+        
         public function test_isi_Pernyataan(){
             $this->request('POST', ['Login', 'do_login'],[
                 'username' => 'hanan',
@@ -251,6 +251,8 @@ class Pendaftar_test extends TestCase
             ]);
             $this->assertRedirect('1/beranda');
             $data = [
+                'rel_to_regular' => 'true',
+                'rel_to_ips' => 'true',
                 'raw_icost' => '-999',
                 'other_icost' => '15000000',
                 'raw_scost' => '-999',

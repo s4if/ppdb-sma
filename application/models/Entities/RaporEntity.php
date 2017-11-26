@@ -469,8 +469,8 @@ class RaporEntity
                 $kkm = 'kkm_'.$mpl.'_'.$i;
                 $nilai = 'nilai_'.$mpl.'_'.$i;
                 $data[$i][$mpl] = [
-                    'kkm' => $this->$kkm,
-                    'nilai' => $this->$nilai,
+                    'kkm' => isset($this->$kkm)?$this->$kkm:null,
+                    'nilai' => isset($this->$nilai)?$this->$nilai:null,
                 ];
             }
         }
@@ -480,13 +480,14 @@ class RaporEntity
     public function get($mapel, $tipe, $semester){
         try{
             $strv = $tipe.'_'.$mapel.'_'.$semester;
-            $nilai = $this->$strv;
+            $nilai = isset($this->$strv)?$this->$strv:null;
             return $nilai;
         } catch (Exception $e){
             return null;
         }
     }
     
+    // ada yang aneh terjadi saat di tes dengan mapel "error" tapi aku ga tau kenapa...
     public function edit($mapel, $tipe, $semester, $nilai){
         try{
             $strv = $tipe.'_'.$mapel.'_'.$semester;

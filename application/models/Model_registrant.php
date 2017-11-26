@@ -210,6 +210,8 @@ class Model_registrant extends CI_Model {
         if  (!empty($data['boarding_kit'])) {
             if (!is_null($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
         }
+        if (!empty($data['rel_to_regular'])) : $this->registrant->setRelToRegular($data['rel_to_regular']); endif;
+        if (!empty($data['rel_to_ips'])) : $this->registrant->setRelToIPS($data['rel_to_ips']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['land_donation'])) : $this->registrant->setLandDonation($data['land_donation']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
@@ -491,7 +493,7 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    public function export($file_name, $gender, $programme = false, $test = false){
+    public function export($file_name, $gender, $programme, $test = false){
         error_reporting(E_ALL);
         ini_set("display_errors", 1);
         ini_set('max_execution_time', 60);
@@ -503,7 +505,7 @@ class Model_registrant extends CI_Model {
 
         
         $this->excel = new PHPExcel();
-        $this->mbatik($this->getDataByJurusan($gender, $programme), 'Data');
+        $this->mbatik($this->getDataByJurusan($programme, $gender), 'Data');
         
         $this->excel->removeSheetByIndex(0);
         if($test){
@@ -518,9 +520,9 @@ class Model_registrant extends CI_Model {
         }
     }
     
-    private function getDataByJurusan($gender, $tahfidz){
+    private function getDataByJurusan($program, $gender){
         $regRepo = $this->doctrine->em->getRepository('RegistrantEntity');
-        return $regRepo->getDataByJurusan($gender, $tahfidz); //tahfidz = boolean
+        return $regRepo->getDataByJurusan($program, $gender);
     }
     
     private function mbatik($data, $title){

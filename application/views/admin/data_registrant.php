@@ -58,12 +58,25 @@
             </div>
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Download Data <span class="caret"></span>
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Download Data Ikhwan <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="<?=base_url()?>admin/export_data/L/Reguler">Ikhwan Reguler</a></li>
-                  <li><a href="<?=base_url()?>admin/export_data/L/Tahfidz">Ikhwan Tahfidz</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/L/Reguler/ipa">Ikhwan IPA Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/L/Tahfidz/ipa">Ikhwan IPA Tahfidz</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="<?=base_url()?>admin/export_data/L/Reguler/ips">Ikhwan IPS Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/L/Tahfidz/ips">Ikhwan IPS Tahfidz</a></li>
+                </ul>
+            </div>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Download Data Akhwat <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="<?=base_url()?>admin/export_data/P/Reguler/ipa">Akhwat IPA Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz/ipa">Akhwat IPA Tahfidz</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="<?=base_url()?>admin/export_data/P/Reguler">Akhwat Reguler</a></li>
                   <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz">Akhwat Tahfidz</a></li>
