@@ -19,21 +19,6 @@ class Model_rapor extends CI_Model
         parent::__construct();
     }
     
-    public function getData($id = -999){
-        if($id == -999){
-            $regRepo = $this->doctrine->em->getRepository('RaporEntity');
-            return $regRepo->getData();
-        } else {
-            $rapor = $this->doctrine->em->find('RaporEntity', $id);
-            return $rapor;
-        }
-    }
-    
-    public function getDataByRegistrant(RegistrantEntity $reg){
-        $regRepo = $this->doctrine->em->getRepository('RaporEntity');
-        return $regRepo->getDataByRegistrant($reg);
-    }
-    
     public function updateData($data, RegistrantEntity $reg){ // satu saja-kah
         try {
             $this->rapor = $reg->getRapor();
