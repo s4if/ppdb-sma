@@ -141,14 +141,32 @@ class Model_4_nilai_test extends TestCase{
         $this->assertTrue($this->obj->updateData($data, $reg));
         
         //edit
+        $arr_reg =  $this->CI->reg->getData('P');
+        $reg = end($arr_reg);
         $data['nilai_mtk_3'] = 88;
         $this->assertTrue($this->obj->updateData($data, $reg));
         
         //delete
+        $arr_reg =  $this->CI->reg->getData('P');
+        $reg = end($arr_reg);
         $this->assertTrue($this->obj->deleteData($reg));
         $this->assertFalse($this->obj->deleteData($reg)); // sudah dihapus, jadi error
         
         // Inser u/ test selanjutnya
+        $arr_reg =  $this->CI->reg->getData('P');
+        $reg = end($arr_reg);
+        $data['nilai_mtk_3'] = 85;
         $this->obj->updateData($data, $reg);
+        
+        $this->setUp();
+        $arr_reg =  $this->CI->reg->getData('P');
+        $reg = end($arr_reg);
+        $nameset = ['mtk', 'ipa', 'ips', 'ind', 'ing'];
+        for($i = 1; $i <=4;$i++){
+            foreach ($nameset as $name){
+                $this->assertEquals($reg->getRapor()->get($name, 'kkm', $i), 80, $name.$i);
+                $this->assertEquals($reg->getRapor()->get($name, 'nilai', $i), 85, $name.$i);
+            }
+        }
     }
 }

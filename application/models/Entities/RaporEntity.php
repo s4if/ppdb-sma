@@ -3,7 +3,7 @@
 /*
  * The MIT License
  *
- * Copyright 2015 s4if.
+ * Copyright 2015 4if.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,84 +47,84 @@ class RaporEntity
      *
      * @var int
      */
-    protected $nilai_mtk_s1;
+    protected $nilai_mtk_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_mtk_s1;
+    protected $kkm_mtk_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_mtk_s2;
+    protected $nilai_mtk_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_mtk_s2;
+    protected $kkm_mtk_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_mtk_s3;
+    protected $nilai_mtk_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_mtk_s3;
+    protected $kkm_mtk_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_mtk_s4;
+    protected $nilai_mtk_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_mtk_s4;
+    protected $kkm_mtk_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_mtk_s5;
+    protected $nilai_mtk_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_mtk_s5;
+    protected $kkm_mtk_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_mtk_s6;
+    protected $nilai_mtk_6;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_mtk_s6;
+    protected $kkm_mtk_6;
     
     //=== IPA
     /**
@@ -132,84 +132,84 @@ class RaporEntity
      *
      * @var int
      */
-    protected $nilai_ipa_s1;
+    protected $nilai_ipa_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ipa_s1;
+    protected $kkm_ipa_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ipa_s2;
+    protected $nilai_ipa_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ipa_s2;
+    protected $kkm_ipa_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ipa_s3;
+    protected $nilai_ipa_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ipa_s3;
+    protected $kkm_ipa_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ipa_s4;
+    protected $nilai_ipa_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ipa_s4;
+    protected $kkm_ipa_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ipa_s5;
+    protected $nilai_ipa_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ipa_s5;
+    protected $kkm_ipa_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ipa_s6;
+    protected $nilai_ipa_6;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ipa_s6;
+    protected $kkm_ipa_6;
     
     //=== IPS
     /**
@@ -217,84 +217,84 @@ class RaporEntity
      *
      * @var int
      */
-    protected $nilai_ips_s1;
+    protected $nilai_ips_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ips_s1;
+    protected $kkm_ips_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ips_s2;
+    protected $nilai_ips_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ips_s2;
+    protected $kkm_ips_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ips_s3;
+    protected $nilai_ips_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ips_s3;
+    protected $kkm_ips_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ips_s4;
+    protected $nilai_ips_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ips_s4;
+    protected $kkm_ips_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ips_s5;
+    protected $nilai_ips_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ips_s5;
+    protected $kkm_ips_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ips_s6;
+    protected $nilai_ips_6;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ips_s6;
+    protected $kkm_ips_6;
     
     //=== B. Inggris
     /**
@@ -302,84 +302,84 @@ class RaporEntity
      *
      * @var int
      */
-    protected $nilai_ing_s1;
+    protected $nilai_ing_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ing_s1;
+    protected $kkm_ing_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ing_s2;
+    protected $nilai_ing_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ing_s2;
+    protected $kkm_ing_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ing_s3;
+    protected $nilai_ing_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ing_s3;
+    protected $kkm_ing_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ing_s4;
+    protected $nilai_ing_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ing_s4;
+    protected $kkm_ing_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ing_s5;
+    protected $nilai_ing_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ing_s5;
+    protected $kkm_ing_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ing_s6;
+    protected $nilai_ing_6;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ing_s6;
+    protected $kkm_ing_6;
     
     //=== B. Indo
     /**
@@ -387,84 +387,84 @@ class RaporEntity
      *
      * @var int
      */
-    protected $nilai_ind_s1;
+    protected $nilai_ind_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ind_s1;
+    protected $kkm_ind_1;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ind_s2;
+    protected $nilai_ind_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ind_s2;
+    protected $kkm_ind_2;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ind_s3;
+    protected $nilai_ind_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ind_s3;
+    protected $kkm_ind_3;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ind_s4;
+    protected $nilai_ind_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ind_s4;
+    protected $kkm_ind_4;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ind_s5;
+    protected $nilai_ind_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ind_s5;
+    protected $kkm_ind_5;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $nilai_ind_s6;
+    protected $nilai_ind_6;
     
     /**
      * @Column(type="integer", nullable=TRUE)
      *
      * @var int
      */
-    protected $kkm_ind_s6;
+    protected $kkm_ind_6;
     
     public function getId() {
         return $this->id;
@@ -496,13 +496,13 @@ class RaporEntity
     }
     
     public function get($mapel, $tipe, $semester){
-        try{
+//        try{
             $strv = $tipe.'_'.$mapel.'_'.$semester;
             $nilai = isset($this->$strv)?$this->$strv:null;
             return $nilai;
-        } catch (Exception $e){
-            return null;
-        }
+//        } catch (Exception $e){
+//            return null;
+//        }
     }
     
     // ada yang aneh terjadi saat di tes dengan mapel "error" tapi aku ga tau kenapa...

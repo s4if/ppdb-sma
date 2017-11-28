@@ -64,5 +64,5 @@ $route['([0-9]+)/formulir'] = 'pendaftar/formulir/$1';
 $route['([0-9]+)/wali'] = 'pendaftar/parent/$1/guardian';
 $route['([0-9]+)/password'] = 'pendaftar/password/$1';
 $route['([0-9]+)/surat'] = 'pendaftar/surat/$1';
-$route['([0-9]+)/rapor'] = 'pendaftar/rapor/$1';
+$route['([0-9]+)/rapor'] = 'pendaftar/isi_rapor/$1';
 $route['([0-9]+)/rekap'] = 'pendaftar/rekap/$1';

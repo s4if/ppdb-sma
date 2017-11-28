@@ -19,6 +19,10 @@ class Model_rapor extends CI_Model
         parent::__construct();
     }
     
+    public function create(){
+        return new RaporEntity();
+    }
+
     public function updateData($data, RegistrantEntity $reg){ // satu saja-kah
         try {
             $this->rapor = $reg->getRapor();
@@ -28,6 +32,7 @@ class Model_rapor extends CI_Model
             $this->rapor->setRegistrant($reg);
             $this->setData($data);
             $reg->setRapor($this->rapor);
+            $this->rapor->setRegistrant($reg);
             $this->doctrine->em->persist($this->rapor);
             $this->doctrine->em->persist($reg);
             $this->doctrine->em->flush();

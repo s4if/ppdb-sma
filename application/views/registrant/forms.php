@@ -586,14 +586,14 @@
                 <h4 class="text-center">
                     <span class="glyphicon glyphicon-ok-sign"></span>
                     Data telah berhasil disimpan. <br/>
-                    Silahkan melanjutkan untuk mengisi surat pernyataan dengan menekan tombol lanjut.
+                    Silahkan melanjutkan untuk mengisi data nilai dengan menekan tombol lanjut.
                 </h4>
             </div>
             <div class="modal-footer" >
                 <div class="center-block">
                     <div class="col-md-4 col-md-offset-4">
                         <div class="btn-group" role="group">
-                            <a class="btn btn-success" href="<?=  base_url().$id.'/surat'?>">
+                            <a class="btn btn-success" href="<?=  base_url().$id.'/rapor'?>">
                                 Lanjut
                             </a>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
