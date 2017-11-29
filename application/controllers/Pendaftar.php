@@ -454,7 +454,7 @@ class Pendaftar extends MY_Controller {
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
             $row[] = $registrant['previousSchool'];
             $row[] = ucfirst($registrant['program']);
-            $row[] = $registrant['status'];
+//            $row[] = $registrant['status'];
             $data [] = $row;
         }
         echo json_encode(['data' => $data]);

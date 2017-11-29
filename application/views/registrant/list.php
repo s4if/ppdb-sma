@@ -245,7 +245,7 @@ body {
                                             <td>I/A</td>
                                             <td>Sekolah Asal</td>
                                             <td>Program</td>
-                                            <td>Status Data</td>
+                                            <!--<td>Status Data</td>-->
                                         </tr>
                                     </thead>
                                     <tbody>

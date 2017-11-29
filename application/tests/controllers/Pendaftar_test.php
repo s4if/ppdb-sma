@@ -244,6 +244,58 @@ class Pendaftar_test extends TestCase
 //            $this->assertContains('"status":true', $output);
 //        }
         
+        public function test_isi_rapor(){
+            $this->request('POST', ['Login', 'do_login'],[
+                'username' => 'hanan',
+                'password' => 'zaraki'
+            ]);
+            $this->assertRedirect('1/beranda');
+            $data = [
+                'kkm_ipa_1' => 80,
+                'kkm_ipa_2' => 80,
+                'kkm_ipa_3' => 80,
+                'kkm_ipa_4' => 80,
+                'kkm_ips_1' => 80,
+                'kkm_ips_2' => 80,
+                'kkm_ips_3' => 80,
+                'kkm_ips_4' => 80,
+                'kkm_ing_1' => 80,
+                'kkm_ing_2' => 80,
+                'kkm_ing_3' => 80,
+                'kkm_ing_4' => 80,
+                'kkm_ind_1' => 80,
+                'kkm_ind_2' => 80,
+                'kkm_ind_3' => 80,
+                'kkm_ind_4' => 80,
+                'kkm_mtk_1' => 80,
+                'kkm_mtk_2' => 80,
+                'kkm_mtk_3' => 80,
+                'kkm_mtk_4' => 80,
+                'nilai_ipa_1' => 85,
+                'nilai_ipa_2' => 85,
+                'nilai_ipa_3' => 85,
+                'nilai_ipa_4' => 85,
+                'nilai_ips_1' => 85,
+                'nilai_ips_2' => 85,
+                'nilai_ips_3' => 85,
+                'nilai_ips_4' => 85,
+                'nilai_ing_1' => 85,
+                'nilai_ing_2' => 85,
+                'nilai_ing_3' => 85,
+                'nilai_ing_4' => 85,
+                'nilai_ind_1' => 85,
+                'nilai_ind_2' => 85,
+                'nilai_ind_3' => 85,
+                'nilai_ind_4' => 85,
+                'nilai_mtk_1' => 85,
+                'nilai_mtk_2' => 85,
+                'nilai_mtk_3' => 85,
+                'nilai_mtk_4' => 85,
+            ];
+            $this->request('POST', 'pendaftar/edit_rapor/1', $data);
+            $this->assertRedirect('1/surat');
+        }
+        
         public function test_isi_Pernyataan(){
             $this->request('POST', ['Login', 'do_login'],[
                 'username' => 'hanan',

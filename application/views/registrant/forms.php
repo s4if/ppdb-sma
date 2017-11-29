@@ -387,7 +387,6 @@
         </div>
         <?php endforeach;?>
         <?php endif;?>
-        <!-- TODO: Prestasi -->
         <?php if($reg_data->getAchievementsCount() == 0):?>
         <div class="form-group insert_pa">
             <label class="col-sm-4 control-label"> Prestasi yang Diraih :</label>
@@ -397,6 +396,10 @@
             <div class="col-sm-4">
                 <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
+        </div>
+        <div class="form-group">
+            <p class="help-block text-danger">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan 
+                tingkat minimal kabupaten/kota</p>
         </div>
         <?php else :
             $count = 0;
@@ -421,6 +424,10 @@
             <?php endif; ?>
         </div>
         <?php endforeach;?>
+        <div class="form-group">
+            <p class="help-block">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan 
+                tingkat minimal kabupaten/kota</p>
+        </div>
         <?php endif;?>
         <!-- TODO: Hobi -->
         <?php if($reg_data->getHobbiesCount() == 0): //Keep If & Else div sinkron!!!?>

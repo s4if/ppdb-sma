@@ -276,6 +276,71 @@
     </div>
     <?php endif; ?>
     <?php endforeach; ?>
+    
+    <?php if (!is_null($registrant->getRapor())) :?>
+    <div class="page-content">
+        <h2 class="header-section">Data Rapor</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td rowspan="2">Mapel</td>
+                    <td colspan="2">Semester 1</td>
+                    <td colspan="2">Semester 2</td>
+                    <td colspan="2">Semester 3</td>
+                    <td colspan="2">Semester 4</td>
+                </tr>
+                <tr>
+                    <td>KKM</td>
+                    <td>Nilai</td>
+                    <td>KKM</td>
+                    <td>Nilai</td>
+                    <td>KKM</td>
+                    <td>Nilai</td>
+                    <td>KKM</td>
+                    <td>Nilai</td>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Matematika</td>
+                    <?php for($i = 1; $i <=4; $i++):?>
+                    <td><?php echo $registrant->getRapor()->get('mtk','kkm',$i);?></td>
+                    <td><?php echo $registrant->getRapor()->get('mtk','nilai',$i);?></td>
+                    <?php endfor;?>
+                </tr>
+                <tr>
+                    <td>IPA</td>
+                    <?php for($i = 1; $i <=4; $i++):?>
+                    <td><?php echo $registrant->getRapor()->get('ipa','kkm',$i);?></td>
+                    <td><?php echo $registrant->getRapor()->get('ipa','nilai',$i);?></td>
+                    <?php endfor;?>
+                </tr>
+                <tr>
+                    <td>IPS</td>
+                    <?php for($i = 1; $i <=4; $i++):?>
+                    <td><?php echo $registrant->getRapor()->get('ips','kkm',$i);?></td>
+                    <td><?php echo $registrant->getRapor()->get('ips','nilai',$i);?></td>
+                    <?php endfor;?>
+                </tr>
+                <tr>
+                    <td>Bahasa Indonesia</td>
+                    <?php for($i = 1; $i <=4; $i++):?>
+                    <td><?php echo $registrant->getRapor()->get('ind','kkm',$i);?></td>
+                    <td><?php echo $registrant->getRapor()->get('ind','nilai',$i);?></td>
+                    <?php endfor;?>
+                </tr>
+                <tr>
+                    <td>Bahasa Inggris</td>
+                    <?php for($i = 1; $i <=4; $i++):?>
+                    <td><?php echo $registrant->getRapor()->get('ing','kkm',$i);?></td>
+                    <td><?php echo $registrant->getRapor()->get('ing','nilai',$i);?></td>
+                    <?php endfor;?>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <?php endif;?>
+
     <?php if (!is_null($registrant->getRegistrantData())) :?>
     <div class="page-content">
         <h2 class="header-section">Detail Pembayaran</h2>
@@ -298,12 +363,13 @@
             <tr>
                 <td> Seragam </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.650.000,00 </td>
+                <td> Rp. 1.700.000,00 </td>
             </tr>
             <tr>
                 <td> Dana Kesiswaan </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 600.000,00 </td>
+                <?php $program = $registrant->getProgram();?>
+                <td> <?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.000.000,-':'Rp. 800.000,-';?> </td>
             </tr>
             <tr>
                 <td> Dana Kesehatan </td>
@@ -313,19 +379,20 @@
             <tr>
                 <td> Dana Buku </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.400.000,00 </td>
+                <td> Rp. 1.500.000,00 </td>
             </tr>
             <tr>
                 <td> Perlengkapan Asrama </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ($registrant->getBoardingKit())?"Rp. 940.000,00":"Rp. 0,00";?> </td>
+                <td> Rp. 1.000.000,00</td>
             </tr>
             <tr>
                 <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
-                $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation()+3900000;
-                $total = ($registrant->getBoardingKit())?$tot+940000:$tot
+                $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
+                $addons =  ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?5450000:5250000;
+                $total = $tot+$addons;
                 ?>
                 <td> <strong class="red">Rp. <?php echo number_format($total,2,',','.');?></strong> </td>
             </tr>

@@ -51,8 +51,8 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
-        Tes akan dilaksanakan tanggal 12 Februari 2017<br/>
-        Hasil tes akan diumumkan tanggal 20 Februari 2017<br/>
+        Tes akan dilaksanakan tanggal 4 Februari 2017<br/>
+        Hasil tes akan diumumkan tanggal 12 Februari 2017<br/>
         Silahkan Unduh dan cetak kartu pendaftaran.
     </p>        
     <a class="btn btn-success" href="<?=  base_url().'pendaftar/print_kartu'?>">Unduh Kartu Pendaftarran</a>
@@ -61,9 +61,9 @@
     <p>
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
         Sebelum anda mengisi data pribadi, silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
-        sebesar <strong>Rp. 200.000,-</strong> ditambah <strong>nomor unik (Contoh = 200.123)</strong> di rekening 
-        <strong>Bank Syariah Mandiri</strong> dengan <strong>No. ⁠⁠⁠7104471077</strong> atas nama 
-        <strong>PPDB  SMAIT IHSANUL FIKRI 2017/2018</strong>. <br /> Kode unik bisa diminta dengan mengeklik tombol :
+        sebesar <strong>Rp. 300.000,-</strong> ditambah <strong>nomor unik (Contoh = 300.123)</strong> di rekening 
+        <strong>Bank Syariah Mandiri</strong> dengan <strong>No. 70930 70938</strong> atas nama 
+        <strong>PPDB  SMAIT IHSANUL FIKRI</strong>. <br /> Kode unik bisa diminta dengan mengeklik tombol :
     </p>
     <p><a class="btn btn-primary" id="btn-gen" role="button" onclick="kodeUnik()">Minta kode unik</a></p>
     <h1 id="kode-unik"></h1>
@@ -83,6 +83,13 @@
         dan menyelesaikan pendaftaran dengan mengeklik tombol dibawah :
     </p>
     <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
+    <p>
+        Data yang perlu disiapkan adalah:<br />
+        Data Diri<br />
+        Data Orang Tua<br />
+        Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)<br />
+        Data Surat Pernyataan<br />
+    </p>
     <?php endif;?>
 </div>
 <?php if($registrant->getFinalized()) :?>
@@ -179,7 +186,7 @@ function kodeUnik()
                 );
                 $('#kode-unik').text(data.kode);
                 $('#btn-gen').text('Berhasil');
-                var placeh = "Contoh : '200"+data.kode+"' tanpa titik!";
+                var placeh = "Contoh : '300"+data.kode+"' tanpa titik!";
                 $('#jml-uang').attr('placeholder', placeh);
                 $('#btn-kwitansi').attr('disabled', false);
             }

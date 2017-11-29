@@ -46,6 +46,7 @@
             Berikut isi pernyataannya:
         </p>
     </div>
+    <?php $program = $registrant->getProgram();?>
     <div class="row">
         <div class="panel panel-warning">
             <div class="panel-heading">
@@ -71,12 +72,14 @@
                     </li>
                     <li class="pernyataan">
                         Saya sanggup untuk membayar 
-                        Dana Seragam (Rp. 1.650.000,-), 
-                        Dana Kesiswaan (Rp. 600.000,-), 
+                        Dana Seragam (Rp. 1.700.000,-), 
+                        Dana Kesiswaan <?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'(Rp. 1.000.000,-)':'(Rp. 800.000,-)';?>
                         Dana Kesehatan (Rp. 250.000,-), 
-                        Dana Buku (Rp. 1.400.000,-) dan
-                        Dana Perlengkapan Asrama (Rp. 940.000,-) 
-                        kepada pihak sekolah dengan total sebesar <strong>Rp. 4.840.000,-</strong>.
+                        Dana Buku (Rp. 1.500.000,-) dan
+                        Dana Perlengkapan Asrama (Rp. 1.000.000,-) 
+                        kepada pihak sekolah dengan total sebesar <strong>
+                            <? echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 5.450.000,-':'Rp. 5.250.000,-';?>
+                        </strong>.
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -101,21 +104,10 @@
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_icost" value="9000000" 
-                                <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if($registrant->getInitialCost() == '9000000'):?>
-                                    checked="true"
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 9.000.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
                             <input type="radio" name="raw_icost" value="10000000" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
                                     <?php if($registrant->getInitialCost() == '10000000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 10.000.000,-
@@ -126,7 +118,7 @@
                             <input type="radio" name="raw_icost" value="11000000" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
                                     <?php if($registrant->getInitialCost() == '11000000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 11.000.000,-
@@ -134,15 +126,26 @@
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_icost" value="-999" 
+                            <input type="radio" name="raw_icost" value="12000000" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if(!($registrant->getInitialCost() == '11000000'||
-                                            $registrant->getInitialCost() == '9000000'||
-                                            $registrant->getInitialCost() == '10000000')):?>
-                                    checked="true"
+                                    <?php if($registrant->getInitialCost() == '12000000'):?>
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 11 Juta Rupiah
+                            Rp. 12.000.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="raw_icost" value="-999" 
+                                <?php if(!empty($registrant->getInitialCost())):?>
+                                    <?php if(!($registrant->getInitialCost() == '12000000'||
+                                            $registrant->getInitialCost() == '11000000'||
+                                            $registrant->getInitialCost() == '10000000')):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Lebih dari 12 Juta Rupiah
                         </label>
                     </div>
                 </div>
@@ -161,7 +164,7 @@
                             <input type="radio" name="raw_scost" value="1000000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
                                     <?php if($registrant->getSubscriptionCost() == '1000000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 1.000.000,-
@@ -172,7 +175,7 @@
                             <input type="radio" name="raw_scost" value="1100000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
                                     <?php if($registrant->getSubscriptionCost() == '1100000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 1.100.000,-
@@ -183,7 +186,7 @@
                             <input type="radio" name="raw_scost" value="1200000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
                                     <?php if($registrant->getSubscriptionCost() == '1200000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 1.200.000,-
@@ -196,7 +199,7 @@
                                     <?php if(!($registrant->getSubscriptionCost() == '1000000'||
                                             $registrant->getSubscriptionCost() == '1100000' ||
                                             $registrant->getSubscriptionCost() == '1200000')):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Lebih dari 1,2 Juta Rupiah
@@ -219,7 +222,7 @@
                             <input type="radio" name="raw_lcost" value="500000" 
                                 <?php if(!empty($registrant->getLandDonation())):?>
                                     <?php if($registrant->getLandDonation() == '500000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 500.000,-
@@ -230,7 +233,7 @@
                             <input type="radio" name="raw_lcost" value="1000000" 
                                 <?php if(!empty($registrant->getLandDonation())):?>
                                     <?php if($registrant->getLandDonation() == '1000000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 1.000.000,-
@@ -241,7 +244,7 @@
                             <input type="radio" name="raw_lcost" value="1500000" 
                                 <?php if(!empty($registrant->getLandDonation())):?>
                                     <?php if($registrant->getLandDonation() == '1500000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 1.500.000,-
@@ -252,7 +255,7 @@
                             <input type="radio" name="raw_lcost" value="2000000" 
                                 <?php if(!empty($registrant->getLandDonation())):?>
                                     <?php if($registrant->getLandDonation() == '2000000'):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Rp. 2.000.000,-
@@ -266,7 +269,7 @@
                                             $registrant->getLandDonation() == '1000000' ||
                                             $registrant->getLandDonation() == '2000000' ||
                                             $registrant->getLandDonation() == '1500000')):?>
-                                    checked="true"
+                                    checked
                                     <?php endif;?>
                                 <?php endif;?>>
                             Lebih dari 2 Juta Rupiah
@@ -312,6 +315,80 @@
                     </select>
                 </div>
             </div>
+            <hr/>
+            <div class="form-group">
+                <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jurusan</strong></label>
+            </div>
+            <div class="form-group ">
+                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di jurusan yang lain jika anda tidak lolos 
+                        untuk jurusan pilihan anda namun nilai anda bisa bersaing di jurusan yang lain?</p></label>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_ips" value="false" 
+                                <?php if(!empty($registrant->getRelToIPS())):?>
+                                    <?php if($registrant->getRelToIPS() ==='false'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php else :?>
+                                    checked
+                                <?php endif;?>>
+                            Saya tidak bersedia
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_ips" value="true" 
+                                <?php if(!empty($registrant->getRelToIPS())):?>
+                                    <?php if($registrant->getRelToIPS() ==='true'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Saya bersedia
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <?php if($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz'): ?>
+            <div class="form-group">
+                <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Program</strong></label>
+            </div>
+            <div class="form-group ">
+                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di 
+                    program reguler jika tidak lolos seleksi program Tahfidz?</p></label>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_regular" value="false" 
+                                <?php if(!empty($registrant->getRelToRegular())):?>
+                                    <?php if($registrant->getRelToRegular() ==='false'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php else :?>
+                                    checked
+                                <?php endif;?>>
+                            Saya tidak bersedia
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_regular" value="true" 
+                                <?php if(!empty($registrant->getRelToRegular())):?>
+                                    <?php if($registrant->getRelToRegular() ==='true'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Saya bersedia
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-4">
                     <button type="submit" class="btn btn-sm btn-primary">OK</button>
