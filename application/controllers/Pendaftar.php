@@ -147,6 +147,22 @@ class Pendaftar extends MY_Controller {
         $this->CustomView('registrant/forms', $data);
     }
     
+    public function guardian($id){
+        $this->blockUnloggedOne($id);
+        $this->blockNonPayers($this->session->registrant);
+        $reg_data = $this->reg->getRegistrantData($this->session->registrant);
+        $data = [
+            'title' => 'Wali',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
+            'reg_data' => $reg_data,
+            'parent' => $this->parents($id, 'guardian'),
+            'nav_pos' => 'wali',
+        ];
+        $this->CustomView('registrant/guardian', $data);
+    }
+    
     private function parents($id, $type){
         $key_arr = [
             'father' => 'ayah',
@@ -178,6 +194,53 @@ class Pendaftar extends MY_Controller {
                 'detail' => $data,
                 'inputerror' => $res['errorred'],
             ]);
+        }
+    }
+    
+    public function do_edit_guardian($id){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $types = ['guardian'];
+        $res = false;
+        foreach($types as $type){
+            $parent_data = [
+                'type' => $type,
+                'name' => $data[$type.'_name'],
+                'status' => $data[$type.'_status'], 
+                'birth_place' => $data[$type.'_birth_place'],
+                'birth_date'=> $data[$type.'_birth_date'],
+                'street' => $data[$type.'_street'],
+                'RT' => $data[$type.'_RT'],
+                'RW' => $data[$type.'_RW'],
+                'village' => $data[$type.'_village'],
+                'district' => $data[$type.'_district'],
+                'city' => $data[$type.'_city'],
+                'province' => $data[$type.'_province'],
+                'postal_code' => $data[$type.'_postal_code'],
+                'contact' => $data[$type.'_contact'],
+                'relation' => $data[$type.'_relation'],
+                'nationality' => $data[$type.'_nationality'],
+                'religion' => $data[$type.'_religion'],
+                'education_level' => $data[$type.'_education_level'],
+                'job' => $data[$type.'_job'],
+                'position' => $data[$type.'_position'],
+                'company' => $data[$type.'_company'],
+                'income' => $data[$type.'_income'],
+                'burden_count' => $data[$type.'_burden_count']
+            ];
+            $val[$type] = $this->parent->ajaxValidation($parent_data, $type);
+            if($val[$type]['valid']){
+               $res = $this->parent->updateData($id, $parent_data, $type);
+            } else {
+                $res = false;
+            }
+            if($res){
+                $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+                redirect($id.'/rapor');
+            } else {
+                $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan, silahkan diulangi lagi..."]);
+                redirect($id.'/wali');
+            }
         }
     }
     

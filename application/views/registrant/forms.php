@@ -593,15 +593,19 @@
                 <h4 class="text-center">
                     <span class="glyphicon glyphicon-ok-sign"></span>
                     Data telah berhasil disimpan. <br/>
-                    Silahkan melanjutkan untuk mengisi data nilai dengan menekan tombol lanjut.
+                    Silahkan melanjutkan untuk mengisi data nilai dengan menekan tombol <b>lanjut</b>.<br />
+                    Atau mengisi data wali (jika perlu) dengan menekan tombol <b>Isi Wali</b>.
                 </h4>
             </div>
             <div class="modal-footer" >
                 <div class="center-block">
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-8 col-md-offset-2">
                         <div class="btn-group" role="group">
                             <a class="btn btn-success" href="<?=  base_url().$id.'/rapor'?>">
                                 Lanjut
+                            </a>
+                            <a class="btn btn-warning" href="<?=  base_url().$id.'/wali'?>">
+                                Isi Wali
                             </a>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                         </div>
