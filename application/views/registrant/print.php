@@ -171,12 +171,12 @@ img.foto-profil {
                         <div class="row">
                             <div class="col-sm-12">
                                 <p style="text-align: center;">
-                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:2017/2018 telah berhasil. 
+                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:2018/2019 telah berhasil.<br />
                                     Data yang ter-input adalah sebagai berikut :
                                 </p>
                                 <table class="table table-responsive table-condensed table-borderless">
                                     <tr>
-                                        <td rowspan="4">
+                                        <td rowspan="5">
                                             <img class="foto-profil" src="<?=FCPATH.'data/foto/'.$registrant->getId().'.png';?>" alt="Tempelkan Fto 3x4CM">
                                         </td>
                                         <td>Nama </td>
@@ -202,6 +202,11 @@ img.foto-profil {
                                         <td>&nbsp;:&nbsp;</td>
                                         <td><?php echo $registrant->getPreviousSchool();?></td>
                                     </tr>
+                                    <tr>
+                                        <td>Jurusan </td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td><?php echo $registrant->getProgram();?></td>
+                                    </tr>
                                 </table>
                                 <p style="text-align: center;">
                                     Silahkan dibawa saat tes tertulis sebagai kartu peserta tes dan bukti pendaftaran.
@@ -216,7 +221,6 @@ img.foto-profil {
             </div>
         </div>
     </div>
-</div>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
 </body>
