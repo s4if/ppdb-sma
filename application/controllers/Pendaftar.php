@@ -300,11 +300,11 @@ class Pendaftar extends MY_Controller {
             $reg_rapor = $this->rapor->create();
         }
         $nameset = [
+            'ind' => 'Bahasa Indonesia', 
+            'ing' => 'Bahasa Inggris',
             'mtk' => 'Matematika', 
             'ipa' => 'IPA', 
             'ips' => 'IPS', 
-            'ind' => 'Bahasa Indonesia', 
-            'ing' => 'Bahasa Inggris'
             ];
         $data = [
             'title' => 'Formulir Rapor',

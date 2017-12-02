@@ -265,7 +265,7 @@ body {
                                     <input type="text" required name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
+                                    <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control typeahead" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" required name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Wajib)" pattern="^([0-9]{1,20}$)" title="Hanya angka!"
@@ -401,6 +401,7 @@ body {
 </script>
 <!-- Bootstrap Core JS -->
 <script src="<?=  base_url() ?>assets/js/bootstrap.min.js"></script>
+<script src="<?=  base_url() ?>assets/js/bootstrap3-typeahead.min.js"></script>
 <script type="text/javascript">
 $(function() {
 
@@ -435,6 +436,19 @@ $(function() {
     });
 });
 
+$(document).ready(function(){
+    var sekolah = [
+        <?php foreach ($data as $reg): ?>
+        "<?=  strtoupper($reg->getPreviousSchool());?>",
+        <?php endforeach;?>
+        "SMPIT IHSANUL FIKRI MUNGKID"
+    ];
+    $('input.typeahead').typeahead({
+
+        source: sekolah
+
+    });
+});
 </script>
    
 <!-- </body>

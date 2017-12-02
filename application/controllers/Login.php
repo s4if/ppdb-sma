@@ -41,6 +41,7 @@ class Login extends MY_Controller {
     
     // ================= LOGIN & REGISTER ===========================
     public function index(){
+        $reg_obj = $this->reg->getData();
         $builder = new Gregwar\Captcha\CaptchaBuilder();
         $builder->setDistortion(false);
         $builder->build();
@@ -49,7 +50,11 @@ class Login extends MY_Controller {
         if(empty($this->session->flashdata('data')) === false){
             $registrant = $this->session->flashdata('data');
         }
-        $this->load->view('login/index', ['builder' => $builder, 'registrant' => $registrant]);
+        $this->load->view('login/index', [
+            'builder' => $builder, 
+            'registrant' => $registrant,
+            'data' => $reg_obj,
+        ]);
     }
     
     public function uname_avaible(){

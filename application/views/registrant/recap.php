@@ -267,7 +267,7 @@
                 <td> Rp. <?php echo number_format($parent->getIncome(), 0, ',', '.');?>,- </td>
             </tr>
             <tr>
-                <td> Jumlah Tanggunan </td>
+                <td> Jumlah Tanggungan </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo $parent->getBurdenCount();?> </td>
             </tr>

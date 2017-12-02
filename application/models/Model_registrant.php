@@ -198,9 +198,9 @@ class Model_registrant extends CI_Model {
         if (!empty($data['reg_id'])) : $this->registrant->setRegId($data['reg_id']); endif;
         if (!empty($data['password'])) : $this->registrant->setPassword(password_hash($data['password'], PASSWORD_BCRYPT)); endif;
         if (!empty($data['username'])) : $this->registrant->setUsername($data['username']); endif;
-        if (!empty($data['name'])) : $this->registrant->setName($data['name']); endif;
+        if (!empty($data['name'])) : $this->registrant->setName(strtoupper($data['name'])); endif;
         if (!empty($data['gender'])) : $this->registrant->setGender($data['gender']); endif;
-        if (!empty($data['prev_school'])) : $this->registrant->setPreviousSchool($data['prev_school']); endif;
+        if (!empty($data['prev_school'])) : $this->registrant->setPreviousSchool(strtoupper($data['prev_school'])); endif;
         if (!empty($data['nisn'])) : $this->registrant->setNisn($data['nisn']); endif;
         if (!empty($data['cp'])) : $this->registrant->setCp($data['cp']); endif;
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
