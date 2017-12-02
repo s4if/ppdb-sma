@@ -447,7 +447,7 @@ class RegistrantEntity
     private function setRegId()
     {
         $prefix = ($this->gender == 'L') ? 'I' : 'A';
-        $prefix2 = ($this->program == 'tahfidz') ? 'T' : 'R';
+        $prefix2 = ($this->program == 'IPA Tahfidz' || $this->program == 'IPS Tahfidz') ? 'T' : 'R';
         $this->regId = $prefix.$prefix2.$this->kode;
     }
 
