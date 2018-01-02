@@ -200,7 +200,7 @@ class RegistrantEntity
      */
     protected $deleted;
 
-    public function getArray($vars = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
+    public function getArray($vars = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'rapor', 'registrationTime', 'registrantData',
                 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', ])
     {
         $arrData = [];

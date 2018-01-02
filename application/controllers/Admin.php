@@ -161,6 +161,84 @@ class Admin extends MY_Controller {
         echo json_encode(['data' => $data]);
     }
     
+    public function nilai($gender = null){
+        $this->blockNonAdmin();
+        $this->CustomView('admin/nilai_registrant', [
+            'title' => 'Lihat Pendaftar ',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'nav_pos' => 'nilaiAdmin',
+            'gender' => $gender,
+        ]);
+    }
+    
+    public function nilai_ajax($gender = null){
+        $this->blockNonAdmin();
+        $registrant_data = (is_null($gender))?$this->reg->getArrayData():$this->reg->getArrayData($gender);
+        $data = [];
+        $no = 1;
+        $nameset = [
+            'ind', 
+            'ing',
+            'mtk', 
+            'ipa', 
+            'ips', 
+        ];
+        foreach ($registrant_data as $registrant){
+            $row = [];
+            $row[] = $no;
+            $no++;
+            $row[] = $registrant['kode'];
+            $row[] = $registrant['name'];
+            $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
+            $row[] = $registrant['previousSchool'];
+            $row[] = $registrant['program'];
+            $row[] = '';
+            $rapor = $registrant['rapor'];
+            for($i = 1; $i <= 4;$i++){
+                foreach ($nameset as $name){
+                    if(is_null($rapor)){
+                        $rapor = new RaporEntity();
+                    }
+                    $row[] = $rapor->get($name, 'kkm', $i);
+                    $row[] = $rapor->get($name, 'nilai', $i);
+                }
+            }
+            $data [] = $row;
+        }
+        echo json_encode(['data' => $data]);
+    }
+    
+    public function edit_rapor($id){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $registrant = $this->reg->getData(null, $id);
+        $res = false;
+        if(!is_null($registrant)){
+            $res = $this->rapor->updateData($data, $registrant);
+        } else {
+            $res = false;
+        }
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/admin/nilai');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan, silahkan diulangi lagi..."]);
+            redirect($id.'/admin/nilai');
+        }
+    }
+    
+    public function edit_nilai($gender = null){
+        $this->blockNonAdmin();
+        $this->CustomView('admin/nilai_registrant', [
+            'title' => 'Lihat Pendaftar ',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'nav_pos' => 'nilaiAdmin',
+            'gender' => $gender,
+        ]);
+    }
+    
     public function registrant($id){
         $this->blockNonAdmin();
         $reg_data = $this->reg->getData(null, $id);
@@ -347,6 +425,16 @@ class Admin extends MY_Controller {
         $date = new DateTime('now');
         $strProgramme = strtoupper($study) . ' ' .  ucfirst($programme);
         $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
+            $gender, $strProgramme);
+    }
+    
+    public function export_rapor($gender = 'L', $programme = 'tahfidz', $study= 'IPA')
+    {
+        $this->blockNonAdmin();
+        $strGender = ('L' == strtoupper($gender))?'Ikhwan':'Akhwat';
+        $date = new DateTime('now');
+        $strProgramme = strtoupper($study) . ' ' .  ucfirst($programme);
+        $this->reg->exportRapor('Backup Rapor PPDB '.  ucfirst(strtolower($strGender)).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
             $gender, $strProgramme);
     }
     

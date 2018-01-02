@@ -191,11 +191,8 @@ img.foto-profil {
                                     <tr>
                                         <td>No. Pendaftaran </td>
                                         <td>&nbsp;:&nbsp;</td>
-                                        <td><?php 
-                                        $prefix = ($registrant->getGender() == 'L') ? 'I' : 'A';
-                                        $prefix2 = ($registrant->getProgram() == 'tahfidz') ? 'T' : 'R';
-                                        $id = $prefix.$prefix2.$registrant->getKode();
-                                        echo $id;?></td>
+                                        <td><?php
+                                        echo $registrant->getRegId();?></td>
                                     </tr>
                                     <tr>
                                         <td>Asal Sekolah </td>

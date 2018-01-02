@@ -87,7 +87,7 @@ class Model_registrant extends CI_Model {
     public function getArrayData($gender = NULL, $vars = [], $completed = false){
         $data = $this->getData($gender, null, $completed);
         if (empty($vars)){
-            $vars = ['id','regId', 'kode', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'finalized'];
+            $vars = ['id','regId', 'kode', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'rapor', 'finalized'];
         }
         $arrData = [];
         foreach ($data as $registrant){
@@ -774,6 +774,111 @@ class Model_registrant extends CI_Model {
         }
         // End Mbatik Isi
         
+        $this->excel->addSheet($worksheet);
+    }
+    
+    public function exportRapor($file_name, $gender, $programme, $test = false){
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+        ini_set('max_execution_time', 60);
+        ini_set('memory_limit', '256M');
+        
+        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
+        $cacheSettings = array( 'memoryCacheSize ' => '256MB');
+        PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+
+        
+        $this->excel = new PHPExcel();
+        $this->mbatikRapor($this->getDataByJurusan($programme, $gender), 'Data');
+        
+        $this->excel->removeSheetByIndex(0);
+        if($test){
+            return TRUE;
+        } else {
+            header('Content-Type: application/vnd.ms-excel');
+            header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
+            header('Cache-Control: max-age=0');
+            $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+            $objWriter->save('php://output');
+            exit;
+        }
+    }
+    
+    private function mbatikRapor($data, $title){
+        $worksheet = new PHPExcel_Worksheet();
+        $worksheet->setTitle($title);
+        $worksheet->mergeCells('A3:A4');
+        $worksheet->setCellValue('A3', 'No.');
+        $worksheet->mergeCells('B3:B4');
+        $worksheet->setCellValue('B3', 'Kode Unik');
+        $worksheet->mergeCells('C3:C4');
+        $worksheet->setCellValue('C3', 'Nama');
+        $worksheet->mergeCells('D3:D4');
+        $worksheet->setCellValue('D3', 'I/A');
+        $worksheet->mergeCells('E3:E4');
+        $worksheet->setCellValue('E3', 'Sekolah Asal');
+        $worksheet->mergeCells('F3:F4');
+        $worksheet->setCellValue('F3', 'Jurusan');
+        
+        $pointer = 6;
+        for ($i = 1; $i <= 4; $i++){
+            $worksheet->mergeCellsByColumnAndRow($pointer, 3, $pointer+1, 3);
+            $worksheet->setCellValueByColumnAndRow($pointer, 3, "B. Indo S".$i);
+            $worksheet->setCellValueByColumnAndRow($pointer, 4, "KKM");
+            $worksheet->setCellValueByColumnAndRow($pointer+1, 4, "Nilai");
+            $pointer=$pointer+2;
+            $worksheet->mergeCellsByColumnAndRow($pointer, 3, $pointer+1, 3);
+            $worksheet->setCellValueByColumnAndRow($pointer, 3, "B. Inggris S".$i);
+            $worksheet->setCellValueByColumnAndRow($pointer, 4, "KKM");
+            $worksheet->setCellValueByColumnAndRow($pointer+1, 4, "Nilai");
+            $pointer=$pointer+2;
+            $worksheet->mergeCellsByColumnAndRow($pointer, 3, $pointer+1, 3);
+            $worksheet->setCellValueByColumnAndRow($pointer, 3, "Matematika".$i);
+            $worksheet->setCellValueByColumnAndRow($pointer, 4, "KKM");
+            $worksheet->setCellValueByColumnAndRow($pointer+1, 4, "Nilai");
+            $pointer=$pointer+2;
+            $worksheet->mergeCellsByColumnAndRow($pointer, 3, $pointer+1, 3);
+            $worksheet->setCellValueByColumnAndRow($pointer, 3, "IPA S".$i);
+            $worksheet->setCellValueByColumnAndRow($pointer, 4, "KKM");
+            $worksheet->setCellValueByColumnAndRow($pointer+1, 4, "Nilai");
+            $pointer=$pointer+2;
+            $worksheet->mergeCellsByColumnAndRow($pointer, 3, $pointer+1, 3);
+            $worksheet->setCellValueByColumnAndRow($pointer, 3, "IPS S".$i);
+            $worksheet->setCellValueByColumnAndRow($pointer, 4, "KKM");
+            $worksheet->setCellValueByColumnAndRow($pointer+1, 4, "Nilai");
+            $pointer=$pointer+2;
+        }
+        
+        // Start Mbatik Isi
+        $nameset = [
+            'ind', 
+            'ing',
+            'mtk', 
+            'ipa', 
+            'ips', 
+        ];
+        $row = 5;
+        $pointer = 6;
+        $no = 1;
+        foreach ($data as $registrant) {
+            $worksheet->SetCellValue('A'.$row, $no);
+            $worksheet->SetCellValue('B'.$row, $registrant->getRegId());
+            $worksheet->SetCellValue('C'.$row, $registrant->getName());
+            $worksheet->SetCellValue('D'.$row, ($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat');
+            $worksheet->SetCellValue('E'.$row, $registrant->getPreviousSchool());
+            $worksheet->SetCellValue('F'.$row, $registrant->getProgram());
+            $rapor = $registrant->getRapor();
+            for($i = 1; $i <= 4;$i++){
+                foreach ($nameset as $name){
+                    if(is_null($rapor)){
+                        $rapor = new RaporEntity();
+                    }
+                    $worksheet->setCellValueByColumnAndRow($pointer, $row, $rapor->get($name, 'kkm', $i));
+                    $worksheet->setCellValueByColumnAndRow($pointer+1, $row, $rapor->get($name, 'nilai', $i));
+                    $pointer=$pointer+2;
+                }
+            }
+        }
         $this->excel->addSheet($worksheet);
     }
     
