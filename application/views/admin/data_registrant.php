@@ -78,8 +78,8 @@
                   <li><a href="<?=base_url()?>admin/export_data/P/Reguler/ipa">Akhwat IPA Reguler</a></li>
                   <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz/ipa">Akhwat IPA Tahfidz</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a href="<?=base_url()?>admin/export_data/P/Reguler">Akhwat Reguler</a></li>
-                  <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz">Akhwat Tahfidz</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/P/Reguler/ips">Akhwat Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_data/P/Tahfidz/ips">Akhwat Tahfidz</a></li>
                 </ul>
             </div>
         </div>

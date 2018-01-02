@@ -27,8 +27,8 @@
     }
 </style>
 <h1 class="page-header">
-    Pendaftar
-    <small>Isi Nilai Rapor</small>
+    Edit Rapor
+    <small>Atas Nama : <?php echo $reg->getName();?></small>
 </h1>
 <ol class="breadcrumb">
     <li>
@@ -41,7 +41,7 @@
 <div class="container-fluid">
     <h2></h2>
     <div class="row">
-    <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/pendaftar/edit_rapor/<?=$id?>">
+    <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/admin/edit_rapor/<?=$id?>">
         <hr/>
         <?php for($i = 1; $i <=4; $i++): ?>
         <div class="form-group">
@@ -51,11 +51,11 @@
         <div class="form-group">
             <label class="col-sm-3 control-label"> <?=$mapel_name;?> (KKM) :</label>
             <div class="col-sm-3">
-                <input type="number" required name="kkm_<?=$kode;?>_<?=$i;?>" class="form-control" placeholder="kkm" value="">
+                <input type="number" required name="kkm_<?=$kode;?>_<?=$i;?>" class="form-control" placeholder="kkm" value="<?php echo $rapor->get($kode, 'kkm', $i);?>">
             </div>
             <div class="col-sm-2 control-label"><b>Nilai :</b></div>
             <div class="col-sm-3">
-                <input type="number" required name="nilai_<?=$kode;?>_<?=$i;?>" class="form-control" placeholder="nilai" value="">
+                <input type="number" required name="nilai_<?=$kode;?>_<?=$i;?>" class="form-control" placeholder="nilai" value="<?php echo $rapor->get($kode, 'nilai', $i);?>">
             </div>
         </div>
         <?php endforeach;?>
@@ -81,11 +81,11 @@
             </div>
             <div class="modal-body">
                 <h3>Keterangan yang ditambahkan di pengisian raport</h3>
-                <li>
-                    <ul>Yang diisi kedalam form ini adalah nilai Pengetahuan</ul>
-                    <ul>Untuk nilai berskala 4 langsung di konversi ke skala 100 dengan cara dikalikan 25</ul>
-                    <ul>Jika dalam raport tidak dituliskan KKM maka KKM diisikan 67 (Sesuai Standar Dinas)</ul>
-                </li>
+                <ul>
+                    <li>Yang diisi kedalam form ini adalah nilai Pengetahuan</li>
+                    <li>Untuk nilai berskala 4 langsung di konversi ke skala 100 dengan cara dikalikan 25</li>
+                    <li>Jika dalam raport tidak dituliskan KKM maka KKM diisikan 67 (Sesuai Standar Dinas)</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

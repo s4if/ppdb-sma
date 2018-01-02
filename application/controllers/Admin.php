@@ -37,6 +37,7 @@ class Admin extends MY_Controller {
         $this->load->model('Model_registrant','reg');
         $this->load->model('Model_parent','parent');
         $this->load->model('Model_admin','admin');
+        $this->load->model('Model_rapor','rapor');
     }
     
     public function index(){
@@ -193,7 +194,7 @@ class Admin extends MY_Controller {
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
             $row[] = $registrant['previousSchool'];
             $row[] = $registrant['program'];
-            $row[] = '';
+            $row[] = '<a class="btn btn-sm btn-warning" href="'. base_url().'admin/lihat_rapor/'.$registrant['id'].'">Edit</a>';
             $rapor = $registrant['rapor'];
             for($i = 1; $i <= 4;$i++){
                 foreach ($nameset as $name){
@@ -221,22 +222,38 @@ class Admin extends MY_Controller {
         }
         if($res){
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
-            redirect($id.'/admin/nilai');
+            redirect('/admin/nilai');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan, silahkan diulangi lagi..."]);
-            redirect($id.'/admin/nilai');
+            redirect('/admin/nilai');
         }
     }
     
-    public function edit_nilai($gender = null){
+    public function lihat_rapor($id){
         $this->blockNonAdmin();
-        $this->CustomView('admin/nilai_registrant', [
-            'title' => 'Lihat Pendaftar ',
+        $reg = $this->reg->getData(null, $id);
+        $reg_rapor = $reg->getRapor();
+        if(is_null($reg_rapor)){
+            $reg_rapor = $this->rapor->create();
+        }
+        $nameset = [
+            'ind' => 'Bahasa Indonesia', 
+            'ing' => 'Bahasa Inggris',
+            'mtk' => 'Matematika', 
+            'ipa' => 'IPA', 
+            'ips' => 'IPS', 
+            ];
+        $data = [
+            'title' => 'Formulir Rapor',
+            'reg' => $reg,
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
-            'nav_pos' => 'nilaiAdmin',
-            'gender' => $gender,
-        ]);
+            'nav_pos' => 'registrantRapor',
+            'id' => $id,
+            'nameset' => $nameset,
+            'rapor' => $reg_rapor,
+        ];
+        $this->CustomView('admin/edit_nilai_registrant', $data);
     }
     
     public function registrant($id){
