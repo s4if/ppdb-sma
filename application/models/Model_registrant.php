@@ -858,9 +858,9 @@ class Model_registrant extends CI_Model {
             'ips', 
         ];
         $row = 5;
-        $pointer = 6;
         $no = 1;
         foreach ($data as $registrant) {
+            $pointer = 6;
             $worksheet->SetCellValue('A'.$row, $no);
             $worksheet->SetCellValue('B'.$row, $registrant->getRegId());
             $worksheet->SetCellValue('C'.$row, $registrant->getName());
@@ -878,6 +878,7 @@ class Model_registrant extends CI_Model {
                     $pointer=$pointer+2;
                 }
             }
+            $row++;
         }
         $this->excel->addSheet($worksheet);
     }
