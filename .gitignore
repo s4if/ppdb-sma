@@ -15,3 +15,4 @@
 /application/tests/_ci_phpunit_test/tmp/
 /application/tests/_ci_phpunit_test/patcher/debug.log
 /application/models/Proxies/
+/.phpintel
