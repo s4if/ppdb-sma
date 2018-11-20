@@ -81,11 +81,11 @@
             </div>
             <div class="modal-body">
                 <h3>Keterangan yang ditambahkan di pengisian raport</h3>
-                <li>
-                    <ul>Yang diisi kedalam form ini adalah nilai Pengetahuan</ul>
-                    <ul>Untuk nilai berskala 4 langsung di konversi ke skala 100 dengan cara dikalikan 25</ul>
-                    <ul>Jika dalam raport tidak dituliskan KKM maka KKM diisikan 67 (Sesuai Standar Dinas)</ul>
-                </li>
+                <ul>
+                    <li>Yang diisi kedalam form ini adalah nilai Pengetahuan</li>
+                    <li>Untuk nilai berskala 4 langsung di konversi ke skala 100 dengan cara dikalikan 25</li>
+                    <li>Jika dalam raport tidak dituliskan KKM maka KKM diisikan 67 (Sesuai Standar Dinas)</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
