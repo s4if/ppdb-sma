@@ -277,6 +277,8 @@ class Model_registrant extends CI_Model {
         if (!empty($data['registrant'])) : $this->registrantData->setRegistrant($data['registrant']); endif; //bentuk objek jadi
         if (!empty($data['birth_place'])) : $this->registrantData->setBirthPlace($data['birth_place']); endif;
         if (!empty($data['birth_date'])) : $this->registrantData->setBirthDate(new DateTime($data['birth_date'])); endif;
+        if (!empty($data['child_order'])) : $this->registrantData->setChildOrder($data['child_order']); endif;
+        if (!empty($data['siblings_count'])) : $this->registrantData->setSiblingsCount($data['siblings_count']); endif;
         if (!empty($data['street'])) : $this->registrantData->setStreet($data['street']); endif;
         if (!empty($data['RT'])) : $this->registrantData->setRT($data['RT']); endif;
         if (!empty($data['RW'])) : $this->registrantData->setRW($data['RW']); endif;

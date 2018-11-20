@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -32,7 +32,7 @@
 </h1>
 <ol class="breadcrumb">
     <li>
-        <a href="<?=base_url().'/'.$id;?>/beranda/">Beranda</a>
+        <a href="<?=base_url() . '/' . $id;?>/beranda/">Beranda</a>
     </li>
     <li class="active">
         Formulir
@@ -82,11 +82,11 @@
         </tr>
         <tr>
             <td colspan="3">
-                <a class="btn btn-sm btn-primary <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#ModalImport">
+                <a class="btn btn-sm btn-primary <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#ModalImport">
                     <span class="glyphicon glyphicon-upload"></span>
                     Upload Foto
                 </a>
-                <a class="btn btn-sm btn-info <?php echo ($registrant->getFinalized())?'disabled':'';?>" data-toggle="modal" data-target="#editProfil" >
+                <a class="btn btn-sm btn-info <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#editProfil" >
                     <span class="glyphicon glyphicon-edit"></span>
                     Edit Profil
                 </a>
@@ -112,7 +112,7 @@
             <label class="col-sm-4 control-label">Tanggal Lahir<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <input class="form-control datepicker" type="text" required
-                       data-date-format="dd-mm-yyyy" name="birth_date" value="<?php echo (is_null($reg_data->getBirthDate()))?'':$reg_data->getBirthDate()->format('d-m-Y');?>">
+                       data-date-format="dd-mm-yyyy" name="birth_date" value="<?php echo (is_null($reg_data->getBirthDate())) ? '' : $reg_data->getBirthDate()->format('d-m-Y'); ?>">
             </div>
         </div>
         <div class="form-group">
@@ -167,6 +167,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-4 control-label">Anak ke<strong class="red">*</strong> :</label>
+            <div class="col-sm-4">
+                <input type="number" required name="child_order" class="form-control" placeholder="Masukkan anak keberapa" value="<?=$reg_data->getChildOrder();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Jumlah Saudara<strong class="red">*</strong> :</label>
+            <div class="col-sm-4">
+                <input type="number" required name="siblings_count" class="form-control" placeholder="Masukkan jumlah saudara" value="<?=$reg_data->getSiblingsCount();?>">
+            </div>
+        </div>
+        <div class="form-group">
             <hr/>
         </div>
         <!-- TODO: Family Condition pake radio -->
@@ -175,12 +187,12 @@
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="family_condition" value="lengkap" 
-                            <?php if(!empty($reg_data->getFamilyCondition())):?>
-                                <?php if($reg_data->getFamilyCondition() ==='lengkap'):?>
+                        <input type="radio" name="family_condition" value="lengkap"
+                            <?php if (!empty($reg_data->getFamilyCondition())): ?>
+                                <?php if ($reg_data->getFamilyCondition() === 'lengkap'): ?>
                                 checked
                                 <?php endif;?>
-                            <?php else :?>
+                            <?php else: ?>
                                 checked
                             <?php endif;?>>
                         Lengkap
@@ -188,9 +200,9 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="family_condition" value="yatim" 
-                            <?php if(!empty($reg_data->getFamilyCondition())):?>
-                                <?php if($reg_data->getFamilyCondition() ==='yatim'):?>
+                        <input type="radio" name="family_condition" value="yatim"
+                            <?php if (!empty($reg_data->getFamilyCondition())): ?>
+                                <?php if ($reg_data->getFamilyCondition() === 'yatim'): ?>
                                 checked
                                 <?php endif;?>
                             <?php endif;?>>
@@ -199,9 +211,9 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="family_condition" value="piatu" 
-                            <?php if(!empty($reg_data->getFamilyCondition())):?>
-                                <?php if($reg_data->getFamilyCondition() ==='piatu'):?>
+                        <input type="radio" name="family_condition" value="piatu"
+                            <?php if (!empty($reg_data->getFamilyCondition())): ?>
+                                <?php if ($reg_data->getFamilyCondition() === 'piatu'): ?>
                                 checked
                                 <?php endif;?>
                             <?php endif;?>>
@@ -210,9 +222,9 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="family_condition" value="yatim piatu" 
-                            <?php if(!empty($reg_data->getFamilyCondition())):?>
-                                <?php if($reg_data->getFamilyCondition() ==='yatim piatu'):?>
+                        <input type="radio" name="family_condition" value="yatim piatu"
+                            <?php if (!empty($reg_data->getFamilyCondition())): ?>
+                                <?php if ($reg_data->getFamilyCondition() === 'yatim piatu'): ?>
                                 checked
                                 <?php endif;?>
                             <?php endif;?>>
@@ -226,12 +238,12 @@
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="stay_with" value="orang tua" 
-                            <?php if(!empty($reg_data->getStayWith())):?>
-                                <?php if($reg_data->getStayWith() ==='orang tua'):?>
+                        <input type="radio" name="stay_with" value="orang tua"
+                            <?php if (!empty($reg_data->getStayWith())): ?>
+                                <?php if ($reg_data->getStayWith() === 'orang tua'): ?>
                                 checked
                                 <?php endif;?>
-                            <?php else :?>
+                            <?php else: ?>
                                 checked
                             <?php endif;?>>
                         Orang Tua
@@ -239,9 +251,9 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="stay_with" value="kakek nenek" 
-                            <?php if(!empty($reg_data->getStayWith())):?>
-                                <?php if($reg_data->getStayWith() ==='kakek nenek'):?>
+                        <input type="radio" name="stay_with" value="kakek nenek"
+                            <?php if (!empty($reg_data->getStayWith())): ?>
+                                <?php if ($reg_data->getStayWith() === 'kakek nenek'): ?>
                                 checked
                                 <?php endif;?>
                             <?php endif;?>>
@@ -250,9 +262,9 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="stay_with" value="kerabat" 
-                            <?php if(!empty($reg_data->getStayWith())):?>
-                                <?php if($reg_data->getStayWith() ==='kerabat'):?>
+                        <input type="radio" name="stay_with" value="kerabat"
+                            <?php if (!empty($reg_data->getStayWith())): ?>
+                                <?php if ($reg_data->getStayWith() === 'kerabat'): ?>
                                 checked
                                 <?php endif;?>
                             <?php endif;?>>
@@ -261,9 +273,9 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="stay_with" value="lainnya" 
-                            <?php if(!empty($reg_data->getStayWith())):?>
-                                <?php if($reg_data->getStayWith() ==='yatim piatu'):?>
+                        <input type="radio" name="stay_with" value="lainnya"
+                            <?php if (!empty($reg_data->getStayWith())): ?>
+                                <?php if ($reg_data->getStayWith() === 'yatim piatu'): ?>
                                 checked
                                 <?php endif;?>
                             <?php endif;?>>
@@ -280,17 +292,17 @@
             <label class="col-sm-4 control-label ">Kewarganegaraan<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <select class="form-control" name="nationality">
-                    <option value="WNI"  
-                        <?php if(!empty($reg_data->getNationality())):?>
-                            <?php if($reg_data->getNationality()=='WNI'): ?>
+                    <option value="WNI"
+                        <?php if (!empty($reg_data->getNationality())): ?>
+                            <?php if ($reg_data->getNationality() == 'WNI'): ?>
                                     selected
                             <?php endif;?>
                         <?php endif;?>>
                         WNI
                     </option>
-                    <option value="WNA"  
-                        <?php if(!empty($reg_data->getNationality())):?>
-                            <?php if($reg_data->getNationality()=='WNA'): ?>
+                    <option value="WNA"
+                        <?php if (!empty($reg_data->getNationality())): ?>
+                            <?php if ($reg_data->getNationality() == 'WNA'): ?>
                                     selected
                             <?php endif;?>
                         <?php endif;?>>
@@ -318,7 +330,7 @@
             </div>
         </div>
         <!-- TODO: Riwayat Penyakit -->
-        <?php if($reg_data->getHospitalSheetsCount() == 0):?>
+        <?php if ($reg_data->getHospitalSheetsCount() == 0): ?>
         <div class="form-group">
             <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
             <div class="col-sm-4">
@@ -328,32 +340,32 @@
                 <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
-        <?php else :
-            $count = 0;
-            foreach ($reg_data->getHospitalSheets() as $h_s):
-                ?>
-        <div class="form-group">
-            <?php if($count == 0): $count++;?>
-            <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
-            <div class="col-sm-4">
-                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-            <?php else : ?>
-            <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <?php endif; ?>
+        <?php else:
+	$count = 0;
+	foreach ($reg_data->getHospitalSheets() as $h_s):
+	?>
+								        <div class="form-group">
+								            <?php if ($count == 0): $count++;?>
+																            <label class="col-sm-4 control-label">Riwayat Penyakit :</label>
+																            <div class="col-sm-4">
+																                <input type="text" name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s; ?>">
+																            </div>
+																            <div class="col-sm-4">
+																                <a class="add_btn_hs btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+																            </div>
+																            <?php else: ?>
+								            <div class="col-sm-offset-4 col-sm-4">
+								                <input type="text" required name="hospital_sheets[]" class="form-control" placeholder="Riwayat Penyakit" value="<?php echo $h_s; ?>">
+								            </div>
+								            <div class="col-sm-4">
+								                <a class="remove_btn_hs btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+								            </div>
+								            <?php endif;?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
         <!-- TODO: Kelainan Jasmani -->
-        <?php if($reg_data->getPhysicalAbnormalitiesCount() == 0):?>
+        <?php if ($reg_data->getPhysicalAbnormalitiesCount() == 0): ?>
         <div class="form-group insert_hs">
             <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
             <div class="col-sm-4">
@@ -363,31 +375,31 @@
                 <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
-        <?php else :
-            $count = 0;
-            foreach ($reg_data->getPhysicalAbnormalities() as $p_a):
-                ?>
-        <div class="form-group <?php if($count == 0){echo 'insert_hs';}?>">
-            <?php if($count == 0): $count++;?>
-            <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
-            <div class="col-sm-4">
-                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-            <?php else : ?>
-            <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <?php endif; ?>
+        <?php else:
+	$count = 0;
+	foreach ($reg_data->getPhysicalAbnormalities() as $p_a):
+	?>
+								        <div class="form-group <?php if ($count == 0) {echo 'insert_hs';}?>">
+								            <?php if ($count == 0): $count++;?>
+																            <label class="col-sm-4 control-label">Kelainan Jasmani :</label>
+																            <div class="col-sm-4">
+																                <input type="text" name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a; ?>">
+																            </div>
+																            <div class="col-sm-4">
+																                <a class="add_btn_pa btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+																            </div>
+																            <?php else: ?>
+								            <div class="col-sm-offset-4 col-sm-4">
+								                <input type="text" required name="physical_abnormalities[]" class="form-control" placeholder="Kelainan Jasmani" value="<?php echo $p_a; ?>">
+								            </div>
+								            <div class="col-sm-4">
+								                <a class="remove_btn_pa btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+								            </div>
+								            <?php endif;?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
-        <?php if($reg_data->getAchievementsCount() == 0):?>
+        <?php if ($reg_data->getAchievementsCount() == 0): ?>
         <div class="form-group insert_pa">
             <label class="col-sm-4 control-label"> Prestasi yang Diraih :</label>
             <div class="col-sm-4">
@@ -398,69 +410,69 @@
             </div>
         </div>
         <div class="form-group">
-            <p class="help-block text-danger">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan 
+            <p class="help-block text-danger">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
                 tingkat minimal kabupaten/kota</p>
         </div>
-        <?php else :
-            $count = 0;
-            foreach ($reg_data->getAchievements() as $acv):
-                ?>
-        <div class="form-group <?php if($count == 0){echo 'insert_pa';}?>">
-            <?php if($count == 0): $count++;?>
-            <label class="col-sm-4 control-label">Prestasi yang Diraih :</label>
-            <div class="col-sm-4">
-                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-            <?php else : ?>
-            <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" required name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <?php endif; ?>
+        <?php else:
+	$count = 0;
+	foreach ($reg_data->getAchievements() as $acv):
+	?>
+								        <div class="form-group <?php if ($count == 0) {echo 'insert_pa';}?>">
+								            <?php if ($count == 0): $count++;?>
+																            <label class="col-sm-4 control-label">Prestasi yang Diraih :</label>
+																            <div class="col-sm-4">
+																                <input type="text" name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv; ?>">
+																            </div>
+																            <div class="col-sm-4">
+																                <a class="add_btn_acv btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+																            </div>
+																            <?php else: ?>
+								            <div class="col-sm-offset-4 col-sm-4">
+								                <input type="text" required name="achievements[]" class="form-control" placeholder="Prestasi" value="<?php echo $acv; ?>">
+								            </div>
+								            <div class="col-sm-4">
+								                <a class="remove_btn_acv btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+								            </div>
+								            <?php endif;?>
         </div>
         <?php endforeach;?>
         <div class="form-group">
-            <p class="help-block">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan 
+            <p class="help-block">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
                 tingkat minimal kabupaten/kota</p>
         </div>
         <?php endif;?>
         <!-- TODO: Hobi -->
-        <?php if($reg_data->getHobbiesCount() == 0): //Keep If & Else div sinkron!!!?>
-        <div class="form-group insert_acv">
-            <label class="col-sm-4 control-label">Hobi :</label>
-            <div class="col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-        </div>
-        <?php else : // ini else-nya 
-            $count = 0;
-            foreach ($reg_data->getHobbies() as $hobby):
-                ?>
-        <div class="form-group <?php if($count == 0){ echo 'insert_acv';}?>">
-            <?php if($count == 0): $count++;?>
-            <label class="col-sm-4 control-label">Hobi :</label>
-            <div class="col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-            <?php else : ?>
-            <div class="col-sm-offset-4 col-sm-4">
-                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby;?>">
-            </div>
-            <div class="col-sm-4">
-                <a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
-            </div>
-            <?php endif; ?>
+        <?php if ($reg_data->getHobbiesCount() == 0): //Keep If & Else div sinkron!!!?>
+								        <div class="form-group insert_acv">
+								            <label class="col-sm-4 control-label">Hobi :</label>
+								            <div class="col-sm-4">
+								                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="">
+								            </div>
+								            <div class="col-sm-4">
+								                <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+								            </div>
+								        </div>
+								        <?php else: // ini else-nya
+	$count = 0;
+	foreach ($reg_data->getHobbies() as $hobby):
+	?>
+								        <div class="form-group <?php if ($count == 0) {echo 'insert_acv';}?>">
+								            <?php if ($count == 0): $count++;?>
+																            <label class="col-sm-4 control-label">Hobi :</label>
+																            <div class="col-sm-4">
+																                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby; ?>">
+																            </div>
+																            <div class="col-sm-4">
+																                <a class="add_btn_hby btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+																            </div>
+																            <?php else: ?>
+								            <div class="col-sm-offset-4 col-sm-4">
+								                <input type="text" name="hobbies[]" class="form-control" placeholder="Masukkan Hobi" value="<?php echo $hobby; ?>">
+								            </div>
+								            <div class="col-sm-4">
+								                <a class="remove_btn_hby btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>
+								            </div>
+								            <?php endif;?>
         </div>
         <?php endforeach;?>
         <?php endif;?>
@@ -471,7 +483,7 @@
                 <button type="button" class="btn btn-primary btn-save" onclick="save()"><span class="glyphicon glyphicon-floppy-save">&nbsp;Simpan</button>
             </div>
         </div>
-    </form>    
+    </form>
 </div>
 <div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editProfil" aria-hidden="true">
     <div class="modal-dialog">
@@ -511,32 +523,32 @@
             <div class="col-sm-8">
                 <select class="form-control" name="program">
                     <option value="IPA Reguler"
-                            <?php if(array_key_exists('program', $registrant)):?>
-                                <?php if($registrant['program']=='IPA Reguler'): ?>
+                            <?php if (array_key_exists('program', $registrant)): ?>
+                                <?php if ($registrant['program'] == 'IPA Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         IPA Reguler
                     </option>
                     <option value="IPS Reguler"
-                            <?php if(array_key_exists('program', $registrant)):?>
-                                <?php if($registrant['program']=='IPS Reguler'): ?>
+                            <?php if (array_key_exists('program', $registrant)): ?>
+                                <?php if ($registrant['program'] == 'IPS Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         IPS Reguler
                     </option>
                     <option value="IPA Tahfidz"
-                            <?php if(array_key_exists('program', $registrant)):?>
-                                <?php if($registrant['program']=='IPA Tahfidz'): ?>
+                            <?php if (array_key_exists('program', $registrant)): ?>
+                                <?php if ($registrant['program'] == 'IPA Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         IPA Tahfidz
                     </option>
-                    <option value="IPS Tahfidz" 
-                            <?php if(array_key_exists('program', $registrant)):?>
-                                <?php if($registrant['program']=='IPS Tahfidz'): ?>
+                    <option value="IPS Tahfidz"
+                            <?php if (array_key_exists('program', $registrant)): ?>
+                                <?php if ($registrant['program'] == 'IPS Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
@@ -601,10 +613,10 @@
                 <div class="center-block">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="btn-group" role="group">
-                            <a class="btn btn-success" href="<?=  base_url().$id.'/rapor'?>">
+                            <a class="btn btn-success" href="<?=base_url() . $id . '/rapor'?>">
                                 Lanjut
                             </a>
-                            <a class="btn btn-warning" href="<?=  base_url().$id.'/wali'?>">
+                            <a class="btn btn-warning" href="<?=base_url() . $id . '/wali'?>">
                                 Isi Wali
                             </a>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -667,7 +679,7 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_acv--;
         });
-        
+
         //Hobby
         var point_hby       = $(".insert_hby"); //Fields wrapper
         var add_btn_hby  = $(".add_btn_hby"); //Add button ID
@@ -695,7 +707,7 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_hby--;
         });
-        
+
         //Hospital Sheets
         var point_hs       = $(".insert_hs"); //Fields wrapper
         var add_btn_hs  = $(".add_btn_hs"); //Add button ID
@@ -723,7 +735,7 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_hs--;
         });
-        
+
         //Physical Abnormalities
         var point_pa       = $(".insert_pa"); //Fields wrapper
         var add_btn_pa  = $(".add_btn_pa"); //Add button ID
@@ -751,16 +763,16 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_pa--;
         });
-        
+
     });
 function save()
 {
     $('.form-group').removeClass('has-error'); // clear error class
     $('.btn-save').text('Menyimpan...'); //change button text
-    $('.btn-save').attr('disabled',true); //set button disable 
+    $('.btn-save').attr('disabled',true); //set button disable
     var url;
 
-    url = '<?php echo base_url().'pendaftar/ajax_edit_all/'.$id;?>';
+    url = '<?php echo base_url() . 'pendaftar/ajax_edit_all/' . $id; ?>';
 
     // ajax adding data to database
     $.ajax({
@@ -795,7 +807,7 @@ function save()
                     'Close</span></button>'+
                     '<p>Maaf Penyimpanan Data Gagal</p>'+
                     '</div>');
-                for (var i = 0; i < data.inputerror.length; i++) 
+                for (var i = 0; i < data.inputerror.length; i++)
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
 //                    $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
@@ -804,7 +816,7 @@ function save()
             }
             $('.btn-save').text('Simpan'); //change button text
             $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
-            $('.btn-save').attr('disabled',false); //set button enable 
+            $('.btn-save').attr('disabled',false); //set button enable
 
 
         },
@@ -813,7 +825,7 @@ function save()
             alert('Maaf, Terjadi kesalahan! Silahkan cek kembali isian anda!');
             $('.btn-save').text('Simpan'); //change button text
             $('.btn-save').prepend('<span class="glyphicon glyphicon-floppy-save">&nbsp;');
-            $('.btn-save').attr('disabled',false); //set button enable 
+            $('.btn-save').attr('disabled',false); //set button enable
 
         }
     });
@@ -821,10 +833,10 @@ function save()
 function aksiOk()
 {
     $('#btn-ok').text('saving...'); //change button text
-    $('#btn-ok').attr('disabled',true); //set button disable 
+    $('#btn-ok').attr('disabled',true); //set button disable
     var url;
 
-    url = '<?php echo base_url().'pendaftar/ajax_edit_profil/'.$id;?>';
+    url = '<?php echo base_url() . 'pendaftar/ajax_edit_profil/' . $id; ?>';
 
     // ajax adding data to database
     $.ajax({
@@ -853,7 +865,7 @@ function aksiOk()
                 $('#reg-cp').text(data.profile.cp);
                 $('#reg-program').text(data.profile.program);
                 $("#editProfil").modal('hide');
-                
+
             }
             else
             {
@@ -863,7 +875,7 @@ function aksiOk()
                     'Close</span></button>'+
                     '<p>Maaf Penyimpanan Data Gagal</p>'+
                     '</div>');
-                for (var i = 0; i < data.inputerror.length; i++) 
+                for (var i = 0; i < data.inputerror.length; i++)
                 {
                     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
@@ -871,7 +883,7 @@ function aksiOk()
                 $("#editProfil").modal('hide');
             }
             $('#btn-ok').text('save'); //change button text
-            $('#btn-ok').attr('disabled',false); //set button enable 
+            $('#btn-ok').attr('disabled',false); //set button enable
 
 
         },
@@ -879,7 +891,7 @@ function aksiOk()
         {
             alert('Error adding / update data');
             $('#btn-ok').text('save'); //change button text
-            $('#btn-ok').attr('disabled',false); //set button enable 
+            $('#btn-ok').attr('disabled',false); //set button enable
 
         }
     });
@@ -887,8 +899,8 @@ function aksiOk()
 
 $(document).ready(function () {
 <?php
-$default = base_url().'assets/images/default.png';
-if($default == $img_link){ ?>
+$default = base_url() . 'assets/images/default.png';
+if ($default == $img_link) {?>
     $('#ModalImport').modal('show');
 <?php }?>
 });
