@@ -57,7 +57,7 @@
         }
         table.utama {
             font-family: inherit;
-            font-size: 0.7em;
+            font-size: 1em;
             color:#333333;
             border-width: 1px;
             border-color: #000000;
@@ -103,9 +103,10 @@
             text-align: justify;
         }
         img.foto-header {
+            
             resize: both;
-            height: 100px;
-            width: 500px;
+            height: 36mm;
+            width: 180mm;
         }
         div.logo {
             background-repeat: no-repeat;
@@ -115,9 +116,11 @@
     </style>
 </head>
 <body>
-    <img class="foto-header" src="<?=  FCPATH.'assets/images/header.png';?>" alt="foto-header">
+    <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <div class="page-content">
-        <h1 class="header-print">SURAT PERNYATAAN</h1>
+        <h1 class="header-print">SURAT PERNYATAAN <br >
+            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2019/2020</small>
+        </h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
         <table style="width: 100%; border-style: none">
             <tr>
@@ -164,32 +167,96 @@
         <p>Dengan ini menyatakan bahwa:</p>
         <ol>
             <li class="pernyataan">
-                Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya 
-                menyerahkan sepenuhnya anak saya dalam hal pembinaan diri selama berstatus siswa SMAIT 
-                Ihsanul FIkri Mungkid dan menerima segala konsekuensi akibat peraturan yang berlaku didalamnya.
+                Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya menyerahkan anak saya dan siap bekerja sama 
+                dalam hal pembinaan diri selama berstatus sebagai siswa SMAIT Ihsanul Fikri Mungkid, bersedia menerima segala konsekuensi
+                akibat peraturan yang berlaku di dalamnya, dan tidak menuntut apapun yang menjadi keputusan sekolah.
             </li>
             <li class="pernyataan">
                 Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
-                sesuai dengan kesanggupan saya sebesar <strong>Rp. <?=  number_format($registrant->getInitialCost(), 0, ',', '.');?>,-</strong>.
+                sesuai dengan kesanggupan saya:
             </li>
+            <table class="utama">
+                <tr>
+                    <th>Jenis Pembiayaan</th>
+                    <th>Nominal Pembiayaan</th>
+                </tr>
+                <tr>
+                    <td>a. Infaq Pendidikan</td>
+                    <td>Rp. <?= number_format($registrant->getInitialCost(), 0, ',', '.');?>,-</td>
+                </tr>
+                <tr>
+                    <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
+                    <td>Rp. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</td>
+                </tr>
+                <tr>
+                    <td>c. Wakaf Tanah</td>
+                    <td>Rp. <?= number_format($registrant->getLandDonation(), 0, ',', '.');?>,-</td>
+                </tr>
+                <tr>
+                    <td>d. Seragam</td>
+                    <td>Rp. 1.800.000,-</td>
+                </tr>
+                <tr>
+                    <td>e. Uang Kegiatan</td>
+                    <td><?php echo ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?'Rp. 1.000.000,-':'Rp. 800.000,-';?></td>
+                </tr>
+                <tr>
+                    <td>f. Biaya Kesehatan</td>
+                    <td>Rp. 250.000,-</td>
+                </tr>
+                <tr>
+                    <td>g. Biaya Buku</td>
+                    <td>Rp. 1.500.000,-</td>
+                </tr>
+                <tr>
+                    <td>h. Perlengkapan Asrama</td>
+                    <td>Rp. 1.000.000,-</td>
+                </tr>
+                <tr>
+                    <td>i. Majalah dan Kalender</td>
+                    <td>Rp. 120.000,-</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <?php 
+                    $default = 4670000;
+                    $kegiatan = ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?1000000:800000;
+                    $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
+                            +$registrant->getLandDonation()+$kegiatan+$default;
+                    ?>
+                    <td><strong>Rp. <?= number_format($total, 0, ',', '.');?>,-</strong></td>
+                </tr>
+            </table>
+            <?php
+            $arr_qurban = $registrant->getQurban();
+            $qurban = explode(";", $arr_qurban);
+            $def_arr = ['2019', '2020', '2021'];
+            $arr_tahun = [];
+            $str_tahun = "";
+            for($i = 0; $i<3;$i++){
+                if($qurban[$i]==$def_arr[$i]){
+                    $arr_tahun[] = $qurban[$i];
+                }
+            }
+            if(sizeof($arr_tahun) == 1) {
+                $str_tahun = $arr_tahun[0];
+            } elseif (sizeof($arr_tahun) == 2) {
+                $str_tahun = $arr_tahun[0]." dan ".$arr_tahun[1];
+            } elseif (sizeof($arr_tahun) == 3) {
+                $str_tahun = $arr_tahun[0].", ".$arr_tahun[1]." dan ".$arr_tahun[2];
+            }
+            if(!empty($str_tahun)) :
+            ?>
             <li class="pernyataan">
-                Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>RP. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</strong>.
+                <strong><u>Bersedia</u></strong> mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
+                menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
+                <strong><u><?=$str_tahun;?></u></strong>.
             </li>
+            <?php endif; ?>
             <li class="pernyataan">
-                Saya bersedia untuk mewakafkan dana untuk perluasan tanah sekolah sebesar <strong>RP. <?= number_format($registrant->getLandDonation(), 0, ',', '.');?>,-</strong>.
-            </li>
-            <li class="pernyataan">
-                Saya sanggup untuk membayar 
-                Dana Seragam (Rp. 1.650.000,-), 
-                Dana Kesiswaan (Rp. 600.000,-), 
-                Dana Kesehatan (Rp. 250.000,-), 
-                Dana Buku (Rp. 1.400.000,-) dan
-                Dana Perlengkapan Asrama (Rp. 940.000,-) 
-                kepada pihak sekolah dengan total sebesar <strong>Rp. 4.840.000,-</strong>.
-            </li>
-            <li class="pernyataan">
-                Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
-                tidak akan menuntut segala yang telah saya bayarkan sebelumnya.
+                Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka <strong><u>saya 
+                tidak akan menuntut segala yang telah saya bayarkan sebelumnya</u></strong>. Seluruh pembiayaan 
+                yang saya bayarkan tidak akan saya tarik kembali dan dijadikan sebagai Infaq.
             </li>
         </ol>
         <p>

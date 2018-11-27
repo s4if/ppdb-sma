@@ -182,4 +182,21 @@ class Login extends MY_Controller {
     }
     
     // ================= END ===========================
+    
+    public function test(){
+        $data = explode(";", "2019;;");
+        print_r($data);
+        $data = explode(";", "2019;2020;");
+        print_r($data);
+        $data = explode(";", "2019;2020;2021");
+        print_r($data);
+        $data = explode(";", ";2020;");
+        print_r($data);
+        $data = explode(";", ";2020;2021");
+        print_r($data);
+        $data = explode(";", "2019;;2021");
+        print_r($data);
+        $data = explode(";", ";;2021");
+        print_r($data);
+    }
 }

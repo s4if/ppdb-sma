@@ -127,13 +127,13 @@
         }
         img.foto-header {
             resize: both;
-            height: 100px;
-            width: 500px;
+            height: 36mm;
+            width: 180mm;
         }
     </style>
 </head>
 <body>
-    <img class="foto-header" src="<?=  FCPATH.'assets/images/header.png';?>" alt="foto-header">
+    <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <h1 class="header-print">Data Pendaftar</h1>
     <div class="page-content">
         <h2 class="header-section">Foto Pendaftar</h2>

@@ -173,6 +173,16 @@
                 <td> <?php echo ucwords($data->getStayWith());?> </td>
             </tr>
             <tr>
+                <td> Anak Ke </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($data->getChildOrder());?> </td>
+            </tr>
+            <tr>
+                <td> Jumlah Saudara  </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($data->getSiblingsCount());?></td>
+            </tr>
+            <tr>
                 <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> Hobi </td>
                 <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> &nbsp;:&nbsp; </td>
                 <?php ($hb_count < 1)?'<td>-</td>':'';?>

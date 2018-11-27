@@ -207,9 +207,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
-        if  (!empty($data['boarding_kit'])) {
-            if (!is_null($data['boarding_kit'])) : $this->registrant->setBoardingKit($data['boarding_kit']); endif;
-        }
+        if (!empty($data['qurban'])) : $this->registrant->setQurban($data['qurban']); endif;
         if (!empty($data['rel_to_regular'])) : $this->registrant->setRelToRegular($data['rel_to_regular']); endif;
         if (!empty($data['rel_to_ips'])) : $this->registrant->setRelToIPS($data['rel_to_ips']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
@@ -301,7 +299,7 @@ class Model_registrant extends CI_Model {
         $arr_required = [
             'birth_place', 'birth_date', 'street', 'village', 'district', 
             'city', 'province', 'postal_code', 'family_condition', 'nationality', 'religion', 
-            'height', 'weight', 'stay_with'
+            'height', 'weight', 'stay_with', 'child_order'
         ];
         foreach ($arr_required as $required){
             if(array_key_exists($required, $data)){

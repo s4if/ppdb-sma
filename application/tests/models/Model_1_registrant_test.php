@@ -80,12 +80,13 @@ class Model_1_registrant_test extends TestCase {
         $this->setUp();
         $arr_reg =  $this->obj->getData('P');
         $data['id'] = end($arr_reg)->getId();
-        $data['initial_cost'] = '8500000';
-        $data['subscription_cost'] = '900000';
+        $data['initial_cost'] = '11000000';
+        $data['subscription_cost'] = '1250000';
         $data['main_parent'] = 'father';
         $data['landDonation'] = '1000000';
         $data['relegate_to_ips'] = 'true';
         $data['relegate_to_regular'] = 'true';
+        $data['qurban'] = '2019;2020';
         $data['finalized'] = 'true';
         $this->setUp();
         $this->assertTrue($this->obj->updateData($data));
@@ -122,7 +123,7 @@ class Model_1_registrant_test extends TestCase {
         $registrants_2 = $this->obj->getData('P');
         $attributes = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
                 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToIPS', 'relToRegular',
-                'subscriptionCost', 'boardingKit', 'landDonation', ];
+                'subscriptionCost', 'landDonation', 'qurban' ];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);
         }
@@ -190,7 +191,7 @@ class Model_1_registrant_test extends TestCase {
         $registrantData = $registrant->getRegistrantData();
         $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 
             'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 
-            'familyCondition', 'nationality', 'religion', 'height', 'weight', 
+            'familyCondition', 'nationality', 'religion', 'height', 'weight', 'childOrder', 'siblingsCount',
             'stayWith', 'physicalAbnormalities', 'hospitalSheets', 'hobbies', 'achievements'];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrantData);
@@ -214,7 +215,7 @@ class Model_1_registrant_test extends TestCase {
         $data = [
             'payment_date' => '11-12-2015',
             'transfer_destination' => 'SMAIT Ihsanul Fikri BNI Syariah',
-            'amount' => 200003
+            'amount' => 250003
         ];
         // Setup
         $this->setUp();

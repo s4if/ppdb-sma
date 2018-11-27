@@ -459,8 +459,10 @@ class Pendaftar extends MY_Controller {
     }
     
     public function isi_pernyataan($id){
+        error_reporting(0);
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
+        $data['qurban'] = $data['q2019'].";".$data['q2020'].";".$data['q2021'].";";
         $data['initial_cost'] = ($data['raw_icost'] == '-999')?$data['other_icost']:$data['raw_icost'];
         $data['subscription_cost'] = ($data['raw_scost'] == '-999')?$data['other_scost']:$data['raw_scost'];
         $data['land_donation'] = ($data['raw_lcost'] == '-999')?$data['other_lcost']:$data['raw_lcost'];

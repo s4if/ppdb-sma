@@ -163,14 +163,14 @@ class RegistrantEntity
      *
      * @var string
      */
-    protected $landDonation; // Uang Bulanan
-
+    protected $landDonation; // Wakaf Tanah
+    
     /**
-     * @Column(type="boolean", nullable=TRUE)
+     * @Column(type="bigint", nullable=TRUE)
      *
      * @var string
      */
-    protected $boardingKit; // Uang Bulanan
+    protected $qurban; // contoh isi: (2019;), (2019;2020;) dst
 
     /**
      * @Column(type="string", nullable=TRUE)
@@ -368,6 +368,15 @@ class RegistrantEntity
     
     public function deleteRapor(){
         $this->rapor = null;
+        return $this;
+    }
+    
+    public function getQurban() {
+        return $this->qurban;
+    }
+
+    public function setQurban($qurban) {
+        $this->qurban = $qurban;
         return $this;
     }
 

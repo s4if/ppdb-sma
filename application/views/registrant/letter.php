@@ -56,34 +56,69 @@
                 <p>Dengan ini menyatakan bahwa:</p>
                 <ol>
                     <li class="pernyataan">
-                        Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya 
-                        menyerahkan sepenuhnya anak saya dalam hal pembinaan diri selama berstatus siswa SMAIT 
-                        Ihsanul FIkri Mungkid dan menerima segala konsekuensi akibat peraturan yang berlaku didalamnya.
+                        Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya menyerahkan anak saya dan siap bekerja sama 
+                        dalam hal pembinaan diri selama berstatus sebagai siswa SMAIT Ihsanul Fikri Mungkid, bersedia menerima segala konsekuensi
+                        akibat peraturan yang berlaku di dalamnya, dan tidak menuntut apapun yang menjadi keputusan sekolah.
                     </li>
                     <li class="pernyataan">
                         Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
-                        sesuai dengan kesanggupan saya sebesar <strong>(Jumlah Uang Infaq Pendidikan)</strong>.
+                        sesuai dengan kesanggupan saya:
                     </li>
+                    <table class="table-bordered table-responsive">
+                        <tr>
+                            <th>Jenis Pembiayaan</th>
+                            <th>Nominal Pembiayaan</th>
+                        </tr>
+                        <tr>
+                            <td>a. Infaq Pendidikan</td>
+                            <td>Rp. 11.000.000,- <strong class="red">*</strong></td>
+                        </tr>
+                        <tr>
+                            <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
+                            <td>Rp. 1.250.000,- <strong class="red">*</strong></td>
+                        </tr>
+                        <tr>
+                            <td>c. Wakaf Tanah</td>
+                            <td>Rp. 500.000,- <strong class="red">*</strong></td>
+                        </tr>
+                        <tr>
+                            <td>d. Seragam</td>
+                            <td>Rp. 1.800.000,- <strong class="red">*</strong></td>
+                        </tr>
+                        <tr>
+                            <td>e. Uang Kegiatan</td>
+                            <td><?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.000.000,-':'Rp. 800.000,-';?> <strong class="red">**</strong></td>
+                        </tr>
+                        <tr>
+                            <td>f. Biaya Kesehatan</td>
+                            <td>Rp. 250.000,-</td>
+                        </tr>
+                        <tr>
+                            <td>g. Biaya Buku</td>
+                            <td>Rp. 1.500.000,-</td>
+                        </tr>
+                        <tr>
+                            <td>h. Perlengkapan Asrama</td>
+                            <td>Rp. 1.000.000,-</td>
+                        </tr>
+                        <tr>
+                            <td>i. Majalah dan Kalender</td>
+                            <td>Rp. 120.000,-</td>
+                        </tr>
+                    </table>
+                    <span class="help-block">* = Sesuai yang diisikan di form ini.</span>
+                    <span class="help-block">** = Untuk kelas tahfidz Rp.1000.000,- sedangkan
+                        untuk kelas reguler Rp.800.000,-.</span>
+                    
                     <li class="pernyataan">
-                        Saya sanggup untuk memenuhi SPP bulanan kepada pihak sekolah sebesar <strong>(Jumlah Uang SPP)</strong>.
-                    </li>
-                    <li class="pernyataan">
-                        Saya bersedia untuk mewakafkan dana untuk perluasan tanah sekolah sebesar <strong>(Jumlah Uang Wakaf Tanah)</strong>.
-                    </li>
-                    <li class="pernyataan">
-                        Saya sanggup untuk membayar 
-                        Dana Seragam (Rp. 1.700.000,-), 
-                        Dana Kesiswaan <?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'(Rp. 1.000.000,-)':'(Rp. 800.000,-)';?>
-                        Dana Kesehatan (Rp. 250.000,-), 
-                        Dana Buku (Rp. 1.500.000,-) dan
-                        Dana Perlengkapan Asrama (Rp. 1.000.000,-) 
-                        kepada pihak sekolah dengan total sebesar <strong>
-                            <? echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 5.450.000,-':'Rp. 5.250.000,-';?>
-                        </strong>.
+                        Bersedia/Tidak bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
+                        menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021
+                        (Tahun nanti dipilih dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
-                        tidak akan menuntut segala yang telah saya bayarkan sebelumnya.
+                        tidak akan menuntut segala yang telah saya bayarkan sebelumnya. Seluruh pembiayaan 
+                        yang saya bayarkan tidak akan saya tarik kembali dan dijadikan sebagai Infaq.
                     </li>
                 </ol>
             </div>
@@ -102,17 +137,6 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Infaq Pendidikan :</label>
                 <div class="col-sm-4">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_icost" value="10000000" 
-                                <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if($registrant->getInitialCost() == '10000000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 10.000.000,-
-                        </label>
-                    </div>
                     <div class="radio">
                         <label>
                             <input type="radio" name="raw_icost" value="11000000" 
@@ -137,15 +161,26 @@
                     </div>
                     <div class="radio">
                         <label>
+                            <input type="radio" name="raw_icost" value="13000000" 
+                                <?php if(!empty($registrant->getInitialCost())):?>
+                                    <?php if($registrant->getInitialCost() == '13000000'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 13.000.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
                             <input type="radio" name="raw_icost" value="-999" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
                                     <?php if(!($registrant->getInitialCost() == '12000000'||
                                             $registrant->getInitialCost() == '11000000'||
-                                            $registrant->getInitialCost() == '10000000')):?>
+                                            $registrant->getInitialCost() == '13000000')):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 12 Juta Rupiah
+                            Lebih dari 13 Juta Rupiah
                         </label>
                     </div>
                 </div>
@@ -153,7 +188,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" pattern="^([0-9]{1,9}$)" name="other_icost" title="Maksimal 9 digit angka!"
-                           class="form-control" placeholder="Masukkan Jumlah Melebih 10Juta Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
+                           class="form-control" placeholder="Masukkan Jumlah Melebih 13Juta Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
                 </div>
             </div>
             <div class="form-group">
@@ -161,48 +196,48 @@
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1000000" 
+                            <input type="radio" name="raw_scost" value="1250000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1000000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1250000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.000.000,-
+                            Rp. 1.250.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1100000" 
+                            <input type="radio" name="raw_scost" value="1400000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1100000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1400000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.100.000,-
+                            Rp. 1.400.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1200000" 
+                            <input type="radio" name="raw_scost" value="1500000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1200000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1500000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.200.000,-
+                            Rp. 1.500.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
                             <input type="radio" name="raw_scost" value="-999" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if(!($registrant->getSubscriptionCost() == '1000000'||
-                                            $registrant->getSubscriptionCost() == '1100000' ||
-                                            $registrant->getSubscriptionCost() == '1200000')):?>
+                                    <?php if(!($registrant->getSubscriptionCost() == '1250000'||
+                                            $registrant->getSubscriptionCost() == '1400000' ||
+                                            $registrant->getSubscriptionCost() == '1500000')):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 1,2 Juta Rupiah
+                            Lebih dari 1,5 Juta Rupiah
                         </label>
                     </div>
                 </div>
@@ -211,7 +246,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" name="other_scost" pattern="^([0-9]{1,8}$)" title="Maksimal 8 digit angka!"
-                           class="form-control" placeholder="Masukkan Jumlah Melebih 1Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
+                           class="form-control" placeholder="Masukkan Jumlah Melebih 1,5 Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
                 </div>
             </div>
             <div class="form-group">
@@ -315,6 +350,32 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-3">
+                    <label class="text-center">
+                        Bersedia/Tidak bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
+                        menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021. <br>
+                        Silahkan pilih tahun jika bersedia.
+                    </label>
+                    <?php
+                        error_reporting(0);
+                        $arr_qurban = $registrant->getQurban();
+                        $qurban = explode(";", $arr_qurban);
+                    ?>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="q2019" value="2019" 
+                                    <?php if($qurban[0]=='2019') {echo 'checked="true"';}?>>2019</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="q2020" value="2020"
+                                      <?php if($qurban[1]=='2020') {echo 'checked="true"';}?>>2020</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="q2021" value="2021"
+                                      <?php if($qurban[2]=='2021') {echo 'checked="true"';}?>>2021</label>
+                    </div>
+                </div>
+            </div>
             <hr/>
             <div class="form-group">
                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jurusan</strong></label>
@@ -332,8 +393,6 @@
                                     <?php if($registrant->getRelToIPS() ==='false'):?>
                                     checked
                                     <?php endif;?>
-                                <?php else :?>
-                                    checked
                                 <?php endif;?>>
                             Saya tidak bersedia
                         </label>
@@ -345,6 +404,8 @@
                                     <?php if($registrant->getRelToIPS() ==='true'):?>
                                     checked
                                     <?php endif;?>
+                                <?php else :?>
+                                    checked
                                 <?php endif;?>>
                             Saya bersedia
                         </label>
@@ -369,8 +430,6 @@
                                     <?php if($registrant->getRelToRegular() ==='false'):?>
                                     checked
                                     <?php endif;?>
-                                <?php else :?>
-                                    checked
                                 <?php endif;?>>
                             Saya tidak bersedia
                         </label>
@@ -382,6 +441,8 @@
                                     <?php if($registrant->getRelToRegular() ==='true'):?>
                                     checked
                                     <?php endif;?>
+                                <?php else :?>
+                                    checked
                                 <?php endif;?>>
                             Saya bersedia
                         </label>
@@ -397,4 +458,4 @@
             </div>
         </form>
     </div>
-</div>
+<</div>

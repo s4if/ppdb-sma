@@ -309,7 +309,7 @@ class Pendaftar_test extends TestCase
                 'other_icost' => '15000000',
                 'raw_scost' => '-999',
                 'other_scost' => '1300000',
-                'boarding_kit'=> true,
+                'qurban'=> '',
                 'main_parent' => 'father'
             ];
             $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);
