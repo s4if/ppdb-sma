@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @Entity(repositoryClass="RegistrantRepo") @Table(name="registrants")
 */
@@ -199,6 +200,16 @@ class RegistrantEntity
      * @var bool
      */
     protected $deleted;
+    
+    /**
+     * One Product has Many Features.
+     * @OneToMany(targetEntity="CertificateEntity", mappedBy="registrant")
+     */
+    private $certificates;
+    
+    public function __construct() {
+        $this->features = new Doctrine\Common\Collections\ArrayCollection();
+    }
 
     public function getArray($vars = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'rapor', 'registrationTime', 'registrantData',
                 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', ])
@@ -373,6 +384,15 @@ class RegistrantEntity
     
     public function getQurban() {
         return $this->qurban;
+    }
+
+    public function getCertificates() {
+        return $this->certificates;
+    }
+
+    public function addCertificates($cert){
+        $this->certificates->add($cert);
+        return $this;
     }
 
     public function setQurban($qurban) {
