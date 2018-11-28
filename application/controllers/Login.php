@@ -57,6 +57,22 @@ class Login extends MY_Controller {
         ]);
     }
     
+    public function prestasi(){
+        $reg_obj = $this->reg->getData();
+        $builder = new Gregwar\Captcha\CaptchaBuilder();
+        $builder->setDistortion(false);
+        $builder->build();
+        $this->session->set_userdata('captcha', $builder->getPhrase());
+        $registrant = [];
+        if(empty($this->session->flashdata('data')) === false){
+            $registrant = $this->session->flashdata('data');
+        }
+        $this->load->view('login/jalur_khusus', [
+            'registrant' => $registrant,
+            'data' => $reg_obj,
+        ]);
+    }
+    
     public function uname_avaible(){
         $data = $this->input->post(null, true);
         $result = $this->reg->getDataByUsername($data['username']);

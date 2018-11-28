@@ -172,7 +172,6 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="<?=  base_url().'login/prestasi'?>">Jalur Khusus</a></li>
                     <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                     <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                     <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
@@ -213,12 +212,13 @@ body {
     ?>
 </div>
 <?php endif; ?>
-<!--            <div class="alert alert-warning alert-dismissible">
+            <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class=" text-center"><strong>Pengumuman:</strong><br/>
-                Mohon maaf, pendaftaran telah ditutup pada tanggal 10 Februari 2017 Pukul 23:59 WIB <br/>
+                <p class=" text-center"><strong>Petunjuk:</strong><br/>
+                    Silahkan minta <strong>Pass Kode</strong> ke panitia setelah diijinkan untuk
+                    ikut serta dalam program Jalur Beasiswa dan Prestasi. <br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div>-->
+            </div>
 </div>
         </div>
     	<div class="row">
@@ -229,21 +229,21 @@ body {
                             <div class="col-xs-6">
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
                             </div>
-                            <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Daftar</a>
-                            </div>
                         </div>
                         <hr>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form" action="<?php echo base_url().'login/do_login/'?>" method="post" role="form" style="display: block;">
+                                <form id="login-form" action="<?php echo base_url().'login/do_login_jk/'?>" method="post" role="form" style="display: block;">
                                     <div class="form-group">
                                         <input type="text" name="username" id="id_pendaftaran" tabindex="1" class="form-control" placeholder="Username" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="pass_kode" id="pass_kode" tabindex="2" class="form-control" placeholder="Masukkan Pas Kode dari Panitia" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -253,120 +253,6 @@ body {
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
-                                <div class="form-group">
-                                    <input type="text" required name="username" id="username" tabindex="1" 
-                                           class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Nama Singkat! Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"
-                                           value="<?=(array_key_exists('username', $registrant))?$registrant['username']:'';?>">
-                                </div>
-                                <div id="status" class="form-group">
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required name="name" id="name" tabindex="1" class="form-control" placeholder="Nama Lengkap" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control typeahead" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Wajib)" pattern="^([0-9]{1,20}$)" title="Hanya angka!"
-                                           value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group-addon">+62</div>
-                                    <input  type="text" name="cp_prefix" required id="cp_prefix" tabindex="1" placeholder="" value="+62" hidden>
-                                    <input class="col-xs-10 form-control" type="text" name="cp_suffix" pattern="^[1-9]([0-9]{1,13}$)" title="Hanya angka tanpa awalan '0'!"
-                                           required id="cp_suffix" tabindex="1" placeholder="Telp tanpa awalan cth: 85727411xxx">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Jenis Kelamin :</label>
-                                    <div class="">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="gender" value="L"
-                                                       <?php if(array_key_exists('gender', $registrant)):?>
-                                                            <?php if($registrant['gender'] ==='L'):?>
-                                                            checked
-                                                            <?php endif;?>
-                                                        <?php endif;?>>
-                                                Laki - Laki
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="gender" value="P"
-                                                       <?php if(array_key_exists('gender', $registrant)):?>
-                                                            <?php if($registrant['gender'] ==='P'):?>
-                                                            checked
-                                                            <?php endif;?>
-                                                        <?php endif;?>>
-                                                Perempuan
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label">Program :</label>
-                                    <div class="">
-                                        <select class="form-control" name="program">
-                                            <option value="IPA Reguler"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPA Reguler'): ?>
-                                                                selected
-                                                        <?php endif;?>
-                                                    <?php endif;?>>
-                                                IPA Reguler
-                                            </option>
-                                            <option value="IPS Reguler"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPS Reguler'): ?>
-                                                                selected
-                                                        <?php endif;?>
-                                                    <?php endif;?>>
-                                                IPS Reguler
-                                            </option>
-                                            <option value="IPA Tahfidz"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPA Tahfidz'): ?>
-                                                                selected
-                                                        <?php endif;?>
-                                                    <?php endif;?>>
-                                                IPA Tahfidz
-                                            </option>
-                                            <option value="IPS Tahfidz" 
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPS Tahfidz'): ?>
-                                                                selected
-                                                        <?php endif;?>
-                                                    <?php endif;?>>
-                                                IPS Tahfidz
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" required name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" required name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        <label class=" control-label">Captcha :</label>
-                                        <img src="<?php echo $builder->inline(); ?>" class="img-responsive" alt="captcha" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" required name="captcha" id="captcha" tabindex="1" class="form-control" placeholder="Masukkan Teks Dari Gambar Diatas" value="">
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Daftar Sekarang">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
