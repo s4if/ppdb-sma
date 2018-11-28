@@ -41,7 +41,7 @@
 <div class="container-fluid">
     <div class="row">
         <p>
-            Pada langkah ini, anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pembangunan, SPP, dll. <br />
+            Pada langkah ini, anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pendidikan, SPP, dll. <br />
             Pastikan yang mengisi ini adalah <strong>Orang Tua</strong> atau anda <strong>Telah berdiskusi</strong> dengan orang tua anda. <br/>
             Berikut isi pernyataannya:
         </p>
@@ -207,24 +207,24 @@
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1400000" 
+                            <input type="radio" name="raw_scost" value="1350000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1400000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1350000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.400.000,-
+                            Rp. 1.350.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1500000" 
+                            <input type="radio" name="raw_scost" value="1450000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1500000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1450000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.500.000,-
+                            Rp. 1.450.000,-
                         </label>
                     </div>
                     <div class="radio">
@@ -232,12 +232,12 @@
                             <input type="radio" name="raw_scost" value="-999" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
                                     <?php if(!($registrant->getSubscriptionCost() == '1250000'||
-                                            $registrant->getSubscriptionCost() == '1400000' ||
-                                            $registrant->getSubscriptionCost() == '1500000')):?>
+                                            $registrant->getSubscriptionCost() == '1350000' ||
+                                            $registrant->getSubscriptionCost() == '1450000')):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 1,5 Juta Rupiah
+                            Lebih dari 1,45 Juta Rupiah
                         </label>
                     </div>
                 </div>

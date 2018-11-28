@@ -97,6 +97,7 @@
     &nbsp;
     </div>
     <h2>Silahkan Isi Data Pada Formulir Dibawah</h2>
+    <h3>Semua Pengisian Data Diharapkan Mengacu Pada <strong>Kartu Keluarga</strong></h3>
     <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_all/<?=$id?>">
         <hr/>
         <div class="form-group">

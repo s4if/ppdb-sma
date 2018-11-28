@@ -82,6 +82,7 @@
             <div class="modal-body">
                 <h3>Keterangan yang ditambahkan di pengisian raport</h3>
                 <ul>
+                    <li>Skala yang digunakan adalah skala <strong>1-100</strong></li>
                     <li>Yang diisi kedalam form ini adalah nilai Pengetahuan</li>
                     <li>Untuk nilai berskala 4 langsung di konversi ke skala 100 dengan cara dikalikan 25</li>
                     <li>Jika dalam raport tidak dituliskan KKM maka KKM diisikan 67 (Sesuai Standar Dinas)</li>

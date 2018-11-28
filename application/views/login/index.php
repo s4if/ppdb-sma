@@ -255,14 +255,14 @@ body {
                                 <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" required name="username" id="username" tabindex="1" 
-                                           class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"
+                                           class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Nama Singkat! Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"
                                            value="<?=(array_key_exists('username', $registrant))?$registrant['username']:'';?>">
                                 </div>
                                 <div id="status" class="form-group">
                                     
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required name="name" id="name" tabindex="1" class="form-control" placeholder="Nama" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
+                                    <input type="text" required name="name" id="name" tabindex="1" class="form-control" placeholder="Nama Lengkap" value="<?=(array_key_exists('name', $registrant))?$registrant['name']:'';?>">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control typeahead" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
