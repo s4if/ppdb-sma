@@ -423,6 +423,8 @@ class Pendaftar extends MY_Controller {
         $this->session->set_userdata('registrant', $registrant);
         $pdf = new mikehaertl\wkhtmlto\Pdf();
         $pdf->setOptions($this->pdfOption());
+        $kartu = $this->load->view('registrant/print', ['registrant' => $registrant], true);
+        $pdf->addPage($kartu);
         $data = [
             'title' => 'Print Surat Pernyataan',
             'username' => $registrant->getName(),

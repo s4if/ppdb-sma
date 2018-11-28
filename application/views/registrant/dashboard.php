@@ -55,8 +55,7 @@
         Hasil tes akan diumumkan tanggal 12 Februari 2017<br/>
         Silahkan Unduh dan cetak form pendaftaran dan kartu pendaftaran.
     </p>        
-    <a class="btn btn-success" href="<?=  base_url().'pendaftar/print_kartu'?>">Unduh Kartu Pendaftarran</a>
-    <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">Unduh Kartu Pendaftarran</a>;
+    <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">Unduh Kartu Pendaftaran</a>
     <?php elseif(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>

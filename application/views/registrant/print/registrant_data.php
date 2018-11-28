@@ -216,6 +216,19 @@
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo $data->getHeight().'/'.$data->getWeight();?> </td>
             </tr>
+            <tr>
+                <td> Tinggal Bersama </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo ucwords($data->getStayWith());?> </td>
+            </tr>
+            <tr>
+                <td> Keterangan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> 
+                    Anak ke <?php echo $data->getChildOrder();?>
+                    dari <?php echo $data->getSiblingsCount()+1;?> bersaudara
+                </td>
+            </tr>
                 <?php
                 $hp_count = $data->getHospitalSheetsCount();
                 $hb_count = $data->getHobbiesCount();
@@ -238,11 +251,6 @@
                 <?php foreach ($data->getPhysicalAbnormalities() as $pa):?>
                 <tr><td> <?php echo ucfirst($pa);?> </td></tr>
                 <?php endforeach;?>
-            <tr>
-                <td> Tinggal Bersama </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ucwords($data->getStayWith());?> </td>
-            </tr>
             <tr>
                 <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> Hobi </td>
                 <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> &nbsp;:&nbsp; </td>
