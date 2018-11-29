@@ -90,6 +90,10 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Edit Profil
                 </a>
+                <a class="btn btn-sm btn-warning <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" href="<?= base_url().$id.'/sertifikat'?>">
+                    <span class="glyphicon glyphicon-upload"></span>
+                    Upload Persyaratan Jalur Prestasi/Beasiswa
+                </a>
             </td>
         </tr>
     </table>

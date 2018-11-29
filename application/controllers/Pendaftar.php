@@ -460,6 +460,19 @@ class Pendaftar extends MY_Controller {
         $this->CustomView('registrant/letter', $data);
     }
     
+    public function sertifikat($id){
+        $this->blockUnloggedOne($id);
+        $this->blockNonPayers($this->session->registrant);
+        $data = [
+            'title' => 'Upload Sertifikat',
+            'username' => $this->session->registrant->getName(),
+            'id' => $this->session->registrant->getId(),
+            'registrant' => $this->session->registrant,
+            'nav_pos' => 'certificate'
+        ];
+        $this->CustomView('registrant/certificate_upload', $data);
+    }
+    
     public function isi_pernyataan($id){
         error_reporting(0);
         $this->blockUnloggedOne($id);

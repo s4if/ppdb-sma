@@ -172,7 +172,6 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="<?=  base_url().'login/prestasi'?>">Jalur Khusus</a></li>
                     <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                     <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                     <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
