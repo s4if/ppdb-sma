@@ -355,6 +355,34 @@
     </div>
     <?php endif; ?>
     <?php endforeach; ?>
+    <table style="width: 100%; border-style: none">
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="width: 33%; text-align: center">Mengetahui,</td>
+                <td style="width: 22%;">&nbsp;</td>
+                <?php
+                $date = new DateTime('now');
+                ?>
+                <td style="width: 45%; text-align: center">Magelang, <?php echo tgl_indo($date->format('Y m d'));?></td>
+            </tr>
+            <tr>
+                <td style="width: 35%; text-align: center">Orang tua / wali calon peserta didik</td>
+                <td style="width: 30%; text-align: center"></td>
+                <td style="width: 35%; text-align: center">Calon peserta didik baru</td>
+            </tr>
+            <tr >
+                <td style="width: 35%; height: 60px; text-align: center"></td>
+                <td style="width: 30%; height: 60px; text-align: center"></td>
+                <td style="width: 35%; height: 60px; text-align: center"></td>
+            </tr>
+            <tr>
+                <td style="width: 35%; text-align: center">...............................</td>
+                <td style="width: 30%; text-align: center"></td>
+                <td style="width: 35%; text-align: center"><?=$registrant->getName();?></td>
+            </tr>
+        </table>
 </body>
 
 </html>

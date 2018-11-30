@@ -71,19 +71,19 @@
                         </tr>
                         <tr>
                             <td>a. Infaq Pendidikan</td>
-                            <td>Rp. 11.000.000,- <strong class="red">*</strong></td>
+                            <td><strong>[[Sesuai Pilihan]]</strong></td>
                         </tr>
                         <tr>
                             <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
-                            <td>Rp. 1.250.000,- <strong class="red">*</strong></td>
+                            <td><strong>[[Sesuai Pilihan]]</strong></td>
                         </tr>
                         <tr>
                             <td>c. Wakaf Tanah</td>
-                            <td>Rp. 500.000,- <strong class="red">*</strong></td>
+                            <td><strong>[[Sesuai Pilihan]]</strong></td>
                         </tr>
                         <tr>
                             <td>d. Seragam</td>
-                            <td>Rp. 1.800.000,- <strong class="red">*</strong></td>
+                            <td>Rp. 1.800.000,-</td>
                         </tr>
                         <tr>
                             <td>e. Uang Kegiatan</td>
@@ -106,7 +106,6 @@
                             <td>Rp. 120.000,-</td>
                         </tr>
                     </table>
-                    <span class="help-block">* = Sesuai yang diisikan di form ini.</span>
                     <span class="help-block">** = Untuk kelas tahfidz Rp.1000.000,- sedangkan
                         untuk kelas reguler Rp.800.000,-.</span>
                     

@@ -29,7 +29,7 @@
 <html>
     
 <head>
-    <title>Lembar Pernyataan Siswa</title>
+    <title>Lembar Pernyataan Peserta Didik</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -163,16 +163,22 @@
                 <td style="width: 2%; text-align: left">:</td>
                 <td style="width: 75%; text-align: left"><?=($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat'?></td>
             </tr>
+            <tr>
+                <td style="width: 8%; text-align: left">&nbsp;</td>
+                <td style="width: 15%; text-align: left">Asal Sekolah</td>
+                <td style="width: 2%; text-align: left">:</td>
+                <td style="width: 75%; text-align: left"><?=$registrant->getPreviousSchool()?></td>
+            </tr>
         </table>
         <p>Dengan ini menyatakan bahwa:</p>
         <ol>
             <li class="pernyataan">
-                Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya menyerahkan anak saya dan siap bekerja sama 
-                dalam hal pembinaan diri selama berstatus sebagai siswa SMAIT Ihsanul Fikri Mungkid, bersedia menerima segala konsekuensi
+                Jika anak saya diterima sebagai peserta didik SMAIT Ihsanul Fikri Mungkid, saya menyerahkan anak saya dan siap bekerja sama 
+                dalam hal pembinaan diri selama berstatus sebagai peserta didik SMAIT Ihsanul Fikri Mungkid, bersedia menerima segala konsekuensi
                 akibat peraturan yang berlaku di dalamnya, dan tidak menuntut apapun yang menjadi keputusan sekolah.
             </li>
             <li class="pernyataan">
-                Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
+                Jika anak saya diterima sebagai peserta didik SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
                 sesuai dengan kesanggupan saya:
             </li>
             <table class="utama">
@@ -248,8 +254,8 @@
             if(!empty($str_tahun)) :
             ?>
             <li class="pernyataan">
-                <strong><u>Bersedia</u></strong> mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
-                menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
+                <strong><u>Bersedia mengikuti program Qurban</u></strong> Kambing/Sapi minimal 1 kali selama
+                menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
                 <strong><u><?=$str_tahun;?></u></strong>.
             </li>
             <?php endif; ?>
@@ -273,12 +279,12 @@
                 <?php
                 $date = new DateTime('now');
                 ?>
-                <td style="width: 45%; text-align: right">Magelang, <?php echo tgl_indo($date->format('Y m d'));?></td>
+                <td style="width: 45%; text-align: center">Magelang, <?php echo tgl_indo($date->format('Y m d'));?></td>
             </tr>
             <tr>
                 <td style="width: 35%; text-align: center">Kepala SMAIT Ihsanul Fikri</td>
                 <td style="width: 30%; text-align: center">Pewawancara</td>
-                <td style="width: 35%; text-align: center">Orang tua / wali murid</td>
+                <td style="width: 35%; text-align: center">Orang tua / wali calon peserta didik</td>
             </tr>
             <tr >
                 <td style="width: 35%; height: 60px; text-align: center"></td>
