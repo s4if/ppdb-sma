@@ -127,6 +127,8 @@ class Pendaftar_test extends TestCase
                 'religion' => 'Islam', 
                 'height' => 176, 
                 'weight' => 57, 
+                'child_order' => 3,
+                'siblings_count' => 2,
                 'stay_with' => 'Ortu',
                 'hobbies' => ['makan', 'tidur', 'baca komik'],
                 'achievements' => ['Juara 1 OSN Fisika SMP'],
