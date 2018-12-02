@@ -51,8 +51,8 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
-        Tes akan dilaksanakan tanggal 4 Februari 2017<br/>
-        Hasil tes akan diumumkan tanggal 12 Februari 2017<br/>
+        Tes akan dilaksanakan tanggal 3 Februari 2019<br/>
+        Hasil tes akan diumumkan tanggal 11 Februari 2019<br/>
         Silahkan Unduh dan cetak form pendaftaran dan kartu pendaftaran.
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
@@ -85,11 +85,13 @@
     </p>
     <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
     <p>
-        Data yang perlu disiapkan adalah:<br />
-        Data Diri<br />
-        Data Orang Tua<br />
-        Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)<br />
-        Data Surat Pernyataan<br />
+        Data yang perlu disiapkan adalah:
+    <ul>
+        <li>Data Diri</li>
+        <li>Data Orang Tua</li>
+        <li>Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)</li>
+        <li>Data Surat Pernyataan</li>
+    </ul>
     </p>
     <?php endif;?>
 </div>
