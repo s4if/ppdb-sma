@@ -39,6 +39,41 @@
     </li>
 </ol>
 <div class="container-fluid">
+    <div class="row">
+        <h2>Ketentuan Upload Dokumen Jalur Prestasi dan Beasiswa Unggulan</h2>
+        <ol>
+            <li>Dokumen yang diupload merupakan bukti keikutsertaan/prestasi calon peserta 
+                didik dalam lomba <strong> Olimpiade Sains Nasional (OSN) minimal Tingkat Provinsi 
+                (Jalur Prestasi) atau Tingkat Nasional (Beasiswa Unggulan).</strong> 
+            </li>
+            <li>
+                Bukti yang dimaksud dalam poin 1 adalah:
+                <ul>
+                    <li>Sertifikat Juara/Keikutsertaan OSN atau</li>
+                    <li>Surat Keterangan Peserta OSN atau</li>
+                    <li>Surat Undangan Mengikuti OSN.</li>
+                </ul>
+            </li>
+            <li>
+                Calon peserta didik diwajibkan mengupload dokumen dengan jujur sesuai dengan 
+                prestasi yang dimiliki.
+            </li>
+            <li>
+                Dokumen yang diupload oleh calon peserta didik akan diseleksi secara seksama oleh tim seleksi 
+                yang hasilnya akan diumumkan bersamaan dengan pengumuman penerimaan jalur reguler.
+            </li>
+            <li>
+                Jika calon peserta didik menemukan kesalahan saat upload dokumen, calon peserta didik 
+                dapat <strong>menghapus dan mengupload kembali</strong> dokumen yang dimaksud.
+            </li>
+        </ol>
+        <p>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid Tahun Ajaran 2019-2020</p>
+        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalImport">
+            <span class="glyphicon glyphicon-upload"></span>
+            Tambah Dokumen Sertifikat/Surat
+        </a>
+        <hr />
+    </div>
         <?php if($registrant->getCertificatesCount() == 0):?>
     <div class="row">
         <p>Belum ada sertifikat/surat yang terunggah</p>
@@ -97,6 +132,13 @@
                 <?= tgl_indo($cert->getEndDate()->format('Y m d'));?>
                 </td>
             </tr>
+            <tr>
+                <td> </td>
+                <td> </td>
+                <td> <a class="btn btn-danger" href="<?= base_url()?>pendaftar/hapus_sertifikat/<?=$cert->getId();?>">
+                        <span class="glyphicon-erase"></span>Hapus
+                    </a> </td>
+            </tr>
         </table>
         <hr />
     </div>
@@ -104,12 +146,6 @@
         $count++;
         endforeach;
         endif; ?>
-    <div class="row">
-        <a class="btn btn-sm btn-primary <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#ModalImport">
-                    <span class="glyphicon glyphicon-upload"></span>
-                    Tambah Dokumen Sertifikat/Surat
-                </a>
-    </div>
 </div>
 
 <div class="modal fade" id="ModalImport" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">

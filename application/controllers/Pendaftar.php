@@ -516,14 +516,14 @@ class Pendaftar extends MY_Controller {
     }
     
     public function hapus_sertifikat($id){
-        $this->blockUnloggedOne($id);
+        $this->blockUnloggedOne($this->session->registrant->getId());
         $res = $this->reg->deleteCertificate($id);
         if($res){
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil dihapus"]);
-            redirect('admin/lihat');
+            redirect($this->session->registrant->getId().'/sertifikat');
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect('admin/lihat');
+            redirect($this->session->registrant->getId().'/sertifikat');
         }
     }
     

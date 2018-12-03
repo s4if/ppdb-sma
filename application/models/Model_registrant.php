@@ -995,4 +995,15 @@ class Model_registrant extends CI_Model {
             return false;
         }
     }
+    
+    public function deleteCertificate($id){
+        $cert = $this->doctrine->em->find('CertificateEntity', $id);
+        if(is_null($cert)){
+            return false;
+        } else {
+            $this->doctrine->em->remove($cert);
+            $this->doctrine->em->flush();
+            return true;
+        }
+    }
 }

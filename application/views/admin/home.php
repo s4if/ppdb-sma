@@ -36,7 +36,7 @@
     </li>
 </ol>
 <div class="container-fluid">
-<div class="row">
+<div class="row"> <!-- todo: Panel untuk jalur Beasiswa -->
     <div class="col-lg-4">
         <div class="panel panel-info">
             <div class="panel-heading">

@@ -226,6 +226,16 @@ body {
                 Mohon maaf, pendaftaran telah ditutup pada tanggal 10 Februari 2017 Pukul 23:59 WIB <br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
             </div>-->
+
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p class=" text-center"><strong>Pengumuman:</strong><br/>
+                Unggah <i>(upload)</i> dokumen persyaratan jalur prestasi dan beasiswa unggulan dapat dilakukan 
+                pada menu beranda setelah menyelesaikan pendaftaran mulai tanggal 4 Desember 2018.<br/>
+                Pendaftar jalur prestasi dan beasiswa unggulan yang mendaftar sebelum tanggal tersebut 
+                diharapkan login kembali dan mengunggah persyaratan menggunakan menu yang telah disediakan. <br />
+                <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
+            </div>
 </div>
         </div>
     	<div class="row">
