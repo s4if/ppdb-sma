@@ -39,7 +39,174 @@
     </li>
 </ol>
 <div class="container-fluid">
+        <?php if($registrant->getCertificatesCount() == 0):?>
     <div class="row">
-        <h1>Sedang Dalam Proses Pembuatan</h1>
+        <p>Belum ada sertifikat/surat yang terunggah</p>
+    </div>
+        <?php else : 
+        $count= 1;
+        $certificates = $registrant->getCertificates();
+        foreach ($certificates as $cert):
+            //$cert = new CertificateEntity();
+        ?>
+    <div class="row">
+        <h4>Dokumen <?=$count;?></h4>
+        <img src="<?= base_url().'pendaftar/img_sertifikat/'.$id.'/'.$cert->getFileName();?>" alt="Gambar Tidak Ditemukan"
+             style="max-width: 500px" />
+        <table>
+            <tr>
+                <td> Jalur </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getScheme();?> </td>
+            </tr>
+            <tr>
+                <td> Tipe Dokumen </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getFileType();?> </td>
+            </tr>
+            <tr>
+                <td> Mapel OSN </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getSubject();?> </td>
+            </tr>
+            <tr>
+                <td> Ranking </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getRank();?> </td>
+            </tr>
+            <tr>
+                <td> Tingkat Olimpiade </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getLevel();?> </td>
+            </tr>
+            <tr>
+                <td> Penyelenggara </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getOrganizer();?> </td>
+            </tr>
+            <tr>
+                <td> Lokasi Lomba </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getPlace();?> </td>
+            </tr>
+            <tr>
+                <td> Tanggal Pelaksanaan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> 
+                <?= tgl_indo($cert->getStartDate()->format('Y m d'));?> s/d 
+                <?= tgl_indo($cert->getEndDate()->format('Y m d'));?>
+                </td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+        <?php 
+        $count++;
+        endforeach;
+        endif; ?>
+    <div class="row">
+        <a class="btn btn-sm btn-primary <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" data-toggle="modal" data-target="#ModalImport">
+                    <span class="glyphicon glyphicon-upload"></span>
+                    Tambah Dokumen Sertifikat/Surat
+                </a>
     </div>
 </div>
+
+<div class="modal fade" id="ModalImport" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="ModalImportLabel>">Upload Sertifikat/Surat Undangan/Surat Keterangan Seleksi OSN</h4>
+            </div>
+            <div class="modal-body">
+            <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>pendaftar/upload_cert/<?=$id?>" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Pemilihan Jalur :</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="scheme">
+                            <option value="Beasiswa">Beasiswa Unggulan</option>
+                            <option value="Prestasi">Jalur Prestasi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Mata Pelajaran OSN :</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="subject">
+                            <option value="Matematika">Matematika</option>
+                            <option value="IPA">IPA</option>
+                            <option value="IPS">IPS</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Peringkat :</label>
+                    <div class="col-sm-8">
+                        <input type="number" name="rank" class="form-control" placeholder="Kosongkan jika tidak tahu">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Pelaksana Seleksi OSN :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="organizer" required="true" class="form-control" placeholder="contoh: Dinas Pendidikan Jawa Tengah">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Waktu Pelaksanaan OSN :</label>
+                    <div class="col-sm-2">
+                        <input type="date" name="start_date" required="true" class="form-control" placeholder="Waktu Mulai OSN">
+                    </div>
+                    <label class="col-sm-1 control-label">Sampai</label>
+                    <div class="col-sm-2">
+                        <input type="date" name="end_date" required="true" class="form-control" placeholder="Waktu Mulai OSN">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Tingkat OSN :</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="level">
+                            <option value="Provinsi">Provinsi</option>
+                            <option value="Nasional">Nasional</option>
+                            <option value="Internasional">Internasional</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Tempat Pelaksanaan OSN :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="place" required="true" class="form-control" placeholder="Contoh: Semarang">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Jenis File :</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" name="file_type">
+                            <option value="Sertifikat">Sertifikat</option>
+                            <option value="Surat Keterangan">Surat Keterangan</option>
+                            <option value="Surat Undangan">Surat Undangan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Lampiran (Sertifikat/Surat Undangan/Surat Keterangan) :</label>
+                    <div class="col-sm-8">
+                        <input type="file" name="file" required="true" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-4">
+                        <input type="submit" value="Upload Data">
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    
+</script>

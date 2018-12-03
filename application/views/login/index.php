@@ -260,7 +260,7 @@ body {
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
+                                <form id="register-form" autocomplete="off" action="<?php echo base_url().'login/do_register/';?>" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" required name="username" id="username" tabindex="1" 
                                            class="form-control" placeholder="Username" pattern="^[a-zA-Z]([0-9a-zA-z]{1,13}$)" title="Nama Singkat! Maksimal 15 Huruf, tidak boleh ada spasi dan tidak boleh diawali angka!!"

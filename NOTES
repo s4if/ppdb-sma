@@ -70,3 +70,13 @@ Season 2017-2018
 - NISN Wajib
 - Ditambah Wali? (mungkin di halaman baru...)
 - Ditambah Nilai Rapor, 5 Semester?
+
+===================
+Season 2019-2020
+Checklist Upgrade:
+1. Disable situs
+2. Backup db.sqlite
+3. redis-cli flushall
+4. vendor/bin/doctrine orm:schema-tool:update -f
+5. cd data && mkdir sertifikat
+-done

@@ -208,7 +208,7 @@ class RegistrantEntity
     private $certificates;
     
     public function __construct() {
-        $this->features = new Doctrine\Common\Collections\ArrayCollection();
+        $this->certificates = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getArray($vars = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'rapor', 'registrationTime', 'registrantData',
@@ -388,6 +388,14 @@ class RegistrantEntity
 
     public function getCertificates() {
         return $this->certificates;
+    }
+    
+    public function checkCertificates(){
+        return $this->certificates->isEmpty();
+    }
+    
+    public function getCertificatesCount(){
+        return $this->certificates->count();
     }
 
     public function addCertificates($cert){

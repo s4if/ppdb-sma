@@ -99,6 +99,8 @@
                             <td>I/A</td>
                             <td>Sekolah Asal</td>
                             <td>Program</td>
+                            <td>Penghasilan Ayah</td>
+                            <td>Penghasilan Ibu</td>
                             <td>CP</td>
                             <td>Status Data</td>
                             <td>Aksi</td>

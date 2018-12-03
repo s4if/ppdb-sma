@@ -154,6 +154,12 @@ class Admin extends MY_Controller {
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
             $row[] = $registrant['previousSchool'];
             $row[] = ucfirst($registrant['program']);
+            $father = $registrant['object']->getFather();
+            if(is_null($father)){$father =  new ParentEntity();}
+            $mother = $registrant['object']->getMother();
+            if(is_null($mother)){$mother =  new ParentEntity();}
+            $row[] = 'Rp.'.number_format($father->getIncome(), 0, ',', '.').',-';
+            $row[] = 'Rp.'.number_format($mother->getIncome(), 0, ',', '.').',-';
             $row[] = $registrant['cp'];
             $row[] = $registrant['status'];
             $row[] = $this->load->view('admin/fragment/data_registrant', ['registrant' => $registrant], true);

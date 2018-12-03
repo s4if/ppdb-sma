@@ -467,7 +467,7 @@ class Pendaftar extends MY_Controller {
             'title' => 'Upload Sertifikat',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
-            'registrant' => $this->session->registrant,
+            'registrant' => $this->reg->getRegistrant($this->session->registrant),
             'nav_pos' => 'certificate'
         ];
         $this->CustomView('registrant/certificate_upload', $data);
@@ -493,8 +493,43 @@ class Pendaftar extends MY_Controller {
         }
     }
     
+    public function upload_cert($id){
+        $this->blockUnloggedOne($id);
+        $data = $this->input->post(null, true);
+        $fileUrl = $_FILES['file']["tmp_name"];
+        $res = $this->reg->addCertificate($id, $data, $fileUrl);
+        if($res){
+            $this->session->set_userdata('registrant', $this->reg->getRegistrant());
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect($id.'/sertifikat');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect($id.'/sertifikat');
+        }
+    }
+    
+    public function img_sertifikat($id, $fileName){
+        $this->blockUnloggedOne($id, true);
+        $imagine = new Imagine\Gd\Imagine();
+        $image = $imagine->open('./data/sertifikat/'.$fileName.'.png');
+        $image->show('png');
+    }
+    
+    public function hapus_sertifikat($id){
+        $this->blockUnloggedOne($id);
+        $res = $this->reg->deleteCertificate($id);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil dihapus"]);
+            redirect('admin/lihat');
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/lihat');
+        }
+    }
+    
     public function print_kartu(){
         $registrant = $this->session->registrant;
+        $this->blockUnloggedOne($registrant->getId(),true);
         if(!empty($registrant)){
             $pdf = new mikehaertl\wkhtmlto\Pdf();
             $pdf->setOptions($this->pdfOption());

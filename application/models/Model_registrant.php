@@ -134,8 +134,13 @@ class Model_registrant extends CI_Model {
     }
     
     // Xperimental
-    public function getRegistrant() {
-        return $this->registrant;
+    public function getRegistrant(RegistrantEntity $reg = null) {
+        if(is_null($reg)){
+            return $this->registrant;
+        } else {
+            $registrant = $this->doctrine->em->find('RegistrantEntity', $reg->getId());
+            return $registrant;
+        }
     }
     // ===========
     
@@ -941,6 +946,53 @@ class Model_registrant extends CI_Model {
             $objWriter = new PHPExcel_Writer_Excel5($this->excel);
             $objWriter->save('php://output');
             exit;
+        }
+    }
+    
+    public function addCertificate($id, $data, $fileUrl){
+        $this->registrant = $this->doctrine->em->find('RegistrantEntity', $id);
+        if(is_null($this->registrant)){
+            return false;
+        } else {
+            $cert = new CertificateEntity();
+            $cert->setScheme($data['scheme']);
+            $cert->setSubject(strtoupper($data['subject']));
+            $cert->setOrganizer($data['organizer']);
+            if (!is_null($data['rank'])){
+                $cert->setRank($data['rank']);
+            }
+            $startDate = DateTime::createFromFormat('Y-m-d', $data['start_date']);
+            $cert->setStartDate($startDate);
+            $endDate = DateTime::createFromFormat('Y-m-d', $data['end_date']);
+            $cert->setEndDate($endDate);
+            $cert->setLevel($data['level']);
+            $cert->setPlace($data['place']);
+            $cert->setFileType($data['file_type']);
+            $dt = new DateTime('now');
+            $fileName = substr($data['level'], 0,1).$this->registrant->getId()
+                    . strtoupper($data['subject']).'-'.hash('crc32', $dt->format('Y-m-d H:i:s'));
+            if ($this->uploadCertificate($fileUrl, $fileName)) {
+                $cert->setFileName($fileName);
+                $cert->setRegistrant($this->registrant);
+                $this->doctrine->em->persist($cert);
+                $this->registrant->addCertificates($cert);
+                $this->doctrine->em->persist($this->registrant);
+                $this->doctrine->em->flush();
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    public function uploadCertificate($fileUrl, $fileName){
+        try {
+            $imagine = new Imagine\Gd\Imagine();
+            $image = $imagine->open($fileUrl);
+            $image->save(FCPATH.'data/sertifikat/'.$fileName.'.png');
+            return true;
+        } catch (Imagine\Exception\RuntimeException $e){
+            return false;
         }
     }
 }
