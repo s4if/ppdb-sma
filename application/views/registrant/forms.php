@@ -186,6 +186,9 @@
                 <input type="number" required name="siblings_count" class="form-control" placeholder="Masukkan jumlah saudara" value="<?=$reg_data->getSiblingsCount();?>">
             </div>
         </div>
+        <div class="form-group">
+            <p class="help-block col-sm-offset-4 col-sm-4">*Jumlah saudara selain pendaftar</p>
+        </div>
         <!-- TODO: Family Condition pake radio -->
         <div class="form-group">
             <label class="col-sm-4 control-label">Keluarga Pendaftar<strong class="red">*</strong> :</label>
@@ -415,7 +418,7 @@
             </div>
         </div>
         <div class="form-group">
-            <p class="help-block text-danger">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
+            <p class="help-block col-sm-offset-4 col-sm-4">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
                 tingkat minimal kabupaten/kota</p>
         </div>
         <?php else:
@@ -442,7 +445,7 @@
         </div>
         <?php endforeach;?>
         <div class="form-group">
-            <p class="help-block">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
+            <p class="help-block col-sm-offset-4 col-sm-4">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
                 tingkat minimal kabupaten/kota</p>
         </div>
         <?php endif;?>

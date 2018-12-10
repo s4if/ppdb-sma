@@ -143,6 +143,7 @@ class Admin extends MY_Controller {
     
     public function lihat_ajax($gender = null){
         $this->blockNonAdmin();
+        error_reporting(0);
         $registrant_data = (is_null($gender))?$this->reg->getArrayData():$this->reg->getArrayData($gender);
         $data = [];
         foreach ($registrant_data as $registrant){
