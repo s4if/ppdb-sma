@@ -11,8 +11,10 @@ vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
 # Recreate data
 rm -fRv data/foto/
 rm -fRv data/receipt/
+rm -fRv data/sertifikat/
 mkdir -p data/foto/
 mkdir -p data/receipt/
+mkdir -p data/sertifikat/
 
 # Seeding data
 php seeder.php

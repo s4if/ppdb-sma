@@ -390,7 +390,15 @@ class RegistrantEntity
         return $this->certificates;
     }
     
-    public function checkCertificates(){
+    public function getScheme(){
+        if($this->isCertificatesEmpty()){
+            return null;
+        } else {
+            return $this->certificates->first()->getScheme();
+        }
+    }
+    
+    public function isCertificatesEmpty(){
         return $this->certificates->isEmpty();
     }
     

@@ -1006,4 +1006,20 @@ class Model_registrant extends CI_Model {
             return true;
         }
     }
+    
+    public function getSpecialParticipants(){
+        $data = $this->getData();
+        
+        $res = [];
+        foreach ($data as $item) {
+            if(!$item->isCertificatesEmpty()){
+                $res[] = $item;
+            }
+        }
+        return $res;
+    }
+    
+    public function getCertificate($id){
+        return $this->doctrine->em->find('CertificateEntity', $id);
+    }
 }

@@ -240,4 +240,31 @@ class Model_1_registrant_test extends TestCase {
         $this->assertTrue($this->obj->export_Uncomplete('Coba', true, false));
     }
     
+    public function test_certificate(){
+        $arr_reg =  $this->obj->getData('P');
+        $id = end($arr_reg)->getId();
+        $this->setUp();
+        $data = [
+            'scheme' => 'Prestasi',
+            'rank' => 3,
+            'subject' => 'IPA',
+            'organizer' => 'Disdikpora Provinsi',
+            'start_date' => '2018-12-13',
+            'end_date' => '2018-12-14',
+            'level' => 'Provinsi',
+            'place' => 'Semarang',
+            'file_type' => 'Sertifikat'
+        ];
+        $this->assertFalse($this->obj->addCertificate(-99, $data, FCPATH.'assets/test/gambar1.png'));
+        $this->assertTrue($this->obj->addCertificate($id, $data, FCPATH.'assets/test/gambar1.png'));
+        $arr_reg2 =  $this->obj->getData('P');
+        $reg = end($arr_reg2);
+        $cert = $reg->getCertificates()->first();
+        $cert_id = $cert->getId();
+        $this->assertTrue($this->obj->deleteCertificate($cert_id));
+        $this->assertFalse($this->obj->deleteCertificate($cert_id));
+        $this->assertNull($this->obj->getCertificate($cert_id));
+        $this->obj->addCertificate($id, $data, FCPATH.'assets/test/gambar1.png');
+    }
+    
 }

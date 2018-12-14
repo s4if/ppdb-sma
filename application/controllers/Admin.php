@@ -415,6 +415,41 @@ class Admin extends MY_Controller {
         $this->CustomView('admin/verifikasi_pembayaran', $data);
     }
     
+    public function prestasi($id  = null){
+        if(is_null($id)){
+            $this->lihat_prestasi();
+        } else {
+            $this->lihat_dokumen($id);
+        }
+    }
+    
+    private function lihat_prestasi (){
+        $this->blockNonAdmin();
+        $data = $this->reg->getSpecialParticipants();
+        $this->CustomView('admin/data_prestasi', [
+            'title' => 'Lihat Peserta Jalur Prestasi dan Beasiswa Unggulan',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'nav_pos' => 'achievementAdmin',
+            'data_peserta' => $data
+        ]);
+    }
+    
+    private function lihat_dokumen($id){
+        $this->blockNonAdmin();
+        $resi = $this->admin->getReceipt($id);
+        $id_registrant = $resi->getRegistrant()->getId();
+        $data = [
+            'title' => 'Dokumen Bukti Prestasi',
+            'username' => $this->session->admin->getUsername(),
+            'admin' => $this->session->admin,
+            'resi' => $resi,
+            'img_receipt' => $this->getImgReceipt($id_registrant),
+            'nav_pos' => 'paymentAdmin'
+        ];
+        $this->CustomView('admin/verifikasi_pembayaran', $data);
+    }
+    
     private function getImgReceipt($id){
         $this->load->helper('file');
         $img_link = '';

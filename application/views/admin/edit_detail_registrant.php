@@ -126,6 +126,21 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Anak ke<strong class="red">*</strong> :</label>
+            <div class="col-sm-4">
+                <input type="number" required name="child_order" class="form-control" placeholder="Masukkan anak keberapa" value="<?=$registrant_detail->getChildOrder();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Jumlah Saudara<strong class="red">*</strong> :</label>
+            <div class="col-sm-4">
+                <input type="number" required name="siblings_count" class="form-control" placeholder="Masukkan jumlah saudara" value="<?=$registrant_detail->getSiblingsCount();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="help-block col-sm-offset-4 col-sm-4">*Jumlah saudara selain pendaftar</p>
+        </div>
         <!-- TODO: Nationality pake radio -->
         <div class="form-group">
             <label class="col-sm-4 control-label ">Kewarganegaraan :</label>
