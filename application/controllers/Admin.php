@@ -435,19 +435,44 @@ class Admin extends MY_Controller {
         ]);
     }
     
-    private function lihat_dokumen($id){
+    public function lihat_dokumen($id){
         $this->blockNonAdmin();
-        $resi = $this->admin->getReceipt($id);
-        $id_registrant = $resi->getRegistrant()->getId();
+        $registrant = $this->reg->getData(null, $id);
         $data = [
-            'title' => 'Dokumen Bukti Prestasi',
+            'title' => 'Dokumen dan Sertifikat',
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
-            'resi' => $resi,
-            'img_receipt' => $this->getImgReceipt($id_registrant),
-            'nav_pos' => 'paymentAdmin'
+            'id' => $registrant->getId(),
+            'reg' => $registrant,
+            'nav_pos' => 'achievementAdmin'
         ];
-        $this->CustomView('admin/verifikasi_pembayaran', $data);
+        $this->CustomView('admin/dokumen_prestasi', $data);
+    }
+    
+    public function upload_cert($id){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $fileUrl = $_FILES['file']["tmp_name"];
+        $res = $this->reg->addCertificate($id, $data, $fileUrl);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/prestasi/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/prestasi/'.$id);
+        }
+    }
+    
+    public function hapus_sertifikat($id){
+        $this->blockNonAdmin();
+        $res = $this->reg->deleteCertificate($id);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil dihapus"]);
+            redirect('admin/prestasi/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/prestasi/'.$id);
+        }
     }
     
     private function getImgReceipt($id){

@@ -63,7 +63,9 @@
                             <td> <?=$peserta->getGender();?></td>
                             <td> <?=$peserta->getScheme();?></td>
                             <td> <?=$peserta->getCertificatesCount();?></td>
-                            <td></td>
+                            <td> <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/prestasi/<?=$peserta->getId();?>">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </td>
                             <?php $no++?>
                         </tr>
                         <?php endforeach;?>
