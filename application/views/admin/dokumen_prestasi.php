@@ -40,11 +40,11 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalImport">
+<!--        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalImport">
             <span class="glyphicon glyphicon-upload"></span>
             Tambah Dokumen Sertifikat/Surat
-        </a>
-        <a class="btn btn-sm btn-warning" href="#">
+        </a>-->
+        <a class="btn btn-sm btn-warning" href="<?= base_url()?>admin/print_sertifikat/<?=$reg->getId();?>">
             <span class="glyphicon glyphicon-download"></span>
             Cetak Dokumen Siswa
         </a>
@@ -83,7 +83,7 @@
             <tr>
                 <td> Ranking </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getRank();?> </td>
+                <td> <?=(empty($cert->getRank()))?'-':$cert->getRank();?> </td>
             </tr>
             <tr>
                 <td> Tingkat Olimpiade </td>
@@ -108,13 +108,13 @@
                 <?= tgl_indo($cert->getEndDate()->format('Y m d'));?>
                 </td>
             </tr>
-            <tr>
+<!--            <tr>
                 <td> </td>
                 <td> </td>
-                <td> <a class="btn btn-danger" href="<?= base_url()?>admin/hapus_sertifikat/<?=$cert->getId();?>">
+                <td> <a class="btn btn-danger" href="<?= base_url()?>admin/hapus_sertifikat/<?=$reg->getId()?>/<?=$cert->getId();?>">
                         <span class="glyphicon-erase"></span>Hapus
                     </a> </td>
-            </tr>
+            </tr>-->
         </table>
         <hr />
     </div>

@@ -463,16 +463,27 @@ class Admin extends MY_Controller {
         }
     }
     
-    public function hapus_sertifikat($id){
+    public function hapus_sertifikat($reg_id,$id){
         $this->blockNonAdmin();
         $res = $this->reg->deleteCertificate($id);
         if($res){
             $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil dihapus"]);
-            redirect('admin/prestasi/'.$id);
+            redirect('admin/prestasi/'.$reg_id);
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
-            redirect('admin/prestasi/'.$id);
+            redirect('admin/prestasi/'.$reg_id);
         }
+    }
+    
+    public function print_sertifikat($id){
+        $this->blockNonAdmin();
+        $registrant = $this->reg->getData(null, $id);
+        $pdf = new mikehaertl\wkhtmlto\Pdf();
+        $pdf->setOptions($this->pdfOption());
+        $data_sertifikat = $this->load->view('admin/print/dokumen_rekap', ['reg' => $registrant],true);
+        $pdf->addPage($data_sertifikat);
+        $res = $pdf->send('Dokumen Prestasi '.$registrant->getRegId().' .pdf');
+        if (!$res) { echo $pdf->getError(); }
     }
     
     private function getImgReceipt($id){

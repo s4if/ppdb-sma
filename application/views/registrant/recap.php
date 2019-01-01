@@ -399,7 +399,7 @@
             <tr>
                 <td> Dana Majalah dan kalender </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.000.000,00</td>
+                <td> Rp. 120.000,00</td>
             </tr>
             <tr>
                 <td> <strong class="red">Total</strong> </td>
