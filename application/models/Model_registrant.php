@@ -152,11 +152,11 @@ class Model_registrant extends CI_Model {
         if (is_null($registrant->getKode()) && $gender == $registrant->getGender()){
             if($gender == 'P'){
                 $counter->addFemaleCount();
-                $kode = sprintf("%03d", 500 + $counter->getFemaleCount());
+                $kode = sprintf("%03d", 900 + $counter->getFemaleCount()); // hanya untuk sementara, nilai asli 500
                 $registrant->setKode($kode);
             } else {
                 $counter->addMaleCount();
-                $kode = sprintf("%03d", $counter->getMaleCount());
+                $kode = sprintf("%03d", 400 + $counter->getMaleCount()); // hanya untuk sementara, nilai asli 0
                 $registrant->setKode($kode);
             }
             $this->doctrine->em->persist($counter);
