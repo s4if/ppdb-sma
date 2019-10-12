@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn' => 'sqlite:db.sqlite',
+	'dsn' => 'sqlite:application/db.sqlite',
 	'hostname' => 'localhost',
 	'username' => 'ppdb',
 	'password' => 'ppdb',
