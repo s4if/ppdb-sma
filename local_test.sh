@@ -2,8 +2,8 @@
 
 # Drop Dulu
 # vendor/doctrine/orm/bin/doctrine orm:schema-tool:drop --force
-rm db.sqlite
-touch db.sqlite
+rm application/db.sqlite
+touch application/db.sqlite
 
 # Create
 vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
