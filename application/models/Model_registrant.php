@@ -29,7 +29,7 @@
  *
  * @author s4if
  */
-use PHPExcel\IOFactory;
+use \PhpOffice\PhpSpreadsheet\Spreadsheet\IOFactory;
 
 class Model_registrant extends CI_Model {
     
@@ -503,13 +503,8 @@ class Model_registrant extends CI_Model {
         ini_set("display_errors", 1);
         ini_set('max_execution_time', 60);
         ini_set('memory_limit', '256M');
-        
-        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
-        $cacheSettings = array( 'memoryCacheSize ' => '256MB');
-        PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-
-        
-        $this->excel = new PHPExcel();
+                
+        $this->excel = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $this->mbatik($this->getDataByJurusan($programme, $gender), 'Data');
         
         $this->excel->removeSheetByIndex(0);
@@ -519,7 +514,7 @@ class Model_registrant extends CI_Model {
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
             header('Cache-Control: max-age=0');
-            $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+            $objWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xls($this->excel);
             $objWriter->save('php://output');
             exit;
         }
@@ -531,11 +526,11 @@ class Model_registrant extends CI_Model {
     }
     
     private function mbatik($data, $title){
-        $worksheet = new PHPExcel_Worksheet();
+        $worksheet = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet();
         $worksheet->setTitle($title);
         
         // Siswa Start
-        $worksheet->mergeCells('A3:R3');
+        $worksheet->mergeCells('A3:S3');
         $worksheet->setCellValue('A3', 'Data Siswa');
         $worksheet->getColumnDimension('A')->setAutoSize(true);
         $worksheet->SetCellValue('A4', 'No. Pendaftaran');
@@ -817,12 +812,12 @@ class Model_registrant extends CI_Model {
         ini_set('max_execution_time', 60);
         ini_set('memory_limit', '256M');
         
-        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
+        $cacheMethod = \PhpOffice\PhpSpreadsheet\Collection\CellsFactory::cache_in_memory_gzip;
         $cacheSettings = array( 'memoryCacheSize ' => '256MB');
-        PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+        \PhpOffice\PhpSpreadsheet\Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
 
         
-        $this->excel = new PHPExcel();
+        $this->excel = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $this->mbatikRapor($this->getDataByJurusan($programme, $gender), 'Data');
         
         $this->excel->removeSheetByIndex(0);
@@ -832,14 +827,14 @@ class Model_registrant extends CI_Model {
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
             header('Cache-Control: max-age=0');
-            $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+            $objWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xls($this->excel);
             $objWriter->save('php://output');
             exit;
         }
     }
     
     private function mbatikRapor($data, $title){
-        $worksheet = new PHPExcel_Worksheet();
+        $worksheet = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet();
         $worksheet->setTitle($title);
         $worksheet->mergeCells('A3:A4');
         $worksheet->setCellValue('A3', 'No.');
@@ -923,19 +918,14 @@ class Model_registrant extends CI_Model {
         ini_set('max_execution_time', 60);
         ini_set('memory_limit', '256M');
         
-        $cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_in_memory_gzip;
-        $cacheSettings = array( 'memoryCacheSize ' => '256MB');
-        PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-
-        
-        $this->excel = new PHPExcel();
+        $this->excel = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $registrant_data = null;
         if ($unpaid){
             $registrant_data = $this->getUnpaidData();
         } else {
             $registrant_data = $this->getIncompleteData();
         }
-        $worksheet = new PHPExcel_Worksheet();
+        $worksheet = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet();
         $worksheet->setTitle('Data');
         $worksheet->setCellValue('A1', 'Nomor Pendaftaran');
         $worksheet->getColumnDimension('A')->setAutoSize(true);
@@ -972,7 +962,7 @@ class Model_registrant extends CI_Model {
              header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="'.$file_name.'.xls"');
             header('Cache-Control: max-age=0');
-            $objWriter = new PHPExcel_Writer_Excel5($this->excel);
+            $objWriter = new \PhpOffice\PhpSpreadsheet\Writer\Xls($this->excel);
             $objWriter->save('php://output');
             exit;
         }
