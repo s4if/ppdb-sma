@@ -18,3 +18,4 @@
 /.phpintel
 /application/libraries/codeigniter-doctrine/
 /application/db.sqlite
+/.composer.log
