@@ -12,9 +12,7 @@
 /application/models/Proxies/*.php
 /nbproject/
 /application/tests/build/
-/application/tests/_ci_phpunit_test/tmp/
-/application/tests/_ci_phpunit_test/replacing/
-/application/tests/_ci_phpunit_test/patcher/debug.log
+/application/tests/_ci_phpunit_test/
 /application/models/Proxies/
 /.phpintel
 /application/libraries/codeigniter-doctrine/
