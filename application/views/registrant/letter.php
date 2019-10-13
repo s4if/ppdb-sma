@@ -363,15 +363,15 @@
                     ?>
                     <div class="checkbox">
                         <label><input type="checkbox" name="q2019" value="2019" 
-                                    <?php if($qurban[0]=='2019') {echo 'checked="true"';}?>>2019</label>
+                                    <?php //if($qurban[0]=='2019') {echo 'checked="true"';}?>>2019</label>
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox" name="q2020" value="2020"
-                                      <?php if($qurban[1]=='2020') {echo 'checked="true"';}?>>2020</label>
+                                      <?php //if($qurban[1]=='2020') {echo 'checked="true"';}?>>2020</label>
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox" name="q2021" value="2021"
-                                      <?php if($qurban[2]=='2021') {echo 'checked="true"';}?>>2021</label>
+                                      <?php //if($qurban[2]=='2021') {echo 'checked="true"';}?>>2021</label>
                     </div>
                 </div>
             </div>

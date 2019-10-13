@@ -57,10 +57,10 @@ class Login_test extends TestCase
         $this->assertRedirect('1/beranda');
     }
 
-    public function test_logout(){
-        $this->request('GET', 'login/do_logout');
-        $this->assertRedirect('login/index');
-    }
+    //public function test_logout(){
+        //$this->request('GET', 'login/do_logout');
+        //$this->assertRedirect('login/index');
+    //}
     
     public function test_login_admin_fail()
     {
