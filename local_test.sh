@@ -15,6 +15,8 @@ rm -fRv data/sertifikat/
 mkdir -p data/foto/
 mkdir -p data/receipt/
 mkdir -p data/sertifikat/
+cp application/tests/assets/foto.png data/foto/1.png
+cp application/tests/assets/foto.png data/receipt/1.png
 
 # Seeding data
 php seeder.php
@@ -23,7 +25,7 @@ php seeder.php
 cd application/tests/
 
 # Call PHPUNIT
-../../vendor/phpunit/phpunit/phpunit --coverage-text --verbose
+../../vendor/phpunit/phpunit/phpunit --verbose
 
 # Back to ppdb
 cd ../..

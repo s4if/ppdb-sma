@@ -288,7 +288,7 @@ class Admin extends MY_Controller {
     private function getImgLink($id){
         $this->load->helper('file');
         $img_link = '';
-        $file = read_file('./data/foto/'.$id.'.png');
+        $file = read_file(FCPATH.'data/foto/'.$id.'.png');
         $datetime = new DateTime('now');
         if($file == false){
             $img_link = base_url().'assets/images/default.png';
@@ -489,7 +489,7 @@ class Admin extends MY_Controller {
     private function getImgReceipt($id){
         $this->load->helper('file');
         $img_link = '';
-        $file = read_file('./data/receipt/'.$id.'.png');
+        $file = read_file(FCPATH.'data/receipt/'.$id.'.png');
         $datetime = new DateTime('now');
         if($file == false){
             $img_link = null;

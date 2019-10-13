@@ -307,11 +307,13 @@ class Pendaftar_test extends TestCase
             $data = [
                 'rel_to_regular' => 'true',
                 'rel_to_ips' => 'true',
-                'raw_icost' => '-999',
-                'other_icost' => '15000000',
-                'raw_scost' => '-999',
-                'other_scost' => '1300000',
-                'qurban'=> '',
+                'raw_icost' => -999,
+                'other_icost' => 15000000,
+                'raw_scost' => -999,
+                'other_scost' => 1300000,
+                'raw_lcost' => -999,
+                'other_lcost' => 10000000,
+                'qurban'=> '', // ini masih error?
                 'main_parent' => 'father'
             ];
             $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);

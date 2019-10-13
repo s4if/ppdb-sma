@@ -80,3 +80,10 @@ Checklist Upgrade:
 4. vendor/bin/doctrine orm:schema-tool:update -f
 5. cd data && mkdir sertifikat
 -done
+
+=====================
+TP 2020-2021
+Checklist Upgrade:
+1. Buat ulang modul qurban? tahun agnostik? pakai tahun1, tahun2, tahun3?
+2. Tes-nya masih ada yg error
+3. Buat modul smk juga?

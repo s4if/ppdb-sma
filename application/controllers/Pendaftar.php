@@ -91,7 +91,7 @@ class Pendaftar extends MY_Controller {
     private function getImgLink($id){
         $this->load->helper('file');
         $img_link = [];
-        $file = read_file('./data/foto/'.$id.'.png');
+        $file = read_file(FCPATH.'data/foto/'.$id.'.png');
         $datetime = new DateTime('now');
         if($file == false){
             $img_link[0] = base_url().'assets/images/default.png';
@@ -105,7 +105,7 @@ class Pendaftar extends MY_Controller {
     public function getFoto($id, $hash){
         $this->blockUnloggedOne($id, true);
         $imagine = new Imagine\Gd\Imagine();
-        $image = $imagine->open('./data/foto/'.$id.'.png');
+        $image = $imagine->open(FCPATH.'data/foto/'.$id.'.png');
         $this->session->set_userdata('random_hash', $hash);
         $image->show('png');
     }
@@ -383,7 +383,7 @@ class Pendaftar extends MY_Controller {
     private function getImgReceipt($id){
         $this->load->helper('file');
         $img_link = '';
-        $file = read_file('./data/receipt/'.$id.'.png');
+        $file = read_file(FCPATH.'data/receipt/'.$id.'.png');
         $datetime = new DateTime('now');
         if($file == false){
             $img_link = null;
@@ -396,7 +396,7 @@ class Pendaftar extends MY_Controller {
     public function getReceipt($id, $hash){
         $this->blockUnloggedOne($id, true);
         $imagine = new Imagine\Gd\Imagine();
-        $image = $imagine->open('./data/receipt/'.$id.'.png');
+        $image = $imagine->open(FCPATH.'data/receipt/'.$id.'.png');
         $this->session->set_userdata('random_hash_2', $hash);
         $image->show('png');
     }
@@ -477,7 +477,7 @@ class Pendaftar extends MY_Controller {
         error_reporting(0);
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
-        $data['qurban'] = $data['q2019'].";".$data['q2020'].";".$data['q2021'].";";
+        $data['qurban'] = ' ';//$data['q2019'].";".$data['q2020'].";".$data['q2021'].";"; // diganti biar tahun agnostik?
         $data['initial_cost'] = ($data['raw_icost'] == '-999')?$data['other_icost']:$data['raw_icost'];
         $data['subscription_cost'] = ($data['raw_scost'] == '-999')?$data['other_scost']:$data['raw_scost'];
         $data['land_donation'] = ($data['raw_lcost'] == '-999')?$data['other_lcost']:$data['raw_lcost'];
@@ -511,7 +511,7 @@ class Pendaftar extends MY_Controller {
     public function img_sertifikat($id, $fileName){
         $this->blockUnloggedOne($id, true);
         $imagine = new Imagine\Gd\Imagine();
-        $image = $imagine->open('./data/sertifikat/'.$fileName.'.png');
+        $image = $imagine->open(FCPATH.'data/sertifikat/'.$fileName.'.png');
         $image->show('png');
     }
     
