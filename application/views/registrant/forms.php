@@ -175,16 +175,15 @@
             <hr/>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Anak ke<strong class="red">*</strong> :</label>
-            <div class="col-sm-4">
-                <input type="number" required name="child_order" class="form-control" placeholder="Masukkan anak keberapa" value="<?=$reg_data->getChildOrder();?>">
+            <label class="col-sm-4 control-label">Anak ke</label>
+            <div class="col-sm-2">
+                <input type="number" required name="child_order" class="form-control" value="<?=$reg_data->getChildOrder();?>">
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-4 control-label">Jumlah Saudara<strong class="red">*</strong> :</label>
-            <div class="col-sm-4">
-                <input type="number" required name="siblings_count" class="form-control" placeholder="Masukkan jumlah saudara" value="<?=$reg_data->getSiblingsCount();?>">
+            <label class="col-sm-2 control-label">Dari </label>
+            <div class="col-sm-2">
+                <input type="number" required name="siblings_count" class="form-control" value="<?=$reg_data->getSiblingsCount();?>">
             </div>
+            <label class="col-sm-2 control-label">bersaudara.<strong class="red">*</strong></label>
         </div>
         <div class="form-group">
             <p class="help-block col-sm-offset-4 col-sm-4">*Jumlah saudara selain pendaftar</p>
