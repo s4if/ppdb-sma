@@ -175,12 +175,9 @@
             <tr>
                 <td> Anak Ke </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ucwords($data->getChildOrder());?> </td>
-            </tr>
-            <tr>
-                <td> Jumlah Saudara  </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo ucwords($data->getSiblingsCount());?></td>
+                <td> <?php echo ucwords($data->getChildOrder());?> 
+                    dari <?php echo ucwords($data->getSiblingsCount());?> bersaudara
+                </td>
             </tr>
             <tr>
                 <td rowspan="<?=($hb_count < 1)?'1':$hb_count+1;?>"> Hobi </td>

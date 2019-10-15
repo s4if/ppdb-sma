@@ -152,6 +152,9 @@ class Model_1_registrant_test extends TestCase {
         // test insert registrant
         $this->setUp();
         $data = [
+            'nik' => '3304939390029302',
+            'nkk' => '3302300204930302',
+            'nak' => '3304939393999281',
             'birth_place' => 'Semarang', 
             'birth_date' => '19-2-2000', 
             'street' => 'Rambeanak II', 
@@ -189,7 +192,7 @@ class Model_1_registrant_test extends TestCase {
         $arr_reg =  $this->obj->getData('P');
         $registrant = end($arr_reg);
         $registrantData = $registrant->getRegistrantData();
-        $attributes = ['id', 'registrant', 'birthPlace', 'birthDate', 'street', 
+        $attributes = ['id', 'registrant','nik','nkk','nak', 'birthPlace', 'birthDate', 'street', 
             'RT', 'RW', 'village', 'district', 'city', 'province', 'postalCode', 
             'familyCondition', 'nationality', 'religion', 'height', 'weight', 'childOrder', 'siblingsCount',
             'stayWith', 'physicalAbnormalities', 'hospitalSheets', 'hobbies', 'achievements'];

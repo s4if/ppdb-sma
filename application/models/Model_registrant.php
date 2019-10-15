@@ -278,6 +278,9 @@ class Model_registrant extends CI_Model {
     //id, registrant, birthplace, birthdate, street, RT, RW, village, district, city, province, postalCode, familyCondition, nationality, religion, height, weight, stayWith
     protected function setRegistrantDetail($data){
         if (!empty($data['registrant'])) : $this->registrantData->setRegistrant($data['registrant']); endif; //bentuk objek jadi
+        if (!empty($data['nik'])) : $this->registrantData->setNik($data['nik']); endif;
+        if (!empty($data['nkk'])) : $this->registrantData->setNkk($data['nkk']); endif;
+        if (!empty($data['nak'])) : $this->registrantData->setNak($data['nak']); endif;
         if (!empty($data['birth_place'])) : $this->registrantData->setBirthPlace($data['birth_place']); endif;
         if (!empty($data['birth_date'])) : $this->registrantData->setBirthDate(new DateTime($data['birth_date'])); endif;
         if (!empty($data['child_order'])) : $this->registrantData->setChildOrder($data['child_order']); endif;
@@ -302,7 +305,7 @@ class Model_registrant extends CI_Model {
         $input_error = [];
         $valid = true;
         $arr_required = [
-            'birth_place', 'birth_date', 'street', 'village', 'district', 
+            'nik','nkk','nak','birth_place', 'birth_date', 'street', 'village', 'district', 
             'city', 'province', 'postal_code', 'family_condition', 'nationality', 'religion', 
             'height', 'weight', 'stay_with', 'child_order'
         ];
@@ -683,6 +686,17 @@ class Model_registrant extends CI_Model {
         $worksheet->getColumnDimension('BM')->setAutoSize(true);
         $worksheet->SetCellValue('BM4', 'Keikutsertaan Qurban');
         // End Pembayaran
+
+        // Start Data Tambahan
+        $worksheet->mergeCells('BN3:BP3');
+        $worksheet->setCellValue('BN3', 'Data Tambahan');
+        $worksheet->getColumnDimension('BN')->setAutoSize(true);
+        $worksheet->SetCellValue('BN4', 'Nomor Induk Kependudukan');
+        $worksheet->getColumnDimension('BO')->setAutoSize(true);
+        $worksheet->SetCellValue('BO4', 'Nomor Kartu Keluarga');
+        $worksheet->getColumnDimension('BP')->setAutoSize(true);
+        $worksheet->SetCellValue('BP4', 'Nomor Akte Kelahiran');
+        // End Data Tambahan
         
         // Start Mbatik Isi
         $row = 5;
@@ -710,7 +724,7 @@ class Model_registrant extends CI_Model {
                 $str_sibling = "";
                 if (!empty($rData->getChildOrder())){
                     $str_sibling = "Anak ke ".$rData->getChildOrder().
-                            "dari ".($rData->getSiblingsCount()+1)." bersaudara";
+                            "dari ".($rData->getSiblingsCount())." bersaudara";
                 }
                 $worksheet->SetCellValue('Q'.$row, ucwords($str_sibling));//edit
                 $worksheet->SetCellValue('R'.$row, $rData->getHobbies(false));
@@ -796,6 +810,12 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('BG'.$row, $gData->getCompany());
                 $worksheet->SetCellValue('BH'.$row, number_format($gData->getIncome(), 0, ',', '.'));
                 $worksheet->SetCellValue('BI'.$row, $gData->getBurdenCount());
+            }
+
+            if(!empty($rData)){
+                $worksheet->SetCellValue('BN'.$row, $rData->getNik());
+                $worksheet->SetCellValue('BO'.$row, $rData->getNkk());
+                $worksheet->SetCellValue('BP'.$row, $rData->getNak());
             }
             //Mohon mbatik dikoreksi lagi kalau udah ga ngantuk... hehe
             // Iteration of Rows

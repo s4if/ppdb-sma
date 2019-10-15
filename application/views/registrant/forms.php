@@ -121,6 +121,24 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-4 control-label">Nomor Induk Kependudukan<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required name="nik" class="form-control" placeholder="Masukkan NIK" value="<?=$reg_data->getNik();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Nomor Kartu Keluarga<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required name="nkk" class="form-control" placeholder="Masukkan Nomor KK" value="<?=$reg_data->getNkk();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Nomor Akta Kelahiran<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required name="nak" class="form-control" placeholder="Masukkan Nomor Akta Kelahiran" value="<?=$reg_data->getNak();?>">
+            </div>
+        </div>
+        <div class="form-group">
             <hr/>
         </div>
         <div class="form-group">
@@ -184,9 +202,6 @@
                 <input type="number" required name="siblings_count" class="form-control" value="<?=$reg_data->getSiblingsCount();?>">
             </div>
             <label class="col-sm-2 control-label">bersaudara.<strong class="red">*</strong></label>
-        </div>
-        <div class="form-group">
-            <p class="help-block col-sm-offset-4 col-sm-4">*Jumlah saudara selain pendaftar</p>
         </div>
         <!-- TODO: Family Condition pake radio -->
         <div class="form-group">

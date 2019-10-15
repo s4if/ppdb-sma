@@ -182,7 +182,7 @@ class Pendaftar extends MY_Controller {
         $this->blockUnloggedOne($id);
         $data = $this->input->post(null, true);
         $res = $this->do_edit_all($id, $data);
-        if($res['success']){
+        if($res['success'] ==  1){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
             echo json_encode([
                 'status' => true,

@@ -119,7 +119,7 @@
     <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <div class="page-content">
         <h1 class="header-print">SURAT PERNYATAAN <br >
-            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2019/2020</small>
+            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2020/2021</small>
         </h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
         <table style="width: 100%; border-style: none">
@@ -234,24 +234,8 @@
                 </tr>
             </table>
             <?php
-            $arr_qurban = $registrant->getQurban();
-            $qurban = explode(";", $arr_qurban);
-            $def_arr = ['2019', '2020', '2021'];
-            $arr_tahun = [];
-            $str_tahun = "";
-            for($i = 0; $i<3;$i++){
-                if($qurban[$i]==$def_arr[$i]){
-                    $arr_tahun[] = $qurban[$i];
-                }
-            }
-            if(sizeof($arr_tahun) == 1) {
-                $str_tahun = $arr_tahun[0];
-            } elseif (sizeof($arr_tahun) == 2) {
-                $str_tahun = $arr_tahun[0]." dan ".$arr_tahun[1];
-            } elseif (sizeof($arr_tahun) == 3) {
-                $str_tahun = $arr_tahun[0].", ".$arr_tahun[1]." dan ".$arr_tahun[2];
-            }
-            if(!empty($str_tahun)) :
+            //  Qurban dalam pengerjaan
+            if(!true) :
             ?>
             <li class="pernyataan">
                 <strong><u>Bersedia mengikuti program Qurban</u></strong> Kambing/Sapi minimal 1 kali selama

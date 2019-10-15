@@ -27,6 +27,24 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-4 control-label">Nomor Induk Kependudukan<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required name="nik" class="form-control" placeholder="Masukkan NIK" value="<?=$registrant_detail->getNik();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Nomor Kartu Keluarga<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required name="nkk" class="form-control" placeholder="Masukkan Nomor KK" value="<?=$registrant_detail->getNkk();?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">Nomor Akta Kelahiran<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <input type="text" required name="nak" class="form-control" placeholder="Masukkan Nomor Akta Kelahiran" value="<?=$registrant_detail->getNak();?>">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-4 control-label">Dusun / Jalan :</label>
             <div class="col-sm-7">
                 <input type="text" required name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$registrant_detail->getStreet();?>">
