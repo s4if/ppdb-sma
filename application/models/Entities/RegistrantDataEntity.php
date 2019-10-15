@@ -41,6 +41,27 @@ class RegistrantDataEntity {
 	protected $registrant;
 
 	/**
+	 * @Column(type="string", length=60, nullable=FALSE)
+	 *
+	 * @var string
+	 */
+	protected $nik; #nomor induk kependudukan
+
+	/**
+	 * @Column(type="string", length=60, nullable=FALSE)
+	 *
+	 * @var string
+	 */
+	protected $nkk; #nomor kartu keluarga
+
+	/**
+	 * @Column(type="string", nullable=FALSE)
+	 *
+	 * @var string
+	 */
+	protected $nak; #nomor akte Kelahiran
+
+	/**
 	 * @Column(type="string", nullable=FALSE)
 	 *
 	 * @var string
@@ -233,6 +254,18 @@ class RegistrantDataEntity {
 		return $this->district;
 	}
 
+	public function getNik() {
+		return $this->nik;
+	}
+
+	public function getNkk() {
+		return $this->nkk;
+	}
+
+	public function getNak() {
+		return $this->nak;
+	}
+
 	public function getCity() {
 		return $this->city;
 	}
@@ -264,7 +297,7 @@ class RegistrantDataEntity {
 	public function getWeight() {
 		return $this->weight;
 	}
-        
+
 	public function getStayWith() {
 		return $this->stayWith;
 	}
@@ -341,24 +374,42 @@ class RegistrantDataEntity {
 		return count($hobbiesArr) - 1;
 	}
 
-        public function getChildOrder() {
-            return $this->childOrder;
-        }
+    public function getChildOrder() {
+        return $this->childOrder;
+    }
 
-        public function getSiblingsCount() {
-            return $this->siblingsCount;
-        }
+    public function getSiblingsCount() {
+        return $this->siblingsCount;
+    }
 
-        public function setChildOrder($childOrder) {
-            $this->childOrder = $childOrder;
-            return $this;
-        }
+    public function setChildOrder($childOrder) {
+        $this->childOrder = $childOrder;
+        return $this;
+    }
 
-        public function setSiblingsCount($siblingsCount) {
-            $this->siblingsCount = $siblingsCount;
-            return $this;
-        }
-        
+    public function setNik($nik)
+    {
+    	$this->nik = $nik;
+    	return $this;
+    }
+
+    public function setNkk($nkk)
+    {
+    	$this->nkk = $nkk;
+    	return $this;
+    }
+
+    public function setNak($nak)
+    {
+    	$this->nak = $nak;
+    	return $this;
+    }
+
+    public function setSiblingsCount($siblingsCount) {
+        $this->siblingsCount = $siblingsCount;
+        return $this;
+    }
+
 	public function setBirthPlace($birthPlace) {
 		$this->birthPlace = $birthPlace;
 

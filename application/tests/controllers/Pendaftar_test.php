@@ -112,6 +112,9 @@ class Pendaftar_test extends TestCase
             ]);
             $this->assertRedirect('1/beranda');
             $data = [
+                'nik' => '3304939390029302',
+                'nkk' => '3302300204930302',
+                'nak' => '3304939393999281',
                 'birth_place' => 'Semarang', 
                 'birth_date' => '19-2-2000', 
                 'street' => 'Rambeanak II', 
