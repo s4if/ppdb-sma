@@ -27,18 +27,19 @@
 ?>
 
 <h1 class="page-header">
-    Profil
-    <small>Ganti Password</small>
+    Pendaftar
+    <small>Isi Wali</small>
 </h1>
 <ol class="breadcrumb">
     <li>
         <a href="<?=base_url().$id.'/home';?>">Beranda</a>
     </li>
     <li class="active">
-        Ganti Password
+        
     </li>
 </ol>
 <div class="container-fluid">
+    <h3>Diisi bagi yang menggunakan Wali karena tidak memiliki Orang Tua.</h3>
     <form class="form-horizontal" role="form" method="post" action="<?=base_url().'pendaftar/do_edit_guardian/'.$id;?>">
         <?=$parent?>
         <div class="form-group">
