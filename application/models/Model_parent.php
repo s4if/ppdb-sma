@@ -146,8 +146,8 @@ class Model_parent extends CI_Model{
         if (!is_null($data['job'])) : $this->$var->setJob($data['job']); endif;
         if (!is_null($data['position'])) : $this->$var->setPosition($data['position']); endif;
         if (!is_null($data['company'])) : $this->$var->setCompany($data['company']); endif;
-        if (!is_null($data['income'])) : $this->$var->setIncome($data['income']); endif;
-        if (!is_null($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
+        if (is_numeric($data['income'])) : $this->$var->setIncome($data['income']); endif;
+        if (is_numeric($data['burden_count'])) : $this->$var->setBurdenCount($data['burden_count']); endif;
         
     }
     
@@ -157,10 +157,6 @@ class Model_parent extends CI_Model{
         $arr_required =  ['name', 'status', 'birth_place', 'birth_date', 'street', 'village', 'district', 
             'city', 'province', 'postal_code', 'contact', 'relation',
             'nationality', 'religion', 'education_level', 'job'];
-        if($type == 'father'){
-            $arr_required[] = 'burden_count';
-            $arr_required[] = 'income';
-        }
         foreach ($arr_required as $required){
             if(array_key_exists($required, $data)){
                 if(empty($data[$required])){

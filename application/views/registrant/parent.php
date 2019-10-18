@@ -337,16 +337,15 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Penghasilan (Rp.)<?=($key == 'ayah')?'<strong class="red">*</strong>':'';?> :</label>
+            <label class="col-sm-4 control-label">Penghasilan (Rp.) :</label>
             <div class="col-sm-6">
-                <input type="number" name="<?= $type.'_';?>income" <?=($key == 'ayah')?'required="true"':'';?>
-                       class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
+                <input type="number" name="<?= $type.'_';?>income" class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($key == 'ayah')?'<strong class="red">*</strong>':'';?> :</label>
+            <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($key == 'ayah')?'(Termasuk Istri)':'';?> :</label>
             <div class="col-sm-6">
-                <input type="number" name="<?= $type.'_';?>burden_count" <?php echo ($key == 'ayah')?'required="true"':'';?> class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
+                <input type="number" name="<?= $type.'_';?>burden_count" class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
         <hr/>

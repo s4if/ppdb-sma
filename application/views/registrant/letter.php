@@ -83,11 +83,11 @@
                         </tr>
                         <tr>
                             <td>d. Seragam</td>
-                            <td>Rp. 1.800.000,-</td>
+                            <td>Rp. 1.900.000,-</td>
                         </tr>
                         <tr>
-                            <td>e. Uang Kegiatan</td>
-                            <td><?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.000.000,-':'Rp. 800.000,-';?> <strong class="red">**</strong></td>
+                            <td>e. Kesiswaan</td>
+                            <td><?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?> <strong class="red">**</strong></td>
                         </tr>
                         <tr>
                             <td>f. Biaya Kesehatan</td>
@@ -99,18 +99,18 @@
                         </tr>
                         <tr>
                             <td>h. Perlengkapan Asrama</td>
-                            <td>Rp. 1.000.000,-</td>
+                            <td>Rp. 1.100.000,-</td>
                         </tr>
                         <tr>
                             <td>i. Majalah dan Kalender</td>
                             <td>Rp. 120.000,-</td>
                         </tr>
                     </table>
-                    <span class="help-block">** = Untuk kelas tahfidz Rp.1000.000,- sedangkan
-                        untuk kelas reguler Rp.800.000,-.</span>
+                    <span class="help-block">** = Untuk kelas tahfidz Rp.1200.000,- sedangkan
+                        untuk kelas reguler Rp.1.000.000,-.</span>
                     
                     <li class="pernyataan">
-                        Bersedia/Tidak bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
+                        Bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
                         menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021
                         (Tahun nanti dipilih dipilih).
                     </li>
@@ -195,17 +195,6 @@
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1250000" 
-                                <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1250000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 1.250.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
                             <input type="radio" name="raw_scost" value="1350000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
                                     <?php if($registrant->getSubscriptionCost() == '1350000'):?>
@@ -228,11 +217,22 @@
                     </div>
                     <div class="radio">
                         <label>
+                            <input type="radio" name="raw_scost" value="1550000" 
+                                <?php if(!empty($registrant->getSubscriptionCost())):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1550000'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Rp. 1.550.000,-
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
                             <input type="radio" name="raw_scost" value="-999" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if(!($registrant->getSubscriptionCost() == '1250000'||
-                                            $registrant->getSubscriptionCost() == '1350000' ||
-                                            $registrant->getSubscriptionCost() == '1450000')):?>
+                                    <?php if(!($registrant->getSubscriptionCost() == '1350000'||
+                                            $registrant->getSubscriptionCost() == '1450000' ||
+                                            $registrant->getSubscriptionCost() == '1550000')):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>

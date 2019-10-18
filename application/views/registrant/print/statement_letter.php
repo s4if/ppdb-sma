@@ -203,8 +203,8 @@
                     <td>Rp. 1.800.000,-</td>
                 </tr>
                 <tr>
-                    <td>e. Uang Kegiatan</td>
-                    <td><?php echo ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?'Rp. 1.000.000,-':'Rp. 800.000,-';?></td>
+                    <td>e. Uang Kesiswaan</td>
+                    <td><?php echo ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?></td>
                 </tr>
                 <tr>
                     <td>f. Biaya Kesehatan</td>
@@ -216,7 +216,7 @@
                 </tr>
                 <tr>
                     <td>h. Perlengkapan Asrama</td>
-                    <td>Rp. 1.000.000,-</td>
+                    <td>Rp. 1.100.000,-</td>
                 </tr>
                 <tr>
                     <td>i. Majalah dan Kalender</td>
@@ -225,8 +225,8 @@
                 <tr>
                     <td><strong>Total</strong></td>
                     <?php 
-                    $default = 4670000;
-                    $kegiatan = ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?1000000:800000;
+                    $default = 4870000;
+                    $kegiatan = ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?1200000:1000000;
                     $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
                             +$registrant->getLandDonation()+$kegiatan+$default;
                     ?>
@@ -235,14 +235,13 @@
             </table>
             <?php
             //  Qurban dalam pengerjaan
-            if(!true) :
+            
             ?>
             <li class="pernyataan">
                 <strong><u>Bersedia mengikuti program Qurban</u></strong> Kambing/Sapi minimal 1 kali selama
                 menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
                 <strong><u><?=$str_tahun;?></u></strong>.
             </li>
-            <?php endif; ?>
             <li class="pernyataan">
                 Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka <strong><u>saya 
                 tidak akan menuntut segala yang telah saya bayarkan sebelumnya</u></strong>. Seluruh pembiayaan 
