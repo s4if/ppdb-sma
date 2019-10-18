@@ -735,25 +735,7 @@ class Model_registrant extends CI_Model {
             $worksheet->SetCellValue('BJ'.$row, $registrant->getInitialCost());
             $worksheet->SetCellValue('BK'.$row, $registrant->getSubscriptionCost());
             $worksheet->SetCellValue('BL'.$row, $registrant->getLandDonation());
-            $arr_qurban = $registrant->getQurban();
-            $qurban = explode(";", $arr_qurban);
-            $def_arr = ['2019', '2020', '2021'];
-            $arr_tahun = [];
-            $str_tahun = "";
-            error_reporting(0);
-            for($i = 0; $i<3;$i++){
-                if($qurban[$i]==$def_arr[$i]){
-                    $arr_tahun[] = $qurban[$i];
-                }
-            }
-            if(sizeof($arr_tahun) == 1) {
-                $str_tahun = $arr_tahun[0];
-            } elseif (sizeof($arr_tahun) == 2) {
-                $str_tahun = $arr_tahun[0]." dan ".$arr_tahun[1];
-            } elseif (sizeof($arr_tahun) == 3) {
-                $str_tahun = $arr_tahun[0].", ".$arr_tahun[1]." dan ".$arr_tahun[2];
-            }
-            $worksheet->SetCellValue('BM'.$row, $str_tahun);
+            $worksheet->SetCellValue('BM'.$row, $registrant->getQurban());
             
             // Registrant Father
             $fData = $registrant->getFather();

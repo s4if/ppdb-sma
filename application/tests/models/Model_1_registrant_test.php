@@ -86,7 +86,7 @@ class Model_1_registrant_test extends TestCase {
         $data['landDonation'] = '1000000';
         $data['relegate_to_ips'] = 'true';
         $data['relegate_to_regular'] = 'true';
-        $data['qurban'] = '2019;2020';
+        $data['qurban'] = '2021-2022';
         $data['finalized'] = 'true';
         $this->setUp();
         $this->assertTrue($this->obj->updateData($data));

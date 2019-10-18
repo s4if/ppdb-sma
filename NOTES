@@ -95,3 +95,5 @@ Tambahan data:
 PROGRESS: Sudah semua, tinggal diuji tim testing
 =---------------------=
 Todo: Tambah tombol alamat sama dengan anak!
+Todo: Ganti qurban pake dropdown -> Sudah, jadinya pakai radiobox
+Todo: Tambah preview nilai uang pakai javascript
