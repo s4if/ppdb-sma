@@ -41,7 +41,7 @@
 <div class="container-fluid">
     <div class="row">
         <p>
-            Pada langkah ini, anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pendidikan, SPP, dll. <br />
+            Pada langkah ini, anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pendidikan, IDP, dll. <br />
             Pastikan yang mengisi ini adalah <strong>Orang Tua</strong> atau anda <strong>Telah berdiskusi</strong> dengan orang tua anda. <br/>
             Berikut isi pernyataannya:
         </p>
@@ -61,8 +61,8 @@
                         akibat peraturan yang berlaku di dalamnya, dan tidak menuntut apapun yang menjadi keputusan sekolah.
                     </li>
                     <li class="pernyataan">
-                        Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
-                        sesuai dengan kesanggupan saya:
+                        Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi  
+                        pembiayaan sesuai dengan kesanggupan saya:
                     </li>
                     <table class="table-bordered table-responsive">
                         <tr>
@@ -120,9 +120,8 @@
                         untuk kelas reguler Rp.1.000.000,-.</span>
                     
                     <li class="pernyataan">
-                        Bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
-                        menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021
-                        (Tahun nanti dipilih dipilih).
+                        Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021 (Tahun bisa dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -138,7 +137,7 @@
     </div>
     <div class="row">
         <p>
-            Jika anda telah membaca dan setuju, silahkan isi form dibawah ini untuk menentukan jumlah kesediaan membayar.
+            Jika Anda telah membaca pernyataan dan setuju, silakan isi form dibawah ini untuk menentukan jumlah kesediaan membayar.
         </p>
     </div>
     <div class="row">
@@ -201,7 +200,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">SPP :</label>
+                <label class="col-sm-3 control-label">Iuran Dana Pendidikan (IDP) :</label>
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>

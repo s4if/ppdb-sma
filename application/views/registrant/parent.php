@@ -139,6 +139,14 @@
             <hr/>
         </div>
         <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h3>Klik tombol dibawah jika alamat <?=ucfirst($key)?> sama dengan Pendaftar</h3>
+            </div>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-warning col-sm-4 col-sm-offset-4" onclick="isi_alamat('<?=$type;?>')">Salin Alamat</a>
+        </div>
+        <div class="form-group">
             <label class="col-sm-4 control-label">Dusun / Jalan<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
                 <input type="text" required="true" name="<?= $type.'_';?>street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$parent_data->getStreet();?>">

@@ -142,6 +142,9 @@
             <hr/>
         </div>
         <div class="form-group">
+            <h2>Alamat sesuai dengan yang tercantum dalam Kartu Keluarga (kecuali jika pindah domisili)</h2>
+        </div>
+        <div class="form-group">
             <label class="col-sm-4 control-label">Dusun / Jalan<strong class="red">*</strong> :</label>
             <div class="col-sm-5">
                 <input type="text" required name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$reg_data->getStreet();?>">
@@ -917,6 +920,17 @@ function aksiOk()
 
         }
     });
+}
+
+function isi_alamat(tipe){
+    $('input[name='+tipe+'_street]').val($('input[name=street]').val());
+    $('input[name='+tipe+'_RT]').val($('input[name=RT]').val());
+    $('input[name='+tipe+'_RW]').val($('input[name=RW]').val());
+    $('input[name='+tipe+'_village]').val($('input[name=village]').val());
+    $('input[name='+tipe+'_district]').val($('input[name=district]').val());
+    $('input[name='+tipe+'_city]').val($('input[name=city]').val());
+    $('input[name='+tipe+'_province]').val($('input[name=province]').val());
+    $('input[name='+tipe+'_postal_code]').val($('input[name=postal_code]').val());
 }
 
 $(document).ready(function () {
