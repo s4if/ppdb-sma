@@ -68,45 +68,55 @@
                         <tr>
                             <th>Jenis Pembiayaan</th>
                             <th>Nominal Pembiayaan</th>
+                            <th>Frekuensi Pembiayaan</th>
                         </tr>
                         <tr>
                             <td>a. Infaq Pendidikan</td>
                             <td><strong>[[Sesuai Pilihan]]</strong></td>
+                            <th>Sekali</th>
                         </tr>
                         <tr>
                             <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
                             <td><strong>[[Sesuai Pilihan]]</strong></td>
+                            <th>Per Bulan</th>
                         </tr>
                         <tr>
                             <td>c. Wakaf Tanah</td>
                             <td><strong>[[Sesuai Pilihan]]</strong></td>
+                            <th>Sekali</th>
                         </tr>
                         <tr>
                             <td>d. Seragam</td>
                             <td>Rp. 1.900.000,-</td>
+                            <th>Sekali</th>
                         </tr>
                         <tr>
                             <td>e. Kesiswaan</td>
-                            <td><?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?> <strong class="red">**</strong></td>
+                            <td><?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?> <strong class="red">*</strong></td>
+                            <th>Per Tahun</th>
                         </tr>
                         <tr>
                             <td>f. Biaya Kesehatan</td>
                             <td>Rp. 250.000,-</td>
+                            <th>Per Tahun</th>
                         </tr>
                         <tr>
                             <td>g. Biaya Buku</td>
                             <td>Rp. 1.500.000,-</td>
+                            <th>Per Tahun</th>
                         </tr>
                         <tr>
                             <td>h. Perlengkapan Asrama</td>
                             <td>Rp. 1.100.000,-</td>
+                            <th>Sekali</th>
                         </tr>
                         <tr>
                             <td>i. Majalah dan Kalender</td>
                             <td>Rp. 120.000,-</td>
+                            <th>Per Tahun</th>
                         </tr>
                     </table>
-                    <span class="help-block">** = Untuk kelas tahfidz Rp.1200.000,- sedangkan
+                    <span class="help-block">* = Untuk kelas tahfidz Rp.1200.000,- sedangkan
                         untuk kelas reguler Rp.1.000.000,-.</span>
                     
                     <li class="pernyataan">
@@ -236,7 +246,7 @@
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 1,45 Juta Rupiah
+                            Lebih dari 1,55 Juta Rupiah
                         </label>
                     </div>
                 </div>
@@ -353,25 +363,89 @@
                 <div class="col-sm-4 col-sm-offset-3">
                     <label class="text-center">
                         Bersedia/Tidak bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
-                        menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021. <br>
+                        menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022. <br>
                         Silahkan pilih tahun jika bersedia.
                     </label>
-                    <?php
-                        error_reporting(0);
-                        $arr_qurban = $registrant->getQurban();
-                        $qurban = explode(";", $arr_qurban);
-                    ?>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="q2019" value="2019" 
-                                    <?php //if($qurban[0]=='2019') {echo 'checked="true"';}?>>2019</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2020" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2020'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2020 Saja
+                        </label>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="q2020" value="2020"
-                                      <?php //if($qurban[1]=='2020') {echo 'checked="true"';}?>>2020</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2021" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2021'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2021 Saja
+                        </label>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="q2021" value="2021"
-                                      <?php //if($qurban[2]=='2021') {echo 'checked="true"';}?>>2021</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2022" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2022'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2022 Saja
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2020-2021" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2020-2021'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2020 dan 2021
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2020-2022" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2020-2022'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2020 dan 2022
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2021-2022" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2021-2022'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2021 dan 2022
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="qurban" value="2020-2021-2022" 
+                                <?php if(!empty($registrant->getQurban())):?>
+                                    <?php if($registrant->getQurban() ==='2020-2021-2022'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            2020, 2021 dan 2022
+                        </label>
                     </div>
                 </div>
             </div>
