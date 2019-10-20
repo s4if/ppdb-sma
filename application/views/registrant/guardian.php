@@ -39,7 +39,7 @@
     </li>
 </ol>
 <div class="container-fluid">
-    <h3>Diisi bagi yang menggunakan Wali karena tidak memiliki Orang Tua.</h3>
+    <h3 class="text-center">Diisi jika memiliki wali selain Orang Tua.</h3>
     <form class="form-horizontal" role="form" method="post" action="<?=base_url().'pendaftar/do_edit_guardian/'.$id;?>">
         <?=$parent?>
         <div class="form-group">

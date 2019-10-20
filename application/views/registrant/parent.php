@@ -139,8 +139,8 @@
             <hr/>
         </div>
         <div class="form-group">
-            <div class="col-sm-4 col-sm-offset-4">
-                <h3>Klik tombol dibawah jika alamat <?=ucfirst($key)?> sama dengan Pendaftar</h3>
+            <div class="col-sm-6 col-sm-offset-3">
+                <h3 class="text-center">Klik tombol dibawah jika alamat <?=ucfirst($key)?> sama dengan Pendaftar</h3>
             </div>
         </div>
         <div class="form-group">
