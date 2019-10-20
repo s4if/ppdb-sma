@@ -100,8 +100,8 @@
     </div>
     &nbsp;
     </div>
-    <h2>Silahkan Isi Data Pada Formulir Dibawah</h2>
-    <h3>Semua Pengisian Data Diharapkan Mengacu Pada <strong>Kartu Keluarga</strong></h3>
+    <h2 class="text-center">Silakan Isi Data Pada Formulir Dibawah</h2>
+    <h3 class="text-center">Semua Pengisian Data Diharapkan Mengacu Pada <strong>Akta Kelahiran</strong> dan <strong>Kartu Keluarga</strong></h3>
     <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/pendaftar/do_edit_all/<?=$id?>">
         <hr/>
         <div class="form-group">
@@ -142,7 +142,7 @@
             <hr/>
         </div>
         <div class="form-group">
-            <h2>Alamat sesuai dengan yang tercantum dalam Kartu Keluarga (kecuali jika pindah domisili)</h2>
+            <h3 class="text-center">Alamat sesuai dengan yang tercantum dalam Kartu Keluarga (kecuali jika pindah domisili)</h3>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Dusun / Jalan<strong class="red">*</strong> :</label>
@@ -197,11 +197,13 @@
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label">Anak ke</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <input type="number" required name="child_order" class="form-control" value="<?=$reg_data->getChildOrder();?>">
             </div>
-            <label class="col-sm-2 control-label">Dari </label>
-            <div class="col-sm-2">
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">dari </label>
+            <div class="col-sm-3">
                 <input type="number" required name="siblings_count" class="form-control" value="<?=$reg_data->getSiblingsCount();?>">
             </div>
             <label class="col-sm-2 control-label">bersaudara.<strong class="red">*</strong></label>

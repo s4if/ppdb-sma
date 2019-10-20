@@ -41,8 +41,8 @@
 <div class="container-fluid">
     <div class="row">
         <p>
-            Pada langkah ini, anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pendidikan, IDP, dll. <br />
-            Pastikan yang mengisi ini adalah <strong>Orang Tua</strong> atau anda <strong>Telah berdiskusi</strong> dengan orang tua anda. <br/>
+            Pada langkah ini, Anda akan membuat surat pernyataan mengenai Jumlah Uang Infaq pendidikan, IDP, dll. <br />
+            Pastikan yang mengisi formulir ini adalah <strong>Orang Tua</strong> atau Anda <strong>Telah berdiskusi</strong> dengan orang tua Anda. <br/>
             Berikut isi pernyataannya:
         </p>
     </div>
@@ -121,7 +121,7 @@
                     
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
-                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2019/2020/2021 (Tahun bisa dipilih).
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022 (Tahun bisa dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -361,9 +361,8 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <label class="text-center">
-                        Bersedia/Tidak bersedia mengikuti program Qurban Kambing/Sapi minimal 1 kali selama
-                        menjadi siswa SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022. <br>
-                        Silahkan pilih tahun jika bersedia.
+                        Bersedia/mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
+                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022.
                     </label>
                 </div>
             </div>
