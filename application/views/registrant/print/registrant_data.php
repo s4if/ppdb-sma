@@ -229,7 +229,7 @@
             <tr>
                 <td> Tinggi / Berat </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo $data->getHeight().'/'.$data->getWeight();?> </td>
+                <td> <?php echo $data->getHeight().' cm / '.$data->getWeight();?> kg</td>
             </tr>
             <tr>
                 <td> Tinggal Bersama </td>
