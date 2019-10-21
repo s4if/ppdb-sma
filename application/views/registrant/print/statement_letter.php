@@ -200,7 +200,7 @@
                 </tr>
                 <tr>
                     <td>d. Seragam</td>
-                    <td>Rp. 1.800.000,-</td>
+                    <td>Rp. 1.900.000,-</td>
                 </tr>
                 <tr>
                     <td>e. Uang Kesiswaan</td>
@@ -235,13 +235,32 @@
             </table>
             <?php
             //  Qurban dalam pengerjaan
-            
+            if (!($registrant->getQurban() == '-')) :
+                $arr_tahun = [];
+                if (strpos($registrant->getQurban(), '2020') !== false) {
+                    $arr_tahun[] = '2020';
+                }
+                if (strpos($registrant->getQurban(), '2021') !== false) {
+                    $arr_tahun[] = '2021';
+                }
+                if (strpos($registrant->getQurban(), '2022') !== false) {
+                    $arr_tahun[] = '2022';
+                }
+                $str_tahun = "";
+                if (count($arr_tahun) == 3) {
+                    $str_tahun = $arr_tahun[0].', '.$arr_tahun[1].', dan '.$arr_tahun[2];
+                } elseif (count($arr_tahun) == 2) {
+                    $str_tahun = $arr_tahun[0].' dan '.$arr_tahun[1];
+                } elseif (count($arr_tahun) == 1) {
+                    $str_tahun = $arr_tahun[0];
+                }
             ?>
             <li class="pernyataan">
-                <strong><u>Bersedia mengikuti program Qurban</u></strong> Kambing/Sapi minimal 1 kali selama
+                <strong><u>Bersedia mengikuti program Qurban <?=count($arr_tahun)?> kali</u></strong> selama
                 menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
                 <strong><u><?=$str_tahun;?></u></strong>.
             </li>
+            <?php endif;?>
             <li class="pernyataan">
                 Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka <strong><u>saya 
                 tidak akan menuntut segala yang telah saya bayarkan sebelumnya</u></strong>. Seluruh pembiayaan 

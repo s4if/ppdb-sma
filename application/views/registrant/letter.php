@@ -121,7 +121,7 @@
                     
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
-                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022 (Tahun bisa dipilih).
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022 (Tahun dapat dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -361,90 +361,48 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <label class="text-center">
-                        Bersedia/mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
+                        Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
                         Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022.
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2020" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2020'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2020 Saja
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2021" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2021'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2021 Saja
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2022" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2022'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2022 Saja
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2020-2021" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2020-2021'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2020 dan 2021
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2020-2022" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2020-2022'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2020 dan 2022
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2021-2022" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2021-2022'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2021 dan 2022
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="qurban" value="2020-2021-2022" 
-                                <?php if(!empty($registrant->getQurban())):?>
-                                    <?php if($registrant->getQurban() ==='2020-2021-2022'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            2020, 2021 dan 2022
-                        </label>
-                    </div>
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="q1" value="2020" <?php
+                            if (strpos($registrant->getQurban(), '2020') !== false) {
+                                echo "checked";
+                            }
+                        ?> > 2020
+                    </label>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="q2" value="2021" <?php
+                            if (strpos($registrant->getQurban(), '2021') !== false) {
+                                echo "checked";
+                            }
+                        ?> > 2021
+                    </label>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="q3" value="2022" <?php
+                            if (strpos($registrant->getQurban(), '2022') !== false) {
+                                echo "checked";
+                            }
+                        ?> > 2022
+                    </label>
+                  </div>
                 </div>
             </div>
             <hr/>

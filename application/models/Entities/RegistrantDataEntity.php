@@ -87,7 +87,7 @@ class RegistrantDataEntity {
 	 *
 	 * @var string
 	 */
-	protected $siblingsCount; // jumlah seaudara kandung
+	protected $siblingsCount; // sekarang, jumlah saudara + si pendaftar
 
 	/**
 	 * @Column(type="string", nullable=TRUE)

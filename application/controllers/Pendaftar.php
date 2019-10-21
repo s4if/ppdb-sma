@@ -481,6 +481,13 @@ class Pendaftar extends MY_Controller {
         $data['subscription_cost'] = ($data['raw_scost'] == '-999')?$data['other_scost']:$data['raw_scost'];
         $data['land_donation'] = ($data['raw_lcost'] == '-999')?$data['other_lcost']:$data['raw_lcost'];
         $data['id'] = $id;
+        $qurban = "-";
+        for ($i=1; $i <= 3; $i++) { 
+            if (array_key_exists ( 'q'.$i ,$data )) {
+                $qurban = $qurban.$data['q'.$i].'-';
+            }
+        }
+        $data['qurban'] = $qurban;
         $res = $this->reg->updateData($data);
         if($res){
             $this->session->set_userdata('registrant', $this->reg->getRegistrant());
