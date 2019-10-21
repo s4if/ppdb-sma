@@ -121,7 +121,7 @@
                     
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
-                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022 (Tahun bisa dipilih).
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022 (Tahun dapat dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -361,7 +361,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <label class="text-center">
-                        Bersedia/mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
+                        Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
                         Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022.
                     </label>
                 </div>
