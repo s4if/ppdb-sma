@@ -51,8 +51,8 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
-        Tes akan dilaksanakan tanggal 3 Februari 2019<br/>
-        Hasil tes akan diumumkan tanggal 11 Februari 2019<br/>
+        Tes akan dilaksanakan tanggal 12 Januari 2020<br/>
+        Hasil tes akan diumumkan tanggal 27 Januari 2020<br/>
         Silahkan Unduh dan cetak form pendaftaran dan kartu pendaftaran.
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
