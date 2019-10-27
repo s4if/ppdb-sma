@@ -358,7 +358,7 @@
                 <td> Rp. <?php echo number_format($registrant->getInitialCost(),2,',','.');?> </td>
             </tr>
             <tr>
-                <td> SPP </td>
+                <td> IDP </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> Rp. <?php echo number_format($registrant->getSubscriptionCost(),2,',','.');?> </td>
             </tr>

@@ -752,7 +752,7 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('AC'.$row, $fData->getJob());
                 $worksheet->SetCellValue('AD'.$row, $fData->getPosition());
                 $worksheet->SetCellValue('AE'.$row, $fData->getCompany());
-                $worksheet->SetCellValue('AF'.$row, number_format($fData->getIncome(), 0, ',', '.'));
+                $worksheet->SetCellValue('AF'.$row, $fData->getIncome());//number_format($fData->getIncome(), 0, ',', '.'));
                 $worksheet->SetCellValue('AG'.$row, $fData->getBurdenCount());
             }
             
@@ -771,7 +771,7 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('AQ'.$row, $mData->getJob());
                 $worksheet->SetCellValue('AR'.$row, $mData->getPosition());
                 $worksheet->SetCellValue('AS'.$row, $mData->getCompany());
-                $worksheet->SetCellValue('AT'.$row, number_format($mData->getIncome(), 0, ',', '.'));
+                $worksheet->SetCellValue('AT'.$row, $mData->getIncome());//number_format($mData->getIncome(), 0, ',', '.'));
                 $worksheet->SetCellValue('AU'.$row, $mData->getBurdenCount());
             }
             
@@ -790,7 +790,7 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('BE'.$row, $gData->getJob());
                 $worksheet->SetCellValue('BF'.$row, $gData->getPosition());
                 $worksheet->SetCellValue('BG'.$row, $gData->getCompany());
-                $worksheet->SetCellValue('BH'.$row, number_format($gData->getIncome(), 0, ',', '.'));
+                $worksheet->SetCellValue('BH'.$row, $gData->getIncome());//number_format($gData->getIncome(), 0, ',', '.'));
                 $worksheet->SetCellValue('BI'.$row, $gData->getBurdenCount());
             }
 

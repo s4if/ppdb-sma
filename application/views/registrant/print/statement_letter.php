@@ -185,42 +185,52 @@
                 <tr>
                     <th>Jenis Pembiayaan</th>
                     <th>Nominal Pembiayaan</th>
+                    <th>Frekuensi Pembiayaan</th>
                 </tr>
                 <tr>
                     <td>a. Infaq Pendidikan</td>
                     <td>Rp. <?= number_format($registrant->getInitialCost(), 0, ',', '.');?>,-</td>
+                    <td>Sekali</td>
                 </tr>
                 <tr>
                     <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
                     <td>Rp. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</td>
+                    <td>Per Bulan</td>
                 </tr>
                 <tr>
                     <td>c. Wakaf Tanah</td>
                     <td>Rp. <?= number_format($registrant->getLandDonation(), 0, ',', '.');?>,-</td>
+                    <td>Sekali</td>
                 </tr>
                 <tr>
                     <td>d. Seragam</td>
                     <td>Rp. 1.900.000,-</td>
+                    <td>Sekali</td>
                 </tr>
                 <tr>
                     <td>e. Uang Kesiswaan</td>
                     <td><?php echo ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?></td>
+                    <td>Per Tahun</td>
                 </tr>
                 <tr>
                     <td>f. Biaya Kesehatan</td>
                     <td>Rp. 250.000,-</td>
+                    <td>Per Tahun</td>
                 </tr>
                 <tr>
                     <td>g. Biaya Buku</td>
                     <td>Rp. 1.500.000,-</td>
+                    <td>Sekali</td>
                 </tr>
                 <tr>
                     <td>h. Perlengkapan Asrama</td>
                     <td>Rp. 1.100.000,-</td>
+                    <td>Sekali</td>
                 </tr>
                 <tr>
                     <td>i. Majalah dan Kalender</td>
                     <td>Rp. 120.000,-</td>
+                    <td>Per Tahun</td>
                 </tr>
                 <tr>
                     <td><strong>Total</strong></td>
@@ -256,8 +266,8 @@
                 }
             ?>
             <li class="pernyataan">
-                <strong><u>Bersedia mengikuti program Qurban <?=count($arr_tahun)?> kali</u></strong> selama
-                menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
+                <strong><u>Bersedia mengikuti program Qurban <?=count($arr_tahun)?> kali</u></strong> 
+                selama menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
                 <strong><u><?=$str_tahun;?></u></strong>.
             </li>
             <?php endif;?>

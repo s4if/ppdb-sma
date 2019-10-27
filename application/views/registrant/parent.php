@@ -12,7 +12,7 @@
             <div class="col-sm-6">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="<?= $type.'_';?>status" value="masih hidup" 
+                        <input type="radio" onclick="" name="<?= $type.'_';?>status" value="masih hidup" 
                             <?php if(!empty($parent_data->getStatus())):?>
                                 <?php if($parent_data->getStatus() ==='masih hidup'):?>
                                 checked="true"
@@ -327,9 +327,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Pekerjaan<strong class="red">*</strong> :</label>
+            <label class="col-sm-4 control-label" id="<?= $type.'_';?>job_mark">
+                Pekerjaan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'<strong class="red">*</strong>':'';?> :</label>
             <div class="col-sm-6">
-                <input type="text" name="<?= $type.'_';?>job" class="form-control" placeholder="Masukkan Pekerjaan" value="<?=$parent_data->getJob();?>">
+                <input type="text" required="true" id="<?= $type.'_';?>job" name="<?= $type.'_';?>job" 
+                <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                class="form-control" placeholder="Masukkan Pekerjaan" value="<?=$parent_data->getJob();?>">
             </div>
         </div>
         <div class="form-group">
@@ -345,15 +348,20 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Penghasilan (Rp.) :</label>
+            <label class="col-sm-4 control-label" id="<?= $type.'_';?>income_mark">
+                Penghasilan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'<strong class="red">*</strong>':'';?> (Rp.) :</label>
             <div class="col-sm-6">
-                <input type="number" name="<?= $type.'_';?>income" class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
+                <input type="number" id="<?= $type.'_';?>income" name="<?= $type.'_';?>income" <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">Jumlah Tanggungan<?php echo ($key == 'ayah')?'(Termasuk Istri)':'';?> :</label>
+            <label class="col-sm-4 control-label" id="<?= $type.'_';?>burden_mark">
+                Jumlah Tanggungan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'(Termasuk Istri)<strong class="red">*</strong>':'(Tidak wajib)';?> :</label>
             <div class="col-sm-6">
-                <input type="number" name="<?= $type.'_';?>burden_count" class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
+                <input type="number" name="<?= $type.'_';?>burden_count" 
+                <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
         <hr/>
