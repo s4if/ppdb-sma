@@ -96,7 +96,7 @@ PROGRESS: Sudah semua, tinggal diuji tim testing
 =---------------------=
 Todo: Tambah tombol alamat sama dengan anak! -> Sudah
 Todo: Ganti qurban pake dropdown -> Sudah, jadinya pakai radiobox
-Todo: Tambah preview nilai uang pakai javascript -> Belum!!
+Todo: Tambah preview nilai uang pakai javascript -> Sudah!!
 == Masukan dari Panitia ==
 - Pekerjaan, penghasilan, dan tanggungan ayah diwajibkan -> Sudah
 	- Pakai js untuk cek ayah masih hidup atau meninggal?  -> Sudah
