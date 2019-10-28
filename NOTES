@@ -98,10 +98,10 @@ Todo: Tambah tombol alamat sama dengan anak! -> Sudah
 Todo: Ganti qurban pake dropdown -> Sudah, jadinya pakai radiobox
 Todo: Tambah preview nilai uang pakai javascript -> Belum!!
 == Masukan dari Panitia ==
-- Pekerjaan, penghasilan, dan tanggungan ayah diwajibkan
-	- Pakai js untuk cek ayah masih hidup atau meninggal?
-	- Juga pakai js untuk cek ibu rumah tangga?
+- Pekerjaan, penghasilan, dan tanggungan ayah diwajibkan -> Sudah
+	- Pakai js untuk cek ayah masih hidup atau meninggal?  -> Sudah
+	- Juga pakai js untuk cek ibu rumah tangga? -> sementara ini ga jadi
 -  Pas di Rekap, masih muncul kata SPP, harusnya IDP -> sudah
-- 1 Kolom lagi, frekuensi
-- Di surat  pernyataan, tambah 1 kolom di frekuensi (export pdf)
+- 1 Kolom lagi, frekuensi -> sudah
+- Di surat  pernyataan, tambah 1 kolom di frekuensi (export pdf) -> sudah
 - "Bersedia mengikuti program Qurban MINIMAL 1 kali" pada export pdf -> Sudah pake, x kalinya dibuat dinamis
