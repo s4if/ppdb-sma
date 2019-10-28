@@ -946,18 +946,28 @@ if ($default == $img_link) {?>
 $("input[name=father_status]").on('change', function () {
     if ($("input[name=father_status]:checked").val()=='masih hidup') {
         $('#father_job_mark').html('Pekerjaan<strong class="red">*</strong> :');
-        $('inpu[name=father_job]').attr('required', 'true');
+        $('input[name=father_job]').attr('required', 'true');
         $('#father_income_mark').html('Penghasilan<strong class="red">*</strong> :');
-        $('inpu[name=father_income]').attr('required', 'true');
+        $('input[name=father_income]').attr('required', 'true');
         $('#father_burden_mark').html('Jumlah Tanggungan<strong class="red">*</strong> :');
-        $('inpu[name=father_burden_count]').attr('required', 'true');
+        $('input[name=father_burden_count]').attr('required', 'true');
     } else {
         $('#father_job_mark').html('Pekerjaan :');
-        $('inpu[name=father_job]').removeAttr('required');
+        $('input[name=father_job]').removeAttr('required');
         $('#father_income_mark').html('Penghasilan :');
-        $('inpu[name=father_income]').removeAttr('required');
+        $('input[name=father_income]').removeAttr('required');
         $('#father_burden_mark').html('Jumlah Tanggungan :');
-        $('inpu[name=father_burden_count]').removeAttr('required');
+        $('input[name=father_burden_count]').removeAttr('required');
     }
-})
+});
+
+function rupiah(key) {
+    var angka = $('input[name='+key+'_income]').val();
+    if (isNaN(angka)) {
+        $('#'+key+'_income_help').html('error');
+    } else {
+        str_angka = 'Tersimpan sebagai: '+format_rupiah(angka);
+        $('#'+key+'_income_help').html(str_angka);
+    }
+}
 </script>
