@@ -960,4 +960,14 @@ $("input[name=father_status]").on('change', function () {
         $('input[name=father_burden_count]').removeAttr('required');
     }
 });
+
+function rupiah(key) {
+    var angka = $('input[name='+key+'_income]').val();
+    if (isNaN(angka)) {
+        $('#'+key+'_income_help').html('error');
+    } else {
+        str_angka = 'Tersimpan sebagai: '+format_rupiah(angka);
+        $('#'+key+'_income_help').html(str_angka);
+    }
+}
 </script>

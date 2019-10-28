@@ -351,9 +351,12 @@
             <label class="col-sm-4 control-label" id="<?= $type.'_';?>income_mark">
                 Penghasilan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'<strong class="red">*</strong>':'';?> (Rp.) :</label>
             <div class="col-sm-6">
-                <input type="number" id="<?= $type.'_';?>income" name="<?= $type.'_';?>income" <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                <input onkeyup="rupiah('<?= $type; ?>')" type="number" id="<?= $type.'_';?>income" name="<?= $type.'_';?>income" <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
                 class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
             </div>
+        </div>
+        <div class="form-group">
+            <p class="help-block col-sm-offset-4 col-sm-4" id="<?= $type.'_';?>income_help"></p>
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label" id="<?= $type.'_';?>burden_mark">

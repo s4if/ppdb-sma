@@ -28,3 +28,35 @@ function assignVal(formAction, namaVal, UHVal, kelasVal){
     $("#addModalInputUH").attr("value", UHVal);
     $("#addModelInputKelas").attr("value", kelasVal);
 };
+
+function leading_zero(angka) {
+    if (angka == 0) {
+        return '000';
+    } else if (angka < 10) {
+        return '00'+String(angka);
+    } else if (angka < 100) {
+        return '0'+String(angka);
+    } else {
+        return String(angka);
+    }
+}
+
+function format_rupiah(angka) {
+	var miliaran = Math.floor(angka/1000000000)
+	var sisa_miliaran = angka % 1000000000;
+    var jutaan = Math.floor(sisa_miliaran/1000000);
+    var sisa_jutaan = angka % 1000000;
+    var ribuan = Math.floor(sisa_jutaan/1000);
+    var sisa_ribuan = sisa_jutaan % 1000;
+    var str_angka = "";
+    if (angka > 999999999) {
+        str_angka = 'Rp. '+ String(miliaran)+'.'+leading_zero(jutaan)+'.'+leading_zero(ribuan)+'.'+leading_zero(sisa_ribuan)+',-';
+    } else if (angka > 999999) {
+        str_angka = 'Rp. '+ String(jutaan)+'.'+leading_zero(ribuan)+'.'+leading_zero(sisa_ribuan)+',-';
+    } else if(angka > 999){
+        str_angka = 'Rp. '+ String(ribuan)+'.'+leading_zero(sisa_ribuan)+',-';
+    } else {
+        str_angka = 'Rp. '+ String(sisa_ribuan)+',-';
+    }
+    return str_angka;
+}
