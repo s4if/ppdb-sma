@@ -115,6 +115,11 @@
                             <td>Rp. 120.000,-</td>
                             <th>Per Tahun</th>
                         </tr>
+                        <tr>
+                            <td>j. Biaya pembukaan rekening BMT dan tabungan uang saku</td>
+                            <td>Rp. 300.000,-</td>
+                            <th>Sekali</th>
+                        </tr>
                     </table>
                     <span class="help-block">* = Untuk kelas tahfidz Rp.1200.000,- sedangkan
                         untuk kelas reguler Rp.1.000.000,-.</span>
