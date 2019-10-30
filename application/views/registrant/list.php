@@ -172,12 +172,12 @@ body {
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right shifted">
-                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/penerimaan-peserta-didik-baru-tahun-pelajaran-2019-2020/">
+                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/info-ppdb-2020-2021/">
                             Petunjuk Pendaftaran
                         </a></li>
-                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
+                        <!--<li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
                             Petunjuk Jalur Beasiswa dan Prestasi
-                        </a></li>
+                        </a></li>-->
                         <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                         <li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                         <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>

@@ -174,12 +174,12 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/penerimaan-peserta-didik-baru-tahun-pelajaran-2019-2020/">
+                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/info-ppdb-2020-2021/">
                         Petunjuk Pendaftaran
                     </a></li>
-                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
+                    <!--<li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
                         Petunjuk Jalur Beasiswa dan Prestasi
-                    </a></li>
+                    </a></li>-->
                     <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
                     <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                     <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
@@ -229,11 +229,24 @@ body {
 
             <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class=" text-center"><strong>Petunjuk:</strong><br/>
-                    Jika belum pernah mendaftar, pilih <strong>Daftar</strong><br/>
-                    Jika sudah pernah mendaftar, pilih <strong>Masuk</strong><br/>
-                    Jika lupa password, silahkan hubungi: <u>0812 3723 8858 (ustadzah Iis)</u>
-                </p>
+                <h4><b>Langkah Mendaftar PPDB SMAIT Ihsanul Fikri</b></h4>
+                <ol>
+                    <li>
+                        Buat Akun PPDB SMAIT IF dengan pilih <b>Daftar</b>
+                    </li>
+                    <li>
+                        Isikan data yang diminta
+                    </li>
+                    <li>
+                        Buat <b>username</b> dan <b>password</b> yang mudah Anda ingat
+                    </li>
+                    <li>
+                        Gunakan <b>username</b> dan <b>password</b> tersebut pada saat <b>Masuk</b> ke akun Anda untuk proses pendaftaran Online selanjutnya (Mengisi & Mengedit data pada formulir online)
+                    </li>
+                    <li>
+                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>0812 3723 8858</u> (ustadzah Iis)
+                    </li>
+                </ol>
             </div>
 </div>
         </div>
