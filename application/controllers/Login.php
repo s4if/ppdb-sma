@@ -99,7 +99,7 @@ class Login extends MY_Controller {
             } else {
                 $res = -2;
                 $this->session->set_flashdata("errors", [0 => "Maaf, Password yang anda masukkan salah, <br />"
-                    . "Silahkan anda cek kembali atau hubungi <strong>Ust. Anton 081575769276/Ustadzah Atsna 085727136891</strong> untuk mereset"
+                    . "Silahkan anda cek kembali atau hubungi <strong>Ustadzah Iis: 0812 3723 8858</strong> untuk mereset"
                     . "password."]);
                 redirect('login/index');
             }

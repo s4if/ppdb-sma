@@ -26,7 +26,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-1920.png';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2021.png';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -229,12 +229,11 @@ body {
 
             <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p class=" text-center"><strong>Pengumuman:</strong><br/>
-                Unggah <i>(upload)</i> dokumen persyaratan jalur prestasi dan beasiswa unggulan dapat dilakukan 
-                pada menu beranda setelah menyelesaikan pendaftaran mulai tanggal 4 Desember 2018.<br/>
-                Pendaftar jalur prestasi dan beasiswa unggulan yang mendaftar sebelum tanggal tersebut 
-                diharapkan login kembali dan mengunggah persyaratan menggunakan menu yang telah disediakan. <br />
-                <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
+                <p class=" text-center"><strong>Petunjuk:</strong><br/>
+                    Jika belum pernah mendaftar, pilih <strong>Daftar</strong><br/>
+                    Jika sudah pernah mendaftar, pilih <strong>Masuk</strong><br/>
+                    Jika lupa password, silahkan hubungi: <u>0812 3723 8858 (ustadzah Iis)</u>
+                </p>
             </div>
 </div>
         </div>
