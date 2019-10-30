@@ -235,7 +235,7 @@
                 <tr>
                     <td><strong>Total</strong></td>
                     <?php 
-                    $default = 4870000;
+                    $default = 5170000;
                     $kegiatan = ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?1200000:1000000;
                     $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
                             +$registrant->getLandDonation()+$kegiatan+$default;

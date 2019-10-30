@@ -399,6 +399,11 @@
                 <td> Rp. 120.000,00</td>
             </tr>
             <tr>
+                <td> Biaya pembukaan rekening BMT dan tabungan uang saku </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. 300.000,00</td>
+            </tr>
+            <tr>
                 <td> Kesanggupan Berqurban Tahun </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo str_replace('-', ' ', $registrant->getQurban()); ?></td>
@@ -407,7 +412,7 @@
                 <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
-                $default = 4870000;
+                $default = 5170000;
                 $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
                 $addons =  ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?1200000:1000000;
                 $total = $tot+$addons+$default;
