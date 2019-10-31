@@ -200,9 +200,12 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
-                    <input type="number" pattern="^([0-9]{1,9}$)" name="other_icost" title="Maksimal 9 digit angka!"
+                    <input type="number" onkeyup="rupiah('icost')" pattern="^([0-9]{1,9}$)" name="other_icost" title="Maksimal 9 digit angka!"
                            class="form-control" placeholder="Masukkan Jumlah Melebih 13Juta Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
                 </div>
+            </div>
+            <div class="form-group">
+                <p class="help-block col-sm-offset-4 col-sm-4" id="icost_help"></p>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">Iuran Dana Pendidikan (IDP) :</label>
@@ -258,9 +261,12 @@
             
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
-                    <input type="number" name="other_scost" pattern="^([0-9]{1,8}$)" title="Maksimal 8 digit angka!"
+                    <input type="number" onkeyup="rupiah('scost')" name="other_scost" pattern="^([0-9]{1,8}$)" title="Maksimal 8 digit angka!"
                            class="form-control" placeholder="Masukkan Jumlah Melebih 1,5 Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
                 </div>
+            </div>
+            <div class="form-group">
+                <p class="help-block col-sm-offset-4 col-sm-4" id="scost_help"></p>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">Wakaf Tanah :</label>
@@ -328,9 +334,12 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" name="other_lcost" pattern="^([0-9]{1,9}$)" title="Maksimal 8 digit angka!"
-                           class="form-control" placeholder="Masukkan Jumlah Melebih 2Juta Tanpa Titik" value="<?=$registrant->getLandDonation();?>">
+                           class="form-control" onkeyup="rupiah('lcost')" placeholder="Masukkan Jumlah Melebih 2Juta Tanpa Titik" value="<?=$registrant->getLandDonation();?>">
                     <input type="number" name="boarding_kit" hidden="true" value="1">
                 </div>
+            </div>
+            <div class="form-group">
+                <p class="help-block col-sm-offset-4 col-sm-4" id="lcost_help"></p>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">Nama Yang Dicantumkan :</label>
@@ -492,4 +501,16 @@
             </div>
         </form>
     </div>
-<</div>
+</div>
+
+<script type="text/javascript">
+function rupiah(key) {
+    var angka = $('input[name=other_'+key+']').val();
+    if (isNaN(angka)) {
+        $('#'+key+'_help').html('error');
+    } else {
+        str_angka = 'Tersimpan sebagai: '+format_rupiah(angka);
+        $('#'+key+'_help').html(str_angka);
+    }
+}
+</script>

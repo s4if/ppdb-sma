@@ -105,3 +105,11 @@ Todo: Tambah preview nilai uang pakai javascript -> Sudah!!
 - 1 Kolom lagi, frekuensi -> sudah
 - Di surat  pernyataan, tambah 1 kolom di frekuensi (export pdf) -> sudah
 - "Bersedia mengikuti program Qurban MINIMAL 1 kali" pada export pdf -> Sudah pake, x kalinya dibuat dinamis
+[31/10/2019]
+- Autocomplete SMP disederhanakan? -> Sudahhh
+- NISN: 10 Digit? -> sudah
+- NIK, NKK  pakai input type number? ->sudah
+- Yang di surat pernyataan dibuatada  keterangannya juga? -> Sudah
+- Kesanggupan berkurban, pakai koma? -> ga usah gpp
+- Pembukaan buku rekening belum masuk pernyataan -> sudah
+- Anak ke di expor belum ada spasinya -> Sudah

@@ -724,7 +724,7 @@ class Model_registrant extends CI_Model {
                 $str_sibling = "";
                 if (!empty($rData->getChildOrder())){
                     $str_sibling = "Anak ke ".$rData->getChildOrder().
-                            "dari ".($rData->getSiblingsCount())." bersaudara";
+                            " dari ".($rData->getSiblingsCount())." bersaudara";
                 }
                 $worksheet->SetCellValue('Q'.$row, ucwords($str_sibling));//edit
                 $worksheet->SetCellValue('R'.$row, $rData->getHobbies(false));

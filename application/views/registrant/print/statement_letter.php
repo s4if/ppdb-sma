@@ -233,6 +233,11 @@
                     <td>Per Tahun</td>
                 </tr>
                 <tr>
+                    <td>j. Biaya pembukaan rekening BMT dan tabungan uang saku </td>
+                    <td> Rp. 300.000,00</td>
+                    <td>Sekali</td>
+                </tr>
+                <tr>
                     <td><strong>Total</strong></td>
                     <?php 
                     $default = 5170000;
