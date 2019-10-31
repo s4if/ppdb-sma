@@ -298,7 +298,7 @@ body {
                                     <input type="text" required name="prev_school" id="prev_school" tabindex="1" class="form-control typeahead" placeholder="Sekolah Asal" value="<?=(array_key_exists('prev_school', $registrant))?$registrant['prev_school']:'';?>">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" required name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Wajib)" pattern="^([0-9]{1,20}$)" title="Hanya angka!"
+                                    <input type="text" required name="nisn" id="nisn" tabindex="1" class="form-control" placeholder="NISN (Wajib)" pattern="^([0-9]{1,10}$)" title="Hanya angka maksimal 10 digit!"
                                            value="<?=(array_key_exists('nisn', $registrant))?$registrant['nisn']:'';?>">
                                 </div>
                                 <div class="form-group">
@@ -468,9 +468,14 @@ $(function() {
 
 $(document).ready(function(){
     var sekolah = [
-        <?php foreach ($data as $reg): ?>
-        "<?=  strtoupper($reg->getPreviousSchool());?>",
-        <?php endforeach;?>
+        <?php 
+        $arr_sekolah = ["SMPIT IHSANUL FIKRI MUNGKID"];
+        foreach ($data as $reg): 
+            if (!in_array($reg->getPreviousSchool(), $arr_sekolah)) :
+                echo "\"".strtoupper($reg->getPreviousSchool())."\",";
+                $arr_sekolah[] = $reg->getPreviousSchool();
+            endif;
+        endforeach;?>
         "SMPIT IHSANUL FIKRI MUNGKID"
     ];
     $('input.typeahead').typeahead({
