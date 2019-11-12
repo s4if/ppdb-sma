@@ -169,11 +169,19 @@ class Pendaftar extends MY_Controller {
             'mother' => 'ibu',
             'guardian' => 'wali'
         ];
-        $parent_data = (empty($this->parent->getData($id, [$type])[$type]))? $parent_data = $this->parent->create(): $this->parent->getData($id, [$type])[$type];
+        $new_data = false;
+        $parent_data = null;
+        if (empty($this->parent->getData($id, [$type])[$type])) {
+            $parent_data = $this->parent->create(); 
+            $new_data = true;
+        } else {
+            $this->parent->getData($id, [$type])[$type];
+        }
         $string = $this->load->view("registrant/parent",[
             'parent_data' => $parent_data,
             'key' => $key_arr[$type],
-            'type' => $type
+            'type' => $type,
+            'new_data' => $new_data
         ],true);
         return $string;
     }

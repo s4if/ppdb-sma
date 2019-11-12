@@ -13,7 +13,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" onclick="" name="<?= $type.'_';?>status" value="masih hidup" 
-                            <?php if(!empty($parent_data->getStatus())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getStatus() ==='masih hidup'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -26,7 +26,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>status" value="almarhum" 
-                            <?php if(!empty($parent_data->getStatus())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getStatus() ==='almarhum'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -37,7 +37,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>status" value="cerai" 
-                            <?php if(!empty($parent_data->getStatus())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getStatus() ==='cerai'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -67,7 +67,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>relation" value="<?=ucfirst($key)?> kandung" 
-                            <?php if(!empty($parent_data->getRelation())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getRelation() ===ucfirst($key).' kandung'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -80,7 +80,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>relation" value="<?=ucfirst($key)?> tiri" 
-                            <?php if(!empty($parent_data->getRelation())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getRelation() ===ucfirst($key).' tiri'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -91,7 +91,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>relation" value="<?=ucfirst($key)?> angkat" 
-                            <?php if(!empty($parent_data->getRelation())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getRelation() ===ucfirst($key).' angkat'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -111,7 +111,7 @@
             <div class="col-sm-6">
                 <select class="form-control" name="<?= $type.'_';?>nationality">
                     <option value="WNI"  
-                        <?php if(!empty($parent_data->getNationality())):?>
+                        <?php if(!$new_data):?>
                             <?php if($parent_data->getNationality()=='WNI'): ?>
                                     selected="true"
                             <?php endif;?>
@@ -119,7 +119,7 @@
                         WNI
                     </option>
                     <option value="WNA"  
-                        <?php if(!empty($parent_data->getNationality())):?>
+                        <?php if(!$new_data):?>
                             <?php if($parent_data->getNationality()=='WNA'): ?>
                                     selected="true"
                             <?php endif;?>
@@ -210,7 +210,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="Tidak Lulus SD" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='Tidak Lulus SD'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -223,7 +223,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="SD" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='SD'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -236,7 +236,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="SMP" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='SMP'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -249,7 +249,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="SMA" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='SMA'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -262,7 +262,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="Diploma" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='Diploma'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -275,7 +275,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="S1" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='S1'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -290,7 +290,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="S2" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='S2'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -303,7 +303,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="S3" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='S3'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -316,7 +316,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="<?= $type.'_';?>education_level" value="Lainnya" 
-                            <?php if(!empty($parent_data->getEducationLevel())):?>
+                            <?php if(!$new_data):?>
                                 <?php if($parent_data->getEducationLevel() ==='Lainnya'):?>
                                 checked="true"
                                 <?php endif;?>
@@ -328,10 +328,10 @@
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label" id="<?= $type.'_';?>job_mark">
-                Pekerjaan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'<strong class="red">*</strong>':'';?> :</label>
+                Pekerjaan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || $new_data))?'<strong class="red">*</strong>':'';?> :</label>
             <div class="col-sm-6">
-                <input type="text" required="true" id="<?= $type.'_';?>job" name="<?= $type.'_';?>job" 
-                <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                <input type="text" id="<?= $type.'_';?>job" name="<?= $type.'_';?>job" 
+                <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || $new_data))?'required="true"':'';?> 
                 class="form-control" placeholder="Masukkan Pekerjaan" value="<?=$parent_data->getJob();?>">
             </div>
         </div>
@@ -349,9 +349,9 @@
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label" id="<?= $type.'_';?>income_mark">
-                Penghasilan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'<strong class="red">*</strong>':'';?> (Rp.) :</label>
+                Penghasilan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || $new_data))?'<strong class="red">*</strong>':'';?> (Rp.) :</label>
             <div class="col-sm-6">
-                <input onkeyup="rupiah('<?= $type; ?>')" type="number" id="<?= $type.'_';?>income" name="<?= $type.'_';?>income" <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                <input onkeyup="rupiah('<?= $type; ?>')" type="number" id="<?= $type.'_';?>income" name="<?= $type.'_';?>income" <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || $new_data))?'required="true"':'';?> 
                 class="form-control" placeholder="Masukkan Penghasilan Tanpa Titik" value="<?=$parent_data->getIncome();?>">
             </div>
         </div>
@@ -360,10 +360,10 @@
         </div>
         <div class="form-group">
             <label class="col-sm-4 control-label" id="<?= $type.'_';?>burden_mark">
-                Jumlah Tanggungan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'(Termasuk Istri)<strong class="red">*</strong>':'(Tidak wajib)';?> :</label>
+                Jumlah Tanggungan<?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || $new_data))?'(Termasuk Istri)<strong class="red">*</strong>':'(Tidak wajib)';?> :</label>
             <div class="col-sm-6">
                 <input type="number" name="<?= $type.'_';?>burden_count" 
-                <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || empty($parent_data->getStatus())))?'required="true"':'';?> 
+                <?php echo ($key == 'ayah' && (($parent_data->getStatus() ==='masih hidup') || $new_data))?'required="true"':'';?> 
                 class="form-control" placeholder="Masukkan Jumlah Tanggungan" value="<?=$parent_data->getBurdenCount();?>">
             </div>
         </div>
