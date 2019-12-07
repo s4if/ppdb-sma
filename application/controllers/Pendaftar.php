@@ -175,7 +175,7 @@ class Pendaftar extends MY_Controller {
             $parent_data = $this->parent->create(); 
             $new_data = true;
         } else {
-            $this->parent->getData($id, [$type])[$type];
+            $parent_data = $this->parent->getData($id, [$type])[$type];
         }
         $string = $this->load->view("registrant/parent",[
             'parent_data' => $parent_data,
