@@ -814,11 +814,6 @@ class Model_registrant extends CI_Model {
         ini_set('max_execution_time', 60);
         ini_set('memory_limit', '256M');
         
-        $cacheMethod = \PhpOffice\PhpSpreadsheet\Collection\CellsFactory::cache_in_memory_gzip;
-        $cacheSettings = array( 'memoryCacheSize ' => '256MB');
-        \PhpOffice\PhpSpreadsheet\Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-
-        
         $this->excel = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $this->mbatikRapor($this->getDataByJurusan($programme, $gender), 'Data');
         

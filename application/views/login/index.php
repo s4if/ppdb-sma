@@ -403,6 +403,44 @@ body {
         </div>
     </div>
 </div>
+<div class="modal fade" id="smkModal" tabindex="-1" role="dialog" aria-labelledby="smkModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                 <h4 class="modal-title" id="smkModalLabel"><h4><b>PPDB SMKIT Ihsanul Fikri Mungkid Sudah Dibuka! <small>(KHUSUS PUTRA)</small></b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-md-12">
+                    <img src="https://www.smkitihsanulfikri.sch.id/wp-content/uploads/2019/11/WhatsApp-Image-2019-11-15-at-12.37.08.jpeg" class="img-responsive img-thumbnail">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12">
+                <p>SMKIT Ihsanul Fikri Mungkid dan SMAIT Ihsanul Fikri Mungkid adalah unit sekolah 
+                yang berada dalam naungan Yayasan Tarbiyatul Mukmin Pabelan. 
+                SMKIT Ihsanul Fikri menyediakan jurusan TKJ (Teknik Komputer dan Jaringan) 
+                dalam 2 kelas (Reguler dan Industri).<br>
+                Fasilitas & Prestasi terakhir SMKIT Ihsanul Fikri Mungkid:</p>
+                <ul>
+                    <li>Laptop untuk setiap siswa</li>
+                    <li>Mikrotik Academy</li>
+                    <li>Cisco Academy</li>
+                    <li>Juara 1 Lomba LKS Web Design tingkat kabupaten tahun 2019</li>
+                    <li>Lolos ke Olimpiade Mikrotik Nasional dari regional Jateng-Jogja</li>
+                </ul>
+                </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://www.smkitihsanulfikri.sch.id/info-ppdb-2020-2021/" class="btn btn-info">Info Lebih Lanjut</a>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Lanjut Daftar SMAIT</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="pengumumanModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -483,6 +521,7 @@ $(document).ready(function(){
         source: sekolah
 
     });
+    $('#smkModal').modal('show');
 });
 </script>
    
