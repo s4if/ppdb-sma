@@ -354,6 +354,30 @@ class Admin extends MY_Controller {
             redirect('admin/registrant/'.$id);
         }
     }
+
+    public function do_edit_letter($id){
+        $this->blockNonAdmin();
+        $data = $this->input->post(null, true);
+        $data['initial_cost'] = ($data['raw_icost'] == '-999')?$data['other_icost']:$data['raw_icost'];
+        $data['subscription_cost'] = ($data['raw_scost'] == '-999')?$data['other_scost']:$data['raw_scost'];
+        $data['land_donation'] = ($data['raw_lcost'] == '-999')?$data['other_lcost']:$data['raw_lcost'];
+        $data['id'] = $id;
+        $qurban = "-";
+        for ($i=1; $i <= 3; $i++) { 
+            if (array_key_exists ( 'q'.$i ,$data )) {
+                $qurban = $qurban.$data['q'.$i].'-';
+            }
+        }
+        $data['qurban'] = $qurban;
+        $res = $this->reg->updateData($data);
+        if($res){
+            $this->session->set_flashdata("notices", [0 => "Data Sudah berhasil disimpan"]);
+            redirect('admin/registrant/'.$id);
+        } else {
+            $this->session->set_flashdata("errors", [0 => "Maaf, Terjadi Kesalahan"]);
+            redirect('admin/registrant/'.$id);
+        }
+    }
     
     public function upload_foto($id) {
         $this->blockNonAdmin();
