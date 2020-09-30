@@ -403,7 +403,7 @@ body {
         </div>
     </div>
 </div>
-<div class="modal fade" id="smkModal" tabindex="-1" role="dialog" aria-labelledby="smkModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="smkModal" tabindex="-1" role="dialog" aria-labelledby="smkModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -440,7 +440,7 @@ body {
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <div class="modal fade" id="pengumumanModal" tabindex="-1" role="dialog" aria-labelledby="pengumumanModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

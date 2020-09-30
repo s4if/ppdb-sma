@@ -51,8 +51,8 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri.<br/>
-        Tes akan dilaksanakan tanggal 12 Januari 2020<br/>
-        Hasil tes akan diumumkan tanggal 27 Januari 2020<br/>
+        Tes akan dilaksanakan tanggal 24 Januari 2021<br/>
+        Hasil tes akan diumumkan tanggal 7 Februari 2021<br/>
         Silahkan Unduh dan cetak form pendaftaran dan kartu pendaftaran.
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
@@ -66,12 +66,12 @@
     <p>
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
         Sebelum anda mengisi data pribadi, silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
-        sebesar <strong>Rp. 300.000,-</strong> ditambah <strong>nomor unik (Contoh = 300.123)</strong> di rekening 
+        sebesar <strong>Rp. 300.000,-</strong> ditambah <strong>tiga digit terakhir nomor pendaftaran (Contoh = 300.123)</strong> di rekening 
         <strong>Bank Syariah Mandiri</strong> dengan <strong>No. 70930 70938</strong> atas nama 
-        <strong>PPDB  SMAIT IHSANUL FIKRI</strong>. <br /> Kode unik bisa diminta dengan mengeklik tombol :
+        <strong>PPDB  SMAIT IHSANUL FIKRI</strong>. <br /> Nomor pendaftaran bisa diminta dengan mengeklik tombol :
     </p>
-    <p><a class="btn btn-primary" id="btn-gen" role="button" onclick="kodeUnik()">Minta kode unik</a></p>
-    <h1 id="kode-unik"></h1>
+    <p><a class="btn btn-primary" id="btn-gen" role="button" onclick="kodeUnik()">Minta nomor pendaftaran</a></p>
+    <h1 id="kode-pendaftaran"></h1>
     <hr />
     <p>
         Setelah transfer selesai, upload hasil scan / foto kuitansi pembayaran untuk diverifikasi
@@ -188,10 +188,10 @@ function kodeUnik()
                     '<button type="button" class="close" data-dismiss="alert"><p>'+
                     '<span aria-hidden="true">&times;</span><span class="sr-only">'+
                     'Close</span></button>'+
-                    '<p>Kode unik berhasil dibuat</p>'+
+                    '<p>Kode pendaftaran berhasil dibuat</p>'+
                     '</div>'
                 );
-                $('#kode-unik').text(data.kode);
+                $('#kode-pendaftaran').text(data.kode);
                 $('#btn-gen').text('Berhasil');
                 var placeh = "Contoh : '300"+data.kode+"' tanpa titik!";
                 $('#jml-uang').attr('placeholder', placeh);
@@ -203,7 +203,7 @@ function kodeUnik()
                     '<button type="button" class="close" data-dismiss="alert"><p>'+
                     '<span aria-hidden="true">&times;</span><span class="sr-only">'+
                     'Close</span></button>'+
-                    '<p>Permintaan kode unik gagal</p>'+
+                    '<p>Permintaan kode pendaftaran gagal</p>'+
                     '</div>');
                 $('#btn-ok').attr('disabled',false); //set button enable
                 $('#btn-gen').text('Gagal'); //change button text

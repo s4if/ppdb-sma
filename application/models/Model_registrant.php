@@ -159,6 +159,7 @@ class Model_registrant extends CI_Model {
                 $kode = sprintf("%03d", $counter->getMaleCount()); //nilai asli 0
                 $registrant->setKode($kode);
             }
+            $registrant->setRegId(); // dibuat auto bikin regID
             $this->doctrine->em->persist($counter);
             $this->doctrine->em->persist($registrant);
             if ($flush) {
@@ -705,7 +706,7 @@ class Model_registrant extends CI_Model {
             $rData = $registrant->getRegistrantData();
             // Registrant Data
             $worksheet->SetCellValue('A'.$row, $registrant->getRegId());
-            $worksheet->SetCellValue('B'.$row, $registrant->getNisn());
+            $worksheet->SetCellValue('B'.$row, "'".$registrant->getNisn());
             $worksheet->SetCellValue('C'.$row, $registrant->getName());
             $worksheet->SetCellValue('D'.$row, ($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat');
             $worksheet->SetCellValue('E'.$row, $registrant->getPreviousSchool());
@@ -744,7 +745,7 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('U'.$row, $fData->getStatus());
                 $worksheet->SetCellValue('V'.$row, ucfirst($fData->getBirthPlace()).', '.$fData->getBirthDate());
                 $worksheet->SetCellValue('W'.$row, $fData->getAddress());
-                $worksheet->SetCellValue('X'.$row, $fData->getContact());
+                $worksheet->SetCellValue('X'.$row, "'".$fData->getContact());
                 $worksheet->SetCellValue('Y'.$row, ucwords($fData->getRelation()));
                 $worksheet->SetCellValue('Z'.$row, strtoupper($fData->getNationality()));
                 $worksheet->SetCellValue('AA'.$row, ucwords($fData->getReligion()));
@@ -763,7 +764,7 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('AI'.$row, $mData->getStatus());
                 $worksheet->SetCellValue('AJ'.$row, ucfirst($mData->getBirthPlace()).', '.$mData->getBirthDate());
                 $worksheet->SetCellValue('AK'.$row, $mData->getAddress());
-                $worksheet->SetCellValue('AL'.$row, $mData->getContact());
+                $worksheet->SetCellValue('AL'.$row, "'".$mData->getContact());
                 $worksheet->SetCellValue('AM'.$row, ucwords($mData->getRelation()));
                 $worksheet->SetCellValue('AN'.$row, strtoupper($mData->getNationality()));
                 $worksheet->SetCellValue('AO'.$row, ucwords($mData->getReligion()));
@@ -782,7 +783,7 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('AW'.$row, $gData->getStatus());
                 $worksheet->SetCellValue('AX'.$row, ucfirst($gData->getBirthPlace()).', '.$gData->getBirthDate());
                 $worksheet->SetCellValue('AY'.$row, $gData->getAddress());
-                $worksheet->SetCellValue('AZ'.$row, $gData->getContact());
+                $worksheet->SetCellValue('AZ'.$row, "'".$gData->getContact());
                 $worksheet->SetCellValue('BA'.$row, ucwords($gData->getRelation()));
                 $worksheet->SetCellValue('BB'.$row, strtoupper($gData->getNationality()));
                 $worksheet->SetCellValue('BC'.$row, ucwords($gData->getReligion()));
@@ -795,9 +796,9 @@ class Model_registrant extends CI_Model {
             }
 
             if(!empty($rData)){
-                $worksheet->SetCellValue('BN'.$row, $rData->getNik());
-                $worksheet->SetCellValue('BO'.$row, $rData->getNkk());
-                $worksheet->SetCellValue('BP'.$row, $rData->getNak());
+                $worksheet->SetCellValue('BN'.$row, "'".$rData->getNik());
+                $worksheet->SetCellValue('BO'.$row, "'".$rData->getNkk());
+                $worksheet->SetCellValue('BP'.$row, "'".$rData->getNak());
             }
             //Mohon mbatik dikoreksi lagi kalau udah ga ngantuk... hehe
             // Iteration of Rows
@@ -940,7 +941,7 @@ class Model_registrant extends CI_Model {
         foreach ($registrant_data as $registrant){
             if(!$registrant['completed']) {
                 $row = [];
-                $row[] = $registrant['id'];
+                $row[] = $registrant['regId'];
                 $row[] = strtoupper($registrant['name']);
                 $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
                 $row[] = strtoupper($registrant['previousSchool']);

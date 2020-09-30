@@ -87,7 +87,7 @@
                         </tr>
                         <tr>
                             <td>d. Seragam</td>
-                            <td>Rp. 1.900.000,-</td>
+                            <td>Rp. 2.000.000,-</td>
                             <th>Sekali</th>
                         </tr>
                         <tr>
@@ -107,7 +107,7 @@
                         </tr>
                         <tr>
                             <td>h. Perlengkapan Asrama</td>
-                            <td>Rp. 1.100.000,-</td>
+                            <td>Rp. 1.200.000,-</td>
                             <th>Sekali</th>
                         </tr>
                         <tr>
@@ -126,7 +126,7 @@
                     
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
-                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022 (Tahun dapat dipilih).
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2021/2022/2023 (Tahun dapat dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -384,19 +384,6 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="q1" value="2020" <?php
-                            if (strpos($registrant->getQurban(), '2020') !== false) {
-                                echo "checked";
-                            }
-                        ?> > 2020
-                    </label>
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="checkbox">
-                    <label>
                         <input type="checkbox" name="q2" value="2021" <?php
                             if (strpos($registrant->getQurban(), '2021') !== false) {
                                 echo "checked";
@@ -415,6 +402,19 @@
                                 echo "checked";
                             }
                         ?> > 2022
+                    </label>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="q1" value="2023" <?php
+                            if (strpos($registrant->getQurban(), '2023') !== false) {
+                                echo "checked";
+                            }
+                        ?> > 2023
                     </label>
                   </div>
                 </div>

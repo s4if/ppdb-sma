@@ -370,13 +370,13 @@
             <tr>
                 <td> Seragam </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.900.000,00 </td>
+                <td> Rp. 2.000.000,00 </td>
             </tr>
             <tr>
                 <td> Dana Kesiswaan </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php $program = $registrant->getProgram();?>
-                <td> <?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp.1.000.000,-';?> </td>
+                <td> <?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,00':'Rp.1.000.000,00';?> </td>
             </tr>
             <tr>
                 <td> Dana Kesehatan </td>
@@ -391,7 +391,7 @@
             <tr>
                 <td> Perlengkapan Asrama </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.100.000,00</td>
+                <td> Rp. 1.200.000,00</td>
             </tr>
             <tr>
                 <td> Dana Majalah dan kalender </td>
@@ -412,7 +412,7 @@
                 <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
-                $default = 5170000;
+                $default = 5370000;
                 $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
                 $addons =  ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?1200000:1000000;
                 $total = $tot+$addons+$default;

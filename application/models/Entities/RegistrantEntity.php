@@ -462,7 +462,6 @@ class RegistrantEntity
         if ($finalized) {
             if ($this->getCompleted()) {
                 $this->finalized = $finalized;
-                $this->setRegId();
 
                 return 1;
             } else {
@@ -489,11 +488,10 @@ class RegistrantEntity
         return $this;
     }
 
-    private function setRegId()
+    public function setRegId() // sekarang dibuat auto dapet ID
     {
         $prefix = ($this->gender == 'L') ? 'I' : 'A';
-        $prefix2 = ($this->program == 'IPA Tahfidz' || $this->program == 'IPS Tahfidz') ? 'T' : 'R';
-        $this->regId = $prefix.$prefix2.$this->kode;
+        $this->regId = $prefix.'-'.$this->kode;
     }
 
     public function setPassword($password)
