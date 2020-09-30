@@ -165,6 +165,12 @@
             </tr>
             <tr>
                 <td style="width: 8%; text-align: left">&nbsp;</td>
+                <td style="width: 15%; text-align: left">Jurusan/Program</td>
+                <td style="width: 2%; text-align: left">:</td>
+                <td style="width: 75%; text-align: left"><?=$registrant->getProgram()?></td>
+            </tr>
+            <tr>
+                <td style="width: 8%; text-align: left">&nbsp;</td>
                 <td style="width: 15%; text-align: left">Asal Sekolah</td>
                 <td style="width: 2%; text-align: left">:</td>
                 <td style="width: 75%; text-align: left"><?=$registrant->getPreviousSchool()?></td>
@@ -204,7 +210,7 @@
                 </tr>
                 <tr>
                     <td>d. Seragam</td>
-                    <td>Rp. 1.900.000,-</td>
+                    <td>Rp. 2.000.000,-</td>
                     <td>Sekali</td>
                 </tr>
                 <tr>
@@ -224,7 +230,7 @@
                 </tr>
                 <tr>
                     <td>h. Perlengkapan Asrama</td>
-                    <td>Rp. 1.100.000,-</td>
+                    <td>Rp. 1.200.000,-</td>
                     <td>Sekali</td>
                 </tr>
                 <tr>
@@ -240,7 +246,7 @@
                 <tr>
                     <td><strong>Total</strong></td>
                     <?php 
-                    $default = 5170000;
+                    $default = 5370000;
                     $kegiatan = ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?1200000:1000000;
                     $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
                             +$registrant->getLandDonation()+$kegiatan+$default;
@@ -252,14 +258,14 @@
             //  Qurban dalam pengerjaan
             if (!($registrant->getQurban() == '-')) :
                 $arr_tahun = [];
-                if (strpos($registrant->getQurban(), '2020') !== false) {
-                    $arr_tahun[] = '2020';
-                }
                 if (strpos($registrant->getQurban(), '2021') !== false) {
                     $arr_tahun[] = '2021';
                 }
                 if (strpos($registrant->getQurban(), '2022') !== false) {
                     $arr_tahun[] = '2022';
+                }
+                if (strpos($registrant->getQurban(), '2023') !== false) {
+                    $arr_tahun[] = '2023';
                 }
                 $str_tahun = "";
                 if (count($arr_tahun) == 3) {

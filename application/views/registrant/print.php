@@ -83,7 +83,7 @@ img.foto-profil {
                                         <td><?php echo $registrant->getPreviousSchool();?></td>
                                     </tr>
                                     <tr>
-                                        <td>Jurusan </td>
+                                        <td>Jurusan/Program </td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td><?php echo $registrant->getProgram();?></td>
                                     </tr>
@@ -93,6 +93,59 @@ img.foto-profil {
                                 </p>
                             </div>
                         </div>
+                    </div>
+                    <div class="panel-footer">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading p-header">
+                        <h1 class="txt-header">Rundown Tes Seleksi</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-responsive table-bordered">
+                                <tr>
+                                    <th class="text-center">Materi Test</th>
+                                    <th class="text-center">Paraf</th>
+                                </tr>
+                                <tr>
+                                    <td>Tes Potensi Akademik (TPA)</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Tes Kemampuan Dasar:
+                                        <ul>
+                                            <li>Matematika</li>
+                                            <li>Bahasa Inggris</li>
+                                            <li>IPA</li>
+                                            <li>IPS</li>
+                                        </ul>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Tes Tahsin Tahfidz (Juz 29 & 30)</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Tes Tahfidz (Khusus Program Tahfidz)</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Ukur Seragam</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="panel-footer">
                         &nbsp;
