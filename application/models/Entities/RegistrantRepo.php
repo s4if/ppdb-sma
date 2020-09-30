@@ -50,7 +50,7 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
         }
     }
 
-    public function getDataByJurusan($tahfidz, $gender = null, $showDeleted = false, $finalized = true)
+    public function getDataByJurusan($tahfidz, $gender = null, $showDeleted = false, $finalized = false) // ini yang diubah untuk download semua
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->Select(['r']);
@@ -60,14 +60,18 @@ class RegistrantRepo extends Doctrine\ORM\EntityRepository
             $qb->andwhere('r.gender = :gender');
         }
         $qb->andWhere($qb->expr()->eq('r.deleted', ':deleted'));
-        $qb->andWhere($qb->expr()->eq('r.finalized', ':finalized'));
+        if ($finalized) {
+            $qb->andWhere($qb->expr()->eq('r.finalized', ':finalized'));
+        }
         $qb->orderBy('r.id', 'ASC');
         if (!is_null($gender)) {
             $qb->setParameter('gender', $gender);
         }
         $qb->setParameter('program', $tahfidz);
         $qb->setParameter('deleted', $showDeleted);
-        $qb->setParameter('finalized', $finalized);
+        if ($finalized) {
+            $qb->setParameter('finalized', $finalized);
+        }
         $query = $qb->getQuery();
 
         $query->setFetchMode('RegistrantEntity', 'registrantData', \Doctrine\ORM\Mapping\ClassMetadata::FETCH_EAGER);
