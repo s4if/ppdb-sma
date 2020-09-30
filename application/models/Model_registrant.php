@@ -159,6 +159,7 @@ class Model_registrant extends CI_Model {
                 $kode = sprintf("%03d", $counter->getMaleCount()); //nilai asli 0
                 $registrant->setKode($kode);
             }
+            $registrant->setRegId(); // dibuat auto bikin regID
             $this->doctrine->em->persist($counter);
             $this->doctrine->em->persist($registrant);
             if ($flush) {
@@ -795,9 +796,9 @@ class Model_registrant extends CI_Model {
             }
 
             if(!empty($rData)){
-                $worksheet->SetCellValue('BN'.$row, $rData->getNik());
-                $worksheet->SetCellValue('BO'.$row, $rData->getNkk());
-                $worksheet->SetCellValue('BP'.$row, $rData->getNak());
+                $worksheet->SetCellValue('BN'.$row, "'".$rData->getNik());
+                $worksheet->SetCellValue('BO'.$row, "'".$rData->getNkk());
+                $worksheet->SetCellValue('BP'.$row, "'".$rData->getNak());
             }
             //Mohon mbatik dikoreksi lagi kalau udah ga ngantuk... hehe
             // Iteration of Rows
