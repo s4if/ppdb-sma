@@ -26,7 +26,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-2021.png';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2122.png';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -174,7 +174,7 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="http://smait.ihsanulfikri.sch.id/info-ppdb-2020-2021/">
+                    <li class=""><a href="https://smait.ihsanulfikri.sch.id/info-ppdb-2021-2022/">
                         Petunjuk Pendaftaran
                     </a></li>
                     <!--<li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
