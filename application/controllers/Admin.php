@@ -543,7 +543,7 @@ class Admin extends MY_Controller {
         $strGender = ('L' == strtoupper($gender))?'Ikhwan':'Akhwat';
         $date = new DateTime('now');
         $strProgramme = strtoupper($study) . ' ' .  ucfirst($programme);
-        $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
+        $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '.strtoupper($study).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
             $gender, $strProgramme);
     }
     
