@@ -247,13 +247,12 @@ body {
                                 <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
                                     <thead>
                                         <tr>
-                                            <td>No. Urut</td>
-                                            <td>No. Pendaftaran</td>
-                                            <td>Nama</td>
+                                            <td>No.</td>
+                                            <td>ID Daftar</td>
+                                            <td>Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                             <td>I/A</td>
-                                            <td>Sekolah Asal</td>
+                                            <td>Sekolah Asal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                             <td>Program</td>
-                                            <!--<td>Status Data</td>-->
                                         </tr>
                                     </thead>
                                     <tbody>
