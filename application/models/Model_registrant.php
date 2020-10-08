@@ -684,7 +684,7 @@ class Model_registrant extends CI_Model {
         // End Wali
         
         // Start Pembayaran
-        $worksheet->mergeCells('BN3:BM3');
+        $worksheet->mergeCells('BN3:BQ3');
         $worksheet->setCellValue('BN3', 'Data Pembayaran');
         $worksheet->getColumnDimension('BN')->setAutoSize(true);
         $worksheet->SetCellValue('BN4', 'Infaq Pendidikan');
