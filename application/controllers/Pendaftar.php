@@ -426,7 +426,7 @@ class Pendaftar extends MY_Controller {
     }
     
     public function print_data_pendaftaran($id, $action = 'download'){
-        $this->blockUnloggedOne($id);
+        $this->blockUnloggedOne($id, true);
         $registrant = $this->reg->getData(null, $id);
         $this->session->set_userdata('registrant', $registrant);
         $pdf = new mikehaertl\wkhtmlto\Pdf();

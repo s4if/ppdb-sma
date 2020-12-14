@@ -213,6 +213,10 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-md-12">
+            <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
+        Unduh Kartu Dan Formulir Pendaftaran</a>
+        </div>
     </div>
 </div>
 <div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editProfil" aria-hidden="true">
