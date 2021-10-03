@@ -195,7 +195,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-4 control-label">No. Telp<strong class="red">*</strong> :</label>
+            <label class="col-sm-4 control-label">No. HP (Whatsapp)<strong class="red">*</strong> :</label>
             <div class="col-sm-6">
                 <input type="text" required="true" name="<?= $type.'_';?>contact" class="form-control" placeholder="Masukkan Nomor Telepon" value="<?=$parent_data->getContact();?>">
             </div>

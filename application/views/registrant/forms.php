@@ -587,7 +587,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">Email/No.Hp (Whatsapp) :</label>
+            <label class="col-sm-3 control-label">Email/No.HP (Whatsapp) :</label>
             <div class="col-sm-8">
                 <input type="text" name="cp" id="cp" tabindex="1" class="form-control" placeholder="Email" value="<?=$registrant->getCp();?>">
             </div>
