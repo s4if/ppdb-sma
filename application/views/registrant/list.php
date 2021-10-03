@@ -172,7 +172,7 @@ body {
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right shifted">
-                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/info-ppdb-2020-2021/">
+                        <li class=""><a href="http://smait.ihsanulfikri.sch.id/">
                             Petunjuk Pendaftaran
                         </a></li>
                         <!--<li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
