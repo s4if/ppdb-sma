@@ -53,8 +53,9 @@
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
         Tes akan dilaksanakan hari ahad tanggal 28 November 2021<br/>
         Hasil tes akan diumumkan tanggal 6 Desember 2021<br/>
-        Silahkan Unduh dan cetak form pendaftaran dan kartu pendaftaran serta bergabung dengan grup 
-        Whatsapp melalui link: <a href="#">[link disini]</a>
+        Silakan unduh dan cetak kartu serta formulir pendaftaran. Kemudian bergabung di Grup 
+        Whatsapp Info PPDB dengan menghubungi nomor:  <u>085159201299</u>, 
+        dengan menunjukan Screenshot/Foto Kartu Pendaftaran.
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
         Unduh Kartu Dan Formulir Pendaftaran</a>
@@ -68,7 +69,7 @@
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
         Sebelum anda mengisi data pribadi, silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
         sebesar <strong>Rp. 300.000,-</strong> ditambah <strong>tiga digit terakhir nomor pendaftaran (Contoh = 300.123)</strong> di rekening 
-        <strong>Bank Syariah Mandiri</strong> dengan <strong>No. 70930 70938</strong> atas nama 
+        <strong>Bank Syariah Indonesia</strong> dengan <strong>No. 70930 70938</strong> atas nama 
         <strong>PPDB  SMAIT IHSANUL FIKRI</strong>. <br /> Nomor pendaftaran bisa diminta dengan mengeklik tombol :
     </p>
     <p><a class="btn btn-primary" id="btn-gen" role="button" onclick="kodeUnik()">Minta nomor pendaftaran</a></p>
