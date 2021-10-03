@@ -284,32 +284,33 @@
                         <div class="col-sm-8">
                             <select class="form-control" name="program">
                                 <option value="IPA Reguler"
-                                        <?php if(array_key_exists('program', $registrant_data)):?>
-                                            <?php if($registrant_data['program']=='IPA Reguler'): ?>
+                                        <?php //if(array_key_exists('program', $registrant_data)):?>
+                                        <?php if(property_exists($registrant_data, 'program')):?>
+                                            <?php if($registrant_data->getProgram()=='IPA Reguler'): ?>
                                                     selected
                                             <?php endif;?>
                                         <?php endif;?>>
                                     IPA Reguler
                                 </option>
                                 <option value="IPS Reguler"
-                                        <?php if(array_key_exists('program', $registrant_data)):?>
-                                            <?php if($registrant_data['program']=='IPS Reguler'): ?>
+                                        <?php if(property_exists($registrant_data, 'program')):?>
+                                            <?php if($registrant_data->getProgram()=='IPS Reguler'): ?>
                                                     selected
                                             <?php endif;?>
                                         <?php endif;?>>
                                     IPS Reguler
                                 </option>
                                 <option value="IPA Tahfidz"
-                                        <?php if(array_key_exists('program', $registrant_data)):?>
-                                            <?php if($registrant_data['program']=='IPA Tahfidz'): ?>
+                                        <?php if(property_exists($registrant_data, 'program')):?>
+                                            <?php if($registrant_data->getProgram()=='IPA Tahfidz'): ?>
                                                     selected
                                             <?php endif;?>
                                         <?php endif;?>>
                                     IPA Tahfidz
                                 </option>
                                 <option value="IPS Tahfidz" 
-                                        <?php if(array_key_exists('program', $registrant_data)):?>
-                                            <?php if($registrant_data['program']=='IPS Tahfidz'): ?>
+                                        <?php if(property_exists($registrant_data, 'program')):?>
+                                            <?php if($registrant_data->getProgram()=='IPS Tahfidz'): ?>
                                                     selected
                                             <?php endif;?>
                                         <?php endif;?>>

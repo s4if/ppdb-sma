@@ -174,7 +174,7 @@ body {
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right shifted">
-                    <li class=""><a href="https://smait.ihsanulfikri.sch.id/info-ppdb-2021-2022/">
+                    <li class=""><a href="https://smait.ihsanulfikri.sch.id/">
                         Petunjuk Pendaftaran
                     </a></li>
                     <!--<li class=""><a href="http://smait.ihsanulfikri.sch.id/ppdb-smait-ihsanul-fikri-mungkid-jalur-beasiswa-unggulan-dan-prestasi/">
@@ -244,7 +244,7 @@ body {
                         Gunakan <b>username</b> dan <b>password</b> tersebut pada saat <b>Masuk</b> ke akun Anda untuk proses pendaftaran Online selanjutnya (Mengisi & Mengedit data pada formulir online)
                     </li>
                     <li>
-                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>0812 3723 8858</u> (ustadzah Iis)
+                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>0857 2713 6891</u> (ustadzah Astna) atau <u>0812 3723 8856</u> (ustadzah Iis)
                     </li>
                 </ol>
             </div>

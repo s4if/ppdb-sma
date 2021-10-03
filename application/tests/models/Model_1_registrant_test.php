@@ -154,7 +154,8 @@ class Model_1_registrant_test extends TestCase {
         $data = [
             'nik' => '3304939390029302',
             'nkk' => '3302300204930302',
-            'nak' => '3304939393999281',
+            'nak' => '3304939393999281', 
+            'blood_type' => 'O',
             'birth_place' => 'Semarang', 
             'birth_date' => '19-2-2000', 
             'street' => 'Rambeanak II', 

@@ -384,20 +384,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="q2" value="2021" <?php
-                            if (strpos($registrant->getQurban(), '2021') !== false) {
-                                echo "checked";
-                            }
-                        ?> > 2021
-                    </label>
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="q3" value="2022" <?php
+                        <input type="checkbox" name="q1" value="2022" <?php
                             if (strpos($registrant->getQurban(), '2022') !== false) {
                                 echo "checked";
                             }
@@ -410,11 +397,24 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="q1" value="2023" <?php
+                        <input type="checkbox" name="q2" value="2023" <?php
                             if (strpos($registrant->getQurban(), '2023') !== false) {
                                 echo "checked";
                             }
                         ?> > 2023
+                    </label>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="q3" value="2024" <?php
+                            if (strpos($registrant->getQurban(), '2024') !== false) {
+                                echo "checked";
+                            }
+                        ?> > 2024
                     </label>
                   </div>
                 </div>

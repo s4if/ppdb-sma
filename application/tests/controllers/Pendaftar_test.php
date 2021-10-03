@@ -115,6 +115,7 @@ class Pendaftar_test extends TestCase
                 'nik' => '3304939390029302',
                 'nkk' => '3302300204930302',
                 'nak' => '3304939393999281',
+                'blood_type' => 'AB', 
                 'birth_place' => 'Semarang', 
                 'birth_date' => '19-2-2000', 
                 'street' => 'Rambeanak II', 
@@ -316,7 +317,7 @@ class Pendaftar_test extends TestCase
                 'other_scost' => 1300000,
                 'raw_lcost' => -999,
                 'other_lcost' => 10000000,
-                'qurban'=> '2020-2021',
+                'qurban'=> '2022-2023',
                 'main_parent' => 'father'
             ];
             $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);

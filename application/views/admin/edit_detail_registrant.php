@@ -45,6 +45,53 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-4 control-label ">Golongan Darah:</label>
+            <div class="col-sm-5">
+                <select class="form-control" name="blood_type">
+                    <option value="A"
+                            <?php if (property_exists($registrant_detail, 'bloodType')): ?>
+                                <?php if ($registrant_detail->getBloodType() == 'A'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        A
+                    </option>
+                    <option value="B"
+                            <?php if (property_exists($registrant_detail, 'bloodType')): ?>
+                                <?php if ($registrant_detail->getBloodType() == 'B'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        B
+                    </option>
+                    <option value="O"
+                            <?php if (property_exists($registrant_detail, 'bloodType')): ?>
+                                <?php if ($registrant_detail->getBloodType() == 'O'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        O
+                    </option>
+                    <option value="AB"
+                            <?php if (property_exists($registrant_detail, 'bloodType')): ?>
+                                <?php if ($registrant_detail->getBloodType() == 'AB'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        AB
+                    </option>
+                    <option value="-"
+                            <?php if (property_exists($registrant_detail, 'bloodType')): ?>
+                                <?php if ($registrant_detail->getBloodType() == '-'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        - (Tidak Tahu)
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-4 control-label">Dusun / Jalan :</label>
             <div class="col-sm-7">
                 <input type="text" required name="street" class="form-control" placeholder="Masukkan Dusun/Jalan" value="<?=$registrant_detail->getStreet();?>">

@@ -139,6 +139,53 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-4 control-label ">Golongan Darah<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
+                <select class="form-control" name="blood_type">
+                    <option value="A"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'A'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        A
+                    </option>
+                    <option value="B"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'B'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        B
+                    </option>
+                    <option value="O"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'O'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        O
+                    </option>
+                    <option value="AB"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'AB'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        AB
+                    </option>
+                    <option value="-"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == '-'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        - (Tidak Tahu)
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <hr/>
         </div>
         <div class="form-group">
@@ -550,32 +597,32 @@
             <div class="col-sm-8">
                 <select class="form-control" name="program">
                     <option value="IPA Reguler"
-                            <?php if (array_key_exists('program', $registrant)): ?>
-                                <?php if ($registrant['program'] == 'IPA Reguler'): ?>
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'IPA Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         IPA Reguler
                     </option>
                     <option value="IPS Reguler"
-                            <?php if (array_key_exists('program', $registrant)): ?>
-                                <?php if ($registrant['program'] == 'IPS Reguler'): ?>
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'IPS Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         IPS Reguler
                     </option>
                     <option value="IPA Tahfidz"
-                            <?php if (array_key_exists('program', $registrant)): ?>
-                                <?php if ($registrant['program'] == 'IPA Tahfidz'): ?>
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'IPA Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         IPA Tahfidz
                     </option>
                     <option value="IPS Tahfidz"
-                            <?php if (array_key_exists('program', $registrant)): ?>
-                                <?php if ($registrant['program'] == 'IPS Tahfidz'): ?>
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'IPS Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
