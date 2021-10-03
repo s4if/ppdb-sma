@@ -76,6 +76,13 @@ class RegistrantDataEntity {
 	protected $birthDate;
 
 	/**
+	 * @Column(type="string", nullable=FALSE)
+	 *
+	 * @var DateTime
+	 */
+	protected $bloodType; // A, B, O, AB, - (tidak tahu)
+
+	/**
 	 * @Column(type="string", nullable=TRUE)
 	 *
 	 * @var string
@@ -266,6 +273,10 @@ class RegistrantDataEntity {
 		return $this->nak;
 	}
 
+	public function getBloodType() {
+		return $this->bloodType;
+	}
+
 	public function getCity() {
 		return $this->city;
 	}
@@ -404,6 +415,12 @@ class RegistrantDataEntity {
     	$this->nak = $nak;
     	return $this;
     }
+
+	public function setBloodType($bloodType) {
+		$this->bloodType = $bloodType;
+
+		return $this;
+	}
 
     public function setSiblingsCount($siblingsCount) {
         $this->siblingsCount = $siblingsCount;
