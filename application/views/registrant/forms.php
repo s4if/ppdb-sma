@@ -139,8 +139,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">Golongan Darah:</label>
-            <div class="col-sm-8">
+            <label class="col-sm-4 control-label ">Golongan Darah<strong class="red">*</strong> :</label>
+            <div class="col-sm-5">
                 <select class="form-control" name="blood_type">
                     <option value="A"
                             <?php if (property_exists($reg_data, 'bloodType')): ?>
