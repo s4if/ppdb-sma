@@ -33,7 +33,7 @@
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
-            font-size: 0.75em;
+            font-size: 0.73em;
             font-size-adjust: 0.5;
         }
         h1.header-print {
@@ -119,7 +119,7 @@
     <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <div class="page-content">
         <h1 class="header-print">SURAT PERNYATAAN <br >
-            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2020/2021</small>
+            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2022/2023</small>
         </h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
         <table style="width: 100%; border-style: none">
@@ -258,14 +258,14 @@
             //  Qurban dalam pengerjaan
             if (!($registrant->getQurban() == '-')) :
                 $arr_tahun = [];
-                if (strpos($registrant->getQurban(), '2021') !== false) {
-                    $arr_tahun[] = '2021';
-                }
                 if (strpos($registrant->getQurban(), '2022') !== false) {
                     $arr_tahun[] = '2022';
                 }
                 if (strpos($registrant->getQurban(), '2023') !== false) {
                     $arr_tahun[] = '2023';
+                }
+                if (strpos($registrant->getQurban(), '2024') !== false) {
+                    $arr_tahun[] = '2024';
                 }
                 $str_tahun = "";
                 if (count($arr_tahun) == 3) {

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install composer
-composer update --optimize-autoloader
+composer update --no-dev --optimize-autoloader
 
 # Create Database
 touch application/db.sqlite
@@ -19,3 +19,8 @@ php install_script.php
 rm install_script.php
 rm local_test.sh
 rm seeder.php
+
+# Langkah Selanjutnya: 
+# ubah konfigurasi di 
+# application/config/config.php
+# bagian $config['base_url'] diubah sesuai dengan domain yang dipakai
