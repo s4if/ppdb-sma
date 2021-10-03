@@ -40,11 +40,12 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-        <h2>Ketentuan Upload Dokumen Jalur Prestasi dan Beasiswa Unggulan</h2>
+        <h2>Ketentuan Upload Dokumen Beasiswa Prestasi, Beasiswa Unggulan dan Beasiswa Unggulan Plus</h2>
         <ol>
             <li>Dokumen yang diupload merupakan bukti keikutsertaan/prestasi calon peserta 
                 didik dalam lomba <strong> Olimpiade Sains Nasional (OSN) minimal Tingkat Provinsi 
-                (Jalur Prestasi) atau Tingkat Nasional (Beasiswa Unggulan).</strong> 
+                (Beasiswa Prestasi), Tingkat Nasional (Beasiswa Unggulan) atau Tingkat 
+                Internasional (Beasiswa Unggulan Plus).</strong> 
             </li>
             <li>
                 Bukti yang dimaksud dalam poin 1 adalah:
@@ -68,8 +69,8 @@
             </li>
         </ol>
         <p>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid Tahun Ajaran 2019-2020</p>
-        <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalImport">
-            <span class="glyphicon glyphicon-upload"></span>
+        <a class="btn btn-primary" data-toggle="modal" data-target="#ModalImport">
+            <span class="glyphicon glyphicon-upload"></span>&nbsp;
             Tambah Dokumen Sertifikat/Surat
         </a>
         <hr />
@@ -136,7 +137,7 @@
                 <td> </td>
                 <td> </td>
                 <td> <a class="btn btn-danger" href="<?= base_url()?>pendaftar/hapus_sertifikat/<?=$cert->getId();?>">
-                        <span class="glyphicon-erase"></span>Hapus
+                        <span class="glyphicon glyphicon-erase"></span>&nbsp;Hapus
                     </a> </td>
             </tr>
         </table>
@@ -161,8 +162,9 @@
                     <label class="col-sm-4 control-label">Pemilihan Jalur :</label>
                     <div class="col-sm-8">
                         <select class="form-control" name="scheme">
-                            <option value="Beasiswa">Beasiswa Unggulan</option>
-                            <option value="Prestasi">Jalur Prestasi</option>
+                            <option value="Beasiswa Prestasi">Beasiswa Prestasi</option>
+                            <option value="Beasiswa Unggulan">Beasiswa Unggulan</option>
+                            <option value="Beasiswa Unggulan Plus">Beasiswa Unggulan Plus</option>
                         </select>
                     </div>
                 </div>
