@@ -305,7 +305,7 @@ body {
                                     <div class="input-group-addon">+62</div>
                                     <input  type="text" name="cp_prefix" required id="cp_prefix" tabindex="1" placeholder="" value="+62" hidden>
                                     <input class="col-xs-10 form-control" type="text" name="cp_suffix" pattern="^[1-9]([0-9]{1,13}$)" title="Hanya angka tanpa awalan '0'!"
-                                           required id="cp_suffix" tabindex="1" placeholder="Telp tanpa awalan cth: 85727411xxx">
+                                           required id="cp_suffix" tabindex="1" placeholder="Telp (Whatsapp) tanpa awalan cth: 85727411xxx">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin :</label>

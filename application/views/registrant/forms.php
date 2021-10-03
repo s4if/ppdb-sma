@@ -71,7 +71,7 @@
             <td id="reg-nisn"> <?=$registrant->getNisn()?> </td>
         </tr>
         <tr>
-            <td> Email / No. HP </td>
+            <td> Email / No. HP (Whatsapp)</td>
             <td> &nbsp;:&nbsp; </td>
             <td id="reg-cp"> <?=$registrant->getCp()?> </td>
         </tr>
@@ -587,7 +587,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">Email/No.Hp :</label>
+            <label class="col-sm-3 control-label">Email/No.Hp (Whatsapp) :</label>
             <div class="col-sm-8">
                 <input type="text" name="cp" id="cp" tabindex="1" class="form-control" placeholder="Email" value="<?=$registrant->getCp();?>">
             </div>

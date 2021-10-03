@@ -39,7 +39,7 @@
     </li>
 </ol>
 <div class="container-fluid">
-    <h2>Silahkan Isi Data Rapor Pada Formulir Dibawah</h2>
+    <h2>Silahkan Isi Data Rapor SMP/MTS Pada Formulir Dibawah</h2>
     <div class="row">
     <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>/pendaftar/edit_rapor/<?=$id?>">
         <hr/>
@@ -80,7 +80,7 @@
 
             </div>
             <div class="modal-body">
-                <h3>Keterangan yang ditambahkan di pengisian raport</h3>
+                <h3>Keterangan yang ditambahkan di pengisian raport SMP/MTS</h3>
                 <ul>
                     <li>Skala yang digunakan adalah skala <strong>1-100</strong></li>
                     <li>Yang diisi kedalam form ini adalah nilai Pengetahuan</li>
