@@ -116,6 +116,26 @@
         <h2 class="header-section">Detail Pendaftar</h2>
         <table class="data">
             <tr>
+                <td> Nomor Induk Kependudukan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getNik();?> </td>
+            </tr>
+            <tr>
+                <td> Nomor Kartu Keluarga </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getNkk();?> </td>
+            </tr>
+            <tr>
+                <td> Nomor Akte Kelahiran </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getNak();?> </td>
+            </tr>
+            <tr>
+                <td> Golongan Darah </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getBloodType();?> </td>
+            </tr>
+            <tr>
                 <td> TTL </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo ucfirst($data->getBirthPlace()).', '.tgl_indo($data->getBirthDate()->format('Y m d'));?> </td>

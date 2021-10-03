@@ -139,6 +139,53 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label ">Golongan Darah:</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="blood_type">
+                    <option value="A"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'A'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        A
+                    </option>
+                    <option value="B"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'B'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        B
+                    </option>
+                    <option value="O"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'O'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        O
+                    </option>
+                    <option value="AB"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == 'AB'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        AB
+                    </option>
+                    <option value="-"
+                            <?php if (property_exists($reg_data, 'bloodType')): ?>
+                                <?php if ($reg_data->getBloodType() == '-'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        - (Tidak Tahu)
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <hr/>
         </div>
         <div class="form-group">

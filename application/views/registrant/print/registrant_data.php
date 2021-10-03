@@ -189,7 +189,7 @@
         <h2 class="header-section">Detail Pendaftar</h2>
         <table class="data">
             <tr>
-                <td> Nomor Induk keluarga </td>
+                <td> Nomor Induk Kependudukan </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo $data->getNik();?> </td>
             </tr>
@@ -202,6 +202,11 @@
                 <td> Nomor Akte Kelahiran </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo $data->getNak();?> </td>
+            </tr>
+            <tr>
+                <td> Golongan Darah </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?php echo $data->getBloodType();?> </td>
             </tr>
             <tr>
                 <td> TTL </td>
