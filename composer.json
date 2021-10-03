@@ -4,7 +4,8 @@
     "type": "application",
     "require": {
 		"imagine/imagine": "1.*",
-        "kenjis/codeigniter-doctrine": "1.0.x@dev",
+        "doctrine/orm": "2.9.*",
+        "doctrine/cache": "1.*",
 		"gregwar/captcha": "1.*",
         "mikehaertl/phpwkhtmltopdf": "^2.1",
         "phpoffice/phpspreadsheet": "^1.9"
