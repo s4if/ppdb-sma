@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install composer
-composer update --optimize-autoloader
+composer update --no-dev --optimize-autoloader
 
 # Create Database
 touch application/db.sqlite
