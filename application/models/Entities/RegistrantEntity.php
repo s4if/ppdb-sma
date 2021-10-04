@@ -167,7 +167,7 @@ class RegistrantEntity
     protected $landDonation; // Wakaf Tanah
     
     /**
-     * @Column(type="bigint", nullable=TRUE)
+     * @Column(type="string", length=60, nullable=TRUE)
      *
      * @var string
      */
