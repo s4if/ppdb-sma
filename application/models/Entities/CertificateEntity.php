@@ -36,7 +36,7 @@ class CertificateEntity  {
     protected $subject;//Nama Mata Pelajaran
     
     /**
-     * @Column(type="integer", nullable=TRUE, unique=FALSE)
+     * @Column(type="integer", nullable=TRUE, unique=FALSE, name="ranking")
      *
      * @var integer
      */
