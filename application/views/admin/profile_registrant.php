@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * The MIT License
  *
  * Copyright 2015 s4if.
@@ -257,7 +257,7 @@
                         <div class="col-sm-8">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" checked="true" name="gender" value="L" 
+                                    <input type="radio" checked="true" name="gender" value="L"
                                         <?php if(!empty($registrant_data->getGender())):?>
                                             <?php if($registrant_data->getGender() ==='L'):?>
                                             checked="true"
@@ -308,7 +308,7 @@
                                         <?php endif;?>>
                                     IPA Tahfidz
                                 </option>
-                                <option value="IPS Tahfidz" 
+                                <option value="IPS Tahfidz"
                                         <?php if(property_exists($registrant_data, 'program')):?>
                                             <?php if($registrant_data->getProgram()=='IPS Tahfidz'): ?>
                                                     selected
@@ -347,7 +347,7 @@
                                 <div class="col-sm-4">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_icost" value="11000000" 
+                                            <input type="radio" name="raw_icost" value="11000000"
                                                 <?php if(!empty($registrant_data->getInitialCost())):?>
                                                     <?php if($registrant_data->getInitialCost() == '11000000'):?>
                                                     checked
@@ -358,7 +358,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_icost" value="12000000" 
+                                            <input type="radio" name="raw_icost" value="12000000"
                                                 <?php if(!empty($registrant_data->getInitialCost())):?>
                                                     <?php if($registrant_data->getInitialCost() == '12000000'):?>
                                                     checked
@@ -369,7 +369,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_icost" value="13000000" 
+                                            <input type="radio" name="raw_icost" value="13000000"
                                                 <?php if(!empty($registrant_data->getInitialCost())):?>
                                                     <?php if($registrant_data->getInitialCost() == '13000000'):?>
                                                     checked
@@ -380,7 +380,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_icost" value="-999" 
+                                            <input type="radio" name="raw_icost" value="-999"
                                                 <?php if(!empty($registrant_data->getInitialCost())):?>
                                                     <?php if(!($registrant_data->getInitialCost() == '12000000'||
                                                             $registrant_data->getInitialCost() == '11000000'||
@@ -407,7 +407,7 @@
                                 <div class="col-sm-4">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_scost" value="1350000" 
+                                            <input type="radio" name="raw_scost" value="1350000"
                                                 <?php if(!empty($registrant_data->getSubscriptionCost())):?>
                                                     <?php if($registrant_data->getSubscriptionCost() == '1350000'):?>
                                                     checked
@@ -418,7 +418,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_scost" value="1450000" 
+                                            <input type="radio" name="raw_scost" value="1450000"
                                                 <?php if(!empty($registrant_data->getSubscriptionCost())):?>
                                                     <?php if($registrant_data->getSubscriptionCost() == '1450000'):?>
                                                     checked
@@ -429,7 +429,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_scost" value="1550000" 
+                                            <input type="radio" name="raw_scost" value="1550000"
                                                 <?php if(!empty($registrant_data->getSubscriptionCost())):?>
                                                     <?php if($registrant_data->getSubscriptionCost() == '1550000'):?>
                                                     checked
@@ -440,7 +440,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_scost" value="-999" 
+                                            <input type="radio" name="raw_scost" value="-999"
                                                 <?php if(!empty($registrant_data->getSubscriptionCost())):?>
                                                     <?php if(!($registrant_data->getSubscriptionCost() == '1350000'||
                                                             $registrant_data->getSubscriptionCost() == '1450000' ||
@@ -453,7 +453,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-3">
                                     <input type="number" onkeyup="rupiah('scost')" name="other_scost" pattern="^([0-9]{1,8}$)" title="Maksimal 8 digit angka!"
@@ -468,7 +468,7 @@
                                 <div class="col-sm-4">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_lcost" value="500000" 
+                                            <input type="radio" name="raw_lcost" value="500000"
                                                 <?php if(!empty($registrant_data->getLandDonation())):?>
                                                     <?php if($registrant_data->getLandDonation() == '500000'):?>
                                                     checked
@@ -479,7 +479,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_lcost" value="1000000" 
+                                            <input type="radio" name="raw_lcost" value="1000000"
                                                 <?php if(!empty($registrant_data->getLandDonation())):?>
                                                     <?php if($registrant_data->getLandDonation() == '1000000'):?>
                                                     checked
@@ -490,7 +490,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_lcost" value="1500000" 
+                                            <input type="radio" name="raw_lcost" value="1500000"
                                                 <?php if(!empty($registrant_data->getLandDonation())):?>
                                                     <?php if($registrant_data->getLandDonation() == '1500000'):?>
                                                     checked
@@ -501,7 +501,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_lcost" value="2000000" 
+                                            <input type="radio" name="raw_lcost" value="2000000"
                                                 <?php if(!empty($registrant_data->getLandDonation())):?>
                                                     <?php if($registrant_data->getLandDonation() == '2000000'):?>
                                                     checked
@@ -512,7 +512,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="raw_lcost" value="-999" 
+                                            <input type="radio" name="raw_lcost" value="-999"
                                                 <?php if(!empty($registrant_data->getLandDonation())):?>
                                                     <?php if(!($registrant_data->getLandDonation() == '500000'||
                                                             $registrant_data->getLandDonation() == '1000000' ||
@@ -540,26 +540,26 @@
                                 <label class="col-sm-3 control-label">Nama Yang Dicantumkan :</label>
                                 <div class="col-sm-4">
                                     <select class="form-control" name="main_parent">
-                                        <option value="father" 
+                                        <option value="father"
                                                 <?php if(!empty($registrant_data->getMainParent())):?>
                                                     <?php if($registrant_data->getMainParent() == 'father'):?>
-                                                    selected="true" 
+                                                    selected="true"
                                                     <?php endif;?>
                                                 <?php endif;?>>
                                             Nama Ayah
                                         </option>
-                                        <option value="mother" 
+                                        <option value="mother"
                                                 <?php if(!empty($registrant_data->getMainParent())):?>
                                                     <?php if($registrant_data->getMainParent() == 'mother'):?>
-                                                    selected="true" 
+                                                    selected="true"
                                                     <?php endif;?>
                                                 <?php endif;?>>
                                             Nama Ibu
                                         </option>
-                                        <option value="guardian" 
+                                        <option value="guardian"
                                                 <?php if(!empty($registrant_data->getMainParent())):?>
                                                     <?php if($registrant_data->getMainParent() == 'guardian'):?>
-                                                    selected="true" 
+                                                    selected="true"
                                                     <?php endif;?>
                                                 <?php endif;?>>
                                             Nama Wali
@@ -570,8 +570,8 @@
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-3">
                                     <label class="text-center">
-                                        Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
-                                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022.
+                                        Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT
+                                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2022/2023/2024.
                                     </label>
                                 </div>
                             </div>
@@ -579,37 +579,37 @@
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="q1" value="2020" <?php
-                                            if (strpos($registrant_data->getQurban(), '2020') !== false) {
-                                                echo "checked";
-                                            }
-                                        ?> > 2020
-                                    </label>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6 col-sm-offset-3">
-                                    <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="q2" value="2021" <?php
-                                            if (strpos($registrant_data->getQurban(), '2021') !== false) {
-                                                echo "checked";
-                                            }
-                                        ?> > 2021
-                                    </label>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6 col-sm-offset-3">
-                                    <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="q3" value="2022" <?php
+                                        <input type="checkbox" name="q1" value="2022" <?php
                                             if (strpos($registrant_data->getQurban(), '2022') !== false) {
                                                 echo "checked";
                                             }
                                         ?> > 2022
+                                    </label>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="q2" value="2023" <?php
+                                            if (strpos($registrant_data->getQurban(), '2023') !== false) {
+                                                echo "checked";
+                                            }
+                                        ?> > 2023
+                                    </label>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="q3" value="2024" <?php
+                                            if (strpos($registrant_data->getQurban(), '2024') !== false) {
+                                                echo "checked";
+                                            }
+                                        ?> > 2024
                                     </label>
                                   </div>
                                 </div>
@@ -619,14 +619,14 @@
                                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jurusan</strong></label>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di jurusan yang lain jika anda tidak lolos 
+                                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di jurusan yang lain jika anda tidak lolos
                                         untuk jurusan pilihan anda namun nilai anda bisa bersaing di jurusan yang lain?</p></label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="rel_to_ips" value="false" 
+                                            <input type="radio" name="rel_to_ips" value="false"
                                                 <?php if(!empty($registrant_data->getRelToIPS())):?>
                                                     <?php if($registrant_data->getRelToIPS() ==='false'):?>
                                                     checked
@@ -637,7 +637,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="rel_to_ips" value="true" 
+                                            <input type="radio" name="rel_to_ips" value="true"
                                                 <?php if(!empty($registrant_data->getRelToIPS())):?>
                                                     <?php if($registrant_data->getRelToIPS() ==='true'):?>
                                                     checked
@@ -656,14 +656,14 @@
                                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Program</strong></label>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di 
+                                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di
                                     program reguler jika tidak lolos seleksi program Tahfidz?</p></label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="rel_to_regular" value="false" 
+                                            <input type="radio" name="rel_to_regular" value="false"
                                                 <?php if(!empty($registrant_data->getRelToRegular())):?>
                                                     <?php if($registrant_data->getRelToRegular() ==='false'):?>
                                                     checked
@@ -674,7 +674,7 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="rel_to_regular" value="true" 
+                                            <input type="radio" name="rel_to_regular" value="true"
                                                 <?php if(!empty($registrant_data->getRelToRegular())):?>
                                                     <?php if($registrant_data->getRelToRegular() ==='true'):?>
                                                     checked
@@ -752,7 +752,7 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_acv--;
         });
-        
+
         //Hobby
         var point_hby       = $(".insert_hby"); //Fields wrapper
         var add_btn_hby  = $(".add_btn_hby"); //Add button ID
@@ -780,7 +780,7 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_hby--;
         });
-        
+
         //Hospital Sheets
         var point_hs       = $(".insert_hs"); //Fields wrapper
         var add_btn_hs  = $(".add_btn_hs"); //Add button ID
@@ -808,7 +808,7 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove(); x_hs--;
         });
-        
+
         //Physical Abnormalities
         var point_pa       = $(".insert_pa"); //Fields wrapper
         var add_btn_pa  = $(".add_btn_pa"); //Add button ID
