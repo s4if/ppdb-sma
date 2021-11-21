@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Drop Dulu
-# vendor/doctrine/orm/bin/doctrine orm:schema-tool:drop --force
+vendor/doctrine/orm/bin/doctrine orm:schema-tool:drop --force
 rm application/db.sqlite
 touch application/db.sqlite
 
