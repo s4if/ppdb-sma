@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn' => 'sqlite:application/db.sqlite',
+	'dsn' => 'mysql:',
 	'hostname' => 'localhost',
-	'username' => 'ppdb',
-	'password' => 'ppdb',
-	'database' => 'ppdb',
+	'username' => 'homestead',
+	'password' => 'secret',
+	'database' => 'ppdbsma',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
