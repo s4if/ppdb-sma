@@ -151,12 +151,12 @@ class Model_registrant extends CI_Model {
         $kode = "";
         if (is_null($registrant->getKode()) && $gender == $registrant->getGender()){
             if($gender == 'P'){
-                $counter->addFemaleCount();
-                $kode = sprintf("%03d", 500 + $counter->getFemaleCount()); //nilai asli 500
+                $counter->addFemaleCount(); // gelombang 2 tambah 300
+                $kode = sprintf("%03d", 800 + $counter->getFemaleCount()); //nilai asli 500
                 $registrant->setKode($kode);
             } else {
-                $counter->addMaleCount();
-                $kode = sprintf("%03d", $counter->getMaleCount()); //nilai asli 0
+                $counter->addMaleCount(); // gelombang 2 tambah 300
+                $kode = sprintf("%03d", 300+ $counter->getMaleCount()); //nilai asli 0
                 $registrant->setKode($kode);
             }
             $registrant->setRegId(); // dibuat auto bikin regID

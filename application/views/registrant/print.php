@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>
+<title>Registrasi PPDB SMAIT Ihsanul Fikri Gelombang 2</title>
 
 <!-- Di server, jangan lupa untuk diganti menjadi CDN -->
 

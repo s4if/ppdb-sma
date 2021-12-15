@@ -67,7 +67,8 @@
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>
         Ini adalah sistem pendaftaran peserta didik baru (PPDB) SMAIT Ihsanul Fikri Mungkid.
-        Sebelum anda mengisi data pribadi, silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
+        Sebelum anda mengisi data pribadi, jika anda merupakan <strong style="color: red;">pendaftar baru</strong> 
+        silahkan mentransfer telebih dahulu biaya pendaftaran peserta 
         sebesar <strong>Rp. 300.000,-</strong> ditambah <strong>tiga digit terakhir nomor pendaftaran (Contoh = 300.123)</strong> di rekening 
         <strong>Bank Syariah Indonesia</strong> dengan <strong>No. 70930 70938</strong> atas nama 
         <strong>PPDB  SMAIT IHSANUL FIKRI</strong>. <br /> Nomor pendaftaran bisa diminta dengan mengeklik tombol :
@@ -77,7 +78,9 @@
     <hr />
     <p>
         Setelah transfer selesai, upload hasil scan / foto kuitansi pembayaran untuk diverifikasi
-        oleh panitia pada tombol dibawah ini.
+        oleh panitia pada tombol dibawah ini. Sedangkan untuk pendaftar yang <strong style="color: red;">
+        pernah mendaftar di gelombang 1</strong>, silahkan untuk bisa mengupload <strong>Scan Kartu Pendaftar 
+        gelombang 1</strong> (bentuk file jpg atau png) tanpa perlu melakukan transfer lagi.
     </p>
     <a class="btn btn-warning" data-toggle="modal" data-target="#uploadKwitansi" id="btn-kwitansi" disabled="true">
         <span class="glyphicon glyphicon-upload"></span>
