@@ -119,7 +119,7 @@
     <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <div class="page-content">
         <h1 class="header-print">SURAT PERNYATAAN <br >
-            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2022/2023</small>
+            <small>PENERIMAAN PESERTA DIDIK BARU GELOMBANG 2 TAHUN PELAJARAN 2022/2023</small>
         </h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
         <table style="width: 100%; border-style: none">
