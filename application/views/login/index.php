@@ -220,14 +220,16 @@ body {
     ?>
 </div>
 <?php endif; ?>
-<!--            <div class="alert alert-warning alert-dismissible">
+            <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p class=" text-center"><strong>Pengumuman:</strong><br/>
-                Mohon maaf, pendaftaran telah ditutup pada tanggal 10 Februari 2017 Pukul 23:59 WIB <br/>
+                Mohon maaf, pendaftaran telah ditutup pada tanggal 26 Januari 2022 Pukul 23:59 WIB.<br/>
+                Peserta yang sudah mendaftar masih bisa masuk & melengkapi data, tetapi peserta baru sudah tidak bisa
+                melakukan pendaftaran.<br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div>-->
+            </div>
 
-            <div class="alert alert-info alert-dismissible">
+<!--            <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4><b>Langkah Mendaftar PPDB SMAIT Ihsanul Fikri</b></h4>
                 <ol>
@@ -248,6 +250,7 @@ body {
                     </li>
                 </ol>
             </div>
+        -->
 </div>
         </div>
     	<div class="row">
@@ -259,7 +262,7 @@ body {
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
                             </div>
                             <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Daftar</a>
+                                <!--<a href="#" id="register-form-link">Daftar</a>-->
                             </div>
                         </div>
                         <hr>
@@ -511,7 +514,7 @@ $(document).ready(function(){
         source: sekolah
 
     });
-    $('#g2Modal').modal('show');
+    //$('#g2Modal').modal('show');
 });
 </script>
    
