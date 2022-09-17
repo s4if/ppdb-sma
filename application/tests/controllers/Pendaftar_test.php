@@ -13,15 +13,15 @@ class Pendaftar_test extends TestCase
 	public function test_index()
 	{
 		$output = $this->request('GET', ['Login', 'index']);
-		$this->assertContains('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
+		$this->assertStringContainsString('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
 	}
         
         public function test_lihat()
 	{
 		$output = $this->request('GET', ['Pendaftar', 'lihat']);
-		$this->assertContains('Data Pendaftar Ikhwan', $output);
+		$this->assertStringContainsString('Data Pendaftar Ikhwan', $output);
                 $output2 = $this->request('GET', 'lihat/P');
-		$this->assertContains('Data Pendaftar Akhwat', $output2);
+		$this->assertStringContainsString('Data Pendaftar Akhwat', $output2);
 	}
         
         public function test_beranda_blocked()
@@ -36,7 +36,7 @@ class Pendaftar_test extends TestCase
                 'password' => 'qwerty'
             ]);
             $output = $this->request('GET', '1/password');
-            $this->assertContains('<title>Password</title>', $output);
+            $this->assertStringContainsString('<title>Password</title>', $output);
             $param = [
                 'stored_password' => 'qwertyu',
                 'new_password' => 'zaraki',
@@ -60,18 +60,18 @@ class Pendaftar_test extends TestCase
                 'password' => 'zaraki'
             ]);
             $output = $this->request('GET','1/beranda');
-            $this->assertContains('<title>Beranda</title>', $output);
+            $this->assertStringContainsString('<title>Beranda</title>', $output);
             $output2 = $this->request('GET','1/password');
-            $this->assertContains('<title>Password</title>', $output2);
+            $this->assertStringContainsString('<title>Password</title>', $output2);
             $output5 = $this->request('GET','1/formulir');
-            $this->assertContains('<title>Formulir</title>', $output5);
-            $this->assertContains('<td id="reg-gender"> Ikhwan </td>', $output5);
-            $this->assertContains('<strong class="red">Data Ayah</strong>', $output5);
-            $this->assertContains('<strong class="red">Data Ibu</strong>', $output5);
+            $this->assertStringContainsString('<title>Formulir</title>', $output5);
+            $this->assertStringContainsString('<td id="reg-gender"> Ikhwan </td>', $output5);
+            $this->assertStringContainsString('<strong class="red">Data Ayah</strong>', $output5);
+            $this->assertStringContainsString('<strong class="red">Data Ibu</strong>', $output5);
             $output6 = $this->request('GET','1/rekap');
-            $this->assertContains('<title>Rekap Data</title>', $output6);
+            $this->assertStringContainsString('<title>Rekap Data</title>', $output6);
             $output7 = $this->request('GET','1/surat');
-            $this->assertContains('<title>Surat Pernyataan</title>', $output7);
+            $this->assertStringContainsString('<title>Surat Pernyataan</title>', $output7);
             
         }
         
@@ -186,22 +186,22 @@ class Pendaftar_test extends TestCase
                 'mother_burden_count' => 4,                
             ];
             $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
-            $this->assertContains('"status":true', $output);
+            $this->assertStringContainsString('"status":true', $output);
             $this->setUp();
             $data['village'] = null;
             $output2 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
-            $this->assertContains('"status":false', $output2);
+            $this->assertStringContainsString('"status":false', $output2);
             $data['village'] = 'Rambeanak';
             $data['mother_village'] = null;
             $output3 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
-            $this->assertContains('"status":false', $output3);
+            $this->assertStringContainsString('"status":false', $output3);
             $data['mother_village'] = 'Rambeanak';
             $data['father_village'] = null;
             $output4 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
-            $this->assertContains('"status":false', $output4);
+            $this->assertStringContainsString('"status":false', $output4);
             $data['father_village'] = 'Rambeanaak';
             $output5 = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_all/1', $data);
-            $this->assertContains('"status":true', $output5);
+            $this->assertStringContainsString('"status":true', $output5);
         }
         
         public function test_generate_kode(){
@@ -211,8 +211,8 @@ class Pendaftar_test extends TestCase
             ]);
             $this->assertRedirect('1/beranda');
             $output = $this->ajaxRequest('POST', 'pendaftar/generate_kodeunik/1/L');
-            $this->assertContains('"status":true', $output);
-            $this->assertContains('"kode":"001"', $output);
+            $this->assertStringContainsString('"status":true', $output);
+            $this->assertStringContainsString('"kode":"001"', $output);
         }
         
 //        public function test_isi_Guardian(){
@@ -247,7 +247,7 @@ class Pendaftar_test extends TestCase
 //            'burden_count' => 1
 //            ];
 //            $output = $this->ajaxRequest('POST', 'pendaftar/ajax_edit_parent/1/guardian', $data);
-//            $this->assertContains('"status":true', $output);
+//            $this->assertStringContainsString('"status":true', $output);
 //        }
         
         public function test_isi_rapor(){

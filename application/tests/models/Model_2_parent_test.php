@@ -31,7 +31,7 @@
  */
 class Model_2_parent_test extends TestCase{
     
-    public function setUp()
+    public function setUp(): void
     {
         $this->resetInstance();
         $this->CI->load->model('model_registrant', 'reg');
