@@ -33,7 +33,7 @@ class Admin_test extends TestCase{
     public function test_index()
     {
         $output = $this->request('GET', ['Login', 'admin']);
-        $this->assertContains('<title>Admin PPDB SMA</title>', $output);
+        $this->assertStringContainsString('<title>Admin PPDB SMA</title>', $output);
     }
     
     public function test_lihat_halaman()
@@ -43,19 +43,19 @@ class Admin_test extends TestCase{
             'password' => 'qwerty'
         ]);
         $output = $this->request('GET','admin/beranda');
-        $this->assertContains('<title>Beranda</title>', $output);
+        $this->assertStringContainsString('<title>Beranda</title>', $output);
         $output = $this->request('GET','admin/lihat');
-        $this->assertContains('<title>Lihat Pendaftar </title>', $output);
+        $this->assertStringContainsString('<title>Lihat Pendaftar </title>', $output);
         $output = $this->request('GET','admin/lihat/L');
-        $this->assertContains('<title>Lihat Pendaftar Ikhwan</title>', $output);
+        $this->assertStringContainsString('<title>Lihat Pendaftar Ikhwan</title>', $output);
         $output = $this->request('GET','admin/lihat/P');
-        $this->assertContains('<title>Lihat Pendaftar Akhwat</title>', $output);
+        $this->assertStringContainsString('<title>Lihat Pendaftar Akhwat</title>', $output);
         $output = $this->request('GET','admin/pembayaran');
-        $this->assertContains('<title>Lihat Resi Pembayaran</title>', $output);
+        $this->assertStringContainsString('<title>Lihat Resi Pembayaran</title>', $output);
         $output = $this->request('GET','admin/registrant/1');
-        $this->assertContains('<title>Profil Pendaftar</title>', $output);
+        $this->assertStringContainsString('<title>Profil Pendaftar</title>', $output);
         $output = $this->request('GET','admin/password');
-        $this->assertContains('<title>Password</title>', $output);
+        $this->assertStringContainsString('<title>Password</title>', $output);
     }
     
     public function test_lihat_ajax()
@@ -65,11 +65,11 @@ class Admin_test extends TestCase{
             'password' => 'qwerty'
         ]);
         $output = $this->ajaxRequest('POST', ['admin', 'uncomplete_ajax']);
-        $this->assertContains('"data":', $output);
+        $this->assertStringContainsString('"data":', $output);
         $output = $this->ajaxRequest('POST', ['admin','uncomplete_ajax'], ['unpaid']);
-        $this->assertContains('"data":', $output);
+        $this->assertStringContainsString('"data":', $output);
         $output = $this->ajaxRequest('POST', ['admin', 'lihat_ajax']);
-        $this->assertContains('"data":', $output);
+        $this->assertStringContainsString('"data":', $output);
     } 
     public function test_edit_pembayaran()
     {

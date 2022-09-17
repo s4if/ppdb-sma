@@ -18,3 +18,5 @@
 /application/libraries/codeigniter-doctrine/
 /application/db.sqlite
 /composer.lock
+
+application/tests/.phpunit.result.cache
