@@ -123,6 +123,7 @@ class Model_registrant extends CI_Model {
             $data['reg_time'] = new DateTime('now');
             $this->setRegistrantData($data);
             $this->registrant->setDeleted(false);
+            $this->registrant->setGelombang('gelombang 1');
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
@@ -220,6 +221,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['land_donation'])) : $this->registrant->setLandDonation($data['land_donation']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
         if (!empty($data['deleted'])) : $this->registrant->setDeleted($data['deleted']); endif;
+        //if (!empty($data['gelombang'])) : $this->registrant->setGelombang($data['gelombang']); endif;
     }
     
     

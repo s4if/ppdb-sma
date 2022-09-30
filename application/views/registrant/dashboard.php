@@ -51,11 +51,11 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
-        Tes akan dilaksanakan hari ahad tanggal 28 November 2021<br/>
-        Hasil tes akan diumumkan tanggal 6 Desember 2021<br/>
-        Silakan unduh dan cetak kartu serta formulir pendaftaran. Kemudian bergabung di Grup 
+        Seleksi akan dilaksanakan hari ahad tanggal 11 Desember 2022<br/>
+        Hasil tes akan diumumkan tanggal 21 Desember 2022<br/>
+        Silakan unduh dan cetak kartu serta formulir pendaftaran. <!-- Kemudian bergabung di Grup 
         Whatsapp Info PPDB dengan menghubungi nomor:  <u>085159201299</u>, 
-        dengan menunjukan Screenshot/Foto Kartu Pendaftaran.
+        dengan menunjukan Screenshot/Foto Kartu Pendaftaran. -->
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
         Unduh Kartu Dan Formulir Pendaftaran</a>
@@ -78,9 +78,7 @@
     <hr />
     <p>
         Setelah transfer selesai, upload hasil scan / foto kuitansi pembayaran untuk diverifikasi
-        oleh panitia pada tombol dibawah ini. Sedangkan untuk pendaftar yang <strong style="color: red;">
-        pernah mendaftar di gelombang 1</strong>, silahkan untuk bisa mengupload <strong>Scan Kartu Pendaftar 
-        gelombang 1</strong> (bentuk file jpg atau png) tanpa perlu melakukan transfer lagi.
+        oleh panitia pada tombol dibawah ini. Kemudian konfirmasi pembayaran ke Ustadzah Inayah Kurniasih, S.S. (HP. 085643880750)
     </p>
     <a class="btn btn-warning" data-toggle="modal" data-target="#uploadKwitansi" id="btn-kwitansi" disabled="true">
         <span class="glyphicon glyphicon-upload"></span>

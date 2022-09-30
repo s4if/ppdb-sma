@@ -48,8 +48,9 @@ $reg->setNisn('2010249129310');
 $reg->setCp('085738271625');
 $reg->setPassword(password_hash('qwerty', PASSWORD_BCRYPT));
 $reg->setPreviousSchool('SMP IT Ihsanul FIkri Mungkid');
-$reg->setProgram('IPS Reguler');
+$reg->setProgram('Reguler');
 $reg->setRegistrationTime(new DateTime('now'));
+$reg->setGelombang('gelombang 1');
 $em->persist($reg);
 $em->flush();
 // Payment

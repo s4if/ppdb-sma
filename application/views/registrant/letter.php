@@ -87,12 +87,12 @@
                         </tr>
                         <tr>
                             <td>d. Seragam</td>
-                            <td>Rp. 2.000.000,-</td>
+                            <td>Rp. 2.250.000,-</td>
                             <th>Sekali</th>
                         </tr>
                         <tr>
                             <td>e. Kesiswaan</td>
-                            <td><?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?> <strong class="red">*</strong></td>
+                            <td>Rp. 1.500.000,-</td>
                             <th>Per Tahun</th>
                         </tr>
                         <tr>
@@ -107,18 +107,13 @@
                         </tr>
                         <tr>
                             <td>h. Perlengkapan Asrama</td>
-                            <td>Rp. 1.200.000,-</td>
+                            <td>Rp. 1.400.000,-</td>
                             <th>Sekali</th>
                         </tr>
                         <tr>
                             <td>i. Majalah dan Kalender</td>
                             <td>Rp. 120.000,-</td>
                             <th>Per Tahun</th>
-                        </tr>
-                        <tr>
-                            <td>j. Biaya pembukaan rekening BMT dan tabungan uang saku</td>
-                            <td>Rp. 300.000,-</td>
-                            <th>Sekali</th>
                         </tr>
                     </table>
                     <span class="help-block">* = Untuk kelas tahfidz Rp.1200.000,- sedangkan
@@ -212,48 +207,48 @@
                 <div class="col-sm-4">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1350000" 
+                            <input type="radio" name="raw_scost" value="1400000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1350000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1400000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.350.000,-
+                            Rp. 1.400.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1450000" 
+                            <input type="radio" name="raw_scost" value="1500000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1450000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1500000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.450.000,-
+                            Rp. 1.500.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="raw_scost" value="1550000" 
+                            <input type="radio" name="raw_scost" value="1600000" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1550000'):?>
+                                    <?php if($registrant->getSubscriptionCost() == '1600000'):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Rp. 1.550.000,-
+                            Rp. 1.600.000,-
                         </label>
                     </div>
                     <div class="radio">
                         <label>
                             <input type="radio" name="raw_scost" value="-999" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if(!($registrant->getSubscriptionCost() == '1350000'||
-                                            $registrant->getSubscriptionCost() == '1450000' ||
-                                            $registrant->getSubscriptionCost() == '1550000')):?>
+                                    <?php if(!($registrant->getSubscriptionCost() == '1400000'||
+                                            $registrant->getSubscriptionCost() == '1500000' ||
+                                            $registrant->getSubscriptionCost() == '1600000')):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 1,55 Juta Rupiah
+                            Lebih dari 1,6 Juta Rupiah
                         </label>
                     </div>
                 </div>
@@ -384,20 +379,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="q1" value="2022" <?php
-                            if (strpos($registrant->getQurban(), '2022') !== false) {
-                                echo "checked";
-                            }
-                        ?> > 2022
-                    </label>
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="q2" value="2023" <?php
+                        <input type="checkbox" name="q1" value="2023" <?php
                             if (strpos($registrant->getQurban(), '2023') !== false) {
                                 echo "checked";
                             }
@@ -410,7 +392,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="q3" value="2024" <?php
+                        <input type="checkbox" name="q2" value="2024" <?php
                             if (strpos($registrant->getQurban(), '2024') !== false) {
                                 echo "checked";
                             }
@@ -419,44 +401,21 @@
                   </div>
                 </div>
             </div>
-            <hr/>
-            <div class="form-group">
-                <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jurusan</strong></label>
-            </div>
-            <div class="form-group ">
-                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di jurusan yang lain jika anda tidak lolos 
-                        untuk jurusan pilihan anda namun nilai anda bisa bersaing di jurusan yang lain?</p></label>
-            </div>
             <div class="form-group">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="rel_to_ips" value="false" 
-                                <?php if(!empty($registrant->getRelToIPS())):?>
-                                    <?php if($registrant->getRelToIPS() ==='false'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Saya tidak bersedia
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="rel_to_ips" value="true" 
-                                <?php if(!empty($registrant->getRelToIPS())):?>
-                                    <?php if($registrant->getRelToIPS() ==='true'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php else :?>
-                                    checked
-                                <?php endif;?>>
-                            Saya bersedia
-                        </label>
-                    </div>
+                    <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="q3" value="2025" <?php
+                            if (strpos($registrant->getQurban(), '2025') !== false) {
+                                echo "checked";
+                            }
+                        ?> > 2025
+                    </label>
+                  </div>
                 </div>
             </div>
             <hr/>
-            <?php if($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz'): ?>
+            <?php if($program == 'Tahfidz'): ?>
             <div class="form-group">
                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Program</strong></label>
             </div>

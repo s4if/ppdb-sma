@@ -378,7 +378,7 @@
                 <td> Rp. <?php echo number_format($registrant->getInitialCost(),2,',','.');?> </td>
             </tr>
             <tr>
-                <td> IDP </td>
+                <td> SPP </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> Rp. <?php echo number_format($registrant->getSubscriptionCost(),2,',','.');?> </td>
             </tr>
@@ -390,13 +390,13 @@
             <tr>
                 <td> Seragam </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 2.000.000,00 </td>
+                <td> Rp. 2.250.000,00 </td>
             </tr>
             <tr>
                 <td> Dana Kesiswaan </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php $program = $registrant->getProgram();?>
-                <td> <?php echo ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?'Rp. 1.200.000,00':'Rp.1.000.000,00';?> </td>
+                <td> Rp. 1.500.000,00 </td>
             </tr>
             <tr>
                 <td> Dana Kesehatan </td>
@@ -409,19 +409,9 @@
                 <td> Rp. 1.500.000,00 </td>
             </tr>
             <tr>
-                <td> Perlengkapan Asrama </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.200.000,00</td>
-            </tr>
-            <tr>
                 <td> Dana Majalah dan kalender </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> Rp. 120.000,00</td>
-            </tr>
-            <tr>
-                <td> Biaya pembukaan rekening BMT dan tabungan uang saku </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 300.000,00</td>
             </tr>
             <tr>
                 <td> Kesanggupan Berqurban Tahun </td>
@@ -432,10 +422,9 @@
                 <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
-                $default = 5370000;
+                $default = 4770000;
                 $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
-                $addons =  ($program == 'IPA Tahfidz' || $program == 'IPS Tahfidz')?1200000:1000000;
-                $total = $tot+$addons+$default;
+                $total = $tot+$default;
                 ?>
                 <td> <strong class="red">Rp. <?php echo number_format($total,2,',','.');?></strong> </td>
             </tr>

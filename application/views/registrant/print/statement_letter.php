@@ -119,7 +119,7 @@
     <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <div class="page-content">
         <h1 class="header-print">SURAT PERNYATAAN <br >
-            <small>PENERIMAAN PESERTA DIDIK BARU GELOMBANG 2 TAHUN PELAJARAN 2022/2023</small>
+            <small>PENERIMAAN PESERTA DIDIK BARU GELOMBANG 1 TAHUN PELAJARAN 2023/2024</small>
         </h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
         <table style="width: 100%; border-style: none">
@@ -210,12 +210,12 @@
                 </tr>
                 <tr>
                     <td>d. Seragam</td>
-                    <td>Rp. 2.000.000,-</td>
+                    <td>Rp. 2.250.000,-</td>
                     <td>Sekali</td>
                 </tr>
                 <tr>
                     <td>e. Uang Kesiswaan</td>
-                    <td><?php echo ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?'Rp. 1.200.000,-':'Rp. 1.000.000,-';?></td>
+                    <td>Rp. 1.500.000,-</td>
                     <td>Per Tahun</td>
                 </tr>
                 <tr>
@@ -229,27 +229,16 @@
                     <td>Sekali</td>
                 </tr>
                 <tr>
-                    <td>h. Perlengkapan Asrama</td>
-                    <td>Rp. 1.200.000,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
                     <td>i. Majalah dan Kalender</td>
                     <td>Rp. 120.000,-</td>
                     <td>Per Tahun</td>
                 </tr>
                 <tr>
-                    <td>j. Biaya pembukaan rekening BMT dan tabungan uang saku </td>
-                    <td> Rp. 300.000,00</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
                     <td><strong>Total</strong></td>
                     <?php 
-                    $default = 5370000;
-                    $kegiatan = ($registrant->getProgram() == 'IPA Tahfidz' || $registrant->getProgram() == 'IPS Tahfidz')?1200000:1000000;
+                    $default = 4770000;
                     $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
-                            +$registrant->getLandDonation()+$kegiatan+$default;
+                            +$registrant->getLandDonation()+$default;
                     ?>
                     <td><strong>Rp. <?= number_format($total, 0, ',', '.');?>,-</strong></td>
                 </tr>
@@ -258,14 +247,14 @@
             //  Qurban dalam pengerjaan
             if (!($registrant->getQurban() == '-')) :
                 $arr_tahun = [];
-                if (strpos($registrant->getQurban(), '2022') !== false) {
-                    $arr_tahun[] = '2022';
-                }
                 if (strpos($registrant->getQurban(), '2023') !== false) {
                     $arr_tahun[] = '2023';
                 }
                 if (strpos($registrant->getQurban(), '2024') !== false) {
                     $arr_tahun[] = '2024';
+                }
+                if (strpos($registrant->getQurban(), '2025') !== false) {
+                    $arr_tahun[] = '2025';
                 }
                 $str_tahun = "";
                 if (count($arr_tahun) == 3) {

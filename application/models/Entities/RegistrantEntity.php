@@ -200,6 +200,13 @@ class RegistrantEntity
      * @var bool
      */
     protected $deleted;
+
+    /**
+     * @Column(type="string", nullable=FALSE)
+     *
+     * @var string
+     */
+    protected $gelombang; // untuk gelombang
     
     /**
      * One Product has Many Features.
@@ -209,10 +216,11 @@ class RegistrantEntity
     
     public function __construct() {
         $this->certificates = new Doctrine\Common\Collections\ArrayCollection();
+        //$this->gelombang = 'gelombang 1';
     }
 
     public function getArray($vars = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'rapor', 'registrationTime', 'registrantData',
-                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', ])
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'subscriptionCost', 'boardingKit', 'landDonation', 'gelombang'])
     {
         $arrData = [];
         foreach ($vars as $var) {
@@ -246,6 +254,11 @@ class RegistrantEntity
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getGelombang()
+    {
+        return $this->gelombang;
     }
 
     public function getGender()
@@ -454,6 +467,12 @@ class RegistrantEntity
     {
         $this->kode = $kode;
 
+        return $this;
+    }
+
+    public function setGelombang($gelombang) // gelombang
+    {
+        $this->gelombang = $gelombang;
         return $this;
     }
 

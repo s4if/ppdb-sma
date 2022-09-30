@@ -169,7 +169,7 @@ body {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">PPDB SMAIT Ihsanul Fikri Gelombang 2</a>
+                <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">PPDB SMAIT Ihsanul Fikri Gelombang 1 Tahun Ajaran 2023/2024</a>
             </div>
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
@@ -220,16 +220,16 @@ body {
     ?>
 </div>
 <?php endif; ?>
-            <div class="alert alert-warning alert-dismissible">
+            <!-- <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p class=" text-center"><strong>Pengumuman:</strong><br/>
                 Mohon maaf, pendaftaran telah ditutup pada tanggal 26 Januari 2022 Pukul 23:59 WIB.<br/>
                 Peserta yang sudah mendaftar masih bisa masuk & melengkapi data, tetapi peserta baru sudah tidak bisa
                 melakukan pendaftaran.<br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div>
+            </div> -->
 
-<!--            <div class="alert alert-info alert-dismissible">
+            <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4><b>Langkah Mendaftar PPDB SMAIT Ihsanul Fikri</b></h4>
                 <ol>
@@ -246,11 +246,10 @@ body {
                         Gunakan <b>username</b> dan <b>password</b> tersebut pada saat <b>Masuk</b> ke akun Anda untuk proses pendaftaran Online selanjutnya (Mengisi & Mengedit data pada formulir online)
                     </li>
                     <li>
-                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>0857 2713 6891</u> (ustadzah Astna) atau <u>0812 3723 8858</u> (ustadzah Iis)
+                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>+6285159200900</u> (ustadz Fuad) atau <u>+6281237238858</u> (ustadzah Iis)
                     </li>
                 </ol>
             </div>
-        -->
 </div>
         </div>
     	<div class="row">
@@ -262,7 +261,7 @@ body {
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
                             </div>
                             <div class="col-xs-6">
-                                <!--<a href="#" id="register-form-link">Daftar</a>-->
+                                <a href="#" id="register-form-link">Daftar</a>
                             </div>
                         </div>
                         <hr>
@@ -341,37 +340,21 @@ body {
                                     <label class=" control-label">Program :</label>
                                     <div class="">
                                         <select class="form-control" name="program">
-                                            <option value="IPA Reguler"
+                                            <option value="Reguler"
                                                     <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPA Reguler'): ?>
+                                                        <?php if($registrant['program']=='Reguler'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                IPA Reguler
+                                                Reguler
                                             </option>
-                                            <option value="IPS Reguler"
+                                            <option value="Tahfidz"
                                                     <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPS Reguler'): ?>
+                                                        <?php if($registrant['program']=='Tahfidz'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                IPS Reguler
-                                            </option>
-                                            <option value="IPA Tahfidz"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPA Tahfidz'): ?>
-                                                                selected
-                                                        <?php endif;?>
-                                                    <?php endif;?>>
-                                                IPA Tahfidz
-                                            </option>
-                                            <option value="IPS Tahfidz" 
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='IPS Tahfidz'): ?>
-                                                                selected
-                                                        <?php endif;?>
-                                                    <?php endif;?>>
-                                                IPS Tahfidz
+                                                Tahfidz
                                             </option>
                                         </select>
                                     </div>

@@ -596,37 +596,21 @@
             <label class="col-sm-3 control-label ">Program :</label>
             <div class="col-sm-8">
                 <select class="form-control" name="program">
-                    <option value="IPA Reguler"
+                    <option value="Reguler"
                             <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'IPA Reguler'): ?>
+                                <?php if ($registrant->getProgram() == 'Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
-                        IPA Reguler
+                        Reguler
                     </option>
-                    <option value="IPS Reguler"
+                    <option value="Tahfidz"
                             <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'IPS Reguler'): ?>
+                                <?php if ($registrant->getProgram() == 'Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
-                        IPS Reguler
-                    </option>
-                    <option value="IPA Tahfidz"
-                            <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'IPA Tahfidz'): ?>
-                                        selected
-                                <?php endif;?>
-                            <?php endif;?>>
-                        IPA Tahfidz
-                    </option>
-                    <option value="IPS Tahfidz"
-                            <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'IPS Tahfidz'): ?>
-                                        selected
-                                <?php endif;?>
-                            <?php endif;?>>
-                        IPS Tahfidz
+                        Tahfidz
                     </option>
                 </select>
             </div>
