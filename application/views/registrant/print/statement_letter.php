@@ -119,7 +119,7 @@
     <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <div class="page-content">
         <h1 class="header-print">SURAT PERNYATAAN <br >
-            <small>PENERIMAAN PESERTA DIDIK BARU GELOMBANG 1 TAHUN PELAJARAN 2023/2024</small>
+            <small>PENERIMAAN PESERTA DIDIK BARU TAHUN PELAJARAN 2023/2024</small>
         </h1>
         <P>Yang bertanda tangan di bawah ini saya:</P>
         <table style="width: 100%; border-style: none">
@@ -229,14 +229,19 @@
                     <td>Sekali</td>
                 </tr>
                 <tr>
-                    <td>i. Majalah dan Kalender</td>
+                    <td>h. Majalah dan Kalender</td>
                     <td>Rp. 120.000,-</td>
                     <td>Per Tahun</td>
                 </tr>
                 <tr>
+                    <td>i. Uang Saku Awal</td>
+                    <td>Rp. 300.000,-</td>
+                    <td>Sekali</td>
+                </tr>
+                <tr>
                     <td><strong>Total</strong></td>
                     <?php 
-                    $default = 4770000;
+                    $default = 5070000;
                     $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
                             +$registrant->getLandDonation()+$default;
                     ?>

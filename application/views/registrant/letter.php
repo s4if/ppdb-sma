@@ -73,55 +73,53 @@
                         <tr>
                             <td>a. Infaq Pendidikan</td>
                             <td><strong>[[Sesuai Pilihan]]</strong></td>
-                            <th>Sekali</th>
+                            <td>Sekali</td>
                         </tr>
                         <tr>
                             <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
                             <td><strong>[[Sesuai Pilihan]]</strong></td>
-                            <th>Per Bulan</th>
+                            <td>Per Bulan</td>
                         </tr>
                         <tr>
                             <td>c. Wakaf Tanah</td>
                             <td><strong>[[Sesuai Pilihan]]</strong></td>
-                            <th>Sekali</th>
+                            <td>Sekali</td>
                         </tr>
                         <tr>
                             <td>d. Seragam</td>
                             <td>Rp. 2.250.000,-</td>
-                            <th>Sekali</th>
+                            <td>Sekali</td>
                         </tr>
                         <tr>
-                            <td>e. Kesiswaan</td>
+                            <td>e. Kegiatan</td>
                             <td>Rp. 1.500.000,-</td>
-                            <th>Per Tahun</th>
+                            <td>Per Tahun</td>
                         </tr>
                         <tr>
                             <td>f. Biaya Kesehatan</td>
                             <td>Rp. 250.000,-</td>
-                            <th>Per Tahun</th>
+                            <td>Per Tahun</td>
                         </tr>
                         <tr>
                             <td>g. Biaya Buku</td>
                             <td>Rp. 1.500.000,-</td>
-                            <th>Per Tahun</th>
+                            <td>Per Tahun</td>
                         </tr>
                         <tr>
-                            <td>h. Perlengkapan Asrama</td>
-                            <td>Rp. 1.400.000,-</td>
-                            <th>Sekali</th>
-                        </tr>
-                        <tr>
-                            <td>i. Majalah dan Kalender</td>
+                            <td>h. Majalah dan Kalender</td>
                             <td>Rp. 120.000,-</td>
-                            <th>Per Tahun</th>
+                            <td>Per Tahun</td>
+                        </tr>
+                        <tr>
+                            <td>i. Pembukaan Tabungan dan Uang Saku Awal</td>
+                            <td>Rp. 300.000,-</td>
+                            <td>Sekali</td>
                         </tr>
                     </table>
-                    <span class="help-block">* = Untuk kelas tahfidz Rp.1200.000,- sedangkan
-                        untuk kelas reguler Rp.1.000.000,-.</span>
                     
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
-                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2021/2022/2023 (Tahun dapat dipilih).
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2023/2024/2025 (Tahun dapat dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -371,7 +369,7 @@
                 <div class="col-sm-4 col-sm-offset-3">
                     <label class="text-center">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
-                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2020/2021/2022.
+                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2023/2024/2025.
                     </label>
                 </div>
             </div>
