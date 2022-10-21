@@ -537,14 +537,13 @@ class Admin extends MY_Controller {
         }
     }
     
-    public function export_data($gender = 'L', $programme = 'tahfidz', $study= 'IPA')
+    public function export_data($gender = 'L', $programme = 'tahfidz')
     {
         $this->blockNonAdmin();
         $strGender = ('L' == strtoupper($gender))?'Ikhwan':'Akhwat';
         $date = new DateTime('now');
-        $strProgramme = strtoupper($study) . ' ' .  ucfirst($programme);
-        $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '.strtoupper($study).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
-            $gender, $strProgramme);
+        $this->reg->export('Backup Data PPDB '.  ucfirst(strtolower($strGender)).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
+            $gender, ucfirst($programme));
     }
     
     public function export_rapor($gender = 'L', $programme = 'tahfidz', $study= 'IPA')
