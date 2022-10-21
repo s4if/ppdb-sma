@@ -536,6 +536,8 @@ class Model_registrant extends CI_Model {
         $worksheet = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet();
         $worksheet->setTitle($title);
         
+        $this->excel->addSheet($worksheet);
+        
         // Siswa Start
         $worksheet->mergeCells('A3:X3');
         $worksheet->setCellValue('A3', 'Data Siswa');
@@ -806,8 +808,6 @@ class Model_registrant extends CI_Model {
             $row++;
         }
         // End Mbatik Isi
-        
-        $this->excel->addSheet($worksheet);
     }
     
     public function exportRapor($file_name, $gender, $programme, $test = false){
