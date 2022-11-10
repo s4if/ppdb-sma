@@ -427,7 +427,7 @@
                 <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
-                $default = 5070000;
+                $default = 5920000;
                 $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
                 $total = $tot+$default;
                 ?>
