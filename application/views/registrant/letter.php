@@ -115,6 +115,11 @@
                             <td>Rp. 300.000,-</td>
                             <td>Sekali</td>
                         </tr>
+                        <tr>
+                            <td>j. Pembelian Perlengkapan</td>
+                            <td>Rp. 1.400.000,-</td>
+                            <td>Sekali</td>
+                        </tr>
                     </table>
                     
                     <li class="pernyataan">

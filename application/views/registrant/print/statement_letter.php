@@ -239,9 +239,14 @@
                     <td>Sekali</td>
                 </tr>
                 <tr>
+                    <td>j. Dana Perlengkapan</td>
+                    <td>Rp. 1.400.000,-</td>
+                    <td>Sekali</td>
+                </tr>
+                <tr>
                     <td><strong>Total</strong></td>
                     <?php 
-                    $default = 5920000;
+                    $default = 7020000;
                     $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
                             +$registrant->getLandDonation()+$default;
                     ?>

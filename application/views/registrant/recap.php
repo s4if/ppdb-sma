@@ -419,6 +419,11 @@
                 <td> Rp. 300.000,00</td>
             </tr>
             <tr>
+                <td> Pembelian Perlengkapan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> Rp. 1.400.000,00</td>
+            </tr>
+            <tr>
                 <td> Kesanggupan Berqurban Tahun </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?php echo str_replace('-', ' ', $registrant->getQurban()); ?></td>
@@ -427,7 +432,7 @@
                 <td> <strong class="red">Total</strong> </td>
                 <td> &nbsp;:&nbsp; </td>
                 <?php 
-                $default = 5920000;
+                $default = 7020000;
                 $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
                 $total = $tot+$default;
                 ?>
