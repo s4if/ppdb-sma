@@ -546,12 +546,12 @@ class Admin extends MY_Controller {
             $gender, ucfirst($programme));
     }
     
-    public function export_rapor($gender = 'L', $programme = 'tahfidz', $study= 'IPA')
+    public function export_rapor($gender = 'L', $programme = 'tahfidz')
     {
         $this->blockNonAdmin();
         $strGender = ('L' == strtoupper($gender))?'Ikhwan':'Akhwat';
         $date = new DateTime('now');
-        $strProgramme = strtoupper($study) . ' ' .  ucfirst($programme);
+        $strProgramme = ucfirst($programme);
         $this->reg->exportRapor('Backup Rapor PPDB '.  ucfirst(strtolower($strGender)).' '. ucwords(strtolower($programme)).' '.$date->format('d-m-Y'),
             $gender, $strProgramme);
     }

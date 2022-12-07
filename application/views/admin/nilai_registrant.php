@@ -57,11 +57,8 @@
                     Download Data Ikhwan <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="<?=base_url()?>admin/export_rapor/L/Reguler/ipa">Ikhwan IPA Reguler</a></li>
-                  <li><a href="<?=base_url()?>admin/export_rapor/L/Tahfidz/ipa">Ikhwan IPA Tahfidz</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="<?=base_url()?>admin/export_rapor/L/Reguler/ips">Ikhwan IPS Reguler</a></li>
-                  <li><a href="<?=base_url()?>admin/export_rapor/L/Tahfidz/ips">Ikhwan IPS Tahfidz</a></li>
+                  <li><a href="<?=base_url()?>admin/export_rapor/L/Reguler">Ikhwan Reguler</a></li>
+                  <li><a href="<?=base_url()?>admin/export_rapor/L/Tahfidz">Ikhwan Tahfidz</a></li>
                 </ul>
             </div>
             <!-- Single button -->
@@ -70,9 +67,6 @@
                     Download Data Akhwat <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="<?=base_url()?>admin/export_rapor/P/Reguler/ipa">Akhwat IPA Reguler</a></li>
-                  <li><a href="<?=base_url()?>admin/export_rapor/P/Tahfidz/ipa">Akhwat IPA Tahfidz</a></li>
-                  <li role="separator" class="divider"></li>
                   <li><a href="<?=base_url()?>admin/export_rapor/P/Reguler">Akhwat Reguler</a></li>
                   <li><a href="<?=base_url()?>admin/export_rapor/P/Tahfidz">Akhwat Tahfidz</a></li>
                 </ul>

@@ -835,6 +835,10 @@ class Model_registrant extends CI_Model {
     private function mbatikRapor($data, $title){
         $worksheet = new \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet();
         $worksheet->setTitle($title);
+        
+        $this->excel->addSheet($worksheet);
+
+
         $worksheet->mergeCells('A3:A4');
         $worksheet->setCellValue('A3', 'No.');
         $worksheet->mergeCells('B3:B4');
@@ -908,7 +912,6 @@ class Model_registrant extends CI_Model {
             }
             $row++;
         }
-        $this->excel->addSheet($worksheet);
     }
     
     public function export_Uncomplete($file_name, $test = false, $unpaid = false){
