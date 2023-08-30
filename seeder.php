@@ -50,7 +50,8 @@ $reg->setPassword(password_hash('qwerty', PASSWORD_BCRYPT));
 $reg->setPreviousSchool('SMP IT Ihsanul FIkri Mungkid');
 $reg->setProgram('Reguler');
 $reg->setRegistrationTime(new DateTime('now'));
-$reg->setGelombang('gelombang 1');
+$reg->setGelombang(1);
+$reg->setEntryYear(2024);
 $em->persist($reg);
 $em->flush();
 // Payment

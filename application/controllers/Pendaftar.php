@@ -563,7 +563,7 @@ class Pendaftar extends MY_Controller {
     
     public function lihat($gender = 'L'){
         //$registrant_data = $this->reg->getArrayData($gender, null);
-        $this->load->view('registrant/list', [
+        $this->simpleView('registrant/list', [
             'gender' => $gender, 
             //'data_registrant' => $registrant_data
         ]);

@@ -13,7 +13,7 @@ class Pendaftar_test extends TestCase
 	public function test_index()
 	{
 		$output = $this->request('GET', ['Login', 'index']);
-		$this->assertStringContainsString('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
+		$this->assertStringContainsString('<title>Registrasi PPDB', $output);
 	}
         
         public function test_lihat()

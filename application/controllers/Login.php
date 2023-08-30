@@ -50,7 +50,7 @@ class Login extends MY_Controller {
         if(empty($this->session->flashdata('data')) === false){
             $registrant = $this->session->flashdata('data');
         }
-        $this->load->view('login/index', [
+        $this->simpleView('login/index', [
             'builder' => $builder, 
             'registrant' => $registrant,
             'data' => $reg_obj,
@@ -67,7 +67,7 @@ class Login extends MY_Controller {
         if(empty($this->session->flashdata('data')) === false){
             $registrant = $this->session->flashdata('data');
         }
-        $this->load->view('login/jalur_khusus', [
+        $this->simpleView('login/jalur_khusus', [
             'registrant' => $registrant,
             'data' => $reg_obj,
         ]);
@@ -114,7 +114,7 @@ class Login extends MY_Controller {
     public function register_berhasil(){
         $registrant = $this->session->registrant;
         if(!empty($registrant)){
-            $this->load->view('login/berhasil', ['registrant' => $registrant]);
+            $this->simpleView('login/berhasil', ['registrant' => $registrant]);
         } else {
             $this->session->set_flashdata("errors", [0 => "Maaf, Anda tidak boleh melihat halaman ini lagi!"]);
             redirect('login/index');
@@ -171,7 +171,7 @@ class Login extends MY_Controller {
     // ================= Admin Login ===========================
     
     public function admin(){
-        $this->load->view('login/admin');
+        $this->simpleView('login/admin');
     }
 
     public function do_login_admin(){

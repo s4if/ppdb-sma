@@ -41,16 +41,26 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         setlocale(LC_ALL, 'id_ID');
+        $this->data['cdn'] = FALSE;
+        $this->data['nama_sekolah'] = $this->config->item('nama_sekolah');
+        $this->data['nama_gelombang'] = $this->config->item('nama_gelombang');
+        $this->data['indeks_gelombang'] = $this->config->item('indeks_gelombang');
+        $tahun_pasangan = $this->config->item('tahun_masuk')+1;
+        $this->data['tahun_ajaran'] = $this->config->item('tahun_masuk').'/'.$tahun_pasangan;
     }
 
-    protected function CustomView($view_name, $data = [])
+    protected function simpleView($view_name, $inp_data = [])
     {
-        // set pakai cdn atau tidak
-        $data['cdn'] = self::CDN;
+        $data = array_merge($this->data, $inp_data);
+        $this->load->view($view_name, $data);
+    }
 
+    protected function CustomView($view_name, $inp_data = [])
+    {
+        $data = array_merge($this->data, $inp_data);
         $fragment['header'] = $this->load->view('core/header', $data, true);
         $fragment['navbar'] = $this->load->view('core/navbar', $data, true);
-        $fragment['alert'] = $this->load->view('core/alert', '', true);
+        $fragment['alert'] = $this->load->view('core/alert', $data, true);
         $fragment['content'] = $this->load->view($view_name, $data, true);
         $fragment['footer'] = $this->load->view('core/footer', $data, true);
         $this->load->view('core/skeleton', $fragment);

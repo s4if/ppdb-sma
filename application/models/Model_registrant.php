@@ -38,9 +38,12 @@ class Model_registrant extends CI_Model {
     protected $counter;
     protected $paymentData;
     protected $excel;
+    protected $gelombang;
     
     public function __construct() {
         parent::__construct();
+        $this->gelombang = $this->config->item('indeks_gelombang');
+        $this->tahun_masuk = $this->config->item('tahun_masuk');
     }
     
     public function create(){
@@ -123,7 +126,8 @@ class Model_registrant extends CI_Model {
             $data['reg_time'] = new DateTime('now');
             $this->setRegistrantData($data);
             $this->registrant->setDeleted(false);
-            $this->registrant->setGelombang('gelombang 1');
+            $this->registrant->setGelombang($this->gelombang);
+            $this->registrant->setEntryYear($this->tahun_masuk);
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
@@ -222,6 +226,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
         if (!empty($data['deleted'])) : $this->registrant->setDeleted($data['deleted']); endif;
         //if (!empty($data['gelombang'])) : $this->registrant->setGelombang($data['gelombang']); endif;
+        //if (!empty($data['entry_year'])) : $this->registrant->setEntryYear($data['entry_year']); endif;
     }
     
     

@@ -25,7 +25,7 @@ php seeder.php
 cd application/tests/
 
 # Call PHPUNIT
-../../vendor/phpunit/phpunit/phpunit --verbose
+XDEBUG_MODE=off ../../vendor/phpunit/phpunit/phpunit --verbose
 
 # Back to ppdb
 cd ../..

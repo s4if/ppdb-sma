@@ -202,11 +202,18 @@ class RegistrantEntity
     protected $deleted;
 
     /**
-     * @Column(type="string", nullable=FALSE)
+     * @Column(type="integer", nullable=FALSE)
      *
-     * @var string
+     * @var int
      */
     protected $gelombang; // untuk gelombang
+
+    /**
+     * @Column(type="integer", nullable=FALSE)
+     *
+     * @var int
+     */
+    protected $entryYear; // untuk gelombang
     
     /**
      * One Product has Many Features.
@@ -509,8 +516,9 @@ class RegistrantEntity
 
     public function setRegId() // sekarang dibuat auto dapet ID
     {
-        $prefix = ($this->gender == 'L') ? 'I' : 'A';
-        $this->regId = $prefix.'-'.$this->kode;
+        $pPref = ($this->program == 'Tahfidz') ? 'T' : 'R';
+        $this->regId = 'G' . $this->gelombang . $pPref 
+                . $this->entryYear . $this->gender . ''.$this->kode;
     }
 
     public function setPassword($password)
@@ -628,6 +636,26 @@ class RegistrantEntity
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEntryYear()
+    {
+        return $this->entryYear;
+    }
+
+    /**
+     * @param int $entryYear
+     *
+     * @return self
+     */
+    public function setEntryYear($entryYear)
+    {
+        $this->entryYear = $entryYear;
 
         return $this;
     }
