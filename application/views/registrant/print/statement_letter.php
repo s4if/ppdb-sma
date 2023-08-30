@@ -55,7 +55,7 @@
         table {
             vertical-align: text-top;
         }
-        table.utama {
+        .utama table {
             font-family: inherit;
             font-size: 1em;
             color:#333333;
@@ -63,7 +63,7 @@
             border-color: #000000;
             border-collapse: collapse;
         }
-        table.utama thead {
+        .utama table thead {
             border-width: 1px;
             border-style: solid;
             border-color: #000000;
@@ -71,13 +71,13 @@
             text-align: center;
             font-weight: bolder;
         }
-        table.utama th {
+        .utama table th {
             border-width: 1px;
             border-style: solid;
             border-color: #000000;
             background-color: #dedede;
         }
-        table.utama td {
+        .utama table td {
             border-width: 1px;
             border-style: solid;
             border-color: #000000;
@@ -187,72 +187,9 @@
                 Jika anak saya diterima sebagai peserta didik SMAIT Ihsanul Fikri Mungkid, saya akan melunasi Infaq Pendidikan
                 sesuai dengan kesanggupan saya:
             </li>
-            <table class="utama">
-                <tr>
-                    <th>Jenis Pembiayaan</th>
-                    <th>Nominal Pembiayaan</th>
-                    <th>Frekuensi Pembiayaan</th>
-                </tr>
-                <tr>
-                    <td>a. Infaq Pendidikan</td>
-                    <td>Rp. <?= number_format($registrant->getInitialCost(), 0, ',', '.');?>,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
-                    <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
-                    <td>Rp. <?= number_format($registrant->getSubscriptionCost(), 0, ',', '.');?>,-</td>
-                    <td>Per Bulan</td>
-                </tr>
-                <tr>
-                    <td>c. Wakaf Tanah</td>
-                    <td>Rp. <?= number_format($registrant->getLandDonation(), 0, ',', '.');?>,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
-                    <td>d. Seragam</td>
-                    <td>Rp. 2.250.000,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
-                    <td>e. Uang Kesiswaan</td>
-                    <td>Rp. 1.500.000,-</td>
-                    <td>Per Tahun</td>
-                </tr>
-                <tr>
-                    <td>f. Biaya Kesehatan</td>
-                    <td>Rp. 250.000,-</td>
-                    <td>Per Tahun</td>
-                </tr>
-                <tr>
-                    <td>g. Biaya Buku</td>
-                    <td>Rp. 1.500.000,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
-                    <td>h. Majalah dan Kalender</td>
-                    <td>Rp. 120.000,-</td>
-                    <td>Per Tahun</td>
-                </tr>
-                <tr>
-                    <td>i. Uang Saku Awal</td>
-                    <td>Rp. 300.000,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
-                    <td>j. Dana Perlengkapan</td>
-                    <td>Rp. 1.400.000,-</td>
-                    <td>Sekali</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <?php 
-                    $default = 7320000;
-                    $total = $registrant->getInitialCost()+$registrant->getSubscriptionCost()
-                            +$registrant->getLandDonation()+$default;
-                    ?>
-                    <td><strong>Rp. <?= number_format($total, 0, ',', '.');?>,-</strong></td>
-                </tr>
-            </table>
+            <div class="utama">
+                <?=$tabel_surat;?>
+            </div>
             <?php
             //  Qurban dalam pengerjaan
             if (!($registrant->getQurban() == '-')) :

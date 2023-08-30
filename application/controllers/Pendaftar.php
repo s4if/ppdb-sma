@@ -437,6 +437,7 @@ class Pendaftar extends MY_Controller {
             'title' => 'Print Surat Pernyataan',
             'username' => $registrant->getName(),
             'id' => $registrant->getId(),
+            'tabel_surat' => $this->getSurat(),
             'nav_pos' => 'recap',
             'img_link' => $this->getImgLink($id)[0],
             'registrant' => $registrant,

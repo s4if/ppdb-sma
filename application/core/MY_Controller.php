@@ -135,4 +135,16 @@ class MY_Controller extends CI_Controller
 
         return $options;
     }
+
+    protected function getSurat($params = [])
+    {
+
+        $converter = new \League\CommonMark\GithubFlavoredMarkdownConverter();
+        $md = file_get_contents(APPPATH.'views/markdown/surat_pernyataan.md');
+        $html = $converter->convert($md);
+        foreach ($params as $key => $value) {
+            $html = str_replace(':'.$key.':', $value, $html);
+        }
+        return $html;
+    }
 }

@@ -587,4 +587,14 @@ class Admin extends MY_Controller {
         $res = $pdf->send('Kartu pendaftar yang '.$suffix.' .pdf');
         if (!$res) { echo $pdf->getError(); }
     }
+
+    public function tes_surat()
+    {
+        $this->blockNonAdmin();
+        echo $this->getSurat([
+            'infaq_pendidikan' => 'Rp. 5.000.000,-',
+            'spp_bulanan' => 'Rp. 1.700.000,-',
+            'wakaf_tanah' => 'Rp. 5.000.000,-'
+        ]);
+    }
 }
