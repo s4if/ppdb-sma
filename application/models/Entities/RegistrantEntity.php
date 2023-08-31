@@ -79,6 +79,13 @@ class RegistrantEntity
      * @var string
      */
     protected $program; // NOTE: IPA Reguler, IPS Reguler, IPA Tahfidz, IPS Tahfidz
+
+    /**
+     * @Column(type="string", length=15, nullable=FALSE)
+     *
+     * @var string
+     */
+    protected $selectionPath; // NOTE: Jalur Reguler, Jalur Tahfidz, Jalur Prestasi, Jalur Rapor
     
     /**
      * @Column(type="string", length=6, nullable=TRUE)
@@ -516,7 +523,7 @@ class RegistrantEntity
 
     public function setRegId() // sekarang dibuat auto dapet ID
     {
-        $pPref = ($this->program == 'Jalur Reguler') ? 'R' : 'K';
+        $pPref = ($this->program == 'Reguler') ? 'R' : 'K';
         $this->regId = 'G' . $this->gelombang . $pPref 
                 . $this->entryYear . $this->gender . ''.$this->kode;
     }
@@ -656,6 +663,26 @@ class RegistrantEntity
     public function setEntryYear($entryYear)
     {
         $this->entryYear = $entryYear;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSelectionPath()
+    {
+        return $this->selectionPath;
+    }
+
+    /**
+     * @param string $selectionPath
+     *
+     * @return self
+     */
+    public function setSelectionPath($selectionPath)
+    {
+        $this->selectionPath = $selectionPath;
 
         return $this;
     }

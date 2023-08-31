@@ -215,6 +215,7 @@ class Model_registrant extends CI_Model {
         if (!empty($data['nisn'])) : $this->registrant->setNisn($data['nisn']); endif;
         if (!empty($data['cp'])) : $this->registrant->setCp($data['cp']); endif;
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
+        if (!empty($data['selection_path'])) : $this->registrant->setSelectionPath($data['selection_path']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;

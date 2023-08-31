@@ -88,6 +88,7 @@ class Pendaftar_test extends TestCase
                 'cp_suffix' => '89483726156',
                 'prev_school' => 'SMPN 1 Mungkid',
                 'program' => 'Reguler',
+                'selection_path' => 'Jalur Reguler',
                 'captcha' => 'SALAH'
             ];
             // Gagal

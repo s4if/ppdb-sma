@@ -340,38 +340,61 @@ body {
                                 <div class="form-group">
                                     <label class=" control-label">Jalur Pendaftaran :</label>
                                     <div class="">
-                                        <select class="form-control" name="program">
+                                        <select class="form-control" name="selection_path">
                                             <option value="Jalur Reguler"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='Jalur Reguler'): ?>
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Reguler'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Reguler
                                             </option>
                                             <option value="Jalur Tahfidz"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='Jalur Tahfidz'): ?>
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Tahfidz'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Tahfidz
                                             </option>
                                              <option value="Jalur Rapor"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='Jalur Rapor'): ?>
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Rapor'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Rapor
                                             </option>
                                              <option value="Jalur Prestasi"
-                                                    <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='Jalur Prestasi'): ?>
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Prestasi'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Prestasi
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" control-label">Program :</label>
+                                    <div class="">
+                                        <select class="form-control" name="program">
+                                            <option value="Reguler"
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='Reguler'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Reguler
+                                            </option>
+                                            <option value="Tahfidz"
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='Tahfidz'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Tahfidz
                                             </option>
                                         </select>
                                     </div>

@@ -593,36 +593,59 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">Jalur Pendaftaran :</label>
+            <label class="col-sm-3 control-label ">Program :</label>
             <div class="col-sm-8">
                 <select class="form-control" name="program">
-                    <option value="Jalur Reguler"
+                    <option value="Reguler"
                             <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'Jalur Reguler'): ?>
+                                <?php if ($registrant->getProgram() == 'Reguler'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        Reguler
+                    </option>
+                    <option value="Tahfidz"
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'Tahfidz'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        Tahfidz
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">Jalur Pendaftaran :</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="selection_path">
+                    <option value="Jalur Reguler"
+                            <?php if (property_exists($registrant, 'selectionPath')): ?>
+                                <?php if ($registrant->getSelectionPath() == 'Jalur Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         Jalur Reguler
                     </option>
                     <option value="Jalur Tahfidz"
-                            <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'Jalur Tahfidz'): ?>
+                            <?php if (property_exists($registrant, 'selectionPath')): ?>
+                                <?php if ($registrant->getSelectionPath() == 'Jalur Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         Jalur Tahfidz
                     </option>
                     <option value="Jalur Rapor"
-                            <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'Jalur Rapor'): ?>
+                            <?php if (property_exists($registrant, 'selectionPath')): ?>
+                                <?php if ($registrant->getSelectionPath() == 'Jalur Rapor'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
                         Jalur Rapor
                     </option>
                     <option value="Jalur Prestasi"
-                            <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'Jalur Prestasi'): ?>
+                            <?php if (property_exists($registrant, 'selectionPath')): ?>
+                                <?php if ($registrant->getSelectionPath() == 'Jalur Prestasi'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
