@@ -292,6 +292,45 @@
             $ck_tahun++;
             endfor; ?>
             <hr/>
+            <?php $jalur = $registrant->getSelectionPath();
+            if($jalur != 'Jalur Reguler'): ?>
+            <div class="form-group">
+                <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jalur Seleksi</strong></label>
+            </div>
+            <div class="form-group ">
+                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia 
+                    mengikuti <strong>Jalur Seleksi Reguler</strong> jika tidak lolos Seleksi Jalur Prestasi, Tahfidz, dan Rapor?</p></label>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_regular_path" value="false" 
+                                <?php if(!empty($registrant->getRelToRegular())):?>
+                                    <?php if($registrant->getRelToRegular() ==='false'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Saya tidak bersedia
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_regular_path" value="true" 
+                                <?php if(!empty($registrant->getRelToRegular())):?>
+                                    <?php if($registrant->getRelToRegular() ==='true'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php else :?>
+                                    checked
+                                <?php endif;?>>
+                            Saya bersedia
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
+            <hr/>
             <?php if($program != 'Reguler'): ?>
             <div class="form-group">
                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Program</strong></label>

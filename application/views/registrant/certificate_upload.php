@@ -40,20 +40,25 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-        <h2>Ketentuan Upload Dokumen Jalur Tahfidz dan Prestasi</h2>
+        <h2>Ketentuan Upload Dokumen Jalur Tahfidz dan Prestasi<br />
+        <small>(Halaman ini dipertuntukan bagi yang mendaftar seleksi jalur prestasi atau tahfidz)</small></h2>
         <ol>
-            <li>Dokumen yang diupload merupakan bukti keikutsertaan/prestasi calon peserta 
-                didik dalam lomba <strong> Olimpiade Sains Nasional (OSN) dan semacamnya, minimal Tingkat Provinsi 
-                </strong> untuk Jalur Prestasi atau merupakan <strong>Sertifikat Hafalan</strong> yang diterbitkan oleh 
-                instansi yang berwenang (sekolah/lembaga pendidikan Al Qur'an) untuk Jalur Tahfidz.
+            <li>Bagi calon Peserta Jalur Seleksi Tahfidz, dokumen yang diupload merupakan <strong>Sertifikat Hafalan</strong> 
+                yang diterbitkan oleh instansi yang berwenang (sekolah/lembaga pendidikan Al Qur'an).
+            </li>
+            <li>
+                Bagi calon Peserta Jalur Seleksi Prestasi, dokumen yang diupload merupakan bukti keikutsertaan/prestasi calon 
+                peserta didik dalam lomba/kompetisi baik akademis maupun non-akademis, <strong>minimal Tingkat Provinsi</strong>.
             </li>
             <li>
                 Calon peserta didik diwajibkan mengupload dokumen dengan jujur sesuai dengan 
                 prestasi atau jumlah hafalan yang dimiliki.
             </li>
             <li>
-                Dokumen yang diupload oleh calon peserta didik akan diseleksi secara seksama oleh tim seleksi 
-                yang hasilnya akan diumumkan pada tanggal 7 Oktober 2023.
+                Upload dokumen ini ditutup pada <strong>1 oktober 2023</strong> kemudian  akan diseleksi 
+                secara seksama oleh tim seleksi yang hasilnya akan diumumkan pada tanggal 
+                <strong>7 Oktober 2023</strong> sesuai panduan Seleksi Jalur Prestasi 
+                dan Tahfidz di halaman web <a href="https://smait.ihsanulfikri.sch.id">smait.ihsanulfikri.sch.id</a>
             </li>
             <li>
                 Jika calon peserta didik menemukan kesalahan saat upload dokumen, calon peserta didik 

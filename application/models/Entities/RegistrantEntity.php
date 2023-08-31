@@ -99,7 +99,7 @@ class RegistrantEntity
      *
      * @var string
      */
-    protected $relToIPS; // semi boolean (true/false)
+    protected $relToRegularPath; // semi boolean (true/false)
 
     /**
      * @Column(type="datetime", nullable=FALSE)
@@ -396,8 +396,8 @@ class RegistrantEntity
         return $this->relToRegular;
     }
 
-    public function getRelToIPS() {
-        return $this->relToIPS;
+    public function getRelToRegularPath() {
+        return $this->relToRegularPath;
     }
     
     public function getRapor() {
@@ -453,8 +453,8 @@ class RegistrantEntity
         return $this;
     }
 
-    public function setRelToIPS($relToIPS) {
-        $this->relToIPS = $relToIPS;
+    public function setRelToRegularPath($relToRegularPath) {
+        $this->relToRegularPath = $relToRegularPath;
         return $this;
     }
     

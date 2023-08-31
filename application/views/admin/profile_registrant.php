@@ -603,16 +603,16 @@
                                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jurusan</strong></label>
                             </div>
                             <div class="form-group ">
-                                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di jurusan yang lain jika anda tidak lolos
-                                        untuk jurusan pilihan anda namun nilai anda bisa bersaing di jurusan yang lain?</p></label>
+                                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia jika tidak 
+                                lolos Seleksi Jalur Prestasi, Tahfidz, dan Rapor, anda mengikuti seleksi Jalur reguler?</p></label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="rel_to_ips" value="false"
-                                                <?php if(!empty($registrant_data->getRelToIPS())):?>
-                                                    <?php if($registrant_data->getRelToIPS() ==='false'):?>
+                                            <input type="radio" name="rel_to_regular_path" value="false"
+                                                <?php if(!empty($registrant_data->getRelToRegularPath())):?>
+                                                    <?php if($registrant_data->getRelToRegularPath() ==='false'):?>
                                                     checked
                                                     <?php endif;?>
                                                 <?php endif;?>>
@@ -621,9 +621,9 @@
                                     </div>
                                     <div class="radio">
                                         <label>
-                                            <input type="radio" name="rel_to_ips" value="true"
-                                                <?php if(!empty($registrant_data->getRelToIPS())):?>
-                                                    <?php if($registrant_data->getRelToIPS() ==='true'):?>
+                                            <input type="radio" name="rel_to_regular_path" value="true"
+                                                <?php if(!empty($registrant_data->getRelToRegularPath())):?>
+                                                    <?php if($registrant_data->getRelToRegularPath() ==='true'):?>
                                                     checked
                                                     <?php endif;?>
                                                 <?php else :?>

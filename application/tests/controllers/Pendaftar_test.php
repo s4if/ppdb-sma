@@ -311,7 +311,7 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('1/beranda');
             $data = [
                 'rel_to_regular' => 'true',
-                'rel_to_ips' => 'true',
+                'rel_to_regular_path' => 'true',
                 'raw_icost' => -999,
                 'other_icost' => 15000000,
                 'raw_scost' => -999,

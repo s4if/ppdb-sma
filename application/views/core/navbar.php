@@ -68,6 +68,9 @@
             <li id="navFormulir">
                 <a href="<?=  base_url().$id.'/formulir'?>">Isi Data</a>
             </li>
+            <li id="navFormulir">
+                <a href="<?=  base_url().$id.'/sertifikat'?>">Upload Dokumen</a>
+            </li>
             <li id="navWali">
                 <a href="<?=  base_url().$id.'/wali'?>">Isi Wali</a>
             </li>

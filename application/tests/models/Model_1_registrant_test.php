@@ -124,7 +124,7 @@ class Model_1_registrant_test extends TestCase {
         $registrants = $this->obj->getData();
         $registrants_2 = $this->obj->getData('P');
         $attributes = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
-                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToIPS', 'relToRegular',
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToRegularPath', 'relToRegular',
                 'subscriptionCost', 'landDonation', 'qurban' ];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);

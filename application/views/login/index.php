@@ -337,8 +337,31 @@ body {
                                         </div>
                                     </div>
                                 </div>
+                                <hr />
+                                <span class="help-block">
+                                    <b>Jalur Seleksl Prestasi, Rapor, dan Tahfidz</b><br />
+                                    Pendaftaran : 1 September sd 1 Oktober 2023<br />
+                                    Seleksi Administrasi : 2 Oktober sd 6 Oktober 2023<br />
+                                    Pengumuman : 7 Oktober 2023<br />
+                                    Daftar Ulang : 7 Oktober sd 14 Oktober 2023<br />
+                                    <br />
+                                    Bagi yang Tidak Lolos Jalur Seleksi Prestasi, Rapor, dan Tahfidz 
+                                    secara langsung/otomatis diperbolenkan mengikut Jalur Seleksi Reguler 
+                                    tanpa membayar biaya pendaftaran lagi dan tidak perlu mengisi formular 
+                                    pendaftaran lagi. <br />
+                                    <br />
+                                    Ketentuan dan Fasilitas Jalur Seleksi Prestasi, Rapor, 
+                                    dan Tahfidz bisa dilihat di smait.ihsanulfikri.sch.id<br />
+                                    <br />
+                                    <b>Jalur Seleksi Reguler</b>
+                                    Pendaftaran : 1 September sd 20 November 2023<br />
+                                    Test Tulis : 26 November 2023<br />
+                                    Pengumuman : 4 Desember 2023<br />
+                                    Daftar Ulang : 4 Desember sd 13 Desember 2023<br />
+                                </span>
+                                <hr />
                                 <div class="form-group">
-                                    <label class=" control-label">Jalur Pendaftaran :</label>
+                                    <label class=" control-label">Jalur Seleksi Pendaftaran :</label>
                                     <div class="">
                                         <select class="form-control" name="selection_path">
                                             <option value="Jalur Reguler"

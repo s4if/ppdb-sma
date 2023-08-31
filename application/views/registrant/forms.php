@@ -90,9 +90,9 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Edit Profil
                 </a>
-                <a class="btn btn-sm btn-warning <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" href="<?= base_url().$id.'/sertifikat'?>">
+                <a class="btn btn-sm btn-success <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" href="<?= base_url().$id.'/sertifikat'?>">
                     <span class="glyphicon glyphicon-upload"></span>
-                    Upload Persyaratan Jalur Prestasi/Beasiswa
+                    Upload Persyaratan Jalur Prestasi dan Jalur Tahfidz
                 </a>
             </td>
         </tr>
@@ -473,7 +473,8 @@
         </div>
         <?php endforeach;?>
         <?php endif;?>
-        <?php if ($reg_data->getAchievementsCount() == 0): ?>
+        <div class="form-group insert_pa"></div> <!-- pengganti yang nonaktif -->
+        <!-- <?php if ($reg_data->getAchievementsCount() == 0): ?>
         <div class="form-group insert_pa">
             <label class="col-sm-4 control-label"> Prestasi yang Diraih :</label>
             <div class="col-sm-4">
@@ -514,7 +515,7 @@
             <p class="help-block col-sm-offset-4 col-sm-4">* Prestasi yang dihitung adalah prestasi yang bertemakan OSN, Bahasa, dan MTQ dengan
                 tingkat minimal kabupaten/kota</p>
         </div>
-        <?php endif;?>
+        <?php endif;?> -->
         <!-- TODO: Hobi -->
         <?php if ($reg_data->getHobbiesCount() == 0): //Keep If & Else div sinkron!!!?>
         <div class="form-group insert_acv">
