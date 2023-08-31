@@ -516,7 +516,7 @@ class RegistrantEntity
 
     public function setRegId() // sekarang dibuat auto dapet ID
     {
-        $pPref = ($this->program == 'Tahfidz') ? 'T' : 'R';
+        $pPref = ($this->program == 'Jalur Reguler') ? 'R' : 'K';
         $this->regId = 'G' . $this->gelombang . $pPref 
                 . $this->entryYear . $this->gender . ''.$this->kode;
     }

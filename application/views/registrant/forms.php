@@ -593,24 +593,40 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">Program :</label>
+            <label class="col-sm-3 control-label ">Jalur Pendaftaran :</label>
             <div class="col-sm-8">
                 <select class="form-control" name="program">
-                    <option value="Reguler"
+                    <option value="Jalur Reguler"
                             <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'Reguler'): ?>
+                                <?php if ($registrant->getProgram() == 'Jalur Reguler'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
-                        Reguler
+                        Jalur Reguler
                     </option>
-                    <option value="Tahfidz"
+                    <option value="Jalur Tahfidz"
                             <?php if (property_exists($registrant, 'program')): ?>
-                                <?php if ($registrant->getProgram() == 'Tahfidz'): ?>
+                                <?php if ($registrant->getProgram() == 'Jalur Tahfidz'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
-                        Tahfidz
+                        Jalur Tahfidz
+                    </option>
+                    <option value="Jalur Rapor"
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'Jalur Rapor'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        Jalur Rapor
+                    </option>
+                    <option value="Jalur Prestasi"
+                            <?php if (property_exists($registrant, 'program')): ?>
+                                <?php if ($registrant->getProgram() == 'Jalur Prestasi'): ?>
+                                        selected
+                                <?php endif;?>
+                            <?php endif;?>>
+                        Jalur Prestasi 
                     </option>
                 </select>
             </div>

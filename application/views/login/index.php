@@ -338,24 +338,40 @@ body {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label">Program :</label>
+                                    <label class=" control-label">Jalur Pendaftaran :</label>
                                     <div class="">
                                         <select class="form-control" name="program">
-                                            <option value="Reguler"
+                                            <option value="Jalur Reguler"
                                                     <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='Reguler'): ?>
+                                                        <?php if($registrant['program']=='Jalur Reguler'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                Reguler
+                                                Jalur Reguler
                                             </option>
-                                            <option value="Tahfidz"
+                                            <option value="Jalur Tahfidz"
                                                     <?php if(array_key_exists('program', $registrant)):?>
-                                                        <?php if($registrant['program']=='Tahfidz'): ?>
+                                                        <?php if($registrant['program']=='Jalur Tahfidz'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
-                                                Tahfidz
+                                                Jalur Tahfidz
+                                            </option>
+                                             <option value="Jalur Rapor"
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='Jalur Rapor'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Jalur Rapor
+                                            </option>
+                                             <option value="Jalur Prestasi"
+                                                    <?php if(array_key_exists('program', $registrant)):?>
+                                                        <?php if($registrant['program']=='Jalur Prestasi'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Jalur Prestasi
                                             </option>
                                         </select>
                                     </div>
