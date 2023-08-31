@@ -451,7 +451,7 @@ class Admin extends MY_Controller {
         $this->blockNonAdmin();
         $data = $this->reg->getSpecialParticipants();
         $this->CustomView('admin/data_prestasi', [
-            'title' => 'Lihat Peserta Jalur Prestasi dan Beasiswa Unggulan',
+            'title' => 'Lihat Peserta Jalur Prestasi dan Tahfidz',
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
             'nav_pos' => 'achievementAdmin',

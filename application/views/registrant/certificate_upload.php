@@ -40,38 +40,30 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-        <h2>Ketentuan Upload Dokumen Beasiswa Prestasi, Beasiswa Unggulan dan Beasiswa Unggulan Plus</h2>
+        <h2>Ketentuan Upload Dokumen Jalur Tahfidz dan Prestasi</h2>
         <ol>
             <li>Dokumen yang diupload merupakan bukti keikutsertaan/prestasi calon peserta 
-                didik dalam lomba <strong> Olimpiade Sains Nasional (OSN) minimal Tingkat Provinsi 
-                (Beasiswa Prestasi), Tingkat Nasional (Beasiswa Unggulan) atau Tingkat 
-                Internasional (Beasiswa Unggulan Plus).</strong> 
-            </li>
-            <li>
-                Bukti yang dimaksud dalam poin 1 adalah:
-                <ul>
-                    <li>Sertifikat Juara/Keikutsertaan OSN atau</li>
-                    <li>Surat Keterangan Peserta OSN atau</li>
-                    <li>Surat Undangan Mengikuti OSN.</li>
-                </ul>
+                didik dalam lomba <strong> Olimpiade Sains Nasional (OSN) dan semacamnya, minimal Tingkat Provinsi 
+                </strong> untuk Jalur Prestasi atau merupakan <strong>Sertifikat Hafalan</strong> yang diterbitkan oleh 
+                instansi yang berwenang (sekolah/lembaga pendidikan Al Qur'an) untuk Jalur Tahfidz.
             </li>
             <li>
                 Calon peserta didik diwajibkan mengupload dokumen dengan jujur sesuai dengan 
-                prestasi yang dimiliki.
+                prestasi atau jumlah hafalan yang dimiliki.
             </li>
             <li>
                 Dokumen yang diupload oleh calon peserta didik akan diseleksi secara seksama oleh tim seleksi 
-                yang hasilnya akan diumumkan bersamaan dengan pengumuman penerimaan jalur reguler.
+                yang hasilnya akan diumumkan pada tanggal 7 Oktober 2023.
             </li>
             <li>
                 Jika calon peserta didik menemukan kesalahan saat upload dokumen, calon peserta didik 
                 dapat <strong>menghapus dan mengupload kembali</strong> dokumen yang dimaksud.
             </li>
         </ol>
-        <p>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid Tahun Ajaran 2019-2020</p>
+        <p>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid Tahun Ajaran 2024-2025</p>
         <a class="btn btn-primary" data-toggle="modal" data-target="#ModalImport">
             <span class="glyphicon glyphicon-upload"></span>&nbsp;
-            Tambah Dokumen Sertifikat/Surat
+            Tambah Dokumen
         </a>
         <hr />
     </div>
@@ -91,47 +83,26 @@
              style="max-width: 500px" />
         <table>
             <tr>
-                <td> Jalur </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getScheme();?> </td>
-            </tr>
-            <tr>
                 <td> Tipe Dokumen </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getFileType();?> </td>
+                <td> <?=$cert->getDocumentType();?> </td>
             </tr>
             <tr>
-                <td> Mapel OSN </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getSubject();?> </td>
-            </tr>
-            <tr>
-                <td> Ranking </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getRank();?> </td>
-            </tr>
-            <tr>
-                <td> Tingkat Olimpiade </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getLevel();?> </td>
-            </tr>
-            <tr>
-                <td> Penyelenggara </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getOrganizer();?> </td>
-            </tr>
-            <tr>
-                <td> Lokasi Lomba </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getPlace();?> </td>
-            </tr>
-            <tr>
-                <td> Tanggal Pelaksanaan </td>
+                <td> Tanggal Sertifikat </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> 
-                <?= tgl_indo($cert->getStartDate()->format('Y m d'));?> s/d 
-                <?= tgl_indo($cert->getEndDate()->format('Y m d'));?>
+                <?= tgl_indo($cert->getDate()->format('Y m d'));?>
                 </td>
+            </tr>
+            <tr>
+                <td> Penerbit Sertifikat </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getIssuer();?> </td>
+            </tr>
+            <tr>
+                <td> Keterangan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getNote();?> </td>
             </tr>
             <tr>
                 <td> </td>
@@ -159,75 +130,38 @@
             <div class="modal-body">
             <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>pendaftar/upload_cert/<?=$id?>" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Pemilihan Jalur :</label>
+                    <label class="col-sm-4 control-label">Jenis Dokumen :</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="scheme">
-                            <option value="Beasiswa Prestasi">Beasiswa Prestasi</option>
-                            <option value="Beasiswa Unggulan">Beasiswa Unggulan</option>
-                            <option value="Beasiswa Unggulan Plus">Beasiswa Unggulan Plus</option>
+                        <select class="form-control" name="document_type">
+                            <option value="Sertifikat Kejuaraan">Sertifikat Kejuaraan</option>
+                            <option value="Surat Keterangan Keikutsertaan">Surat Keterangan Keikutsertaan</option>
+                            <option value="Sertifikat Hafalan">Sertifikat Hafalan</option>
+                            <option value="Dokumen Lain">Dokumen Lain</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Mata Pelajaran OSN :</label>
+                    <label class="col-sm-4 control-label">Tanggal Sertifikat :</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="subject">
-                            <option value="Matematika">Matematika</option>
-                            <option value="IPA">IPA</option>
-                            <option value="IPS">IPS</option>
-                        </select>
+                        <input type="date" name="date" required="true" class="form-control" placeholder="Waktu Mulai OSN">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Peringkat :</label>
+                    <label class="col-sm-4 control-label">Penerbit Sertifikat :</label>
                     <div class="col-sm-8">
-                        <input type="number" name="rank" class="form-control" placeholder="Kosongkan jika tidak tahu">
+                        <input type="text" name="issuer" required="true" class="form-control" placeholder="contoh: Dinas Pendidikan Jawa Tengah">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Pelaksana Seleksi OSN :</label>
+                    <label class="col-sm-4 control-label">Keterangan :</label>
                     <div class="col-sm-8">
-                        <input type="text" name="organizer" required="true" class="form-control" placeholder="contoh: Dinas Pendidikan Jawa Tengah">
+                        <textarea class="form-control" name="note" rows="3"></textarea>
+                        <span  class="help-block">Masukkan keterangan Mata Pelajaran, Ranking Juara, 
+                        Tingkat Kejuaraan atau nomor Juz pada sertifikat Hafalan.</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Waktu Pelaksanaan OSN :</label>
-                    <div class="col-sm-2">
-                        <input type="date" name="start_date" required="true" class="form-control" placeholder="Waktu Mulai OSN">
-                    </div>
-                    <label class="col-sm-1 control-label">Sampai</label>
-                    <div class="col-sm-2">
-                        <input type="date" name="end_date" required="true" class="form-control" placeholder="Waktu Mulai OSN">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tingkat OSN :</label>
-                    <div class="col-sm-8">
-                        <select class="form-control" name="level">
-                            <option value="Provinsi">Provinsi</option>
-                            <option value="Nasional">Nasional</option>
-                            <option value="Internasional">Internasional</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Tempat Pelaksanaan OSN :</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="place" required="true" class="form-control" placeholder="Contoh: Semarang">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Jenis File :</label>
-                    <div class="col-sm-8">
-                        <select class="form-control" name="file_type">
-                            <option value="Sertifikat">Sertifikat</option>
-                            <option value="Surat Keterangan">Surat Keterangan</option>
-                            <option value="Surat Undangan">Surat Undangan</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">Lampiran (Sertifikat/Surat Undangan/Surat Keterangan) :</label>
+                    <label class="col-sm-4 control-label">Dokumen yang Diupload :</label>
                     <div class="col-sm-8">
                         <input type="file" name="file" required="true" class="form-control">
                     </div>

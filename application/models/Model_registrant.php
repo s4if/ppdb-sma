@@ -982,22 +982,13 @@ class Model_registrant extends CI_Model {
             return false;
         } else {
             $cert = new CertificateEntity();
-            $cert->setScheme($data['scheme']);
-            $cert->setSubject(strtoupper($data['subject']));
-            $cert->setOrganizer($data['organizer']);
-            if (!is_null($data['rank'])){
-                $cert->setRank($data['rank']);
-            }
-            $startDate = DateTime::createFromFormat('Y-m-d', $data['start_date']);
-            $cert->setStartDate($startDate);
-            $endDate = DateTime::createFromFormat('Y-m-d', $data['end_date']);
-            $cert->setEndDate($endDate);
-            $cert->setLevel($data['level']);
-            $cert->setPlace($data['place']);
-            $cert->setFileType($data['file_type']);
+            $date = \DateTime::createFromFormat('Y-m-d', $data['date']);
+            $cert->setDate($date);
+            $cert->setDocumentType($data['document_type']);
+            $cert->setIssuer($data['issuer']);
+            $cert->setNote($data['note']);
             $dt = new DateTime('now');
-            $fileName = substr($data['level'], 0,1).$this->registrant->getId()
-                    . strtoupper($data['subject']).'-'.hash('crc32', $dt->format('Y-m-d H:i:s'));
+            $fileName = $this->registrant->getId().'-'.hash('crc32', $dt->format('Y-m-d H:i:s'));
             if ($this->uploadCertificate($fileUrl, $fileName)) {
                 $cert->setFileName($fileName);
                 $cert->setRegistrant($this->registrant);

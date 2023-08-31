@@ -251,15 +251,10 @@ class Model_1_registrant_test extends TestCase {
         $id = end($arr_reg)->getId();
         $this->setUp();
         $data = [
-            'scheme' => 'Prestasi',
-            'rank' => 3,
-            'subject' => 'IPA',
-            'organizer' => 'Disdikpora Provinsi',
-            'start_date' => '2018-12-13',
-            'end_date' => '2018-12-14',
-            'level' => 'Provinsi',
-            'place' => 'Semarang',
-            'file_type' => 'Sertifikat'
+            'document_type' => 'Sertifikat Kejuaraan',
+            'date' => '2022-08-15',
+            'issuer' => 'Dinas Pendidikan Provinsi',
+            'note' => 'Juara 2 Olimpiade IPA tingkat Provinsi'
         ];
         $this->assertFalse($this->obj->addCertificate(-99, $data, FCPATH.'assets/test/gambar1.png'));
         $this->assertTrue($this->obj->addCertificate($id, $data, FCPATH.'assets/test/gambar1.png'));
