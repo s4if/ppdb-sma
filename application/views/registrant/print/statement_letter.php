@@ -194,14 +194,13 @@
             //  Qurban dalam pengerjaan
             if (!($registrant->getQurban() == '-')) :
                 $arr_tahun = [];
-                if (strpos($registrant->getQurban(), '2023') !== false) {
-                    $arr_tahun[] = '2023';
-                }
-                if (strpos($registrant->getQurban(), '2024') !== false) {
-                    $arr_tahun[] = '2024';
-                }
-                if (strpos($registrant->getQurban(), '2025') !== false) {
-                    $arr_tahun[] = '2025';
+                $thn = $tahun_masuk;
+                for ($i = 0; $i < 3; $i++){
+                    $sthn = "".$thn;
+                    if (strpos($registrant->getQurban(), $sthn) !== false) {
+                        $arr_tahun[] = $thn;
+                    }
+                    $thn++;
                 }
                 $str_tahun = "";
                 if (count($arr_tahun) == 3) {
@@ -212,11 +211,11 @@
                     $str_tahun = $arr_tahun[0];
                 }
             ?>
-            <li class="pernyataan">
-                <strong><u>Bersedia mengikuti program Qurban <?=count($arr_tahun)?> kali</u></strong> 
-                selama menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
-                <strong><u><?=$str_tahun;?></u></strong>.
-            </li>
+                <li class="pernyataan">
+                    <strong><u>Bersedia mengikuti program Qurban <?=count($arr_tahun)?> kali</u></strong> 
+                    selama menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
+                    <strong><u><?=$str_tahun;?></u></strong>.
+                </li>
             <?php endif;?>
             <li class="pernyataan">
                 Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka <strong><u>saya 

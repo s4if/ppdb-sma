@@ -36,6 +36,7 @@ class MY_Controller extends CI_Controller
      * CDN itu untuk memilih menggunakan CDN ato tidak...
      */
     const CDN = false;
+    protected $data;
 
     public function __construct()
     {
@@ -47,6 +48,7 @@ class MY_Controller extends CI_Controller
         $this->data['indeks_gelombang'] = $this->config->item('indeks_gelombang');
         $tahun_pasangan = $this->config->item('tahun_masuk')+1;
         $this->data['tahun_ajaran'] = $this->config->item('tahun_masuk').'/'.$tahun_pasangan;
+        $this->data['tahun_masuk'] = $this->config->item('tahun_masuk');
     }
 
     protected function simpleView($view_name, $inp_data = [])
@@ -136,14 +138,32 @@ class MY_Controller extends CI_Controller
         return $options;
     }
 
-    protected function getSurat($params = [])
+    protected function getSurat($biaya_variabel = [], $laman_isi = false)
     {
-
         $converter = new \League\CommonMark\GithubFlavoredMarkdownConverter();
-        $md = file_get_contents(APPPATH.'views/markdown/surat_pernyataan.md');
+        $html = "";
+        $biaya = $this->config->item('biaya_tetap');
+        if ($laman_isi) {
+            $lines = file(APPPATH.'views/markdown/surat_pernyataan.md');
+            array_pop($lines);
+            $md = join("",$lines);
+            $default = [
+                'infaq_pendidikan',
+                'spp_bulanan',
+                'wakaf_tanah'
+            ];
+            foreach ($default as $key){
+                $md = str_replace(':'.$key.':', '**[[Sesuai Pilihan]]**', $md);
+            }
+        } else {
+            $md = file_get_contents(APPPATH.'views/markdown/surat_pernyataan.md');
+            $total = array_sum($biaya);
+            $biaya = array_merge($biaya, $biaya_variabel);
+            $biaya['total'] = $total;
+        }
         $html = $converter->convert($md);
-        foreach ($params as $key => $value) {
-            $html = str_replace(':'.$key.':', $value, $html);
+        foreach ($biaya as $key => $value) {
+            $html = str_replace(':'.$key.':', 'Rp.'.number_format($value, 0, ',', '.').',-', $html);
         }
         return $html;
     }

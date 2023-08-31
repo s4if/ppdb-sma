@@ -371,74 +371,17 @@
     <?php if (!is_null($registrant->getRegistrantData())) :?>
     <div class="page-content">
         <h2 class="header-section">Detail Pembayaran</h2>
-        <table class="data">
-            <tr>
-                <td> Infaq Pendidikan </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. <?php echo number_format($registrant->getInitialCost(),2,',','.');?> </td>
-            </tr>
-            <tr>
-                <td> SPP </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. <?php echo number_format($registrant->getSubscriptionCost(),2,',','.');?> </td>
-            </tr>
-            <tr>
-                <td> Wakaf Tanah </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. <?php echo number_format($registrant->getLandDonation(),2,',','.');?> </td>
-            </tr>
-            <tr>
-                <td> Seragam </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 2.250.000,00 </td>
-            </tr>
-            <tr>
-                <td> Dana Kesiswaan </td>
-                <td> &nbsp;:&nbsp; </td>
-                <?php $program = $registrant->getProgram();?>
-                <td> Rp. 1.500.000,00 </td>
-            </tr>
-            <tr>
-                <td> Dana Kesehatan </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 250.000,00 </td>
-            </tr>
-            <tr>
-                <td> Dana Buku </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.500.000,00 </td>
-            </tr>
-            <tr>
-                <td> Dana Majalah dan kalender </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 120.000,00</td>
-            </tr>
-            <tr>
-                <td> Pembukaan Tabungan dan Uang Saku Awal </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 300.000,00</td>
-            </tr>
-            <tr>
-                <td> Pembelian Perlengkapan </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> Rp. 1.400.000,00</td>
-            </tr>
-            <tr>
-                <td> Kesanggupan Berqurban Tahun </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?php echo str_replace('-', ' ', $registrant->getQurban()); ?></td>
-            </tr>
-            <tr>
-                <td> <strong class="red">Total</strong> </td>
-                <td> &nbsp;:&nbsp; </td>
-                <?php 
-                $default = 7320000;
-                $tot = $registrant->getSubscriptionCost()+$registrant->getInitialCost()+$registrant->getLandDonation();
-                $total = $tot+$default;
-                ?>
-                <td> <strong class="red">Rp. <?php echo number_format($total,2,',','.');?></strong> </td>
-            </tr>
-        </table>
+        <style type="text/css">
+            .pembiayaan table,th,tr,td {
+                border-collapse: collapse;
+                border: 1px solid black;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        </style>
+        <div class="pembiayaan">
+            <?=$tabel_surat;?>
+        </div>
         <hr />
     </div>
     <?php endif;?>

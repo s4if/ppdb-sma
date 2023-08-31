@@ -592,9 +592,9 @@ class Admin extends MY_Controller {
     {
         $this->blockNonAdmin();
         echo $this->getSurat([
-            'infaq_pendidikan' => 'Rp. 5.000.000,-',
-            'spp_bulanan' => 'Rp. 1.700.000,-',
-            'wakaf_tanah' => 'Rp. 5.000.000,-'
+            'infaq_pendidikan' => 5000000,
+            'spp_bulanan' => 1700000,
+            'wakaf_tanah' => 1000000
         ]);
     }
 }
