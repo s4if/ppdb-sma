@@ -79,6 +79,13 @@ class RegistrantEntity
      * @var string
      */
     protected $program; // NOTE: IPA Reguler, IPS Reguler, IPA Tahfidz, IPS Tahfidz
+
+    /**
+     * @Column(type="string", length=15, nullable=FALSE)
+     *
+     * @var string
+     */
+    protected $selectionPath; // NOTE: Jalur Reguler, Jalur Tahfidz, Jalur Prestasi, Jalur Rapor
     
     /**
      * @Column(type="string", length=6, nullable=TRUE)
@@ -92,7 +99,7 @@ class RegistrantEntity
      *
      * @var string
      */
-    protected $relToIPS; // semi boolean (true/false)
+    protected $relToRegularPath; // semi boolean (true/false)
 
     /**
      * @Column(type="datetime", nullable=FALSE)
@@ -202,11 +209,18 @@ class RegistrantEntity
     protected $deleted;
 
     /**
-     * @Column(type="string", nullable=FALSE)
+     * @Column(type="integer", nullable=FALSE)
      *
-     * @var string
+     * @var int
      */
     protected $gelombang; // untuk gelombang
+
+    /**
+     * @Column(type="integer", nullable=FALSE)
+     *
+     * @var int
+     */
+    protected $entryYear; // untuk gelombang
     
     /**
      * One Product has Many Features.
@@ -382,8 +396,8 @@ class RegistrantEntity
         return $this->relToRegular;
     }
 
-    public function getRelToIPS() {
-        return $this->relToIPS;
+    public function getRelToRegularPath() {
+        return $this->relToRegularPath;
     }
     
     public function getRapor() {
@@ -439,8 +453,8 @@ class RegistrantEntity
         return $this;
     }
 
-    public function setRelToIPS($relToIPS) {
-        $this->relToIPS = $relToIPS;
+    public function setRelToRegularPath($relToRegularPath) {
+        $this->relToRegularPath = $relToRegularPath;
         return $this;
     }
     
@@ -509,8 +523,9 @@ class RegistrantEntity
 
     public function setRegId() // sekarang dibuat auto dapet ID
     {
-        $prefix = ($this->gender == 'L') ? 'I' : 'A';
-        $this->regId = $prefix.'-'.$this->kode;
+        $pPref = ($this->program == 'Reguler') ? 'R' : 'K';
+        $this->regId = 'G' . $this->gelombang . $pPref 
+                . $this->entryYear . $this->gender . ''.$this->kode;
     }
 
     public function setPassword($password)
@@ -628,6 +643,46 @@ class RegistrantEntity
     public function setDeleted($deleted)
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEntryYear()
+    {
+        return $this->entryYear;
+    }
+
+    /**
+     * @param int $entryYear
+     *
+     * @return self
+     */
+    public function setEntryYear($entryYear)
+    {
+        $this->entryYear = $entryYear;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSelectionPath()
+    {
+        return $this->selectionPath;
+    }
+
+    /**
+     * @param string $selectionPath
+     *
+     * @return self
+     */
+    public function setSelectionPath($selectionPath)
+    {
+        $this->selectionPath = $selectionPath;
 
         return $this;
     }

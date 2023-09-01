@@ -13,7 +13,7 @@ class Pendaftar_test extends TestCase
 	public function test_index()
 	{
 		$output = $this->request('GET', ['Login', 'index']);
-		$this->assertStringContainsString('<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>', $output);
+		$this->assertStringContainsString('<title>Registrasi PPDB', $output);
 	}
         
         public function test_lihat()
@@ -88,6 +88,7 @@ class Pendaftar_test extends TestCase
                 'cp_suffix' => '89483726156',
                 'prev_school' => 'SMPN 1 Mungkid',
                 'program' => 'Reguler',
+                'selection_path' => 'Jalur Reguler',
                 'captcha' => 'SALAH'
             ];
             // Gagal
@@ -310,14 +311,14 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('1/beranda');
             $data = [
                 'rel_to_regular' => 'true',
-                'rel_to_ips' => 'true',
+                'rel_to_regular_path' => 'true',
                 'raw_icost' => -999,
                 'other_icost' => 15000000,
                 'raw_scost' => -999,
                 'other_scost' => 1300000,
                 'raw_lcost' => -999,
-                'other_lcost' => 10000000,
-                'qurban'=> '2022-2023',
+                'other_lcost' => 2000000,
+                'qurban'=> '2024-2025-2026',
                 'main_parent' => 'father'
             ];
             $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);

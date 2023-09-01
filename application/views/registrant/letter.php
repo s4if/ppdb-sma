@@ -64,64 +64,17 @@
                         Jika anak saya diterima sebagai siswa SMAIT Ihsanul Fikri Mungkid, saya akan melunasi  
                         pembiayaan sesuai dengan kesanggupan saya:
                     </li>
-                    <table class="table-bordered table-responsive">
-                        <tr>
-                            <th>Jenis Pembiayaan</th>
-                            <th>Nominal Pembiayaan</th>
-                            <th>Frekuensi Pembiayaan</th>
-                        </tr>
-                        <tr>
-                            <td>a. Infaq Pendidikan</td>
-                            <td><strong>[[Sesuai Pilihan]]</strong></td>
-                            <td>Sekali</td>
-                        </tr>
-                        <tr>
-                            <td>b. Iuran Dana Pendidikan (IDP) bulanan</td>
-                            <td><strong>[[Sesuai Pilihan]]</strong></td>
-                            <td>Per Bulan</td>
-                        </tr>
-                        <tr>
-                            <td>c. Wakaf Tanah</td>
-                            <td><strong>[[Sesuai Pilihan]]</strong></td>
-                            <td>Sekali</td>
-                        </tr>
-                        <tr>
-                            <td>d. Seragam</td>
-                            <td>Rp. 2.250.000,-</td>
-                            <td>Sekali</td>
-                        </tr>
-                        <tr>
-                            <td>e. Kegiatan</td>
-                            <td>Rp. 1.500.000,-</td>
-                            <td>Per Tahun</td>
-                        </tr>
-                        <tr>
-                            <td>f. Biaya Kesehatan</td>
-                            <td>Rp. 250.000,-</td>
-                            <td>Per Tahun</td>
-                        </tr>
-                        <tr>
-                            <td>g. Biaya Buku</td>
-                            <td>Rp. 1.500.000,-</td>
-                            <td>Per Tahun</td>
-                        </tr>
-                        <tr>
-                            <td>h. Majalah dan Kalender</td>
-                            <td>Rp. 120.000,-</td>
-                            <td>Per Tahun</td>
-                        </tr>
-                        <tr>
-                            <td>i. Pembukaan Tabungan dan Uang Saku Awal</td>
-                            <td>Rp. 300.000,-</td>
-                            <td>Sekali</td>
-                        </tr>
-                        <tr>
-                            <td>j. Pembelian Perlengkapan</td>
-                            <td>Rp. 1.400.000,-</td>
-                            <td>Sekali</td>
-                        </tr>
-                    </table>
-                    
+                    <style type="text/css">
+                        .pembiayaan table,th,tr,td {
+                            border-collapse: collapse;
+                            border: 1px solid black;
+                            padding-left: 5px;
+                            padding-right: 5px;
+                        }
+                    </style>
+                    <div class="pembiayaan">
+                        <?=$tabel_surat;?>
+                    </div>
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
                         Fikri Mungkid pada Hari Raya Idul Adha tahun 2023/2024/2025 (Tahun dapat dipilih).
@@ -148,50 +101,33 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Infaq Pendidikan :</label>
                 <div class="col-sm-4">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_icost" value="11000000" 
-                                <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if($registrant->getInitialCost() == '11000000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 11.000.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_icost" value="12000000" 
-                                <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if($registrant->getInitialCost() == '12000000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 12.000.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_icost" value="13000000" 
-                                <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if($registrant->getInitialCost() == '13000000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 13.000.000,-
-                        </label>
-                    </div>
+                    <?php
+                    $infaq = $biaya_pilihan_minimal['infaq_pendidikan'];
+                    for ($i = 0; $i < 3; $i++):?>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="raw_icost" value="<?=$infaq;?>" 
+                                    <?php if(!empty($registrant->getInitialCost())):?>
+                                        <?php if($registrant->getInitialCost() == $infaq):?>
+                                        checked
+                                        <?php endif;?>
+                                    <?php endif;?>>
+                                Rp. <?= number_format($infaq, 0, ',', '.');?>,-
+                            </label>
+                        </div>
+                    <?php 
+                    $infaq += 1000000;
+                    endfor; 
+                    $infaq -= 1000000; ?>
                     <div class="radio">
                         <label>
                             <input type="radio" name="raw_icost" value="-999" 
                                 <?php if(!empty($registrant->getInitialCost())):?>
-                                    <?php if(!($registrant->getInitialCost() == '12000000'||
-                                            $registrant->getInitialCost() == '11000000'||
-                                            $registrant->getInitialCost() == '13000000')):?>
+                                    <?php if($registrant->getInitialCost() > $infaq):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 13 Juta Rupiah
+                            Lebih dari Rp. <?= number_format($infaq, 0, ',', '.');?>,-
                         </label>
                     </div>
                 </div>
@@ -199,7 +135,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" onkeyup="rupiah('icost')" pattern="^([0-9]{1,9}$)" name="other_icost" title="Maksimal 9 digit angka!"
-                           class="form-control" placeholder="Masukkan Jumlah Melebih 13Juta Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
+                           class="form-control" placeholder="Masukkan Jumlah Melebih Rp. <?= number_format($infaq, 0, ',', '.');?>,- Tanpa Titik" value="<?=$registrant->getInitialCost();?>">
                 </div>
             </div>
             <div class="form-group">
@@ -208,50 +144,33 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Iuran Dana Pendidikan (IDP) :</label>
                 <div class="col-sm-4">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_scost" value="1400000" 
-                                <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1400000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 1.400.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_scost" value="1500000" 
-                                <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1500000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 1.500.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_scost" value="1600000" 
-                                <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if($registrant->getSubscriptionCost() == '1600000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 1.600.000,-
-                        </label>
-                    </div>
+                    <?php
+                    $spp = $biaya_pilihan_minimal['spp_bulanan'];
+                    for ($i = 0; $i < 3; $i++):?>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="raw_scost" value="<?=$spp;?>" 
+                                    <?php if(!empty($registrant->getSubscriptionCost())):?>
+                                        <?php if($registrant->getSubscriptionCost() == $spp):?>
+                                        checked
+                                        <?php endif;?>
+                                    <?php endif;?>>
+                                Rp. <?= number_format($spp, 0, ',', '.');?>,-
+                            </label>
+                        </div>
+                    <?php 
+                    $spp += 100000;
+                    endfor; 
+                    $spp -= 100000; ?>
                     <div class="radio">
                         <label>
                             <input type="radio" name="raw_scost" value="-999" 
                                 <?php if(!empty($registrant->getSubscriptionCost())):?>
-                                    <?php if(!($registrant->getSubscriptionCost() == '1400000'||
-                                            $registrant->getSubscriptionCost() == '1500000' ||
-                                            $registrant->getSubscriptionCost() == '1600000')):?>
+                                    <?php if($registrant->getSubscriptionCost() > $spp):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 1,6 Juta Rupiah
+                            Lebih dari Rp. <?= number_format($spp, 0, ',', '.');?>,-
                         </label>
                     </div>
                 </div>
@@ -260,7 +179,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" onkeyup="rupiah('scost')" name="other_scost" pattern="^([0-9]{1,8}$)" title="Maksimal 8 digit angka!"
-                           class="form-control" placeholder="Masukkan Jumlah Melebih 1,5 Juta Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
+                           class="form-control" placeholder="Masukkan Jumlah Melebih Rp. <?= number_format($spp, 0, ',', '.');?>,- Tanpa Titik" value="<?=$registrant->getSubscriptionCost();?>">
                 </div>
             </div>
             <div class="form-group">
@@ -269,62 +188,33 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Wakaf Tanah :</label>
                 <div class="col-sm-4">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_lcost" value="500000" 
-                                <?php if(!empty($registrant->getLandDonation())):?>
-                                    <?php if($registrant->getLandDonation() == '500000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 500.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_lcost" value="1000000" 
-                                <?php if(!empty($registrant->getLandDonation())):?>
-                                    <?php if($registrant->getLandDonation() == '1000000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 1.000.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_lcost" value="1500000" 
-                                <?php if(!empty($registrant->getLandDonation())):?>
-                                    <?php if($registrant->getLandDonation() == '1500000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 1.500.000,-
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="raw_lcost" value="2000000" 
-                                <?php if(!empty($registrant->getLandDonation())):?>
-                                    <?php if($registrant->getLandDonation() == '2000000'):?>
-                                    checked
-                                    <?php endif;?>
-                                <?php endif;?>>
-                            Rp. 2.000.000,-
-                        </label>
-                    </div>
+                    <?php
+                    $wakaf = $biaya_pilihan_minimal['wakaf_tanah'];
+                    for ($i = 0; $i < 3; $i++):?>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="raw_scost" value="<?=$wakaf;?>" 
+                                    <?php if(!empty($registrant->getLandDonation())):?>
+                                        <?php if($registrant->getLandDonation() == $spp):?>
+                                        checked
+                                        <?php endif;?>
+                                    <?php endif;?>>
+                                Rp. <?= number_format($wakaf, 0, ',', '.');?>,-
+                            </label>
+                        </div>
+                    <?php 
+                    $wakaf += 500000;
+                    endfor; 
+                    $wakaf -= 500000; ?>
                     <div class="radio">
                         <label>
                             <input type="radio" name="raw_lcost" value="-999" 
                                 <?php if(!empty($registrant->getLandDonation())):?>
-                                    <?php if(!($registrant->getLandDonation() == '500000'||
-                                            $registrant->getLandDonation() == '1000000' ||
-                                            $registrant->getLandDonation() == '2000000' ||
-                                            $registrant->getLandDonation() == '1500000')):?>
+                                    <?php if(($registrant->getLandDonation() > $wakaf)):?>
                                     checked
                                     <?php endif;?>
                                 <?php endif;?>>
-                            Lebih dari 2 Juta Rupiah
+                            Lebih dari Rp. <?= number_format($wakaf, 0, ',', '.');?>,-
                         </label>
                     </div>
                 </div>
@@ -332,7 +222,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-3">
                     <input type="number" name="other_lcost" pattern="^([0-9]{1,9}$)" title="Maksimal 8 digit angka!"
-                           class="form-control" onkeyup="rupiah('lcost')" placeholder="Masukkan Jumlah Melebih 2Juta Tanpa Titik" value="<?=$registrant->getLandDonation();?>">
+                           class="form-control" onkeyup="rupiah('lcost')" placeholder="Masukkan Jumlah Melebih Rp. <?= number_format($wakaf, 0, ',', '.');?>,- Tanpa Titik" value="<?=$registrant->getLandDonation();?>">
                     <input type="number" name="boarding_kit" hidden="true" value="1">
                 </div>
             </div>
@@ -374,57 +264,82 @@
                 <div class="col-sm-4 col-sm-offset-3">
                     <label class="text-center">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT 
-                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 2023/2024/2025.
+                        Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
+                        <?php 
+                        $tampil_tahun = $tahun_masuk;
+                        echo $tampil_tahun . '/' . ++$tampil_tahun . '/' . ++$tampil_tahun;?>.
                     </label>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="q1" value="2023" <?php
-                            if (strpos($registrant->getQurban(), '2023') !== false) {
-                                echo "checked";
-                            }
-                        ?> > 2023
-                    </label>
-                  </div>
+            <?php
+            $ck_tahun = $tahun_masuk; 
+            for ($i = 0; $i < 3; $i++):?>
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="q<?=$i?>" value="<?=$ck_tahun;?>" <?php
+                                $str_thn = "".$ck_tahun;
+                                if (strpos($registrant->getQurban(), $str_thn) !== false) {
+                                    echo "checked";
+                                }
+                            ?> > <?= $ck_tahun;?>
+                        </label>
+                      </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="q2" value="2024" <?php
-                            if (strpos($registrant->getQurban(), '2024') !== false) {
-                                echo "checked";
-                            }
-                        ?> > 2024
-                    </label>
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="q3" value="2025" <?php
-                            if (strpos($registrant->getQurban(), '2025') !== false) {
-                                echo "checked";
-                            }
-                        ?> > 2025
-                    </label>
-                  </div>
-                </div>
-            </div>
+            <?php 
+            $ck_tahun++;
+            endfor; ?>
             <hr/>
-            <?php if($program == 'Tahfidz'): ?>
+            <?php $jalur = $registrant->getSelectionPath();
+            if($jalur != 'Jalur Reguler'): ?>
+            <div class="form-group">
+                <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Jalur Seleksi</strong></label>
+            </div>
+            <div class="form-group ">
+                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia 
+                    mengikuti <strong>Jalur Seleksi Reguler</strong> jika tidak lolos Seleksi Jalur Prestasi, Tahfidz, dan Rapor?</p></label>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_regular_path" value="false" 
+                                <?php if(!empty($registrant->getRelToRegular())):?>
+                                    <?php if($registrant->getRelToRegular() ==='false'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php endif;?>>
+                            Saya tidak bersedia
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rel_to_regular_path" value="true" 
+                                <?php if(!empty($registrant->getRelToRegular())):?>
+                                    <?php if($registrant->getRelToRegular() ==='true'):?>
+                                    checked
+                                    <?php endif;?>
+                                <?php else :?>
+                                    checked
+                                <?php endif;?>>
+                            Saya bersedia
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
+            <hr/>
+            <?php if($program != 'Reguler'): ?>
             <div class="form-group">
                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Program</strong></label>
             </div>
             <div class="form-group ">
-                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di 
-                    program reguler jika tidak lolos seleksi program Tahfidz?</p></label>
+                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">
+                    Apakah anda bersedia ditempatkan di Program/Kelas reguler jika tidak lolos seleksi 
+                    Program/Kelas Tahfidz?
+                </p></label>
             </div>
             <div class="form-group">
                 <div class="col-sm-6 col-sm-offset-3">

@@ -48,7 +48,8 @@ class Model_1_registrant_test extends TestCase {
             'gender' => 'P',
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'cp' => '084738172839',
-            'program' => 'Tahfidz'
+            'program' => 'Tahfidz',
+            'selection_path' => 'Jalur Tahfidz'
         ];
         // test insert registrant
         $this->assertTrue($this->obj->insertData($data));
@@ -123,7 +124,7 @@ class Model_1_registrant_test extends TestCase {
         $registrants = $this->obj->getData();
         $registrants_2 = $this->obj->getData('P');
         $attributes = ['id', 'regId', 'name', 'gender', 'previousSchool', 'nisn', 'program', 'deleted', 'registrationTime', 'registrantData',
-                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToIPS', 'relToRegular',
+                'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToRegularPath', 'relToRegular',
                 'subscriptionCost', 'landDonation', 'qurban' ];
         foreach ($attributes as $attributeName){
             $this->assertObjectHasAttribute($attributeName, $registrant);
@@ -250,15 +251,10 @@ class Model_1_registrant_test extends TestCase {
         $id = end($arr_reg)->getId();
         $this->setUp();
         $data = [
-            'scheme' => 'Prestasi',
-            'rank' => 3,
-            'subject' => 'IPA',
-            'organizer' => 'Disdikpora Provinsi',
-            'start_date' => '2018-12-13',
-            'end_date' => '2018-12-14',
-            'level' => 'Provinsi',
-            'place' => 'Semarang',
-            'file_type' => 'Sertifikat'
+            'document_type' => 'Sertifikat Kejuaraan',
+            'date' => '2022-08-15',
+            'issuer' => 'Dinas Pendidikan Provinsi',
+            'note' => 'Juara 2 Olimpiade IPA tingkat Provinsi'
         ];
         $this->assertFalse($this->obj->addCertificate(-99, $data, FCPATH.'assets/test/gambar1.png'));
         $this->assertTrue($this->obj->addCertificate($id, $data, FCPATH.'assets/test/gambar1.png'));

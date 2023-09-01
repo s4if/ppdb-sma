@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>
+<title>Registrasi PPDB <?=$nama_sekolah;?> <?=$nama_gelombang;?> Tahun Ajaran <?=$tahun_ajaran?></title>
 
 <!-- Di server, jangan lupa untuk diganti menjadi CDN -->
 
@@ -26,7 +26,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-2223.png';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2425.webp';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -169,7 +169,8 @@ body {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">PPDB SMAIT Ihsanul Fikri Tahun Ajaran 2023/2024</a>
+                <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">
+                    PPDB <?=$nama_sekolah;?> <?=$nama_gelombang;?> Tahun Ajaran <?=$tahun_ajaran?></a>
             </div>
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
@@ -334,6 +335,68 @@ body {
                                                 Perempuan
                                             </label>
                                         </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <span class="help-block">
+                                    <b>Jalur Seleksl Prestasi, Rapor, dan Tahfidz</b><br />
+                                    Pendaftaran : 1 September sd 1 Oktober 2023<br />
+                                    Seleksi Administrasi : 2 Oktober sd 6 Oktober 2023<br />
+                                    Pengumuman : 7 Oktober 2023<br />
+                                    Daftar Ulang : 7 Oktober sd 14 Oktober 2023<br />
+                                    <br />
+                                    Bagi yang Tidak Lolos Jalur Seleksi Prestasi, Rapor, dan Tahfidz 
+                                    secara langsung/otomatis diperbolenkan mengikut Jalur Seleksi Reguler 
+                                    tanpa membayar biaya pendaftaran lagi dan tidak perlu mengisi formular 
+                                    pendaftaran lagi. <br />
+                                    <br />
+                                    Ketentuan dan Fasilitas Jalur Seleksi Prestasi, Rapor, 
+                                    dan Tahfidz bisa dilihat di smait.ihsanulfikri.sch.id<br />
+                                    <br />
+                                    <b>Jalur Seleksi Reguler</b>
+                                    Pendaftaran : 1 September sd 20 November 2023<br />
+                                    Test Tulis : 26 November 2023<br />
+                                    Pengumuman : 4 Desember 2023<br />
+                                    Daftar Ulang : 4 Desember sd 13 Desember 2023<br />
+                                </span>
+                                <hr />
+                                <div class="form-group">
+                                    <label class=" control-label">Jalur Seleksi Pendaftaran :</label>
+                                    <div class="">
+                                        <select class="form-control" name="selection_path">
+                                            <option value="Jalur Reguler"
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Reguler'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Jalur Reguler
+                                            </option>
+                                            <option value="Jalur Tahfidz"
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Tahfidz'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Jalur Tahfidz
+                                            </option>
+                                             <option value="Jalur Rapor"
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Rapor'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Jalur Rapor
+                                            </option>
+                                             <option value="Jalur Prestasi"
+                                                    <?php if(array_key_exists('selection_path', $registrant)):?>
+                                                        <?php if($registrant['selection_path']=='Jalur Prestasi'): ?>
+                                                                selected
+                                                        <?php endif;?>
+                                                    <?php endif;?>>
+                                                Jalur Prestasi
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -38,9 +38,12 @@ class Model_registrant extends CI_Model {
     protected $counter;
     protected $paymentData;
     protected $excel;
+    protected $gelombang;
     
     public function __construct() {
         parent::__construct();
+        $this->gelombang = $this->config->item('indeks_gelombang');
+        $this->tahun_masuk = $this->config->item('tahun_masuk');
     }
     
     public function create(){
@@ -123,7 +126,8 @@ class Model_registrant extends CI_Model {
             $data['reg_time'] = new DateTime('now');
             $this->setRegistrantData($data);
             $this->registrant->setDeleted(false);
-            $this->registrant->setGelombang('gelombang 1');
+            $this->registrant->setGelombang($this->gelombang);
+            $this->registrant->setEntryYear($this->tahun_masuk);
             $this->doctrine->em->persist($this->registrant);
             $this->doctrine->em->flush();
             return true;
@@ -211,17 +215,19 @@ class Model_registrant extends CI_Model {
         if (!empty($data['nisn'])) : $this->registrant->setNisn($data['nisn']); endif;
         if (!empty($data['cp'])) : $this->registrant->setCp($data['cp']); endif;
         if (!empty($data['program'])) : $this->registrant->setProgram($data['program']); endif;
+        if (!empty($data['selection_path'])) : $this->registrant->setSelectionPath($data['selection_path']); endif;
         if (!empty($data['reg_time'])) : $this->registrant->setRegistrationTime($data['reg_time']); endif;
         if (!empty($data['initial_cost'])) : $this->registrant->setInitialCost($data['initial_cost']); endif;
         if (!empty($data['finalized'])) : $this->registrant->setFinalized($data['finalized']); endif;
         if (!empty($data['qurban'])) : $this->registrant->setQurban($data['qurban']); endif;
         if (!empty($data['rel_to_regular'])) : $this->registrant->setRelToRegular($data['rel_to_regular']); endif;
-        if (!empty($data['rel_to_ips'])) : $this->registrant->setRelToIPS($data['rel_to_ips']); endif;
+        if (!empty($data['rel_to_regular_path'])) : $this->registrant->setRelToRegularPath($data['rel_to_regular_path']); endif;
         if (!empty($data['subscription_cost'])) : $this->registrant->setSubscriptionCost($data['subscription_cost']); endif;
         if (!empty($data['land_donation'])) : $this->registrant->setLandDonation($data['land_donation']); endif;
         if (!empty($data['main_parent'])) : $this->registrant->setMainParent($data['main_parent']); endif;
         if (!empty($data['deleted'])) : $this->registrant->setDeleted($data['deleted']); endif;
         //if (!empty($data['gelombang'])) : $this->registrant->setGelombang($data['gelombang']); endif;
+        //if (!empty($data['entry_year'])) : $this->registrant->setEntryYear($data['entry_year']); endif;
     }
     
     
@@ -976,22 +982,13 @@ class Model_registrant extends CI_Model {
             return false;
         } else {
             $cert = new CertificateEntity();
-            $cert->setScheme($data['scheme']);
-            $cert->setSubject(strtoupper($data['subject']));
-            $cert->setOrganizer($data['organizer']);
-            if (!is_null($data['rank'])){
-                $cert->setRank($data['rank']);
-            }
-            $startDate = DateTime::createFromFormat('Y-m-d', $data['start_date']);
-            $cert->setStartDate($startDate);
-            $endDate = DateTime::createFromFormat('Y-m-d', $data['end_date']);
-            $cert->setEndDate($endDate);
-            $cert->setLevel($data['level']);
-            $cert->setPlace($data['place']);
-            $cert->setFileType($data['file_type']);
+            $date = \DateTime::createFromFormat('Y-m-d', $data['date']);
+            $cert->setDate($date);
+            $cert->setDocumentType($data['document_type']);
+            $cert->setIssuer($data['issuer']);
+            $cert->setNote($data['note']);
             $dt = new DateTime('now');
-            $fileName = substr($data['level'], 0,1).$this->registrant->getId()
-                    . strtoupper($data['subject']).'-'.hash('crc32', $dt->format('Y-m-d H:i:s'));
+            $fileName = $this->registrant->getId().'-'.hash('crc32', $dt->format('Y-m-d H:i:s'));
             if ($this->uploadCertificate($fileUrl, $fileName)) {
                 $cert->setFileName($fileName);
                 $cert->setRegistrant($this->registrant);

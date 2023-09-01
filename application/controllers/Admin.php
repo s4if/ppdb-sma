@@ -451,7 +451,7 @@ class Admin extends MY_Controller {
         $this->blockNonAdmin();
         $data = $this->reg->getSpecialParticipants();
         $this->CustomView('admin/data_prestasi', [
-            'title' => 'Lihat Peserta Jalur Prestasi dan Beasiswa Unggulan',
+            'title' => 'Lihat Peserta Jalur Prestasi dan Tahfidz',
             'username' => $this->session->admin->getUsername(),
             'admin' => $this->session->admin,
             'nav_pos' => 'achievementAdmin',
@@ -586,5 +586,15 @@ class Admin extends MY_Controller {
         $suffix = ($unpaid == "true")?"belum membayar":"belum lengkap";
         $res = $pdf->send('Kartu pendaftar yang '.$suffix.' .pdf');
         if (!$res) { echo $pdf->getError(); }
+    }
+
+    public function tes_surat()
+    {
+        $this->blockNonAdmin();
+        echo $this->getSurat([
+            'infaq_pendidikan' => 5000000,
+            'spp_bulanan' => 1700000,
+            'wakaf_tanah' => 1000000
+        ]);
     }
 }

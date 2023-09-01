@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Registrasi PPDB SMAIT Ihsanul Fikri</title>
+<title>Registrasi <?=$nama_sekolah;?> <?=$nama_gelombang;?> Tahun Ajaran <?=$tahun_ajaran?></title>
 
 <!-- Di server, jangan lupa untuk diganti menjadi CDN -->
 
@@ -24,7 +24,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-2223.png';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2425.webp';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -167,7 +167,10 @@ body {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">PPDB SMAIT Ihsanul Fikri Tahun Ajaran 2023/2024</a>
+                    <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">
+                        PPDB <?=$nama_sekolah;?> <?=$nama_gelombang;?> Tahun Ajaran <?=$tahun_ajaran?>
+                        
+                    </a>
                 </div>
                 <!-- Navbar collapse -->
                 <div class="navbar-collapse collapse">

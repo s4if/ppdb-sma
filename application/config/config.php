@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
  */
-$config['base_url'] = 'http://ppdbsma.test/';
+$config['base_url'] = "http://localhost:8000/";
 
 /*
 |--------------------------------------------------------------------------
@@ -505,3 +505,28 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
  */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Custom Config
+|--------------------------------------------------------------------------
+ */
+$config['nama_sekolah'] = 'SMAIT Ihsanul Fikri Mungkid';
+$config['nama_gelombang'] = 'Gelombang 1';
+$config['indeks_gelombang'] = 1;
+$config['tahun_masuk'] = 2024; //tahun dimana siswa tersebut masuk! (tahun registrasi)
+$config['biaya_registrasi'] = 300000;
+$config['biaya_tetap'] = [
+	'seragam' => 2250000,
+	'dana_perlengkapan' => 1500000,
+	'dana_buku' => 1500000,
+	'dana_kegiatan' => 1600000,
+	'dana_kesehatan' => 200000,
+	'majalah_kalender' => 150000,
+	'uang_tabungan' => 300000
+];
+$config['biaya_pilihan_minimal'] = [
+	'infaq_pendidikan' => 11000000,
+	'spp_bulanan' => 1500000,
+	'wakaf_tanah' => 1000000
+];

@@ -82,6 +82,7 @@
             <div class="modal-body">
                 <h3>Keterangan yang ditambahkan di pengisian raport SMP/MTS</h3>
                 <ul>
+                    <li>Pengisian nilai rapor ini wajib bagi semua peserta PPDB baik jalur Rapor, Reguler, Prestasi, ataupun Tahfidz.</li>
                     <li>Skala yang digunakan adalah skala <strong>1-100</strong></li>
                     <li>Yang diisi kedalam form ini adalah nilai Pengetahuan</li>
                     <li>Untuk nilai berskala 4 langsung di konversi ke skala 100 dengan cara dikalikan 25</li>

@@ -64,47 +64,26 @@
                 <td colspan="3"><b>Dokumen ke <?=$count++?></b></td>
             </tr>
             <tr>
-                <td> Jalur </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getScheme();?> </td>
-            </tr>
-            <tr>
                 <td> Tipe Dokumen </td>
                 <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getFileType();?> </td>
+                <td> <?=$cert->getDocumentType();?> </td>
             </tr>
             <tr>
-                <td> Mapel OSN </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getSubject();?> </td>
-            </tr>
-            <tr>
-                <td> Ranking </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=(empty($cert->getRank()))?'-':$cert->getRank();?> </td>
-            </tr>
-            <tr>
-                <td> Tingkat Olimpiade </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getLevel();?> </td>
-            </tr>
-            <tr>
-                <td> Penyelenggara </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getOrganizer();?> </td>
-            </tr>
-            <tr>
-                <td> Lokasi Lomba </td>
-                <td> &nbsp;:&nbsp; </td>
-                <td> <?=$cert->getPlace();?> </td>
-            </tr>
-            <tr>
-                <td> Tanggal Pelaksanaan </td>
+                <td> Tanggal Sertifikat </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> 
-                <?= tgl_indo($cert->getStartDate()->format('Y m d'));?> s/d 
-                <?= tgl_indo($cert->getEndDate()->format('Y m d'));?>
+                <?= tgl_indo($cert->getDate()->format('Y m d'));?>
                 </td>
+            </tr>
+            <tr>
+                <td> Penerbit Sertifikat </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getIssuer();?> </td>
+            </tr>
+            <tr>
+                <td> Keterangan </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$cert->getNote();?> </td>
             </tr>
             
         </table>

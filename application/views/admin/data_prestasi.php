@@ -61,7 +61,7 @@
                             <td> <?=$no;?></td>
                             <td> <?=$peserta->getName();?></td>
                             <td> <?=$peserta->getGender();?></td>
-                            <td> <?=$peserta->getScheme();?></td>
+                            <td> <?=$peserta->getSelectionPath();?></td>
                             <td> <?=$peserta->getCertificatesCount();?></td>
                             <td> <a class="btn btn-sm btn-success" href="<?=base_url();?>admin/prestasi/<?=$peserta->getId();?>">
                                 <span class="glyphicon glyphicon-chevron-right"></span>

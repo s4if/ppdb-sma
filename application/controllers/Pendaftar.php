@@ -421,6 +421,11 @@ class Pendaftar extends MY_Controller {
             'nav_pos' => 'recap',
             'img_link' => $this->getImgLink($id)[0],
             'registrant' => $this->session->registrant,
+            'tabel_surat' => $this->getSurat([
+                'infaq_pendidikan' => $registrant->getInitialCost(),
+                'spp_bulanan' => $registrant->getSubscriptionCost(),
+                'wakaf_tanah' => $registrant->getLandDonation(),
+            ]),
         ];
         $this->CustomView('registrant/recap', $data);
     }
@@ -440,10 +445,16 @@ class Pendaftar extends MY_Controller {
             'nav_pos' => 'recap',
             'img_link' => $this->getImgLink($id)[0],
             'registrant' => $registrant,
+            'tahun_masuk' => $this->data['tahun_masuk'],
         ];
         $reg_data = $this->load->view('registrant/print/registrant_data', $data, TRUE);
         $pdf->addPage($reg_data);
         if(($registrant->getCompleted())){
+            $data['tabel_surat'] = $this->getSurat([
+                'infaq_pendidikan' => $registrant->getInitialCost(),
+                'spp_bulanan' => $registrant->getSubscriptionCost(),
+                'wakaf_tanah' => $registrant->getLandDonation(),
+            ]);
             $reg_letter = $this->load->view('registrant/print/statement_letter', $data, TRUE);
             $pdf->addPage($reg_letter);
         }
@@ -462,6 +473,9 @@ class Pendaftar extends MY_Controller {
             'title' => 'Surat Pernyataan',
             'username' => $this->session->registrant->getName(),
             'id' => $this->session->registrant->getId(),
+            'tabel_surat' => $this->getSurat([], true),
+            'biaya_pilihan_minimal' => $this->config->item('biaya_pilihan_minimal'),
+            'tahun_masuk' => $this->config->item('tahun_masuk'),
             'registrant' => $this->session->registrant,
             'nav_pos' => 'letter'
         ];
@@ -563,7 +577,7 @@ class Pendaftar extends MY_Controller {
     
     public function lihat($gender = 'L'){
         //$registrant_data = $this->reg->getArrayData($gender, null);
-        $this->load->view('registrant/list', [
+        $this->simpleView('registrant/list', [
             'gender' => $gender, 
             //'data_registrant' => $registrant_data
         ]);
