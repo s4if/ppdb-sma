@@ -41,7 +41,8 @@
 <div class="container-fluid">
     <div class="row">
         <h2>Ketentuan Upload Dokumen Jalur Tahfidz dan Prestasi<br />
-        <small>(Halaman ini dipertuntukan bagi yang mendaftar seleksi jalur prestasi atau tahfidz)</small></h2>
+        <small>(Halaman ini dipertuntukan bagi yang mendaftar seleksi jalur prestasi atau tahfidz. 
+            Untuk Jalur Seleksi Rapor, Pengisian Data ada di bagian Isi Rapor)</small></h2>
         <ol>
             <li>Bagi calon Peserta Jalur Seleksi Tahfidz, dokumen yang diupload merupakan <strong>Sertifikat Hafalan</strong> 
                 yang diterbitkan oleh instansi yang berwenang (sekolah/lembaga pendidikan Al Qur'an).
@@ -130,7 +131,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="ModalImportLabel>">Upload Sertifikat/Surat Undangan/Surat Keterangan Seleksi OSN</h4>
+                <h4 class="modal-title" id="ModalImportLabel>">Upload Sertifikat Tahfidz/Hafalan/Prestasi Lomba</h4>
             </div>
             <div class="modal-body">
             <form class="form-horizontal wrapper form-data" role="form" method="post" action="<?=base_url();?>pendaftar/upload_cert/<?=$id?>" enctype="multipart/form-data">
@@ -138,8 +139,8 @@
                     <label class="col-sm-4 control-label">Jenis Dokumen :</label>
                     <div class="col-sm-8">
                         <select class="form-control" name="document_type">
-                            <option value="Sertifikat Kejuaraan">Sertifikat Kejuaraan</option>
-                            <option value="Surat Keterangan Keikutsertaan">Surat Keterangan Keikutsertaan</option>
+                            <option value="Sertifikat Kejuaraan">Sertifikat Prestasi/Kejuaraan/Lomba</option>
+                            <option value="Surat Keterangan Keikutsertaan">Surat Undangan/Pengumuman</option>
                             <option value="Sertifikat Hafalan">Sertifikat Hafalan</option>
                             <option value="Dokumen Lain">Dokumen Lain</option>
                         </select>
@@ -161,8 +162,10 @@
                     <label class="col-sm-4 control-label">Keterangan :</label>
                     <div class="col-sm-8">
                         <textarea class="form-control" name="note" rows="3"></textarea>
-                        <span  class="help-block">Masukkan keterangan Mata Pelajaran, Ranking Juara, 
-                        Tingkat Kejuaraan atau nomor Juz pada sertifikat Hafalan.</span>
+                        <span  class="help-block">Masukkan keterangan yang diperlukan 
+                        (Mata Pelajaran, Ranking Juara, Tingkat Kejuaraan, Penyelenggara, 
+                        untuk jalur seleksi prestasi, atau nomor/jumlah Juz, penerbit sertifikat, 
+                        pada sertifikat Hafalan untuk Jalur seleksi tahfidz)</span>
                     </div>
                 </div>
                 <div class="form-group">

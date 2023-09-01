@@ -336,8 +336,10 @@
                 <label class="col-sm-6 control-label"><strong class="text-warning">Pernyataan pemindahan Program</strong></label>
             </div>
             <div class="form-group ">
-                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">Apakah anda bersedia ditempatkan di 
-                    program reguler jika tidak lolos seleksi program Tahfidz?</p></label>
+                <label class="control-label col-sm-6 col-sm-offset-3"><p class="text-center">
+                    Apakah anda bersedia ditempatkan di Program/Kelas reguler jika tidak lolos seleksi 
+                    Program/Kelas Tahfidz?
+                </p></label>
             </div>
             <div class="form-group">
                 <div class="col-sm-6 col-sm-offset-3">
