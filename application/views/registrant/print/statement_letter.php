@@ -62,6 +62,8 @@
             border-width: 1px;
             border-color: #000000;
             border-collapse: collapse;
+            padding-left: 5px;
+            padding-right: 5px;
         }
         .utama table thead {
             border-width: 1px;
@@ -70,18 +72,24 @@
             background-color: #dedede;
             text-align: center;
             font-weight: bolder;
+            padding-left: 5px;
+            padding-right: 5px;
         }
         .utama table th {
             border-width: 1px;
             border-style: solid;
             border-color: #000000;
             background-color: #dedede;
+            padding-left: 5px;
+            padding-right: 5px;
         }
         .utama table td {
             border-width: 1px;
             border-style: solid;
             border-color: #000000;
             background-color: #ffffff;
+            padding-left: 5px;
+            padding-right: 5px;
         }
         td.surat{
             font:inherit;

@@ -77,7 +77,9 @@
                     </div>
                     <li class="pernyataan">
                         Bersedia mengikuti program Qurban minimal 1 kali selama menjadi siswa SMAIT Ihsanul 
-                        Fikri Mungkid pada Hari Raya Idul Adha tahun 2023/2024/2025 (Tahun dapat dipilih).
+                        Fikri Mungkid pada Hari Raya Idul Adha tahun <?php 
+                        $tampil_tahun = $tahun_masuk;
+                        echo $tampil_tahun . '/' . ++$tampil_tahun . '/' . ++$tampil_tahun;?> (Tahun dapat dipilih).
                     </li>
                     <li class="pernyataan">
                         Apabila setelah pendaftaran ulang ternyata anak saya mengundurkan diri, maka saya 
@@ -103,7 +105,7 @@
                 <div class="col-sm-4">
                     <?php
                     $infaq = $biaya_pilihan_minimal['infaq_pendidikan'];
-                    for ($i = 0; $i < 3; $i++):?>
+                    for ($i = 1; $i <= 3; $i++):?>
                         <div class="radio">
                             <label>
                                 <input type="radio" name="raw_icost" value="<?=$infaq;?>" 
@@ -193,7 +195,7 @@
                     for ($i = 0; $i < 3; $i++):?>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="raw_scost" value="<?=$wakaf;?>" 
+                                <input type="radio" name="raw_lcost" value="<?=$wakaf;?>" 
                                     <?php if(!empty($registrant->getLandDonation())):?>
                                         <?php if($registrant->getLandDonation() == $spp):?>
                                         checked

@@ -142,7 +142,8 @@ class MY_Controller extends CI_Controller
     {
         $converter = new \League\CommonMark\GithubFlavoredMarkdownConverter();
         $html = "";
-        $biaya = $this->config->item('biaya_tetap');
+        $biaya_tetap = $this->config->item('biaya_tetap');
+        $biaya = [];
         if ($laman_isi) {
             $lines = file(APPPATH.'views/markdown/surat_pernyataan.md');
             array_pop($lines);
@@ -157,8 +158,8 @@ class MY_Controller extends CI_Controller
             }
         } else {
             $md = file_get_contents(APPPATH.'views/markdown/surat_pernyataan.md');
+            $biaya = array_merge($biaya_tetap, $biaya_variabel);
             $total = array_sum($biaya);
-            $biaya = array_merge($biaya, $biaya_variabel);
             $biaya['total'] = $total;
         }
         $html = $converter->convert($md);
