@@ -90,6 +90,11 @@
             <td> <?=$registrant_data->getProgram()?> </td>
         </tr>
         <tr>
+            <td> Jalur Seleksi </td>
+            <td> &nbsp;:&nbsp; </td>
+            <td> <?=$registrant_data->getSelectionPath()?> </td>
+        </tr>
+        <tr>
             <td colspan="3">
                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editProfil" >
                     <span class="glyphicon glyphicon-edit"></span>
@@ -299,6 +304,45 @@
                                             <?php endif;?>
                                         <?php endif;?>>
                                     Tahfidz
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Jalur Seleksi :</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="selection_path">
+                                <option value="Jalur Reguler"
+                                        <?php if(property_exists($registrant_data, 'selectionPath')):?>
+                                            <?php if($registrant_data->getSelectionPath()=='Jalur Reguler'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    Jalur Reguler
+                                </option>
+                                <option value="Jalur Tahfidz"
+                                        <?php if(property_exists($registrant_data, 'selectionPath')):?>
+                                            <?php if($registrant_data->getSelectionPath()=='Jalur Tahfidz'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    Jalur Tahfidz
+                                </option>
+                                 <option value="Jalur Rapor"
+                                        <?php if(property_exists($registrant_data, 'selectionPath')):?>
+                                            <?php if($registrant_data->getSelectionPath()=='Jalur Rapor'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    Jalur Rapor
+                                </option>
+                                 <option value="Jalur Prestasi"
+                                        <?php if(property_exists($registrant_data, 'selectionPath')):?>
+                                            <?php if($registrant_data->getSelectionPath()=='Jalur Prestasi'): ?>
+                                                    selected
+                                            <?php endif;?>
+                                        <?php endif;?>>
+                                    Jalur Prestasi
                                 </option>
                             </select>
                         </div>
