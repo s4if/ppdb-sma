@@ -103,6 +103,11 @@
                 <td> <?=$registrant->getCp()?> </td>
             </tr>
             <tr>
+                <td> Jalur Seleksi </td>
+                <td> &nbsp;:&nbsp; </td>
+                <td> <?=$registrant->getSelectionPath()?> </td>
+            </tr>
+            <tr>
                 <td> Program </td>
                 <td> &nbsp;:&nbsp; </td>
                 <td> <?=$registrant->getProgram()?> </td>
@@ -382,6 +387,33 @@
         <div class="pembiayaan">
             <?=$tabel_surat;?>
         </div>
+        <?php
+        //  Qurban dalam pengerjaan
+        if (!($registrant->getQurban() == '-')) :
+            $arr_tahun = [];
+            $thn = $tahun_masuk+1;
+            for ($i = 0; $i < 3; $i++){
+                $sthn = "".$thn;
+                if (strpos($registrant->getQurban(), $sthn) !== false) {
+                    $arr_tahun[] = $thn;
+                }
+                $thn++;
+            }
+            $str_tahun = "";
+            if (count($arr_tahun) == 3) {
+                $str_tahun = $arr_tahun[0].', '.$arr_tahun[1].', dan '.$arr_tahun[2];
+            } elseif (count($arr_tahun) == 2) {
+                $str_tahun = $arr_tahun[0].' dan '.$arr_tahun[1];
+            } elseif (count($arr_tahun) == 1) {
+                $str_tahun = $arr_tahun[0];
+            }
+        ?>
+            <p>
+                <strong><u>Bersedia mengikuti program Qurban <?=count($arr_tahun)?> kali</u></strong> 
+                selama menjadi peserta didik SMAIT Ihsanul Fikri Mungkid pada Hari Raya Idul Adha tahun 
+                <strong><u><?=$str_tahun;?></u></strong>.
+            </p>
+        <?php endif;?>
         <hr />
     </div>
     <?php endif;?>
