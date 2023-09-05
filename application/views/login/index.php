@@ -339,7 +339,7 @@ body {
                                 </div>
                                 <hr />
                                 <span class="help-block">
-                                    <b>Jalur Seleksl Prestasi, Rapor, dan Tahfidz</b><br />
+                                    <b>Jalur Seleksi Prestasi, Rapor, dan Tahfidz</b><br />
                                     Pendaftaran : 1 September sd 1 Oktober 2023<br />
                                     Seleksi Administrasi : 2 Oktober sd 6 Oktober 2023<br />
                                     Pengumuman : 7 Oktober 2023<br />

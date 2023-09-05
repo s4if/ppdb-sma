@@ -153,6 +153,7 @@ class MY_Controller extends CI_Controller
                 'spp_bulanan',
                 'wakaf_tanah'
             ];
+            $biaya = $biaya_tetap;
             foreach ($default as $key){
                 $md = str_replace(':'.$key.':', '**[[Sesuai Pilihan]]**', $md);
             }
