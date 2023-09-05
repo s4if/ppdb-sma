@@ -90,7 +90,10 @@ class Model_registrant extends CI_Model {
     public function getArrayData($gender = NULL, $vars = [], $completed = false){
         $data = $this->getData($gender, null, $completed);
         if (empty($vars)){
-            $vars = ['id','regId', 'kode', 'username', 'name','gender','previousSchool','nisn', 'cp', 'program', 'rapor', 'finalized'];
+            $vars = [
+                'id','regId', 'kode', 'username', 'name','gender',
+                'previousSchool','nisn', 'cp', 'program', 'rapor',
+                'selectionPath', 'finalized'];
         }
         $arrData = [];
         foreach ($data as $registrant){
@@ -545,7 +548,7 @@ class Model_registrant extends CI_Model {
         $this->excel->addSheet($worksheet);
         
         // Siswa Start
-        $worksheet->mergeCells('A3:X3');
+        $worksheet->mergeCells('A3:Y3');
         $worksheet->setCellValue('A3', 'Data Siswa');
         $worksheet->getColumnDimension('A')->setAutoSize(true);
         $worksheet->SetCellValue('A4', 'No. Pendaftaran');
@@ -562,151 +565,153 @@ class Model_registrant extends CI_Model {
         $worksheet->getColumnDimension('G')->setAutoSize(true);
         $worksheet->SetCellValue('G4', 'Program');
         $worksheet->getColumnDimension('H')->setAutoSize(true);
-        $worksheet->SetCellValue('H4', 'TTL');
+        $worksheet->SetCellValue('H4', 'Jalur Seleksi');
         $worksheet->getColumnDimension('I')->setAutoSize(true);
-        $worksheet->SetCellValue('I4', 'Alamat');
+        $worksheet->SetCellValue('I4', 'TTL');
         $worksheet->getColumnDimension('J')->setAutoSize(true);
-        $worksheet->SetCellValue('J4', 'Golongan Darah');
+        $worksheet->SetCellValue('J4', 'Alamat');
         $worksheet->getColumnDimension('K')->setAutoSize(true);
-        $worksheet->SetCellValue('K4', 'Nomor Induk Kependudukan (NIK)');
+        $worksheet->SetCellValue('K4', 'Golongan Darah');
         $worksheet->getColumnDimension('L')->setAutoSize(true);
-        $worksheet->SetCellValue('L4', 'Nomor Kartu Keluarga (KK)');
+        $worksheet->SetCellValue('L4', 'Nomor Induk Kependudukan (NIK)');
         $worksheet->getColumnDimension('M')->setAutoSize(true);
-        $worksheet->SetCellValue('M4', 'Nomor Akte Kelahiran');
+        $worksheet->SetCellValue('M4', 'Nomor Kartu Keluarga (KK)');
         $worksheet->getColumnDimension('N')->setAutoSize(true);
-        $worksheet->SetCellValue('N4', 'Keluarga');
+        $worksheet->SetCellValue('N4', 'Nomor Akte Kelahiran');
         $worksheet->getColumnDimension('O')->setAutoSize(true);
-        $worksheet->SetCellValue('O4', 'Saudara');
+        $worksheet->SetCellValue('O4', 'Keluarga');
         $worksheet->getColumnDimension('P')->setAutoSize(true);
-        $worksheet->SetCellValue('P4', 'Kewarganegaraan');
+        $worksheet->SetCellValue('P4', 'Saudara');
         $worksheet->getColumnDimension('Q')->setAutoSize(true);
-        $worksheet->SetCellValue('Q4', 'Agama');
+        $worksheet->SetCellValue('Q4', 'Kewarganegaraan');
         $worksheet->getColumnDimension('R')->setAutoSize(true);
-        $worksheet->SetCellValue('R4', 'Tinggi');
+        $worksheet->SetCellValue('R4', 'Agama');
         $worksheet->getColumnDimension('S')->setAutoSize(true);
-        $worksheet->SetCellValue('S4', 'Berat');
+        $worksheet->SetCellValue('S4', 'Tinggi');
         $worksheet->getColumnDimension('T')->setAutoSize(true);
-        $worksheet->SetCellValue('T4', 'Riwayat Penyakit');
+        $worksheet->SetCellValue('T4', 'Berat');
         $worksheet->getColumnDimension('U')->setAutoSize(true);
-        $worksheet->SetCellValue('U4', 'Kelainan Jasmani');
+        $worksheet->SetCellValue('U4', 'Riwayat Penyakit');
         $worksheet->getColumnDimension('V')->setAutoSize(true);
-        $worksheet->SetCellValue('V4', 'Tinggal Bersama');
+        $worksheet->SetCellValue('V4', 'Kelainan Jasmani');
         $worksheet->getColumnDimension('W')->setAutoSize(true);
-        $worksheet->SetCellValue('W4', 'Hobi');
+        $worksheet->SetCellValue('W4', 'Tinggal Bersama');
         $worksheet->getColumnDimension('X')->setAutoSize(true);
-        $worksheet->SetCellValue('X4', 'Prestasi');
+        $worksheet->SetCellValue('X4', 'Hobi');
+        $worksheet->getColumnDimension('Y')->setAutoSize(true);
+        $worksheet->SetCellValue('Y4', 'Prestasi');
         // End Siswa
         
         // Start Ayah
-        $worksheet->mergeCells('Y3:AL3');
-        $worksheet->setCellValue('X3', 'Data Ayah');
-        $worksheet->getColumnDimension('Y')->setAutoSize(true);
-        $worksheet->SetCellValue('Y4', 'Nama');
+        $worksheet->mergeCells('Z3:AM3');
+        $worksheet->setCellValue('Z3', 'Data Ayah');
         $worksheet->getColumnDimension('Z')->setAutoSize(true);
-        $worksheet->SetCellValue('Z4', 'Status');
+        $worksheet->SetCellValue('Z4', 'Nama');
         $worksheet->getColumnDimension('AA')->setAutoSize(true);
-        $worksheet->SetCellValue('AA4', 'TTL');
+        $worksheet->SetCellValue('AA4', 'Status');
         $worksheet->getColumnDimension('AB')->setAutoSize(true);
-        $worksheet->SetCellValue('AB4', 'Alamat');
+        $worksheet->SetCellValue('AB4', 'TTL');
         $worksheet->getColumnDimension('AC')->setAutoSize(true);
-        $worksheet->SetCellValue('AC4', 'No. Telp');
+        $worksheet->SetCellValue('AC4', 'Alamat');
         $worksheet->getColumnDimension('AD')->setAutoSize(true);
-        $worksheet->SetCellValue('AD4', 'Hubungan dengan pendaftar');
+        $worksheet->SetCellValue('AD4', 'No. Telp');
         $worksheet->getColumnDimension('AE')->setAutoSize(true);
-        $worksheet->SetCellValue('AE4', 'Kewarganegaraan');
+        $worksheet->SetCellValue('AE4', 'Hubungan dengan pendaftar');
         $worksheet->getColumnDimension('AF')->setAutoSize(true);
-        $worksheet->SetCellValue('AF4', 'Agama');
+        $worksheet->SetCellValue('AF4', 'Kewarganegaraan');
         $worksheet->getColumnDimension('AG')->setAutoSize(true);
-        $worksheet->SetCellValue('AG4', 'Tingkat Pendidikan');
+        $worksheet->SetCellValue('AG4', 'Agama');
         $worksheet->getColumnDimension('AH')->setAutoSize(true);
-        $worksheet->SetCellValue('AH4', 'Pekerjaan');
+        $worksheet->SetCellValue('AH4', 'Tingkat Pendidikan');
         $worksheet->getColumnDimension('AI')->setAutoSize(true);
-        $worksheet->SetCellValue('AI4', 'Jabatan');
+        $worksheet->SetCellValue('AI4', 'Pekerjaan');
         $worksheet->getColumnDimension('AJ')->setAutoSize(true);
-        $worksheet->SetCellValue('AJ4', 'Instansi');
+        $worksheet->SetCellValue('AJ4', 'Jabatan');
         $worksheet->getColumnDimension('AK')->setAutoSize(true);
-        $worksheet->SetCellValue('AK4', 'Penghasilan');
+        $worksheet->SetCellValue('AK4', 'Instansi');
         $worksheet->getColumnDimension('AL')->setAutoSize(true);
-        $worksheet->SetCellValue('AL4', 'Jumlah Tanggungan');
+        $worksheet->SetCellValue('AL4', 'Penghasilan');
+        $worksheet->getColumnDimension('AM')->setAutoSize(true);
+        $worksheet->SetCellValue('AM4', 'Jumlah Tanggungan');
         // End Ayah
         
         // Start Ibu
-        $worksheet->mergeCells('AM3:AZ3');
-        $worksheet->setCellValue('AM3', 'Data Ibu');
-        $worksheet->getColumnDimension('AM')->setAutoSize(true);
-        $worksheet->SetCellValue('AM4', 'Nama');
+        $worksheet->mergeCells('AN3:BA3');
+        $worksheet->setCellValue('AN3', 'Data Ibu');
         $worksheet->getColumnDimension('AN')->setAutoSize(true);
-        $worksheet->SetCellValue('AN4', 'Status');
+        $worksheet->SetCellValue('AN4', 'Nama');
         $worksheet->getColumnDimension('AO')->setAutoSize(true);
-        $worksheet->SetCellValue('AO4', 'TTL');
+        $worksheet->SetCellValue('AO4', 'Status');
         $worksheet->getColumnDimension('AP')->setAutoSize(true);
-        $worksheet->SetCellValue('AP4', 'Alamat');
+        $worksheet->SetCellValue('AP4', 'TTL');
         $worksheet->getColumnDimension('AQ')->setAutoSize(true);
-        $worksheet->SetCellValue('AQ4', 'No. Telp');
+        $worksheet->SetCellValue('AQ4', 'Alamat');
         $worksheet->getColumnDimension('AR')->setAutoSize(true);
-        $worksheet->SetCellValue('AR4', 'Hubungan dengan pendaftar');
+        $worksheet->SetCellValue('AR4', 'No. Telp');
         $worksheet->getColumnDimension('AS')->setAutoSize(true);
-        $worksheet->SetCellValue('AS4', 'Kewarganegaraan');
+        $worksheet->SetCellValue('AS4', 'Hubungan dengan pendaftar');
         $worksheet->getColumnDimension('AT')->setAutoSize(true);
-        $worksheet->SetCellValue('AT4', 'Agama');
+        $worksheet->SetCellValue('AT4', 'Kewarganegaraan');
         $worksheet->getColumnDimension('AU')->setAutoSize(true);
-        $worksheet->SetCellValue('AU4', 'Tingkat Pendidikan');
+        $worksheet->SetCellValue('AU4', 'Agama');
         $worksheet->getColumnDimension('AV')->setAutoSize(true);
-        $worksheet->SetCellValue('AV4', 'Pekerjaan');
+        $worksheet->SetCellValue('AV4', 'Tingkat Pendidikan');
         $worksheet->getColumnDimension('AW')->setAutoSize(true);
-        $worksheet->SetCellValue('AW4', 'Jabatan');
+        $worksheet->SetCellValue('AW4', 'Pekerjaan');
         $worksheet->getColumnDimension('AX')->setAutoSize(true);
-        $worksheet->SetCellValue('AX4', 'Instansi');
+        $worksheet->SetCellValue('AX4', 'Jabatan');
         $worksheet->getColumnDimension('AY')->setAutoSize(true);
-        $worksheet->SetCellValue('AY4', 'Penghasilan');
+        $worksheet->SetCellValue('AY4', 'Instansi');
         $worksheet->getColumnDimension('AZ')->setAutoSize(true);
-        $worksheet->SetCellValue('AZ4', 'Jumlah Tanggungan');
+        $worksheet->SetCellValue('AZ4', 'Penghasilan');
+        $worksheet->getColumnDimension('BA')->setAutoSize(true);
+        $worksheet->SetCellValue('BA4', 'Jumlah Tanggungan');
         // End Ibu
         
         // Start Wali
-        $worksheet->mergeCells('BA3:BN3');
-        $worksheet->setCellValue('BA3', 'Data Wali');
-        $worksheet->getColumnDimension('BA')->setAutoSize(true);
-        $worksheet->SetCellValue('BA4', 'Nama');
+        $worksheet->mergeCells('BB3:BO3');
+        $worksheet->setCellValue('BB3', 'Data Wali');
         $worksheet->getColumnDimension('BB')->setAutoSize(true);
-        $worksheet->SetCellValue('BB4', 'Status');
+        $worksheet->SetCellValue('BB4', 'Nama');
         $worksheet->getColumnDimension('BC')->setAutoSize(true);
-        $worksheet->SetCellValue('BC4', 'TTL');
+        $worksheet->SetCellValue('BC4', 'Status');
         $worksheet->getColumnDimension('BD')->setAutoSize(true);
-        $worksheet->SetCellValue('BD4', 'Alamat');
+        $worksheet->SetCellValue('BD4', 'TTL');
         $worksheet->getColumnDimension('BE')->setAutoSize(true);
-        $worksheet->SetCellValue('BE4', 'No. Telp');
+        $worksheet->SetCellValue('BE4', 'Alamat');
         $worksheet->getColumnDimension('BF')->setAutoSize(true);
-        $worksheet->SetCellValue('BF4', 'Hubungan dengan pendaftar');
+        $worksheet->SetCellValue('BF4', 'No. Telp');
         $worksheet->getColumnDimension('BG')->setAutoSize(true);
-        $worksheet->SetCellValue('BG4', 'Kewarganegaraan');
+        $worksheet->SetCellValue('BG4', 'Hubungan dengan pendaftar');
         $worksheet->getColumnDimension('BH')->setAutoSize(true);
-        $worksheet->SetCellValue('BH4', 'Agama');
+        $worksheet->SetCellValue('BH4', 'Kewarganegaraan');
         $worksheet->getColumnDimension('BI')->setAutoSize(true);
-        $worksheet->SetCellValue('BI4', 'Tingkat Pendidikan');
+        $worksheet->SetCellValue('BI4', 'Agama');
         $worksheet->getColumnDimension('BJ')->setAutoSize(true);
-        $worksheet->SetCellValue('BJ4', 'Pekerjaan');
+        $worksheet->SetCellValue('BJ4', 'Tingkat Pendidikan');
         $worksheet->getColumnDimension('BK')->setAutoSize(true);
-        $worksheet->SetCellValue('BK4', 'Jabatan');
+        $worksheet->SetCellValue('BK4', 'Pekerjaan');
         $worksheet->getColumnDimension('BL')->setAutoSize(true);
-        $worksheet->SetCellValue('BL4', 'Instansi');
+        $worksheet->SetCellValue('BL4', 'Jabatan');
         $worksheet->getColumnDimension('BM')->setAutoSize(true);
-        $worksheet->SetCellValue('BM4', 'Penghasilan');
+        $worksheet->SetCellValue('BM4', 'Instansi');
         $worksheet->getColumnDimension('BN')->setAutoSize(true);
-        $worksheet->SetCellValue('BN4', 'Jumlah Tanggungan');
+        $worksheet->SetCellValue('BN4', 'Penghasilan');
+        $worksheet->getColumnDimension('BO')->setAutoSize(true);
+        $worksheet->SetCellValue('BO4', 'Jumlah Tanggungan');
         // End Wali
         
         // Start Pembayaran
-        $worksheet->mergeCells('BO3:BR3');
-        $worksheet->setCellValue('BO3', 'Data Pembayaran');
-        $worksheet->getColumnDimension('BO')->setAutoSize(true);
-        $worksheet->SetCellValue('BO4', 'Infaq Pendidikan');
+        $worksheet->mergeCells('BP3:BS3');
+        $worksheet->setCellValue('BP3', 'Data Pembayaran');
         $worksheet->getColumnDimension('BP')->setAutoSize(true);
-        $worksheet->SetCellValue('BP4', 'Iuran Dana Pendidikan (IDP) bulanan');
+        $worksheet->SetCellValue('BP4', 'Infaq Pendidikan');
         $worksheet->getColumnDimension('BQ')->setAutoSize(true);
-        $worksheet->SetCellValue('BQ4', 'Wakaf Tanah');
+        $worksheet->SetCellValue('BQ4', 'Iuran Dana Pendidikan (IDP) bulanan');
         $worksheet->getColumnDimension('BR')->setAutoSize(true);
-        $worksheet->SetCellValue('BR4', 'Keikutsertaan Qurban');
+        $worksheet->SetCellValue('BR4', 'Wakaf Tanah');
+        $worksheet->getColumnDimension('BS')->setAutoSize(true);
+        $worksheet->SetCellValue('BS4', 'Keikutsertaan Qurban');
         // End Pembayaran
         
         // Start Mbatik Isi
@@ -722,92 +727,93 @@ class Model_registrant extends CI_Model {
             $worksheet->SetCellValue('E'.$row, ($registrant->getGender() == 'L') ? 'Ikhwan' : 'Akhwat');
             $worksheet->SetCellValue('F'.$row, $registrant->getPreviousSchool());
             $worksheet->SetCellValue('G'.$row, $registrant->getProgram());
+            $worksheet->SetCellValue('H'.$row, $registrant->getSelectionPath());
             if(!empty($rData)){
-                $worksheet->SetCellValue('H'.$row, ucfirst($rData->getBirthPlace()).', '.tgl_indo($rData->getBirthDate()->format('Y m d')));
-                $worksheet->SetCellValue('I'.$row, $rData->getAddress());
-                $worksheet->SetCellValue('J'.$row, $rData->getBloodType());
-                $worksheet->SetCellValue('K'.$row, "'".$rData->getNik());
-                $worksheet->SetCellValue('L'.$row, "'".$rData->getNkk());
-                $worksheet->SetCellValue('M'.$row, "'".$rData->getNak());
-                $worksheet->SetCellValue('N'.$row, ucwords($rData->getFamilyCondition()));// SAMPAI SINI
+                $worksheet->SetCellValue('I'.$row, ucfirst($rData->getBirthPlace()).', '.tgl_indo($rData->getBirthDate()->format('Y m d')));
+                $worksheet->SetCellValue('J'.$row, $rData->getAddress());
+                $worksheet->SetCellValue('K'.$row, $rData->getBloodType());
+                $worksheet->SetCellValue('L'.$row, "'".$rData->getNik());
+                $worksheet->SetCellValue('M'.$row, "'".$rData->getNkk());
+                $worksheet->SetCellValue('N'.$row, "'".$rData->getNak());
+                $worksheet->SetCellValue('O'.$row, ucwords($rData->getFamilyCondition()));// SAMPAI SINI
                 $str_sibling = "";
                 if (!empty($rData->getChildOrder())){
                     $str_sibling = "Anak ke ".$rData->getChildOrder().
                             " dari ".($rData->getSiblingsCount())." bersaudara";
                 }
-                $worksheet->SetCellValue('O'.$row, ucwords($str_sibling));//edit
-                $worksheet->SetCellValue('P'.$row, strtoupper($rData->getNationality()));
-                $worksheet->SetCellValue('Q'.$row, ucfirst($rData->getReligion()));
-                $worksheet->SetCellValue('R'.$row, $rData->getHeight());
-                $worksheet->SetCellValue('S'.$row, $rData->getWeight());
-                $worksheet->SetCellValue('T'.$row, $rData->getHospitalSheets(false));
-                $worksheet->SetCellValue('U'.$row, $rData->getPhysicalAbnormalities(false));
-                $worksheet->SetCellValue('V'.$row, ucwords($rData->getStayWith()));
-                $worksheet->SetCellValue('W'.$row, $rData->getHobbies(false));
-                $worksheet->SetCellValue('X'.$row, $rData->getAchievements(false));
+                $worksheet->SetCellValue('P'.$row, ucwords($str_sibling));//edit
+                $worksheet->SetCellValue('Q'.$row, strtoupper($rData->getNationality()));
+                $worksheet->SetCellValue('R'.$row, ucfirst($rData->getReligion()));
+                $worksheet->SetCellValue('S'.$row, $rData->getHeight());
+                $worksheet->SetCellValue('T'.$row, $rData->getWeight());
+                $worksheet->SetCellValue('U'.$row, $rData->getHospitalSheets(false));
+                $worksheet->SetCellValue('V'.$row, $rData->getPhysicalAbnormalities(false));
+                $worksheet->SetCellValue('W'.$row, ucwords($rData->getStayWith()));
+                $worksheet->SetCellValue('X'.$row, $rData->getHobbies(false));
+                $worksheet->SetCellValue('Y'.$row, $rData->getAchievements(false));
             }
             
             // Registrant Payment
-            $worksheet->SetCellValue('BO'.$row, $registrant->getInitialCost());
-            $worksheet->SetCellValue('BP'.$row, $registrant->getSubscriptionCost());
-            $worksheet->SetCellValue('BQ'.$row, $registrant->getLandDonation());
-            $worksheet->SetCellValue('BR'.$row, $registrant->getQurban());
+            $worksheet->SetCellValue('BP'.$row, $registrant->getInitialCost());
+            $worksheet->SetCellValue('BQ'.$row, $registrant->getSubscriptionCost());
+            $worksheet->SetCellValue('BR'.$row, $registrant->getLandDonation());
+            $worksheet->SetCellValue('BS'.$row, $registrant->getQurban());
             
             // Registrant Father
             $fData = $registrant->getFather();
             if(!empty($fData)){
-                $worksheet->SetCellValue('Y'.$row, $fData->getName());
-                $worksheet->SetCellValue('Z'.$row, $fData->getStatus());
-                $worksheet->SetCellValue('AA'.$row, ucfirst($fData->getBirthPlace()).', '.$fData->getBirthDate());
-                $worksheet->SetCellValue('AB'.$row, $fData->getAddress());
-                $worksheet->SetCellValue('AC'.$row, "'".$fData->getContact());
-                $worksheet->SetCellValue('AD'.$row, ucwords($fData->getRelation()));
-                $worksheet->SetCellValue('AE'.$row, strtoupper($fData->getNationality()));
-                $worksheet->SetCellValue('AF'.$row, ucwords($fData->getReligion()));
-                $worksheet->SetCellValue('AG'.$row, $fData->getEducationLevel());
-                $worksheet->SetCellValue('AH'.$row, $fData->getJob());
-                $worksheet->SetCellValue('AI'.$row, $fData->getPosition());
-                $worksheet->SetCellValue('AJ'.$row, $fData->getCompany());
-                $worksheet->SetCellValue('AK'.$row, $fData->getIncome());//number_format($fData->getIncome(), 0, ',', '.'));
-                $worksheet->SetCellValue('AL'.$row, $fData->getBurdenCount());
+                $worksheet->SetCellValue('Z'.$row, $fData->getName());
+                $worksheet->SetCellValue('AA'.$row, $fData->getStatus());
+                $worksheet->SetCellValue('AB'.$row, ucfirst($fData->getBirthPlace()).', '.$fData->getBirthDate());
+                $worksheet->SetCellValue('AC'.$row, $fData->getAddress());
+                $worksheet->SetCellValue('AD'.$row, "'".$fData->getContact());
+                $worksheet->SetCellValue('AE'.$row, ucwords($fData->getRelation()));
+                $worksheet->SetCellValue('AF'.$row, strtoupper($fData->getNationality()));
+                $worksheet->SetCellValue('AG'.$row, ucwords($fData->getReligion()));
+                $worksheet->SetCellValue('AH'.$row, $fData->getEducationLevel());
+                $worksheet->SetCellValue('AI'.$row, $fData->getJob());
+                $worksheet->SetCellValue('AJ'.$row, $fData->getPosition());
+                $worksheet->SetCellValue('AK'.$row, $fData->getCompany());
+                $worksheet->SetCellValue('AL'.$row, $fData->getIncome());//number_format($fData->getIncome(), 0, ',', '.'));
+                $worksheet->SetCellValue('AM'.$row, $fData->getBurdenCount());
             }
             
             // Registrant Mother
             $mData = $registrant->getMother();
             if(!empty($mData)){
-                $worksheet->SetCellValue('AM'.$row, $mData->getName());
-                $worksheet->SetCellValue('AN'.$row, $mData->getStatus());
-                $worksheet->SetCellValue('AO'.$row, ucfirst($mData->getBirthPlace()).', '.$mData->getBirthDate());
-                $worksheet->SetCellValue('AP'.$row, $mData->getAddress());
-                $worksheet->SetCellValue('AQ'.$row, "'".$mData->getContact());
-                $worksheet->SetCellValue('AR'.$row, ucwords($mData->getRelation()));
-                $worksheet->SetCellValue('AS'.$row, strtoupper($mData->getNationality()));
-                $worksheet->SetCellValue('AT'.$row, ucwords($mData->getReligion()));
-                $worksheet->SetCellValue('AU'.$row, $mData->getEducationLevel());
-                $worksheet->SetCellValue('AV'.$row, $mData->getJob());
-                $worksheet->SetCellValue('AW'.$row, $mData->getPosition());
-                $worksheet->SetCellValue('AX'.$row, $mData->getCompany());
-                $worksheet->SetCellValue('AY'.$row, $mData->getIncome());//number_format($mData->getIncome(), 0, ',', '.'));
-                $worksheet->SetCellValue('AZ'.$row, $mData->getBurdenCount());
+                $worksheet->SetCellValue('AN'.$row, $mData->getName());
+                $worksheet->SetCellValue('AO'.$row, $mData->getStatus());
+                $worksheet->SetCellValue('AP'.$row, ucfirst($mData->getBirthPlace()).', '.$mData->getBirthDate());
+                $worksheet->SetCellValue('AQ'.$row, $mData->getAddress());
+                $worksheet->SetCellValue('AR'.$row, "'".$mData->getContact());
+                $worksheet->SetCellValue('AS'.$row, ucwords($mData->getRelation()));
+                $worksheet->SetCellValue('AT'.$row, strtoupper($mData->getNationality()));
+                $worksheet->SetCellValue('AU'.$row, ucwords($mData->getReligion()));
+                $worksheet->SetCellValue('AV'.$row, $mData->getEducationLevel());
+                $worksheet->SetCellValue('AW'.$row, $mData->getJob());
+                $worksheet->SetCellValue('AX'.$row, $mData->getPosition());
+                $worksheet->SetCellValue('AY'.$row, $mData->getCompany());
+                $worksheet->SetCellValue('AZ'.$row, $mData->getIncome());//number_format($mData->getIncome(), 0, ',', '.'));
+                $worksheet->SetCellValue('BA'.$row, $mData->getBurdenCount());
             }
             
             // Registrant Guardian
             $gData = $registrant->getGuardian();
             if(!empty($gData)){
-                $worksheet->SetCellValue('BA'.$row, $gData->getName());
-                $worksheet->SetCellValue('BB'.$row, $gData->getStatus());
-                $worksheet->SetCellValue('BC'.$row, ucfirst($gData->getBirthPlace()).', '.$gData->getBirthDate());
-                $worksheet->SetCellValue('BD'.$row, $gData->getAddress());
-                $worksheet->SetCellValue('BE'.$row, "'".$gData->getContact());
-                $worksheet->SetCellValue('BF'.$row, ucwords($gData->getRelation()));
-                $worksheet->SetCellValue('BG'.$row, strtoupper($gData->getNationality()));
-                $worksheet->SetCellValue('BH'.$row, ucwords($gData->getReligion()));
-                $worksheet->SetCellValue('BI'.$row, $gData->getEducationLevel());
-                $worksheet->SetCellValue('BJ'.$row, $gData->getJob());
-                $worksheet->SetCellValue('BK'.$row, $gData->getPosition());
-                $worksheet->SetCellValue('BL'.$row, $gData->getCompany());
-                $worksheet->SetCellValue('BM'.$row, $gData->getIncome());//number_format($gData->getIncome(), 0, ',', '.'));
-                $worksheet->SetCellValue('BN'.$row, $gData->getBurdenCount());
+                $worksheet->SetCellValue('BB'.$row, $gData->getName());
+                $worksheet->SetCellValue('BC'.$row, $gData->getStatus());
+                $worksheet->SetCellValue('BD'.$row, ucfirst($gData->getBirthPlace()).', '.$gData->getBirthDate());
+                $worksheet->SetCellValue('BE'.$row, $gData->getAddress());
+                $worksheet->SetCellValue('BF'.$row, "'".$gData->getContact());
+                $worksheet->SetCellValue('BG'.$row, ucwords($gData->getRelation()));
+                $worksheet->SetCellValue('BH'.$row, strtoupper($gData->getNationality()));
+                $worksheet->SetCellValue('BI'.$row, ucwords($gData->getReligion()));
+                $worksheet->SetCellValue('BJ'.$row, $gData->getEducationLevel());
+                $worksheet->SetCellValue('BK'.$row, $gData->getJob());
+                $worksheet->SetCellValue('BL'.$row, $gData->getPosition());
+                $worksheet->SetCellValue('BM'.$row, $gData->getCompany());
+                $worksheet->SetCellValue('BN'.$row, $gData->getIncome());//number_format($gData->getIncome(), 0, ',', '.'));
+                $worksheet->SetCellValue('BO'.$row, $gData->getBurdenCount());
             }
             
             // Iteration of Rows

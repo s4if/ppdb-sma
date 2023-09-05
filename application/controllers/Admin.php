@@ -155,6 +155,7 @@ class Admin extends MY_Controller {
             $row[] = ($registrant['gender'] == 'L') ? 'Ikhwan' : 'Akhwat';
             $row[] = $registrant['previousSchool'];
             $row[] = ucfirst($registrant['program']);
+            $row[] = ucfirst($registrant['selectionPath']);
             $father = $registrant['object']->getFather();
             if(is_null($father)){$father =  new ParentEntity();}
             $mother = $registrant['object']->getMother();
