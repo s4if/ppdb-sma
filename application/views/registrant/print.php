@@ -115,17 +115,12 @@ img.foto-profil {
                                     <th class="text-center">Paraf</th>
                                 </tr>
                                 <tr>
-                                    <td>Tes Potensi Akademik (TPA)</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
                                     <td>
                                         Tes Kemampuan Dasar:
                                         <ul>
+                                            <li>TPS (Bahasa Indonesia dan Logika dasar)</li>
                                             <li>Matematika</li>
                                             <li>Bahasa Inggris</li>
-                                            <li>IPA</li>
-                                            <li>IPS</li>
                                         </ul>
                                     </td>
                                     <td>&nbsp;</td>
