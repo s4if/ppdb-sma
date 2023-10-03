@@ -136,7 +136,7 @@
     <img class="foto-header" src="<?=  FCPATH.'assets/images/header.jpg';?>" alt="foto-header">
     <h1 class="header-print">DATA PENDAFTAR</h1>
     <h1 class="header-print">PENERIMAAN PESERTA DIDIK BARU (PPDB)</h2>
-    <h1 class="header-print">TAHUN PELAJARAN 2023/2024</h2>
+    <h1 class="header-print">TAHUN PELAJARAN <?=$tahun_masuk.'/'.($tahun_masuk+1)?></h2>
     <div class="page-content">
         <h2 class="header-section">Foto Pendaftar</h2>
         <img class="foto-profil" src="<?=FCPATH.'data/foto/'.$id.'.png';?>" alt="Foto 3x4">

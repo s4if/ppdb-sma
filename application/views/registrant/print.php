@@ -54,7 +54,7 @@ img.foto-profil {
                         <div class="row">
                             <div class="col-sm-12">
                                 <p style="text-align: center;">
-                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:2023/2024 telah berhasil.<br />
+                                    Registrasi PPDB SMAIT Ihsanul Fikri Mungkid TA:<?=$tahun_masuk.'/'.($tahun_masuk+1)?> telah berhasil.<br />
                                     Data yang ter-input adalah sebagai berikut :
                                 </p>
                                 <table class="table table-responsive table-condensed table-borderless">
