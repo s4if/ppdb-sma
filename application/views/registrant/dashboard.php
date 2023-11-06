@@ -51,7 +51,7 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
-        Seleksi akan dilaksanakan hari sabtu tanggal 26 November 2023<br/>
+        Seleksi akan dilaksanakan hari ahad tanggal 26 November 2023<br/>
         Hasil tes akan diumumkan tanggal 4 Desember 2023<br/>
         Silakan unduh dan cetak kartu serta formulir pendaftaran. <!-- Kemudian bergabung di Grup 
         Whatsapp Info PPDB dengan menghubungi nomor:  <u>085159201299</u>, 
