@@ -521,7 +521,7 @@ $config['biaya_tetap'] = [
 	'dana_perlengkapan' => 1500000,
 	'dana_buku' => 1500000,
 	'dana_kegiatan' => 1600000,
-	'dana_kesehatan' => 200000,
+	'dana_kesehatan' => 300000,
 	'majalah_kalender' => 150000,
 	'uang_tabungan' => 300000
 ];
