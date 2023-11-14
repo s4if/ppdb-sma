@@ -746,11 +746,11 @@ class Model_registrant extends CI_Model {
                 $worksheet->SetCellValue('R'.$row, ucfirst($rData->getReligion()));
                 $worksheet->SetCellValue('S'.$row, $rData->getHeight());
                 $worksheet->SetCellValue('T'.$row, $rData->getWeight());
-                $worksheet->SetCellValue('U'.$row, $rData->getHospitalSheets(false));
-                $worksheet->SetCellValue('V'.$row, $rData->getPhysicalAbnormalities(false));
+                $worksheet->setCellValueExplicit('U'.$row, $rData->getHospitalSheets(false), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $worksheet->setCellValueExplicit('V'.$row, $rData->getPhysicalAbnormalities(false), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
                 $worksheet->SetCellValue('W'.$row, ucwords($rData->getStayWith()));
-                $worksheet->SetCellValue('X'.$row, $rData->getHobbies(false));
-                $worksheet->SetCellValue('Y'.$row, $rData->getAchievements(false));
+                $worksheet->setCellValueExplicit('X'.$row, $rData->getHobbies(false), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+                $worksheet->setCellValueExplicit('Y'.$row, $rData->getAchievements(false), \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
             }
             
             // Registrant Payment
