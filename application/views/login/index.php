@@ -221,16 +221,17 @@ body {
     ?>
 </div>
 <?php endif; ?>
-            <!-- <div class="alert alert-warning alert-dismissible">
+            <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p class=" text-center"><strong>Pengumuman:</strong><br/>
-                Mohon maaf, pendaftaran telah ditutup pada tanggal 26 Januari 2022 Pukul 23:59 WIB.<br/>
+                Mohon maaf, pendaftaran Gelombang 1 telah ditutup<br/>
                 Peserta yang sudah mendaftar masih bisa masuk & melengkapi data, tetapi peserta baru sudah tidak bisa
                 melakukan pendaftaran.<br/>
+                Pendaftaran Gelombang 2 akan dibuka kembali setelah Tes Masuk Gelombang 1 dilaksanakan (27 November 2023)<br/>
                 <i>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid.</i></p>
-            </div> -->
+            </div>
 
-            <div class="alert alert-info alert-dismissible">
+            <!-- <div class="alert alert-info alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4><b>Langkah Mendaftar PPDB SMAIT Ihsanul Fikri</b></h4>
                 <ol>
@@ -250,7 +251,7 @@ body {
                         Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>+6285159200900</u> (ustadz Fuad) atau <u>+6281237238858</u> (ustadzah Iis)
                     </li>
                 </ol>
-            </div>
+            </div> -->
 </div>
         </div>
     	<div class="row">
@@ -261,9 +262,9 @@ body {
                             <div class="col-xs-6">
                                 <a href="#" class="active" id="login-form-link">Masuk</a>
                             </div>
-                            <div class="col-xs-6">
+                            <!-- <div class="col-xs-6">
                                 <a href="#" id="register-form-link">Daftar</a>
-                            </div>
+                            </div> -->
                         </div>
                         <hr>
                     </div>
