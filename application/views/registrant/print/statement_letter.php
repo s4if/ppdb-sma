@@ -256,7 +256,7 @@
                 <td style="width: 35%; height: 60px; text-align: center"></td>
                 <td style="width: 30%; height: 60px; text-align: center"></td>
                 <td style="width: 35%; height: 60px; text-align: center; font-size: 0.65em;
-                    font-style: italic;">Materai Rp. 6.000,-</td>
+                    font-style: italic;">Materai Rp. 10.000,-</td>
             </tr>
             <tr>
                 <td style="width: 35%; text-align: center">...............................</td>
