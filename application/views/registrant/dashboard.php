@@ -50,9 +50,9 @@
     <?php elseif($registrant->getFinalized()) :?>
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
-        Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
+        Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/><!--
         Seleksi akan dilaksanakan hari ahad tanggal 25 Januari 2024<br/>
-        Hasil tes akan diumumkan tanggal 5 Februari 2024<br/>
+        Hasil tes akan diumumkan tanggal 5 Februari 2024<br/> -->
         Silakan unduh dan cetak kartu serta formulir pendaftaran. <!-- Kemudian bergabung di Grup 
         Whatsapp Info PPDB dengan menghubungi nomor:  <u>085159201299</u>, 
         dengan menunjukan Screenshot/Foto Kartu Pendaftaran. -->
