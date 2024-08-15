@@ -40,11 +40,11 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-        <h2>Ketentuan Upload Dokumen Jalur Tahfidz dan Prestasi<br />
-        <small>(Halaman ini dipertuntukan bagi yang mendaftar seleksi jalur prestasi atau tahfidz. 
+        <h2>Ketentuan Upload Dokumen Jalur Prestasi dan Hafalan Qur'an<br />
+        <small>(Halaman ini dipertuntukan bagi yang mendaftar seleksi jalur prestasi atau hafalan Qur'an. 
             Untuk Jalur Seleksi Rapor, Pengisian Data ada di bagian Isi Rapor)</small></h2>
         <ol>
-            <li>Bagi calon Peserta Jalur Seleksi Tahfidz, dokumen yang diupload merupakan <strong>Sertifikat Hafalan</strong> 
+            <li>Bagi calon Peserta Jalur Seleksi Hafalan Qur'an, dokumen yang diupload merupakan <strong>Sertifikat Hafalan</strong> 
                 yang diterbitkan oleh instansi yang berwenang (sekolah/lembaga pendidikan Al Qur'an).
             </li>
             <li>
@@ -56,10 +56,11 @@
                 prestasi atau jumlah hafalan yang dimiliki.
             </li>
             <li>
-                Upload dokumen ini ditutup pada <strong>1 oktober 2023</strong> kemudian  akan diseleksi 
-                secara seksama oleh tim seleksi yang hasilnya akan diumumkan pada tanggal 
-                <strong>7 Oktober 2023</strong> sesuai panduan Seleksi Jalur Prestasi 
-                dan Tahfidz di halaman web <a href="https://smait.ihsanulfikri.sch.id">smait.ihsanulfikri.sch.id</a>
+                Upload dokumen ini ditutup pada <strong>17 September 2024</strong> kemudian 
+                akan diperpanjang jika kuota beasiswa masih ada. <br>
+                Dokumen yang masuk seksama oleh tim seleksi yang hasilnya akan diumumkan pada tanggal 
+                <strong>24 September 2024</strong> sesuai panduan Seleksi Jalur Prestasi 
+                dan Hafalan Qur'an di halaman web <a href="https://smait.ihsanulfikri.sch.id">smait.ihsanulfikri.sch.id</a>
             </li>
             <li>
                 Jika calon peserta didik menemukan kesalahan saat upload dokumen, calon peserta didik 

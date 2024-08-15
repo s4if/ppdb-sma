@@ -92,7 +92,7 @@
                 </a>
                 <a class="btn btn-sm btn-success <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" href="<?= base_url().$id.'/sertifikat'?>">
                     <span class="glyphicon glyphicon-upload"></span>
-                    Upload Persyaratan Jalur Prestasi dan Jalur Tahfidz
+                    Upload Persyaratan Jalur Prestasi dan Jalur Hafalan Qur'an
                 </a>
             </td>
         </tr>
@@ -622,19 +622,19 @@
                 <select class="form-control" name="selection_path">
                     <option value="Jalur Reguler"
                             <?php if (property_exists($registrant, 'selectionPath')): ?>
-                                <?php if ($registrant->getSelectionPath() == 'Jalur Reguler'): ?>
+                                <?php if ($registrant->getSelectionPath() == 'Jalur Tes Tulis'): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
-                        Jalur Reguler
+                        Jalur Tes Tulis
                     </option>
                     <option value="Jalur Tahfidz"
                             <?php if (property_exists($registrant, 'selectionPath')): ?>
-                                <?php if ($registrant->getSelectionPath() == 'Jalur Tahfidz'): ?>
+                                <?php if ($registrant->getSelectionPath() == "Jalur Hafalan Qur'an"): ?>
                                         selected
                                 <?php endif;?>
                             <?php endif;?>>
-                        Jalur Tahfidz
+                        Jalur Hafalan Qur'an
                     </option>
                     <option value="Jalur Rapor"
                             <?php if (property_exists($registrant, 'selectionPath')): ?>

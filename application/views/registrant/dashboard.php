@@ -61,7 +61,7 @@
         Unduh Kartu Dan Formulir Pendaftaran</a>
     <a class="btn btn-warning" href="<?= base_url().$id.'/sertifikat'?>">
         <span class="glyphicon glyphicon-upload"></span>
-        Upload Persyaratan Jalur Prestasi/Beasiswa Unggulan
+        Upload Persyaratan Jalur Hafalan/Prestasi
     </a>
     <?php elseif(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
