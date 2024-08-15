@@ -49,7 +49,7 @@ class Model_1_registrant_test extends TestCase {
             'prev_school' => 'SMPIT Ihsanul Fikri Kt Magelang',
             'cp' => '084738172839',
             'program' => 'Tahfidz',
-            'selection_path' => 'Jalur Tahfidz'
+            'selection_path' => 'Jalur Hafalan Qur\'an'
         ];
         // test insert registrant
         $this->assertTrue($this->obj->insertData($data));
