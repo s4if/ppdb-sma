@@ -400,6 +400,11 @@ body {
                                         </select>
                                     </div>
                                 </div>
+                                <span class="help-block">
+                                    Bagi pendaftar yang tidak lolos melalui Jalur Hafalan, Rapor, atau Prestasi, 
+                                    Anda dapat melanjutkan ke tes tulis tanpa dikenakan biaya pendaftaran tambahan 
+                                    dan tanpa perlu mengisi formulir lagi.
+                                </span>
                                 <div class="form-group">
                                     <label class=" control-label">Program :</label>
                                     <div class="">
