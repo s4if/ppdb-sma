@@ -98,7 +98,7 @@
         <li>Data Orang Tua</li>
         <li>Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)</li>
         <li>Data Surat Pernyataan</li>
-        <li>Data Sertifikat Lomba (untuk jalur seleksi Prestasi) atau Sertifikat Hafalan (untuk Jalur Seleksi Tahfidz)</li>
+        <li>Data Sertifikat Lomba (untuk jalur seleksi Prestasi) atau Sertifikat Hafalan (untuk Jalur Seleksi Hafalan Qur'an)</li>
     </ul>
     </p>
     <?php endif;?>

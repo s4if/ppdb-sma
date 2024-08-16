@@ -318,7 +318,7 @@ class Pendaftar_test extends TestCase
                 'other_scost' => 1300000,
                 'raw_lcost' => -999,
                 'other_lcost' => 2000000,
-                'qurban'=> '2024-2025-2026',
+                'qurban'=> '2025-2026-2027',
                 'main_parent' => 'father'
             ];
             $this->request('POST', 'pendaftar/isi_pernyataan/1', $data);

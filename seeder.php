@@ -52,7 +52,7 @@ $reg->setProgram('Reguler');
 $reg->setRegistrationTime(new DateTime('now'));
 $reg->setGelombang(1);
 $reg->setSelectionPath(1);
-$reg->setEntryYear(2024);
+$reg->setEntryYear(2025);
 $em->persist($reg);
 $em->flush();
 // Payment
