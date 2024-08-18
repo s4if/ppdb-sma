@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Registrasi PPDB <?=$nama_sekolah;?> <?=$nama_gelombang;?> Tahun Ajaran <?=$tahun_ajaran?></title>
+<title>Registrasi PPDB <?=$nama_sekolah;?> <!-- <?=$nama_gelombang;?> --> Tahun Ajaran <?=$tahun_ajaran?></title>
 
 <!-- Di server, jangan lupa untuk diganti menjadi CDN -->
 
@@ -170,7 +170,7 @@ body {
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand brand-shifted" href="http://smait.ihsanulfikri.sch.id/">
-                    PPDB <?=$nama_sekolah;?> <?=$nama_gelombang;?> Tahun Ajaran <?=$tahun_ajaran?></a>
+                    PPDB <?=$nama_sekolah;?> <!-- <?=$nama_gelombang;?> --> Tahun Ajaran <?=$tahun_ajaran?></a>
             </div>
             <!-- Navbar collapse -->
             <div class="navbar-collapse collapse">
