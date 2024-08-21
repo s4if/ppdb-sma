@@ -26,7 +26,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-2425.webp';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2526.webp';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -248,7 +248,7 @@ body {
                         Gunakan <b>username</b> dan <b>password</b> tersebut pada saat <b>Masuk</b> ke akun Anda untuk proses pendaftaran Online selanjutnya (Mengisi & Mengedit data pada formulir online)
                     </li>
                     <li>
-                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>+6285159200900</u> (ustadz Fuad) atau <u>+6281237238858</u> (ustadzah Iis)
+                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>+62 821-3781-2078</u> (ustadzah Imelda) atau <u>+62 831-0474-2023</u> (ustadzah Nifah)
                     </li>
                 </ol>
             </div> 

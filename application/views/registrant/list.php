@@ -24,7 +24,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-2425.webp';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2526.webp';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
