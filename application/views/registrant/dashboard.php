@@ -91,6 +91,9 @@
         dan menyelesaikan pendaftaran dengan mengeklik tombol dibawah :
     </p>
     <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
+    <p>Dan bisa mengikuti Grup Whatsapp Info Pendaftar dengan mengklik  
+        <a href="https://chat.whatsapp.com/EH6jaKtGfzqHO2pw5SfQfi" target="_blank">link ini</a>.
+    </p>
     <p>
         Data yang perlu disiapkan adalah:
     <ul>
