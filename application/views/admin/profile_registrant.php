@@ -328,14 +328,14 @@
                                         <?php endif;?>>
                                     Jalur Tahfidz
                                 </option>
-                                 <option value="Jalur Rapor"
+                                <!-- <option value="Jalur Rapor"
                                         <?php if(property_exists($registrant_data, 'selectionPath')):?>
                                             <?php if($registrant_data->getSelectionPath()=='Jalur Rapor'): ?>
                                                     selected
                                             <?php endif;?>
                                         <?php endif;?>>
                                     Jalur Rapor
-                                </option>
+                                </option>-->
                                  <option value="Jalur Prestasi"
                                         <?php if(property_exists($registrant_data, 'selectionPath')):?>
                                             <?php if($registrant_data->getSelectionPath()=='Jalur Prestasi'): ?>

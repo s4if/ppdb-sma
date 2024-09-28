@@ -381,14 +381,14 @@ body {
                                                     <?php endif;?>>
                                                 Jalur Hafalan Qur'an
                                             </option>
-                                             <option value="Jalur Rapor"
+                                            <!-- <option value="Jalur Rapor"
                                                     <?php if(array_key_exists('selection_path', $registrant)):?>
                                                         <?php if($registrant['selection_path']=='Jalur Rapor'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Rapor
-                                            </option>
+                                            </option>-->
                                              <option value="Jalur Prestasi"
                                                     <?php if(array_key_exists('selection_path', $registrant)):?>
                                                         <?php if($registrant['selection_path']=='Jalur Prestasi'): ?>
