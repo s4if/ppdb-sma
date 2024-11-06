@@ -60,7 +60,8 @@ class Model_rapor extends CI_Model
         $nameset = ['mtk', 'ipa', 'ips', 'ind', 'ing'];
         for($i = 1;$i <= 4;$i++){
             foreach ($nameset as $name){
-                $this->rapor->edit($name, 'kkm', $i, $data['kkm_'.$name.'_'.$i]);
+                //disable rapor
+                //$this->rapor->edit($name, 'kkm', $i, $data['kkm_'.$name.'_'.$i]);
                 $this->rapor->edit($name, 'nilai', $i, $data['nilai_'.$name.'_'.$i]);
             }
         }

@@ -49,10 +49,10 @@
         </div>
         <?php foreach ($nameset as $kode => $mapel_name) :?>
         <div class="form-group">
-            <label class="col-sm-3 control-label"> <?=$mapel_name;?> (KKM) :</label>
+            <!-- <label class="col-sm-3 control-label"> <?=$mapel_name;?> (KKM) :</label>
             <div class="col-sm-3">
                 <input type="number" required name="kkm_<?=$kode;?>_<?=$i;?>" class="form-control" placeholder="kkm" value="<?php echo $rapor->get($kode, 'kkm', $i);?>">
-            </div>
+            </div> -->
             <div class="col-sm-2 control-label"><b>Nilai :</b></div>
             <div class="col-sm-3">
                 <input type="number" required name="nilai_<?=$kode;?>_<?=$i;?>" class="form-control" placeholder="nilai" value="<?php echo $rapor->get($kode, 'nilai', $i);?>">

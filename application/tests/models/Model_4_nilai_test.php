@@ -44,7 +44,8 @@ class Model_4_nilai_test extends TestCase{
         $nameset = ['mtk', 'ipa', 'ips', 'ind', 'ing'];
         // input
         foreach ($nameset as $name){
-            $this->assertInstanceOf(RaporEntity::class, $nilai->edit($name, 'kkm', 1, 80));
+            // rapor disable
+            //$this->assertInstanceOf(RaporEntity::class, $nilai->edit($name, 'kkm', 1, 80));
             $this->assertInstanceOf(RaporEntity::class, $nilai->edit($name, 'nilai', 1, 85));
         }
         
@@ -54,22 +55,22 @@ class Model_4_nilai_test extends TestCase{
 //        $this->assertNull($nilai->edit('ipa', 'kkm', 7, 80));
         
         //delete
-        $nilai->edit('ipa', 'kkm', 2, 80);
-        $this->assertInstanceOf(RaporEntity::class, $nilai->delete('ipa', 'kkm', '2'));
+        $nilai->edit('ipa', 'nilai', 2, 80);
+        $this->assertInstanceOf(RaporEntity::class, $nilai->delete('ipa', 'nilai', '2'));
         
         // get Nilai
         foreach ($nameset as $name){
-            $this->assertEquals($nilai->get($name, 'kkm', 1), 80);
+            //$this->assertEquals($nilai->get($name, 'kkm', 1), 80);
             $this->assertEquals($nilai->get($name, 'nilai', 1), 85);
         }
         
         //get Error 
-        $this->assertEquals($nilai->get('error', 'kkm', 1), null);
+        //$this->assertEquals($nilai->get('error', 'kkm', 1), null);
         $this->assertEquals($nilai->get('ipa', 'kkm', 3), null);
         
         //getAll
         $data = $nilai->getAll();
-        $this->assertEquals($data[1]['ipa']['kkm'], 80);
+        $this->assertEquals($data[1]['ipa']['nilai'], 85);
     }
     
     public function test_crud_rapor(){
@@ -164,7 +165,7 @@ class Model_4_nilai_test extends TestCase{
         $nameset = ['mtk', 'ipa', 'ips', 'ind', 'ing'];
         for($i = 1; $i <=4;$i++){
             foreach ($nameset as $name){
-                $this->assertEquals($reg->getRapor()->get($name, 'kkm', $i), 80, $name.$i);
+                //$this->assertEquals($reg->getRapor()->get($name, 'kkm', $i), 80, $name.$i);
                 $this->assertEquals($reg->getRapor()->get($name, 'nilai', $i), 85, $name.$i);
             }
         }

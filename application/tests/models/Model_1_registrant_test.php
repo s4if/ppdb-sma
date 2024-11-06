@@ -127,13 +127,13 @@ class Model_1_registrant_test extends TestCase {
                 'father', 'mother', 'guardian', 'paymentData', 'initialCost', 'relToRegularPath', 'relToRegular',
                 'subscriptionCost', 'landDonation', 'qurban' ];
         foreach ($attributes as $attributeName){
-            $this->assertObjectHasAttribute($attributeName, $registrant);
+            $this->assertObjectHasProperty($attributeName, $registrant);
         }
         foreach ($attributes as $attributeName){
-            $this->assertObjectHasAttribute($attributeName, $registrants[0]);
+            $this->assertObjectHasProperty($attributeName, $registrants[0]);
         }
         foreach ($attributes as $attributeName){
-            $this->assertObjectHasAttribute($attributeName, $registrants_2[0]);
+            $this->assertObjectHasProperty($attributeName, $registrants_2[0]);
         }
         $this->assertEquals( [], $this->obj->getData('XY'));
         $this->assertNotEquals([], $this->obj->getUnpaidData());
@@ -200,7 +200,7 @@ class Model_1_registrant_test extends TestCase {
             'familyCondition', 'nationality', 'religion', 'height', 'weight', 'childOrder', 'siblingsCount',
             'stayWith', 'physicalAbnormalities', 'hospitalSheets', 'hobbies', 'achievements'];
         foreach ($attributes as $attributeName){
-            $this->assertObjectHasAttribute($attributeName, $registrantData);
+            $this->assertObjectHasProperty($attributeName, $registrantData);
         }
         $this->assertArrayNotHasKey('status', $registrantData->getAchievements());
         $this->assertStringNotMatchesFormat('Error', $registrantData->getAchievements(false));
