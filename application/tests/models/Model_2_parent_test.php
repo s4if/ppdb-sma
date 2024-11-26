@@ -117,7 +117,7 @@ class Model_2_parent_test extends TestCase{
             'nationality', 'religion', 'educationLevel', 'job', 'position', 'company', 'income', 'burdenCount'];
         foreach ($parentData as $parent) {
             foreach ($attributes as $attributeName){
-                $this->assertObjectHasAttribute($attributeName, $parent);
+                $this->assertObjectHasProperty($attributeName, $parent);
             }
         }
     }

@@ -78,11 +78,11 @@ class Model_3_admin_test extends TestCase{
         $admin = $this->obj->getData($data['username']);
         $attributes = ['username', 'password', 'root'];
         foreach ($attributes as $attributeName){
-            $this->assertObjectHasAttribute($attributeName, $admin);
+            $this->assertObjectHasProperty($attributeName, $admin);
         }
         $admins = $this->obj->getData()[0];
         foreach ($attributes as $attributeName){
-            $this->assertObjectHasAttribute($attributeName, $admins);
+            $this->assertObjectHasProperty($attributeName, $admins);
         }
     }
     
