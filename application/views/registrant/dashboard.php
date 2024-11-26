@@ -51,9 +51,11 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
-        Seleksi akan dilaksanakan hari ahad tanggal 3 November 2024<br/>
+        Silahkan bisa join di grup PPDB Ihsanul Fikri dengan meng-klik link berikut<br/>
+        <a href="https://chat.whatsapp.com/IT4zrQFaFAV5kPL70qiZcn" target="_blank">Link Join Discord</a>
+        <!-- Seleksi akan dilaksanakan hari ahad tanggal 3 November 2024<br/>
         Hasil tes akan diumumkan tanggal 11 November 2024<br/>
-        Silakan unduh dan cetak kartu serta formulir pendaftaran. <!-- Kemudian bergabung di Grup 
+        Silakan unduh dan cetak kartu serta formulir pendaftaran. Kemudian bergabung di Grup 
         Whatsapp Info PPDB dengan menghubungi nomor:  <u>085159201299</u>, 
         dengan menunjukan Screenshot/Foto Kartu Pendaftaran. -->
     </p>        
@@ -92,16 +94,18 @@
     </p>
     <a class="btn btn-success" href="<?=  base_url().$id.'/formulir'?>">Isi data</a>
     <p>Dan bisa mengikuti Grup Whatsapp Info Pendaftar dengan mengklik  
-        <a href="https://chat.whatsapp.com/EH6jaKtGfzqHO2pw5SfQfi" target="_blank">link ini</a>.
+        <a href="https://chat.whatsapp.com/IT4zrQFaFAV5kPL70qiZcn" target="_blank">link ini</a>.
     </p>
     <p>
         Data yang perlu disiapkan adalah:
     <ul>
         <li>Data Diri</li>
         <li>Data Orang Tua</li>
-        <li>Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)</li>
+        <!--<li>Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)</li>
+        -->
         <li>Data Surat Pernyataan</li>
-        <li>Data Sertifikat Lomba (untuk jalur seleksi Prestasi) atau Sertifikat Hafalan (untuk Jalur Seleksi Hafalan Qur'an)</li>
+        <!--<li>Data Sertifikat Lomba (untuk jalur seleksi Prestasi) atau Sertifikat Hafalan (untuk Jalur Seleksi Hafalan Qur'an)</li>
+        -->
     </ul>
     </p>
     <?php endif;?>
