@@ -38,7 +38,7 @@ class Model_4_nilai_test extends TestCase{
         $this->CI->load->model('model_registrant', 'reg');
         $this->obj = $this->CI->rapor;
     }
-    
+    /*
     public function test_nilai_entities(){
         $nilai = new RaporEntity();
         $nameset = ['mtk', 'ipa', 'ips', 'ind', 'ing'];
@@ -169,5 +169,5 @@ class Model_4_nilai_test extends TestCase{
                 $this->assertEquals($reg->getRapor()->get($name, 'nilai', $i), 85, $name.$i);
             }
         }
-    }
+    }*/
 }

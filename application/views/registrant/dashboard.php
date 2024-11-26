@@ -59,10 +59,10 @@
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
         Unduh Kartu Dan Formulir Pendaftaran</a>
-    <a class="btn btn-warning" href="<?= base_url().$id.'/sertifikat'?>">
+    <!-- <a class="btn btn-warning" href="<?= base_url().$id.'/sertifikat'?>">
         <span class="glyphicon glyphicon-upload"></span>
         Upload Persyaratan Jalur Hafalan/Prestasi
-    </a>
+    </a> -->
     <?php elseif(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>

@@ -417,7 +417,7 @@
         <hr />
     </div>
     <?php endif;?>
-    <?php if((!$registrant->getFinalized())&&(!is_null($registrant->getPaymentData()))&&(!is_null($registrant->getRapor()))) :?>
+    <?php if((!$registrant->getFinalized())&&(!is_null($registrant->getPaymentData()))) : // rapor dihilangkan ?> 
     <a class="btn btn-success <?php echo ($registrant->getCompleted())?'':'disabled';?>" data-toggle="modal" data-target="#ModalFinalized">
         <span class="glyphicon glyphicon-registration-mark"></span>
         Finalisasi

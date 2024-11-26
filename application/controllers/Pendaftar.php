@@ -578,13 +578,13 @@ class Pendaftar extends MY_Controller {
     
     // ================= Lihat Pendaftar ===========================
     
-    public function lihat($gender = 'L'){
+    /*public function lihat($gender = 'L'){
         //$registrant_data = $this->reg->getArrayData($gender, null);
         $this->simpleView('registrant/list', [
             'gender' => $gender, 
             //'data_registrant' => $registrant_data
         ]);
-    }
+    }*/
     
     public function lihat_ajax($gender = 'L', $completed = false){
         //$registrant_data = $this->reg->getArrayData($gender, null, $completed);

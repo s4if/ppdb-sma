@@ -90,10 +90,10 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Edit Profil
                 </a>
-                <a class="btn btn-sm btn-success <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" href="<?= base_url().$id.'/sertifikat'?>">
+                <!--<a class="btn btn-sm btn-success <?php echo ($registrant->getFinalized()) ? 'disabled' : ''; ?>" href="<?= base_url().$id.'/sertifikat'?>">
                     <span class="glyphicon glyphicon-upload"></span>
                     Upload Persyaratan Jalur Prestasi dan Jalur Hafalan Qur'an
-                </a>
+                </a>-->
             </td>
         </tr>
     </table>
@@ -711,7 +711,7 @@
                 <div class="center-block">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="btn-group" role="group">
-                            <a class="btn btn-success" href="<?=base_url() . $id . '/rapor'?>">
+                            <a class="btn btn-success" href="<?=base_url() . $id . '/surat'?>">
                                 Lanjut
                             </a>
                             <a class="btn btn-warning" href="<?=base_url() . $id . '/wali'?>">
