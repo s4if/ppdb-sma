@@ -248,7 +248,7 @@ body {
                         Gunakan <b>username</b> dan <b>password</b> tersebut pada saat <b>Masuk</b> ke akun Anda untuk proses pendaftaran Online selanjutnya (Mengisi & Mengedit data pada formulir online)
                     </li>
                     <li>
-                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>+62 821-3781-2078</u> (ustadzah Imelda) atau <u>+62 831-0474-2023</u> (ustadzah Nifah)
+                        Jika lupa <b>username</b> atau <b>password</b> silahkan menghubungi nomor <u>+62 821-3781-2078</u> (ustadzah Imelda) atau <u>+62 812-2900-1446</u> (ustadzah Nifah)
                     </li>
                 </ol>
             </div> 
