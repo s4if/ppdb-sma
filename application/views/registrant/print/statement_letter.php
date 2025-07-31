@@ -230,6 +230,18 @@
                 tidak akan menuntut segala yang telah saya bayarkan sebelumnya</u></strong>. Seluruh pembiayaan 
                 yang saya bayarkan tidak akan saya tarik kembali dan dijadikan sebagai Infaq.
             </li>
+            <?php if($registrant->getSelectionPath() != "Jalur Reguler" && $registrant->getRelToRegularPath() === 'true'):?>
+                <li class="pernyataan">
+                    Apabila anak saya tidak diterima melalui <strong><u><?= $registrant->getSelectionPath()?></u></strong> maka saya 
+                    bersedia untuk mengikuti proses seleksi <strong><u>Jalur Reguler</u></strong>.
+                </li>
+            <?php endif; ?>
+            <?php if($registrant->getSelectionPath() != "Jalur Reguler" && $registrant->getRelToRegular() === 'true'):?>
+                <li class="pernyataan">
+                    Apabila anak saya tidak diterima melalui pada <strong><u>Program Tahfidz</u></strong> maka saya bersedia 
+                    untuk mengikuti proses seleksi pada <strong><u>Program Reguler</u></strong>.
+                </li>
+            <?php endif; ?>
         </ol>
         <p>
             Demikian surat pernyataan ini saya buat dengan sebenar-benarnya.

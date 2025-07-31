@@ -485,7 +485,7 @@ class Pendaftar extends MY_Controller {
         $this->CustomView('registrant/letter', $data);
     }
     
-    /*public function sertifikat($id){
+    public function sertifikat($id){
         $this->blockUnloggedOne($id);
         $this->blockNonPayers($this->session->registrant);
         $data = [
@@ -496,7 +496,7 @@ class Pendaftar extends MY_Controller {
             'nav_pos' => 'certificate'
         ];
         $this->CustomView('registrant/certificate_upload', $data);
-    }*/
+    }
     
     public function isi_pernyataan($id){
         error_reporting(0);
@@ -578,13 +578,13 @@ class Pendaftar extends MY_Controller {
     
     // ================= Lihat Pendaftar ===========================
     
-    /*public function lihat($gender = 'L'){
+    public function lihat($gender = 'L'){
         //$registrant_data = $this->reg->getArrayData($gender, null);
         $this->simpleView('registrant/list', [
             'gender' => $gender, 
             //'data_registrant' => $registrant_data
         ]);
-    }*/
+    }
     
     public function lihat_ajax($gender = 'L', $completed = false){
         //$registrant_data = $this->reg->getArrayData($gender, null, $completed);

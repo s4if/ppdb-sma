@@ -26,7 +26,7 @@
 <style>
 body {
     padding-top: 120px;
-    background-image: url("<?php echo base_url().'assets/images/bg-login-2526.webp';?>");
+    background-image: url("<?php echo base_url().'assets/images/bg-login-2627.png';?>");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -182,7 +182,7 @@ body {
                         Petunjuk Jalur Beasiswa dan Prestasi
                     </a></li>-->
                     <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
-                    <!--<li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>-->
+                    <li class=""><a href="<?=  base_url().'lihat'?>">Lihat</a></li>
                     <li class=" active"><a href="<?=  base_url().'login'?>">Daftar</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
@@ -381,15 +381,15 @@ body {
                                                     <?php endif;?>>
                                                 Jalur Hafalan Qur'an
                                             </option>
-                                            <option value="Jalur Rapor"
+                                            <!--<option value="Jalur Rapor"
                                                     <?php if(array_key_exists('selection_path', $registrant)):?>
                                                         <?php if($registrant['selection_path']=='Jalur Rapor'): ?>
                                                                 selected
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Rapor
-                                            </option>
-                                             <option value="Jalur Prestasi"
+                                            </option>-->
+                                            <option value="Jalur Prestasi"
                                                     <?php if(array_key_exists('selection_path', $registrant)):?>
                                                         <?php if($registrant['selection_path']=='Jalur Prestasi'): ?>
                                                                 selected

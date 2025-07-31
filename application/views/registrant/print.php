@@ -116,17 +116,24 @@ img.foto-profil {
                                 </tr>
                                 <tr>
                                     <td>
-                                        Tes Kemampuan Dasar:
-                                        <ul>
-                                            <li>TPS (Bahasa Indonesia dan Logika dasar)</li>
-                                            <li>Matematika</li>
-                                            <li>Bahasa Inggris</li>
-                                        </ul>
+                                        Tes akademik terdiri dari
+                                        <ol>
+                                            <li>Tes logika dasar/intelegensi umum</li>
+                                            <li>Tes literasi bahasa indonesia</li>
+                                            <li>Tes numerasi</li>
+                                            <li>Tes literasi bahasa Inggris.</li>
+                                        </ol>
                                     </td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>Tes Tahsin Tahfidz (Juz 29 & 30)</td>
+                                    <td>
+                                        Tes Tahsin Tahfidz (Juz 29 & 30)
+                                        <ol>
+                                            <li>Tes bacaan Al Qur'an (Tartil)</li>
+                                            <li>⁠Tes Hafalan Al Qur'an (materi hafalan diberikan H-1 Test)</li>
+                                        </ol>
+                                    </td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>

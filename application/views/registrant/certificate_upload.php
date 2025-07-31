@@ -56,10 +56,10 @@
                 prestasi atau jumlah hafalan yang dimiliki.
             </li>
             <li>
-                Upload dokumen ini ditutup pada <strong>17 September 2024</strong> kemudian 
+                Upload dokumen ini ditutup pada <strong>17 September 2025</strong> kemudian 
                 akan diperpanjang jika kuota beasiswa masih ada. <br>
-                Dokumen yang masuk seksama oleh tim seleksi yang hasilnya akan diumumkan pada tanggal 
-                <strong>24 September 2024</strong> sesuai panduan Seleksi Jalur Prestasi 
+                Dokumen yang masuk seksama oleh tim seleksi yang hasilnya akan diumumkan pada 
+                <strong> September 2025</strong> sesuai panduan Seleksi Jalur Prestasi 
                 dan Hafalan Qur'an di halaman web <a href="https://smait.ihsanulfikri.sch.id">smait.ihsanulfikri.sch.id</a>
             </li>
             <li>
@@ -67,7 +67,7 @@
                 dapat <strong>menghapus dan mengupload kembali</strong> dokumen yang dimaksud.
             </li>
         </ol>
-        <p>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid Tahun Ajaran 2024-2025</p>
+        <p>Hormat kami, Tim PPDB SMAIT Ihsanul Fikri Mungkid Tahun Ajaran 2025-2026</p>
         <a class="btn btn-primary" data-toggle="modal" data-target="#ModalImport">
             <span class="glyphicon glyphicon-upload"></span>&nbsp;
             Tambah Dokumen
