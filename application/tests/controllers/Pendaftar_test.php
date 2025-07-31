@@ -213,7 +213,7 @@ class Pendaftar_test extends TestCase
             $this->assertRedirect('1/beranda');
             $output = $this->ajaxRequest('POST', 'pendaftar/generate_kodeunik/1/L');
             $this->assertStringContainsString('"status":true', $output);
-            $this->assertStringContainsString('"kode":"201"', $output); // nilai asli 001
+            $this->assertStringContainsString('"kode":"001"', $output); // nilai asli 001
         }
         
 //        public function test_isi_Guardian(){

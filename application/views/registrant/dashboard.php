@@ -51,20 +51,15 @@
     <h1>Selamat, anda telah menyelesaikan pendaftaran!</h1>
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
-        Silahkan bisa join di grup PPDB Ihsanul Fikri dengan meng-klik link berikut<br/>
-        <a href="https://chat.whatsapp.com/IT4zrQFaFAV5kPL70qiZcn" target="_blank">Link Join Discord</a>
-        <!-- Seleksi akan dilaksanakan hari ahad tanggal 3 November 2024<br/>
-        Hasil tes akan diumumkan tanggal 11 November 2024<br/>
-        Silakan unduh dan cetak kartu serta formulir pendaftaran. Kemudian bergabung di Grup 
-        Whatsapp Info PPDB dengan menghubungi nomor:  <u>085159201299</u>, 
-        dengan menunjukan Screenshot/Foto Kartu Pendaftaran. -->
+        Untuk bergabung grup, silakan bisa hub nomor 085180846060. 
+        atau klik <a href="wa.me/+6285180846060" target="_blank">link ini</a> untuk bergabung.
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
         Unduh Kartu Dan Formulir Pendaftaran</a>
-    <!-- <a class="btn btn-warning" href="<?= base_url().$id.'/sertifikat'?>">
+    <a class="btn btn-warning" href="<?= base_url().$id.'/sertifikat'?>">
         <span class="glyphicon glyphicon-upload"></span>
         Upload Persyaratan Jalur Hafalan/Prestasi
-    </a> -->
+    </a>
     <?php elseif(is_null($registrant->getPaymentData())) :?>
     <h1>Selamat Datang di Sistem PPDB SMAIT Ihsanul Fikri Mungkid</h1>
     <p>
@@ -110,27 +105,6 @@
     </p>
     <?php endif;?>
 </div>
-<?php if($registrant->getFinalized()) :?>
-<div class="panel panel-success col-md-12">
-  <div class="panel-body">
-    <table class="table table-striped table-bordered table-condensed table-responsive" id="tabel_utama">
-        <thead>
-            <tr>
-                <td>No. Urut</td>
-                <td>No. Pendaftaran</td>
-                <td>Nama</td>
-                <td>I/A</td>
-                <td>Sekolah Asal</td>
-                <td>Program</td>
-                <!--<td>Status Data</td>-->
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-  </div>
-</div>
-<?php endif;?>
 <div class="modal fade" id="uploadKwitansi" tabindex="-1" role="dialog" aria-labelledby="ModalImport" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

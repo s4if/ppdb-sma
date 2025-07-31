@@ -373,7 +373,7 @@ body {
                                                     <?php endif;?>>
                                                 Jalur Tes Tulis
                                             </option>
-                                            <!--<option value="Jalur Hafalan Qur'an"
+                                            <option value="Jalur Hafalan Qur'an"
                                                     <?php if(array_key_exists('selection_path', $registrant)):?>
                                                         <?php if($registrant['selection_path']=='Jalur Tahfidz'): ?>
                                                                 selected
@@ -396,7 +396,7 @@ body {
                                                         <?php endif;?>
                                                     <?php endif;?>>
                                                 Jalur Prestasi
-                                            </option>-->
+                                            </option>
                                         </select>
                                     </div>
                                 </div>

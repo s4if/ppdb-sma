@@ -397,7 +397,7 @@ $config['cookie_httponly'] = FALSE;
 |
 | Determines whether to standardize newline characters in input data,
 | meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
-|
+|wa.me/+6285180846060
 | This is particularly useful for portability between UNIX-based OSes,
 | (usually \n) and Windows (\r\n).
 |
@@ -512,9 +512,9 @@ $config['proxy_ips'] = '';
 |--------------------------------------------------------------------------
  */
 $config['nama_sekolah'] = 'SMAIT Ihsanul Fikri Mungkid';
-$config['nama_gelombang'] = 'Gelombang 2';
-$config['indeks_gelombang'] = 2;
-$config['tahun_masuk'] = 2025; //tahun dimana siswa tersebut masuk! (tahun registrasi)
+$config['nama_gelombang'] = 'Gelombang 1';
+$config['indeks_gelombang'] = 1;
+$config['tahun_masuk'] = 2026; //tahun dimana siswa tersebut masuk! (tahun registrasi)
 $config['biaya_registrasi'] = 300000;
 $config['biaya_tetap'] = [
 	'seragam' => 2250000,
