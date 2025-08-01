@@ -56,7 +56,7 @@
                 prestasi atau jumlah hafalan yang dimiliki.
             </li>
             <li>
-                Upload dokumen ini ditutup pada <strong>17 September 2025</strong> kemudian 
+                Upload dokumen ini ditutup pada <strong>22 September 2025</strong> kemudian 
                 akan diperpanjang jika kuota beasiswa masih ada. <br>
                 Dokumen yang masuk seksama oleh tim seleksi yang hasilnya akan diumumkan pada 
                 <strong> September 2025</strong> sesuai panduan Seleksi Jalur Prestasi 

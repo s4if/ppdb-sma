@@ -52,7 +52,8 @@
     <p>
         Terimakasih telah mendaftar di SMAIT Ihsanul Fikri Mungkid.<br/>
         Untuk bergabung grup, silakan bisa hub nomor 085180846060. 
-        atau klik <a href="https://wa.me/+6285180846060" target="_blank">link ini</a> untuk bergabung.
+        atau klik <a href="https://wa.me/+6285180846060" target="_blank">link ini</a> untuk bergabung. <br/>
+        Silahkan unduh kartu pendaftaran dan formulir pendaftaran anda dengan mengeklik tombol di bawah ini.
     </p>        
     <a class="btn btn-primary" href="<?=  base_url().'pendaftar/print_data_pendaftaran/'.$id;?>">
         Unduh Kartu Dan Formulir Pendaftaran</a>
@@ -99,8 +100,7 @@
         <!--<li>Data Rapor (mapel Matematika, IPA, IPS, dan Bahasa Indonesia dan Bahasa Inggris Semester 1 - 4)</li>
         -->
         <li>Data Surat Pernyataan</li>
-        <!--<li>Data Sertifikat Lomba (untuk jalur seleksi Prestasi) atau Sertifikat Hafalan (untuk Jalur Seleksi Hafalan Qur'an)</li>
-        -->
+        <li>Data Sertifikat Lomba (untuk jalur seleksi Prestasi) atau Sertifikat Hafalan (untuk Jalur Seleksi Hafalan Qur'an)</li>
     </ul>
     </p>
     <?php endif;?>
