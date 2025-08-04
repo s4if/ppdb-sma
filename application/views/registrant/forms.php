@@ -90,7 +90,7 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Edit Profil
                 </a>
-                <a class="btn btn-sm btn-success href="<?= base_url().$id.'/sertifikat'?>">
+                <a class="btn btn-sm btn-success" href="<?= base_url().$id.'/sertifikat'?>">
                     <span class="glyphicon glyphicon-upload"></span>
                     Upload Persyaratan Jalur Prestasi dan Jalur Hafalan Qur'an
                 </a>
