@@ -183,7 +183,7 @@ body {
                             Petunjuk Jalur Beasiswa dan Prestasi
                         </a></li>-->
                         <li class=""><a href="<?=  base_url().'login/admin'?>">Admin</a></li>
-                        <!--<li class="active"><a href="<?=  base_url().'lihat'?>">Lihat</a></li>-->
+                        <!--<li class="active"><a href="< ?=  base_url().'lihat'?>">Lihat</a></li>-->
                         <li class=""><a href="<?=  base_url().'login'?>">Daftar</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
