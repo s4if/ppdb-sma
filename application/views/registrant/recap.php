@@ -212,14 +212,14 @@
                 <?php foreach ($data->getHobbies() as $hb):?>
                 <tr><td> <?php echo ucfirst($hb);?> </td></tr>
                 <?php endforeach;?>
-            <tr>
+            <!--<tr>
                 <td rowspan="<?=($ac_count < 1)?'1':$ac_count+1;?>"> Prestasi </td>
                 <td rowspan="<?=($ac_count < 1)?'1':$ac_count+1;?>"> &nbsp;:&nbsp; </td>
                 <?php ($hp_count < 1)?'<td>-</td>':'';?>
             </tr>
                 <?php foreach ($data->getAchievements() as $ac):?>
                 <tr><td> <?php echo ucfirst($ac);?> </td></tr>
-                <?php endforeach;?>
+                <?php endforeach;?>-->
         </table>
         <hr />
     </div>
