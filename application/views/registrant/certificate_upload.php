@@ -40,9 +40,7 @@
 </ol>
 <div class="container-fluid">
     <div class="row">
-        <h2>Ketentuan Upload Dokumen Jalur Prestasi dan Hafalan Qur'an<br />
-        <small>(Halaman ini dipertuntukan bagi yang mendaftar seleksi jalur prestasi atau hafalan Qur'an. 
-            Untuk Jalur Seleksi Rapor, Pengisian Data ada di bagian Isi Rapor)</small></h2>
+        <h2>Ketentuan Upload Dokumen Jalur Prestasi dan Hafalan Qur'an<br /></h2>
         <ol>
             <li>Bagi calon Peserta Jalur Seleksi Hafalan Qur'an, dokumen yang diupload merupakan <strong>Sertifikat Hafalan</strong> 
                 yang diterbitkan oleh instansi yang berwenang (sekolah/lembaga pendidikan Al Qur'an).
