@@ -628,7 +628,7 @@
                             <?php endif;?>>
                         Jalur Tes Tulis
                     </option>
-                    <option value="Jalur Tahfidz"
+                    <!--<option value="Jalur Tahfidz"
                             <?php if (property_exists($registrant, 'selectionPath')): ?>
                                 <?php if ($registrant->getSelectionPath() == "Jalur Hafalan Qur'an"): ?>
                                         selected
@@ -651,7 +651,7 @@
                                 <?php endif;?>
                             <?php endif;?>>
                         Jalur Prestasi 
-                    </option>
+                    </option>-->
                 </select>
             </div>
         </div>
