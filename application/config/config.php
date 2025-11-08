@@ -512,8 +512,8 @@ $config['proxy_ips'] = '';
 |--------------------------------------------------------------------------
  */
 $config['nama_sekolah'] = 'SMAIT Ihsanul Fikri Mungkid';
-$config['nama_gelombang'] = 'Gelombang 1';
-$config['indeks_gelombang'] = 1;
+$config['nama_gelombang'] = 'Gelombang 2';
+$config['indeks_gelombang'] = 2;
 $config['tahun_masuk'] = 2026; //tahun dimana siswa tersebut masuk! (tahun registrasi)
 $config['biaya_registrasi'] = 300000;
 $config['biaya_tetap'] = [
