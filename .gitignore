@@ -20,3 +20,5 @@
 /composer.lock
 
 application/tests/.phpunit.result.cache
+/.vscode
+
